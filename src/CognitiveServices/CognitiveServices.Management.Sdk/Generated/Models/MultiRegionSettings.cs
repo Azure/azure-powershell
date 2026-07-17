@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="routingMethod">Multiregion routing methods.
-        /// Possible values include: 'Priority', 'Weighted', 'Performance'</param>
+        /// Possible values include: &#39;Priority&#39;, &#39;Weighted&#39;, &#39;Performance&#39;</param>
 
         /// <param name="regions">
         /// </param>

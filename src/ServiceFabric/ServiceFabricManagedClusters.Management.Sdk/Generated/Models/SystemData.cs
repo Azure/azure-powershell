@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="createdByType">The type of identity that created the resource.
-        /// </param>
+        /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
         /// <param name="createdAt">The timestamp of resource creation (UTC).
         /// </param>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="lastModifiedByType">The type of identity that last modified the resource.
-        /// </param>
+        /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
-        /// <param name="lastModifiedAt">The timestamp of resource last modification (UTC).
+        /// <param name="lastModifiedAt">The timestamp of resource last modification (UTC)
         /// </param>
         public SystemData(string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?))
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public string CreatedBy {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of identity that created the resource.
+        /// Gets or sets the type of identity that created the resource. Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createdByType")]
         public string CreatedByType {get; set; }
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public string LastModifiedBy {get; set; }
 
         /// <summary>
-        /// Gets or sets the type of identity that last modified the resource.
+        /// Gets or sets the type of identity that last modified the resource. Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedByType")]
         public string LastModifiedByType {get; set; }
 
         /// <summary>
-        /// Gets or sets the timestamp of resource last modification (UTC).
+        /// Gets or sets the timestamp of resource last modification (UTC)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedAt")]
         public System.DateTime? LastModifiedAt {get; set; }

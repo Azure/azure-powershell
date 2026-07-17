@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates an association between a ARC machine and guest configuration</summary>
+    /// <summary>create an association between a ARC machine and guest configuration</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateByHcrp=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzGuestConfigurationAssignment_CreateExpanded1", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Description(@"Creates an association between a ARC machine and guest configuration")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Description(@"create an association between a ARC machine and guest configuration")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}", ApiVersion = "2022-01-25")]
     public partial class NewAzGuestConfigurationAssignment_CreateExpanded1 : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,15 +37,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>
         /// Guest configuration assignment is an association between a machine and guest configuration.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.GuestConfigurationAssignment();
+        private Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.GuestConfigurationAssignment();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.GuestConfiguration Client => Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.ClientAPI;
@@ -67,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>Backing field for <see cref="GuestConfigurationAssignmentName" /> property.</summary>
         private string _guestConfigurationAssignmentName;
@@ -93,9 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.",
         SerializedName = @"assignmentType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType GuestConfigurationAssignmentType { get => _parametersBody.GuestConfigurationAssignmentType ?? ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.AssignmentType)""); set => _parametersBody.GuestConfigurationAssignmentType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("Audit", "DeployAndAutoCorrect", "ApplyAndAutoCorrect", "ApplyAndMonitor")]
+        public string GuestConfigurationAssignmentType { get => _parametersBody.GuestConfigurationAssignmentType ?? null; set => _parametersBody.GuestConfigurationAssignmentType = value; }
 
         /// <summary>Combined hash of the guest configuration package and configuration parameters.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Combined hash of the guest configuration package and configuration parameters.")]
@@ -127,9 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Kind of the guest configuration. For example:DSC",
         SerializedName = @"kind",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind))]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind GuestConfigurationKind { get => _parametersBody.GuestConfigurationKind ?? ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Support.Kind)""); set => _parametersBody.GuestConfigurationKind = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.PSArgumentCompleterAttribute("DSC")]
+        public string GuestConfigurationKind { get => _parametersBody.GuestConfigurationKind ?? null; set => _parametersBody.GuestConfigurationKind = value; }
 
         /// <summary>Name of the guest configuration.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the guest configuration.")]
@@ -151,8 +172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"The configuration parameters for the guest configuration.",
         SerializedName = @"configurationParameter",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[] GuestConfigurationParameter { get => _parametersBody.GuestConfigurationParameter ?? null /* arrayOf */; set => _parametersBody.GuestConfigurationParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[] GuestConfigurationParameter { get => _parametersBody.GuestConfigurationParameter?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.GuestConfigurationParameter = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter>(value) : null); }
 
         /// <summary>The protected configuration parameters for the guest configuration.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -163,8 +184,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"The protected configuration parameters for the guest configuration.",
         SerializedName = @"configurationProtectedParameter",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[] GuestConfigurationProtectedParameter { get => _parametersBody.GuestConfigurationProtectedParameter ?? null /* arrayOf */; set => _parametersBody.GuestConfigurationProtectedParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[] GuestConfigurationProtectedParameter { get => _parametersBody.GuestConfigurationProtectedParameter?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.GuestConfigurationProtectedParameter = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter>(value) : null); }
 
         /// <summary>Version of the guest configuration.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Version of the guest configuration.")]
@@ -203,9 +224,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"The list of resources for which guest configuration assignment compliance is checked.",
         SerializedName = @"resources",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IAssignmentReportResource) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportResource) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IAssignmentReportResource[] LatestAssignmentReportResource { get => _parametersBody.LatestAssignmentReportResource ?? null /* arrayOf */; set => _parametersBody.LatestAssignmentReportResource = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportResource[] LatestAssignmentReportResource { get => _parametersBody.LatestAssignmentReportResource?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.LatestAssignmentReportResource = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportResource>(value) : null); }
 
         /// <summary>Region where the VM is located.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Region where the VM is located.")]
@@ -254,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -303,7 +324,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -316,45 +338,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"The list of VM Compliance data for VMSS",
         SerializedName = @"vmssVMList",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IVmssvmInfo) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVmssvmInfo) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IVmssvmInfo[] VmssVMList { get => _parametersBody.VmssVMList ?? null /* arrayOf */; set => _parametersBody.VmssVMList = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVmssvmInfo[] VmssVMList { get => _parametersBody.VmssVMList?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.VmssVMList = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVmssvmInfo>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -377,6 +399,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -441,8 +468,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -452,7 +504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzGuestConfigurationAssignment_CreateExpanded1" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzGuestConfigurationAssignment_CreateExpanded1" /> cmdlet class.
         /// </summary>
         public NewAzGuestConfigurationAssignment_CreateExpanded1()
         {
@@ -506,7 +558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -516,15 +568,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("VmssVMList"))
+                {
+                    VmssVMList = (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IVmssvmInfo[])this.MyInvocation.BoundParameters["VmssVMList"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("LatestAssignmentReportResource"))
+                {
+                    LatestAssignmentReportResource = (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IAssignmentReportResource[])this.MyInvocation.BoundParameters["LatestAssignmentReportResource"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GuestConfigurationAssignmentsCreateOrUpdateByHcrp(GuestConfigurationAssignmentName, SubscriptionId, ResourceGroupName, MachineName, _parametersBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.GuestConfigurationAssignmentsCreateOrUpdateByHcrp(SubscriptionId, ResourceGroupName, GuestConfigurationAssignmentName, MachineName, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  GuestConfigurationAssignmentName=GuestConfigurationAssignmentName,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MachineName=MachineName,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,GuestConfigurationAssignmentName=GuestConfigurationAssignmentName,MachineName=MachineName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -560,12 +620,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment> response)
         {
             using( NoSynchronizationContext )
             {
@@ -577,8 +637,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -586,12 +664,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -608,15 +686,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { GuestConfigurationAssignmentName=GuestConfigurationAssignmentName, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MachineName=MachineName, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { GuestConfigurationAssignmentName=GuestConfigurationAssignmentName, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MachineName=MachineName, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -626,12 +704,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment">Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment> response)
         {
             using( NoSynchronizationContext )
             {
@@ -643,8 +721,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

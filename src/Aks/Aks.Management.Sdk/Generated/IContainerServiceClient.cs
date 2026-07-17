@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.ContainerService
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -79,14 +79,34 @@ namespace Microsoft.Azure.Management.ContainerService
         IManagedClustersOperations ManagedClusters { get; }
 
         /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
+        /// Gets the ITrustedAccessRolesOperations
         /// </summary>
-        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+        ITrustedAccessRolesOperations TrustedAccessRoles { get; }
+
+        /// <summary>
+        /// Gets the ISnapshotsOperations
+        /// </summary>
+        ISnapshotsOperations Snapshots { get; }
 
         /// <summary>
         /// Gets the IAgentPoolsOperations
         /// </summary>
         IAgentPoolsOperations AgentPools { get; }
+
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        IMachinesOperations Machines { get; }
+
+        /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IManagedNamespacesOperations
+        /// </summary>
+        IManagedNamespacesOperations ManagedNamespaces { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
@@ -104,9 +124,9 @@ namespace Microsoft.Azure.Management.ContainerService
         IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; }
 
         /// <summary>
-        /// Gets the ISnapshotsOperations
+        /// Gets the ITrustedAccessRoleBindingsOperations
         /// </summary>
-        ISnapshotsOperations Snapshots { get; }
+        ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; }
 
     }
 }

@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>Advisor</PsModuleName>
     <PsRootModuleName>Advisor</PsRootModuleName>
+    <PsModuleFolder>Advisor.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Advisor</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

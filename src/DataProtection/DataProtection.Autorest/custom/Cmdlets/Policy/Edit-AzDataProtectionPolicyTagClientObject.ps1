@@ -1,12 +1,18 @@
 ﻿function Edit-AzDataProtectionPolicyTagClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes schedule tag in an existing backup policy.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Backup Policy Object.')]
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Backup Policy Object.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Name of the Schedule tag.')]
@@ -19,7 +25,7 @@
         ${RemoveRule},
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Criterias to be associated with the schedule tag.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IScheduleBasedBackupCriteria[]]
         ${Criteria}
     )
 
@@ -47,7 +53,8 @@
 
         $parameterSetName = $PsCmdlet.ParameterSetName
         $backupRuleIndex = -1
-        foreach($index in (0..$Policy.PolicyRule.Length))
+        $policyRuleCount = @($Policy.PolicyRule).Count
+        Foreach($index in (0..($policyRuleCount - 1)))
         {
             if($Policy.PolicyRule[$index].ObjectType -eq "AzureBackupRule")
             {
@@ -59,7 +66,7 @@
         {
             if($parameterSetName -eq "RemoveTag")
             {
-                $filteredTags = $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName –ne $Name }
+                $filteredTags = $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -ne $Name }
                 $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion = $filteredTags
                 return $Policy
             }
@@ -67,9 +74,12 @@
             if($parameterSetName -eq "updateTag")
             {
                 $tagIndex = -1
-                foreach($index in (0..$Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion.Length))
+                $taggingCriteria = @($Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion)
+                $taggingCriteriaCount = $taggingCriteria.Count
+                
+                foreach($index in (0..($taggingCriteriaCount - 1)))
                 {
-                    if($Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion[$index].TagInfoTagName -eq $Name)
+                    if($taggingCriteria[$index].TagInfoTagName -eq $Name)
                     {
                         $tagIndex = $index
                     }
@@ -83,7 +93,7 @@
                 
                 if($tagIndex -eq -1)
                 {
-                    $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.TaggingCriteria]::new()
+                    $tagCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.TaggingCriteria]::new()
                     $tagCriteria.TaggingPriority = GetTaggingPriority -Name $Name
                     $tagCriteria.Criterion = $Criteria
                     $tagCriteria.TagInfoTagName = $Name
@@ -94,5 +104,6 @@
             }
         }
         
+        return $Policy
     }
 }

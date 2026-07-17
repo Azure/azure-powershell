@@ -19,7 +19,7 @@ New-AzEventHubAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyTyp
 ```
 
 ## DESCRIPTION
-The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namesapce or Azure Eventhub
+The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Signature (SAS) token for an Azure Eventhub Namespace or Azure Eventhub
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
+Generate SAS token for the given authorization rule for Namespace with start and expiry time..
 
 ### Example 2
 ```powershell
@@ -39,12 +39,12 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with expiry time.
+Generate SAS token for the given authorization rule for Namespace with expiry time.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleId
-ARM ResourceId of the Authoraization Rule
+ARM ResourceId of the Authorization Rule
 
 ```yaml
 Type: System.String

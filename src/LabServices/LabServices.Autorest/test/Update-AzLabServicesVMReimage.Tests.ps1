@@ -19,6 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesVMReimage' {
     It 'Reimage' {
-        { Update-AzLabServicesVMReimage -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 1 } | Should -Not -Throw
+        { Update-AzLabServicesVMReimage -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 1 } | Should -Not -Throw
     }
 }

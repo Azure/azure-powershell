@@ -222,7 +222,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Storage Sync Service Assign Identity Parameter.
         /// </summary>
-        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this paramter without \"-IdentityType\", will use system assigned identity.";
+        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this parameter without \"-IdentityType\", will use system assigned identity.";
+
+        /// <summary>
+        /// Registered Server Assign Identity Parameter.
+        /// </summary>
+        public const string RegisteredServerAssignIdentityParameter = "Assign Identity parameter helps to dictate the kind of server registration - server certificate or identity.";
 
         /// <summary>
         /// Storage Sync Service Identity Type Parameter.

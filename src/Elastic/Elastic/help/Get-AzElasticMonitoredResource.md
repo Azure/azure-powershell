@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticMonitoredResource
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-Subs
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## EXAMPLES
 
@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResource
 
 ## NOTES
 

@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties
 https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-azservicebuskeyvaultpropertiesobject
 #>
 function New-AzServiceBusKeyVaultPropertiesObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

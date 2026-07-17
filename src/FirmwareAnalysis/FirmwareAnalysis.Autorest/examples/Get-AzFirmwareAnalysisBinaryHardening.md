@@ -31,4 +31,3 @@ Get-AzFirmwareAnalysisBinaryHardening -FirmwareId FirmwareId -ResourceGroupName 
 ```
 
 List all the binary hardening analysis results for a firmware.
-

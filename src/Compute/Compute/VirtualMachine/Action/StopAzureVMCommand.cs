@@ -139,22 +139,22 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (NoWait.IsPresent)
                         {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, this.Hibernate, null, null, CancellationToken.None).GetAwaiter().GetResult();
                         }
                     }
                     else
                     {
                         if (NoWait.IsPresent)
                         {
-                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
                         }
 
                     }

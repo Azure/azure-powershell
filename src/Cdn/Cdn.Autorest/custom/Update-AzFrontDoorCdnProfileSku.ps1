@@ -29,9 +29,9 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofil
 #>
 function Update-AzFrontDoorCdnProfileSku {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -74,7 +74,7 @@ function Update-AzFrontDoorCdnProfileSku {
 
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters]
         # Parameters required for profile upgrade.
         # To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
         ${ProfileUpgradeParameter},
@@ -176,14 +176,14 @@ function Update-AzFrontDoorCdnProfileSku {
                     Set-AzContext -Subscription ${SubscriptionId}
                 }
 
-                # Validate the waf policy whether located in the same subscritpion as the profile.
+                # Validate the waf policy whether located in the same subscription as the profile.
                 $contextNew = Get-AzContext
                 if ($contextNew.Subscription.Id -ne $changeToWafPolicySubId)
                 {
-                    throw "The subscritpion of existing or created Premium WAF policy should be in the same subscription as the profile's."
+                    throw "The subscription of existing or created Premium WAF policy should be in the same subscription as the profile's."
                 }
 
-                # 2. Validate whether the policy already exists in the subsrciption
+                # 2. Validate whether the policy already exists in the subscription
                 try {
                     Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop | Out-Null
                 } catch {

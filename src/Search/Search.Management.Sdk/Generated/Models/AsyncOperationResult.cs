@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// The details of a long running asynchronous shared private link resource
-    /// operation
+    /// operation.
     /// </summary>
     public partial class AsyncOperationResult
     {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
         /// <param name="status">The current status of the long running asynchronous shared private link
         /// resource operation.
-        /// Possible values include: 'Running', 'Succeeded', 'Failed'</param>
+        /// Possible values include: &#39;Running&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;</param>
         public AsyncOperationResult(string status = default(string))
 
         {

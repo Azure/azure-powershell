@@ -10,6 +10,3 @@ ModifyResponseHeader
 ```
 
 Create an in-memory object for DeliveryRuleResponseHeaderAction
-
-
-

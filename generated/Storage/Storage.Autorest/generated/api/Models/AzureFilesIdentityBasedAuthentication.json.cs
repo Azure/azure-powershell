@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             {_activeDirectoryProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("activeDirectoryProperties"), out var __jsonActiveDirectoryProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ActiveDirectoryProperties.FromJson(__jsonActiveDirectoryProperties) : _activeDirectoryProperty;}
+            {_smbOAuthSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("smbOAuthSettings"), out var __jsonSmbOAuthSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SmbOAuthSettings.FromJson(__jsonSmbOAuthSettings) : _smbOAuthSetting;}
             {_directoryServiceOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("directoryServiceOptions"), out var __jsonDirectoryServiceOptions) ? (string)__jsonDirectoryServiceOptions : (string)_directoryServiceOption;}
             {_defaultSharePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("defaultSharePermission"), out var __jsonDefaultSharePermission) ? (string)__jsonDefaultSharePermission : (string)_defaultSharePermission;}
             AfterFromJson(json);
@@ -104,6 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return container;
             }
             AddIf( null != this._activeDirectoryProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._activeDirectoryProperty.ToJson(null,serializationMode) : null, "activeDirectoryProperties" ,container.Add );
+            AddIf( null != this._smbOAuthSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._smbOAuthSetting.ToJson(null,serializationMode) : null, "smbOAuthSettings" ,container.Add );
             AddIf( null != (((object)this._directoryServiceOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._directoryServiceOption.ToString()) : null, "directoryServiceOptions" ,container.Add );
             AddIf( null != (((object)this._defaultSharePermission)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._defaultSharePermission.ToString()) : null, "defaultSharePermission" ,container.Add );
             AfterToJson(ref container);

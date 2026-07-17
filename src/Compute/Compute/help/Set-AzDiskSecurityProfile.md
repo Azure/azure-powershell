@@ -35,7 +35,7 @@ $disk = New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk
 
 Customers can set the SecurityType of managed Disks.
 
-### Example 2: Create a Disk with a Disk Encrption Set with the encryption type of ConfidentialVM_DiskEncryptedWithCustomerKey
+### Example 2: Create a Disk with a Disk Encryption Set with the encryption type of ConfidentialVM_DiskEncryptedWithCustomerKey
 ```powershell
 $Location = "northeurope";
 $KeyVaultName = "val" + $rgname;

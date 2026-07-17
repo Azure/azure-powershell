@@ -181,7 +181,10 @@ function New-TestFxServicePrincipal {
         }
     }
 
-    $sp = Invoke-TestFxCommand -Command "New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName"
+    $sp = Invoke-TestFxCommand -ScriptBlock {
+        param($DisplayName)
+        New-AzADServicePrincipal -DisplayName $DisplayName
+    } -Parameters @{ DisplayName = $ServicePrincipalDisplayName }
     Start-Sleep -Seconds 10
     Set-TestFxServicePrincipalPermission -SubscriptionId $SubscriptionId -ServicePrincipalObjectId $sp.Id
 
@@ -204,7 +207,14 @@ function Set-TestFxServicePrincipalPermission {
     try {
         $spRoleAssg = Get-AzRoleAssignment -ObjectId $ServicePrincipalObjectId -Scope $scope -RoleDefinitionName $roleName -ErrorAction Stop
         if ($null -eq $spRoleAssg) {
-            Invoke-TestFxCommand -Command "New-AzRoleAssignment -ObjectId $ServicePrincipalObjectId -RoleDefinitionName $roleName -Scope $scope | Out-Null"
+            Invoke-TestFxCommand -ScriptBlock {
+                param($ObjectId, $RoleName, $Scope)
+                New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $RoleName -Scope $Scope | Out-Null
+            } -Parameters @{
+                ObjectId = $ServicePrincipalObjectId
+                RoleName = $roleName
+                Scope    = $scope
+            }
         }
     }
     catch {
@@ -264,34 +274,46 @@ function Get-TestFxEnvironment {
 function Invoke-TestFxCommand {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory, ValueFromPipeline)]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string] $Command
+        [scriptblock] $ScriptBlock,
+
+        [Parameter()]
+        [hashtable] $Parameters = @{},
+
+        [Parameter()]
+        [int] $MaxRetries = 3,
+
+        [Parameter()]
+        [int] $RetryDelaySeconds = 5
     )
 
     $cmdRetryCount = 0
 
     do {
         try {
-            Write-Verbose "Start to execute the command `"$Command`"."
-            $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
-            Write-Verbose "Successfully executed the command `"$Command`"."
+            Write-Verbose "Start to execute the command."
+
+            $cmdResult = & $ScriptBlock @Parameters -ErrorAction Stop
+
+            Write-Verbose "Successfully executed the command."
+
             $cmdResult
             break
         }
         catch {
             $cmdErrorMessage = $_.Exception.Message
-            if ($cmdRetryCount -le 3) {
-                Write-Warning "Error occurred when executing the command `"$Command`" with error message `"$cmdErrorMessage`"."
-                Write-Warning "Will retry automatically in 5 seconds."
+            if ($cmdRetryCount -le $MaxRetries) {
+                Write-Warning "Error occurred when executing the command with error message `"$cmdErrorMessage`"."
+                Write-Warning "Will retry automatically in $RetryDelaySeconds seconds."
                 Write-Host
 
-                Start-Sleep -Seconds 5
+                Start-Sleep -Seconds $RetryDelaySeconds
                 $cmdRetryCount++
-                Write-Warning "Retrying #$cmdRetryCount to execute the command `"$Command`"."
+                Write-Warning "Retrying #$cmdRetryCount to execute the command."
             }
             else {
-                throw "Failed to execute the command `"$Command`" after retrying for 3 times with error message `"$cmdErrorMessage`"."
+                throw "Failed to execute the command after retrying for $MaxRetries times with error message `"$cmdErrorMessage`"."
             }
         }
     }

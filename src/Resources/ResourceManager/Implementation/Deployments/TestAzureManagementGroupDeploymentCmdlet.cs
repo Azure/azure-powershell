@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                 TemplateObject = this.TemplateObject,
                 TemplateParameterObject = this.GetTemplateParameterObject(),
-                ParameterUri = this.TemplateParameterUri
+                ParameterUri = this.TemplateParameterUri,
+                ValidationLevel = this.ValidationLevel
             };
 
             var validationInfo = NewResourceManagerSdkClient.ValidateDeployment(parameters);

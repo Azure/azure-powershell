@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service VM.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 
 ## NOTES
 

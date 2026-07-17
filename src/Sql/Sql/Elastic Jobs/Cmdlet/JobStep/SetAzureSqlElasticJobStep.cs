@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the retry attempts
         /// </summary>
-        [Parameter(HelpMessage = "The retry attemps")]
+        [Parameter(HelpMessage = "The retry attempts")]
         public int? RetryAttempts { get; set; }
 
         /// <summary>

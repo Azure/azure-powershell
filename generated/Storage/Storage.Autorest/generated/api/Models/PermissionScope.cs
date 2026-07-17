@@ -16,7 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         private string _permission;
 
         /// <summary>
-        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify
+        /// Ownership (o), and Modify Permissions (p).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string Permission { get => this._permission; set => this._permission = value; }
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify
+        /// Ownership (o), and Modify Permissions (p).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).",
+        Description = @"The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).",
         SerializedName = @"permissions",
         PossibleTypes = new [] { typeof(string) })]
         string Permission { get; set; }
@@ -89,7 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
     {
         /// <summary>
-        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), and Create (c).
+        /// The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify
+        /// Ownership (o), and Modify Permissions (p).
         /// </summary>
         string Permission { get; set; }
         /// <summary>

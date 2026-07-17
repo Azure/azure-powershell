@@ -408,4 +408,4 @@ Type                                    : microsoft.connectedvmwarevsphere/virtu
 UefiSettingSecureBootEnabled            : False
 ```
 
-This command enable a VM Instances of machine named `test-machine` from a invetory vm in a resource group named `test-rg`.
+This command enable a VM Instances of machine named `test-machine` from a inventory vm in a resource group named `test-rg`.

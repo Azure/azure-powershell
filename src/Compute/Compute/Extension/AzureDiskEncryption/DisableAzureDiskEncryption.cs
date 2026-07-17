@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable publicSettings = new Hashtable();
 
-            // Generate a new sequence version everytime to force run the extension. 
+            // Generate a new sequence version every time to force run the extension. 
             // This is to bypass CRP & Guest Agent's optimization of not re-running the extension when there is no config change
             string sequenceVersion = Guid.NewGuid().ToString();
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? String.Empty);
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         /// <summary>
         /// This function gets the VM model, fills in the OSDisk properties with encryptionSettings and does an UpdateVM
         /// </summary>
-        private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettings()
+        private AzureOperationResponse<VirtualMachine, VirtualMachinesCreateOrUpdateHeaders> UpdateVmEncryptionSettings()
         {
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));

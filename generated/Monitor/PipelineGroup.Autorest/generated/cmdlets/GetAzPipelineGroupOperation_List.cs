@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/providers/Microsoft.Monitor/operations", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/providers/Microsoft.Monitor/operations", ApiVersion = "2026-04-01")]
     public partial class GetAzPipelineGroupOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IContext

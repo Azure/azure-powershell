@@ -24,6 +24,12 @@ Stop-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultPr
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopViaIdentityProviderRegistration
+```
+Stop-AzProviderHubDefaultRollout -ProviderRegistrationInputObject <IProviderHubIdentity> -RolloutName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Stops or cancels the rollout, if in progress.
 
@@ -63,7 +69,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
@@ -107,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProviderRegistrationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+Parameter Sets: StopViaIdentityProviderRegistration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RolloutName
 The rollout name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityProviderRegistration
 Aliases:
 
 Required: True

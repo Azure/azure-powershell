@@ -124,8 +124,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - adamedx
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -140,8 +143,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - acsdevx-msft
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -158,8 +164,11 @@ configuration:
             - mojayara
             - jportugal0
             - pkrishnanms
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -173,11 +182,14 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - dyu1208
+            - mbifeld
             - FumingZhang
             - andyliuliming
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -245,8 +257,11 @@ configuration:
             - mikebudzynski
             - KedarJoshi
             - yingru97
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -262,8 +277,11 @@ configuration:
             mentionees:
             - shenmuxiaosen
             - avanigupta
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -279,8 +297,11 @@ configuration:
             mentionees:
             - antcp
             - AzureAppServiceCLI
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -311,8 +332,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Juliehzl
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -346,8 +370,11 @@ configuration:
             mentionees:
             - alt-key
             - saisankargochhayat
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -363,8 +390,11 @@ configuration:
             mentionees:
             - josephkwchan
             - jennyhunter-msft
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -380,8 +410,11 @@ configuration:
             mentionees:
             - josephkwchan
             - jennyhunter-msft
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -396,8 +429,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - MSEvanhi
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -413,8 +449,11 @@ configuration:
             mentionees:
             - rthorn17
             - daxfohl
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -430,8 +469,11 @@ configuration:
             mentionees:
             - LizMS
             - cbrooksmsft
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -446,8 +488,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - MSEvanhi
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -462,8 +507,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - rthorn17
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -478,8 +526,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Azure/deployments-owners
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -494,8 +545,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Azure/deployments-owners
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -513,8 +567,11 @@ configuration:
             - jim-minter
             - julienstroheker
             - amanohar
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -564,8 +621,11 @@ configuration:
             mentionees:
             - darshanhs90
             - AshishGargMicrosoft
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -581,8 +641,11 @@ configuration:
             mentionees:
             - jaspkaur28
             - sanjkum
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -661,6 +724,23 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: AzureDataTransfer
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: AzureDataTransfer
+        then:
+        - mentionUsers:
+            mentionees:
+            - ohnkoh-msft
+            - joschung
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Batch
         - hasLabel:
             label: Service Attention
@@ -669,15 +749,16 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - mksuni
-            - bgklein
-            - mscurrell
             - dpwatrous
-            - gingi
-            - paterasMSFT
+            - wiboris
             - cRui861
+            - skapur12
+            - wanghoppe
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -692,8 +773,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - pradeepgunda
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -707,10 +791,32 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - cabbpt
-            - theelderwand
+            - muazmian
+            - us6193
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Blob Storage SFTP
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Blob Storage SFTP
+        then:
+        - mentionUsers:
+            mentionees:
+            - greeshma-microsoft
+            - act-codegen-extensibility-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -758,8 +864,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - sgellock
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -774,8 +883,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - hirenshah1
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -790,8 +902,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - mbifeld
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -806,8 +921,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - bberera
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -840,8 +958,11 @@ configuration:
             mentionees:
             - yingqunpku
             - bowgong
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -857,8 +978,11 @@ configuration:
             mentionees:
             - jaggerbodas-ms
             - arwong
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -875,8 +999,11 @@ configuration:
             - ryogok
             - TFR258
             - tburns10
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -891,8 +1018,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - swiftarrow11
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -908,8 +1038,11 @@ configuration:
             mentionees:
             - areddish
             - tburns10
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -926,8 +1059,11 @@ configuration:
             - JinyuID
             - dipidoo
             - SteveMSFT
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -944,8 +1080,11 @@ configuration:
             - ctstone
             - anrothMSFT
             - yungshinlintw
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -960,8 +1099,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - metanMSFT
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -976,8 +1118,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - olduroja
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -993,8 +1138,11 @@ configuration:
             mentionees:
             - cahann
             - kayousef
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1009,8 +1157,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - yangyuan
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1025,8 +1176,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - dwaijam
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1042,8 +1196,11 @@ configuration:
             mentionees:
             - bingisbestest
             - nerajput1607
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1059,8 +1216,11 @@ configuration:
             mentionees:
             - robch
             - oscholz
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1075,8 +1235,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - assafi
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1091,8 +1254,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - swmachan
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1110,8 +1276,11 @@ configuration:
             - yangyuan
             - tianxin-ms
             - xiaomin-ms
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1166,8 +1335,11 @@ configuration:
             - GabstaMSFT
             - ramankumarlive
             - ushnaarshadkhan
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1183,8 +1355,11 @@ configuration:
             mentionees:
             - TravisCragg-MSFT
             - GabstaMSFT
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1256,8 +1431,11 @@ configuration:
             - sandeepraichura
             - hilaryw29
             - GabstaMSFT
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1273,8 +1451,11 @@ configuration:
             mentionees:
             - TravisCragg-MSFT
             - sandeepraichura
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1353,8 +1534,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - nascarsayan
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1369,8 +1553,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ms-premp
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1385,8 +1572,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmbpxpcrew
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1401,8 +1591,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmaxpcrew
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1417,8 +1610,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmaxpcrew
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1433,8 +1629,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmixpdevs
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1449,8 +1648,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmshowbackdevs
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1465,8 +1667,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - TiagoCrewGitHubIssues
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1481,8 +1686,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - dkkapur
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1500,8 +1708,11 @@ configuration:
             - luisdlp
             - northtyphoon
             - terencet-dev
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1519,8 +1730,11 @@ configuration:
             - jwilder
             - thomas1206
             - seanmck
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1536,8 +1750,11 @@ configuration:
             mentionees:
             - howang-ms
             - Greedygre
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -1554,8 +1771,11 @@ configuration:
             - pjohari-ms
             - kushagraThapar
             - simplynaveen20
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1587,8 +1807,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ccmbpxpcrew
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1751,8 +1974,11 @@ configuration:
             - zhangyd2015
             - Frey-Wang
             - Jingshu923
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1767,8 +1993,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - sumantmehtams
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1783,8 +2012,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - MikeRys
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1799,8 +2031,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - sumantmehtams
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1815,8 +2050,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - sumantmehtams
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1831,8 +2069,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - sumantmehtams
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1846,9 +2087,12 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - rgreenMSFT
+            - amarjeetkr
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1864,6 +2108,24 @@ configuration:
             mentionees:
             - dlacy7
             - NateB2
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Data Transfer
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Data Transfer
+        then:
+        - mentionUsers:
+            mentionees:
+            - fzkhan
+            - lasuredd-msft
+            - pkuma-msft
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1901,8 +2163,11 @@ configuration:
             - a-t-mason
             - ganzee
             - manuaery
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -1933,8 +2198,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - alec-baird
-            - costinhagiu
+            - MichaelWu
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1992,6 +2256,26 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Device Registry
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Device Registry
+        then:
+        - mentionUsers:
+            mentionees:
+            - rohankhandelwal
+            - mryanlo
+            - atastrophic
+            - c-ryan-k
+            - digimaun
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: DevOps
         - hasLabel:
             label: Service Attention
@@ -2002,8 +2286,11 @@ configuration:
             mentionees:
             - v-anvashist
             - V-hmusukula
+            - act-platform-engineering-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-platform-engineering-squad
       - if:
         - or:
           - labelAdded:
@@ -2018,9 +2305,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - anishtrakru
-            - derekbekoe
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2034,8 +2323,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - sourabhguha
-            - inesk-vt
+            - YingXue
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2084,9 +2372,14 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - jfggdl
+            - Kishp01
+            - veyaddan
+            - santoshallumicrosoft
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2101,6 +2394,25 @@ configuration:
         - mentionUsers:
             mentionees:
             - Saglodha
+            - act-codegen-extensibility-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Fabric
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Fabric
+        then:
+        - mentionUsers:
+            mentionees:
+            - xinzhizou
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2117,8 +2429,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Ealianis
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2135,8 +2450,11 @@ configuration:
             - AnatoliB
             - Francisco-Gamino
             - shreyabatra4
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2151,7 +2469,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - dkershaw10
-            - baywet
+            - SteveMutungi254
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2169,8 +2487,11 @@ configuration:
             mentionees:
             - mgreenegit
             - vivlingaiah
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2186,8 +2507,11 @@ configuration:
             mentionees:
             - aim-for-better
             - deshriva
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2253,42 +2577,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Azure/azure-iot-cli-triage
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
-              label: IotCentral
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: IotCentral
-        then:
-        - mentionUsers:
-            mentionees:
-            - iluican
-            - jlian
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
-              label: IotDPS
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: IotDPS
-        then:
-        - mentionUsers:
-            mentionees:
-            - iluican
-            - jlian
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2303,8 +2596,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Elsie4ever，MohinderAtwal
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2322,8 +2618,12 @@ configuration:
             - schaabs
             - chen-karen
             - chandanrr
+            - cheathamb36
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -2339,8 +2639,11 @@ configuration:
             mentionees:
             - bavneetsingh16
             - ramyasreechakka
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2355,8 +2658,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Tanmayeekamath
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2387,8 +2693,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - wsilveiranz
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2419,8 +2728,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureml-github
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2502,8 +2814,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - RamyaElangovanP
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -2518,8 +2833,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Lighthouse-Azure
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2567,9 +2885,15 @@ configuration:
         - mentionUsers:
             mentionees:
             - ambhatna
-            - savjani
+            - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2602,8 +2926,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - prbansa
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2618,8 +2945,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - akucer
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2698,8 +3028,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - kvijaykannan
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -2874,8 +3207,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - yairgil
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2890,8 +3226,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzmonActionG
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2906,8 +3245,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzMonEssential
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2922,8 +3264,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzmonAlerts
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2938,8 +3283,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azmonapplicationinsights
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2954,8 +3302,12 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzMonEssential
+            - LarryZhang19
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2970,8 +3322,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzMonEssential
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -2990,8 +3345,11 @@ configuration:
             - rajkumar-rangaraj
             - TimothyMothra
             - vishweshbankwar
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3006,8 +3364,13 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzmonLogA
+            - raronen
+            - MeirMen
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3022,8 +3385,32 @@ configuration:
         - mentionUsers:
             mentionees:
             - AzMonEssential
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Monitor - ScheduledQueryRule
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Monitor - ScheduledQueryRule
+        then:
+        - mentionUsers:
+            mentionees:
+            - azmonapplicationinsights
+            - asafst
+            - efratbp
+            - act-observability-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3038,9 +3425,15 @@ configuration:
         - mentionUsers:
             mentionees:
             - ambhatna
-            - savjani
+            - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3056,6 +3449,29 @@ configuration:
             mentionees:
             - daeunyim
             - rajsell
+            - deepthiprasad
+            - akning-ms
+            - junsu-msft
+            - coffeemug
+            - act-codegen-extensibility-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Neon Postgre
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Neon Postgre
+        then:
+        - mentionUsers:
+            mentionees:
+            - alluri02
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3072,8 +3488,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - audunn
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3088,8 +3507,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - aznetsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3104,8 +3526,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - appgwsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3121,8 +3546,11 @@ configuration:
             mentionees:
             - isamorris
             - bastionsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3136,11 +3564,14 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - t-bzhan
-            - gxue
-            - TracyYaoYao
+            - jingnanxu
+            - luxue
+            - arashz
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3155,8 +3586,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ddossuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3171,8 +3605,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - dnssuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3187,8 +3624,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - exrsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3203,10 +3643,12 @@ configuration:
         - mentionUsers:
             mentionees:
             - gopimsft
-            - gimotwanMSFT
-            - avripintoms
+            - Azure/azure-firewall
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3224,8 +3666,11 @@ configuration:
             - t-bzhan
             - gxue
             - TracyYaoYao
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3240,8 +3685,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - slbsupportgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3256,8 +3704,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - nvasuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3273,8 +3724,11 @@ configuration:
             mentionees:
             - shivamtripathi
             - kumaam
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3289,8 +3743,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - privlinksuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3305,8 +3762,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - tmsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3321,8 +3781,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - vnetsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3337,8 +3800,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - vnetsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3353,8 +3819,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - vwansuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3369,8 +3838,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - vpngwsuppgithub
+            - act-quality-productivity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-quality-productivity-squad
       - if:
         - or:
           - labelAdded:
@@ -3473,8 +3945,11 @@ configuration:
             - shanhix1
             - calecarter
             - mentat9
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -3491,8 +3966,11 @@ configuration:
             - gbowerman
             - jasomaning
             - nachoalonsoportillo
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3509,8 +3987,11 @@ configuration:
             - gbowerman
             - jasomaning
             - nachoalonsoportillo
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3542,8 +4023,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - ricardo-espinoza
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3576,8 +4060,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Daya-Patil
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3607,10 +4094,16 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - shariq-mcs
-            - MSFTeegarden
+            - abhijitch_microsoft
+            - yuvalm_microsoft
+            - nikitagarg_microsoft
+            - sanar_microsoft
+            - cawa_microsoft
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3625,8 +4118,12 @@ configuration:
         - mentionUsers:
             mentionees:
             - jfggdl
+            - damodaravadhani
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3641,8 +4138,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Rkapso
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3658,8 +4158,11 @@ configuration:
             mentionees:
             - kenieva
             - AshishGargMicrosoft
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -3674,8 +4177,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - venu-l
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -3690,8 +4196,30 @@ configuration:
         - mentionUsers:
             mentionees:
             - stephbaron
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ResourceMover
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ResourceMover
+        then:
+        - mentionUsers:
+            mentionees:
+            - yashjain4
+            - act-identity-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -3739,8 +4267,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - hsurana06
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3754,12 +4285,15 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - bleroy
-            - tjacobhi
-            - markheff
-            - miwelsh
+            - kuanlu95
+            - efrainretana
+            - mattgotteiner
+            - Draconicida
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3774,8 +4308,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - keren-shani
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3790,8 +4327,12 @@ configuration:
         - mentionUsers:
             mentionees:
             - nazang
+            - mooshc
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3838,8 +4379,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - Saglodha
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3853,12 +4397,15 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - mwesigwaguma
-            - a-Santamaria
+            - iliu816
+            - a-santamaria
             - LukeSlev
-            - jkochhar
+            - Jkochhar
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3874,8 +4421,11 @@ configuration:
             mentionees:
             - sffamily
             - chenkennt
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3892,8 +4442,11 @@ configuration:
             - yucwan
             - yuwzho
             - ShichaoQiu
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3908,8 +4461,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3924,8 +4480,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -3940,8 +4499,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3956,8 +4518,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3972,8 +4537,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -3988,8 +4556,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -4004,8 +4575,11 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -4038,6 +4612,8 @@ configuration:
             - arc-enabled-vms-on-hci Team
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -4052,8 +4628,55 @@ configuration:
         - mentionUsers:
             mentionees:
             - xgithubtriage
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Storage Action
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Storage Action
+        then:
+        - mentionUsers:
+            mentionees:
+            - blueww
+            - sshankMSFT
+            - golddove
+            - S-J-M
+            - act-codegen-extensibility-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: StorageDiscovery
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: StorageDiscovery
+        then:
+        - mentionUsers:
+            mentionees:
+            - shanefujs
+            - apurv2304
+            - skallurk
+            - vdziunms
+            - act-codegen-extensibility-squad
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -4069,8 +4692,11 @@ configuration:
             mentionees:
             - ankushbindlish2
             - afedyashov
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -4122,8 +4748,11 @@ configuration:
             - anuragdalmia
             - shilpigautam
             - ramaganesan-rg
+            - act-identity-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-identity-squad
       - if:
         - or:
           - labelAdded:
@@ -4158,8 +4787,11 @@ configuration:
             mentionees:
             - wanyang7
             - v-yanjungao
+            - act-codegen-extensibility-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-codegen-extensibility-squad
       - if:
         - or:
           - labelAdded:
@@ -4240,8 +4872,11 @@ configuration:
             - AzureAppServiceCLI
             - antcp
             - yutanglin16
+            - act-observability-squad
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
+        - addLabel:
+            label: act-observability-squad
       - if:
         - or:
           - labelAdded:
@@ -4257,6 +4892,24 @@ configuration:
             mentionees:
             - JialinXin
             - vicancy
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Workloads
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Workloads
+        then:
+        - mentionUsers:
+            mentionees:
+            - jaskisin
+            - ajaygit158
+            - praveennet
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       description: Triage issues to the service team
@@ -4315,6 +4968,1494 @@ configuration:
       triggerOnOwnActions: true
     - if:
       - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Advisor'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Advisor
+      description: '[Advisor] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Aks|[Aa]zAksCluster'
+            isRegex: True
+      then:
+      - addLabel:
+          label: AKS
+      description: '[AKS] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?AlertsManagement'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Alerts Management
+      description: '[Alerts Management] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?AnalysisServices'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Analysis Services
+      description: '[Analysis Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ApiManagement'
+            isRegex: True
+      then:
+      - addLabel:
+          label: API Management
+      description: '[API Management] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?AppConfiguration'
+            isRegex: True
+      then:
+      - addLabel:
+          label: App Configuration
+      description: '[App Configuration] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ApplicationInsights'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Monitor - ApplicationInsights
+      description: '[Monitor - ApplicationInsights] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Websites|[Aa]z(WebApp|AppServicePlan|WebAppSlot|WebAppContainer)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: App Services
+      description: '[App Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ConnectedMachine'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Arc enabled servers
+      description: '[Arc enabled servers] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ArcResourceBridge'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ArcResourceBridge
+      description: '[ArcResourceBridge] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Resources|[Aa]z(ResourceGroup|ResourceGroupDeployment|ResourceLock|ManagedApplication)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ARM
+      description: '[ARM] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(RoleAssignment|RoleDefinition)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ARM - RBAC
+      description: '[ARM - RBAC] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(Tag|ResourceTag)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ARM - Tags
+      description: '[ARM - Tags] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(TemplateSpec|Deployment)|[Bb]icep'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ARM - Templates
+      description: '[ARM - Templates] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ManagementGroup'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Management Groups
+      description: '[Management Groups] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Attestation'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Attestation
+      description: '[Attestation] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Automation'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Automation
+      description: '[Automation] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?VMware'
+            isRegex: True
+      then:
+      - addLabel:
+          label: AVS
+      description: '[AVS] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Kusto'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Azure Data Explorer
+      description: '[Azure Data Explorer] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Batch'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Batch
+      description: '[Batch] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Billing'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Billing
+      description: '[Billing] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Blueprint'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Blueprint
+      description: '[Blueprint] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?BotService'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Bot Service
+      description: '[Bot Service] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?CloudService'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Cloud Service (Ext)
+      description: '[Cloud Service (Ext)] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?CognitiveServices'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Cognitive Services
+      description: '[Cognitive Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Communication'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Communication
+      description: '[Communication] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(Disk|Snapshot|DiskEncryptionSet|DiskAccess)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Compute - Managed Disks
+      description: '[Compute - Managed Disks] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(Image|Gallery|GalleryImage)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Compute - Images
+      description: '[Compute - Images] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(Vmss|VMSS)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Compute - VMSS
+      description: '[Compute - VMSS] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Compute|[Aa]zVM|[Aa]zAvailabilitySet|[Aa]zHostGroup'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Compute
+      description: '[Compute] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ConnectedKubernetes'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Connected Kubernetes
+      description: '[Connected Kubernetes] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ConnectedVMware'
+            isRegex: True
+      then:
+      - addLabel:
+          label: VMWare
+      description: '[VMWare] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(ContainerGroup|ContainerInstance)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Container Instances
+      description: '[Container Instances] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ContainerRegistry'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Container Registry
+      description: '[Container Registry] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ContainerApp'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ContainerApp
+      description: '[ContainerApp] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?CosmosDB'
+            isRegex: True
+      then:
+      - addLabel:
+          label: CosmosDB
+      description: '[CosmosDB] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?CustomProvider'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Custom Providers
+      description: '[Custom Providers] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Databricks'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Bricks
+      description: '[Data Bricks] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataFactory'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Factory
+      description: '[Data Factory] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataLakeAnalytics'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Lake Analytics
+      description: '[Data Lake Analytics] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataLakeStore'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Lake Store
+      description: '[Data Lake Store] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataMigration'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Migration
+      description: '[Data Migration] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataShare'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Data Share
+      description: '[Data Share] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataBox'
+            isRegex: True
+      then:
+      - addLabel:
+          label: DataBox
+      description: '[DataBox] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataBoxEdge'
+            isRegex: True
+      then:
+      - addLabel:
+          label: DataBox Edge
+      description: '[DataBox Edge] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DataProtection'
+            isRegex: True
+      then:
+      - addLabel:
+          label: DataProtection
+      description: '[DataProtection] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Wvd|[Aa]z\.?DesktopVirtualization'
+            isRegex: True
+      then:
+      - addLabel:
+          label: DesktopVirtualization
+      description: '[DesktopVirtualization] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DevCenter'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Dev Center
+      description: '[Dev Center] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(DtlLab|DevTestLab)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Devtestlab
+      description: '[Devtestlab] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DigitalTwins'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Digital Twins
+      description: '[Digital Twins] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?DnsResolver'
+            isRegex: True
+      then:
+      - addLabel:
+          label: DnsResolver
+      description: '[DnsResolver] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(DnsRecordSet|DnsZone)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - DNS
+      description: '[Network - DNS] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?EventGrid'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Event Grid
+      description: '[Event Grid] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?EventHub'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Event Hubs
+      description: '[Event Hubs] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Functions|[Aa]z\.?FunctionApp'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Functions
+      description: '[Functions] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?GuestConfiguration'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Guest Configuration
+      description: '[Guest Configuration] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?HDInsight'
+            isRegex: True
+      then:
+      - addLabel:
+          label: HDInsight
+      description: '[HDInsight] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(HpcCache|StorageCache)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: HPC Cache
+      description: '[HPC Cache] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ImageBuilder'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ImageBuilder
+      description: '[ImageBuilder] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ImportExport'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Import Export
+      description: '[Import Export] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?IotHub'
+            isRegex: True
+      then:
+      - addLabel:
+          label: IotHub
+      description: '[IotHub] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?KeyVault'
+            isRegex: True
+      then:
+      - addLabel:
+          label: KeyVault
+      description: '[KeyVault] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(K8sConfiguration|KubernetesConfiguration)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Kubernetes Configuration
+      description: '[Kubernetes Configuration] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?LabServices'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Lab Services
+      description: '[Lab Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?LoadTesting|[Aa]zLoad\b'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Load Testing
+      description: '[Load Testing] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?LogicApp'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Logic App
+      description: '[Logic App] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?MachineLearningServices|[Aa]zMlWorkspace'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Machine Learning Services
+      description: '[Machine Learning Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?MachineLearning\b'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Machine Learning
+      description: '[Machine Learning] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(Maintenance|ConfigurationAssignment)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Maintenance
+      description: '[Maintenance] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?(UserAssignedIdentity|ManagedServiceIdentity)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Managed Identity
+      description: '[Managed Identity] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ManagedServices'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Managed Services
+      description: '[Managed Services] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ManagementPartner'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Management Partner
+      description: '[Management Partner] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?MariaDb'
+            isRegex: True
+      then:
+      - addLabel:
+          label: MariaDB
+      description: '[MariaDB] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?MarketplaceOrdering'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Marketplace Ordering
+      description: '[Marketplace Ordering] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Marketplace\b'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Marketplace
+      description: '[Marketplace] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Migrate'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Migrate
+      description: '[Migrate] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?OperationalInsights'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Monitor - Operational Insights
+      description: '[Monitor - Operational Insights] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Monitor|[Aa]z(Metric|DiagnosticSetting|ActivityLog|ActionGroup|ScheduledQueryRule|Auto[Ss]caleSetting|LogProfile)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Monitor
+      description: '[Monitor] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?MySql'
+            isRegex: True
+      then:
+      - addLabel:
+          label: MySQL
+      description: '[MySQL] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?NetAppFiles'
+            isRegex: True
+      then:
+      - addLabel:
+          label: NetApp Files
+      description: '[NetApp Files] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Network\b'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network
+      description: '[Network] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zApplicationGateway'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Application Gateway
+      description: '[Network - Application Gateway] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zLoadBalancer'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Load Balancer
+      description: '[Network - Load Balancer] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zExpressRoute'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - ExpressRoute
+      description: '[Network - ExpressRoute] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zFirewall'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Firewall
+      description: '[Network - Firewall] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zBastion'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Bastion
+      description: '[Network - Bastion] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(PrivateEndpoint|PrivateLinkService)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Private Link
+      description: '[Network - Private Link] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(VpnGateway|VirtualNetworkGateway)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - VPN Gateway
+      description: '[Network - VPN Gateway] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zVirtualWan|[Aa]zVpnSite'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Virtual WAN
+      description: '[Network - Virtual WAN] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?FrontDoor'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Front Door
+      description: '[Network - Front Door] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?TrafficManager'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Traffic Manager
+      description: '[Network - Traffic Manager] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Cdn'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - CDN
+      description: '[Network - CDN] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(VirtualNetwork|NetworkInterface|PublicIpAddress|NetworkSecurityGroup)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Network - Virtual Network
+      description: '[Network - Virtual Network] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?NotificationHub'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Notification Hub
+      description: '[Notification Hub] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.PolicyInsights|[Aa]z(PolicyState|PolicyRemediation|PolicyMetadata|PolicyAttestation)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Policy Insights
+      description: '[Policy Insights] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?PostgreSql'
+            isRegex: True
+      then:
+      - addLabel:
+          label: PostgreSQL
+      description: '[PostgreSQL] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?PowerBIEmbedded'
+            isRegex: True
+      then:
+      - addLabel:
+          label: PowerBI
+      description: '[PowerBI] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Quantum'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Quantum
+      description: '[Quantum] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Quota'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Quota
+      description: '[Quota] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zRecoveryServicesAsr|[Aa]z\.?SiteRecovery'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Recovery Services Site-Recovery
+      description: '[Recovery Services Site-Recovery] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zRecoveryServicesBackup|[Aa]zRecoveryServicesVault'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Recovery Services Backup
+      description: '[Recovery Services Backup] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?RedisCache|[Aa]zRedisCache'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Redis Cache
+      description: '[Redis Cache] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(WcfRelay|HybridConnection)|[Aa]z\.?Relay'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Relay
+      description: '[Relay] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Reservation'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Reservations
+      description: '[Reservations] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ResourceGraph|Search-AzGraph'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Resource Graph
+      description: '[Resource Graph] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ResourceMover'
+            isRegex: True
+      then:
+      - addLabel:
+          label: ResourceMover
+      description: '[ResourceMover] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zSearchService|[Aa]zSearchAdminKey|[Aa]zSearchQueryKey'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Search
+      description: '[Search] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Sentinel'
+            isRegex: True
+      then:
+      - addLabel:
+          label: SecurityInsights
+      description: '[SecurityInsights] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Security\b|[Aa]z(SecurityAlert|SecurityContact|SecurityPricing|SecurityTask|SecuritySetting)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Security
+      description: '[Security] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ServiceBus'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Service Bus
+      description: '[Service Bus] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?ServiceFabric'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Service Fabric
+      description: '[Service Fabric] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?SignalR'
+            isRegex: True
+      then:
+      - addLabel:
+          label: SignalR
+      description: '[SignalR] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?SpringCloud'
+            isRegex: True
+      then:
+      - addLabel:
+          label: SpringCloud
+      description: '[SpringCloud] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zSqlVM|[Aa]z\.?SqlVirtualMachine'
+            isRegex: True
+      then:
+      - addLabel:
+          label: SQL - VM
+      description: '[SQL - VM] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Sql\b|[Aa]z(SqlDatabase|SqlServer|SqlElasticPool|SqlInstance)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: SQL
+      description: '[SQL] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?StackHCIVM'
+            isRegex: True
+      then:
+      - addLabel:
+          label: StackHCI
+      description: '[StackHCI] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?StorageSync'
+            isRegex: True
+      then:
+      - addLabel:
+          label: StorageSync
+      description: '[StorageSync] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.Storage\b|[Aa]z(StorageAccount|StorageBlob|StorageContainer|StorageQueue|StorageTable|StorageShare)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Storage
+      description: '[Storage] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?StreamAnalytics'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Stream Analytics
+      description: '[Stream Analytics] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Subscription'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Subscription
+      description: '[Subscription] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Support'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Support
+      description: '[Support] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Synapse'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Synapse
+      description: '[Synapse] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?TimeSeriesInsights'
+            isRegex: True
+      then:
+      - addLabel:
+          label: TimeseriesInsights
+      description: '[TimeseriesInsights] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z\.?Workloads|[Aa]zSAP'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Workloads
+      description: '[Workloads] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
       - labelAdded:
           label: issue-addressed
       then:
@@ -4370,5 +6511,173 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-identity-squad
+      then:
+      - requestReview:
+          reviewer: act-identity-squad
+      - mentionUsers:
+          mentionees:
+          - act-identity-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-identity-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-observability-squad
+      then:
+      - requestReview:
+          reviewer: act-observability-squad
+      - mentionUsers:
+          mentionees:
+          - act-observability-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-observability-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-codegen-extensibility-squad
+      then:
+      - requestReview:
+          reviewer: act-codegen-extensibility-squad
+      - mentionUsers:
+          mentionees:
+          - act-codegen-extensibility-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-codegen-extensibility-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-quality-productivity-squad
+      then:
+      - requestReview:
+          reviewer: act-quality-productivity-squad
+      - mentionUsers:
+          mentionees:
+          - act-quality-productivity-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-quality-productivity-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-platform-engineering-squad
+      then:
+      - requestReview:
+          reviewer: act-platform-engineering-squad
+      - mentionUsers:
+          mentionees:
+          - act-platform-engineering-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-platform-engineering-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-experience-enablement-squad
+      then:
+      - requestReview:
+          reviewer: act-experience-enablement-squad
+      - mentionUsers:
+          mentionees:
+          - act-experience-enablement-squad
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-experience-enablement-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-identity-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-identity-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-identity-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-observability-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-observability-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-observability-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-codegen-extensibility-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-codegen-extensibility-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-codegen-extensibility-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-quality-productivity-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-quality-productivity-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-quality-productivity-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-platform-engineering-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-platform-engineering-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-platform-engineering-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-experience-enablement-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-experience-enablement-squad
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-experience-enablement-squad'
 onFailure:
 onSuccess:

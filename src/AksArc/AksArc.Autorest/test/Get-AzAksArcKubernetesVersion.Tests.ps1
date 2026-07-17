@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcKubernetesVersion
 }
 
 Describe 'Get-AzAksArcKubernetesVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $k8sVersions = Get-AzAksArcKubernetesVersion -CustomLocationName $env.CustomLocationName `
+            -ResourceGroupName $env.resourceGroupName `
+            -SubscriptionId $env.subscriptionID
+        $k8sVersions | Should -Not -BeNullOrEmpty
+        $k8sVersions.ProvisioningState | Should -be "Succeeded"
+        $k8sVersions.Type | Should -be  "microsoft.hybridcontainerservice/kubernetesversions"
     }
 }

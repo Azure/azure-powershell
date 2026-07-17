@@ -8,17 +8,30 @@ schema: 2.0.0
 # New-AzPurviewFilter
 
 ## SYNOPSIS
-Creates or updates a filter
+Create a filter
 
 ## SYNTAX
 
+### Create (Default)
 ```
 New-AzPurviewFilter -Endpoint <String> -DataSourceName <String> -ScanName <String> -Body <IFilter>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzPurviewFilter -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPurviewFilter -Endpoint <String> -DataSourceName <String> -ScanName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a filter
+Create a filter
 
 ## EXAMPLES
 
@@ -42,11 +55,10 @@ Create the scope filters of the scan named 'Scan1ForDemo' for datasource 'DataSc
 
 ### -Body
 .
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -94,6 +106,36 @@ Example: https://{accountName}.purview.azure.com
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -154,11 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 
 ## NOTES
 

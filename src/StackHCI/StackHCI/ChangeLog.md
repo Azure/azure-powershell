@@ -19,6 +19,40 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.7.1
+* Fixed single node registration scenario.
+
+## Version 2.7.0
+* Updated preannouncement breaking changes date to May 2026.
+* Optimized cluster registration, significantly reducing registration time on large clusters.
+
+## Version 2.6.6
+* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
+* Added ability to register in custom Azure Environments
+* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments
+
+## Version 2.6.5
+* ARC Enablement of Nodes Before Triggering Registration in New Registration Flow.
+* Resolved double hop authentication issue.
+
+## Version 2.6.4
+* Fixed bug: Buse boolean in comparision
+
+## Version 2.6.3
+* Modified the Cluster Registration to use Managed Service Identity instead of AAD App based registration for new OS versions.
+
+## Version 2.6.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.6.1
+* Used fully qualified computer name and added warning for user to upgrade to solution.
+
+## Version 2.6.0
+* Added EOL Message for 22H2
+
 ## Version 2.5.0
 * Upgraded nuget package to signed package.
 

@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Update a Fluid Relay server.
+update a Fluid Relay server.
 .Description
-Update a Fluid Relay server.
+update a Fluid Relay server.
 .Example
-Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned' -Tag @{"Category"="sales"} -IdentityUserAssignedIdentity @{"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned'
+Update-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -EnableSystemAssignedIdentity $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
+Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,14 +37,22 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
+
+RESOURCEGROUPINPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
+  [FluidRelayContainerName <String>]: The Fluid Relay container resource name.
+  [FluidRelayServerName <String>]: The Fluid Relay server resource name.
+  [Id <String>]: Resource identity path
+  [ResourceGroup <String>]: The resource group containing the resource.
+  [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.fluidrelay/update-azfluidrelayserver
 #>
 function Update-AzFluidRelayServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayServer])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityResourceGroupExpanded', Mandatory)]
     [Alias('FluidRelayServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [System.String]
@@ -68,60 +76,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [System.String]
-    # key encryption key Url, with or without a version.
-    # Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-    # Key auto rotation is enabled by providing a key uri without version.
-    # Otherwise, customer is responsible for rotating the key.
-    # The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.
-    ${CustomerManagedKeyEncryptionKeyUrl},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [Parameter(ParameterSetName='UpdateViaIdentityResourceGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity]
+    # Identity Parameter
+    ${ResourceGroupInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user identities associated with the resource.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Support.CmkIdentityType]
-    # Values can be SystemAssigned or UserAssigned
-    ${KeyEncryptionKeyIdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [System.String]
-    # user assigned identity to use for accessing key encryption key Url.
-    # Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-    # Mutually exclusive with identityType systemAssignedIdentity.
-    ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -179,6 +161,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -200,10 +191,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.FluidRelay.private\Update-AzFluidRelayServer_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.FluidRelay.private\Update-AzFluidRelayServer_UpdateViaIdentityExpanded';
+            UpdateViaIdentityResourceGroupExpanded = 'Az.FluidRelay.private\Update-AzFluidRelayServer_UpdateViaIdentityResourceGroupExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -217,6 +207,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

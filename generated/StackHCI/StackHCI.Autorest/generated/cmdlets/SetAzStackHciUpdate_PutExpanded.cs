@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Cmdlets;
     using System;
 
     /// <summary>Put specified Update</summary>
@@ -13,12 +15,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Put=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzStackHciUpdate_PutExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate", "16.0.0", "3.0.0", "2026/05", DeprecatedOutputProperties = new string[] {"ComponentVersion","HealthCheckResult","Prerequisite"}, NewOutputProperties = new string[] {"ComponentVersion","HealthCheckResult","Prerequisite" } , ChangeDescription = "The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Put specified Update")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}", ApiVersion = "2024-04-01")]
     public partial class SetAzStackHciUpdate_PutExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,8 +38,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Update details</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate _updatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Update();
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate _updatePropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Update();
 
         /// <summary>
         /// Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information
@@ -59,14 +75,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Indicates the way the update content can be downloaded.",
         SerializedName = @"availabilityType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.AvailabilityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.AvailabilityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.AvailabilityType AvailabilityType { get => _updatePropertiesBody.AvailabilityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.AvailabilityType)""); set => _updatePropertiesBody.AvailabilityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Local", "Online", "Notify")]
+        public string AvailabilityType { get => _updatePropertiesBody.AvailabilityType ?? null; set => _updatePropertiesBody.AvailabilityType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.StackHci Client => Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.ClientAPI;
@@ -96,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"An array of component versions for a Solution Bundle update, and an empty array otherwise. ",
         SerializedName = @"componentVersions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPackageVersionInfo) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPackageVersionInfo[] ComponentVersion { get => _updatePropertiesBody.ComponentVersion ?? null /* arrayOf */; set => _updatePropertiesBody.ComponentVersion = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPackageVersionInfo) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPackageVersionInfo[] ComponentVersion { get => _updatePropertiesBody.ComponentVersion?.ToArray() ?? null /* fixedArrayOf */; set => _updatePropertiesBody.ComponentVersion = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPackageVersionInfo>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -131,6 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _updatePropertiesBody.DisplayName ?? null; set => _updatePropertiesBody.DisplayName = value; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>Last time the package-specific checks were run.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Last time the package-specific checks were run.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
@@ -151,8 +173,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"An array of PrecheckResult objects.",
         SerializedName = @"healthCheckResult",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPrecheckResult) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPrecheckResult[] HealthCheckResult { get => _updatePropertiesBody.HealthCheckResult ?? null /* arrayOf */; set => _updatePropertiesBody.HealthCheckResult = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPrecheckResult) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPrecheckResult[] HealthCheckResult { get => _updatePropertiesBody.HealthCheckResult?.ToArray() ?? null /* fixedArrayOf */; set => _updatePropertiesBody.HealthCheckResult = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPrecheckResult>(value) : null); }
 
         /// <summary>Overall health state for update-specific health checks.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Overall health state for update-specific health checks.")]
@@ -162,9 +184,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Overall health state for update-specific health checks.",
         SerializedName = @"healthState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState HealthState { get => _updatePropertiesBody.HealthState ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState)""); set => _updatePropertiesBody.HealthState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Unknown", "Success", "Failure", "Warning", "Error", "InProgress")]
+        public string HealthState { get => _updatePropertiesBody.HealthState ?? null; set => _updatePropertiesBody.HealthState = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -276,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>
         /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before
@@ -290,8 +312,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.",
         SerializedName = @"prerequisites",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdatePrerequisite) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdatePrerequisite[] Prerequisite { get => _updatePropertiesBody.Prerequisite ?? null /* arrayOf */; set => _updatePropertiesBody.Prerequisite = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdatePrerequisite) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdatePrerequisite[] Prerequisite { get => _updatePropertiesBody.Prerequisite?.ToArray() ?? null /* fixedArrayOf */; set => _updatePropertiesBody.Prerequisite = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdatePrerequisite>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -328,9 +350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"rebootRequired",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.RebootRequirement) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.RebootRequirement))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.RebootRequirement RebootRequired { get => _updatePropertiesBody.RebootRequired ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.RebootRequirement)""); set => _updatePropertiesBody.RebootRequired = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Unknown", "True", "False")]
+        public string RebootRequired { get => _updatePropertiesBody.RebootRequired ?? null; set => _updatePropertiesBody.RebootRequired = value; }
 
         /// <summary>Link to release notes for the update.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Link to release notes for the update.")]
@@ -365,9 +387,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"State of the update as it relates to this stamp.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.State) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.State))]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.State State { get => _updatePropertiesBody.State ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.State)""); set => _updatePropertiesBody.State = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("HasPrerequisite", "Obsolete", "Ready", "NotApplicableBecauseAnotherUpdateIsInProgress", "Preparing", "Installing", "Installed", "PreparationFailed", "InstallationFailed", "Invalid", "Recalled", "Downloading", "DownloadFailed", "HealthChecking", "HealthCheckFailed", "ReadyToInstall", "ScanInProgress", "ScanFailed", "AdditionalContentRequired")]
+        public string State { get => _updatePropertiesBody.State ?? null; set => _updatePropertiesBody.State = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -383,7 +405,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -428,24 +451,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -468,6 +491,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -532,8 +560,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -589,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -607,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,Name=Name,body=_updatePropertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -620,7 +673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzStackHciUpdate_PutExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="SetAzStackHciUpdate_PutExpanded" /> cmdlet class.
         /// </summary>
         public SetAzStackHciUpdate_PutExpanded()
         {
@@ -653,12 +706,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated> response)
         {
             using( NoSynchronizationContext )
             {
@@ -675,15 +728,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponseAutoGenerated>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, body=_updatePropertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IErrorResponseAutoGenerated>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, Name=Name, body=_updatePropertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -693,12 +746,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -710,8 +763,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string Collation { get; set; }
 
         /// <summary>
-        /// Gets or sets the status of the managed databse
+        /// Gets or sets the status of the managed database
         /// </summary>
         public string Status { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string DefaultSecondaryLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the default catalov collation
+        /// Gets or sets the default catalog collation
         /// </summary>
         public string CatalogCollation { get; set; }
 

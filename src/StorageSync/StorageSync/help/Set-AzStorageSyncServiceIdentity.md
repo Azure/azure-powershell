@@ -32,7 +32,7 @@ Set-AzStorageSyncServiceIdentity [-ResourceId] <String> [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-A storage sync service is the top level resource for Azure File Sync. This command helps to migrate storage sync servicein a resource group to start using managed identity. We recommend to create as few storage sync services as absolutely necessary to differentiate distinct groups of servers in your organization. A storage sync service contains sync groups and also works as a target to register your servers to. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
+A storage sync service is the top level resource for Azure File Sync. This command helps to migrate storage sync service in a resource group to start using managed identity. We recommend to create as few storage sync services as absolutely necessary to differentiate distinct groups of servers in your organization. A storage sync service contains sync groups and also works as a target to register your servers to. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
 
 ## EXAMPLES
 

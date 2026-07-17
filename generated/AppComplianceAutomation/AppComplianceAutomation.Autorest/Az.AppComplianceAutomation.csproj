@@ -3,6 +3,7 @@
     <PsModuleName>AppComplianceAutomation</PsModuleName>
     <PsRootModuleName>AppComplianceAutomation</PsRootModuleName>
     <PsModuleFolder>AppComplianceAutomation.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

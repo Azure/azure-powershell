@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='operationId'>
         /// Operation ID
         /// </param>
-        public static object GetLocationHeaderResult(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId)
+        public static SqlPool GetLocationHeaderResult(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId)
         {
                 return ((ISqlPoolOperationResultsOperations)operations).GetLocationHeaderResultAsync(resourceGroupName, workspaceName, sqlPoolName, operationId).GetAwaiter().GetResult();
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> GetLocationHeaderResultAsync(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> GetLocationHeaderResultAsync(this ISqlPoolOperationResultsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetLocationHeaderResultWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, operationId, null, cancellationToken).ConfigureAwait(false))
             {

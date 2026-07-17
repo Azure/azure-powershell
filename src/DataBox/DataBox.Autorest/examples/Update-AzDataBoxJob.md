@@ -27,7 +27,7 @@ CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resou
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxJobDetails
 ```
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
@@ -60,7 +60,7 @@ KekType         KekUrl                                           KekVaultResourc
 CustomerManaged keyIdentifier /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName
 ```
 
-Update databox job encryption from microsoft managed to customer managed to customer managed with sytem assigned identity. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
+Update databox job encryption from microsoft managed to customer managed to customer managed with system assigned identity. For any failure re-run with $DebugPreference = "Continue" as mentioned in example 1
 
 ### Example 3: Update databox job from system assigned to user assigned with customer managed key encryption
 ```powershell

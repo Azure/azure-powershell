@@ -16,7 +16,7 @@ $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
 $defaultPolicyName = "DefaultPolicy";
-$DefaultSnapshotDays = 2;
+$DefaultSnapshotDays = 7;
 $UpdatedSnapShotDays = 5;
 $rgPrefix = "RecoveryServices";
 $rgsuffix = "Policy";
@@ -265,13 +265,16 @@ function Test-AzureVMEnhancedPolicy
 
 function Test-AzureVMPolicy
 {
-	$location = "centraluseuap" # "eastasia"
-	$resourceGroupName = Create-ResourceGroup $location 26
+	$location = "centraluseuap" # "eastasia"	
+	$resourceGroupName = "ps-test-runtime"
+	$vaultName = "ps-test-runtime-vault"
 
 	try
 	{
-		# Setup
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location 27
+		$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2099"}
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		
+		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
 		
 		# Get default policy objects
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
@@ -341,6 +344,58 @@ function Test-AzureVMPolicy
 	finally
 	{
 		# Cleanup
-		Cleanup-ResourceGroup $resourceGroupName
+		# Cleanup-ResourceGroup $resourceGroupName
+		$remove = Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
+function Test-AzureVMEnhancedPolicyAsDefault
+{ 
+	try
+    	{
+		$resourceGroupName = "sgholapCZRTesting"
+		$vaultName = "sgholapZRSTestingVault"
+		$owner = "sgholap"
+		$AzureVMPolicyName = "AzureVMPolicy"
+		$AzureFilesPolicyName = "AzureFilesPolicy"
+		# Subscription used for this test is sriramsa-IaaSVmBackup Canary Subscription(f2edfd5d-5496-4683-b94f-b3588c579009)
+
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$azureVMSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMSchedulePolicy
+
+		$azureVMRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $azureVMRetentionPolicy
+
+		$azureVMPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureVMPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $azureVMRetentionPolicy -SchedulePolicy $azureVMSchedulePolicy -VaultId $vault.ID
+
+		Assert-NotNull $azureVMPolicy
+		Assert-AreEqual $azureVMPolicy.Name $AzureVMPolicyName
+		# Default policy type for AzureVM should be Enhanced
+		Assert-AreEqual $azureVMPolicy.PolicySubType "Enhanced"
+
+		$azureFilesSchedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles 
+		Assert-NotNull $azureVMSchedulePolicy
+
+		$azureFilesRetentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $azureVMRetentionPolicy
+
+		$azureFilesPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $AzureFilesPolicyName -WorkloadType AzureFiles -RetentionPolicy $azureFilesRetentionPolicy -SchedulePolicy $azureFilesSchedulePolicy -VaultId $vault.ID
+
+		Assert-NotNull $azureFilesPolicy
+		Assert-AreEqual $azureFilesPolicy.Name $AzureFilesPolicyName
+		# Default policy type for AzureFiles should be Standard
+		Assert-AreNotEqual $azureFilesPolicy.PolicySubType "Enhanced"
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureVMPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $AzureFilesPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
 	}
 }

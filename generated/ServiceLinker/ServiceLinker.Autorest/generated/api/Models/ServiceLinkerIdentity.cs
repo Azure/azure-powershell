@@ -83,6 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of resource.",
         SerializedName = @"connectorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of dryrun.",
         SerializedName = @"dryrunName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name Linker resource.",
         SerializedName = @"linkerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -115,6 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -123,6 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The fully qualified Azure Resource manager identifier of the resource to be connected.",
         SerializedName = @"resourceUri",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

@@ -222,20 +222,75 @@ function setupEnv() {
     }
 
     $DeleteDatabaseMigrationTestVariablesDb = @{
-        ResourceGroupName = "tsum38RG"
-        SqlDbInstanceName = "dmstestsqldb"
-        MigrationService  = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
-        TargetSqlConnectionAuthentication = "SqlAuthentication"
-        TargetSqlConnectionDataSource = "db.windows.net"
-        TargetSqlConnectionPassword = "password"
-        TargetSqlConnectionUserName = "username"
+        ResourceGroupName = "DMSv2-TestRG"
+        SqlDbInstanceName = "amakumtest"
+        Kind = "SqlDb"
+        TargetDbName = "CompanyDB5"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.DataMigration/sqlmigrationservices/amakum-dms-eastus2"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.Sql/servers/amakumtest"
+        SourceDatabaseName = "CompanyDB5"
+        SourceSqlConnectionDataSource = "100.79.161.22"
+        SourceSqlConnectionUserName = "amakum"
+        SourceSqlConnectionAuthentication = "SQLAuthentication"
+        SourceSqlConnectionPassword = "sourcepassword"
+        TargetSqlConnectionDataSource = "amakumtest.database.windows.net"
+        TargetSqlConnectionUserName = "amakum"
+        TargetSqlConnectionAuthentication = "SQLAuthentication"
+        TargetSqlConnectionPassword = "targetpassword"
+        MigrationOperationId = "47ca6f55-b313-4c82-8a0e-89146d94ad19"
+    }
+
+    $DatabaseMigrationRetryTestVariables = @{
+        ResourceGroupName = "DMSv2-TestRG"
+        SqlDbInstanceName = "amakumtest"
+        Kind = "SqlDb"
+        TargetDbName = "CompanyDB6"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.DataMigration/sqlmigrationservices/amakum-dms-eastus2"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.Sql/servers/amakumtest"
+        SourceDatabaseName = "CompanyDB6"
+        SourceSqlConnectionDataSource = "100.79.161.22"
+        SourceSqlConnectionUserName = "amakum"
+        SourceSqlConnectionAuthentication = "SQLAuthentication"
+        SourceSqlConnectionPassword = "sourcepassword"
+        TargetSqlConnectionDataSource = "amakumtest.database.windows.net"
+        TargetSqlConnectionUserName = "amakum"
+        TargetSqlConnectionAuthentication = "SQLAuthentication"
+        TargetSqlConnectionPassword = "targetpassword"
+        MigrationOperationId = "47ca6f55-b313-4c82-8a0e-89146d94ad19"
+    }
+
+    $DeleteDatabaseMigrationMITestVariablesDb = @{
+        ResourceGroupName = "DMSv2-TestRG"
+        ManagedInstanceName = "nihartestrelease"
+        TargetDbName = "CompanyDB8"
+        Kind = "SqlMi"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.Sql/managedInstances/nihartestrelease"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.DataMigration/sqlmigrationservices/amakum-dms-eastus2"
+        AzureBlobStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.Storage/storageAccounts/amakumpstest"
+        AzureBlobAccountKey = "storageaccountkey"
+        AzureBlobContainerName = "test"
         SourceSqlConnectionAuthentication = "SqlAuthentication"
-        SourceSqlConnectionDataSource = "sampledomain.microsoft.com"
-        SourceSqlConnectionUserName = "user"
-        SourceSqlConnectionPassword = "password"
-        SourceDatabaseName = "AdventureWorks"
-        TargetDbName = "at_sqldbtrgt1"
-        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
+        SourceSqlConnectionDataSource = "100.79.161.22"
+        SourceSqlConnectionUsername = "amakum"
+        SourceSqlConnectionPassword = "sourcepassword"
+        SourceDatabaseName = "CompanyDB8"
+    }
+
+    $DeleteDatabaseMigrationVmTestVariablesDb = @{
+        ResourceGroupName = "DMSv2-TestRG"
+        SqlVirtualMachineName = "amakumvmpstest"
+        TargetDbName = "CompanyDB14"
+        Kind = "SqlVM"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/DMSv2-TestRG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachines/amakumvmpstest"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.DataMigration/sqlmigrationservices/amakum-dms-eastus2"
+        AzureBlobStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourcegroups/DMSv2-TestRG/providers/Microsoft.Storage/storageAccounts/amakumpstest"
+        AzureBlobAccountKey = "AccountKey"
+        AzureBlobContainerName = "test"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "100.79.161.22"
+        SourceSqlConnectionUserName = "amakum"
+        SourceSqlConnectionPassword = "sourcepassword"
+        SourceDatabaseName = "CompanyDB14"
     }
 
     $env.add("TestSqlMigrationService", $SqlMigrationServiceTestVariables) | Out-Null
@@ -254,6 +309,9 @@ function setupEnv() {
     $env.add("TestCutDatabaseMigrationMi", $CutDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestCutDatabaseMigrationVm", $CutDatabaseMigrationTestVariablesVm) | Out-Null
     $env.add("TestDeleteDatabaseMigrationDb", $DeleteDatabaseMigrationTestVariablesDb) | Out-Null
+    $env.add("TestRetryDatabaseMigrationDb", $DatabaseMigrationRetryTestVariables) | Out-Null
+    $env.add("TestDeleteMiMigration", $DeleteDatabaseMigrationMITestVariablesDb ) | Out-Null
+    $env.add("TestDeleteDatabaseMigrationVm", $DeleteDatabaseMigrationVmTestVariablesDb) | Out-Null
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

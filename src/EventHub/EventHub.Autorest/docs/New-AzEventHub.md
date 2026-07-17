@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHub
 
 ## SYNOPSIS
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> [-Archiv
 ```
 
 ## DESCRIPTION
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
@@ -67,7 +67,7 @@ Location                     : eastus
 MessageRetentionInDay        : 7
 Name                         : myEventHub
 PartitionCount               : 5
-PartitionId                  : {0, 1, 2, 3�}
+PartitionId                  : {0, 1, 2, 3…}
 ResourceGroupName            : myResourceGroup
 RetentionTimeInHour          : 168
 SizeLimitInBytes             :
@@ -85,7 +85,7 @@ Type                         : Microsoft.EventHub/namespaces/eventhubs
 UpdatedAt                    : 4/25/2023 3:55:46 AM
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Delete`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Delete`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
@@ -158,7 +158,7 @@ Type                         : Microsoft.EventHub/namespaces/eventhubs
 UpdatedAt                    : 4/25/2023 4:05:58 AM
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleaupPolicy `Compact`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with CleanupPolicy `Compact`.
 
 ## PARAMETERS
 

@@ -25,7 +25,7 @@ batch:
  - tag: package-features-2021-07
  - tag: package-deploymentscripts-2020-10
  - tag: package-resources-2024-07
- - tag: package-deploymentstacks-2024-03
+ - tag: package-deploymentstacks-2025-07
  - tag: package-templatespecs-2021-05
 ```
 
@@ -33,6 +33,7 @@ batch:
 
 ```yaml
 commit: 44051823078bc61d1210c324faf6d12e409497b7
+deploymentStacksCommit: 5d175d6e1991ed64390a7b5673c3691722ba0259
 ```
 
 ### Tag: package-resources-2021-04
@@ -105,19 +106,33 @@ input-file:
 - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
 ```
 
-### Tag: package-deploymentstacks-2024-03
+### Tag: package-deploymentstacks-2025-07
 
-These settings apply only when `--tag=package-deploymentstacks-2024-03` is specified on the command line.
+These settings apply only when `--tag=package-deploymentstacks-2025-07` is specified on the command line.
 
-``` yaml $(tag) == 'package-deploymentstacks-2024-03'
+``` yaml $(tag) == 'package-deploymentstacks-2025-07'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/deploymentStacks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/$(deploymentStacksCommit)/specification/resources/resource-manager/Microsoft.Resources/deploymentStacks/stable/2025-07-01/deploymentStacks.json
 
-# Temporary override to make subscription id GUID a string.
+# Isolate deployment stacks output into its own subfolder and sub-namespace.
+# This avoids file-name collisions in the shared Generated/ folder with other
+# tags (e.g. package-resources-2024-07 defines its own inline Resource shape
+# that is incompatible with common-types v6 used by the 2025-07-01 stacks API).
+output-folder: Generated/DeploymentStacks
+namespace: Microsoft.Azure.Management.Resources.DeploymentStacks
+
+# Multi-file input can require an explicit title override.
+override-info:
+  title: DeploymentStacksClient
+
+# Temporary override to make subscription id GUID a string. v6 common-types
+# declares SubscriptionIdParameter with `format: uuid`, which AutoRest would
+# generate as System.Guid. Strip the format so it stays as plain string,
+# matching how the rest of this SDK exposes subscription ids.
 directive:
-  - from: deploymentStacks.json
-    where: $
-    transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
+  - from: swagger-document
+    where: $.parameters.SubscriptionIdParameter
+    transform: delete $.format
   - suppress: UniqueResourcePaths
     from: resources.json
     where: $.paths

@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// Gets the IOperations
         /// </summary>
         public virtual IOperations Operations { get; private set; }
+        /// <summary>
+        /// Gets the IUnsupportedVMSizesOperations
+        /// </summary>
+        public virtual IUnsupportedVMSizesOperations UnsupportedVMSizes { get; private set; }
         /// <summary>
         /// Gets the IApplicationTypesOperations
         /// </summary>
@@ -292,6 +296,9 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -326,12 +333,13 @@ namespace Microsoft.Azure.Management.ServiceFabric
             this.Clusters = new ClustersOperations(this);
             this.ClusterVersions = new ClusterVersionsOperations(this);
             this.Operations = new Operations(this);
+            this.UnsupportedVMSizes = new UnsupportedVMSizesOperations(this);
             this.ApplicationTypes = new ApplicationTypesOperations(this);
             this.ApplicationTypeVersions = new ApplicationTypeVersionsOperations(this);
             this.Applications = new ApplicationsOperations(this);
             this.Services = new ServicesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2021-06-01";
+            this.ApiVersion = "2023-11-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

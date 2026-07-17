@@ -34,6 +34,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string IsPanoramaManaged { get => this._isPanoramaManaged; }
 
+        /// <summary>Backing field for <see cref="IsStrataCloudManaged" /> property.</summary>
+        private string _isStrataCloudManaged;
+
+        /// <summary>Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
+        public string IsStrataCloudManaged { get => this._isStrataCloudManaged; }
+
         /// <summary>Internal Acessors for HealthReason</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.HealthReason { get => this._healthReason; set { {_healthReason = value;} } }
 
@@ -43,17 +50,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Internal Acessors for IsPanoramaManaged</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.IsPanoramaManaged { get => this._isPanoramaManaged; set { {_isPanoramaManaged = value;} } }
 
+        /// <summary>Internal Acessors for IsStrataCloudManaged</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.IsStrataCloudManaged { get => this._isStrataCloudManaged; set { {_isStrataCloudManaged = value;} } }
+
         /// <summary>Internal Acessors for PanoramaStatus</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatus { get => (this._panoramaStatus = this._panoramaStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatus()); set { {_panoramaStatus = value;} } }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServer2Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServer2Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServer2Status = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaStatusPanoramaServerStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.PanoramaStatusPanoramaServerStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatusInternal)PanoramaStatus).PanoramaServerStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for StrataCloudManagerInfo</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal.StrataCloudManagerInfo { get => (this._strataCloudManagerInfo = this._strataCloudManagerInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfo()); set { {_strataCloudManagerInfo = value;} } }
 
         /// <summary>Backing field for <see cref="PanoramaStatus" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus _panoramaStatus;
@@ -76,6 +89,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="StrataCloudManagerInfo" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo _strataCloudManagerInfo;
+
+        /// <summary>
+        /// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo StrataCloudManagerInfo { get => (this._strataCloudManagerInfo = this._strataCloudManagerInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfo()); set => this._strataCloudManagerInfo = value; }
+
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        public string StratumCloudManagerInfoFolderName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfoInternal)StrataCloudManagerInfo).FolderName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfoInternal)StrataCloudManagerInfo).FolderName = value ?? null; }
+
+        /// <summary>URL for Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        public string StratumCloudManagerInfoHubUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfoInternal)StrataCloudManagerInfo).HubUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfoInternal)StrataCloudManagerInfo).HubUrl = value ?? null; }
 
         /// <summary>Creates an new <see cref="FirewallStatusProperty" /> instance.</summary>
         public FirewallStatusProperty()
@@ -122,6 +152,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get;  }
+        /// <summary>Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Strata Cloud Manager",
+        SerializedName = @"isStrataCloudManaged",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get;  }
         /// <summary>Secondary Panorama connection status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = false,
@@ -158,6 +200,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("Succeeded", "Failed", "Deleted")]
         string ProvisioningState { get;  }
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Strata Cloud Manager folder in which this firewall has been placed",
+        SerializedName = @"folderName",
+        PossibleTypes = new [] { typeof(string) })]
+        string StratumCloudManagerInfoFolderName { get; set; }
+        /// <summary>URL for Strata Cloud Manager</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"URL for Strata Cloud Manager",
+        SerializedName = @"hubUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        string StratumCloudManagerInfoHubUrl { get; set; }
 
     }
     /// Firewall Status
@@ -172,6 +236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Panorama Managed: Default is False. Default will be CloudSec managed</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get; set; }
+        /// <summary>Strata Cloud Manager</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get; set; }
         /// <summary>Panorama Status</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus PanoramaStatus { get; set; }
         /// <summary>Secondary Panorama connection status</summary>
@@ -183,6 +250,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("Succeeded", "Failed", "Deleted")]
         string ProvisioningState { get; set; }
+        /// <summary>
+        /// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo StrataCloudManagerInfo { get; set; }
+        /// <summary>Strata Cloud Manager folder in which this firewall has been placed</summary>
+        string StratumCloudManagerInfoFolderName { get; set; }
+        /// <summary>URL for Strata Cloud Manager</summary>
+        string StratumCloudManagerInfoHubUrl { get; set; }
 
     }
 }

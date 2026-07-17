@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticCreateAndAssociatePlFilter
 
 ## SYNOPSIS
-Create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzElasticCreateAndAssociatePlFilter -InputObject <IElasticIdentity> [-Name <
 ```
 
 ## DESCRIPTION
-Create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 
 ## EXAMPLES
 
@@ -73,7 +73,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity

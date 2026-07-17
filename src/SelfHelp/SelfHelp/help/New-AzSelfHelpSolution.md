@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSelfHelpSolution
 
 ## SYNOPSIS
-Creates a solution for the specific Azure resource or subscription using the inputs 'solutionId and requiredInputs' from discovery solutions.
+create a solution for the specific Azure resource or subscription using the inputs 'solutionId and requiredInputs' from discovery solutions.
 \<br/\> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
 These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
 All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
@@ -22,14 +22,35 @@ In the absence of the 'requiredParameters' it is likely that some of the solutio
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-Parameter <Hashtable>]
  [-TriggerCriterion <ITriggerCriterion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzSelfHelpSolution -ResourceName <String> -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSelfHelpSolution -ResourceName <String> -Scope <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-Parameter <Hashtable>]
+ [-TriggerCriterion <ITriggerCriterion[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a solution for the specific Azure resource or subscription using the inputs 'solutionId and requiredInputs' from discovery solutions.
+create a solution for the specific Azure resource or subscription using the inputs 'solutionId and requiredInputs' from discovery solutions.
 \<br/\> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
 These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
 All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
@@ -98,6 +119,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -118,7 +184,7 @@ Client input parameters to run Solution
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -133,7 +199,7 @@ Solution resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: SolutionResourceName
 
 Required: True
@@ -148,7 +214,7 @@ scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -160,11 +226,10 @@ Accept wildcard characters: False
 
 ### -TriggerCriterion
 Solution request trigger criteria
-To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITriggerCriterion[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -210,9 +275,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISolutionResource
 
 ## NOTES
 

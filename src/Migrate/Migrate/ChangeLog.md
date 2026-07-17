@@ -8,9 +8,9 @@
         - Additional information about change #1
     * Overview of change #2
         - Additional information about change #2
-        - Additional information about change #2
-    * Overview of change #3
-    * Overview of change #4
+        - Additional information about change #2	
+    * Overview of change #3	
+    * Overview of change #4	
         - Additional information about change #4
 
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
@@ -18,6 +18,72 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.12.1
+* Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
+  - Added early Azure login validation with a clear error message when user is not logged in
+  - Removed unnecessary caller identity resolution
+  - Added cache storage account validations to reject unsupported SKU tiers and disabled public network access
+* Updated `New-AzMigrateLocalServerReplication`
+  - Added storage path health validation before initiating replication
+
+## Version 2.12.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Added 'TargetSecurityType' and 'TargetVMSecureBootEnabled' parameters to 'New-AzMigrateServerReplication' to support Trusted Launch VM (TVM) security type during server replication
+
+## Version 2.11.0
+* Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy
+ - `New-AzMigrateLocalServerReplication`
+
+## Version 3.0.14
+* Added TargetCapacityReservationGroupId parameter in the following cmdlets
+ - `New-AzMigrateServerReplication`
+ - `Set-AzMigrateServerReplication`
+ - `Start-AzMigrateServerMigration`
+* Updated Migrate.RecoveryServices to stable API version 2025-08-01
+
+## Version 2.10.1
+* Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
+  - Correct AMH solution tool name of "ServerMigration_DataReplication" is now being passed in to address replication count missing and UX experience load issues in Azure Migrate on Azure portal.
+* Address Join-Path compatibility issue in older version of PowerShell environment such as PowerShell 5.1 in the following commands
+ - `Initialize-AzMigrateLocalReplicationInfrastructure`
+ - `Initialize-AzMigrateReplicationInfrastructure`
+ - `New-AzMigrateLocalServerReplication`
+ - `Get-AzMigrateLocalServerReplication`
+ - `Set-AzMigrateLocalServerReplication`
+ - `Start-AzMigrateLocalServerMigration`
+
+## Version 2.10.0
+* Fixed bugs in `New-AzMigrateLocalDiskMappingObject`: Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given
+* Fixed bugs in `New-AzMigrateLocalServerReplication`: Only validate for non-512 physical sector size of VHD when `-PhysicalSectorSize` parameter is given. Removed reserved words validation for source disk names as it is no longer required. Added ARM id validation for input parameters
+* Fixed bugs in `Set-AzMigrateLocalServerReplication`: Added ARM id validation for input parameters
+* Fixed bugs in `Get-AzMigrateLocalServerReplication`: Added ARM id validation for input parameters
+* Enhanced Get-AzMigrateServerMigrationStatus to add support for the -Expedite parameter.
+
+## Version 2.9.0
+* Added `-OsType` as an optional parameter to command `Set-AzMigrateLocalServerReplication` to allow user-specified OS type.
+* Fixed bugs in `New-AzMigrateServerReplication` caused by deprecation of `Get-AzVmSize -location`
+* Removed `-TargetStoragePathId` parameter from command `New-AzMigrateLocalDiskMappingObject` until the feature to associate each disk to their own storage container path is supported.
+* Added `-SourceApplianceName` and `-TargetApplianceName` as required parameters to command `New-AzMigrateLocalServerReplication` to allow users to specify appliance pairs of their choosing.
+* Enhanced resource validations in `Initialize-AzMigrateLocalReplicationInfrastructure` and `New-AzMigrateLocalServerReplication`.
+
+## Version 2.8.0
+* Implemented the Get-AzMigrateServerMigrationStatus cmdlet to retrieve the replication status of servers in Azure Migrate.
+* Fixed bugs in `New-AzMigrateLocalServerReplication` that caused HyperVSite or VMwareSite not found.
+
+## Version 2.7.1
+
+* Added validation for Data.Replication
+  - Added validation to protect virtual machines in `New-AzMigrateLocalServerReplication`
+
+## Version 2.7.0
+* Updated Data.Replication to newer API version
+  - Updated Data.Replication to point to stable API version 2024-09-01
+* Rebranded Data.Replication cmdlets
+  - Rebranded Data.Replication cmdlets from Azure Stack HCI to Azure Local
 
 ## Version 2.6.0
 * Upgraded nuget package to signed package.

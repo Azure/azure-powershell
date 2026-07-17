@@ -1,0 +1,194 @@
+{
+  "Get-AzDisconnectedOperationsImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "ebe4da18-ad65-4c79-a74d-8b1f2b217050" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsImage" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsImage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/30485c6f-a942-4552-ba77-797e915923cb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152727Z-15db5d6546449l88hC1BN15f2n00000014t000000000fu1d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "6b453952-769a-4da5-a785-0e94b55f6e55" ],
+        "x-ms-correlation-request-id": [ "ef24f166-8367-4337-acdd-5fe0243e8525" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152727Z:ef24f166-8367-4337-acdd-5fe0243e8525" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 382A7B94FF934A15B3EB909A7137306F Ref B: MAA201060514047 Ref C: 2026-03-03T15:27:26Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:27:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2690" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2602\",\"name\":\"release-v2602\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"2602.1.25259\",\"releaseDisplayName\":\"release-v2602\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-03-02\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}},{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2601\",\"name\":\"release-v2601\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"2601.1.24997\",\"releaseDisplayName\":\"release-v2601\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-02-19\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}},{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2512\",\"name\":\"release-v2512\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"10.1065058340.24001\",\"releaseDisplayName\":\"release-v2512\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-01-13\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}},{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2512-update\",\"name\":\"release-v2512-update\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"10.1065058340.24001\",\"releaseDisplayName\":\"release-v2512-update\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-01-12\",\"releaseType\":\"Update\",\"compatibleVersions\":[\"10.1064997818.22636\"],\"updateProperties\":{\"systemReboot\":\"NotRequired\",\"securityUpdates\":\"NA\",\"osVersion\":\"NA\",\"agentVersion\":\"NA\",\"featureUpdates\":\"NA\"}}},{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2511\",\"name\":\"release-v2511\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"10.1064997818.22636\",\"releaseDisplayName\":\"release-v2511\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2025-12-08\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsImage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "cf5949ce-f677-46ea-af2c-b621f88c40e5" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsImage" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsImage_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/cdc5c645-a428-4a04-830e-3d0cf9851e34" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152728Z-15db5d6546449l88hC1BN15f2n00000014t000000000fu62" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "89c27e59-5f77-40a8-9f5c-b2a7a325feab" ],
+        "x-ms-correlation-request-id": [ "9652216b-de93-40fe-af74-07d2d2031ad7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152729Z:9652216b-de93-40fe-af74-07d2d2031ad7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: A7A35F3CE4ED496F8DE77FCF9B80762D Ref B: MAA201060514047 Ref C: 2026-03-03T15:27:28Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:27:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "496" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2602\",\"name\":\"release-v2602\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"2602.1.25259\",\"releaseDisplayName\":\"release-v2602\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-03-02\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsImage+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "42f443be-bf0a-40f1-be99-89be45d26844" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsImage" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsImage_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/48ddec6f-dcfa-4a1d-9097-4dbf7efe3cd6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152730Z-15db5d6546449l88hC1BN15f2n00000014t000000000fu94" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "d7e30c54-18d0-482f-bae2-57682d44c2bc" ],
+        "x-ms-correlation-request-id": [ "a62e94f9-38cb-4470-b83b-b56a5bae48f3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1097" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16497" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152730Z:a62e94f9-38cb-4470-b83b-b56a5bae48f3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 44C317C051534313B017D9E390536E01 Ref B: MAA201060514047 Ref C: 2026-03-03T15:27:29Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:27:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "496" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2602\",\"name\":\"release-v2602\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"2602.1.25259\",\"releaseDisplayName\":\"release-v2602\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-03-02\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDisconnectedOperationsImage+[NoContext]+GetViaIdentityDisconnectedOperation+$GET+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "732243cb-8d01-40c1-9dd7-49db992faea3" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsImage" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsImage_GetViaIdentityDisconnectedOperation" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/55d7ee8f-31cc-4776-a405-4b0db5ce427d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152730Z-15db5d6546449l88hC1BN15f2n00000014t000000000fuba" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "bc3b714b-b767-4a87-8ab0-8f51765062ea" ],
+        "x-ms-correlation-request-id": [ "084d5f23-3387-4670-a2f6-e596fac0fa56" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1096" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16496" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152731Z:084d5f23-3387-4670-a2f6-e596fac0fa56" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: 0640858958994A349BEB7F35639102B8 Ref B: MAA201060514047 Ref C: 2026-03-03T15:27:30Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:27:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "496" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/release-v2602\",\"name\":\"release-v2602\",\"type\":\"Microsoft.Edge/disconnectedOperations/images\",\"properties\":{\"provisioningState\":\"Succeeded\",\"releaseVersion\":\"2602.1.25259\",\"releaseDisplayName\":\"release-v2602\",\"releaseNotes\":\"https://aka.ms/aldo-publicdocs\",\"releaseDate\":\"2026-03-02\",\"releaseType\":\"Install\",\"compatibleVersions\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

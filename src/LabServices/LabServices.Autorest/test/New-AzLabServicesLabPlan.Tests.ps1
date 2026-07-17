@@ -21,9 +21,9 @@ Describe 'New-AzLabServicesLabPlan' {
     It 'Create' {
         New-AzLabServicesLabPlan `
         -Name 'LabPlan-test-powershell' `
-        -ResourceGroupName $ENV:ResourceGroupName `
-        -Location $ENV:Location `
-        -AllowedRegion @($ENV:Location) `
+        -ResourceGroupName $env.ResourceGroupName `
+        -Location $env.Location `
+        -AllowedRegion @($env.Location) `
         -DefaultAutoShutdownProfileShutdownOnDisconnect 'Disabled' `
         -DefaultAutoShutdownProfileShutdownOnIdle 'None' `
         -DefaultAutoShutdownProfileShutdownWhenNotConnected 'Disabled' `
@@ -36,6 +36,6 @@ Describe 'New-AzLabServicesLabPlan' {
         -SupportInfoPhone '123-234-3456' `
         -SupportInfoUrl 'https://www.secondtest.com' | Should -Not -BeNullOrEmpty
 
-        Get-AzLabServicesLabPlan -Name 'LabPlan-test-powershell' -ResourceGroupName $ENV:ResourceGroupName | Select-Object -Property SupportInfoEmail | Should -BeExactly "@{SupportInfoEmail=secondlp@test.com}"
+        Get-AzLabServicesLabPlan -Name 'LabPlan-test-powershell' -ResourceGroupName $env.ResourceGroupName | Select-Object -Property SupportInfoEmail | Should -BeExactly "@{SupportInfoEmail=secondlp@test.com}"
     }
 }

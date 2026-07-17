@@ -21,15 +21,16 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateFileCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_FileCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateFileCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
+        
         [Parameter(HelpMessage="The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM.")]
         [string]
         $Destination,
@@ -42,17 +43,13 @@ function New-AzImageBuilderTemplateCustomizerObject_FileCustomizer {
         [Parameter(HelpMessage="Friendly Name to provide context on what this customization step does.")]
         [string]
         $Name,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="The type of customization tool you want to use on the Image. For example, `"Shell`" can be shell customizer.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Uploads files to VMs (Linux, Windows). Corresponds to Packer file provisioner.")]
         [Switch]
         $FileCustomizer
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateFileCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('Destination')) {
             $Object.Destination = $Destination
@@ -65,10 +62,7 @@ function New-AzImageBuilderTemplateCustomizerObject_FileCustomizer {
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
-        }
-        if ($FileCustomizer.IsPresent) {
-            $Object.Type = "File"
-        }        
+        }  
         return $Object
     }
 }

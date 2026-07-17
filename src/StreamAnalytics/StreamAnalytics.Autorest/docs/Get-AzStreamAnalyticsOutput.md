@@ -30,6 +30,12 @@ Get-AzStreamAnalyticsOutput -InputObject <IStreamAnalyticsIdentity> [-DefaultPro
  [<CommonParameters>]
 ```
 
+### GetViaIdentityStreamingjob
+```
+Get-AzStreamAnalyticsOutput -Name <String> -StreamingjobInputObject <IStreamAnalyticsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets details about the specified output.
 
@@ -63,7 +69,7 @@ This command returns information about the output defined on the job.
 
 ### Example 3: Get information about a specific job output by pipeline
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StorageAccount.json | Get-AzStreamAnalyticsOutput
 ```
 
 ```output
@@ -94,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
@@ -128,7 +133,7 @@ The name of the output.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityStreamingjob
 Aliases: OutputName
 
 Required: True
@@ -172,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StreamingjobInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
+Parameter Sets: GetViaIdentityStreamingjob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -196,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IOutput
 
 ## NOTES
 

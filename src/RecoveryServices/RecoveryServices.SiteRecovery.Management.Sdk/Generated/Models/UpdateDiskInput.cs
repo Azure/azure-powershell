@@ -29,11 +29,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetDiskName">The target disk name.
         /// </param>
-        public UpdateDiskInput(string diskId, string targetDiskName = default(string))
+
+        /// <param name="iops">The number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="throughputInMbps">The total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </param>
+
+        /// <param name="diskSizeInGb">The target disk size in GB.
+        /// </param>
+        public UpdateDiskInput(string diskId, string targetDiskName = default(string), long? iops = default(long?), long? throughputInMbps = default(long?), long? diskSizeInGb = default(long?))
 
         {
             this.DiskId = diskId;
             this.TargetDiskName = targetDiskName;
+            this.Iops = iops;
+            this.ThroughputInMbps = throughputInMbps;
+            this.DiskSizeInGb = diskSizeInGb;
             CustomInit();
         }
 
@@ -54,6 +66,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetDiskName")]
         public string TargetDiskName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of IOPS allowed for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "iops")]
+        public long? Iops {get; set; }
+
+        /// <summary>
+        /// Gets or sets the total throughput in Mbps for Premium V2 and Ultra disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputInMbps")]
+        public long? ThroughputInMbps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target disk size in GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeInGB")]
+        public long? DiskSizeInGb {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

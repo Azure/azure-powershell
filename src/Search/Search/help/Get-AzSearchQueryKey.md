@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSearchQueryKey
 
 ## SYNOPSIS
-Gets query key(s) of the Azure Cognitive Search service.
+Gets query key(s) of the Azure AI Search service.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzSearchQueryKey [-ParentResourceId] <String> [-DefaultProfile <IAzureContex
 ```
 
 ## DESCRIPTION
-The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure Cognitive Search service.
+The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Name Key
      896AA09C167541072D404E1BE0442CE9
 ```
 
-The example gets all query key(s) of the Azure Cognitive Search service.
+The example gets all query key(s) of the Azure AI Search service.
 
 ## PARAMETERS
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-Azure Cognitive Search Service Resource Id.
+Azure AI Search Service Resource Id.
 
 ```yaml
 Type: System.String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

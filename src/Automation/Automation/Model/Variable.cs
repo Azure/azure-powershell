@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Initializes a new instance of the <see cref="Variable"/> class.
         /// </summary>
         /// <param name="variable">
-        /// The varaiable.
+        /// The variable.
         /// </param>
         /// <param name="automationAccoutName">
         /// The automation account name.

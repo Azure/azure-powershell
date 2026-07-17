@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DenyAll")]
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
@@ -175,10 +175,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines how to handle disks with slow I/O. Possible values include: 'None', 'AutomaticReattach'.")]
+        [PSArgumentCompleter("None", "AutomaticReattach")]
+        public string ActionOnDiskDelay { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.")]
+        [PSArgumentCompleter("TrustedLaunchSupported", "TrustedLaunchAndConfidentialVMSupported")]
+        public string SupportedSecurityOption { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -301,6 +314,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSupportedCapabilities.Architecture = this.Architecture;
             }
 
+            if (this.IsParameterBound(c => c.SupportedSecurityOption))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.SupportedSecurityOption = this.SupportedSecurityOption;
+            }
+
             var vDiskUpdate = new PSDiskUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -322,7 +344,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
-                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
+                AvailabilityPolicy = this.IsParameterBound(c => c.ActionOnDiskDelay) ? new AvailabilityPolicy { ActionOnDiskDelay = ActionOnDiskDelay } : null
             };
 
             WriteObject(vDiskUpdate);

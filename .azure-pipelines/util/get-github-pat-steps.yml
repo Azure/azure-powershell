@@ -1,11 +1,17 @@
+parameters:
+- name: execCondition
+  type: string
+  default: succeeded()
+
 steps:
 - task: AzurePowerShell@5
+  displayName: Get GitHub PAT from Key Vault
+  condition: ${{ parameters.execCondition }}
   inputs:
     pwsh: true
+    azurePowerShellVersion: 'LatestVersion'
     azureSubscription: '$(AzureSubscription)'
     ScriptType: 'InlineScript'
     Inline: |
       $GithubToken = Get-AzKeyVaultSecret -VaultName $(GithubPATKeyVaultName) -Name $(GithubPATKeyVaultAccount) -AsPlainText
       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-    azurePowerShellVersion: 'LatestVersion'
-  displayName: Get Github PAT from Key Vault

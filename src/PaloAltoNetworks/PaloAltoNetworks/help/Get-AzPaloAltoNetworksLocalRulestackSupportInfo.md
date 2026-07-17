@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPaloAltoNetworksLocalRulestackSupportInfo
 
 ## SYNOPSIS
-support info for rulestack.
+Support info for rulestack.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzPaloAltoNetworksLocalRulestackSupportInfo -InputObject <IPaloAltoNetworksI
 ```
 
 ## DESCRIPTION
-support info for rulestack.
+Support info for rulestack.
 
 ## EXAMPLES
 

@@ -21,7 +21,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     /// <summary>
-    /// This class implements provider intialization based on workload
+    /// This class implements provider initialization based on workload
     /// and backup management type.
     /// </summary>
     public class PsBackupProviderManager

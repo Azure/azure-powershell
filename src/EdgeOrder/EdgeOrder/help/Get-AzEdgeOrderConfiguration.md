@@ -12,9 +12,22 @@ This method provides the list of configurations for the given product family, pr
 
 ## SYNTAX
 
+### ListExpanded (Default)
 ```
 Get-AzEdgeOrderConfiguration [-SubscriptionId <String[]>] -ConfigurationFilter <IConfigurationFilters[]>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzEdgeOrderConfiguration [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzEdgeOrderConfiguration [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,11 +77,10 @@ Make sure you run registerProvider on Microsoft.EdgeOrder before running this co
 
 ### -ConfigurationFilter
 Holds details about product hierarchy information and filterable property.
-To construct, see NOTES section for CONFIGURATIONFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfigurationFilters[]
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: True
@@ -88,6 +100,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfiguration
 
 ## NOTES
 

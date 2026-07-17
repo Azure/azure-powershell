@@ -27,21 +27,15 @@ For information on how to develop for `Az.Datadog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
+commit: 84298cdc6b918812b002cc2ba05df0ec23f4e352
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json
+  - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2025-06-11/datadog.json
   
 title: Datadog
 module-version: 0.1.0
 subject-prefix: Datadog
-nested-object-to-string: true
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlet.
@@ -62,23 +56,11 @@ directive:
 
   # Remove variant
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
       subject: MarketplaceAgreement
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: Monitor
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$
-      subject: SingleSignOnConfiguration
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$
-      subject: TagRule
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -122,5 +104,6 @@ directive:
       parameter-name: Name
   # For memory object that generate cmdlet.
   - model-cmdlet:
-    - FilteringTag
+      - model-name: FilteringTag
+        cmdlet-name: New-AzDatadogFilteringTagObject
 ```

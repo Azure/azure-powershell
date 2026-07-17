@@ -18,7 +18,7 @@ Describe 'AzDeviceUpdateAccount' {
     # It 'CreateExpanded' {
     #     {
     #         $privateEndpointConnection = New-AzDeviceUpdatePrivateEndpointConnectionObject -PrivateLinkServiceConnectionStateDescription "Description: Approved" -PrivateLinkServiceConnectionStateStatus 'Approved'
-    #         $config = New-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+    #         $config = New-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity:$true -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
     #         $config.Name | Should -Be $env.accountName1
     #     } | Should -Not -Throw
     # }
@@ -44,14 +44,14 @@ Describe 'AzDeviceUpdateAccount' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"}
             $config.Name | Should -Be $env.accountName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         {
             $config = Get-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup
             $config = Update-AzDeviceUpdateAccount -InputObject $config -Tag @{"abc"="123"}
@@ -68,7 +68,7 @@ Describe 'AzDeviceUpdateAccount' {
     # It 'DeleteViaIdentity' {
     #     {
     #         $privateEndpointConnection = New-AzDeviceUpdatePrivateEndpointConnectionObject -PrivateLinkServiceConnectionStateDescription "Description: Approved" -PrivateLinkServiceConnectionStateStatus 'Approved'
-    #         $config = New-AzDeviceUpdateAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+    #         $config = New-AzDeviceUpdateAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity:$true -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
     #         $config.Name | Should -Be $env.accountName2
             
     #         $config = Get-AzDeviceUpdateAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroup

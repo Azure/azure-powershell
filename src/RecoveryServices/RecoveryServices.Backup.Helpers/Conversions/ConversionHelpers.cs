@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -886,7 +887,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
                 {
-                    // timeZone paased as input but not used in below method calls
+                    // timeZone passed as input but not used in below method calls
                     azureVmWorkloadPolicyModel.LogBackupSchedulePolicy = PolicyHelpers.GetPSLogSchedulePolicy((ServiceClientModel.LogSchedulePolicy)
                     subProtectionPolicy.SchedulePolicy,
                     ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
@@ -912,6 +913,501 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return itemModels;
         }
+        #endregion
+
+        #region Soft Deleted Items
+
+        /// <summary>
+        /// Helper function to convert ARG response to soft deleted backup item models
+        /// </summary>
+        public static List<ItemBase> GetSoftDeletedItemsModelList(object argResponseItems)
+        {
+            List<ItemBase> itemModels = new List<ItemBase>();
+
+            if (argResponseItems == null) return itemModels;
+
+            try
+            {
+                // ARG returns data as an array of objects, so we need to handle it properly
+                IEnumerable<object> items = null;
+
+                // Check if it's already an IEnumerable
+                if (argResponseItems is IEnumerable<object> enumerable)
+                {
+                    items = enumerable;
+                }
+                // If it's a single object that might be a JArray or similar
+                else if (argResponseItems is Newtonsoft.Json.Linq.JArray jArray)
+                {
+                    items = jArray.ToObject<object[]>();
+                }
+                // If it's a JSON string, deserialize it
+                else if (argResponseItems is string jsonString)
+                {
+                    var deserializedArray = JsonConvert.DeserializeObject<object[]>(jsonString);
+                    items = deserializedArray;
+                }
+                // If it's any other object, try to serialize/deserialize to handle dynamic types
+                else
+                {
+                    var serializedArgResponse = JsonConvert.SerializeObject(argResponseItems);
+                    var deserializedArray = JsonConvert.DeserializeObject<object[]>(serializedArgResponse);
+                    items = deserializedArray;
+                }
+
+                if (items != null)
+                {
+                    foreach (var item in items)
+                    {
+                        try
+                        {
+                            var softDeletedItem = GetSoftDeletedItemModel(item);
+                            if (softDeletedItem != null)
+                            {
+                                itemModels.Add(softDeletedItem);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Instance.WriteWarning($"Failed to convert soft deleted item: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to process ARG response items: {ex.Message}");
+            }
+
+            return itemModels;
+        }
+
+        /// <summary>
+        /// Helper function to convert single ARG response item to soft deleted backup item model
+        /// </summary>
+        public static ItemBase GetSoftDeletedItemModel(object argItem)
+        {
+            if (argItem == null) return null;
+
+            try
+            {
+                // Parse ARG response item
+                var jsonItem = JsonConvert.SerializeObject(argItem);
+                var parsedItem = JsonConvert.DeserializeObject<dynamic>(jsonItem);
+
+                // Extract dataSourceType to determine workload type
+                string dataSourceType = parsedItem.dataSourceType?.ToString();
+                
+                if (string.IsNullOrEmpty(dataSourceType))
+                {
+                    Logger.Instance.WriteWarning("DataSourceType is null or empty for soft deleted item");
+                    return null;
+                }
+
+                // Route to appropriate conversion method based on dataSourceType
+                if (dataSourceType.Contains("AzureIaasVM/VM"))
+                {
+                    return GetSoftDeletedVaultAzureVmItemModel(parsedItem);
+                }
+                else if (dataSourceType.Contains("AzureFileShare"))
+                {
+                    return GetSoftDeletedVaultAzureFileShareItemModel(parsedItem);
+                }
+                else if (dataSourceType.Contains("AzureWorkload") && dataSourceType.Contains("SQLDataBase"))
+                {
+                    return GetSoftDeletedVaultAzureWorkloadSQLItemModel(parsedItem);
+                }
+                else if (dataSourceType.Contains("AzureWorkload") && dataSourceType.Contains("SAPHanaDatabase"))
+                {
+                    return GetSoftDeletedVaultAzureWorkloadSAPHanaItemModel(parsedItem);
+                }
+                else
+                {
+                    Logger.Instance.WriteWarning($"Unsupported soft deleted item dataSourceType: {dataSourceType}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to parse soft deleted item: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static ItemBase GetSoftDeletedVaultAzureVmItemModel(dynamic argItem)
+        {
+            try
+            {
+                var properties = argItem.properties;
+                
+                // Create a mock ProtectedItemResource to use existing constructors
+                var mockResource = CreateMockProtectedItemResource(argItem, "Microsoft.Compute/virtualMachines");
+                
+                // Extract container URI using existing helper function
+                string itemId = argItem.id?.ToString();
+                string containerUri = HelperUtils.GetContainerUri(
+                    HelperUtils.ParseUri(itemId),
+                    itemId);
+                
+                // Create soft deleted Azure VM item
+                var softDeletedItem = new SoftDeletedVaultAzureVmItem(mockResource, 
+                    IdUtils.GetNameFromUri(containerUri), 
+                    ContainerType.AzureVM, "");
+                
+                // Set soft delete specific properties
+                SetSoftDeletedCommonProperties(softDeletedItem, properties);
+                
+                return softDeletedItem;
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to create soft deleted Azure VM item: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static ItemBase GetSoftDeletedVaultAzureFileShareItemModel(dynamic argItem)
+        {
+            try
+            {
+                var properties = argItem.properties;
+                
+                var mockResource = CreateMockProtectedItemResource(argItem, "Microsoft.Storage/storageAccounts/fileServices/shares");
+                string itemId = argItem.id?.ToString();
+                string containerUri = HelperUtils.GetContainerUri(
+                    HelperUtils.ParseUri(itemId),
+                    itemId);
+                
+                var softDeletedItem = new SoftDeletedVaultAzureFileShareItem(mockResource, 
+                    containerUri, 
+                    ContainerType.AzureStorage, "");
+                
+                SetSoftDeletedCommonProperties(softDeletedItem, properties);
+                
+                return softDeletedItem;
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to create soft deleted Azure FileShare item: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static ItemBase GetSoftDeletedVaultAzureWorkloadSQLItemModel(dynamic argItem)
+        {
+            try
+            {
+                var properties = argItem.properties;
+                
+                var mockResource = CreateMockProtectedItemResource(argItem, "Microsoft.Compute/virtualMachines");
+                string itemId = argItem.id?.ToString();
+                string containerUri = HelperUtils.GetContainerUri(
+                    HelperUtils.ParseUri(itemId),
+                    itemId);
+                
+                var softDeletedItem = new SoftDeletedVaultAzureWorkloadSQLDatabaseProtectedItem(mockResource, 
+                    containerUri, 
+                    ContainerType.AzureVMAppContainer, "");
+                
+                SetSoftDeletedCommonProperties(softDeletedItem, properties);
+                
+                return softDeletedItem;
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to create soft deleted Azure Workload SQL item: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static ItemBase GetSoftDeletedVaultAzureWorkloadSAPHanaItemModel(dynamic argItem)
+        {
+            try
+            {
+                var properties = argItem.properties;
+                
+                var mockResource = CreateMockProtectedItemResource(argItem, "Microsoft.Compute/virtualMachines");
+                string itemId = argItem.id?.ToString();
+                string containerUri = HelperUtils.GetContainerUri(
+                    HelperUtils.ParseUri(itemId),
+                    itemId);
+                
+                var softDeletedItem = new SoftDeletedVaultAzureWorkloadSAPHanaDatabaseProtectedItem(mockResource, 
+                    containerUri, 
+                    ContainerType.AzureVMAppContainer, "");
+                
+                SetSoftDeletedCommonProperties(softDeletedItem, properties);
+                
+                return softDeletedItem;
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteWarning($"Failed to create soft deleted Azure Workload SAP HANA item: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static ServiceClientModel.ProtectedItemResource CreateMockProtectedItemResource(dynamic argItem, string resourceType)
+        {
+            var properties = argItem.properties;
+            string itemId = argItem.id?.ToString();
+            string name = argItem.name?.ToString();
+            string location = argItem.location?.ToString();
+            string backupManagementType = properties?.backupManagementType?.ToString();
+            string workloadType = properties?.workloadType?.ToString();
+
+            ServiceClientModel.ProtectedItem protectedItemProperties = null;
+
+            // Create the appropriate ProtectedItem type based on workload
+            if (backupManagementType == "AzureIaasVM" && workloadType == "VM")
+            {
+                protectedItemProperties = CreateAzureIaaSVMProtectedItem(properties);
+            }
+            else if (backupManagementType == "AzureStorage" && workloadType == "AzureFileShare")
+            {
+                protectedItemProperties = CreateAzureFileshareProtectedItem(properties);
+            }
+            else if (backupManagementType == "AzureWorkload" && workloadType == "SQLDataBase")
+            {
+                protectedItemProperties = CreateAzureVmWorkloadSQLDatabaseProtectedItem(properties);
+            }
+            else if (backupManagementType == "AzureWorkload" && workloadType == "SAPHanaDatabase")
+            {
+                protectedItemProperties = CreateAzureVmWorkloadSAPHanaDatabaseProtectedItem(properties);
+            }
+            else
+            {
+                // Default to AzureIaaSVMProtectedItem for unknown types
+                Logger.Instance.WriteWarning($"Unknown workload type: {backupManagementType}/{workloadType}, defaulting to AzureIaaSVMProtectedItem");
+                protectedItemProperties = CreateAzureIaaSVMProtectedItem(properties);
+            }
+
+            // Create ProtectedItemResource using constructor
+            var mockResource = new ServiceClientModel.ProtectedItemResource(
+                id: itemId,
+                name: name,
+                type: argItem.type?.ToString(),
+                location: location,
+                tags: null,
+                eTag: null,
+                properties: protectedItemProperties
+            );
+
+            return mockResource;
+        }
+
+        private static ServiceClientModel.AzureIaaSVMProtectedItem CreateAzureIaaSVMProtectedItem(dynamic properties)
+        {
+            return new ServiceClientModel.AzureIaaSVMProtectedItem(
+                backupManagementType: properties?.backupManagementType?.ToString(),
+                workloadType: properties?.workloadType?.ToString(),
+                containerName: properties?.containerName?.ToString(),
+                sourceResourceId: properties?.sourceResourceId?.ToString(),
+                policyId: properties?.policyId?.ToString() ?? "",
+                lastRecoveryPoint: ParseDateTime(properties?.lastRecoveryPoint?.ToString()),
+                backupSetName: properties?.backupSetName?.ToString(),
+                createMode: properties?.createMode?.ToString(),
+                deferredDeleteTimeInUtc: ParseDateTime(properties?.deferredDeleteTimeInUTC?.ToString()),
+                isScheduledForDeferredDelete: ParseBool(properties?.isScheduledForDeferredDelete?.ToString()),
+                deferredDeleteTimeRemaining: properties?.deferredDeleteTimeRemaining?.ToString(),
+                isDeferredDeleteScheduleUpcoming: ParseBool(properties?.isDeferredDeleteScheduleUpcoming?.ToString()),
+                isRehydrate: ParseBool(properties?.isRehydrate?.ToString()),
+                resourceGuardOperationRequests: null,
+                isArchiveEnabled: ParseBool(properties?.isArchiveEnabled?.ToString()),
+                policyName: properties?.policyName?.ToString() ?? "",
+                softDeleteRetentionPeriodInDays: ParseInt(properties?.softDeleteRetentionPeriod?.ToString()),
+                vaultId: properties?.vaultId?.ToString(),
+                friendlyName: properties?.friendlyName?.ToString(),
+                virtualMachineId: properties?.virtualMachineId?.ToString(),
+                protectionStatus: properties?.protectionStatus?.ToString(),
+                protectionState: properties?.protectionState?.ToString(),
+                healthStatus: properties?.healthStatus?.ToString(),
+                healthDetails: null,
+                kpisHealths: null,
+                lastBackupStatus: properties?.lastBackupStatus?.ToString(),
+                lastBackupTime: ParseDateTime(properties?.lastBackupTime?.ToString()),
+                protectedItemDataId: properties?.protectedItemDataId?.ToString(),
+                extendedInfo: null,
+                extendedProperties: null,
+                policyType: properties?.policyType?.ToString()
+            );
+        }
+
+        private static ServiceClientModel.AzureFileshareProtectedItem CreateAzureFileshareProtectedItem(dynamic properties)
+        {
+            return new ServiceClientModel.AzureFileshareProtectedItem(
+                backupManagementType: properties?.backupManagementType?.ToString(),
+                workloadType: properties?.workloadType?.ToString(),
+                containerName: properties?.containerName?.ToString(),
+                sourceResourceId: properties?.sourceResourceId?.ToString(),
+                policyId: properties?.policyId?.ToString() ?? "",
+                lastRecoveryPoint: ParseDateTime(properties?.lastRecoveryPoint?.ToString()),
+                backupSetName: properties?.backupSetName?.ToString(),
+                createMode: properties?.createMode?.ToString(),
+                deferredDeleteTimeInUtc: ParseDateTime(properties?.deferredDeleteTimeInUTC?.ToString()),
+                isScheduledForDeferredDelete: ParseBool(properties?.isScheduledForDeferredDelete?.ToString()),
+                deferredDeleteTimeRemaining: properties?.deferredDeleteTimeRemaining?.ToString(),
+                isDeferredDeleteScheduleUpcoming: ParseBool(properties?.isDeferredDeleteScheduleUpcoming?.ToString()),
+                isRehydrate: ParseBool(properties?.isRehydrate?.ToString()),
+                resourceGuardOperationRequests: null,
+                isArchiveEnabled: ParseBool(properties?.isArchiveEnabled?.ToString()),
+                policyName: properties?.policyName?.ToString() ?? "",
+                softDeleteRetentionPeriodInDays: ParseInt(properties?.softDeleteRetentionPeriod?.ToString()),
+                vaultId: properties?.vaultId?.ToString(),
+                friendlyName: properties?.friendlyName?.ToString(),
+                protectionStatus: properties?.protectionStatus?.ToString(),
+                protectionState: properties?.protectionState?.ToString(),
+                //healthStatus: properties?.healthStatus?.ToString(),
+                lastBackupStatus: properties?.lastBackupStatus?.ToString(),
+                lastBackupTime: ParseDateTime(properties?.lastBackupTime?.ToString()),
+                //protectedItemDataId: properties?.protectedItemDataId?.ToString(),
+                extendedInfo: null
+            );
+        }
+
+        private static ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem CreateAzureVmWorkloadSQLDatabaseProtectedItem(dynamic properties)
+        {
+            return new ServiceClientModel.AzureVmWorkloadSQLDatabaseProtectedItem(
+                backupManagementType: properties?.backupManagementType?.ToString(),
+                workloadType: properties?.workloadType?.ToString(),
+                containerName: properties?.containerName?.ToString(),
+                sourceResourceId: properties?.sourceResourceId?.ToString(),
+                policyId: properties?.policyId?.ToString() ?? "",
+                lastRecoveryPoint: ParseDateTime(properties?.lastRecoveryPoint?.ToString()),
+                backupSetName: properties?.backupSetName?.ToString(),
+                createMode: properties?.createMode?.ToString(),
+                deferredDeleteTimeInUtc: ParseDateTime(properties?.deferredDeleteTimeInUTC?.ToString()),
+                isScheduledForDeferredDelete: ParseBool(properties?.isScheduledForDeferredDelete?.ToString()),
+                deferredDeleteTimeRemaining: properties?.deferredDeleteTimeRemaining?.ToString(),
+                isDeferredDeleteScheduleUpcoming: ParseBool(properties?.isDeferredDeleteScheduleUpcoming?.ToString()),
+                isRehydrate: ParseBool(properties?.isRehydrate?.ToString()),
+                resourceGuardOperationRequests: null,
+                isArchiveEnabled: ParseBool(properties?.isArchiveEnabled?.ToString()),
+                policyName: properties?.policyName?.ToString() ?? "",
+                softDeleteRetentionPeriodInDays: ParseInt(properties?.softDeleteRetentionPeriod?.ToString()),
+                vaultId: properties?.vaultId?.ToString(),
+                friendlyName: properties?.friendlyName?.ToString(),
+                protectionStatus: properties?.protectionStatus?.ToString(),
+                protectionState: properties?.protectionState?.ToString(),
+                //healthStatus: properties?.healthStatus?.ToString(),
+                lastBackupStatus: properties?.lastBackupStatus?.ToString(),
+                lastBackupTime: ParseDateTime(properties?.lastBackupTime?.ToString()),
+                //protectedItemDataId: properties?.protectedItemDataId?.ToString(),
+                extendedInfo: null,
+                parentName: properties?.parentName?.ToString(),
+                parentType: properties?.parentType?.ToString(),
+                serverName: properties?.serverName?.ToString()
+                //isCompression: ParseBool(properties?.isCompression?.ToString()),
+                //isEncryption: ParseBool(properties?.isEncryption?.ToString())
+            );
+        }
+
+        private static ServiceClientModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem CreateAzureVmWorkloadSAPHanaDatabaseProtectedItem(dynamic properties)
+        {
+            return new ServiceClientModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem(
+                backupManagementType: properties?.backupManagementType?.ToString(),
+                workloadType: properties?.workloadType?.ToString(),
+                containerName: properties?.containerName?.ToString(),
+                sourceResourceId: properties?.sourceResourceId?.ToString(),
+                policyId: properties?.policyId?.ToString() ?? "",
+                lastRecoveryPoint: ParseDateTime(properties?.lastRecoveryPoint?.ToString()),
+                backupSetName: properties?.backupSetName?.ToString(),
+                createMode: properties?.createMode?.ToString(),
+                deferredDeleteTimeInUtc: ParseDateTime(properties?.deferredDeleteTimeInUTC?.ToString()),
+                isScheduledForDeferredDelete: ParseBool(properties?.isScheduledForDeferredDelete?.ToString()),
+                deferredDeleteTimeRemaining: properties?.deferredDeleteTimeRemaining?.ToString(),
+                isDeferredDeleteScheduleUpcoming: ParseBool(properties?.isDeferredDeleteScheduleUpcoming?.ToString()),
+                isRehydrate: ParseBool(properties?.isRehydrate?.ToString()),
+                resourceGuardOperationRequests: null,
+                isArchiveEnabled: ParseBool(properties?.isArchiveEnabled?.ToString()),
+                policyName: properties?.policyName?.ToString() ?? "",
+                softDeleteRetentionPeriodInDays: ParseInt(properties?.softDeleteRetentionPeriod?.ToString()),
+                vaultId: properties?.vaultId?.ToString(),
+                friendlyName: properties?.friendlyName?.ToString(),
+                protectionStatus: properties?.protectionStatus?.ToString(),
+                protectionState: properties?.protectionState?.ToString(),
+                //healthStatus: properties?.healthStatus?.ToString(),
+                lastBackupStatus: properties?.lastBackupStatus?.ToString(),
+                lastBackupTime: ParseDateTime(properties?.lastBackupTime?.ToString()),
+                //protectedItemDataId: properties?.protectedItemDataId?.ToString(),
+                extendedInfo: null,
+                parentName: properties?.parentName?.ToString(),
+                parentType: properties?.parentType?.ToString(),
+                serverName: properties?.serverName?.ToString()
+                //isCompression: ParseBool(properties?.isCompression?.ToString()),
+                //isEncryption: ParseBool(properties?.isEncryption?.ToString())
+            );
+        }
+
+        private static void SetSoftDeletedCommonProperties(ItemBase item, dynamic properties)
+        {
+            if (item == null || properties == null) return;
+
+            try
+            {
+                // Set common soft delete properties
+                if (item is AzureItem azureItem)
+                {
+                    azureItem.DeleteState = ItemDeleteState.ToBeDeleted;
+                    azureItem.IsScheduledForDeferredDelete = ParseBool(properties?.isScheduledForDeferredDelete?.ToString()) ?? true;
+                    
+                    var softDeletePeriod = ParseInt(properties?.softDeleteRetentionPeriod?.ToString());
+                    if (softDeletePeriod.HasValue)
+                    {
+                        azureItem.SoftDeleteRetentionPeriodInDays = softDeletePeriod.Value;
+                    }
+
+                    var deferredDeleteTime = ParseDateTime(properties?.deferredDeleteTimeInUTC?.ToString());
+                    if (deferredDeleteTime.HasValue)
+                    {
+                        azureItem.DateOfPurge = deferredDeleteTime.Value;
+                    }
+
+                    azureItem.LastBackupStatus = properties?.lastBackupStatus?.ToString();
+                    azureItem.LastBackupTime = ParseDateTime(properties?.lastBackupTime?.ToString());
+                    azureItem.ProtectionState = EnumUtils.GetEnum<ItemProtectionState>(properties?.protectionState?.ToString() ?? "ProtectionStopped");
+                    azureItem.IsArchiveEnabled = ParseBool(properties?.isArchiveEnabled?.ToString()) ?? false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.WriteDebug($"Warning: Failed to set soft deleted common properties: {ex.Message}");
+            }
+        }
+
+        private static DateTime? ParseDateTime(string dateTimeStr)
+        {
+            if (string.IsNullOrEmpty(dateTimeStr)) return null;
+            
+            if (DateTime.TryParse(dateTimeStr, out DateTime result))
+            {
+                return result;
+            }
+            return null;
+        }
+
+        private static bool? ParseBool(string boolStr)
+        {
+            if (string.IsNullOrEmpty(boolStr)) return null;
+            
+            if (bool.TryParse(boolStr, out bool result))
+            {
+                return result;
+            }
+            return null;
+        }
+
+        private static int? ParseInt(string intStr)
+        {
+            if (string.IsNullOrEmpty(intStr)) return null;
+            
+            if (int.TryParse(intStr, out int result))
+            {
+                return result;
+            }
+            return null;
+        }
+
         #endregion
     }
 }

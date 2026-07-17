@@ -202,8 +202,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (string.IsNullOrEmpty(fileName) || Directory.Exists(filePath))
             {
+                string destinationDirectory = filePath;
                 fileName = fileNameResolver.ResolveFileName(blobName, null);
                 filePath = System.IO.Path.Combine(filePath, fileName);
+                if (!NameUtil.IsFilePathWithinDirectory(filePath, destinationDirectory))
+                {
+                    throw new ArgumentException(String.Format(Resources.DownloadDestinationPathTraversal, blobName, destinationDirectory));
+                }
             }
 
             fileName = System.IO.Path.GetFileName(filePath);
@@ -213,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidFileName, fileName));
             }
 
-            //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that
+            //there is no need to check the read/write permission on the specified file path, the data movement library will do that
 
             return filePath;
         }

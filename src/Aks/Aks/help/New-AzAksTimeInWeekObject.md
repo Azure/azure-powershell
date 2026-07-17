@@ -1,7 +1,7 @@
 ---
 external help file: Az.Aks-help.xml
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeInWeekObject
+online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimeinweekobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for TimeInWeek.
 ## SYNTAX
 
 ```
-New-AzAksTimeInWeekObject [-Day <WeekDay>] [-HourSlot <Int32[]>]
+New-AzAksTimeInWeekObject [-Day <String>] [-HourSlot <Int32[]>]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ and will be used for parameter *TimeInWeek* in cmdlet *New-AzAksMaintenanceConfi
 The day of the week.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.WeekDay
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,6 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -HourSlot
+A list of hours in the day used to identify a time range.
 Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive).
 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC.
 Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
@@ -78,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeInWeek
 
 ## NOTES
 

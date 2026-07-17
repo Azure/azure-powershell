@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Migrate Backups Request
     /// </summary>
-    public partial class BackupsMigrationRequest : Microsoft.Rest.Azure.IResource
+    public partial class BackupsMigrationRequest
     {
         /// <summary>
         /// Initializes a new instance of the BackupsMigrationRequest class.

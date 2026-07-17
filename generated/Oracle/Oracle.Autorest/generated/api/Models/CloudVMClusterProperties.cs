@@ -44,6 +44,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string CompartmentId { get => this._compartmentId; }
 
+        /// <summary>Backing field for <see cref="ComputeModel" /> property.</summary>
+        private string _computeModel;
+
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ComputeModel { get => this._computeModel; }
+
         /// <summary>Backing field for <see cref="ComputeNode" /> property.</summary>
         private System.Collections.Generic.List<string> _computeNode;
 
@@ -141,6 +148,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Domain { get => this._domain; set => this._domain = value; }
 
+        /// <summary>Backing field for <see cref="ExascaleDbStorageVaultId" /> property.</summary>
+        private string _exascaleDbStorageVaultId;
+
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExascaleDbStorageVaultId { get => this._exascaleDbStorageVaultId; set => this._exascaleDbStorageVaultId = value; }
+
+        /// <summary>Backing field for <see cref="FileSystemConfigurationDetail" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> _fileSystemConfigurationDetail;
+
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get => this._fileSystemConfigurationDetail; set => this._fileSystemConfigurationDetail = value; }
+
         /// <summary>Backing field for <see cref="GiVersion" /> property.</summary>
         private string _giVersion;
 
@@ -164,19 +185,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>An array of IORM settings for all the database in the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; }
 
         /// <summary>Additional information about the current lifecycleState.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail = value ?? null; }
+        public string IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; }
 
         /// <summary>The current state of IORM configuration for the Exadata DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState = value ?? null; }
+        public string IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; }
 
         /// <summary>The current value for the IORM objective. The default is AUTO.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Inlined)]
-        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective = value ?? null; }
+        public string IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; }
 
         /// <summary>Backing field for <see cref="IsLocalBackupEnabled" /> property.</summary>
         private bool? _isLocalBackupEnabled;
@@ -244,6 +265,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Internal Acessors for CompartmentId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.CompartmentId { get => this._compartmentId; set { {_compartmentId = value;} } }
 
+        /// <summary>Internal Acessors for ComputeModel</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.ComputeModel { get => this._computeModel; set { {_computeModel = value;} } }
+
         /// <summary>Internal Acessors for DataCollectionOption</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDataCollectionOptions Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.DataCollectionOption { get => (this._dataCollectionOption = this._dataCollectionOption ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DataCollectionOptions()); set { {_dataCollectionOption = value;} } }
 
@@ -252,6 +276,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Internal Acessors for IormConfigCache</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfig Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCache { get => (this._iormConfigCache = this._iormConfigCache ?? new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExadataIormConfig()); set { {_iormConfigCache = value;} } }
+
+        /// <summary>Internal Acessors for IormConfigCacheDbPlan</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbIormConfig> Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheDbPlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).DbPlan = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleDetail</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheLifecycleDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleDetail = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheLifecycleState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheLifecycleState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).LifecycleState = value ?? null; }
+
+        /// <summary>Internal Acessors for IormConfigCacheObjective</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.IormConfigCacheObjective { get => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective; set => ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadataIormConfigInternal)IormConfigCache).Objective = value ?? null; }
 
         /// <summary>Internal Acessors for LastUpdateHistoryEntryId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.LastUpdateHistoryEntryId { get => this._lastUpdateHistoryEntryId; set { {_lastUpdateHistoryEntryId = value;} } }
@@ -291,6 +327,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>Internal Acessors for Shape</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.Shape { get => this._shape; set { {_shape = value;} } }
+
+        /// <summary>Internal Acessors for StorageManagementType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.StorageManagementType { get => this._storageManagementType; set { {_storageManagementType = value;} } }
 
         /// <summary>Internal Acessors for SubnetOcid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.SubnetOcid { get => this._subnetOcid; set { {_subnetOcid = value;} } }
@@ -415,6 +454,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> SshPublicKey { get => this._sshPublicKey; set => this._sshPublicKey = value; }
 
+        /// <summary>Backing field for <see cref="StorageManagementType" /> property.</summary>
+        private string _storageManagementType;
+
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string StorageManagementType { get => this._storageManagementType; }
+
         /// <summary>Backing field for <see cref="StorageSizeInGb" /> property.</summary>
         private int? _storageSizeInGb;
 
@@ -507,7 +555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string BackupSubnetCidr { get; set; }
         /// <summary>Cloud Exadata Infrastructure ID</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -541,6 +589,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"compartmentId",
         PossibleTypes = new [] { typeof(string) })]
         string CompartmentId { get;  }
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The compute model of the VM Cluster.",
+        SerializedName = @"computeModel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get;  }
         /// <summary>The list of compute servers to be added to the cloud VM cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -687,9 +747,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
         string Domain { get; set; }
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Exadata Database Storage Vault ID",
+        SerializedName = @"exascaleDbStorageVaultId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExascaleDbStorageVaultId { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = false,
+        Update = true,
+        Description = @"Array of mount path and size.",
+        SerializedName = @"fileSystemConfigurationDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -700,7 +782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string GiVersion { get; set; }
         /// <summary>The hostname for the cloud VM cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -1023,6 +1105,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"sshPublicKeys",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> SshPublicKey { get; set; }
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Specifies whether the type of storage management for the VM cluster is ASM or Exascale.",
+        SerializedName = @"storageManagementType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ASM", "Exascale")]
+        string StorageManagementType { get;  }
         /// <summary>The data disk group size to be allocated in GBs per VM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1036,7 +1132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? StorageSizeInGb { get; set; }
         /// <summary>Client subnet</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -1108,7 +1204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         System.Collections.Generic.List<string> VipId { get;  }
         /// <summary>VNET for network connectivity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -1145,6 +1241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string ClusterName { get; set; }
         /// <summary>Cluster compartmentId</summary>
         string CompartmentId { get; set; }
+        /// <summary>The compute model of the VM Cluster.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ECPU", "OCPU")]
+        string ComputeModel { get; set; }
         /// <summary>The list of compute servers to be added to the cloud VM cluster.</summary>
         System.Collections.Generic.List<string> ComputeNode { get; set; }
         /// <summary>The number of CPU cores enabled on the cloud VM cluster.</summary>
@@ -1187,6 +1286,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string DisplayName { get; set; }
         /// <summary>The domain name for the cloud VM cluster.</summary>
         string Domain { get; set; }
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        string ExascaleDbStorageVaultId { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
         string GiVersion { get; set; }
         /// <summary>The hostname for the cloud VM cluster.</summary>
@@ -1273,6 +1376,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
         /// </summary>
         System.Collections.Generic.List<string> SshPublicKey { get; set; }
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ASM", "Exascale")]
+        string StorageManagementType { get; set; }
         /// <summary>The data disk group size to be allocated in GBs per VM.</summary>
         int? StorageSizeInGb { get; set; }
         /// <summary>Client subnet</summary>

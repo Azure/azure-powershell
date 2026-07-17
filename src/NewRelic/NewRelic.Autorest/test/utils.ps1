@@ -48,28 +48,28 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    $resourceGroup = 'testgroup-joyer'
+    $resourceGroup = 'vanshjoshi-clientparity-test'
     $env.Add('resourceGroup', $resourceGroup)
 
     $region = 'eastus'
     $env.Add('region', $region)
 
-    $testerEmail = 'v-jiaji@microsoft.com'
-    $testerFirstName = 'Joyer'
-    $testerLastName = 'Jin'
+    $testerEmail = 'vanshjoshi@microsoft.com'
+    $testerFirstName = 'Vansh'
+    $testerLastName = 'Joshi'
 
     $env.Add('testerEmail', $testerEmail)
     $env.Add('testerFirstName', $testerFirstName)
     $env.Add('testerLastName', $testerLastName)
 
-    $testMonitorName = 'testMonitor-01'
+    $testMonitorName = 'clientParity-Test-1014'
     $env.Add('testMonitorName', $testMonitorName)
 
     $NewMonitorName = 'test-01' + (RandomString -allChars $false -len 6)
     $env.Add('NewMonitorName', $NewMonitorName)
 
-    $testAppPlanName = 'joyertestplan'
-    $testAppName = 'joyertestapp'
+    $testAppPlanName = 'vansh-newrelic-plan'
+    $testAppName = 'vansh-newrelic-app'
     $testVMName = 'joyertestmachine01'
     $env.Add('testVMName', $testVMName)
     #Plan Data $env.SubscriptionId = 272c26cb-7026-4b37-b190-7cb7b2abecb0
@@ -105,16 +105,15 @@ function setupEnv() {
     # $null = New-AzAppServicePlan -ResourceGroupName $env.resourceGroup -Name $testAppPlanName -Location $env.region -Tier "Free"
     # Step 3: Create the web app
     # $testApp = New-AzWebApp -Name $testAppName -ResourceGroupName $env.resourceGroup -AppServicePlan $testAppPlanName
-    # Step 4: Install extension New Relic .NET Agent
+    # Step 4: Try to get web app (optional for testing)
     try {
         $testApp = Get-AzWebApp -Name $testAppName -ResourceGroupName $env.resourceGroup -ErrorAction Stop
+        $env.Add('testApp', $testApp.Id)
     }
     catch {
-        Write-Error 'Please create a web app firstly.'
-        throw
+        Write-Warning "Web app '$testAppName' not found. Some tests may be skipped."
+        $env.Add('testApp', '')
     }
-
-    $env.Add('testApp', $testApp.Id)
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

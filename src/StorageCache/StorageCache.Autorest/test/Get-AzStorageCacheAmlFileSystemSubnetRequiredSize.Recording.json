@@ -1,0 +1,42 @@
+{
+  "Get-AzStorageCacheAmlFileSystemSubnetRequiredSize+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize?api-version=2026-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/providers/Microsoft.StorageCache/getRequiredAmlFSSubnetsSize?api-version=2026-01-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"AMLFS-Durable-Premium-250\"\r\n  },\r\n  \"storageCapacityTiB\": 16\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "5f312bc0-710d-4c8a-8191-bd53ba34cf10_134223603836567748,5f312bc0-710d-4c8a-8191-bd53ba34cf10_134223603836567748" ],
+        "x-ms-request-id": [ "1d9b3957-81b4-44a2-ad04-659a39455d53" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/eastus2/2c63e3b5-7f08-47e7-8c91-85862d041f5d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "44411a63-2ff5-4e02-aa81-5e82da204a97" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260512T035229Z:44411a63-2ff5-4e02-aa81-5e82da204a97" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6EA9A948E78E4CDB9C81EA71F05168D4 Ref B: MNZ221060618037 Ref C: 2026-05-12T03:52:29Z" ],
+        "Date": [ "Tue, 12 May 2026 03:52:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "33" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"filesystemSubnetSize\": 8\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

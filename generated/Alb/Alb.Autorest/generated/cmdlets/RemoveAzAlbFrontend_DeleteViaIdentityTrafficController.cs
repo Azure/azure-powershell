@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Description(@"Delete a Frontend")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}", ApiVersion = "2023-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Alb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}", ApiVersion = "2025-01-01")]
     public partial class RemoveAzAlbFrontend_DeleteViaIdentityTrafficController : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IContext
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
                     if (TrafficControllerInputObject?.Id != null)
                     {
                         this.TrafficControllerInputObject.Id += $"/frontends/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
-                        await this.Client.FrontendsInterfaceDeleteViaIdentity(TrafficControllerInputObject.Id, onOk, onNoContent, onDefault, this, Pipeline);
+                        await this.Client.FrontendsInterfaceDeleteViaIdentity(TrafficControllerInputObject.Id, onNoContent, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("TrafficControllerInputObject has null value for TrafficControllerInputObject.TrafficControllerName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, TrafficControllerInputObject) );
                         }
-                        await this.Client.FrontendsInterfaceDelete(TrafficControllerInputObject.SubscriptionId ?? null, TrafficControllerInputObject.ResourceGroupName ?? null, TrafficControllerInputObject.TrafficControllerName ?? null, Name, onOk, onNoContent, onDefault, this, Pipeline);
+                        await this.Client.FrontendsInterfaceDelete(TrafficControllerInputObject.SubscriptionId ?? null, TrafficControllerInputObject.ResourceGroupName ?? null, TrafficControllerInputObject.TrafficControllerName ?? null, Name, onNoContent, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

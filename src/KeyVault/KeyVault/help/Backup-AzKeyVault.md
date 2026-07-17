@@ -61,7 +61,7 @@ The cmdlet will create a folder (typically named `mhsm-{name}-{timestamp}`) in t
 
 ### Example 2 Backup an HSM to Storage Container via User Assigned Managed Identity Authentication
 ```powershell
-# Make sure an identity is assigend to the Hsm
+# Make sure an identity is assigned to the Hsm
 Update-AzKeyVaultManagedHsm -UserAssignedIdentity "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}"
 Backup-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -UseUserManagedIdentity
 ```

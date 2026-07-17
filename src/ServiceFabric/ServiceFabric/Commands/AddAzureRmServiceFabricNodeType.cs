@@ -133,6 +133,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         public string VMImageVersion { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = "The location of the node type and its associated storage, networking, and OS resources. If not specified, the location of the resource group will be used.")]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.DurabilityLevel == DurabilityLevel.Gold && !skusSupportGoldDurability.Contains(this.VmSku))
@@ -186,7 +189,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 },
                 HttpGatewayEndpointPort = Constants.DefaultHttpGatewayEndpoint,
                 IsPrimary = this.IsPrimaryNodeType ?? false,
-                VmInstanceCount = this.Capacity
+                VMInstanceCount = this.Capacity
             });
 
             return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
@@ -235,6 +238,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetLocation()
         {
+            if (!string.IsNullOrEmpty(this.Location))
+            { 
+                return this.Location;
+            }
             return GetCurrentCluster().Location;
         }
 
@@ -503,9 +510,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 publicAddressName,
                 new PublicIPAddress()
                 {
-                    PublicIPAllocationMethod = "Dynamic",
+                    PublicIPAllocationMethod = "Static",
                     Location = GetLocation(),
-                    DnsSettings = new PublicIPAddressDnsSettings(dnsLabel)
+                    DnsSettings = new PublicIPAddressDnsSettings(dnsLabel),
+                    Sku = new PublicIPAddressSku()
+                    {
+                        Name = "Standard"
+                    }
                 });
 
             var backendAddressPoolName = "LoadBalancerBEAddressPool";
@@ -546,6 +557,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var newLoadBalancer = new LoadBalancer(newLoadBalancerId, lbName)
             {
                 Location = GetLocation(),
+                Sku = new LoadBalancerSku()
+                {
+                    Name = "Standard"
+                },
                 FrontendIPConfigurations = new List<FrontendIPConfiguration>()
                 {
                     new FrontendIPConfiguration()

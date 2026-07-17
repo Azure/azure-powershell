@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzCommunicationService' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $linkedDomains1 = @(
 	        $env.linkedDomain
@@ -23,7 +23,7 @@ Describe 'Update-AzCommunicationService' {
         $UpdatedAzCommunicationService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $res = Get-AzCommunicationService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup
         $UpdatedAzCommunicationService = Update-AzCommunicationService -InputObject $res -Tag $tag

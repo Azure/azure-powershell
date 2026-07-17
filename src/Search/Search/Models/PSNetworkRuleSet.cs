@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
     public class PSNetworkRuleSet
     {
         public IList<PSIpRule> IpRules { get; set; }
+        public PSSearchBypass Bypass { get; set; }
 
         public static explicit operator NetworkRuleSet(PSNetworkRuleSet v)
         {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             {
                 return null;
             }
-            return new NetworkRuleSet(ipRules: v.IpRules.Select(ipRule => (IpRule)ipRule).ToList());
+            return new NetworkRuleSet(ipRules: v.IpRules.Select(ipRule => (IpRule)ipRule).ToList(), bypass: v.Bypass.ToString());
         }
 
         public static explicit operator PSNetworkRuleSet(NetworkRuleSet v)
@@ -38,10 +39,17 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             {
                 return null;
             }
-            return new PSNetworkRuleSet()
+            var networkRuleSet =  new PSNetworkRuleSet()
             {
                 IpRules = v.IPRules.Select(ipRule => (PSIpRule)ipRule).ToList()
             };
+
+            if (v.Bypass != null  && Enum.TryParse(v.Bypass, ignoreCase: true, out PSSearchBypass bypass))
+            {
+                networkRuleSet.Bypass = bypass;
+            }
+
+            return networkRuleSet;
         }
 
         public static implicit operator PSNetworkRuleSet(object[] v)

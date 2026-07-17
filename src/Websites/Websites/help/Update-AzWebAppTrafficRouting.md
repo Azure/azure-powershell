@@ -14,7 +14,7 @@ Update a routing Rule to the Slot.
 ```
 Update-AzWebAppTrafficRouting -ResourceGroupName <String> -WebAppName <String> -RoutingRule <Hashtable>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ The **Update-AzWebAppTrafficRouting** cmdlet updates the routing rule configurat
 
 ## EXAMPLES
 
-### Example 1: Update a routing rule to transfer 15% of production traffice to  Stg slot
+### Example 1: Update a routing rule to transfer 15% of production traffic to  Stg slot
 ```powershell
 Update-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
@@ -30,15 +30,45 @@ Update-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppNam
 
 This command updates a routing rule to transfer 15% of production traffic to Stg slot.
 
-### Example 2: Update a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
+### Example 2: Update a routing rule to transfer the production traffic to Stg slot ranges from 50% to 90% in incremental manner.
 ```powershell
 Update-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
 -RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=50;ChangeIntervalInMinutes=1;MinReroutePercentage=50;MaxReroutePercentage=90;Name='Stg';ChangeStep=10}
 ```
 
-This command Updates a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
+This command Updates a routing rule to transfer the production traffic to Stg slot ranges from 50% to 90% in incremental manner.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

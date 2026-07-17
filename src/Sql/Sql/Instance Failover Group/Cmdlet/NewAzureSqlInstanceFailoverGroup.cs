@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the partner subscription id for Instance Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The subscription id of the secondary managed instance of the Instance Failover Group needed only for cross-subscrption setup")]
+            HelpMessage = "The subscription id of the secondary managed instance of the Instance Failover Group needed only for cross-subscription setup")]
         [ValidateNotNullOrEmpty]
         public string PartnerSubscriptionId { get; set; }
 

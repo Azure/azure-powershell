@@ -13,7 +13,7 @@
     <copyright>Microsoft Corporation. All rights reserved.</copyright>
     <tags>Azure ResourceManager ARM PSModule $(service-name)</tags>
     <dependencies>
-      <dependency id="Az.Accounts" version="1.8.1" />
+      <dependency id="Az.Accounts" version="2.7.5" />
     </dependencies>
   </metadata>
   <files>
@@ -23,9 +23,9 @@
     <!-- https://github.com/NuGet/Home/issues/3584 -->
     <file src="bin/Az.ResourceGraph.private.dll" target="bin" />
     <file src="bin\Az.ResourceGraph.private.deps.json" target="bin" />
-    <file src="internal\**\*.*" exclude="internal\readme.md" target="internal" />
-    <file src="custom\**\*.*" exclude="custom\readme.md;custom\**\*.cs" target="custom" />
-    <file src="docs\**\*.md" exclude="docs\readme.md" target="docs" />
+    <file src="internal\**\*.*" exclude="internal\README.md" target="internal" />
+    <file src="custom\**\*.*" exclude="custom\README.md;custom\**\*.cs" target="custom" />
+    <file src="docs\**\*.md" exclude="docs\README.md" target="docs" />
     <file src="exports\**\ProxyCmdletDefinitions.ps1" target="exports" />
     <file src="utils\**\*.*" target="utils" />
   </files>

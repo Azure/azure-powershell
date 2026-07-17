@@ -36,13 +36,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="osUpgradeVersion">A value indicating the inplace OS Upgrade version.
         /// </param>
-        public VMwareCbtTestMigrateInput(string recoveryPointId, string networkId, System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), string osUpgradeVersion = default(string))
+
+        /// <param name="postMigrationSteps">The managed run command script input.
+        /// </param>
+        public VMwareCbtTestMigrateInput(string recoveryPointId, string networkId, System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), string osUpgradeVersion = default(string), System.Collections.Generic.IList<ManagedRunCommandScriptInput> postMigrationSteps = default(System.Collections.Generic.IList<ManagedRunCommandScriptInput>))
 
         {
             this.RecoveryPointId = recoveryPointId;
             this.NetworkId = networkId;
             this.VMNics = vmNics;
             this.OSUpgradeVersion = osUpgradeVersion;
+            this.PostMigrationSteps = postMigrationSteps;
             CustomInit();
         }
 
@@ -75,6 +79,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osUpgradeVersion")]
         public string OSUpgradeVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed run command script input.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "postMigrationSteps")]
+        public System.Collections.Generic.IList<ManagedRunCommandScriptInput> PostMigrationSteps {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -104,6 +114,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
                 }
             }
 
+            if (this.PostMigrationSteps != null)
+            {
+                foreach (var element in this.PostMigrationSteps)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

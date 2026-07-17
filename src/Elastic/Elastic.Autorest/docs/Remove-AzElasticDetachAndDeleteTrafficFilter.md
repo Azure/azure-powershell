@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticDetachAndDeleteTrafficFilter
 
 ## SYNOPSIS
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzElasticDetachAndDeleteTrafficFilter -InputObject <IElasticIdentity> [-R
 ```
 
 ## DESCRIPTION
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## EXAMPLES
 
@@ -57,7 +57,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity

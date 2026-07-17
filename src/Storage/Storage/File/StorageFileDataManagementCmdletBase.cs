@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         // Dynamic Parameters which are only available on Windows.
         public class WindowsOnlyParameters
         {
-            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
+            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
             public SwitchParameter PreserveSMBAttribute { get; set; }
         }
     }

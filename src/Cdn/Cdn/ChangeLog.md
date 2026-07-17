@@ -19,6 +19,30 @@
 -->
 
 ## Upcoming Release
+* Upgraded API version to 2026-04-01-preview.
+* Fixed CDN long-running operations that returned completed resource responses without a Location header.
+
+## Version 6.0.2
+* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
+
+## Version 6.0.1
+* Bug fix for https://github.com/Azure/azure-powershell/issues/29231
+
+## Version 6.0.0
+* Added support for edge action
+* Upgraded Api version to 2025-06-01
+
+## Version 5.0.1
+* Fixed content types comtent bug with null content
+* Added breaking change message for 2025-06-01
+
+## Version 5.0.0
+* Upgraded Api version to 2025-04-15
+* Added support for cipher
+* Added support for migration from classic cdn to afdx
+
+## Version 3.3.1
+* This upgrade contains no changes in cdn powershell commandline tool, it only notifies user that we are going to upgrade the version of autorest, and will bring some breaking changes.
 
 ## Version 3.3.0
 * Upgraded nuget package to signed package.

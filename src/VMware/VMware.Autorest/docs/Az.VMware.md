@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VMware
-Module Guid: 6ced3ed2-fb86-4a72-aca7-369161b12fea
+Module Guid: 6bee2b60-5b08-4f28-b776-6dfda4fc70db
 Download Help Link: https://learn.microsoft.com/powershell/module/az.vmware
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,8 +32,20 @@ Get a Datastore
 ### [Get-AzVMwareGlobalReachConnection](Get-AzVMwareGlobalReachConnection.md)
 Get a GlobalReachConnection
 
+### [Get-AzVMwareHost](Get-AzVMwareHost.md)
+Get a Host
+
 ### [Get-AzVMwareIscsiPath](Get-AzVMwareIscsiPath.md)
 Get a IscsiPath
+
+### [Get-AzVMwareLicense](Get-AzVMwareLicense.md)
+Get a License
+
+### [Get-AzVMwareLicenseProperty](Get-AzVMwareLicenseProperty.md)
+Just like ArmResourceActionSync, but with no request body.
+
+### [Get-AzVMwareMaintenance](Get-AzVMwareMaintenance.md)
+Get a Maintenance
 
 ### [Get-AzVMwarePlacementPolicy](Get-AzVMwarePlacementPolicy.md)
 Get a PlacementPolicy
@@ -44,8 +56,29 @@ Get a PrivateCloud
 ### [Get-AzVMwarePrivateCloudAdminCredential](Get-AzVMwarePrivateCloudAdminCredential.md)
 List the admin credentials for the private cloud
 
+### [Get-AzVMwarePrivateCloudVcfLicense](Get-AzVMwarePrivateCloudVcfLicense.md)
+Get the license for the private cloud
+
+### [Get-AzVMwareProvisionedNetwork](Get-AzVMwareProvisionedNetwork.md)
+Get a ProvisionedNetwork
+
+### [Get-AzVMwarePureStoragePolicy](Get-AzVMwarePureStoragePolicy.md)
+Get a PureStoragePolicy
+
+### [Get-AzVMwareSku](Get-AzVMwareSku.md)
+A list of SKUs.
+
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a VirtualMachine
+
+### [Invoke-AzVMwareInitiateMaintenanceCheck](Invoke-AzVMwareInitiateMaintenanceCheck.md)
+Initiate maintenance readiness checks
+
+### [Invoke-AzVMwareRescheduleMaintenance](Invoke-AzVMwareRescheduleMaintenance.md)
+Reschedule a maintenance
+
+### [Invoke-AzVMwareScheduleMaintenance](Invoke-AzVMwareScheduleMaintenance.md)
+Schedule a maintenance
 
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
@@ -74,6 +107,9 @@ Create a GlobalReachConnection
 ### [New-AzVMwareIscsiPath](New-AzVMwareIscsiPath.md)
 Create a IscsiPath
 
+### [New-AzVMwareLicense](New-AzVMwareLicense.md)
+Create a License
+
 ### [New-AzVMwarePlacementPolicy](New-AzVMwarePlacementPolicy.md)
 Create a PlacementPolicy
 
@@ -88,6 +124,9 @@ Rotate the vCenter password
 
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
 Create an in-memory object for PSCredentialExecutionParameter.
+
+### [New-AzVMwarePureStoragePolicy](New-AzVMwarePureStoragePolicy.md)
+Create a PureStoragePolicy
 
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
 Create an in-memory object for ScriptSecureStringExecutionParameter.
@@ -122,17 +161,26 @@ Delete a GlobalReachConnection
 ### [Remove-AzVMwareIscsiPath](Remove-AzVMwareIscsiPath.md)
 Delete a IscsiPath
 
+### [Remove-AzVMwareLicense](Remove-AzVMwareLicense.md)
+Delete a License
+
 ### [Remove-AzVMwarePlacementPolicy](Remove-AzVMwarePlacementPolicy.md)
 Delete a PlacementPolicy
 
 ### [Remove-AzVMwarePrivateCloud](Remove-AzVMwarePrivateCloud.md)
 Delete a private cloud
 
+### [Remove-AzVMwarePureStoragePolicy](Remove-AzVMwarePureStoragePolicy.md)
+Delete a PureStoragePolicy
+
 ### [Test-AzVMwareLocationQuotaAvailability](Test-AzVMwareLocationQuotaAvailability.md)
 Return quota for subscription by region
 
 ### [Test-AzVMwareLocationTrialAvailability](Test-AzVMwareLocationTrialAvailability.md)
 Return trial status for subscription by region
+
+### [Test-AzVMwareServiceComponentAvailability](Test-AzVMwareServiceComponentAvailability.md)
+Return service component availability
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
 Update a ExpressRouteAuthorization
@@ -152,9 +200,15 @@ Update a GlobalReachConnection
 ### [Update-AzVMwareIscsiPath](Update-AzVMwareIscsiPath.md)
 Update a IscsiPath
 
+### [Update-AzVMwareLicense](Update-AzVMwareLicense.md)
+Update a License
+
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a PlacementPolicy
 
 ### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
 Update a PrivateCloud
+
+### [Update-AzVMwarePureStoragePolicy](Update-AzVMwarePureStoragePolicy.md)
+Update a PureStoragePolicy
 

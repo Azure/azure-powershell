@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains information about an Azure Batch account.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BatchAccount : Resource
+    public partial class BatchAccount : AzureResource
     {
         /// <summary>
         /// Initializes a new instance of the BatchAccount class.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">If not specified, the default value is &#39;enabled&#39;.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="privateEndpointConnections">List of private endpoint connections associated with the Batch account
         /// </param>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         public KeyVaultReference KeyVaultReference {get; private set; }
 
         /// <summary>
-        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets if not specified, the default value is &#39;enabled&#39;. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public PublicNetworkAccessType? PublicNetworkAccess {get; set; }

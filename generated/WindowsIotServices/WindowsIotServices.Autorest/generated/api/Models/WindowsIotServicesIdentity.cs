@@ -53,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Windows IoT Device Service.",
         SerializedName = @"deviceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -61,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -69,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group that contains the Windows IoT Device Service.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription identifier.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

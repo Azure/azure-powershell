@@ -14,11 +14,26 @@
 // limitations under the License.
 // 
 
+using Microsoft.Azure.Management.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
     public partial class PSVirtualMachineScaleSet
     {
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
+
+        // Gets or sets the AddProxyAgentExtension.
+        public bool? AddProxyAgentExtension { get; set; }
+
+        // Gets or sets the ZonePlacementPolicy.
+        public string ZonePlacementPolicy { get; set; }
+
+        // Gets or sets the ScheduledEventsPolicy.
+        public ScheduledEventsPolicy ScheduledEventsPolicy { get; set; }
+
+        // Gets or sets the lifecycle hooks profile.
+        public Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile LifecycleHooksProfile { get; set; }
+
     }
 }

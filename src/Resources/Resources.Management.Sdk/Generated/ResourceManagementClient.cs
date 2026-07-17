@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Management.ResourceManager
             this.Tags = new TagsOperations(this);
             this.DeploymentOperations = new DeploymentOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-07-01";
+            this.ApiVersion = "2024-11-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

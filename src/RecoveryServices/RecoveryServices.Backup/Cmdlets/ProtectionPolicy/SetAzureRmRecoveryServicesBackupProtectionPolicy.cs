@@ -43,9 +43,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public PolicyBase Policy { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ParameterSetName = ModifyPolicyParamSet)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.TokenDepricated, ParameterSetName = ModifyPolicyParamSet)]
         [ValidateNotNullOrEmpty]
         public string Token;
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ParameterSetName = ModifyPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public System.Security.SecureString SecureToken;
 
         /// <summary>
         /// Retention policy object to be modified
@@ -215,6 +219,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                 }
 
+                string plainToken = HelperUtils.GetPlainToken(Token, SecureToken);
+                
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
                     {
@@ -224,7 +230,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
                         { PolicyParams.FixForInconsistentItems, FixForInconsistentItems.IsPresent },
-                        { ResourceGuardParams.Token, Token },
+                        { ResourceGuardParams.Token, plainToken },
                         { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                         { PolicyParams.ExistingPolicy, servicePolicy},
                         { PolicyParams.TieringPolicy, tieringDetails},

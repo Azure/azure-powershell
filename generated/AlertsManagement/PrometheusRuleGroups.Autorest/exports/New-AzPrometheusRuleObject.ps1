@@ -23,7 +23,7 @@ Create an in-memory object for PrometheusRule.
 New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m" -Expression 'histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service="billing-processing"}[5m])) by (job_type))'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
+Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,10 +40,10 @@ ANNOTATION <IPrometheusRuleAnnotations>: The annotations clause specifies a set 
 LABEL <IPrometheusRuleLabels>: Labels to add or overwrite before storing the result.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-AzPrometheusRuleObject
+https://learn.microsoft.com/powershell/module/Az.AlertsManagement/new-azprometheusruleobject
 #>
 function New-AzPrometheusRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.PrometheusRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -56,9 +56,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupAction[]]
     # Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-    # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
     [Parameter()]
@@ -69,10 +68,9 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleAnnotations]
     # The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
     # The annotation values can be templated.
-    # To construct, see NOTES section for ANNOTATION properties and create a hash table.
     ${Annotation},
 
     [Parameter()]
@@ -89,9 +87,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleLabels]
     # Labels to add or overwrite before storing the result.
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter()]
@@ -127,6 +124,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -155,6 +155,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

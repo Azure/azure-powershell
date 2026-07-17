@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
-using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string resourceGroupsCleanupAction { get; set; }
 
         public string managementGroupsCleanupAction { get; set; }
+
+        public string resourcesWithoutDeleteSupport { get; set; }
+
+        public string validationLevel { get; set; }
 
         public SystemData systemData { get; set; }
 
@@ -91,6 +95,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.resourcesCleanupAction = deploymentStack.ActionOnUnmanage.Resources;
             this.resourceGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ResourceGroups;
             this.managementGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ManagementGroups;
+            this.resourcesWithoutDeleteSupport = deploymentStack.ActionOnUnmanage.ResourcesWithoutDeleteSupport;
+            this.validationLevel = deploymentStack.ValidationLevel;
             this.location = deploymentStack.Location;
             this.parametersLink = deploymentStack.ParametersLink;
             this.debugSetting = deploymentStack.DebugSetting;
@@ -227,8 +233,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         {
             var outputsPS = new Dictionary<string, DeploymentVariable>();
 
+            if (outputs == null)
+            {
+                return outputsPS;
+            }
+
             // Extract DeploymentVariables from the passed in json object.
-            var jObject = JObject.Parse(outputs.ToString());
+            var jToken = outputs as JToken ?? JToken.FromObject(outputs);
+            var jObject = jToken as JObject;
+            if (jObject == null)
+            {
+                var jArray = jToken as JArray;
+                if (jArray != null && !jArray.Any())
+                {
+                    return outputsPS;
+                }
+
+                throw new InvalidOperationException(string.Format("Deployment stack outputs must serialize to a JSON object. Actual token type: {0}.", jToken.Type));
+            }
+
             foreach (var props in jObject.Properties())
             {
                 outputsPS[props.Name] = ExtractDeploymentVariableFromJObject(props.Value as JObject);

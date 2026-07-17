@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -104,6 +104,16 @@ namespace Microsoft.Azure.Management.CognitiveServices
         IModelsOperations Models { get; }
 
         /// <summary>
+        /// Gets the ILocationBasedModelCapacitiesOperations
+        /// </summary>
+        ILocationBasedModelCapacitiesOperations LocationBasedModelCapacities { get; }
+
+        /// <summary>
+        /// Gets the IModelCapacitiesOperations
+        /// </summary>
+        IModelCapacitiesOperations ModelCapacities { get; }
+
+        /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
         IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
@@ -124,6 +134,41 @@ namespace Microsoft.Azure.Management.CognitiveServices
         ICommitmentPlansOperations CommitmentPlans { get; }
 
         /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        IEncryptionScopesOperations EncryptionScopes { get; }
+
+        /// <summary>
+        /// Gets the IRaiPoliciesOperations
+        /// </summary>
+        IRaiPoliciesOperations RaiPolicies { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistsOperations
+        /// </summary>
+        IRaiBlocklistsOperations RaiBlocklists { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistItemsOperations
+        /// </summary>
+        IRaiBlocklistItemsOperations RaiBlocklistItems { get; }
+
+        /// <summary>
+        /// Gets the IRaiContentFiltersOperations
+        /// </summary>
+        IRaiContentFiltersOperations RaiContentFilters { get; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IDefenderForAiSettingsOperations
+        /// </summary>
+        IDefenderForAiSettingsOperations DefenderForAiSettings { get; }
+
+        /// <summary>
         /// Check available SKUs.
         /// </summary>
         /// <remarks>
@@ -136,7 +181,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The SKU of the resource.
         /// </param>
         /// <param name='kind'>
-        /// The Kind of the resource.
+        /// The kind (type) of cognitive service account.
         /// </param>
         /// <param name='type'>
         /// The Type of the resource.
@@ -183,6 +228,35 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DomainAvailability>> CheckDomainAvailabilityWithHttpMessagesAsync(string subdomainName, string type, string kind = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Model capacity calculator.
+        /// </summary>
+        /// <remarks>
+        /// Model capacity calculator.
+        /// </remarks>
+        /// <param name='model'>
+        /// Properties of Cognitive Services account deployment model.
+        /// </param>
+        /// <param name='skuName'>
+        /// The name of SKU.
+        /// </param>
+        /// <param name='workloads'>
+        /// List of Model Capacity Calculator Workload.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CalculateModelCapacityResult>> CalculateModelCapacityWithHttpMessagesAsync(DeploymentModel model = default(DeploymentModel), string skuName = default(string), System.Collections.Generic.IList<ModelCapacityCalculatorWorkload> workloads = default(System.Collections.Generic.IList<ModelCapacityCalculatorWorkload>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

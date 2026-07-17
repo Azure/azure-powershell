@@ -339,16 +339,18 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Type</Label>
-            <Width>10</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Length</Label>
-            <Width>15</Width>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Path</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -363,6 +365,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>if ($_.ShareFileClient -eq $null) {$_.ShareDirectoryClient.Path} else {$_.ShareFileClient.Path}</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -401,6 +406,10 @@
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Protocols</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsDeleted</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
@@ -422,6 +431,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("o")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>if ($_.ShareProperties.Protocols -ne $null) {$_.ShareProperties.Protocols} else {$_.ListShareProperties.Properties.Protocols}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.IsDeleted</ScriptBlock>

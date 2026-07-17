@@ -20,7 +20,8 @@ Get-AzVirtualApplianceSite [-Name <String>] [-NetworkVirtualApplianceId <String>
 
 ### ResourceIdParameterSet
 ```
-Get-AzVirtualApplianceSite -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualApplianceSite -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

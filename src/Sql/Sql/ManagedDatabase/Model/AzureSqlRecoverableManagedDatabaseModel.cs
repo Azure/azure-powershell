@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets last availabe backup of the managed database
+        /// Gets or sets last available backup of the managed database
         /// </summary>
         public string LastAvailableBackupDate { get; set; }
 

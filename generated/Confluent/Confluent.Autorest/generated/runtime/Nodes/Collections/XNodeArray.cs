@@ -5,7 +5,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.Json
 {
     public sealed partial class XNodeArray : JsonArray, ICollection<JsonNode>
     {
@@ -17,6 +17,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json
         }
 
         internal XNodeArray(params JsonNode[] values)
+        {
+            items = new List<JsonNode>(values);
+        }
+
+        internal XNodeArray(System.Collections.Generic.List<JsonNode> values)
         {
             items = new List<JsonNode>(values);
         }

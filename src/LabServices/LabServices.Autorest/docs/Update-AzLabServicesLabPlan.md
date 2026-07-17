@@ -17,16 +17,15 @@ Operation to update a Lab Plan resource.
 Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllowedRegion <String[]>] [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>] [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
- [-DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState>]
- [-DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode>]
- [-DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState>]
- [-DefaultConnectionProfileClientRdpAccess <ConnectionType>]
- [-DefaultConnectionProfileClientSshAccess <ConnectionType>]
- [-DefaultConnectionProfileWebRdpAccess <ConnectionType>]
- [-DefaultConnectionProfileWebSshAccess <ConnectionType>] [-DefaultNetworkProfileSubnetId <String>]
- [-LinkedLmsInstance <String>] [-SharedGalleryId <String>] [-SupportInfoEmail <String>]
- [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultAutoShutdownProfileShutdownOnDisconnect <String>]
+ [-DefaultAutoShutdownProfileShutdownOnIdle <String>]
+ [-DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]
+ [-DefaultConnectionProfileClientRdpAccess <String>] [-DefaultConnectionProfileClientSshAccess <String>]
+ [-DefaultConnectionProfileWebRdpAccess <String>] [-DefaultConnectionProfileWebSshAccess <String>]
+ [-DefaultNetworkProfileSubnetId <String>] [-LinkedLmsInstance <String>] [-SharedGalleryId <String>]
+ [-SupportInfoEmail <String>] [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>]
+ [-SupportInfoUrl <String>] [-Tag <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### LabPlan
@@ -34,14 +33,44 @@ Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-Subscri
 Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-SubscriptionId <String>] [-AllowedRegion <String[]>]
  [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>] [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
- [-DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState>]
- [-DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode>]
- [-DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState>]
- [-DefaultConnectionProfileClientRdpAccessEnabled <ConnectionType>]
- [-DefaultConnectionProfileClientSshAccessEnabled <ConnectionType>] [-DefaultNetworkProfileSubnetId <String>]
+ [-DefaultAutoShutdownProfileShutdownOnDisconnect <String>]
+ [-DefaultAutoShutdownProfileShutdownOnIdle <String>]
+ [-DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]
+ [-DefaultConnectionProfileClientRdpAccessEnabled <String>]
+ [-DefaultConnectionProfileClientSshAccessEnabled <String>] [-DefaultNetworkProfileSubnetId <String>]
  [-LinkedLmsInstance <String>] [-SharedGalleryId <String>] [-SupportInfoEmail <String>]
  [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>] [-Tag <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzLabServicesLabPlan -InputObject <ILabServicesIdentity> [-AllowedRegion <String[]>]
+ [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>] [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>]
+ [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
+ [-DefaultAutoShutdownProfileShutdownOnDisconnect <String>]
+ [-DefaultAutoShutdownProfileShutdownOnIdle <String>]
+ [-DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]
+ [-DefaultConnectionProfileClientRdpAccess <String>] [-DefaultConnectionProfileClientSshAccess <String>]
+ [-DefaultConnectionProfileWebRdpAccess <String>] [-DefaultConnectionProfileWebSshAccess <String>]
+ [-DefaultNetworkProfileSubnetId <String>] [-LinkedLmsInstance <String>] [-SharedGalleryId <String>]
+ [-SupportInfoEmail <String>] [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>]
+ [-SupportInfoUrl <String>] [-Tag <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +98,7 @@ The allowed regions for the lab creator to use when creating labs using this lab
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,7 +128,7 @@ The amount of time a VM will stay running after a user disconnects if this behav
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -114,7 +143,7 @@ The amount of time a VM will idle before it is shutdown if this behavior is enab
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -129,7 +158,7 @@ The amount of time a VM will stay running before it is shutdown if no connection
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -143,8 +172,8 @@ Accept wildcard characters: False
 Whether shutdown on disconnect is enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -158,8 +187,8 @@ Accept wildcard characters: False
 Whether a VM will get shutdown when it has idled for a period of time.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -173,8 +202,8 @@ Accept wildcard characters: False
 Whether a VM will get shutdown when it hasn't been connected to after a period of time.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -188,8 +217,8 @@ Accept wildcard characters: False
 The enabled access level for Client Access over RDP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -203,7 +232,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
+Type: System.String
 Parameter Sets: LabPlan
 Aliases:
 
@@ -218,8 +247,8 @@ Accept wildcard characters: False
 The enabled access level for Client Access over SSH.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,7 +262,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
+Type: System.String
 Parameter Sets: LabPlan
 Aliases:
 
@@ -248,8 +277,8 @@ Accept wildcard characters: False
 The enabled access level for Web Access over RDP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -263,8 +292,8 @@ Accept wildcard characters: False
 The enabled access level for Web Access over SSH.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -279,7 +308,7 @@ The external subnet resource id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -305,11 +334,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LabPlan
-To construct, see NOTES section for LABPLAN properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LabPlan
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 Parameter Sets: LabPlan
 Aliases:
 
@@ -325,7 +399,7 @@ Base Url of the lms instance this lab plan can link lab rosters against.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -341,7 +415,7 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: LabPlanName
 
 Required: True
@@ -372,7 +446,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -389,7 +463,7 @@ Shared images from the gallery can be made available to use when creating new la
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -404,7 +478,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -419,7 +493,7 @@ Support contact email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -434,7 +508,7 @@ Support instructions.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -449,7 +523,7 @@ Support contact phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -464,7 +538,7 @@ Support web address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -479,7 +553,7 @@ Resource tags.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -525,11 +599,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: d6053d97-1a9b-4fc6-9bd2-09c5b23b34db
+Module Guid: 6ada34e0-8668-4ac4-b5fe-753062600db9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,6 +17,9 @@ Gets a Storage Mover resource.
 ### [Get-AzStorageMoverAgent](Get-AzStorageMoverAgent.md)
 Gets an Agent resource.
 
+### [Get-AzStorageMoverConnection](Get-AzStorageMoverConnection.md)
+Gets a Connection resource.
+
 ### [Get-AzStorageMoverEndpoint](Get-AzStorageMoverEndpoint.md)
 Gets an Endpoint resource.
 
@@ -30,7 +33,10 @@ Gets a Job Run resource.
 Gets a Project resource.
 
 ### [New-AzStorageMover](New-AzStorageMover.md)
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
+
+### [New-AzStorageMoverAzNfsFileShareEndpoint](New-AzStorageMoverAzNfsFileShareEndpoint.md)
+Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverAzSmbFileShareEndpoint](New-AzStorageMoverAzSmbFileShareEndpoint.md)
 Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
@@ -38,14 +44,23 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ### [New-AzStorageMoverAzStorageContainerEndpoint](New-AzStorageMoverAzStorageContainerEndpoint.md)
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
+### [New-AzStorageMoverConnection](New-AzStorageMoverConnection.md)
+Create a Connection resource.
+
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+
+### [New-AzStorageMoverMultiCloudConnectorEndpoint](New-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Creates a multicloud connector endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverNfsEndpoint](New-AzStorageMoverNfsEndpoint.md)
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
-Creates or updates a Project resource, which is a logical grouping of related jobs.
+Create a Project resource, which is a logical grouping of related jobs.
+
+### [New-AzStorageMoverS3WithHmacEndpoint](New-AzStorageMoverS3WithHmacEndpoint.md)
+Creates an S3-compatible endpoint with HMAC credentials, which represents a data transfer source.
 
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
@@ -55,6 +70,10 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
+
+### [Remove-AzStorageMoverConnection](Remove-AzStorageMoverConnection.md)
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 
 ### [Remove-AzStorageMoverEndpoint](Remove-AzStorageMoverEndpoint.md)
 Deletes an Endpoint resource.
@@ -66,7 +85,7 @@ Deletes a Job Definition resource.
 Deletes a Project resource.
 
 ### [Start-AzStorageMoverJobDefinition](Start-AzStorageMoverJobDefinition.md)
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ### [Stop-AzStorageMoverJobDefinition](Stop-AzStorageMoverJobDefinition.md)
 Requests the Agent of any active instance of this Job Definition to stop.
@@ -75,11 +94,15 @@ Requests the Agent of any active instance of this Job Definition to stop.
 Deletes an agent resource.
 
 ### [Update-AzStorageMover](Update-AzStorageMover.md)
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
-Creates or updates an Agent resource.
+Update an Agent resource.
+
+### [Update-AzStorageMoverAzNfsFileShareEndpoint](Update-AzStorageMoverAzNfsFileShareEndpoint.md)
+Updates properties for a Nfs File Share endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAzSmbFileShareEndpoint](Update-AzStorageMoverAzSmbFileShareEndpoint.md)
 Updates properties for a SMB file share endpoint resource.
@@ -90,7 +113,11 @@ Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
-Updates properties for a Job Definition resource.
+Update properties for a Job Definition resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverMultiCloudConnectorEndpoint](Update-AzStorageMoverMultiCloudConnectorEndpoint.md)
+Updates properties for a MultiCloudConnector endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverNfsEndpoint](Update-AzStorageMoverNfsEndpoint.md)
@@ -98,7 +125,11 @@ Updates properties for a Nfs endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
-Updates properties for a Project resource.
+Update properties for a Project resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverS3WithHmacEndpoint](Update-AzStorageMoverS3WithHmacEndpoint.md)
+Updates properties for an S3-compatible endpoint with HMAC credentials.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)

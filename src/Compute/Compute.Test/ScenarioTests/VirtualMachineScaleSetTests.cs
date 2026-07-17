@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetEncryptionAtHost");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetOrchestrationVM()
@@ -220,14 +220,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzVmssRunCommand()
         {
             TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetUserdata()
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOSImageScheduledEvents");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetGetById()
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeUpdate");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetDefaultToFlexibleOrchestrationMode()
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetSecurityTypeNoVMProfile()
@@ -433,9 +433,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResiliencyPolicyVMSS()
+        public void TestVirtualMachineScaleSetSkuProfilePrioritized()
         {
-            TestRunner.RunTestScript("Test-ResiliencyPolicyVMSS");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSkuProfilePrioritized");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResilientVMCreateDelete()
+        {
+            TestRunner.RunTestScript("Test-ResilientVMCreateDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRebalancingPolicyVMSS()
+        {
+            TestRunner.RunTestScript("Test-AutomaticZoneRebalancingPolicy");
         }
 
         [Fact]
@@ -457,6 +471,62 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestEncryptionIdentityNotPartOfAzureVmssConfig()
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAzureVmssConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProxyAgentSetting()
+        {
+            TestRunner.RunTestScript("Test-ProxyAgentSetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGalleryApplicationFlags()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGalleryApplicationFlags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetResiliencyView()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetResiliencyView");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutomaticZonePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAutomaticZonePlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetHighSpeedInterconnectPlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetZonalPlatformFaultDomainAlignMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfigStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment");
         }
     }
 }

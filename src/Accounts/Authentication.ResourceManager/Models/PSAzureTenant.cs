@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Copy Constructor
         /// </summary>
-        /// <param name="other">The tenanht to copy</param>
+        /// <param name="other">The tenant to copy</param>
         public PSAzureTenant(IAzureTenant other)
         {
             this.CopyFrom(other);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string TenantId { get { return Id; } }
 
         /// <summary>
-        /// Extended proeprties of the tenant
+        /// Extended properties of the tenant
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 

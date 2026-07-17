@@ -2,271 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostManagementIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Alert</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostManagementIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AlertId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>BillingAccountId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>BillingProfileId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExportName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExternalCloudProviderId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExternalCloudProviderType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OperationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ViewName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AlertId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>BillingAccountId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>BillingProfileId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExportName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExternalCloudProviderId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExternalCloudProviderType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OperationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ViewName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.BlobInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.BlobInfo</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BlobLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ByteCount</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BlobLink</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ByteCount</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.CostDetailsOperationResults</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.CostDetailsOperationResults</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Status</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ValidTill</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Status</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ValidTill</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.CostDetailsTimePeriod</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.CostDetailsTimePeriod</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>End</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Start</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>End</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Start</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.GenerateCostDetailsReportRequestDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.GenerateCostDetailsReportRequestDefinition</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BillingPeriod</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InvoiceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Metric</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BillingPeriod</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InvoiceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Metric</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ReportManifest</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ReportManifest</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BlobCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ByteCount</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CompressData</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DataFormat</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ManifestVersion</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BlobCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ByteCount</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CompressData</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DataFormat</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ManifestVersion</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.RequestContext</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.RequestContext</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>RequestScope</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>RequestScope</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Alert</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Alert</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Alert#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -275,6 +13,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -286,15 +27,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -362,9 +106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertPropertiesDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertPropertiesDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertPropertiesDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertPropertiesDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -390,9 +134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertPropertiesDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertPropertiesDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertPropertiesDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertPropertiesDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -401,15 +145,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CompanyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ContactEmail</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ContactGroup</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ContactRole</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CurrentSpend</Label>
@@ -430,9 +165,6 @@
             <Label>InvoicingThreshold</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MeterFilter</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Operator</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -440,12 +172,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PeriodStartDate</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceFilter</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupFilter</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Threshold</Label>
@@ -470,15 +196,6 @@
                 <PropertyName>CompanyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ContactEmail</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ContactGroup</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ContactRole</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>CurrentSpend</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -497,9 +214,6 @@
                 <PropertyName>InvoicingThreshold</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MeterFilter</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -507,12 +221,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PeriodStartDate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceFilter</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupFilter</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Threshold</PropertyName>
@@ -532,9 +240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertsResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertsResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.AlertsResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.AlertsResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -554,9 +262,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.CommonExportProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.BlobInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.CommonExportProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.BlobInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BlobLink</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ByteCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BlobLink</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ByteCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CommonExportProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CommonExportProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -588,9 +324,147 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Dimension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostDetailsOperationResults</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Dimension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostDetailsOperationResults#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidTill</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidTill</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostDetailsTimePeriod</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostDetailsTimePeriod#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>End</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Start</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>End</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Start</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostManagementIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.CostManagementIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AlertId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BillingAccountId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BillingProfileId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExportName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExternalCloudProviderId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExternalCloudProviderType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ViewName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AlertId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BillingAccountId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BillingProfileId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExportName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExternalCloudProviderId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExternalCloudProviderType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ViewName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Dimension</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Dimension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -628,17 +502,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.DimensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.DimensionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.DimensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.DimensionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Category</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Data</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Description</Label>
@@ -669,9 +540,6 @@
                 <PropertyName>Category</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Data</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -698,9 +566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ErrorDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ErrorDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ErrorDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ErrorDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -726,9 +594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Export</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Export</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Export</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Export#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -737,6 +605,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -748,15 +619,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDataset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDataset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDataset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDataset#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -776,31 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDatasetConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDatasetConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Column</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Column</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDeliveryDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDeliveryDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportDeliveryDestination</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportDeliveryDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -866,9 +718,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportExecution</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportExecution</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportExecution</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportExecution#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -912,9 +764,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportExecutionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportExecutionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportExecutionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportExecutionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -970,15 +822,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ConfigurationColumn</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DataSetGranularity</Label>
           </TableColumnHeader>
@@ -1022,9 +871,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ConfigurationColumn</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DataSetGranularity</PropertyName>
               </TableColumnItem>
@@ -1070,9 +916,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportRecurrencePeriod</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportRecurrencePeriod</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportRecurrencePeriod</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportRecurrencePeriod#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1098,9 +944,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportSchedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportSchedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportSchedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportSchedule#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1126,9 +972,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportTimePeriod</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportTimePeriod</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ExportTimePeriod</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ExportTimePeriod#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1154,9 +1000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastAggregation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastAggregation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastAggregation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastAggregation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1182,9 +1028,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastColumn</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastColumn</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastColumn</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastColumn#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1204,9 +1050,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastComparisonExpression</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastComparisonExpression</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastComparisonExpression</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastComparisonExpression#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1215,9 +1061,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Operator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1229,18 +1072,15 @@
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDataset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastDataset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDataset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastDataset#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1260,31 +1100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDatasetConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDatasetConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Column</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Column</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1316,9 +1134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1338,9 +1156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1355,6 +1173,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Sku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1372,15 +1193,18 @@
               <TableColumnItem>
                 <PropertyName>Sku</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastTimePeriod</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastTimePeriod</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ForecastTimePeriod</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ForecastTimePeriod#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1406,9 +1230,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.KpiProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.GenerateCostDetailsReportRequestDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.KpiProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.GenerateCostDetailsReportRequestDefinition#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BillingPeriod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InvoiceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Metric</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BillingPeriod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InvoiceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Metric</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.KpiProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.KpiProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1428,9 +1286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1450,9 +1308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1490,9 +1348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1512,9 +1370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.OperationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.OperationStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1534,9 +1392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.PivotProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.PivotProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.PivotProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.PivotProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1556,9 +1414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1584,9 +1442,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryAggregation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryAggregation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryAggregation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryAggregation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1612,9 +1470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryColumn</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryColumn</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryColumn</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryColumn#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1634,9 +1492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryComparisonExpression</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryComparisonExpression#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1645,9 +1503,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Operator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1659,18 +1514,15 @@
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDataset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryDataset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDataset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryDataset#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1690,31 +1542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDatasetConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDatasetConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Column</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Column</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1734,9 +1564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryGrouping</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryGrouping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryGrouping</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryGrouping#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1756,17 +1586,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NextLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Row</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1775,18 +1602,15 @@
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Row</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1812,9 +1636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryTimePeriod</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryTimePeriod</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryTimePeriod</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.QueryTimePeriod#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1840,9 +1664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigAggregation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigAggregation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigAggregation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigAggregation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1868,9 +1692,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigComparisonExpression</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigComparisonExpression</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigComparisonExpression</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigComparisonExpression#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1879,9 +1703,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Operator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1893,18 +1714,15 @@
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDataset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigDataset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDataset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigDataset#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1924,31 +1742,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDatasetConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDatasetConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Column</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Column</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDefinition</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1974,9 +1770,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigGrouping</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigGrouping</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigGrouping</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigGrouping#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1996,9 +1792,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigSorting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigSorting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigSorting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigSorting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2024,9 +1820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigTimePeriod</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigTimePeriod</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportConfigTimePeriod</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportConfigTimePeriod#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2052,9 +1848,55 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportUrl</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportManifest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ReportUrl</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportManifest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BlobCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ByteCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CompressData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataFormat</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManifestVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BlobCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ByteCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CompressData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataFormat</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManifestVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportUrl</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ReportUrl#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2080,9 +1922,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.RequestContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.RequestContext#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RequestScope</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RequestScope</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2120,9 +1984,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2142,9 +2006,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.View</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.View</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.View</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.View#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2153,6 +2017,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2164,15 +2031,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ViewListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ViewListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ViewListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ViewListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2192,9 +2062,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ViewProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ViewProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.ViewProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ViewProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -117,9 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).RetentionTimeInHour = (long?) content.GetValueForProperty("RetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).RetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("MinCompactionLagInMin"))
+            if (content.Contains("MinCompactionLagTimeInMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagInMin = (long?) content.GetValueForProperty("MinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagTimeInMinute = (long?) content.GetValueForProperty("MinCompactionLagTimeInMinute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagTimeInMinute, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TombstoneRetentionTimeInHour"))
             {
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).RetentionTimeInHour = (long?) content.GetValueForProperty("RetentionTimeInHour",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).RetentionTimeInHour, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("MinCompactionLagInMin"))
+            if (content.Contains("MinCompactionLagTimeInMinute"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagInMin = (long?) content.GetValueForProperty("MinCompactionLagInMin",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagInMin, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagTimeInMinute = (long?) content.GetValueForProperty("MinCompactionLagTimeInMinute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IRetentionDescriptionInternal)this).MinCompactionLagTimeInMinute, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("TombstoneRetentionTimeInHour"))
             {

@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.\<br/\> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.
-This API requires the Troubleshooter resource name that was created using the Create API.
+This API requires the Troubleshooter resource name that was created using the get API.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Get-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <
 
 ## DESCRIPTION
 Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.\<br/\> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.
-This API requires the Troubleshooter resource name that was created using the Create API.
+This API requires the Troubleshooter resource name that was created using the get API.
 
 ## EXAMPLES
 
@@ -65,7 +65,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
@@ -118,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshooterResource
 
 ## NOTES
 

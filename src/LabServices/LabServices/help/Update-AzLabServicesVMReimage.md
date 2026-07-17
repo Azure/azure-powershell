@@ -26,10 +26,23 @@ Update-AzLabServicesVMReimage -LabName <String> -Name <String> -ResourceGroupNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ReimageViaIdentityLab
+```
+Update-AzLabServicesVMReimage -Name <String> -LabInputObject <ILabServicesIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### VM
 ```
 Update-AzLabServicesVMReimage [-SubscriptionId <String>] -VM <VirtualMachine> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReimageViaIdentity
+```
+Update-AzLabServicesVMReimage -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +97,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: ReimageViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: ReimageViaIdentityLab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LabName
 The name of the lab that uniquely identifies it within containing lab account.
 Used in resource URIs.
@@ -106,7 +149,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Reimage, ReimageViaIdentityLab
 Aliases: VirtualMachineName
 
 Required: True
@@ -136,7 +179,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: Reimage, ReimageViaIdentityLab, ReimageViaIdentity
 Aliases:
 
 Required: False
@@ -163,6 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource ID of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -181,7 +225,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, Reimage, VM
 Aliases:
 
 Required: False
@@ -192,10 +236,10 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-To construct, see NOTES section for VM properties and create a hash table.
+The object of lab service virtual machine.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 Parameter Sets: VM
 Aliases:
 
@@ -242,11 +286,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

@@ -15,7 +15,9 @@ Updates an EventHub Namespace
 ### SetExpanded (Default)
 ```
 Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <String>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -25,9 +27,10 @@ Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-EnableAutoInflate] [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -112,7 +115,7 @@ ZoneRedundant                   : True
 
 The output type of New and Set cmdlets `IEhNamespace` has a property named `UserAssignedIdentity` which is a hashtable.
 The keys
-of this hastable are the resource ID's of the managed identities the namespace is part of.
+of this hashtable are the resource ID's of the managed identities the namespace is part of.
 To add or remove an IdentityId, extract the 
 keys from the hashtable, which would result in an array of strings which can then be queried and fed as input to set cmdlet as shown above.
 
@@ -439,6 +442,38 @@ Value that indicates whether AutoInflate is enabled for eventhub namespace.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationLocation
+Properties for User Assigned Identities
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

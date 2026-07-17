@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="recoveryPointType">The recovery point type.
-        /// Possible values include: 'Latest', 'LatestApplicationConsistent',
-        /// 'LatestCrashConsistent', 'LatestProcessed'</param>
+        /// Possible values include: &#39;Latest&#39;, &#39;LatestApplicationConsistent&#39;,
+        /// &#39;LatestCrashConsistent&#39;, &#39;LatestProcessed&#39;</param>
 
         /// <param name="cloudServiceCreationOption">A value indicating whether to use recovery cloud service for TFO or not.
         /// </param>
 
         /// <param name="multiVMSyncPointOption">A value indicating whether multi VM sync enabled VMs should use multi VM
         /// sync points for failover.
-        /// Possible values include: 'UseMultiVmSyncRecoveryPoint',
-        /// 'UsePerVmRecoveryPoint'</param>
+        /// Possible values include: &#39;UseMultiVmSyncRecoveryPoint&#39;,
+        /// &#39;UsePerVmRecoveryPoint&#39;</param>
         public RecoveryPlanA2AFailoverInput(string recoveryPointType, string cloudServiceCreationOption = default(string), string multiVMSyncPointOption = default(string))
 
         {

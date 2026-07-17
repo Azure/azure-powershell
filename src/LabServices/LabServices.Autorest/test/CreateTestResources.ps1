@@ -1,6 +1,6 @@
-Import-Module .\WebRequestHandler.psm1 -Force
+Import-Module (Join-Path $PSScriptRoot .\WebRequestHandler.psm1) -Force
 
-.\SetVariables.ps1
+. (Join-Path $PSScriptRoot .\SetVariables.ps1)
 
 Connect-AzAccount -Subscription $ENV:SubscriptionId
 
@@ -8,14 +8,10 @@ Write-Host "Start Time : $(Get-Date)"
 # Create the resource Group
 $rgUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId +"/resourcegroups/$($ENV:ResourceGroupName)?api-version=2021-04-01"
 
-$rgBody = @{
-    location = $ENV:Location
-} | ConvertTo-Json -Depth 10
-
 if (!(CheckExists($rgUri)))
 {
     Write-Host "Creating resource group $ENV:ResourceGroupName."
-    $result = InvokeRest -Method PUT -Uri $rgUri -Body $rgBody
+    $result = New-AzResourceGroup -Name $ENV:ResourceGroupName -Location $ENV:Location
     Write-Host "Resource Group Result: $result"
     $resourceGroup = WaitProvisioning -uri $rgUri -delaySec 60 -retryCount 120
     
@@ -32,11 +28,13 @@ $gallery = New-AzGallery `
 
 $ENV:SharedGalleryId = $gallery.Id
 
+#New-AzRoleAssignment -ObjectId 594510ee-5396-4a71-902c-43e31b4c8d5a -RoleDefinitionName Contributor -Scope $gallery.Id
+
 Write-Host "Created Shared Gallery $($ENV:SIGName)"
 
 # Create the Lab Plan
-$labPlanUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)"
-$labPlanToDeleteUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanNameToDelete)"
+$labPlanUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)"
+$labPlanToDeleteUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanNameToDelete)"
 
 $labPlanBody = @{
     location = $ENV:Location
@@ -92,8 +90,8 @@ if (!(CheckExists($labPlanToDeleteUri)))
 }
 
 # Create the Lab
-$labUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)"
-$labdelUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabNameToDelete)"
+$labUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)"
+$labdelUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabNameToDelete)"
 
 $labBody = @{
     location = $ENV:Location
@@ -116,9 +114,9 @@ $labBody = @{
             createOption = "TemplateVM"
             capacity = 2
             imageReference = @{
-              offer = "Windows-10"
+              offer = "Windows-11"
               publisher = "MicrosoftWindowsDesktop"
-              sku = "20h2-pro"
+              sku = "win11-23h2-pro"
               version = "latest"
             }
             sku = @{
@@ -164,7 +162,7 @@ if (!(CheckExists($labdelUri)))
 }
 
 # Add Users
-$userUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/users/$($ENV:UserName)"
+$userUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/users/$($ENV:UserName)"
 
 $userBody = @{
     properties = @{
@@ -181,7 +179,7 @@ if (!(CheckExists($userUri))){
 }
 
 # Create schedule
-$scheduleUri = "https://management.azure.com/subscriptions/" + $ENV:SubscriptionId  +"/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/schedules/$($ENV:ScheduleName)"
+$scheduleUri = "https://management.azure.com/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/schedules/$($ENV:ScheduleName)"
 
 $currentDate = (Get-Date).AddHours(2)
 $endDate = (Get-Date).AddHours(3)

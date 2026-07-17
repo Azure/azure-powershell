@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
 
         /// <param name="activationStatus">Activation Status
-        /// Possible values include: 'Active', 'NotActivated', 'Unknown', 'Failed'</param>
+        /// Possible values include: &#39;Active&#39;, &#39;NotActivated&#39;, &#39;Unknown&#39;, &#39;Failed&#39;</param>
 
         /// <param name="activationStatusMessage">Activation Status Message.
         /// </param>

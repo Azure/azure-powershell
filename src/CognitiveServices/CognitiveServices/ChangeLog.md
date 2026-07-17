@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.17.1
+* Updated Cognitive Services account identity handling to explicitly use the Cognitive Services SDK `Identity` model in create/update flows.
+
+## Version 1.17.0
+* Added ChangeSafety Support
+
+## Version 1.16.0
+* Updated SDK via autorest.powershell.
+* Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.
+* Added Get cmdlets for AzCognitiveServicesRaiContentFilters, AzCognitiveServicesAccountDeploymentSku, AzCognitiveServicesModelCapacity.
+* Added Get, New cmdlets for AzCognitiveServicesAccountDefenderForAISetting.
+
 ## Version 1.15.0
 * Upgraded nuget package to signed package.
 

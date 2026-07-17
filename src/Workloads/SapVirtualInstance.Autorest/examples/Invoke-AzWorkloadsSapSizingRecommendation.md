@@ -11,4 +11,3 @@ SingleServer   Standard_E32ds_v4
 
 The command will take input of the Deployment type, region, SAPS number and Database memory size requirement for the SAP system and help you understand the right size and count of Azure SKUs that you should use for the App server instance, Central service instance and Database instance while deploying your SAP system with Azure Center for SAP solutions.
 
-

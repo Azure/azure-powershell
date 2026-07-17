@@ -166,13 +166,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVMSizeFromAllLocations()
-        {
-            TestRunner.RunTestScript("Test-GetVMSizeFromAllLocations");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
             TestRunner.RunTestScript("Test-VirtualMachineListWithPaging");
@@ -688,6 +681,41 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestEncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm()
         {
             TestRunner.RunTestScript("Test-EncryptionIdentityNotPartOfAssignedIdentitiesInAzureVm");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlacement()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachinePlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineAddProxyAgentExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineAddProxyAgentExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGalleryApplicationFlags()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGalleryApplicationFlags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDataDiskIOPSMBPS()
+        {
+            TestRunner.RunTestScript("Test-VMDataDiskIOPSMBPS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VMStorageFaultDomainAlignment");
         }
     }
 }

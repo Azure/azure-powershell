@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         }
 
         /// <summary>
-        /// Lists Azure SQL Managed Instance Active Directory only authenctications
+        /// Lists Azure SQL Managed Instance Active Directory only authentications
         /// </summary>
         public IEnumerable<Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication> List(string resourceGroupName, string InstanceName)
         {

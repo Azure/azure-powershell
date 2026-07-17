@@ -85,7 +85,18 @@ namespace Microsoft.Azure.Management.Synapse.Models
 
         /// <param name="newerVersions">The newer versions on download center.
         /// </param>
-        public SelfHostedIntegrationRuntimeStatusTypeProperties(System.DateTime? createTime = default(System.DateTime?), string taskQueueId = default(string), string nodeCommunicationChannelEncryptionMode = default(string), string internalChannelEncryption = default(string), string version = default(string), System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode> nodes = default(System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode>), System.DateTime? scheduledUpdateDate = default(System.DateTime?), string updateDelayOffset = default(string), string localTimeZoneOffset = default(string), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> serviceUrls = default(System.Collections.Generic.IList<string>), string autoUpdate = default(string), string versionStatus = default(string), System.Collections.Generic.IList<LinkedIntegrationRuntime> links = default(System.Collections.Generic.IList<LinkedIntegrationRuntime>), string pushedVersion = default(string), string latestVersion = default(string), System.DateTime? autoUpdateEta = default(System.DateTime?), string serviceRegion = default(string), System.Collections.Generic.IList<string> newerVersions = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="osType">
+        /// </param>
+
+        /// <param name="targetFramework">
+        /// </param>
+
+        /// <param name="selfContainedInteractiveAuthoringEnabled">An alternative option to ensure interactive authoring function when your
+        /// self-hosted integration runtime is unable to establish a connection with
+        /// Azure Relay.
+        /// Possible values include: &#39;true&#39;, &#39;false&#39;</param>
+        public SelfHostedIntegrationRuntimeStatusTypeProperties(System.DateTime? createTime = default(System.DateTime?), string taskQueueId = default(string), string nodeCommunicationChannelEncryptionMode = default(string), string internalChannelEncryption = default(string), string version = default(string), System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode> nodes = default(System.Collections.Generic.IList<SelfHostedIntegrationRuntimeNode>), System.DateTime? scheduledUpdateDate = default(System.DateTime?), string updateDelayOffset = default(string), string localTimeZoneOffset = default(string), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> serviceUrls = default(System.Collections.Generic.IList<string>), string autoUpdate = default(string), string versionStatus = default(string), System.Collections.Generic.IList<LinkedIntegrationRuntime> links = default(System.Collections.Generic.IList<LinkedIntegrationRuntime>), string pushedVersion = default(string), string latestVersion = default(string), System.DateTime? autoUpdateEta = default(System.DateTime?), string serviceRegion = default(string), System.Collections.Generic.IList<string> newerVersions = default(System.Collections.Generic.IList<string>), int? osType = default(int?), int? targetFramework = default(int?), bool? selfContainedInteractiveAuthoringEnabled = default(bool?))
 
         {
             this.CreateTime = createTime;
@@ -107,6 +118,9 @@ namespace Microsoft.Azure.Management.Synapse.Models
             this.AutoUpdateEta = autoUpdateEta;
             this.ServiceRegion = serviceRegion;
             this.NewerVersions = newerVersions;
+            this.OSType = osType;
+            this.TargetFramework = targetFramework;
+            this.SelfContainedInteractiveAuthoringEnabled = selfContainedInteractiveAuthoringEnabled;
             CustomInit();
         }
 
@@ -237,5 +251,25 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "newerVersions")]
         public System.Collections.Generic.IList<string> NewerVersions {get; set; }
+
+        /// <summary>
+        /// Gets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osType")]
+        public int? OSType {get; private set; }
+
+        /// <summary>
+        /// Gets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetFramework")]
+        public int? TargetFramework {get; private set; }
+
+        /// <summary>
+        /// Gets an alternative option to ensure interactive authoring function when
+        /// your self-hosted integration runtime is unable to establish a connection
+        /// with Azure Relay. Possible values include: &#39;true&#39;, &#39;false&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "selfContainedInteractiveAuthoringEnabled")]
+        public bool? SelfContainedInteractiveAuthoringEnabled {get; private set; }
     }
 }

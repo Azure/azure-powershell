@@ -21,35 +21,29 @@ Create an in-memory object for ImageTemplateSource.
 Create an in-memory object for ImageTemplateSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject_SharedImageVersionSource {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.")]
         [string]
         $ImageVersionId,
-        # Change it to switch parameter
-        # [Parameter(Mandatory, HelpMessage="Specifies the type of source image you want to start with.")]
-        # [string]
-        # $Type
         [Parameter(Mandatory, HelpMessage="Describes an image source that is an image version in a shared image gallery.")]
         [Switch]
         $SharedImageVersionSource
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageVersionSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageVersionSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ImageVersionId')) {
             $Object.ImageVersionId = $ImageVersionId
-        }
-        if ($SharedImageVersionSource.IsPresent) {
-            $Object.Type = "SharedImageVersion"
         }
         return $Object
     }

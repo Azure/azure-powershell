@@ -1,0 +1,43 @@
+{
+  "Update-AzDependencyMapDiscoverySource+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x?api-version=2025-01-31-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x?api-version=2025-01-31-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key\": \"value\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "42" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f2026e59-0000-0100-0000-6847a9ce0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=ce74a389-b5e8-4f16-89c7-787031ddd903/southindia/fbcc3e56-d2ea-4eef-92ef-c30bb1202a4d" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "e65c9e2a-5e1e-41a4-8712-3d19f5f2ebfb" ],
+        "x-ms-correlation-request-id": [ "3c219b06-b8b0-434d-a968-3ec8354f0012" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034312Z:3c219b06-b8b0-434d-a968-3ec8354f0012" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AEC394E43BA34BA5B02A4030B0756BF9 Ref B: MAA201060515051 Ref C: 2025-06-10T03:43:07Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:43:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "640" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x\",\"name\":\"autoTestSource3x\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"tags\":{\"key\":\"value\"},\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:40:02.3282808Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:43:09.7803911Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

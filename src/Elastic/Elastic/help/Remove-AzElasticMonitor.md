@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticMonitor
 
 ## SYNOPSIS
-Delete a monitor resource.
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzElasticMonitor -InputObject <IElasticIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-Delete a monitor resource.
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
 
 ## EXAMPLES
 
@@ -79,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity

@@ -25,19 +25,22 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the SharedPrivateLinkResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="provisioningState">Provisioning state of the shared private link resource
+        /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
         /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
@@ -52,18 +55,21 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// resource
         /// </param>
 
+        /// <param name="fqdns">A list of FQDNs for third party private link service
+        /// </param>
+
         /// <param name="status">Status of the shared private link resource
         /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;,
         /// &#39;Timeout&#39;</param>
-        public SharedPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string groupId = default(string), string privateLinkResourceId = default(string), string requestMessage = default(string), string status = default(string))
+        public SharedPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string groupId = default(string), string privateLinkResourceId = default(string), string requestMessage = default(string), System.Collections.Generic.IList<string> fqdns = default(System.Collections.Generic.IList<string>), string status = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.GroupId = groupId;
             this.PrivateLinkResourceId = privateLinkResourceId;
             this.RequestMessage = requestMessage;
+            this.Fqdns = fqdns;
             this.Status = status;
             CustomInit();
         }
@@ -75,13 +81,7 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets provisioning state of the shared private link resource Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
+        /// Gets provisioning state of the resource. Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -106,6 +106,12 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requestMessage")]
         public string RequestMessage {get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of FQDNs for third party private link service
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.fqdns")]
+        public System.Collections.Generic.IList<string> Fqdns {get; set; }
 
         /// <summary>
         /// Gets status of the shared private link resource Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;, &#39;Timeout&#39;

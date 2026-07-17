@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.FilteringTag
 https://learn.microsoft.com/powershell/module/Az.NewRelic/new-aznewrelicfilteringtagobject
 #>
 function New-AzNewRelicFilteringTagObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.FilteringTag')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -2,43 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.WindowsIotServicesIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceService</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.WindowsIotServicesIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DeviceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DeviceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceService</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceService</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceService#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -50,6 +16,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Etag</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -64,15 +33,18 @@
               <TableColumnItem>
                 <PropertyName>Etag</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceCheckNameAvailabilityParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceCheckNameAvailabilityParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceCheckNameAvailabilityParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceCheckNameAvailabilityParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -92,9 +64,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceDescriptionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceDescriptionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceDescriptionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceDescriptionListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -114,9 +86,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceNameAvailabilityInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceNameAvailabilityInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceNameAvailabilityInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceNameAvailabilityInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -148,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.DeviceServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.DeviceServiceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -194,9 +166,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.ErrorDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.ErrorDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.ErrorDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.ErrorDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -234,9 +206,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationDisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationDisplayInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationDisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationDisplayInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -274,9 +246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationEntity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -296,9 +268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -318,9 +290,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -340,9 +312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -362,9 +334,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -390,9 +362,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -405,6 +377,40 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.WindowsIotServicesIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.WindowsIotServicesIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -1,0 +1,92 @@
+{
+  "Get-AzDependencyMapDiscoverySource+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources?api-version=2025-01-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources?api-version=2025-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "60a4d689-27d9-458c-aff6-0cca44ea1015" ],
+        "CommandName": [ "Get-AzDependencyMapDiscoverySource" ],
+        "FullCommandName": [ "Get-AzDependencyMapDiscoverySource_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.DependencyMap/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "18fdcffa-c7ad-4322-b97f-fdd23e54e2b0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "d406a93a-8dc0-4fa4-93f0-414ac641912d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "d406a93a-8dc0-4fa4-93f0-414ac641912d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034040Z:d406a93a-8dc0-4fa4-93f0-414ac641912d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 971141C20E164B30A6E90B9704E111B0 Ref B: MAA201060515051 Ref C: 2025-06-10T03:40:39Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:40:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "629" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x\",\"name\":\"autoTestSource3x\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:40:02.3282808Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:40:02.3282808Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDependencyMapDiscoverySource+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x?api-version=2025-01-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x?api-version=2025-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "29ce05c4-4098-476d-9d6a-5c347e299b53" ],
+        "CommandName": [ "Get-AzDependencyMapDiscoverySource" ],
+        "FullCommandName": [ "Get-AzDependencyMapDiscoverySource_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.1.0", "PSVersion/v7.5.1", "Az.DependencyMap/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f202613a-0000-0100-0000-6847a9120000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f5322e15-bc99-4a2a-9786-ce19e6fbb785" ],
+        "x-ms-correlation-request-id": [ "2157d6dd-bc5c-4f78-b189-deeea8353699" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250610T034041Z:2157d6dd-bc5c-4f78-b189-deeea8353699" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FBD8CF238B7045D48D7A5A15AC3453C9 Ref B: MAA201060515051 Ref C: 2025-06-10T03:40:40Z" ],
+        "Date": [ "Tue, 10 Jun 2025 03:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/autoTestGroup6rslv/providers/Microsoft.DependencyMap/maps/autoTestDependencyMap08/discoverySources/autoTestSource3x\",\"name\":\"autoTestSource3x\",\"type\":\"microsoft.dependencymap/maps/discoverysources\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"test@abc.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-06-10T03:40:02.3282808Z\",\"lastModifiedBy\":\"test@abc.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-06-10T03:40:02.3282808Z\"},\"properties\":{\"sourceType\":\"OffAzure\",\"sourceId\":\"testSourceId\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

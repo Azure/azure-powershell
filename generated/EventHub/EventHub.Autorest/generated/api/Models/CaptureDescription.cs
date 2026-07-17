@@ -92,10 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestination Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal.Destination { get => (this._destination = this._destination ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Destination()); set { {_destination = value;} } }
 
         /// <summary>Internal Acessors for DestinationIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Identity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal.DestinationIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Identity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DestinationProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Property = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICaptureDescriptionInternal.DestinationProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IDestinationInternal)Destination).Property = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="SizeLimitInByte" /> property.</summary>
         private int? _sizeLimitInByte;

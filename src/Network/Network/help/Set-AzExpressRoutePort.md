@@ -14,7 +14,8 @@ Modifies an ExpressRoutePort.
 
 ```
 Set-AzExpressRoutePort -ExpressRoutePort <PSExpressRoutePort> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

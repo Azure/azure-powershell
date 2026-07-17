@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
                 ProvisioningState = resourceGroup.Properties == null ? null : resourceGroup.Properties.ProvisioningState,
                 Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
                 ResourceId = resourceGroup.Id,
-                ManagedBy = resourceGroup.ManagedBy
+                ManagedBy = resourceGroup.ManagedBy,
+                CreatedTime = resourceGroup.CreatedTime,
+                ChangedTime = resourceGroup.ChangedTime
             };
 
             return result;

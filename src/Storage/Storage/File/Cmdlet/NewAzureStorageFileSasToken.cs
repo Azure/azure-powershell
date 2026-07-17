@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public string Path { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = "ShareFlieClient instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFileClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = FileClientSasPermissionParameterSet)]

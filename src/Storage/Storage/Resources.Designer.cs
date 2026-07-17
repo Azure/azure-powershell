@@ -452,7 +452,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not found current storage account &apos;{0}&apos; of subsciption &apos;{1}&apos; on azure, please check whether the specified storage account exists..
+        ///   Looks up a localized string similar to Can not found current storage account &apos;{0}&apos; of subscription &apos;{1}&apos; on azure, please check whether the specified storage account exists..
         /// </summary>
         internal static string CurrentStorageAccountNotFoundOnAzure {
             get {
@@ -988,6 +988,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string InvalidFileName {
             get {
                 return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source name &quot;{0}&quot; resolves outside the destination directory &quot;{1}&quot;..
+        /// </summary>
+        internal static string DownloadDestinationPathTraversal {
+            get {
+                return ResourceManager.GetString("DownloadDestinationPathTraversal", resourceCulture);
             }
         }
         

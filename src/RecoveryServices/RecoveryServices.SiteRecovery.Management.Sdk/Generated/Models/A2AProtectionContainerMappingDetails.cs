@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
 
         /// <param name="agentAutoUpdateStatus">A value indicating whether the auto update is enabled.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="automationAccountArmId">The automation account arm id.
         /// </param>
 
         /// <param name="automationAccountAuthenticationType">A value indicating the type authentication to use for automation Account.
-        /// Possible values include: 'RunAsAccount', 'SystemAssignedIdentity'</param>
+        /// Possible values include: &#39;RunAsAccount&#39;, &#39;SystemAssignedIdentity&#39;</param>
 
         /// <param name="scheduleName">The schedule arm name.
         /// </param>

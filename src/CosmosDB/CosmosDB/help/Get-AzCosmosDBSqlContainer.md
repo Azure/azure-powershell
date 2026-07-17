@@ -15,7 +15,8 @@ Gets the CosmosDB Sql Container.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBSqlContainer -ResourceGroupName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] -AccountName <String> -DatabaseName <String>
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

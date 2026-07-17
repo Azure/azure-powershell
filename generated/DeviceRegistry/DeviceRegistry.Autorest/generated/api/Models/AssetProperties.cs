@@ -161,16 +161,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatus Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.AssetStatus()); set { {_status = value;} } }
 
         /// <summary>Internal Acessors for StatusDataset</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDataset> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusDataset { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Dataset; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Dataset = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusDataset> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusDataset { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Dataset; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Dataset = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusError</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusError> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Error = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusError> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Error; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Error = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusEvent</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusEvent> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusEvent { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Event = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusEvent> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusEvent { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Event = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusVersion</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Version = value; }
+        long? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.StatusVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetStatusInternal)Status).Version = value ?? default(long); }
 
         /// <summary>Internal Acessors for Uuid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetPropertiesInternal.Uuid { get => this._uuid; set { {_uuid = value;} } }
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// data points for this asset. Must provide asset endpoint profile name.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

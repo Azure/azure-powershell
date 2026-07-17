@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -184,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -305,6 +313,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
             }
+            if (content.Contains("VcfLicenseKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseKind = (string) content.GetValueForProperty("VcfLicenseKind",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseKind, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -392,6 +404,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuitExpressRoutePrivatePeeringId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("SecondaryCircuitExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VcfLicenseProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseProvisioningState = (string) content.GetValueForProperty("VcfLicenseProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
             {
@@ -438,6 +454,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -501,6 +521,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VcfLicense"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVcfLicense) content.GetValueForProperty("VcfLicense",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicense, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VcfLicenseTypeConverter.ConvertFrom);
             }
             if (content.Contains("SkuName"))
             {
@@ -622,6 +646,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
             }
+            if (content.Contains("VcfLicenseKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseKind = (string) content.GetValueForProperty("VcfLicenseKind",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseKind, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -709,6 +737,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuitExpressRoutePrivatePeeringId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("SecondaryCircuitExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VcfLicenseProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseProvisioningState = (string) content.GetValueForProperty("VcfLicenseProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcfLicenseProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
             {

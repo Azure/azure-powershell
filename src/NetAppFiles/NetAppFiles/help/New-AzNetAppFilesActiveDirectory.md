@@ -47,7 +47,7 @@ $pwd_secure_string = Read-Host "Enter a Password" -AsSecureString
 New-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username "AdUserName" -Password $pwd_secure_string -Domain "AdDomain" -Dns "192.0.2.2" -SmbServerName "AdSmbServerName"
 ```
 
-This command gets the AD password from promt into a secreates the new Active Directory configuration for the ANF account "MyAnfAccount".
+This command gets the AD password from prompt into a secreates the new Active Directory configuration for the ANF account "MyAnfAccount".
 
 ## PARAMETERS
 

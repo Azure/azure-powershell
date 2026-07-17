@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
                 DevicesOperationsExtensions.CreateOrUpdate(
                     this.DataBoxEdgeManagementClient.Devices,
                     this.Name,
-                    dbe,
-                    this.ResourceGroupName));
+                    this.ResourceGroupName,
+                    dbe));
             return device;
         }
 

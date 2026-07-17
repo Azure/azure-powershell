@@ -1,0 +1,94 @@
+{
+  "Get-AzAksArcKubernetesVersion+[NoContext]+List+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default?api-version=2024-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "36c30487-2f55-4d68-a0f9-d6957c85c3fe" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcKubernetesVersion" ],
+        "FullCommandName": [ "Get-AzAksArcKubernetesVersion_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e100f8bd-0000-0a00-0000-68de177e0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/1a76a913-5915-4601-9ec4-833f157077ba" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "ba9cd4b9-2b9b-439b-8126-634df1dbc128" ],
+        "x-ms-correlation-request-id": [ "1b24bc2c-76c2-4b2a-a0eb-776828b50a46" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251002T061536Z:1b24bc2c-76c2-4b2a-a0eb-776828b50a46" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B47151C15154CEDA40E21A0619FB2F8 Ref B: CO6AA3150217025 Ref C: 2025-10-02T06:15:35Z" ],
+        "Date": [ "Thu, 02 Oct 2025 06:15:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3053" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/microsoft.extendedlocation/customlocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default\",\"name\":\"default\",\"type\":\"microsoft.hybridcontainerservice/kubernetesversions\",\"extendedLocation\":{\"name\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourcegroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/microsoft.extendedlocation/customlocations/s-cluster-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"92ff90fe-b2e9-4061-86b0-44e8b8377c22\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T17:12:57.370403Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-02T06:11:10.7122303Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"values\":[{\"version\":\"1.30\",\"isPreview\":false,\"patchVersions\":{\"1.30.13\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.30.14\",\"1.31.10\",\"1.31.9\"]},\"1.30.14\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.31.10\",\"1.31.9\"]}}},{\"version\":\"1.31\",\"isPreview\":false,\"patchVersions\":{\"1.31.10\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.32.5\",\"1.32.6\"]},\"1.31.9\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.31.10\",\"1.32.5\",\"1.32.6\"]}}},{\"version\":\"1.32\",\"isPreview\":false,\"patchVersions\":{\"1.32.5\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.32.6\"]},\"1.32.6\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}]}}}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksArcKubernetesVersion+[NoContext]+List+$GET+https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default?api-version=2024-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default?api-version=2024-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "eec3e526-014d-4ba1-8530-b794d31a8b67" ],
+        "CommandName": [ "Az.AksArc.internal\\Get-AzAksArcKubernetesVersion" ],
+        "FullCommandName": [ "Get-AzAksArcKubernetesVersion_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.AksArc/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e100f8bd-0000-0a00-0000-68de177e0000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=d9b73d5e-a9d3-41ba-88c3-796a643e3edd,objectId=2717d02a-6a0e-4f54-b968-8543e7eb3a3a/canadacentral/7a80d000-e335-41fd-aac9-0e5aabee6459" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "491b2626-83bc-4023-a924-48e5d4cc6884" ],
+        "x-ms-correlation-request-id": [ "3e6e9979-5ffa-4218-8092-4dc586db5e86" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20251002T061536Z:3e6e9979-5ffa-4218-8092-4dc586db5e86" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3D413C68D0384F899A3F7244B539B585 Ref B: CO6AA3150217025 Ref C: 2025-10-02T06:15:36Z" ],
+        "Date": [ "Thu, 02 Oct 2025 06:15:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3053" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourceGroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/microsoft.extendedlocation/customlocations/s-cluster-customlocation/providers/Microsoft.HybridContainerService/kubernetesVersions/default\",\"name\":\"default\",\"type\":\"microsoft.hybridcontainerservice/kubernetesversions\",\"extendedLocation\":{\"name\":\"/subscriptions/69f14c19-881e-42c7-99b9-3286116410aa/resourcegroups/EDGECI-REGISTRATION-HC1n25r0638-jrXozscA/providers/microsoft.extendedlocation/customlocations/s-cluster-customlocation\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"92ff90fe-b2e9-4061-86b0-44e8b8377c22\",\"createdByType\":\"Application\",\"createdAt\":\"2025-09-26T17:12:57.370403Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2025-10-02T06:11:10.7122303Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"values\":[{\"version\":\"1.30\",\"isPreview\":false,\"patchVersions\":{\"1.30.13\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.30.14\",\"1.31.10\",\"1.31.9\"]},\"1.30.14\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.31.10\",\"1.31.9\"]}}},{\"version\":\"1.31\",\"isPreview\":false,\"patchVersions\":{\"1.31.10\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.32.5\",\"1.32.6\"]},\"1.31.9\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.31.10\",\"1.32.5\",\"1.32.6\"]}}},{\"version\":\"1.32\",\"isPreview\":false,\"patchVersions\":{\"1.32.5\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}],\"upgrades\":[\"1.32.6\"]},\"1.32.6\":{\"readiness\":[{\"osType\":\"Linux\",\"osSku\":\"CBLMariner\",\"ready\":true},{\"osType\":\"Windows\",\"osSku\":\"Windows2019\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"},{\"osType\":\"Windows\",\"osSku\":\"Windows2022\",\"ready\":false,\"errorMessage\":\"Windows nodepool feature is disabled\"}]}}}]}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -52,7 +52,7 @@ require:
 input-file:
   - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2024-04-13/kusto.json
 commit: 9a38736f10946d4e41ea40b3ba43d85a738f3263
-
+keep-pec-and-plr: true
 ```
 
 > Names
@@ -70,17 +70,12 @@ output-folder: .
 
 > Directives
 ``` yaml
-identity-correction-for-post: true
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
-    reason: this spec adds produces application/xml and text/json erronously.
+    reason: this spec adds produces application/xml and text/json erroneously.
   # Fix the case mismatch between swagger and RP
   - from: swagger-document
     where: $
@@ -97,58 +92,127 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
-  # Remove the unexpanded parameter set
+
+  # Remove the non-expanded parameter set
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
+      variant: ^(Add|Check|Detach)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
   # Remove the unexpanded parameter set for specific commands
   - where:
       subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$
-      variant: ^Create$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
   - where:
       verb: Remove
       subject: DatabasePrincipal|ClusterLanguageExtension
-      variant: ^Remove$|^RemoveViaIdentity$
+      variant: ^(Remove)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+
   # Custom commands
   - where:
       subject: ^DataConnectionValidation$
     hide: true
+    
   - where:
       subject: ^Database$|^DataConnection$
       variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
     hide: true
+  
+  # Autorest V4 generated variants, but need customise, can be added back upon service team request
+  - where:
+      subject: ^Database$|^DataConnection$
+      variant: ^CreateViaIdentityCluster$|^CreateViaIdentityClusterExpanded$|^CreateViaIdentityDatabase$|^CreateViaIdentityDatabaseExpanded$|^UpdateViaIdentityCluster$|^UpdateViaIdentityClusterExpanded$|^UpdateViaIdentityDatabase$|^UpdateViaIdentityDatabaseExpanded$
+    remove: true
+
   # Hide the operation API
   - where:
       subject: Operation
     hide: true
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+
   # Rename cmdlet from Get-AzKustoOperationsResultsLocation to Get-AzKustoOperationsResultLocation so it's consistent with Get-AzKustoOperationsResult
   - where:
       verb: Get
       subject: OperationsResultsLocation
-      variant: ^Get$|^GetViaIdentity$
     set:
       subject: OperationsResultLocation
+
   # For Get-AzKustoOperationResult no particular need for -PassThru parameter
   - where:
       verb: Get
       subject: OperationsResultLocation
       parameter-name: ^PassThru$
     hide: true
-    # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
+
+  # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
   - where:
       verb: Move
       subject: Cluster
     set:
       verb: Invoke
       subject: ClusterMigration
+
+  # Autorest V4 generated GET+PUT api Update cmdlets, can be added upon service team request
+  - where:
+      verb: Update
+      subject: DatabasePrincipalAssignment|ClusterPrincipalAssignment|AttachedDatabaseConfiguration|PrivateEndpointConnection
+    remove: true
+      
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnection Property');
+  # Breaking change preview messages for Az v16.0.0 migration to autorest v4
+  - where:
+      verb: Add
+      subject: ^ClusterCalloutPolicy$|^ClusterLanguageExtension$|^DatabasePrincipal$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Get
+      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterCalloutPolicy$|^ClusterFollowerDatabase$|^ClusterFollowerDatabaseGet$|^ClusterLanguageExtension$|^ClusterOutboundNetworkDependencyEndpoint$|^ClusterPrincipalAssignment$|^ClusterSku$|^Database$|^DatabasePrincipal$|^DatabasePrincipalAssignment$|^DataConnection$|^ManagedPrivateEndpoint$|^OperationsResult$|^PrivateEndpointConnection$|^PrivateLinkResource$|^SandboxCustomImage$|^Script$|^Sku$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Invoke
+      subject: ^DetachClusterFollowerDatabase$|^InviteDatabaseFollower$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: New
+      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$|^ManagedPrivateEndpoint$|^PrivateEndpointConnection$|^SandboxCustomImage$|^Script$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Remove
+      subject: ^ClusterLanguageExtension$|^DatabasePrincipal$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Test
+      subject: ^AttachedDatabaseConfigurationNameAvailability$|^ClusterNameAvailability$|^ClusterPrincipalAssignmentNameAvailability$|^DatabaseNameAvailability$|^DatabasePrincipalAssignmentNameAvailability$|^DataConnectionNameAvailability$|^ManagedPrivateEndpointNameAvailability$|^SandboxCustomImageNameAvailability$|^ScriptNameAvailability$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Update
+      subject: ^Cluster$|^ManagedPrivateEndpoint$|^SandboxCustomImage$|^Script$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

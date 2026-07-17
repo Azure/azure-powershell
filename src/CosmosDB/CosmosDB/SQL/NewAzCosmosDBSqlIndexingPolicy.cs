@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string IndexingMode { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.IndexingPolicyVectorIndexHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public PSVectorIndex[]  VectorIndex { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSSqlIndexingPolicy sqlIndexingPolicy = new PSSqlIndexingPolicy();
@@ -80,6 +84,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IndexingMode != null)
             {
                 sqlIndexingPolicy.IndexingMode = IndexingMode;
+            }
+
+            if (VectorIndex != null && VectorIndex.Length > 0)
+            {
+                sqlIndexingPolicy.VectorIndexes = new List<PSVectorIndex>(VectorIndex);
             }
 
             WriteObject(sqlIndexingPolicy);

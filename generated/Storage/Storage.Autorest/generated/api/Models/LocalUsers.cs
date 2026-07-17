@@ -7,16 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>List storage account local users.</summary>
+    /// <summary>
+    /// List of local users requested, and if paging is required, a URL to the next page of local users.
+    /// </summary>
     public partial class LocalUsers :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsers,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal
     {
 
+        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
+        private string _nextLink;
+
+        /// <summary>The link to the next page of items</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
+
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> _value;
 
-        /// <summary>The local users associated with the storage account.</summary>
+        /// <summary>The LocalUser items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get => this._value; set => this._value = value; }
 
@@ -26,28 +35,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// List storage account local users.
+    /// List of local users requested, and if paging is required, a URL to the next page of local users.
     public partial interface ILocalUsers :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>The local users associated with the storage account.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The local users associated with the storage account.",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The LocalUser items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The LocalUser items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get; set; }
 
     }
-    /// List storage account local users.
+    /// List of local users requested, and if paging is required, a URL to the next page of local users.
     internal partial interface ILocalUsersInternal
 
     {
-        /// <summary>The local users associated with the storage account.</summary>
+        /// <summary>The link to the next page of items</summary>
+        string NextLink { get; set; }
+        /// <summary>The LocalUser items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get; set; }
 
     }

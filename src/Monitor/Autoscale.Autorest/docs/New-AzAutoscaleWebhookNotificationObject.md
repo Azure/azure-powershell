@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzAutoscaleWebhookNotificationObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscalewebhooknotificationobject
 schema: 2.0.0
 ---
 
@@ -22,22 +22,21 @@ Create an in-memory object for WebhookNotification.
 
 ## EXAMPLES
 
-### Example 1: Create webhook nofitication object
+### Example 1: Create webhook notification object
 ```powershell
 New-AzAutoscaleWebhookNotificationObject -Property @{} -ServiceUri "http://myservice.com"
 ```
 
-Create webhook nofitication object
+Create webhook notification object
 
 ## PARAMETERS
 
 ### -Property
 a property bag of settings.
 This value can be empty.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IWebhookNotificationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IWebhookNotificationProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.WebhookNotification
 
 ## NOTES
 

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Virtual network configuration for the deployemnt region. Default value is $null. " +
+            HelpMessage = "Virtual network configuration for the deployment region. Default value is $null. " +
                           "Passing $null will remove virtual network configuration for the region.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             " This can also be used to standup a new region in Passive mode, test it and then make it Live later.")]
         public bool? DisableGateway { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResourceId for integration into stv2 Virtual Network Deployments")]
         public string PublicIpAddressId { get; set; }
 
         public override void ExecuteCmdlet()

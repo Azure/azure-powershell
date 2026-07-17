@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzKustoSandboxCustomIm
 
 Describe 'Remove-AzKustoSandboxCustomImage' {
     It 'Delete' {
-        #Note Sandbox custom image is only supported on hyper threading clusters, curretly the cluster that is used for following tests is using a hyper threading SKU
+        #Note Sandbox custom image is only supported on hyper threading clusters, currently the cluster that is used for following tests is using a hyper threading SKU
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
         $sandboxCustomImageName = "testimage"
-        $languageVersion = "3.9.7"
+        $languageVersion = "3.10.8"
         $requirementsFileContent = "Pillow"
 
         New-AzKustoSandboxCustomImage -ClusterName $clusterName -Name $sandboxCustomImageName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -LanguageVersion $languageVersion -RequirementsFileContent $requirementsFileContent
@@ -30,12 +30,12 @@ Describe 'Remove-AzKustoSandboxCustomImage' {
     }
 
     It 'DeleteViaIdentity' {
-        #Note Sandbox custom image is only supported on hyper threading clusters, curretly the cluster that is used for following tests is using a hyper threading SKU
+        #Note Sandbox custom image is only supported on hyper threading clusters, currently the cluster that is used for following tests is using a hyper threading SKU
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
         $sandboxCustomImageName = "testimage"
-        $languageVersion = "3.9.7"
+        $languageVersion = "3.10.8"
         $requirementsFileContent = "Pillow"
 
         New-AzKustoSandboxCustomImage -ClusterName $clusterName -Name $sandboxCustomImageName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -LanguageVersion $languageVersion -RequirementsFileContent $requirementsFileContent

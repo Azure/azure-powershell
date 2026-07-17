@@ -6,10 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Creates (or updates) an Application Insights component. Note: You cannot specify a different value for InstrumentationKey
+    /// update (or update an Application Insights component. Note: You cannot specify a different value for InstrumentationKey
     /// nor AppId in the Put operation.
     /// </summary>
     /// <remarks>
@@ -17,12 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzApplicationInsights_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Creates (or updates) an Application Insights component. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"update (or update  an Application Insights component. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}", ApiVersion = "2020-02-02")]
     public partial class SetAzApplicationInsights_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -38,8 +41,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>An Application Insights component definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent _insightPropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ApplicationInsightsComponent();
+        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent _insightPropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.ApplicationInsightsComponent();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Type of application being monitored.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of application being monitored.")]
@@ -49,14 +64,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Type of application being monitored.",
         SerializedName = @"Application_Type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType ApplicationType { get => _insightPropertiesBody.ApplicationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType)""); set => _insightPropertiesBody.ApplicationType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("web", "other")]
+        public string ApplicationType { get => _insightPropertiesBody.ApplicationType ?? null; set => _insightPropertiesBody.ApplicationType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ApplicationInsightsManagementClient Client => Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.ClientAPI;
@@ -104,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Etag { get => _insightPropertiesBody.Etag ?? null; set => _insightPropertiesBody.Etag = value; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>
         /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set
         /// to 'Bluefield' when creating/updating a component via the REST API.
@@ -115,9 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.",
         SerializedName = @"Flow_Type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType FlowType { get => _insightPropertiesBody.FlowType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType)""); set => _insightPropertiesBody.FlowType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Bluefield")]
+        public string FlowType { get => _insightPropertiesBody.FlowType ?? null; set => _insightPropertiesBody.FlowType = value; }
 
         /// <summary>Force users to create their own storage account for profiler and debugger.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Force users to create their own storage account for profiler and debugger.")]
@@ -132,13 +153,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 
         /// <summary>
         /// The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+        /// Please visit external url https://aka.ms/ewjuel to get more information.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp. Please visit external url https://aka.ms/ewjuel to get more information.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.",
+        Description = @"The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp. Please visit external url https://aka.ms/ewjuel to get more information.",
         SerializedName = @"HockeyAppId",
         PossibleTypes = new [] { typeof(string) })]
         public string HockeyAppId { get => _insightPropertiesBody.HockeyAppId ?? null; set => _insightPropertiesBody.HockeyAppId = value; }
@@ -174,9 +196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Indicates the flow of the ingestion.",
         SerializedName = @"IngestionMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode IngestionMode { get => _insightPropertiesBody.IngestionMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode)""); set => _insightPropertiesBody.IngestionMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ApplicationInsights", "ApplicationInsightsWithDiagnosticSettings", "LogAnalytics")]
+        public string IngestionMode { get => _insightPropertiesBody.IngestionMode ?? null; set => _insightPropertiesBody.IngestionMode = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -232,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -258,9 +280,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"The network access type for accessing Application Insights ingestion.",
         SerializedName = @"publicNetworkAccessForIngestion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType PublicNetworkAccessForIngestion { get => _insightPropertiesBody.PublicNetworkAccessForIngestion ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType)""); set => _insightPropertiesBody.PublicNetworkAccessForIngestion = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccessForIngestion { get => _insightPropertiesBody.PublicNetworkAccessForIngestion ?? null; set => _insightPropertiesBody.PublicNetworkAccessForIngestion = value; }
 
         /// <summary>The network access type for accessing Application Insights query.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The network access type for accessing Application Insights query.")]
@@ -270,9 +292,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"The network access type for accessing Application Insights query.",
         SerializedName = @"publicNetworkAccessForQuery",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType PublicNetworkAccessForQuery { get => _insightPropertiesBody.PublicNetworkAccessForQuery ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType)""); set => _insightPropertiesBody.PublicNetworkAccessForQuery = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccessForQuery { get => _insightPropertiesBody.PublicNetworkAccessForQuery ?? null; set => _insightPropertiesBody.PublicNetworkAccessForQuery = value; }
 
         /// <summary>
         /// Describes what tool created this Application Insights component. Customers using this API should set this to the default
@@ -285,9 +307,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.",
         SerializedName = @"Request_Source",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource RequestSource { get => _insightPropertiesBody.RequestSource ?? ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource)""); set => _insightPropertiesBody.RequestSource = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("rest")]
+        public string RequestSource { get => _insightPropertiesBody.RequestSource ?? null; set => _insightPropertiesBody.RequestSource = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -316,13 +338,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
+        /// Please visit external url https://aka.ms/sl0yqd to get more information.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry. Please visit external url https://aka.ms/sl0yqd to get more information.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.",
+        Description = @"Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry. Please visit external url https://aka.ms/sl0yqd to get more information.",
         SerializedName = @"SamplingPercentage",
         PossibleTypes = new [] { typeof(double) })]
         public double SamplingPercentage { get => _insightPropertiesBody.SamplingPercentage ?? default(double); set => _insightPropertiesBody.SamplingPercentage = value; }
@@ -341,7 +364,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -354,8 +378,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags Tag { get => _insightPropertiesBody.Tag ?? null /* object */; set => _insightPropertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentsResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentsResourceTags Tag { get => _insightPropertiesBody.Tag ?? null /* object */; set => _insightPropertiesBody.Tag = value; }
 
         /// <summary>
         /// Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an
@@ -376,24 +400,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -416,6 +440,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -480,8 +509,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -537,7 +591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -550,12 +604,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ComponentsCreateOrUpdate(ResourceGroupName, SubscriptionId, Name, _insightPropertiesBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ComponentsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _insightPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,Name=Name,body=_insightPropertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -568,7 +622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzApplicationInsights_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="SetAzApplicationInsights_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public SetAzApplicationInsights_UpdateExpanded()
         {
@@ -601,12 +655,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents> response)
         {
             using( NoSynchronizationContext )
             {
@@ -623,15 +677,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IErrorResponseComponents>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, Name=Name, body=_insightPropertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IErrorResponseComponents>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, Name=Name, body=_insightPropertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -641,12 +695,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent">Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent> response)
         {
             using( NoSynchronizationContext )
             {
@@ -658,8 +712,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

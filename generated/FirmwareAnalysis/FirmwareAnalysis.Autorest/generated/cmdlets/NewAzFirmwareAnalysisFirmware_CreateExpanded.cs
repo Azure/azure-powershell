@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to Create a firmware.</summary>
+    /// <summary>The operation to create a firmware.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFirmwareAnalysisFirmware_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to Create a firmware.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Description(@"The operation to create a firmware.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}", ApiVersion = "2024-01-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}", ApiVersion = "2025-08-02")]
     public partial class NewAzFirmwareAnalysisFirmware_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IContext
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Firmware definition</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware _firmwareBody = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Firmware();
-
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
+
+        /// <summary>Firmware definition</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.Firmware();
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"User-specified description of the firmware.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
-        public string Description { get => _firmwareBody.Description ?? null; set => _firmwareBody.Description = value; }
+        public string Description { get => _resourceBody.Description ?? null; set => _resourceBody.Description = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"File name for a firmware that user uploaded.",
         SerializedName = @"fileName",
         PossibleTypes = new [] { typeof(string) })]
-        public string FileName { get => _firmwareBody.FileName ?? null; set => _firmwareBody.FileName = value; }
+        public string FileName { get => _resourceBody.FileName ?? null; set => _resourceBody.FileName = value; }
 
         /// <summary>File size of the uploaded firmware image.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "File size of the uploaded firmware image.")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"File size of the uploaded firmware image.",
         SerializedName = @"fileSize",
         PossibleTypes = new [] { typeof(long) })]
-        public long FileSize { get => _firmwareBody.FileSize ?? default(long); set => _firmwareBody.FileSize = value; }
+        public long FileSize { get => _resourceBody.FileSize ?? default(long); set => _resourceBody.FileSize = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"Firmware model.",
         SerializedName = @"model",
         PossibleTypes = new [] { typeof(string) })]
-        public string Model { get => _firmwareBody.Model ?? null; set => _firmwareBody.Model = value; }
+        public string Model { get => _resourceBody.Model ?? null; set => _resourceBody.Model = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.HttpPipeline" /> that the remote call will use.
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PSArgumentCompleterAttribute("Pending", "Extracting", "Analyzing", "Ready", "Error")]
-        public string Status { get => _firmwareBody.Status ?? null; set => _firmwareBody.Status = value; }
+        public string Status { get => _resourceBody.Status ?? null; set => _resourceBody.Status = value; }
 
         /// <summary>A list of errors or other messages generated during firmware analysis</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"A list of errors or other messages generated during firmware analysis",
         SerializedName = @"statusMessages",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[] StatusMessage { get => _firmwareBody.StatusMessage?.ToArray() ?? null /* fixedArrayOf */; set => _firmwareBody.StatusMessage = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage>(value) : null); }
+        public Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[] StatusMessage { get => _resourceBody.StatusMessage?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.StatusMessage = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"Firmware vendor.",
         SerializedName = @"vendor",
         PossibleTypes = new [] { typeof(string) })]
-        public string Vendor { get => _firmwareBody.Vendor ?? null; set => _firmwareBody.Vendor = value; }
+        public string Vendor { get => _resourceBody.Vendor ?? null; set => _resourceBody.Vendor = value; }
 
         /// <summary>Firmware version.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Firmware version.")]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
         Description = @"Firmware version.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
-        public string Version { get => _firmwareBody.Version ?? null; set => _firmwareBody.Version = value; }
+        public string Version { get => _resourceBody.Version ?? null; set => _resourceBody.Version = value; }
 
         /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
         private string _workspaceName;
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.FirmwaresCreate(SubscriptionId, ResourceGroupName, WorkspaceName, Id, _firmwareBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate);
+                    await this.Client.FirmwaresCreate(SubscriptionId, ResourceGroupName, WorkspaceName, Id, _resourceBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.UndeclaredResponseException urexception)

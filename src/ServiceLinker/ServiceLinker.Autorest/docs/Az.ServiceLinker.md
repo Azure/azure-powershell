@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ServiceLinker
-Module Guid: 20a4a5d9-068c-43d8-b45a-7130dd33afe4
+Module Guid: 062b07c1-a69d-4f21-a156-6438b1bc4adf
 Download Help Link: https://learn.microsoft.com/powershell/module/az.servicelinker
 Help Version: 1.0.0.0
 Locale: en-US

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated dependencies to address security vulnerabilities
 
 ## Version 1.1.3
 * Updated data collection mechanism

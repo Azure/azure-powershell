@@ -1,7 +1,7 @@
 ---
 external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresponsebasedoriginerrordetectionparametersobject
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ```
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject [-HttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedFailoverThresholdPercentage <Int32>] [<CommonParameters>]
+ [-ResponseBasedDetectedErrorType <String>] [-ResponseBasedFailoverThresholdPercentage <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,10 +40,9 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 
 ### -HttpErrorRange
 The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHttpErrorRangeParameters[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters[]
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 Type of response errors for real user requests for which origin will be deemed unhealthy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters
 
 ## NOTES
 

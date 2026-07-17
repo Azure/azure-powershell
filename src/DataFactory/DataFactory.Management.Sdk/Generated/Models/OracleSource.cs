@@ -62,7 +62,19 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// objects(AdditionalColumns) (or Expression with resultType array of
         /// objects).
         /// </param>
-        public OracleSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object oracleReaderQuery = default(object), object queryTimeout = default(object), object partitionOption = default(object), OraclePartitionSettings partitionSettings = default(OraclePartitionSettings), object additionalColumns = default(object))
+
+        /// <param name="numberPrecision">The decimal precision used to represent Oracle NUMBER type without
+        /// precision and scale. The range is 1 to 256 and default value is 256 if not
+        /// specified. Type: integer (or Expression with resultType integer). Only used
+        /// for Version 2.0.
+        /// </param>
+
+        /// <param name="numberScale">The decimal scale used to represent Oracle NUMBER type without precision
+        /// and scale. The range is 0 to 130 and default value is 130 if not specified.
+        /// Type: integer (or Expression with resultType integer). Only used for
+        /// Version 2.0.
+        /// </param>
+        public OracleSource(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object oracleReaderQuery = default(object), object queryTimeout = default(object), object partitionOption = default(object), OraclePartitionSettings partitionSettings = default(OraclePartitionSettings), object additionalColumns = default(object), object numberPrecision = default(object), object numberScale = default(object))
 
         : base(additionalProperties, sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
@@ -71,6 +83,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.PartitionOption = partitionOption;
             this.PartitionSettings = partitionSettings;
             this.AdditionalColumns = additionalColumns;
+            this.NumberPrecision = numberPrecision;
+            this.NumberScale = numberScale;
             CustomInit();
         }
 
@@ -116,5 +130,23 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalColumns")]
         public object AdditionalColumns {get; set; }
+
+        /// <summary>
+        /// Gets or sets the decimal precision used to represent Oracle NUMBER type
+        /// without precision and scale. The range is 1 to 256 and default value is 256
+        /// if not specified. Type: integer (or Expression with resultType integer).
+        /// Only used for Version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "numberPrecision")]
+        public object NumberPrecision {get; set; }
+
+        /// <summary>
+        /// Gets or sets the decimal scale used to represent Oracle NUMBER type without
+        /// precision and scale. The range is 0 to 130 and default value is 130 if not
+        /// specified. Type: integer (or Expression with resultType integer). Only used
+        /// for Version 2.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "numberScale")]
+        public object NumberScale {get; set; }
     }
 }

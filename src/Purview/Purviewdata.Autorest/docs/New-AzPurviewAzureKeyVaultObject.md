@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureKeyVaultObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurekeyvaultobject
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureKeyVault
 
 ## NOTES
 

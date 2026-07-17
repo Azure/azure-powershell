@@ -14,18 +14,17 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -39,6 +38,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public const string CommonAdTenant = "organizations",
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
+
+        public const string TokenCacheParameterName = "tokenCache";
+        public const string ResourceIdParameterName = "resourceId";
+        public const string CmdletContextParameterName = "cmdletContext";
+        public const string ClaimsChallengeParameterName = "claimsChallenge";
 
         public AuthenticationFactory()
         {
@@ -89,17 +93,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
-        ///
+        /// Authenticates an Azure account, service principal, or managed identity against Entra ID and obtains an access token.
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="environment"></param>
-        /// <param name="tenant"></param>
-        /// <param name="password"></param>
-        /// <param name="promptBehavior"></param>
-        /// <param name="promptAction"></param>
-        /// <param name="tokenCache"></param>
-        /// <param name="resourceId"></param>
-        /// <returns></returns>
+        /// <param name="account">The Azure account to authenticate.</param>
+        /// <param name="environment">The Azure environment to authenticate against.</param>
+        /// <param name="tenant">The tenant ID or name to authenticate with.</param>
+        /// <param name="password">The password for the account, if applicable.</param>
+        /// <param name="promptBehavior">The prompt behavior to use during authentication.</param>
+        /// <param name="promptAction">Action to execute when a prompt is required.</param>
+        /// <param name="resourceId">The resource identifier to authenticate for.</param>
+        /// <returns>An access token for the authenticated principal.</returns>
+        public IAccessToken Authenticate(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            return Authenticate(
+                account,
+                environment,
+                tenant, password,
+                promptBehavior,
+                promptAction,
+                null,
+                resourceId);
+        }
+
+        /// <summary>
+        /// Authenticates an Azure account, service principal, or managed identity against Entra ID and obtains an access token.
+        /// </summary>
+        /// <param name="account">The Azure account to authenticate.</param>
+        /// <param name="environment">The Azure environment to authenticate against.</param>
+        /// <param name="tenant">The tenant ID or name to authenticate with.</param>
+        /// <param name="password">The password for the account, if applicable.</param>
+        /// <param name="promptBehavior">The prompt behavior to use during authentication.</param>
+        /// <param name="promptAction">Action to execute when a prompt is required.</param>
+        /// <param name="tokenCache">The token cache to use for caching authentication results.</param>
+        /// <param name="resourceId">The resource identifier to authenticate for.</param>
+        /// <returns>An access token for the authenticated principal.</returns>
         public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
@@ -110,7 +144,73 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            IAccessToken token = null;
+            var optionalParameters = new Dictionary<string, object>()
+            {
+                { TokenCacheParameterName, tokenCache },
+                { ResourceIdParameterName, resourceId }
+            };
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, optionalParameters);
+        }
+
+        /// <summary>
+        /// Authenticates an Azure account, service principal, or managed identity against Entra ID and obtains an access token.
+        /// This method supports claims challenge for conditional access scenarios and various authentication flows based on account type.
+        /// </summary>
+        /// <param name="account">The Azure account to authenticate.</param>
+        /// <param name="environment">The Azure environment to authenticate against.</param>
+        /// <param name="tenant">The tenant ID or name to authenticate with.</param>
+        /// <param name="password">The password for the account, if applicable.</param>
+        /// <param name="promptBehavior">The prompt behavior to use during authentication.</param>
+        /// <param name="promptAction">Action to execute when a prompt is required.</param>
+        /// <param name="optionalParameters">Dictionary of optional parameters that may include:
+        /// <list type="bullet">
+        ///   <item><description>tokenCache (IAzureTokenCache): The token cache to use for caching authentication results.</description></item>
+        ///   <item><description>resourceId (string): The resource identifier to authenticate for.</description></item>
+        ///   <item><description>claimsChallenge (string): Claims challenge token from a previous authentication attempt requiring additional claims.</description></item>
+        ///   <item><description>cmdletContext (ICmdletContext): Context for the cmdlet executing the authentication.</description></item>
+        /// </list>
+        /// </param>
+        /// <returns>An access token for the authenticated principal.</returns>
+        public IAccessToken Authenticate(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction,
+            IDictionary<string, object> optionalParameters)
+        {
+            var resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
+            string claimsChallenge = null;
+            IAzureTokenCache tokenCache = null;
+            ICmdletContext cmdletContext = null;
+            AuthenticationTelemetry authenticationTelemetry = null;
+            
+            if (optionalParameters != null)
+            {
+                if (optionalParameters.ContainsKey(ResourceIdParameterName))
+                {
+                    resourceId = optionalParameters[ResourceIdParameterName] as string;
+                }
+
+                if (optionalParameters.ContainsKey(ClaimsChallengeParameterName))
+                {
+                    claimsChallenge = optionalParameters[ClaimsChallengeParameterName] as string;
+                }
+
+                if (optionalParameters.ContainsKey(TokenCacheParameterName))
+                {
+                    tokenCache = optionalParameters[TokenCacheParameterName] as IAzureTokenCache;
+                }
+
+                if (AzureSession.Instance.TryGetComponent(AuthenticationTelemetry.Name, out authenticationTelemetry))
+                {
+                    if (optionalParameters.ContainsKey(CmdletContextParameterName))
+                    {
+                        cmdletContext = optionalParameters[CmdletContextParameterName] as ICmdletContext;
+                    }
+                }
+            }
 
             PowerShellTokenCacheProvider tokenCacheProvider;
             if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
@@ -121,7 +221,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             Task<IAccessToken> authToken;
             var processAuthenticator = Builder.Authenticator;
             var retries = 5;
-            var authParamters = GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
+            var authParamters = GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, claimsChallenge, tokenCache, resourceId);
+
+            IAccessToken token = null;
             while (retries-- > 0)
             {
                 try
@@ -137,6 +239,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             {
                                 account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
                             }
+                            if (cmdletContext!= null)
+                            {
+                                if (!authenticationTelemetry.PushDataRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), true)))
+                                {
+                                    TracingAdapter.Information(string.Format(Resources.AuthenticationTelemetryRecordPushError, (cmdletContext?.CmdletId) ?? "Unknown"));
+                                }
+                            }
+
                             break;
                         }
 
@@ -147,6 +257,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
+                        if (cmdletContext != null)
+                        {
+                            if (!authenticationTelemetry.PushDataRecord(cmdletContext, new AuthTelemetryRecord(Builder.Authenticator.GetDataForTelemetry(), false)))
+                            {
+                                TracingAdapter.Information(string.Format(Resources.AuthenticationTelemetryRecordPushError, (cmdletContext?.CmdletId) ?? "Unknown"));
+                            }
+                        }
                         var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
                         if (mfaException != null)
                         {
@@ -164,7 +281,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 break;
             }
-
             return token;
         }
 
@@ -213,26 +329,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static bool NeedTenantArmPermission(IAzureEnvironment environment, string tenantId, string resourceId)
         {
             return !string.IsNullOrEmpty(tenantId) && !string.IsNullOrEmpty(resourceId) &&
-                                        string.Equals(environment.GetEndpoint(resourceId), environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
-        }
-
-        public IAccessToken Authenticate(
-            IAzureAccount account,
-            IAzureEnvironment environment,
-            string tenant,
-            SecureString password,
-            string promptBehavior,
-            Action<string> promptAction,
-            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
-        {
-            return Authenticate(
-                account,
-                environment,
-                tenant, password,
-                promptBehavior,
-                promptAction,
-                null,
-                resourceId);
+                string.Equals(environment.GetEndpoint(resourceId), environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -303,7 +400,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 null,
                                 ShowDialog.Never,
                                 null,
-                                null,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 
                 TracingAdapter.Information(
@@ -325,22 +421,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, ICmdletContext cmdletContext)
         {
-            return GetServiceClientCredentials(context,
-                AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+            return GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, cmdletContext);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, ICmdletContext cmdletContext)
         {
             if (context == null)
             {
                 throw new AzPSApplicationException("Azure context is empty");
             }
-            return GetServiceClientCredentials(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint));
+            return GetServiceClientCredentials(context, targetEndpoint, context.Environment.GetTokenAudience(targetEndpoint), cmdletContext);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, string resourceId)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, string resourceId, ICmdletContext cmdletContext)
         {
             if (context.Account == null)
             {
@@ -386,7 +481,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
                     case "ClientAssertion":
-                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, resourceId);
+                        var optionalParameters = new Dictionary<string, object>()
+                        {
+                            {ResourceIdParameterName, resourceId },
+                            {CmdletContextParameterName, cmdletContext }
+                        };
+                        token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, optionalParameters);
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
@@ -412,8 +512,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// Remove a user from token cache.
         /// </summary>
         /// <param name="account"></param>
-        /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
-        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        /// <param name="environment"></param>
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
         {
             if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
             {
@@ -430,10 +530,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     case AzureAccount.AccountType.ServicePrincipal:
                         try
                         {
-                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret,
-                                account.Id, account.GetTenants().FirstOrDefault()));
-                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword,
-    account.Id, account.GetTenants().FirstOrDefault()));
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().FirstOrDefault()));
+                            KeyStore.RemoveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().FirstOrDefault()));
                         }
                         catch
                         {
@@ -494,13 +592,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient();
-            var accounts = publicClient.GetAccountsAsync()
-                            .ConfigureAwait(false).GetAwaiter().GetResult();
+            var accounts = publicClient.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
             foreach (var tokenAccount in tokenAccounts)
-                {
-                publicClient.RemoveAsync(tokenAccount)
-                                .ConfigureAwait(false).GetAwaiter().GetResult();
+            {
+                publicClient.RemoveAsync(tokenAccount).ConfigureAwait(false).GetAwaiter().GetResult();
             }
         }
 
@@ -526,6 +622,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return result;
         }
 
+        /// <summary>
+        /// Creates the appropriate authentication parameters based on the account type and other inputs.
+        /// </summary>
+        /// <param name="tokenCacheProvider">Provider for token caching.</param>
+        /// <param name="account">The Azure account to authenticate.</param>
+        /// <param name="environment">The Azure environment to authenticate against.</param>
+        /// <param name="tenant">The tenant ID or name to authenticate with.</param>
+        /// <param name="password">The password for the account, if applicable.</param>
+        /// <param name="promptBehavior">The prompt behavior to use during authentication.</param>
+        /// <param name="promptAction">Action to execute when a prompt is required.</param>
+        /// <param name="claimsChallenge">Claims challenge token from a previous authentication attempt.</param>
+        /// <param name="tokenCache">The token cache to use for caching authentication results.</param>
+        /// <param name="resourceId">The resource identifier to authenticate for.</param>
+        /// <returns>Authentication parameters appropriate for the account type.</returns>
         private AuthenticationParameters GetAuthenticationParameters(
             PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureAccount account,
@@ -534,6 +644,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             SecureString password,
             string promptBehavior,
             Action<string> promptAction,
+            string claimsChallenge,
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -544,20 +655,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         var homeAccountId = account.GetProperty(AzureAccount.Property.HomeAccountId) ?? "";
 
-                        if (!string.IsNullOrEmpty(account.Id))
+                        if (!string.IsNullOrEmpty(account.Id) && string.IsNullOrEmpty(claimsChallenge))
                         {
                             return GetSilentParameters(tokenCacheProvider, account, environment, tenant, tokenCache, resourceId, homeAccountId);
                         }
 
                         if (account.IsPropertySet("UseDeviceAuth"))
                         {
-                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, claimsChallenge);
                         }
                         else if (account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
                         {
                             return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
-                        return GetInteractiveParameters(tokenCacheProvider, account, environment, tenant, promptAction, tokenCache, resourceId, homeAccountId);
+                        return GetInteractiveParameters(tokenCacheProvider, account, environment, tenant, promptAction, claimsChallenge, tokenCache, resourceId, homeAccountId);
                     }
 
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
@@ -574,8 +685,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     {
                         try
                         {
-                            password = KeyStore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
-, account.Id, tenant));
+                            password = KeyStore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, tenant));
                         }
                         catch
                         {
@@ -610,16 +720,36 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
+        private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, string claimsChallenge, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return AzConfigReader.IsWamEnabled(environment.ActiveDirectoryAuthority)
-                ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction) as AuthenticationParameters
-                : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
+                ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction, claimsChallenge) as AuthenticationParameters
+                : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction, claimsChallenge);
         }
 
         private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone);
+        }
+
+        /// <summary>
+        /// Remove a user from token cache.
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="tokenCache">This parameter is no longer used. However to keep the API unchanged it's not removed.</param>
+        public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            RemoveUser(account, environment: null);
         }
     }
 }

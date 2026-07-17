@@ -1,0 +1,50 @@
+{
+  "Get-AzDisconnectedOperationsImageDownloadUri+[NoContext]+List+$POST+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default/listDownloadUri?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default/listDownloadUri?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "d5363523-3129-4fdc-8b71-f3c339977b99" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsImageDownloadUri" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsImageDownloadUri_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/efd16ba7-e7b7-4021-9fa0-92eb2ff0ad17" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152802Z-15db5d6546449l88hC1BN15f2n00000014t000000000fxsg" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "bbf9dd69-76f3-4f67-bb16-9af061af2d18" ],
+        "x-ms-correlation-request-id": [ "5bd78144-5954-4d42-9f0f-ee9941585cea" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152802Z:5bd78144-5954-4d42-9f0f-ee9941585cea" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: FBDE478D65D64293AF9607BF6563586F Ref B: MAA201060514047 Ref C: 2026-03-03T15:28:01Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:28:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "95" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourcePostActionFailed\",\"message\":\"ResourcePostActionFailed: Bad Request\"}}",
+      "isContentBase64": false
+    }
+  }
+}

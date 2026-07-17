@@ -30,12 +30,12 @@ Deletes layer 3 connectivity between compute nodes by managed by named L3 Isolat
 
 ## EXAMPLES
 
-### Example 1: Delete the L3 Isolatoion Domain Resource
+### Example 1: Delete the L3 Isolation Domain Resource
 ```powershell
 Remove-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-This command deletes the L3 Isolatoion Domain resource.
+This command deletes the L3 Isolation Domain resource.
 
 ## PARAMETERS
 

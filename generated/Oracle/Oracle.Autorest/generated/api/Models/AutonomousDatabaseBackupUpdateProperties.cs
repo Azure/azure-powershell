@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Backing field for <see cref="RetentionPeriodInDay" /> property.</summary>
         private int? _retentionPeriodInDay;
 
-        /// <summary>Retention period, in days, for long-term backups.</summary>
+        /// <summary>Retention period, in days</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public int? RetentionPeriodInDay { get => this._retentionPeriodInDay; set => this._retentionPeriodInDay = value; }
 
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     public partial interface IAutonomousDatabaseBackupUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IJsonSerializable
     {
-        /// <summary>Retention period, in days, for long-term backups.</summary>
+        /// <summary>Retention period, in days</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Retention period, in days, for long-term backups.",
+        Description = @"Retention period, in days",
         SerializedName = @"retentionPeriodInDays",
         PossibleTypes = new [] { typeof(int) })]
         int? RetentionPeriodInDay { get; set; }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     internal partial interface IAutonomousDatabaseBackupUpdatePropertiesInternal
 
     {
-        /// <summary>Retention period, in days, for long-term backups.</summary>
+        /// <summary>Retention period, in days</summary>
         int? RetentionPeriodInDay { get; set; }
 
     }

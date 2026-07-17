@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
+            HelpMessage = "The gateway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
         [ValidateSet(
             MNM.VirtualNetworkGatewaySkuTier.Basic,
             MNM.VirtualNetworkGatewaySkuTier.Standard,

@@ -21,5 +21,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         public const string PremiumZRS = "Premium_ZRS";
         public const string StandardGzrs = "Standard_GZRS";
         public const string StandardRagzrs = "Standard_RAGZRS";
+        public const string StandardV2LRS = "StandardV2_LRS";
+        public const string StandardV2GRS = "StandardV2_GRS";
+        public const string StandardV2ZRS = "StandardV2_ZRS";
+        public const string StandardV2Gzrs = "StandardV2_GZRS";
+        public const string PremiumV2LRS = "PremiumV2_LRS";
+        public const string PremiumV2ZRS = "PremiumV2_ZRS";
     }
 }

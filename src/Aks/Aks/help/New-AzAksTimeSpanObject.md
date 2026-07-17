@@ -1,7 +1,7 @@
 ---
 external help file: Az.Aks-help.xml
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-AzAksTimeSpanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Aks/new-azakstimespanobject
 schema: 2.0.0
 ---
 
@@ -77,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.TimeSpan
 
 ## NOTES
 

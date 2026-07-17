@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         if (e.Body != null && e.Body.Error != null && e.Body.Error.Message != null)
                         {
-                            // sdk will not add the detail error message to exception message for custmized error, so create a new exception with detail error in exception message
+                            // sdk will not add the detail error message to exception message for customized error, so create a new exception with detail error in exception message
                             ErrorResponseException newex = new ErrorResponseException(e.Body.Error.Message, e);
                             newex.Request = e.Request;
                             newex.Response = e.Response;

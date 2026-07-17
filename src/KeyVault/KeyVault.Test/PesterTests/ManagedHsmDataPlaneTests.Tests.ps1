@@ -59,7 +59,7 @@ Describe "AddAzManagedHsmKey" {
         $keyName = GetRandomName -Prefix "key"
         $keyType = "RSA"
         $KeyOps = 'decrypt', 'verify'
-        # Expires & NotBefore is hard to cmpare, may add in the furture
+        # Expires & NotBefore is hard to compare, may add in the future
         $Tags = @{'Severity' = 'high'; 'Accounting' = "true" }
 
         $key = Add-AzKeyVaultKey -HsmName $hsmName -Name $keyName -KeyType $keyType -KeyOps $KeyOps -Disable -Tag $Tags
@@ -267,7 +267,7 @@ Describe "GetAzManagedHsmRoleAssignment" {
         }
     }
 
-    It "List all role assignmentss in a managed HSM" {
+    It "List all role assignments in a managed HSM" {
         $roleAssignments = Get-AzKeyVaultRoleAssignment -HsmName $hsmName
         $roleAssignments | Should -Not -Be $null
         $roleAssignments.Count | Should -BeGreaterThan 0

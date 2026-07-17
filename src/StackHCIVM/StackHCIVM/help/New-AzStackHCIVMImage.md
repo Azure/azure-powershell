@@ -26,7 +26,7 @@ New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ```
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -CustomLocationId <String> -OSType <Object> [-CloudInitDataSource <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -ImagePath <String>
+ [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -ImagePath <SecureString>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -148,12 +148,12 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-Local path of image that the image should be created from.
-
+Local path of image that the image should be created from (as SecureString).
 This parameter is required for non marketplace images.
+Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: GalleryImage
 Aliases:
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -Offer
-The name of the marketplae gallery image definition offer.
+The name of the marketplace gallery image definition offer.
 
 ```yaml
 Type: System.String

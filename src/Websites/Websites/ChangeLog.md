@@ -19,8 +19,27 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Added ChangeSafety Support
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 3.4.3
+* Updated preannouncement breaking changes date to May 2026.
+
+## Version 3.4.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 3.4.1
+* Added AppServicePlan management support for Pv4 and Pmv4 tiers.
+
+## Version 3.4.0
+* Add support for pull based deployments from a URL with MSI authentication in `Publish-AzWebApp`
+
+## Version 3.3.1
+* Migrated Websites.Helper generation from autorest csharp to autorest powershell.
+
 ## Version 3.3.0
-* Fixd the source app retrival from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
+* Fixed the source app retrieval from Microsoft.Web RP instead of ARM cache for `RestoreAzureWebAppSnapshot`
 * Upgraded nuget package to signed package.
 
 ## Version 3.2.2

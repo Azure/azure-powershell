@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Create WebApp in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Path to the GitHub repository containign the web application to deploy.", ParameterSetName = SimpleParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Path to the GitHub repository containing the web application to deploy.", ParameterSetName = SimpleParameterSet)]
         public string GitRepositoryPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]

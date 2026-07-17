@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IOutboundEnvironmentEndpoint
 
 ## NOTES
 

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRVaultSettings" /> class
         /// </summary>
-        /// <param name="asrVaultCreds">Vault credentails</param>
+        /// <param name="asrVaultCreds">Vault credentials</param>
         public ASRVaultSettings(
             ASRVaultCreds asrVaultCreds)
         {
@@ -2819,6 +2819,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the test failover disk name.
         /// </summary>
         public string TfoDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network access policy for the recovery managed disk.
+        /// Allowed values: AllowAll, AllowPrivate, DenyAll.
+        /// </summary>
+        public string RecoveryNetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk access ARM Id (required when RecoveryNetworkAccessPolicy is AllowPrivate).
+        /// </summary>
+        public string RecoveryDiskAccessId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access setting for the recovery managed disk.
+        /// Allowed values: Enabled, Disabled.
+        /// </summary>
+        public string RecoveryPublicNetworkAccess { get; set; }
     }
 
     /// <summary>
@@ -2909,6 +2926,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             this.FailoverDiskName = disk.FailoverDiskName;
             this.TfoDiskName = disk.TfoDiskName;
+            this.RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy;
+            this.RecoveryDiskAccessId = disk.RecoveryDiskAccessId;
+            this.RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess;
         }
 
         /// <summary>
@@ -2976,6 +2996,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery disk encryption set Id.
         /// </summary>
         public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the network access policy for the recovery managed disk.
+        /// Allowed values: AllowAll, AllowPrivate, DenyAll.
+        /// </summary>
+        public string RecoveryNetworkAccessPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk access ARM Id (set when RecoveryNetworkAccessPolicy is AllowPrivate).
+        /// </summary>
+        public string RecoveryDiskAccessId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access setting for the recovery managed disk.
+        /// Allowed values: Enabled, Disabled.
+        /// </summary>
+        public string RecoveryPublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the allowed disk level operations.
@@ -3516,7 +3553,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public DateTime? DriverVersionExpiryDate { get; set; }
 
         /// <summary>
-        ///     Gets or sets the time of the last heartbeat recieved from the agent.
+        ///     Gets or sets the time of the last heartbeat received from the agent.
         /// </summary>
         public DateTime? LastHeartbeatUtc { get; set; }
 
@@ -3670,7 +3707,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public DateTime? DriverVersionExpiryDate { get; set; }
 
         /// <summary>
-        ///     Gets or sets the time of the last heartbeat recieved from the agent.
+        ///     Gets or sets the time of the last heartbeat received from the agent.
         /// </summary>
         public DateTime? LastHeartbeatUtc { get; set; }
 
@@ -4055,18 +4092,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRRoleAssignment
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRoleAssignment" /> class.
-        /// </summary>
-        public ASRRoleAssignment(RoleAssignment role)
-        {
-            this.Id = role.Id;
-            this.Name = role.Name;
-            this.Scope = role.Scope;
-            this.PrincipalId = role.PrincipalId;
-            this.RoleDefinitionId = role.RoleDefinitionId;
-        }
-
         /// <summary>
         /// Gets or sets the ARM Id of the role assignment.
         /// </summary>

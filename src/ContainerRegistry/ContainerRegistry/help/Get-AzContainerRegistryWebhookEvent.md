@@ -114,10 +114,9 @@ Accept wildcard characters: False
 
 ### -Webhook
 The Webhook Object.
-To construct, see NOTES section for WEBHOOK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 Parameter Sets: GetByWebhook
 Aliases:
 
@@ -179,11 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IWebhook
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IEvent
 
 ## NOTES
 

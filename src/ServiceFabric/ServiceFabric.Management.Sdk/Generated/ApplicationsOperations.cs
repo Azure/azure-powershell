@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public ServiceFabricManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get a Service Fabric application resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Get a Service Fabric application resource created or in the process of
+        /// being created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -257,7 +258,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Create or update a Service Fabric application resource with the specified name.
+        /// Create or update a Service Fabric application resource with the specified
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -338,7 +340,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application resources created or in the process of being created
+        /// in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -546,7 +549,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Create or update a Service Fabric application resource with the specified name.
+        /// Create or update a Service Fabric application resource with the specified
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1211,7 +1215,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Gets all application resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application resources created or in the process of being created
+        /// in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

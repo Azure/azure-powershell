@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// unit test for new PSSeriviceProperties() functional 
+        /// unit test for new PSServiceProperties() functional 
         /// </summary>
         [TestMethod]
         public void ValidateParseServicePropertiesTest()
@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare PSServiceProperties and ServiceProperties, to make sure they are same content
+        /// Compare PSServiceProperties and ServiceProperties, to make sure they are same content
         /// </summary>
         static private void CompareServiceProperties(PSSeriviceProperties pSSeriviceProperties, ServiceProperties serviceProperties)
         {
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare PSCorsRule and CorsProperties, to make sure they are same content
+        /// Compare PSCorsRule and CorsProperties, to make sure they are same content
         /// </summary>
         static private void CompareCors(PSCorsRule[] psCorsRules, CorsProperties corsProperties)
         {
@@ -166,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         }
 
         /// <summary>
-        /// Comapare String Array and String List, to make sure they are same content
+        /// Compare String Array and String List, to make sure they are same content
         /// </summary>
         static private void CompareStrings(string[] stringArray, IList<String> stringList)
         {

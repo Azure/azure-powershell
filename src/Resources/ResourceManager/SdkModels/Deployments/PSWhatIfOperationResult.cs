@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
 
         private readonly Lazy<IList<PSWhatIfChange>> changes;
 
+        private readonly Lazy<IList<PSWhatIfChange>> potentialChanges;
+
         private readonly Lazy<IList<DeploymentDiagnosticsDefinition>> diagnostics;
 
         public PSWhatIfOperationResult(WhatIfOperationResult whatIfOperationResult)
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
                 whatIfOperationResult.Changes?.Select(c => new PSWhatIfChange(c)).ToList());
             this.diagnostics = new Lazy<IList<DeploymentDiagnosticsDefinition>>(() =>
                 whatIfOperationResult.Diagnostics);
+            this.potentialChanges = new Lazy<IList<PSWhatIfChange>>(() =>
+                whatIfOperationResult.PotentialChanges?.Select(c => new PSWhatIfChange(c)).ToList());
         }
 
         public string Status => this.whatIfOperationResult.Status;
@@ -44,5 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public IList<PSWhatIfChange> Changes => this.changes.Value;
 
         public IList<DeploymentDiagnosticsDefinition> Diagnostics => this.diagnostics.Value;
+
+        public IList<PSWhatIfChange> PotentialChanges => this.potentialChanges.Value;
     }
 }

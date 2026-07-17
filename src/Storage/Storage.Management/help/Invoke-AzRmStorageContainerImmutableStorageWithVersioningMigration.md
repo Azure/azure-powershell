@@ -48,7 +48,7 @@ $t | Wait-Job
 
 This command migrates an existing Storage blob containers to enable immutable Storage with versioning.
 The command only works when the Storage account has already enabled blob versioning, and the containers already has ImmutabilityPolicy.
-Since the command ussually will run for a long time, you can run it asynchronously with '-Asjob'.
+Since the command usually will run for a long time, you can run it asynchronously with '-Asjob'.
 
 ## PARAMETERS
 

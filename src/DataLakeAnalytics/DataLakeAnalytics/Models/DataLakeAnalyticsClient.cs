@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                         getNextPage = nextPageLink => _catalogClient.Catalog.ListAclsByDatabase(nextPageLink, path.DatabaseName);
                         break;
 
-                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                    default: throw new ArgumentException($"ACL operations are unsupported for catalog item type: {itemType}");
                 }
             }
 
@@ -881,7 +881,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                         _catalogClient.Catalog.GrantAclToDatabase(accountName, path.DatabaseName, parameters);
                         break;
 
-                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                    default: throw new ArgumentException($"ACL operations are unsupported for catalog item type: {itemType}");
                 }
             }
         }
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                         _catalogClient.Catalog.RevokeAclFromDatabase(accountName, path.DatabaseName, parameters);
                         break;
 
-                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                    default: throw new ArgumentException($"ACL operations are unsupported for catalog item type: {itemType}");
                 }
             }
         }

@@ -1,0 +1,89 @@
+{
+  "Get-AzAlbSecurityPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "88ce6dbf-ea04-476c-aebf-4d80c2dca21c" ],
+        "CommandName": [ "Get-AzAlbSecurityPolicy" ],
+        "FullCommandName": [ "Get-AzAlbSecurityPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "c907d8e5-4a89-419f-8286-de797187146f" ],
+        "x-ms-correlation-request-id": [ "c907d8e5-4a89-419f-8286-de797187146f" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224851Z:c907d8e5-4a89-419f-8286-de797187146f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AA20B49824A44B60AE87B93BB8A64D8F Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:51Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1745" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"wafPolicy\":{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/test-wafPolicy\"},\"policyType\":\"WAF\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securitypolicies/test-wafSecurityPolicy\",\"name\":\"test-wafSecurityPolicy\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers/SecurityPolicies\",\"etag\":\"4415bb97-51ec-427d-a35d-474512044507\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T18:42:24.3812022Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:29:19.5047107Z\"}},{\"properties\":{\"wafPolicy\":{\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/extra-test-wafPolicy\"},\"policyType\":\"WAF\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicynew\",\"name\":\"test-wafSecurityPolicynew\",\"type\":\"Microsoft.ServiceNetworking/TrafficControllers/SecurityPolicies\",\"etag\":\"aff11bf9-6b1d-4ca1-bdba-e30b353e804a\",\"location\":\"NorthCentralUS\",\"systemData\":{\"createdBy\":\"chengdexu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-03-17T22:02:08.9091923Z\",\"lastModifiedBy\":\"chengdexu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-03-17T22:02:08.9091923Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAlbSecurityPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicy?api-version=2025-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securityPolicies/test-wafSecurityPolicy?api-version=2025-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "94508a47-b70f-41ac-9f8c-26be68eab6e0" ],
+        "CommandName": [ "Get-AzAlbSecurityPolicy" ],
+        "FullCommandName": [ "Get-AzAlbSecurityPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.4.1", "PSVersion/v7.4.6", "Az.Alb/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "6c2b71db-d798-478a-a993-b2c864ab067a" ],
+        "x-ms-correlation-request-id": [ "6c2b71db-d798-478a-a993-b2c864ab067a" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20250317T224851Z:6c2b71db-d798-478a-a993-b2c864ab067a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2D4621EFDE3D4EE783A01A7A26C8EF46 Ref B: CO6AA3150220009 Ref C: 2025-03-17T22:48:51Z" ],
+        "Date": [ "Mon, 17 Mar 2025 22:48:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "983" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"wafPolicy\": {\r\n      \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourceGroups/test-rg/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/test-wafPolicy\"\r\n    },\r\n    \"policyType\": \"WAF\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/668f1741-ef48-4132-bf98-28b3a3d3f257/resourcegroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/test-alb/securitypolicies/test-wafSecurityPolicy\",\r\n  \"name\": \"test-wafSecurityPolicy\",\r\n  \"type\": \"Microsoft.ServiceNetworking/TrafficControllers/SecurityPolicies\",\r\n  \"etag\": \"4415bb97-51ec-427d-a35d-474512044507\",\r\n  \"location\": \"NorthCentralUS\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"chengdexu@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-03-17T18:42:24.3812022Z\",\r\n    \"lastModifiedBy\": \"chengdexu@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-03-17T22:29:19.5047107Z\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

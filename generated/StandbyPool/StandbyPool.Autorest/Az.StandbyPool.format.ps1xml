@@ -2,6 +2,28 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupInstanceCountSummary</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupInstanceCountSummary#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Zone</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Zone</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfile</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfile#Multiple</TypeName>
@@ -24,21 +46,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProfileUpdate#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Revision</Label>
+            <Label>Enabled</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Revision</PropertyName>
+                <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -182,9 +204,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolResourceStateCount#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolContainerGroupStateCount#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolVirtualMachineStateCount</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.PoolVirtualMachineStateCount#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -318,27 +396,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolPrediction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfileUpdate#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolPrediction#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>MaxReadyCapacity</Label>
+            <Label>ForecastInfo</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>RefillPolicy</Label>
+            <Label>ForecastStartTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>MaxReadyCapacity</PropertyName>
+                <PropertyName>ForecastInfo</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>RefillPolicy</PropertyName>
+                <PropertyName>ForecastStartTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -654,6 +732,9 @@
           <TableColumnHeader>
             <Label>MinReadyCapacity</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PostProvisioningDelay</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -663,6 +744,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MinReadyCapacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PostProvisioningDelay</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -670,27 +754,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolPrediction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolPrediction#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>MaxReadyCapacity</Label>
+            <Label>ForecastInfo</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MinReadyCapacity</Label>
+            <Label>ForecastStartTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>MaxReadyCapacity</PropertyName>
+                <PropertyName>ForecastInfo</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>MinReadyCapacity</PropertyName>
+                <PropertyName>ForecastStartTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

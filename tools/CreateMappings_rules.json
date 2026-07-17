@@ -362,10 +362,6 @@
     "alias": "Billing"
   },
   {
-    "regex": "Media",
-    "alias": "Media Services"
-  },
-  {
     "regex": "UsageAggregates",
     "alias": "Usage Aggregates"
   },
@@ -563,10 +559,6 @@
   {
     "regex": "Portal",
     "alias": "Portal"
-  },
-  {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
   },
   {
     "module": "SqlVirtualMachine",
@@ -793,10 +785,6 @@
     "alias": "LoadTesting"
   },
   {
-    "alias": "MobileNetwork",
-    "module": "MobileNetwork"
-  },
-  {
     "module": "ArcResourceBridge",
     "alias": "ArcResourceBridge"
   },
@@ -843,10 +831,6 @@
   {
     "alias": "NetworkCloud",
     "module": "NetworkCloud"
-  },
-  {
-    "alias": "HdInsightOnAks",
-    "module": "HdInsightOnAks"
   },
   {
     "module": "NetworkAnalytics",
@@ -943,5 +927,109 @@
   {
     "module": "DeviceRegistry",
     "alias": "DeviceRegistry"
+  },
+  {
+    "module": "IoTOperationsService",
+    "alias": "IoTOperationsService"
+  },
+  {
+    "module": "ScVmm",
+    "alias": "ScVmm"
+  },
+  {
+    "alias": "ArizeAI",
+    "module": "ArizeAI"
+  },
+  {
+    "module": "WeightsAndBiases",
+    "alias": "WeightsAndBiases"
+  },
+  {
+    "module": "Pinecone",
+    "alias": "Pinecone"
+  },
+  {
+    "alias": "LambdaTest",
+    "module": "LambdaTest"
+  },
+  {
+    "alias": "Carbon",
+    "module": "Carbon"
+  },
+  {
+    "alias": "MongoDB",
+    "module": "MongoDB"
+  },
+  {
+    "module": "DependencyMap",
+    "alias": "DependencyMap"
+  },
+  {
+    "alias": "DataTransfer",
+    "module": "DataTransfer"
+  },
+  {
+    "alias": "CloudHsm",
+    "module": "CloudHsm"
+  },
+  {
+    "alias": "StorageDiscovery",
+    "module": "StorageDiscovery"
+  },
+  {
+    "alias": "Sftp",
+    "module": "Sftp"
+  },
+  {
+    "module": "Site",
+    "alias": "Site"
+  },
+  {
+    "alias": "DnsResolver",
+    "module": "DnsResolver"
+  },
+  {
+    "module": "DurableTask",
+    "alias": "DurableTask"
+  },
+  {
+    "alias": "DisconnectedOperations",
+    "module": "DisconnectedOperations"
+  },
+  {
+    "alias": "EdgeAction",
+    "module": "EdgeAction"
+  },
+  {
+    "alias": "ArtifactSigning",
+    "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
+  },
+  {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
+  },
+  {
+    "module": "ServiceGroups",
+    "alias": "ServiceGroups"
+  },
+  {
+    "module": "PlanetaryComputer",
+    "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
   }
 ]

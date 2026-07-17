@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 3.4.1
+* Updated `PSIdentity` conversions to explicitly use the Operational Insights SDK `Identity` model.
+
+## Version 3.4.0
+* Added ChangeSafety Support
+
 ## Version 3.3.0
 * Upgraded nuget package to signed package.
 
@@ -85,7 +91,7 @@
     - `Get-AzOperationalInsightsSearchResult` (alias `Get-AzOperationalInsightsSearchResults`)
     - `Get-AzOperationalInsightsLinkTarget` (alias `Get-AzOperationalInsightsLinkTargets`)
 * Added parameters for `Set-AzOperationalInsightsWorkspace` and `New-AzOperationalInsightsWorkspace`
-* Created cmdlets for Linked Stoarge Account
+* Created cmdlets for Linked Storage Account
 * Created cmdlets for Clusters and Linked Service
 
 ## Version 1.3.4

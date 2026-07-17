@@ -28,7 +28,7 @@ $dnsZone = New-AzPrivateDnsZone -ResourceGroupName "rg" -Name "test.vault.azure.
 $config = New-AzPrivateDnsZoneConfig -Name "test-vault-azure-com" -PrivateDnsZoneId $dnsZone.ResourceId
 ```
 
-The above example creates DNS zone and then creates DNS zone configuration. `New-AzPrivateDnsZone` cmdlet is proveded by module Az.PrivateDns.
+The above example creates DNS zone and then creates DNS zone configuration. `New-AzPrivateDnsZone` cmdlet is provided by module Az.PrivateDns.
 
 ## PARAMETERS
 

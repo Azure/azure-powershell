@@ -19,6 +19,27 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Removed the authentication key from console output.
+
+## Version 1.1.0
+* Added ChangeSafety Support
+* [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
+
+## Version 1.0.0
+* General availability for module Az.DataMigration
+* Upgraded Data Migration API to stable version '2025-06-30'.
+* Added support for retrying database migrations and for deleting SQL VM and SQL MI Database Migration Services.
+* Added cmdlets: 'Invoke-AzDataMigrationRetryToSqlDb', 'Remove-AzDataMigrationToSqlManagedInstance', 'Remove-AzDataMigrationToSqlVM'
+
+## Version 0.15.0
+* Bumped up data migration API to 2025-03-15-preview
+* Added support for migrations from Azure Blob to Sql MI using managed identity.
+    - Added new optional params in commandlet New-AzDataMigrationToSqlManagedInstance
+    
+## Version 0.14.10
+* Updated Sql schema migration and version package to new url. 
+
 ## Version 0.14.9
 * Upgraded nuget package to signed package.
 * Updated the URL to download the SQL Assessment Zip to `https://aka.ms/sqlassessmentpackage`

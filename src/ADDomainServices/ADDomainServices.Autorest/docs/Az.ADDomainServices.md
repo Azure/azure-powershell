@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ADDomainServices
-Module Guid: bba49006-4c09-406e-8fad-dd48d1b381e7
+Module Guid: 9ad18405-bd7f-4c38-973e-4a979ec5ded8
 Download Help Link: https://learn.microsoft.com/powershell/module/az.addomainservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: AdDomainServices cmdlets
 The Get Domain Service operation retrieves a json representation of the Domain Service.
 
 ### [New-AzADDomainService](New-AzADDomainService.md)
-The Create Domain Service operation creates a new domain service with the specified parameters.
+The create Domain Service operation create a new domain service with the specified parameters.
 If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
 
 ### [New-AzADDomainServiceForestTrustObject](New-AzADDomainServiceForestTrustObject.md)
@@ -28,6 +28,6 @@ Create an in-memory object for ReplicaSet.
 The Delete Domain Service operation deletes an existing Domain Service.
 
 ### [Update-AzADDomainService](Update-AzADDomainService.md)
-The Update Domain Service operation can be used to update the existing deployment.
+The update Domain Service operation can be used to update the existing deployment.
 The update call only supports the properties listed in the PATCH body.
 

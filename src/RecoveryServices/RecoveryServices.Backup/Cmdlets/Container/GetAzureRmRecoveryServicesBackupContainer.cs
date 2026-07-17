@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 // Currently the containers API doesn't support any status level filtering 
-                // Also the NotRegitered container isn't a valid scenario, so we're not allowing client filtering too
+                // Also the NotRegistered container isn't a valid scenario, so we're not allowing client filtering too
                 // If the filtering is required in future we can add client side filtering                 
                 // Status = ContainerRegistrationStatus.Registered;
 

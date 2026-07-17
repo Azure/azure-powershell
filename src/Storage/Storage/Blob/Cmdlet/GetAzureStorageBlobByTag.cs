@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Continuation Token.")]
         public BlobContinuationToken ContinuationToken { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "As the blobs get by tag don't contain blob proeprties, specify tis parameter to get blob properties with an additional request on each blob.")]
+        [Parameter(Mandatory = false, HelpMessage = "As the blobs get by tag don't contain blob properties, specify tis parameter to get blob properties with an additional request on each blob.")]
         public SwitchParameter GetBlobProperty { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Container name, specify this parameter to only return all blobs whose tags match a search expression in the container.")]

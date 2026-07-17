@@ -156,6 +156,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
+            }
             if (content.Contains("DbServerPatchingDetailEstimatedPatchDuration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).DbServerPatchingDetailEstimatedPatchDuration = (int?) content.GetValueForProperty("DbServerPatchingDetailEstimatedPatchDuration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).DbServerPatchingDetailEstimatedPatchDuration, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -268,6 +272,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComputeModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ComputeModel = (string) content.GetValueForProperty("ComputeModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbServerPropertiesInternal)this).ComputeModel, global::System.Convert.ToString);
             }
             if (content.Contains("DbServerPatchingDetailEstimatedPatchDuration"))
             {

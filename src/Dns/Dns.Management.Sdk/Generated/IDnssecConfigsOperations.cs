@@ -14,22 +14,16 @@ namespace Microsoft.Azure.Management.Dns
     public partial interface IDnssecConfigsOperations
     {
         /// <summary>
-        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// Lists the DNSSEC configurations in a DNS zone.
         /// </summary>
         /// <remarks>
-        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// Lists the DNSSEC configurations in a DNS zone.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,33 +37,7 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnssecConfig>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DnssecConfigsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DnssecConfig>>> ListByDnsZoneWithHttpMessagesAsync(string resourceGroupName, string zoneName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the DNSSEC configuration.
@@ -98,32 +66,6 @@ namespace Microsoft.Azure.Management.Dns
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnssecConfig>> GetWithHttpMessagesAsync(string resourceGroupName, string zoneName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the DNSSEC configurations in a DNS zone.
-        /// </summary>
-        /// <remarks>
-        /// Lists the DNSSEC configurations in a DNS zone.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DnssecConfig>>> ListByDnsZoneWithHttpMessagesAsync(string resourceGroupName, string zoneName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Creates or updates the DNSSEC configuration on a DNS zone.
         /// </summary>
         /// <remarks>
@@ -136,10 +78,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
         /// </param>
         /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -153,13 +98,15 @@ namespace Microsoft.Azure.Management.Dns
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnssecConfig>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnssecConfig,DnssecConfigsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
         /// </summary>
         /// <remarks>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -168,7 +115,74 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DnssecConfigsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnssecConfig,DnssecConfigsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

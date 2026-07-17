@@ -14,7 +14,7 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ```
 New-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <NfsVersion>]
+ -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The NFS protocol version.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -222,13 +222,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 
 ## NOTES
 

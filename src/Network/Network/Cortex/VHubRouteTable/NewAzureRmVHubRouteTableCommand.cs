@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
             }
 
-            // this will thorw if hub does not exist.
+            // this will throw if hub does not exist.
             IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
 
             PSVHubRouteTable hubRouteTable = new PSVHubRouteTable();

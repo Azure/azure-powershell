@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
-        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
         /// <returns></returns>
         public string GetManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
         {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the managed instance</param>
-        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <param name="managedDatabaseName">The name of the managed database</param>
         /// <returns></returns>
         public string GetDeletedManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
         {

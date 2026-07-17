@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the SignalRTlsSettings class.
         /// </summary>
 
-        /// <param name="clientCertEnabled">Request client certificate during TLS handshake if enabled
+        /// <param name="clientCertEnabled">Request client certificate during TLS handshake if enabled. Not supported
+        /// for free tier. Any input will be ignored for free tier.
         /// </param>
         public SignalRTlsSettings(bool? clientCertEnabled = default(bool?))
 
@@ -40,7 +41,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets request client certificate during TLS handshake if enabled
+        /// Gets or sets request client certificate during TLS handshake if enabled.
+        /// Not supported for free tier. Any input will be ignored for free tier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "clientCertEnabled")]
         public bool? ClientCertEnabled {get; set; }

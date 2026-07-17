@@ -23,39 +23,39 @@ Create an in-memory object for NginxNetworkProfile.
 New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId='/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default'}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxNetworkProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTENDIPCONFIGURATION <INginxFrontendIPConfiguration>: 
-  [PrivateIPAddress <INginxPrivateIPAddress[]>]: 
+  [PrivateIPAddress <List<INginxPrivateIPAddress>>]: 
     [PrivateIPAddress <String>]: 
-    [PrivateIPAllocationMethod <NginxPrivateIPAllocationMethod?>]: 
+    [PrivateIPAllocationMethod <String>]: 
     [SubnetId <String>]: 
-  [PublicIPAddress <INginxPublicIPAddress[]>]: 
+  [PublicIPAddress <List<INginxPublicIPAddress>>]: 
     [Id <String>]: 
 
 NETWORKINTERFACECONFIGURATION <INginxNetworkInterfaceConfiguration>: 
   [SubnetId <String>]: 
 .Link
-https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfileObject
+https://learn.microsoft.com/powershell/module/Az.Nginx/new-aznginxnetworkprofileobject
 #>
 function New-AzNginxNetworkProfileObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.NginxNetworkProfile])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxFrontendIPConfiguration]
-    # To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxFrontendIPConfiguration]
+    # 
     ${FrontEndIPConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxNetworkInterfaceConfiguration]
-    # To construct, see NOTES section for NETWORKINTERFACECONFIGURATION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkInterfaceConfiguration]
+    # 
     ${NetworkInterfaceConfiguration}
 )
 
@@ -66,6 +66,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -94,6 +97,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

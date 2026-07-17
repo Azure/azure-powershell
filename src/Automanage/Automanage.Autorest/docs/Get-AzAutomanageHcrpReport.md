@@ -30,6 +30,18 @@ Get-AzAutomanageHcrpReport -InputObject <IAutomanageIdentity> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
+### GetViaIdentityConfigurationProfileAssignment
+```
+Get-AzAutomanageHcrpReport -ConfigurationProfileAssignmentInputObject <IAutomanageIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityMachine
+```
+Get-AzAutomanageHcrpReport -MachineInputObject <IAutomanageIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get information about a report associated with a configuration profile assignment run
 
@@ -70,6 +82,21 @@ This command gets information about a report associated with a configuration pro
 
 ## PARAMETERS
 
+### -ConfigurationProfileAssignmentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityConfigurationProfileAssignment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -88,11 +115,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+Parameter Sets: GetViaIdentityMachine
 Aliases:
 
 Required: True
@@ -122,7 +163,7 @@ The report name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityConfigurationProfileAssignment, GetViaIdentityMachine
 Aliases:
 
 Required: True
@@ -172,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 
 ## NOTES
 

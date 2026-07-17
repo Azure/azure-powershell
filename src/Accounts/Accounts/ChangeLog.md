@@ -20,6 +20,76 @@
 
 ## Upcoming Release
 
+## Version 5.5.1
+* Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
+* Upgraded `Azure.Identity` dependency to 1.21.0.
+* Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
+* Upgraded `System.ClientModel` dependency from 1.8.0 to 1.12.0.
+* Upgraded `System.Text.Json` dependency from 8.0.6 to 10.0.3.
+* Upgraded MSAL dependencies (`Microsoft.Identity.Client`, `Microsoft.Identity.Client.Extensions.Msal`, `Microsoft.Identity.Client.Broker`) from 4.83.1 to 4.84.0.
+* Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.2 to 0.20.4.
+* Fixed `MicrosoftGraphUrl` not being populated when ARM (Azure Resource Manager) metadata returns endpoint without trailing slash
+
+## Version 5.5.0
+* Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+* Upgraded `Azure.Identity` dependency to 1.17.2.
+* Added ChangeSafety Support
+
+## Version 5.4.0
+* Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
+* Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` to `Add-AzEnvironment` and `Set-AzEnvironment`
+    - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
+
+## Version 5.3.4
+* Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
+    - SSH certificate authentication now works across all Azure clouds without configuring the `-SshAuthScope` parameter.
+    - The `-SshAuthScope` parameter in `Set-AzEnvironment` and `Add-AzEnvironment` does not take any effect.
+* Updated MSAL to 4.83.1 for bug fixes in IMDS endpoint cache.
+
+## Version 5.3.3
+* Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
+
+## Version 5.3.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
+* Fixed telemetry to capture client request ID instead of server response ID for AutoRest-generated cmdlets [#23555]
+
+## Version 5.3.1
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+## Version 5.3.0
+* Updated `AuthenticationAssemblyLoadContext` project to deprecate .NET 6.0 and build on .NET 8.0.
+* Added Server-Side Pagination Support for `Invoke-AzRestMethod` command via `-Paginate` parameter.
+
+## Version 5.2.0
+* Fixed an issue where `Clear-AzContext` does not clear the token cache when broker is enabled.
+* Added new parameter `-ClaimsChallenge` to `Connect-AzAccount` to support claims challenge authentication for MFA.
+* Refined the error message when a cmdlet fails because of policy violations about Multi-Factor Authentication (MFA) to provide more actionable guidance.
+
+## Version 5.1.1
+* Updated the date in the message about multi-factor authentication (MFA). For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
+
+## Version 5.1.0
+* Enabled setting the authentication scope for SSH cmdlets by `Set-AzEnvironment -SshAuthScope <String>`.
+
+## Version 5.0.2
+* Upgrade Azure.Core to 1.45.0
+
+## Version 5.0.1
+* Force `Get-AzAccessToken` to always return SecureString as long as `AsSecureString` is set
+
+## Version 5.0.0
+* Changed the default output access token of `Get-AzAccessToken` from plain text to `SecureString`.
+* Removed the warning message about failing to initialize PSStyle in automation runbooks. [#26155]
+* Increased the timeout for tab-completion of location, resource group, etc. to 10 seconds.
+
+## Version 4.2.0
+* Updated warning message about MFA. For more details, see https://go.microsoft.com/fwlink/?linkid=2276971
+* Fixed token in auxiliary authentication header.
+* Collected authentication method for telemetry in end process of cmdlet.
+
+## Version 4.1.0
+* Added AppConfiguration ResourceId and Suffix endpoints for Mooncake and USGov clouds to fix issue [#24219]
+
 ## Version 4.0.2
 * Fixed unsigned dll:
     - `System.Buffers.dll`
@@ -82,7 +152,7 @@
 
 ## Version 2.19.0
 > [!IMPORTANT]
-> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influenced by WAM. This will take effect from the release of **May 21st**.
 * Fixed secrets detection issues.
 
 ## Version 2.17.0
@@ -237,7 +307,7 @@
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
 
 ## Version 2.7.1
-* Copied `ServicePrincipalSecret` and `CertificatePassword` from Az.Accounts buildin profile to customer set profile. [#16617]
+* Copied `ServicePrincipalSecret` and `CertificatePassword` from Az.Accounts builtin profile to customer set profile. [#16617]
 * Updated help message and help markdown for parameter `Tenant` of the cmdlet `Set-AzContext`. [#16515]
 * Fixed the issue that Azure PowerShell could not work in a workflow. [#16408]
 * Fixed the doubled Api Version in the URI of the underlying request issued by `Invoke-AzRestMethod`. [#16615]
@@ -279,7 +349,7 @@
 * Updated Azure.Core to 1.16.0
 
 ## Version 2.5.1
-* Fixed access error when subscripiton has no `Tags` property [#15425].
+* Fixed access error when subscription has no `Tags` property [#15425].
 
 ## Version 2.5.0
 * Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
@@ -346,7 +416,7 @@
 ## Version 2.1.1
 * Fixed the issue that token is not renewed after expiring for LRO [#13367]
 * Fixed the issue that AccountId is not respected in MSI [#13376]
-* Fixed the issue that error message is unclear if browser is not avaialable for Interactive auth [#13340]
+* Fixed the issue that error message is unclear if browser is not available for Interactive auth [#13340]
 
 ## Version 2.1.0
 * [Breaking Change] Removed `Get-AzProfile` and `Select-AzProfile`

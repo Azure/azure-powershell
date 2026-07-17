@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     using System.Linq;
 
     /// <summary>
-    /// SingletonPartitionScheme
+    /// Describes the partition scheme of a singleton-partitioned, or
+    /// non-partitioned service.
     /// </summary>
     [Newtonsoft.Json.JsonObject("Singleton")]
     public partial class SingletonPartitionScheme : Partition

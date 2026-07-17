@@ -14,7 +14,8 @@ Gets a Nat Gateway resource in a resource group by name or NatGateway Id  or all
 
 ### ListParameterSet (Default)
 ```
-Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
@@ -25,7 +26,8 @@ Get-AzNatGateway -ResourceGroupName <String> -Name <String> [-DefaultProfile <IA
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzNatGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

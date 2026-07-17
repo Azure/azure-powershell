@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataShareSubscriptionSynchronizationDetail
 
 ## SYNOPSIS
-Gets information about synchonization details for share subscription.
+Gets information about synchronization details for share subscription.
 
 ## SYNTAX
 

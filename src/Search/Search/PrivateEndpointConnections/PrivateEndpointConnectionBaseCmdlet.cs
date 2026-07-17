@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     public abstract class PrivateEndpointConnectionBaseCmdlet : SearchServiceBaseCmdlet
     {
-        protected const string PrivateEndpointConnectionNameHelpMessage = "Azure Cognitive Search Service private endpoint connection name";
+        protected const string PrivateEndpointConnectionNameHelpMessage = "Azure AI Search Service private endpoint connection name";
         protected const string PrivateEndpointConnectionStatusHelpMessage = "Private link service connection status";
         protected const string PrivateEndpointConnectionResourceIdHelpMessage = "Private link service resource id";
         protected const string PrivateEndpointConnectionDescriptionHelpMessage = "Private endpoint connection description";

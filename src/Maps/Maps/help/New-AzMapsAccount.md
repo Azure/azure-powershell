@@ -8,19 +8,32 @@ schema: 2.0.0
 # New-AzMapsAccount
 
 ## SYNOPSIS
-Create or update a Maps Account.
+create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <Name> [-DisableLocalAuth] [-Kind <Kind>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ -SkuName <String> [-DisableLocalAuth] [-Kind <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a Maps Account.
+create a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ## EXAMPLES
@@ -62,10 +75,40 @@ This will disable Shared Keys authentication from any usage.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,8 +119,8 @@ Accept wildcard characters: False
 Get or Set Kind property.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -92,7 +135,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -137,8 +180,8 @@ Accept wildcard characters: False
 The name of the SKU, in standard format (such as S0).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +211,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -216,7 +259,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsAccount
 
 ## NOTES
 

@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object Delete(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool Delete(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).DeleteAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> DeleteAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> DeleteAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object Pause(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool Pause(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).PauseAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> PauseAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> PauseAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.PauseWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object Resume(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool Resume(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).ResumeAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> ResumeAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> ResumeAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ResumeWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Synapse
             }
         }
         /// <summary>
-        /// Rename a SQL pool.
+        /// Apply a partial update to a SQL pool
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -336,13 +336,13 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static void Rename(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, ResourceMoveDefinition parameters)
+        public static SqlPool BeginUpdate(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo sqlPoolInfo)
         {
-                ((ISqlPoolsOperations)operations).RenameAsync(resourceGroupName, workspaceName, sqlPoolName, parameters).GetAwaiter().GetResult();
+                return ((ISqlPoolsOperations)operations).BeginUpdateAsync(resourceGroupName, workspaceName, sqlPoolName, sqlPoolInfo).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Rename a SQL pool.
+        /// Apply a partial update to a SQL pool
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -359,9 +359,12 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RenameAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, ResourceMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> BeginUpdateAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolPatchInfo sqlPoolInfo, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RenameWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, sqlPoolInfo, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Create a SQL pool
@@ -423,7 +426,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object BeginDelete(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool BeginDelete(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -446,7 +449,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginDeleteAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> BeginDeleteAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -468,7 +471,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object BeginPause(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool BeginPause(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).BeginPauseAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -491,7 +494,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginPauseAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> BeginPauseAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginPauseWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -513,7 +516,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='sqlPoolName'>
         /// SQL pool name
         /// </param>
-        public static object BeginResume(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
+        public static SqlPool BeginResume(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName)
         {
                 return ((ISqlPoolsOperations)operations).BeginResumeAsync(resourceGroupName, workspaceName, sqlPoolName).GetAwaiter().GetResult();
         }
@@ -536,7 +539,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<object> BeginResumeAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlPool> BeginResumeAsync(this ISqlPoolsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginResumeWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, null, cancellationToken).ConfigureAwait(false))
             {

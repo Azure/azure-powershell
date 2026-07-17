@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Description(@"update a pipeline group instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}", ApiVersion = "2026-04-01")]
     public partial class UpdateAzPipelineGroup_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IContext
@@ -40,17 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>The type used for update operations of the PipelineGroup.</summary>
+        /// <summary>A pipeline group definition.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PipelineGroupUpdate();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -77,6 +68,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Maximum number of instances allowed per compute unit (node/VM). If not specified, default scheduling applies.",
+        SerializedName = @"maxInstancesPerHost",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DistributionMaxInstancesPerHost { get => _propertiesBody.DistributionMaxInstancesPerHost ?? default(int); set => _propertiesBody.DistributionMaxInstancesPerHost = value; }
+
+        /// <summary>
+        /// A list of placement constraints to guide where pipelineGroup instances should run.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of placement constraints to guide where pipelineGroup instances should run.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of placement constraints to guide where pipelineGroup instances should run.",
+        SerializedName = @"constraints",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint[] ExecutionPlacementConstraint { get => _propertiesBody.ExecutionPlacementConstraint?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ExecutionPlacementConstraint = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint>(value) : null); }
 
         /// <summary>The exporters specified for a pipeline group instance.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -130,18 +148,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         [global::System.Management.Automation.Alias("PipelineGroupName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>Networking configurations for the pipeline group instance.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Networking configurations for the pipeline group instance.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Networking configurations for the pipeline group instance.",
-        SerializedName = @"networkingConfigurations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration[] NetworkingConfiguration { get => _propertiesBody.NetworkingConfiguration?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.NetworkingConfiguration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration>(value) : null); }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -272,8 +278,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+
+        /// <summary>TLS configurations for the pipeline group instance.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "TLS configurations for the pipeline group instance.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"TLS configurations for the pipeline group instance.",
+        SerializedName = @"tlsConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration[] TlsConfiguration { get => _propertiesBody.TlsConfiguration?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.TlsConfiguration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -344,11 +362,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -664,24 +677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroup
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

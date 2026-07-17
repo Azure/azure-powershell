@@ -42,6 +42,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Repair'", "Repair", global::System.Management.Automation.CompletionResultType.ParameterValue, "Repair");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "RestoreSnapshot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'RestoreSnapshot'", "RestoreSnapshot", global::System.Management.Automation.CompletionResultType.ParameterValue, "RestoreSnapshot");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CaptureSnapshot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CaptureSnapshot'", "CaptureSnapshot", global::System.Management.Automation.CompletionResultType.ParameterValue, "CaptureSnapshot");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Align".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Align'", "Align", global::System.Management.Automation.CompletionResultType.ParameterValue, "Align");
+            }
         }
     }
 }

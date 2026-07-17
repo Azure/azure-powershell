@@ -207,6 +207,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzDataFactoryV2LinkedService]()
+[Set-AzDataFactoryV2LinkedService](Set-AzDataFactoryV2LinkedService.md)
 
-[Remove-AzDataFactoryV2LinkedService]()
+[Remove-AzDataFactoryV2LinkedService](Remove-AzDataFactoryV2LinkedService.md)

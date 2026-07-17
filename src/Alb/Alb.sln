@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alb", "Alb\Alb.csproj", "{A3778794-69C4-4C9D-BB2E-3FA945559260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Alb", "..\..\generated\Alb\Alb.Autorest\Az.Alb.csproj", "{07532F1C-161E-438F-8BA9-4A162F4534CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Alb", "..\..\generated\Alb\Alb.Autorest\Az.Alb.csproj", "{00EF70D5-A714-4589-BE73-02D3A0EDC79F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{A3778794-69C4-4C9D-BB2E-3FA945559260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3778794-69C4-4C9D-BB2E-3FA945559260}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3778794-69C4-4C9D-BB2E-3FA945559260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07532F1C-161E-438F-8BA9-4A162F4534CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07532F1C-161E-438F-8BA9-4A162F4534CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07532F1C-161E-438F-8BA9-4A162F4534CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07532F1C-161E-438F-8BA9-4A162F4534CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EF70D5-A714-4589-BE73-02D3A0EDC79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EF70D5-A714-4589-BE73-02D3A0EDC79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EF70D5-A714-4589-BE73-02D3A0EDC79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EF70D5-A714-4589-BE73-02D3A0EDC79F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{39B2C0F2-62AD-4454-A040-296B675F0221} = {70C218A0-C478-46FA-8B9A-F26761BBB487}

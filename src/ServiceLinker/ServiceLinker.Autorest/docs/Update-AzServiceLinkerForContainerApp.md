@@ -14,9 +14,9 @@ Operation to update an existing link in container app.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzServiceLinkerForContainerApp -Name <String> -AuthInfo <IAuthInfoBase> -ClientType <ClientType>
+Update-AzServiceLinkerForContainerApp -Name <String> -AuthInfo <IAuthInfoBase> -ClientType <String>
  -Scope <String> -TargetService <ITargetServiceBase> -ContainerApp <String> -ResourceGroupName <String>
- [-ResourceUri <String>] [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>]
+ [-ResourceUri <String>] [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -24,9 +24,9 @@ Update-AzServiceLinkerForContainerApp -Name <String> -AuthInfo <IAuthInfoBase> -
 ### UpdateViaIdentityExpanded
 ```
 Update-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> -AuthInfo <IAuthInfoBase>
- -ClientType <ClientType> -Scope <String> -TargetService <ITargetServiceBase>
- [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ClientType <String> -Scope <String> -TargetService <ITargetServiceBase> [-SecretStoreKeyVaultId <String>]
+ [-VNetSolutionType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-SubscriptionId <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ The authentication type.
 To construct, see NOTES section for AUTHINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The application client type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +254,7 @@ The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 Type of VNet solution.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +320,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
 
 ## NOTES
 

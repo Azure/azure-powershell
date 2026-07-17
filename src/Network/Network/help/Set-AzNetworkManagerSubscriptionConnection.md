@@ -14,7 +14,8 @@ Update a network manager subscription connection.
 
 ```
 Set-AzNetworkManagerSubscriptionConnection -InputObject <PSNetworkManagerConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

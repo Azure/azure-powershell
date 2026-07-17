@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Backing field for <see cref="ConfigurationName" /> property.</summary>
         private string _configurationName;
 
-        /// <summary>Configuration name</summary>
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
 
@@ -63,11 +63,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     public partial interface IDatadogIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
-        /// <summary>Configuration name</summary>
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Configuration name",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration name. Only 'default' value is supported.",
         SerializedName = @"configurationName",
         PossibleTypes = new [] { typeof(string) })]
         string ConfigurationName { get; set; }
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Monitor resource name",
         SerializedName = @"monitorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Rule set name",
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -116,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
     internal partial interface IDatadogIdentityInternal
 
     {
-        /// <summary>Configuration name</summary>
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
         string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }

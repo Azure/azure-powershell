@@ -1,6 +1,6 @@
 ---
 Module Name: Az.MixedReality
-Module Guid: 4bdb5e8a-54be-4080-8f73-9c4e31acf7c7
+Module Guid: 3ac1ba4c-b0f6-4154-a2e7-b5839f8b5e95
 Download Help Link: https://learn.microsoft.com/powershell/module/az.mixedreality
 Help Version: 1.0.0.0
 Locale: en-US
@@ -60,11 +60,11 @@ Delete a Spatial Anchors Account.
 Check Name Availability for local uniqueness
 
 ### [Update-AzMixedRealityObjectAnchorsAccount](Update-AzMixedRealityObjectAnchorsAccount.md)
-Updating an Object Anchors Account
+Creating or Updating an object anchors Account.
 
 ### [Update-AzMixedRealityRemoteRenderingAccount](Update-AzMixedRealityRemoteRenderingAccount.md)
-Updating a Remote Rendering Account
+Creating or Updating a Remote Rendering Account.
 
 ### [Update-AzMixedRealitySpatialAnchorsAccount](Update-AzMixedRealitySpatialAnchorsAccount.md)
-Updating a Spatial Anchors Account
+Creating or Updating a Spatial Anchors Account.
 

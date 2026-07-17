@@ -14,7 +14,8 @@ Removes a DNS zone group.
 
 ```
 Remove-AzPrivateDnsZoneGroup -ResourceGroupName <String> -PrivateEndpointName <String> -Name <String> [-Force]
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ The **Remove-AzPrivateDnsZoneGroup** cmdlet removes a DNS zone group.
 Remove-AzPrivateDnsZoneGroup -ResourceGroupName "rg" -PrivateEndpointName "test-pr-endpoint" -name dnsgroup1
 ```
 
-Above example removes a DNS zone grup named dnsgroup1 from endpoint test-pr-endpoint.
+Above example removes a DNS zone group named dnsgroup1 from endpoint test-pr-endpoint.
 
 ## PARAMETERS
 
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

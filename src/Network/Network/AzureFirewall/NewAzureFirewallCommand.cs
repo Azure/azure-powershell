@@ -168,6 +168,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
         public string[] Zone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone where the firewall needs to be deployed.")]
+        public string EdgeZone { get; set; }
+
         [Alias("Sku")]
         [Parameter(
             Mandatory = false,
@@ -218,6 +224,12 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Enable Fat Flow Logging. By default it is false."
        )]
         public SwitchParameter EnableFatFlowLogging { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Enable Dnstap Logging. By default it is false."
+       )]
+        public SwitchParameter EnableDnstapLogging { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -280,6 +292,52 @@ namespace Microsoft.Azure.Commands.Network
             sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AzfwVnet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
+            // Validate that EdgeZone and Zones are not both specified
+            if (!string.IsNullOrEmpty(this.EdgeZone) && this.Zone != null)
+            {
+                throw new ArgumentException("Zones cannot be specified when EdgeZone is provided. EdgeZone deployments do not support availability zones.", nameof(this.Zone));
+            }
+
+            // Validate that VirtualNetwork and PublicIpAddress are in the same EdgeZone when EdgeZone is specified
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                // Check VirtualNetwork has matching ExtendedLocation
+                if (this.virtualNetwork != null)
+                {
+                    if (this.virtualNetwork.ExtendedLocation == null || 
+                        string.IsNullOrEmpty(this.virtualNetwork.ExtendedLocation.Name) ||
+                        !this.virtualNetwork.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Virtual Network must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Virtual Network's extended location does not match.", nameof(VirtualNetwork));
+                    }
+                }
+
+                // Check PublicIpAddress(es) have matching ExtendedLocation
+                if (this.publicIpAddresses != null && this.publicIpAddresses.Length > 0)
+                {
+                    foreach (var pip in this.publicIpAddresses)
+                    {
+                        if (pip.ExtendedLocation == null || 
+                            string.IsNullOrEmpty(pip.ExtendedLocation.Name) ||
+                            !pip.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new ArgumentException($"Public IP Address '{pip.Name}' must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Public IP's extended location does not match.", nameof(PublicIpAddress));
+                        }
+                    }
+                }
+
+                // Check ManagementPublicIpAddress has matching ExtendedLocation
+                if (this.ManagementPublicIpAddress != null)
+                {
+                    if (this.ManagementPublicIpAddress.ExtendedLocation == null || 
+                        string.IsNullOrEmpty(this.ManagementPublicIpAddress.ExtendedLocation.Name) ||
+                        !this.ManagementPublicIpAddress.ExtendedLocation.Name.Equals(this.EdgeZone, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Management Public IP Address must be deployed in the same edge zone '{this.EdgeZone}' as the firewall. The Management Public IP's extended location does not match.", nameof(ManagementPublicIpAddress));
+                    }
+                }
+            }
+
             if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
             {
                 if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
@@ -330,9 +388,11 @@ namespace Microsoft.Azure.Commands.Network
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
-                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    Zones = (!string.IsNullOrEmpty(this.EdgeZone)) ? null : (this.Zone == null ? null : this.Zone.ToList()),
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
-                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    ExtendedLocation = (!string.IsNullOrEmpty(this.EdgeZone)) ? new PSExtendedLocation(this.EdgeZone) : null
                 };
 
                 if (this.PublicIpAddress != null) 
@@ -359,13 +419,15 @@ namespace Microsoft.Azure.Commands.Network
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableDnstapLogging = (this.EnableDnstapLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
-                    RouteServerId = this.RouteServerId
+                    RouteServerId = this.RouteServerId,
+                    ExtendedLocation = (!string.IsNullOrEmpty(this.EdgeZone)) ? new PSExtendedLocation(this.EdgeZone) : null
                 };
 
                 if (this.Zone != null)
                 {
-                    firewall.Zones = this.Zone?.ToList();
+                    firewall.Zones = (!string.IsNullOrEmpty(this.EdgeZone)) ? null : this.Zone?.ToList();
                 }
 
                 if (this.virtualNetwork != null)

@@ -26,10 +26,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
@@ -109,6 +107,20 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [ArgumentCompleter(typeof(FinalResultFromCompleter))]
         public string FinalResultFrom { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies to paginate data for GET requests which will provide the collection of pageable items in the response.")]
+        public SwitchParameter Paginate { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the name of the property that provides the paginated next link. The default is nextLink")]
+        public string NextLinkName { get; set; } = PSHttpResponseExtensions.DefaultNextLinkName;
+
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the name of the property that provides the collection of pageable items. The default is value")]
+        public string PageableItemName { get; set; } = PSHttpResponseExtensions.DefaultPageableItemName;
+
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number of (next link) pages to follow")]
+        public int MaxPageSize { get; set; } = int.MaxValue;
+
 
         // Define the ArgumentCompleter for PollFrom
         public class PollFromCompleter : IArgumentCompleter
@@ -166,7 +178,19 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             AzureOperationResponse<string> response = ExecuteRestRequest(serviceClient);
 
-            if(WaitForCompletion.IsPresent)
+            if (ShouldPaginate(response))
+            {
+                var aggregatedResponse = response.PaginateAsync(serviceClient,
+                    this.ApiVersion,
+                    this.PageableItemName,
+                    this.NextLinkName,
+                    this.MaxPageSize)
+                    .GetAwaiter().GetResult();
+
+                WriteObject(aggregatedResponse);
+                return;
+            }            
+            else if (WaitForCompletion.IsPresent)
             {
                 if (IsRequestLRO(response))
                 {
@@ -320,7 +344,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         {
             /*
              * Priority of Polling Uri:
-             * 1. `PollFrom` (User Ovrride)
+             * 1. `PollFrom` (User Override)
              * 2. "Azure-AsyncOperation"
              * 3. "Location"
              * 4. originalUri (Resource Uri)
@@ -365,6 +389,13 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     response.Response.StatusCode == System.Net.HttpStatusCode.OK) ||
                     response.Response.StatusCode == System.Net.HttpStatusCode.Created ||
                     response.Response.StatusCode == System.Net.HttpStatusCode.Accepted;
+        }
+
+        private bool ShouldPaginate(AzureOperationResponse<string> response)
+        {
+            return (Paginate.IsPresent &&
+                response.Response.IsSuccessStatusCode &&
+                Method.ToUpper() == "GET");
         }
 
         public string GetProvisioningState(AzureOperationResponse<string> response)
@@ -425,14 +456,13 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             return response;
         }
 
-
         private IAzureRestClient InitializeServiceClient()
         {
             IAzureRestClient serviceClient = null;
 
             if (ByPath.Equals(this.ParameterSetName) || ByParameters.Equals(this.ParameterSetName))
             {
-                serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+                serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager, _cmdletContext);
             }
             else if (ByURI.Equals(this.ParameterSetName))
             {
@@ -454,11 +484,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 ServiceClientCredentials creds = null;
                 if (AzureSession.Instance.AuthenticationFactory is Commands.Common.Authentication.Factories.AuthenticationFactory factory)
                 {
-                    creds = factory.GetServiceClientCredentials(context, targetResourceIdKey, targetResourceId);
+                    creds = factory.GetServiceClientCredentials(context, targetResourceIdKey, targetResourceId, _cmdletContext);
                 }
                 else
                 {
-                    creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, targetResourceId);
+                    creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, targetResourceId, _cmdletContext);
                 }
                 Uri baseUri = new Uri($"{Uri.Scheme}://{Uri.Authority}");
                 serviceClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<AzureRestClient>(baseUri, creds);
@@ -584,6 +614,23 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 {
                     throw new PSArgumentException("Invalid resource type/name");
                 }
+            }
+
+            // Pagination parameter dependency validation
+            if (!Paginate.IsPresent)
+            {
+                if (this.IsParameterBound(c => c.NextLinkName) ||
+                    this.IsParameterBound(c => c.PageableItemName) ||
+                    this.IsParameterBound(c => c.MaxPageSize))
+                {
+                    throw new PSArgumentException(
+                        "NextLinkName, PageableItemName, and MaxPageSize can only be specified if Paginate is provided.",
+                        nameof(Paginate));
+                }
+            }
+            if (Paginate.IsPresent && Method.ToUpper() != "GET")
+            {
+                WriteWarning("The Paginate switch is set, but the Method is not GET. Pagination will not be applied.");
             }
         }
 

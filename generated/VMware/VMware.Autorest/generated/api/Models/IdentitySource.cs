@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Domain" /> property.</summary>
         private string _domain;
 
-        /// <summary>The domain's dns name</summary>
+        /// <summary>The domain's DNS name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Domain { get => this._domain; set => this._domain = value; }
 
@@ -132,14 +132,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"baseUserDN",
         PossibleTypes = new [] { typeof(string) })]
         string BaseUserDn { get; set; }
-        /// <summary>The domain's dns name</summary>
+        /// <summary>The domain's DNS name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The domain's dns name",
+        Description = @"The domain's DNS name",
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
         string Domain { get; set; }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string BaseGroupDn { get; set; }
         /// <summary>The base distinguished name for users</summary>
         string BaseUserDn { get; set; }
-        /// <summary>The domain's dns name</summary>
+        /// <summary>The domain's DNS name</summary>
         string Domain { get; set; }
         /// <summary>The name of the identity source</summary>
         string Name { get; set; }

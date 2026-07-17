@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <PsModuleName>DataShare</PsModuleName>
+    </PropertyGroup>
+    <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Microsoft.Azure.PowerShell.DataShare.Management.Sdk</AssemblyName>
+        <RootNamespace>Microsoft.Azure.Management.DataShare</RootNamespace>
+        <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
+    </PropertyGroup>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+</Project>

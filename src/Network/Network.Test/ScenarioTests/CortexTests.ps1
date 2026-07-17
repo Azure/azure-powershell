@@ -1087,13 +1087,19 @@ function Test-CortexExpressRouteCRUD
 		$policyGroup2.PolicyMembers[0] = $policyGroupMember2
 
 		# Update existing VpnServerConfiguration2(adding child PolicyGroup2) using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -ConfigurationPolicyGroup $policyGroup2
+		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -RadiusServerSecret $Secure_String_Pwd -ConfigurationPolicyGroup $policyGroup2
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName
 		Assert-AreEqual $VpnServerConfiguration2Name $VpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer1" $VpnServerConfig2.RadiusServerAddress
 		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
 		Assert-AreEqual "PolicyGroup2" $VpnServerConfig2.ConfigurationPolicyGroups[0].Name
 		Assert-AreEqual 0 $VpnServerConfig2.ConfigurationPolicyGroups[0].Priority
+
+        # Get AllVpnServerConfigurationRadiusServerSecret from VpnServerConfiguration
+        $vpnServerConfigRadiusAuthServers = Get-AzAllVpnServerConfigurationRadiusServerSecret -ResourceGroupName $rgname -Name $VpnServerConfiguration2Name
+        Assert-AreEqual 1 $vpnServerConfigRadiusAuthServers.Count
+        Assert-AreEqual "TestRadiusServer1" $vpnServerConfigRadiusAuthServers[0].RadiusServerAddress
+        Assert-AreEqual "TestRadiusServerPassword" $vpnServerConfigRadiusAuthServers[0].RadiusServerSecret
 
 		# Delete VpnServerConfiguration2 child PolicyGroup2 using Remove-AzVpnServerConfigurationPolicyGroup		
 		$delete = Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
@@ -1118,23 +1124,23 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $true $getPolicyGroup2.IsDefault
 		Assert-AreEqual 2 $getPolicyGroup2.Priority
 
-		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
+		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2" -RadiusServerSecret $Secure_String_Pwd	
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual "TestRadiusServer2" $VpnServerConfig2Get.RadiusServerAddress
 						
-		Update-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3"
+		Update-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3" -RadiusServerSecret $Secure_String_Pwd
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
         Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
 		# Update existing VpnServerConfigurationMultiAuth using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius 
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd
 		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
 		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
 		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
 		Assert-AreEqual 1 @($authenticationTypes).Count
 
-		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius,Certificate,AAD -VpnClientRootCertificateFilesList $listOfCerts -AadAudience $aadAudience -AadIssuer $aadIssuer -AadTenant $aadTenant
+		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius,Certificate,AAD -VpnClientRootCertificateFilesList $listOfCerts -AadAudience $aadAudience -AadIssuer $aadIssuer -AadTenant $aadTenant -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd
 		$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
 		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
@@ -1143,7 +1149,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual 3 @($authenticationTypes).Count
 
 		# Update existing VpnServerConfiguration2MultiAuth to use OpenVPN and IkeV2 with only AAD should fail
-		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd} "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
 		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]
@@ -1636,7 +1642,7 @@ function Test-VpnConnectionPacketCapture
 		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
 
 		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
-		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
+		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddresses.Count
 		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
      }

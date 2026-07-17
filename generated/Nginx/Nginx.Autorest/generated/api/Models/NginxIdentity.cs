@@ -69,6 +69,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of certificate",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -79,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of configuration, only 'default' is supported value due to the singleton of NGINX conf",
         SerializedName = @"configurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -87,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of targeted NGINX deployment",
         SerializedName = @"deploymentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -95,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

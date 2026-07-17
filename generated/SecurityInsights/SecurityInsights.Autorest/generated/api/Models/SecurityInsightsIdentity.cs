@@ -179,6 +179,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Action ID",
         SerializedName = @"actionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Alert rule template ID",
         SerializedName = @"alertRuleTemplateId",
         PossibleTypes = new [] { typeof(string) })]
@@ -195,6 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Automation rule ID",
         SerializedName = @"automationRuleId",
         PossibleTypes = new [] { typeof(string) })]
@@ -203,6 +212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Bookmark ID",
         SerializedName = @"bookmarkId",
         PossibleTypes = new [] { typeof(string) })]
@@ -211,6 +223,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"consent ID",
         SerializedName = @"consentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Connector ID",
         SerializedName = @"dataConnectorId",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +245,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"entity ID",
         SerializedName = @"entityId",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +256,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"entity query ID",
         SerializedName = @"entityQueryId",
         PossibleTypes = new [] { typeof(string) })]
@@ -243,6 +267,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"entity query template ID",
         SerializedName = @"entityQueryTemplateId",
         PossibleTypes = new [] { typeof(string) })]
@@ -251,6 +278,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -259,6 +289,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Incident comment ID",
         SerializedName = @"incidentCommentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -267,6 +300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Incident ID",
         SerializedName = @"incidentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -275,6 +311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Metadata name.",
         SerializedName = @"metadataName",
         PossibleTypes = new [] { typeof(string) })]
@@ -283,6 +322,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Threat intelligence indicator name field.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -291,6 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Relation Name",
         SerializedName = @"relationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -299,6 +344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -307,6 +355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Alert rule ID",
         SerializedName = @"ruleId",
         PossibleTypes = new [] { typeof(string) })]
@@ -315,6 +366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Sentinel onboarding state name. Supports - default",
         SerializedName = @"sentinelOnboardingStateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -323,6 +377,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba",
         SerializedName = @"settingsName",
         PossibleTypes = new [] { typeof(string) })]
@@ -331,6 +388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Source control Id",
         SerializedName = @"sourceControlId",
         PossibleTypes = new [] { typeof(string) })]
@@ -339,6 +399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -347,6 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the workspace.",
         SerializedName = @"workspaceName",
         PossibleTypes = new [] { typeof(string) })]

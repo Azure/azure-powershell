@@ -19,21 +19,24 @@ API to get lab plan images.
 API to get lab plan images.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 #>
 function Get-AzLabServicesPlanImage_LabPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+        # The object of lab service lab plan to get images for.
         ${LabPlan},
    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The name of the user that uniquely identifies it within containing lab.
+        # Used in resource URIs.
         ${Name},
 
         [Parameter()]

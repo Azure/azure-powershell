@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareObjectParameterSet,
-            HelpMessage = "ShareClienr indicated the share where the directory would be listed.")]
+            HelpMessage = "ShareClient indicated the share where the directory would be listed.")]
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 

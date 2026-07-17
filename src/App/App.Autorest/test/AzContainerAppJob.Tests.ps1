@@ -62,7 +62,7 @@ Describe 'AzContainerAppJob' {
 
     It 'StartExpanded' {
         {
-            $initContainer = New-AzContainerAppJobExecutionContainerObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:lates" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+            $initContainer = New-AzContainerAppJobExecutionContainerObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
             $config = Start-AzContainerAppJob -Name $env.containerAppJob1 -ResourceGroupName $env.resourceGroupManaged -InitContainer $initContainer
             $config.Count | Should -BeGreaterThan 0
 

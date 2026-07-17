@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataBox
-Module Guid: 9602a6b3-8b77-4f08-a6ed-edefff13e149
+Module Guid: 6d70be0a-2155-4537-a3e8-04b3521e9b22
 Download Help Link: https://learn.microsoft.com/powershell/module/az.databox
 Help Version: 1.0.0.0
 Locale: en-US

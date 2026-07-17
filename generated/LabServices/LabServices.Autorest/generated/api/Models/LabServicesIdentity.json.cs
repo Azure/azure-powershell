@@ -76,16 +76,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_labPlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("labPlanName"), out var __jsonLabPlanName) ? (string)__jsonLabPlanName : (string)LabPlanName;}
-            {_imageName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("imageName"), out var __jsonImageName) ? (string)__jsonImageName : (string)ImageName;}
-            {_labName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("labName"), out var __jsonLabName) ? (string)__jsonLabName : (string)LabName;}
-            {_operationResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("operationResultId"), out var __jsonOperationResultId) ? (string)__jsonOperationResultId : (string)OperationResultId;}
-            {_scheduleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("scheduleName"), out var __jsonScheduleName) ? (string)__jsonScheduleName : (string)ScheduleName;}
-            {_userName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("userName"), out var __jsonUserName) ? (string)__jsonUserName : (string)UserName;}
-            {_virtualMachineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("virtualMachineName"), out var __jsonVirtualMachineName) ? (string)__jsonVirtualMachineName : (string)VirtualMachineName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_labPlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("labPlanName"), out var __jsonLabPlanName) ? (string)__jsonLabPlanName : (string)_labPlanName;}
+            {_imageName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("imageName"), out var __jsonImageName) ? (string)__jsonImageName : (string)_imageName;}
+            {_labName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("labName"), out var __jsonLabName) ? (string)__jsonLabName : (string)_labName;}
+            {_operationResultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("operationResultId"), out var __jsonOperationResultId) ? (string)__jsonOperationResultId : (string)_operationResultId;}
+            {_scheduleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("scheduleName"), out var __jsonScheduleName) ? (string)__jsonScheduleName : (string)_scheduleName;}
+            {_userName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("userName"), out var __jsonUserName) ? (string)__jsonUserName : (string)_userName;}
+            {_virtualMachineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("virtualMachineName"), out var __jsonVirtualMachineName) ? (string)__jsonVirtualMachineName : (string)_virtualMachineName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -175,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private BlobClientOptions privateClientOptions = null;
 
         /// <summary>
-        /// Get the lazy properties automaticlly, won't get it when the item is created with Find-AzStorageBlobByTag
+        /// Get the lazy properties automatically, won't get it when the item is created with Find-AzStorageBlobByTag
         /// </summary>
         private bool getLazyProperties = true;
 
@@ -351,7 +351,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 }
                 catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
                 {
-                    // privateBlobProperties will be null when there are no permission to get blob proeprties, or blob is already deleted.
+                    // privateBlobProperties will be null when there are no permission to get blob properties, or blob is already deleted.
                 }
             }
             else
@@ -376,7 +376,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 BlobType = ICloudBlob.BlobType;
                 SnapshotTime = ICloudBlob.SnapshotTime;
             }
-            else // This code might should not be necessary, since currently only blob version will has Track1 Blob as null, and blob veresion won't have snapshot time
+            else // This code might should not be necessary, since currently only blob version will has Track1 Blob as null, and blob version won't have snapshot time
             {
                 SnapshotTime = Util.GetSnapshotTimeFromUri(track2BlobClient.Uri);
             }
@@ -414,7 +414,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 return new InvalidCloudBlob(track2BlobClient.Uri, credentials);
             }
 
-            if (credentials != null && credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials != null && credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }
@@ -456,7 +456,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 if (context == null)
                 {
                     //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credentail to Track2 Blob object.");
+                    throw new System.Exception("Need Storage Context to convert Track1 Blob object in token credential to Track2 Blob object.");
                 }
                 blobClient = new BlobClient(cloubBlob.SnapshotQualifiedUri, context.Track2OauthToken, options);
 

@@ -179,7 +179,7 @@ Accept wildcard characters: False
 
 ### -PartnerAuthorizationDefaultMaximumExpirationTimeInDay
 Time used to validate the authorization expiration time for each authorized partner.
-If DefaultMaximumExpirationTimeInDays isnot specified, the default is 7 days.
+If DefaultMaximumExpirationTimeInDays is not specified, the default is 7 days.
 Otherwise, allowed values are between 1 and 365 days.
 
 ```yaml

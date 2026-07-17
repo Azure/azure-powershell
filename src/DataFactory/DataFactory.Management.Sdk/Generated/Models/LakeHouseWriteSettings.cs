@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Microsoft Fabric LakeHouse Files write settings.
+    /// Microsoft Fabric Lakehouse Files write settings.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseWriteSettings")]
     public partial class LakeHouseWriteSettings : StoreWriteSettings

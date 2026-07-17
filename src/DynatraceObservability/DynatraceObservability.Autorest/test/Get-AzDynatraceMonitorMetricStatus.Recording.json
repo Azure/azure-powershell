@@ -1,0 +1,45 @@
+{
+  "Get-AzDynatraceMonitorMetricStatus+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/getMetricStatus?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/getMetricStatus?api-version=2024-04-24",
+      "Content": "{\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/southeastasia/43cb8869-7793-453e-8942-155ae846963b" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "1dc449a3-d342-4246-bb5c-e4536db906df" ],
+        "x-ms-correlation-request-id": [ "69ebfba4-0deb-4621-8c72-25d4d28110d9" ],
+        "x-ms-client-request-id": [ "306b670a-30c1-4976-a613-05ebc2f08abf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "88a97d65-6594-46c4-bd46-607f5fdaffcf" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20251113T143010Z:69ebfba4-0deb-4621-8c72-25d4d28110d9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9FB5D88763244B8AB155BFEF47A3467F Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:30:09Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:30:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "23" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"azureResourceIds\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

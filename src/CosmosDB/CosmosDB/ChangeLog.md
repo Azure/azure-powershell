@@ -19,6 +19,36 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.21.0
+* Added ChangeSafety Support
+
+## Version 1.20.0
+* Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
+* Added `-Capabilities` parameter to `Update-AzCosmosDBAccount` to allow adding or removing account capabilities.
+
+## Version 1.19.1
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
+## Version 1.19.0
+* Added fleet management support for Cosmos DB accounts.
+* Added support for priority based execution.
+
+## Version 1.18.3
+* Updated Azure.Core from 1.45.0 to 1.47.3
+
+## Version 1.18.2
+* Fixed issue where the restore command failed to detect the source account, even when it existed.
+
+## Version 1.18.1
+* Fixed incorrect help documents for MongoDB cmdlets.
+
+## Version 1.18.0
+* Added support for creating containers with Vector Embedding Policy.
+* GAd Per Partition Automatic Failover GA
+* GAd Per Region Per Partition Autoscale GA
+
+## Version 1.17.0
 * Added support for Cosmos DB Table role definition and role assignment related cmdlets.
 
 ## Version 1.16.0

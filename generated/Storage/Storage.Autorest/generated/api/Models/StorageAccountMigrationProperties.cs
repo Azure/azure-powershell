@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Extensions;
 
-    /// <summary>The properties of a storage account’s ongoing or enqueued migration.</summary>
+    /// <summary>The properties of a storage account's ongoing or enqueued migration.</summary>
     public partial class StorageAccountMigrationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         }
     }
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account's ongoing or enqueued migration.
     public partial interface IStorageAccountMigrationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Target sku name for the account",
         SerializedName = @"targetSkuName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string TargetSkuName { get; set; }
 
     }
-    /// The properties of a storage account’s ongoing or enqueued migration.
+    /// The properties of a storage account's ongoing or enqueued migration.
     internal partial interface IStorageAccountMigrationPropertiesInternal
 
     {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Invalid", "SubmittedForConversion", "InProgress", "Complete", "Failed")]
         string MigrationStatus { get; set; }
         /// <summary>Target sku name for the account</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string TargetSkuName { get; set; }
 
     }

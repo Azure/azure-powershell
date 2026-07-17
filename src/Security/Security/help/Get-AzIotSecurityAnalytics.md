@@ -98,7 +98,7 @@ MostPrevalentDeviceRecommendations: [
               DevicesCount: 170
             }
             {
-              RrecommendationDisplayName: "Same Authentication Credentials used by multiple devices"
+              RecommendationDisplayName: "Same Authentication Credentials used by multiple devices"
               ReportedSeverity: "Medium"
               DevicesCount: 150
             }
@@ -107,7 +107,7 @@ MostPrevalentDeviceRecommendations: [
       }
 ```
 
-Get the deafult IoT Security Analytics for Security Solution "MySolution" in reasource group "MyResourceGroup"
+Get the default IoT Security Analytics for Security Solution "MySolution" in resource group "MyResourceGroup"
 
 ## PARAMETERS
 

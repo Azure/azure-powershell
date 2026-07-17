@@ -15,11 +15,11 @@ Describe 'Get-AzAksVersion' {
     It 'Get' {
         $version = Get-AzAksVersion -Location eastus
 
-        $version.Count | Should -Be 7
+        $version.Count | Should -Be 24
     
-        $chosenVersion = $version | Where-Object { $_.OrchestratorVersion -eq '1.23.12'}
-        $chosenVersion.OrchestratorVersion | Should -Be '1.23.12'
-        $chosenVersion.Upgrade.Count | Should -Be 3
-        $chosenVersion.Upgrade[0].OrchestratorVersion | Should -Be '1.23.15'
+        $chosenVersion = $version | Where-Object { $_.OrchestratorVersion -eq '1.32.0'}
+        $chosenVersion.OrchestratorVersion | Should -Be '1.32.0'
+        $chosenVersion.Upgrade.Count | Should -Be 11
+        $chosenVersion.Upgrade[0].OrchestratorVersion | Should -Be '1.32.7'
     }
 }
