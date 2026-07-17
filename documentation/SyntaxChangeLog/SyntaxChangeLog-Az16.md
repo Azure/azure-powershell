@@ -1,3 +1,50 @@
+## 16.2.0 - August 2026
+#### Az.Cdn 6.1.0 
+* Modified cmdlet `New-AzCdnEdgeAction`
+   - Added parameter `-ProvisioningState`
+* Modified cmdlet `New-AzCdnEdgeActionExecutionFilter`
+   - Added parameter `-ProvisioningState`
+* Modified cmdlet `New-AzCdnEdgeActionVersion`
+   - Added parameter `-ProvisioningState`
+* Modified cmdlet `New-AzFrontDoorCdnCustomDomain`
+   - Added parameter `-MtlSettingScenario`
+* Modified cmdlet `New-AzFrontDoorCdnEndpoint`
+   - Added parameter `-EnforceMtl`
+* Modified cmdlet `New-AzFrontDoorCdnOriginGroup`
+   - Added parameter `-AuthenticationTokenDestinationHeader`
+* Modified cmdlet `New-AzFrontDoorCdnRuleSet`
+   - Added parameters `-Resource`, `-BatchMode`, `-Rule`, `-JsonFilePath`, `-JsonString`, `-AsJob`, `-NoWait`
+* Modified cmdlet `New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject`
+   - Added parameter `-Route`
+* Modified cmdlet `New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject`
+   - Added parameter `-IsProfileLevel`
+* Modified cmdlet `Update-AzFrontDoorCdnCustomDomain`
+   - Added parameter `-MtlSettingScenario`
+* Modified cmdlet `Update-AzFrontDoorCdnEndpoint`
+   - Added parameter `-EnforceMtl`
+* Modified cmdlet `Update-AzFrontDoorCdnOriginGroup`
+   - Added parameter `-AuthenticationTokenDestinationHeader`
+* Added cmdlet `Get-AzCdnManagedRuleSet`, `Update-AzFrontDoorCdnRuleSet`
+#### Az.FrontDoor 2.3.0 
+* Modified cmdlet `New-AzFrontDoorWafPolicy`
+   - Added parameter `-ExceptionListException`
+* Modified cmdlet `Update-AzFrontDoorWafPolicy`
+   - Added parameter `-ExceptionListException`
+#### Az.ServiceBus 4.3.0 
+* Modified cmdlet `New-AzServiceBusGeoDRConfiguration`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `New-AzServiceBusNamespace`
+   - Added parameters `-GeoDataReplicationMaxReplicationLagDurationInSecond`, `-GeoDataReplicationLocation`, `-IPAddressType`
+* Modified cmdlet `New-AzServiceBusQueue`
+   - Added parameter `-UserMetadata`
+* Modified cmdlet `New-AzServiceBusSubscription`
+   - Added parameter `-UserMetadata`
+* Modified cmdlet `New-AzServiceBusTopic`
+   - Added parameter `-UserMetadata`
+* Modified cmdlet `Set-AzServiceBusNamespace`
+   - Added parameters `-GeoDataReplicationMaxReplicationLagDurationInSecond`, `-GeoDataReplicationLocation`, `-IPAddressType`
+* Added cmdlet `Get-AzServiceBusNetworkSecurityPerimeterConfiguration`, `Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation`, `New-AzServiceBusLocationsNameObject`, `Start-AzServiceBusNamespaceFailOver`
+
 ## 16.1.0 - July 2026
 #### Az.AppConfiguration 2.2.0 
 * Modified cmdlet `New-AzAppConfigurationSnapshot`
@@ -6999,6 +7046,7 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
 
 
 

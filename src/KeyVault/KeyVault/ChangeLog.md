@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.6.0
 * Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.
 * Upgraded `Azure.Security.KeyVault.Keys` dependency from `4.6.0-beta.1` to `4.10.0`.
 

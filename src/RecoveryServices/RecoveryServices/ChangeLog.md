@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.13.1
 * Fixed Private Disk Access parameters being silently dropped when adding disks to, reprotecting, or cluster-reprotecting an Azure-to-Azure managed-disk replication
     - `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk` now honors `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` supplied on the disk replication configuration
     - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) forwards the same three fields on the switch-protection call
