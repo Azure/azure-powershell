@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzChangeSafetyChangeRe
 Describe 'Update-AzChangeSafetyChangeRecord' {
     BeforeAll {
         # Ensure a ChangeRecord exists for testing
-        # Target must have resourceId OR subscriptionId per API spec
         $targets = @(
             @{
                 resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/virtualMachines/update-test-vm"

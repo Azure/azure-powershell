@@ -1,6 +1,6 @@
 ### Example 1: Get a specific StageProgression by name
 ```powershell
-Get-AzChangeSafetyStageProgression -Name "canary-progression" `
+Get-AzChangeSafetyStageProgression -StageProgressionName "canary-progression" `
     -ChangeRecordName "appDeploymentV2" `
     -ResourceGroupName "rg-changeops"
 ```

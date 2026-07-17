@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzChangeSafetyChangeRecor
 Describe 'New-AzChangeSafetyChangeRecord' {
     It 'Create - ChangeRecord with multiple targets using -Targets' {
         {
-            # Target must have either resourceId OR subscriptionId as per API spec
             $targets = @(
                 @{
                     resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/virtualMachines/test-vm-001"
@@ -138,6 +137,17 @@ Describe 'New-AzChangeSafetyChangeRecord' {
         }
 
         $message | Should -Match "Targets\.httpMethod"
+    }
+
+    It 'Create - Allows target shapes without resourceId or subscriptionId' {
+        {
+            New-AzChangeSafetyChangeRecord -Name "validation-test-record" `
+                -ResourceGroupName $env.ResourceGroupName `
+                -Targets @{ resourceType = "Microsoft.Storage/storageAccounts" } `
+                -ChangeType "ManualTouch" `
+                -RolloutType "Normal" `
+                -WhatIf
+        } | Should -Not -Throw
     }
 
     It 'Create - Rejects past anticipated windows' {

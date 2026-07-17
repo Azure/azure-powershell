@@ -79,10 +79,6 @@ function ConvertTo-AzChangeSafetyTargetList {
             throw "Parameter 'Targets' is invalid: each target must be a hashtable with keys such as resourceId, subscriptionId, and httpMethod."
         }
 
-        if (-not $target.Contains('resourceId') -and -not $target.Contains('subscriptionId')) {
-            throw "Parameter 'Targets' is invalid: each target must include either 'resourceId' or 'subscriptionId'."
-        }
-
         if ($target.Contains('httpMethod')) {
             $method = [string]$target['httpMethod']
             if ([string]::IsNullOrWhiteSpace($method) -or $allowedHttpMethods -notcontains $method.ToUpperInvariant()) {
