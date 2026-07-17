@@ -115,6 +115,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
         public string EndpointName { get => this._endpointName; set => this._endpointName = value; }
 
+        /// <summary>
+        /// Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.",
+        SerializedName = @"enforceMtls",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string EnforceMtl { get => _endpointBody.EnforceMtl ?? null; set => _endpointBody.EnforceMtl = value; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 

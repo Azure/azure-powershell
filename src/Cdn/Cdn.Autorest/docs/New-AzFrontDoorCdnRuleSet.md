@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Create a batch rule set within the specified profile along with the rules associated with it.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-Create a batch rule set within the specified profile along with the rules associated with it.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ## EXAMPLES
 
@@ -319,3 +319,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

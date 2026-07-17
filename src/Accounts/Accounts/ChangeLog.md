@@ -19,10 +19,14 @@
 -->
 
 ## Upcoming Release
-* Upgraded `Azure.Core` dependency from 1.50.0 to 1.57.0.
+* Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
+* Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
+
+## Version 5.5.1
+* Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
 * Upgraded `Azure.Identity` dependency to 1.21.0.
 * Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
-* Upgraded `System.ClientModel` dependency from 1.8.0 to 1.13.0.
+* Upgraded `System.ClientModel` dependency from 1.8.0 to 1.12.0.
 * Upgraded `System.Text.Json` dependency from 8.0.6 to 10.0.3.
 * Upgraded MSAL dependencies (`Microsoft.Identity.Client`, `Microsoft.Identity.Client.Extensions.Msal`, `Microsoft.Identity.Client.Broker`) from 4.83.1 to 4.84.0.
 * Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.2 to 0.20.4.

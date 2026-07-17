@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AlternateLocationRecoveryOption
     {
+        /// <summary>
+        /// CreateVmIfNotFound
+        /// </summary>
         public const string CreateVmIfNotFound = "CreateVmIfNotFound";
+        /// <summary>
+        /// NoAction
+        /// </summary>
         public const string NoAction = "NoAction";
     }
 }

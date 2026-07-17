@@ -19,8 +19,9 @@ To update domains, use the update Custom Domain operation.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnabledState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-EnabledState <String>] [-EnforceMtl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -40,8 +41,8 @@ Update-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileName <String> -Reso
 ### UpdateViaIdentityProfileExpanded
 ```
 Update-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileInputObject <ICdnIdentity>
- [-EnabledState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnabledState <String>] [-EnforceMtl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
@@ -53,9 +54,9 @@ Update-AzFrontDoorCdnEndpoint -EndpointName <String> -ProfileInputObject <ICdnId
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorCdnEndpoint -InputObject <ICdnIdentity> [-EnabledState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzFrontDoorCdnEndpoint -InputObject <ICdnIdentity> [-EnabledState <String>] [-EnforceMtl <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +170,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -EnforceMtl
+Set to Disabled by default.
+If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

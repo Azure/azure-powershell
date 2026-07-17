@@ -96,6 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new CacheKeyQueryStringActionParameters(json);
                 }
+                case "DeliveryRuleEdgeActionParameters":
+                {
+                    return new DeliveryRuleEdgeActionParameters(json);
+                }
                 case "DeliveryRuleHeaderActionParameters":
                 {
                     return new HeaderActionParameters(json);

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ChurnOptionSelected
     {
+        /// <summary>
+        /// Normal
+        /// </summary>
         public const string Normal = "Normal";
+        /// <summary>
+        /// High
+        /// </summary>
         public const string High = "High";
     }
 }
