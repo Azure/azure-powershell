@@ -423,9 +423,9 @@ Describe 'Get-AzRedisEnterpriseCacheMigration' {
     }
 }
 
-Describe 'Stop-AzRedisEnterpriseCacheMigration' {
+Describe 'Undo-AzRedisEnterpriseCacheMigration' {
     It 'Cancel' {
-        $result = Stop-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -PassThru
+        $result = Undo-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -PassThru
         $result | Should -Be $true
     }
 }

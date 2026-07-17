@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: edf549eca6a93cb812a4a799f133ebb6726c76c8
+commit: ec4b3a4edc5f0a3586341c44c83179d9a833a0d1
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-02-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-05-01-preview/redisenterprise.json
 
 module-version: 3.0.0
 title: RedisEnterpriseCache
@@ -128,6 +128,11 @@ directive:
       subject: ^$
     set:
       alias: Export-AzRedisEnterpriseCacheDatabase
+  - where:
+      verb: Stop
+      subject: Migration
+    set:
+      verb: Undo
 
   # Parameter renames and aliases
   - where:

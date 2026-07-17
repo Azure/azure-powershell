@@ -19,13 +19,14 @@
 -->
 ## Upcoming Release
 * Bumped module version to 3.0.0-preview for public preview release
-* Added support for API versions 2025-08-01-preview and 2026-02-01-preview
+* Added support for API versions 2025-08-01-preview, 2026-02-01-preview, and 2026-05-01-preview
 * Added `Get-AzRedisEnterpriseCacheMigration` cmdlet to get information about a migration in a Redis Enterprise cluster
 * Added `Start-AzRedisEnterpriseCacheMigration` cmdlet to start a new migration
-* Added `Stop-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration operation in a Redis Enterprise cluster
+* Added `Undo-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration operation in a Redis Enterprise cluster
 * Added `Test-AzRedisEnterpriseCacheMigration` cmdlet to validate if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource
 * Added `MaintenanceConfigurationMaintenanceWindow` parameter to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring maintenance windows
 * Added `NotifyKeyspaceEvents` parameter to `New-AzRedisEnterpriseCacheDatabase` and `Update-AzRedisEnterpriseCacheDatabase` for configuring keyspace notifications
+* Added `AccessString` parameter to `New-AzRedisEnterpriseCacheAccessPolicyAssignment` for configuring custom Redis ACL permissions on an access policy assignment
 
 ## Version 2.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)

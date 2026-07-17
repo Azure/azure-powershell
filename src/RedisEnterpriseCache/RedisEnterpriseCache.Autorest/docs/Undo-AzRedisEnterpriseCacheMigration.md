@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/stop-azredisenterprisecachemigration
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/undo-azredisenterprisecachemigration
 schema: 2.0.0
 ---
 
-# Stop-AzRedisEnterpriseCacheMigration
+# Undo-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
 Cancel or rollback the migration operation in a Redis Enterprise cluster.
@@ -14,14 +14,14 @@ Cancel or rollback the migration operation in a Redis Enterprise cluster.
 
 ### Cancel (Default)
 ```
-Stop-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+Undo-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CancelViaIdentity
 ```
-Stop-AzRedisEnterpriseCacheMigration -InputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
+Undo-AzRedisEnterpriseCacheMigration -InputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Cancel or rollback the migration operation in a Redis Enterprise cluster.
 
 ### Example 1: Cancel an in-progress migration
 ```powershell
-Stop-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
+Undo-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
 ```
 
 ```output
