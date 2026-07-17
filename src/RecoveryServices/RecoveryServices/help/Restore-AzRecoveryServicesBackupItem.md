@@ -368,7 +368,7 @@ $RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $Backup
 $restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
 ```
 
-In this example, the backed up VM resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). Original Location Recovery (OLR) is triggered by omitting the target location parameters (**-TargetResourceGroupName**, **-TargetVMName**, **-TargetVNetName**, **-TargetVNetResourceGroup**, **-TargetSubnetName**). The VM's subscription is derived automatically from the recovery point, and the target storage account is resolved in that subscription.
+In this example, the backed up VM resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). Original Location Recovery (OLR) is triggered by omitting the target location parameters (**-TargetResourceGroupName**, **-TargetVMName**, **-TargetVNetName**, **-TargetVNetResourceGroup**, **-TargetSubnetName**, **-TargetSubscriptionId**). The VM's subscription is derived automatically from the recovery point, and the target storage account is resolved in that subscription.
 
 ## PARAMETERS
 

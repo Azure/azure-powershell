@@ -80,6 +80,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vau
 
 ### Example 3: Enable Backup protection for a Cross Subscription VM
 ```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
 $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy" -VaultId $vault.ID
 Enable-AzRecoveryServicesBackupProtection -Policy $Pol -Name "V2VM" -ResourceGroupName "RGName1" -ContainerSubscriptionId "00000000-0000-0000-0000-000000000000" -VaultId $vault.ID
 ```
