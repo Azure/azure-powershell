@@ -15,9 +15,9 @@ Create a particular access policy assignment for a database
 ### CreateExpanded (Default)
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -AccessPolicyName <String> -UserObjectId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -UserObjectId <String> [-AccessPolicyName <String>]
+ [-AccessString <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -37,24 +37,24 @@ New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -Database
 ### CreateViaIdentityRedisEnterpriseExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -DatabaseName <String> -Name <String>
- -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> -AccessPolicyName <String> -UserObjectId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> -UserObjectId <String>
+ [-AccessPolicyName <String>] [-AccessString <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityDatabaseExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -Name <String>
- -DatabaseInputObject <IRedisEnterpriseCacheIdentity> -AccessPolicyName <String> -UserObjectId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DatabaseInputObject <IRedisEnterpriseCacheIdentity> -UserObjectId <String> [-AccessPolicyName <String>]
+ [-AccessString <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
- -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -UserObjectId <String> [-AccessPolicyName <String>] [-AccessString <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,15 +78,31 @@ This command creates access policy assignment (redis user) named testAccessPolic
 ## PARAMETERS
 
 ### -AccessPolicyName
-Name of access policy under specific access policy assignment.
-Only "default" policy is supported for now.
+**Deprecated.** This property always returns "default".
+Use `accessString` to configure custom Redis ACL permissions instead.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityRedisEnterpriseExpanded, CreateViaIdentityDatabaseExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccessString
+The Redis ACL permissions string applied to this assignment, for example `+@read ~cache:*`.
+Defaults to `+@all ~*` if not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityRedisEnterpriseExpanded, CreateViaIdentityDatabaseExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,6 +296,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

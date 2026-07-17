@@ -32,14 +32,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
+commit: ec4b3a4edc5f0a3586341c44c83179d9a833a0d1
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2025-07-01/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-05-01-preview/redisenterprise.json
 
-module-version: 1.0.0
+module-version: 3.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
@@ -48,11 +48,28 @@ directive:
     where: $.definitions.AccessPolicyAssignment
     transform: $['required'] = ['properties']
   - from: swagger-document
-    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    where: $.definitions.AccessPolicyAssignmentPropertiesUser
     transform: $['required'] = ['objectId']
   - from: swagger-document
-    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    where: $.definitions.ForceLinkParametersGeoReplication
     transform: $['required'] = ['linkedDatabases','groupNickname']
+  # Force these parameters as mandatory since swagger required on $ref definitions
+  # doesn't always propagate to cmdlet parameters in autorest.powershell
+  - where:
+      verb: New
+      subject: AccessPolicyAssignment
+      parameter-name: UserObjectId
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GroupNickname
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: LinkedDatabase
+    required: true
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
@@ -111,6 +128,11 @@ directive:
       subject: ^$
     set:
       alias: Export-AzRedisEnterpriseCacheDatabase
+  - where:
+      verb: Stop
+      subject: Migration
+    set:
+      verb: Undo
 
   # Parameter renames and aliases
   - where:
@@ -184,6 +206,10 @@ directive:
       parameter-name: PersistenceRdbFrequency
     set:
       parameter-name: RdbPersistenceFrequency
+  - where:
+      parameter-name: NotifyKeyspaceEvent
+    set:
+      parameter-name: NotifyKeyspaceEvents
 
   # Remove unused variants
   - where:
@@ -200,8 +226,14 @@ directive:
     remove: true
   - where:
       verb: Update
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^Update$|ViaIdentity$
+    remove: true
+  # Remove only the new UpgradeViaIdentity variant for DatabaseDbRedisVersion (didn't exist in v2.0.0)
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: UpgradeViaIdentity
     remove: true
   - where:
       verb: Get
@@ -220,17 +252,46 @@ directive:
       variant: ^(Flush|Force)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: AccessPolicyAssignment
       variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Remove generated variants for Test-Migration except ViaJsonString (which the custom wrapper calls internally).
+  # The generated Expanded variant doesn't nest properties under ARM "properties" envelope.
+  - where:
+      verb: Test
+      subject: Migration
+      variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$|^ValidateViaJsonFilePath$
+    remove: true
+  - where:
+      verb: Test
+      subject: Migration
+      variant: ^ValidateViaJsonString$
+    hide: true
+  # Remove generated variants for Start-Migration except ViaJsonString (which the custom wrapper calls internally).
+  # The generated Expanded variant doesn't nest the discriminated union body under "properties" envelope.
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^Start$|^StartExpanded$|^StartViaIdentity$|^StartViaIdentityExpanded$|^StartViaJsonFilePath$
+    remove: true
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^StartViaJsonString$
+    hide: true
   # Remove because cannot update
   - where:
       verb: Set|Update
       subject: AccessPolicyAssignment
+    remove: true
+  # Remove Update-Migration as there is no update to take place for an ongoing migration
+  - where:
+      verb: Update
+      subject: Migration
     remove: true
 
   # Hide cmdlets

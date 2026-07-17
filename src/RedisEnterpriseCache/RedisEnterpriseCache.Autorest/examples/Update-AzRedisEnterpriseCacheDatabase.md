@@ -26,3 +26,10 @@ default Microsoft.Cache/redisEnterprise/databases
 
 This command updates the client protocol and eviction policy of the database for the Redis Enterprise cache named MyCache.
 
+### Example 3: Enable keyspace notifications on a database
+```powershell
+Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -NotifyKeyspaceEvents "KEA"
+```
+
+This command enables keyspace notifications (KEA) on the database for the Redis Enterprise cache named MyCache.
+

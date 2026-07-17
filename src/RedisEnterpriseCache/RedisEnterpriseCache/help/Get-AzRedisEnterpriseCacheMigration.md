@@ -1,0 +1,143 @@
+---
+external help file: Az.RedisEnterpriseCache-help.xml
+Module Name: Az.RedisEnterpriseCache
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachemigration
+schema: 2.0.0
+---
+
+# Get-AzRedisEnterpriseCacheMigration
+
+## SYNOPSIS
+Gets information about a migration in a Redis Enterprise cluster.
+
+## SYNTAX
+
+```
+Get-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+Gets information about a migration in a Redis Enterprise cluster.
+
+## EXAMPLES
+
+### Example 1: Get migration status for a cache
+```powershell
+Get-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
+```
+
+```output
+AzureAsyncOperation          :
+CreationTime                 : 24-06-2026 06:42:15
+Id                           : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/migrations/default
+LastModifiedTime             : 24-06-2026 06:47:31
+Location                     :
+Name                         : cache1/default
+Property                     : {
+                                 "sourceType": "AzureCacheForRedis",
+                                 "targetResourceId": "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1",
+                                 "provisioningState": "Succeeded",
+                                 "creationTime": "2026-06-24T06:42:15.0533333Z",
+                                 "lastModifiedTime": "2026-06-24T06:47:31.0466667Z",
+                                 "sourceResourceId": "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redis/cache1",
+                                 "switchDns": true,
+                                 "skipDataMigration": true
+                               }
+ProvisioningState            : Succeeded
+ResourceGroupName            : rg1
+SourceType                   : AzureCacheForRedis
+StatusDetail                 :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TargetResourceId             : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1
+Type                         : Microsoft.Cache/redisEnterprise/migrations
+```
+
+Gets the migration status for the specified Redis Enterprise cache cluster.
+
+## PARAMETERS
+
+### -ClusterName
+The name of the Redis Enterprise cluster.
+Name must be 1-60 characters long.
+Allowed characters(A-Z, a-z, 0-9) and hyphen(-).
+There can be no leading nor trailing nor consecutive hyphens
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration
+
+## NOTES
+
+## RELATED LINKS
