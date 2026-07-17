@@ -304,10 +304,13 @@ Describe 'Get-AzRedisEnterpriseCacheDatabase' {
 
 Describe 'New-AzRedisEnterpriseCacheAccessPolicyAssignment' {
     # UserObjectId from (Get-AzADUser -SignedIn).Id -> 4a61ce1e-5539-4162-b647-101733293495
+    # ClusterName has modules enabled, so only the default access policy is allowed (custom access strings are blocked on module databases).
     It 'CreateExpanded' {
-        {
-            New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '4a61ce1e-5539-4162-b647-101733293495' -AccessPolicyName default
-        } | Should -Not -Throw
+        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '4a61ce1e-5539-4162-b647-101733293495' -AccessPolicyName default
+        $assignment.Name | Should -Be "testPolicy"
+        $assignment.ProvisioningState | Should -Be "Succeeded"
+        # accessPolicyName is deprecated and always maps to the default policy, whose ACL is "+@all ~*"
+        $assignment.AccessString | Should -Be "+@all ~*"
     }
 }
 
@@ -316,6 +319,35 @@ Describe 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment' {
     It 'Delete' {
         {
             Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName
+        } | Should -Not -Throw
+    }
+}
+
+Describe 'New-AzRedisEnterpriseCacheAccessPolicyAssignment' {
+    # UserObjectId from (Get-AzADUser -SignedIn).Id -> 4a61ce1e-5539-4162-b647-101733293495
+    # Custom access strings are not supported on databases with modules, so this uses ClusterName2 (module-free database).
+    It 'CreateExpandedWithAccessString' {
+        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicyAccessString -ClusterName $env.ClusterName2 -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '4a61ce1e-5539-4162-b647-101733293495' -AccessString '+@read ~cache:*'
+        $assignment.Name | Should -Be "testPolicyAccessString"
+        $assignment.AccessString | Should -Be "+@read ~cache:*"
+        $assignment.ProvisioningState | Should -Be "Succeeded"
+    }
+}
+
+Describe 'Get-AzRedisEnterpriseCacheAccessPolicyAssignment' {
+    It 'Get' {
+        $assignment = Get-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicyAccessString -ClusterName $env.ClusterName2 -DatabaseName default -ResourceGroupName $env.ResourceGroupName
+        $assignment.Name | Should -Be "testPolicyAccessString"
+        $assignment.Type | Should -Be "Microsoft.Cache/redisEnterprise/databases/accessPolicyAssignments"
+        $assignment.AccessString | Should -Be "+@read ~cache:*"
+        $assignment.UserObjectId | Should -Be "4a61ce1e-5539-4162-b647-101733293495"
+    }
+}
+
+Describe 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment' {
+    It 'DeleteAccessString' {
+        {
+            Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicyAccessString -ClusterName $env.ClusterName2 -DatabaseName default -ResourceGroupName $env.ResourceGroupName
         } | Should -Not -Throw
     }
 }
@@ -402,7 +434,7 @@ Describe 'Start-AzRedisEnterpriseCacheMigration' {
         $result = Start-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -SourceResourceId $sourceResourceId -SwitchDns -SkipDataMigration -ForceMigrate -Confirm:$false
         $result | Should -Not -Be $null
         $result.Name | Should -Not -Be $null
-        $result.ProvisioningState | Should -Not -Be $null
+        $result.ProvisioningState | Should -Be "Succeeded"
         $result.SourceType | Should -Be "AzureCacheForRedis"
         $result.TargetResourceId | Should -Not -Be $null
         $result.Type | Should -Be "Microsoft.Cache/redisEnterprise/migrations"
