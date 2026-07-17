@@ -148,6 +148,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     // sees the vault's subscription) is skipped and the URIs/sourceResourceId are built
                     // directly; the backend derives the VM's subscription from sourceResourceId.
                     // -ContainerSubscriptionId is compute-only, so the VM is always an ARM compute VM here.
+
+                    // Discovery can't run cross-subscription. Validate the VM here (in its own subscription)
+                    // so a wrong -Name/-ResourceGroupName/-ContainerSubscriptionId or a region mismatch fails
+                    // with a clear, VM-specific error instead of an ambiguous backend one.
+                    GenericResource csbVmResource;
+                    try
+                    {
+                        csbVmResource = ServiceClientAdapter.GetVmResource(azureVMName, azureVMRGName, containerSubscriptionId);
+                    }
+                    catch (Exception ex)
+                    {
+                        RestAzureNS.CloudException cloudEx = ex as RestAzureNS.CloudException
+                            ?? ex.InnerException as RestAzureNS.CloudException;
+                        if (cloudEx != null && cloudEx.Response != null &&
+                            cloudEx.Response.StatusCode == SystemNet.HttpStatusCode.NotFound)
+                        {
+                            throw new ArgumentException(string.Format(
+                                Resources.CSBVMNotFound, azureVMName, azureVMRGName, containerSubscriptionId));
+                        }
+                        throw;
+                    }
+
+                    string csbVaultLocation = ServiceClientAdapter.GetVault(resourceGroupName, vaultName).Location;
+                    if (!string.Equals(
+                            (csbVmResource.Location ?? "").Replace(" ", ""),
+                            (csbVaultLocation ?? "").Replace(" ", ""),
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException(string.Format(
+                            Resources.CSBVMNotInVaultLocation, azureVMName, csbVmResource.Location, csbVaultLocation));
+                    }
+
                     string containerType = "iaasvmcontainerv2";
 
                     containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
