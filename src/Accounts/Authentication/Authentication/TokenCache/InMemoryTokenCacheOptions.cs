@@ -63,6 +63,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return Task.CompletedTask;
         }
 
+        public void Clear()
+        {
+            readerWriterLockSlim.EnterWriteLock();
+            try
+            {
+                CachedToken = ReadOnlyMemory<byte>.Empty;
+            }
+            finally
+            {
+                readerWriterLockSlim.ExitWriteLock();
+            }
+        }
+
         public void Serialize(Stream stream)
         {
             readerWriterLockSlim.EnterReadLock();

@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private const string organizationTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
+        private readonly InMemoryTokenCacheOptions _appTokenCacheOptions = new InMemoryTokenCacheOptions();
 
         public abstract byte[] ReadTokenData();
 
@@ -62,6 +63,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual void ClearCache(string authority)
         {
             ClearCache();
+        }
+
+        public virtual TokenCachePersistenceOptions GetAppTokenCachePersistenceOptions()
+        {
+            return _appTokenCacheOptions;
+        }
+
+        public virtual void ClearAppTokenCache()
+        {
+            _appTokenCacheOptions.Clear();
         }
 
         public bool TryRemoveAccount(string accountId)
