@@ -1567,7 +1567,8 @@ function Test-AzureVMCSBRestoreOLR
 		Assert-True { $rp.SourceResourceId -match $containerSubscriptionId };
 
 		# OLR (Replace Existing): no -TargetResourceGroupName/-TargetSubscriptionId; storage resolved in the
-		# VM's sub from rp.SourceResourceId. Wait separately (piping into Wait resets the shared Logger).
+		# VM's sub from rp.SourceResourceId. Wait via -Job (not piped) - piping the restore cmdlet directly
+		# into Wait resets the shared Logger.
 		$restoreJob = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
@@ -1575,7 +1576,7 @@ function Test-AzureVMCSBRestoreOLR
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $saResourceGroupName
 
-		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		$restoreJob = Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID -Job $restoreJob
 
 		Assert-True { $restoreJob.Status -eq "Completed" };
 
