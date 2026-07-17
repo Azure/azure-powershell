@@ -113,8 +113,8 @@ Updates the description and adds a comment to an existing ChangeRecord.
 Update-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ResourceGroupName "rg-changeops" `
     -Targets @{
-        subscriptionId = (Get-AzContext).Subscription.Id
-        resourceGroups = @("rg-prod-eastus", "rg-prod-westus")
+        resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/storageAccountCleanup"
+        httpMethod = "DELETE"
     }
 ```
 
@@ -124,7 +124,7 @@ Name                  ResourceGroupName ChangeType  RolloutType Status      Prov
 storageAccountCleanup rg-changeops      ManualTouch Hotfix      Initialized Succeeded
 ```
 
-Updates the ChangeRecord with new target scope including specific resource groups.
+Updates the ChangeRecord with a resource-scoped target and guarded operation.
 
 ## PARAMETERS
 
@@ -492,7 +492,10 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-One or more target selection criteria as hashtables.
+One or more targets that the change is authorized against.
+Supported keys include `resourceId`, `subscriptionId`, `resourceGroupName`, `resourceType`, `resourceName`, and `httpMethod`.
+All supported target keys are optional; include only the fields that apply to the authorized target.
+Valid `httpMethod` values are `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT`.
 
 ```yaml
 Type: System.Object[]
@@ -551,4 +554,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

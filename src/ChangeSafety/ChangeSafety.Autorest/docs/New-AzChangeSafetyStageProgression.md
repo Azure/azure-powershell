@@ -63,7 +63,7 @@ Create a ChangeRecordStageProgression
 
 ### Example 1: Start a stage progression (set to InProgress)
 ```powershell
-New-AzChangeSafetyStageProgression -Name "canary-progression" `
+New-AzChangeSafetyStageProgression -StageProgressionName "canary-progression" `
     -ChangeRecordName "appDeploymentV2" `
     -ResourceGroupName "rg-changeops" `
     -StageReference "canary" `
@@ -82,7 +82,7 @@ This puts the ChangeRecord in an active state for the specified stage.
 
 ### Example 2: Create a stage progression with stage variables
 ```powershell
-New-AzChangeSafetyStageProgression -Name "prod-eastus-progression" `
+New-AzChangeSafetyStageProgression -StageProgressionName "prod-eastus-progression" `
     -ChangeRecordName "appDeploymentV2" `
     -ResourceGroupName "rg-changeops" `
     -StageReference "eastus-prod" `

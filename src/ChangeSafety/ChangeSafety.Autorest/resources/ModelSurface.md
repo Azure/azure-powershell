@@ -245,7 +245,6 @@
 
 ### ChangeSafetyIdentity [Models]
   - ChangeRecordName `String`
-  - ChangeStateName `String`
   - Id `String`
   - ManagementGroupName `String`
   - ResourceGroupName `String`

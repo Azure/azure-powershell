@@ -121,6 +121,8 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the ChangeRecord resource.
+This parameter is required only when retrieving a single ChangeRecord by name.
+Omit this parameter to list ChangeRecords in a resource group or subscription.
 
 ```yaml
 Type: System.String
@@ -137,6 +139,8 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
+This parameter is required when retrieving or listing ChangeRecords within one resource group.
+Omit this parameter to list ChangeRecords across the current subscription.
 
 ```yaml
 Type: System.String
@@ -180,4 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
