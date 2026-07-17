@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007.
+        ///   Looks up a localized string similar to When enabled, Web Account Manager (WAM) will be the default interactive login experience. It is supported on Windows only; on Linux (including WSL) and macOS the browser is always used. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007.
         /// </summary>
         public static string HelpMessageOfEnableWamLogin {
             get {

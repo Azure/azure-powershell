@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Disabled login by WAM (Web Account Manager) broker on non-Windows platforms.
+    - The interactive login broker is only reliably available on Windows (WAM); it is not supported on Linux and its native runtime is not shipped for macOS. On Linux (including WSL) and macOS interactive login now uses the browser directly and never attempts the broker, avoiding the previous broker error.
+    - The `EnableLoginByWam` config now defaults to disabled on non-Windows platforms and is ignored on those platforms even if explicitly enabled.
 
 ## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
