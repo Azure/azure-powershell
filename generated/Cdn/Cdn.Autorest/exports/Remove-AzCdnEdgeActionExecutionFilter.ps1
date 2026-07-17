@@ -20,7 +20,7 @@ Delete EdgeActionExecutionFilter resource
 .Description
 Delete EdgeActionExecutionFilter resource
 .Example
-Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -ExecutionFilter "filter001"
+Remove-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
 
 .Outputs
 System.Boolean
