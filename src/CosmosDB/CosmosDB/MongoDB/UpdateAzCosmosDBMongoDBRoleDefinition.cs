@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoRoleDefinition(Id, ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

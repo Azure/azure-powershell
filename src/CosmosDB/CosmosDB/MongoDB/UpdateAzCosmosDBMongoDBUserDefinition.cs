@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinition(Id, ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

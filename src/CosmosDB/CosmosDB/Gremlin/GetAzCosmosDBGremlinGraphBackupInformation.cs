@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.DatabaseAccounts.Get(ResourceGroupName, AccountName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 throw e;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.GremlinResources.GetGremlinDatabase(ResourceGroupName, AccountName, DatabaseName);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.GremlinResources.GetGremlinGraph(ResourceGroupName, AccountName, DatabaseName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
