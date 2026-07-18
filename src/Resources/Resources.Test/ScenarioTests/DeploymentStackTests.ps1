@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1890,7 +1890,7 @@ function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
 		# Prepare
 		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll  -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-
+	
 		# --- SaveByStackObjectSetName ---
 		$template = Get-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid | Save-AzManagementGroupDeploymentStackTemplate
 		Assert-NotNull $template

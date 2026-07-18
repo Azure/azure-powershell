@@ -303,7 +303,5 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator");
         }
-
-        // Deployment stack WhatIfResult scenario tests are in DeploymentStackWhatIfTests.
     }
 }
