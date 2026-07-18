@@ -45,6 +45,22 @@ Remove-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -Resource
 
 Removes the deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Remove a resource group scoped deployment stack WhatIf result by resource ID
+```powershell
+$whatIfResultId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/MyResourceGroup/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Remove-AzResourceGroupDeploymentStackWhatIfResult -ResourceId $whatIfResultId -Force
+```
+
+Removes the deployment stack WhatIf result by its fully-qualified resource ID.
+
+### Example 3: Remove a resource group scoped deployment stack WhatIf result from an input object
+```powershell
+$result = Get-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup
+$result | Remove-AzResourceGroupDeploymentStackWhatIfResult -Force
+```
+
+Removes a deployment stack WhatIf result passed through the pipeline.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken

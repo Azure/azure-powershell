@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
     public class SetAzResourceGroupDeploymentStackWhatIfResult : DeploymentStackWhatIfCmdlet
     {
+        protected override bool IsSetCmdlet => true;
+
         #region Cmdlet Parameters
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,

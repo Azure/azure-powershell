@@ -1,0 +1,165 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps7810?api-version=2025-07-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczc4MTA/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a77cf1c1-4bcb-429b-9940-faeee9e2d43f"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Resources.DeploymentStacks.DeploymentStacksClient/10.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "2199"
+        ],
+        "x-ms-request-id": [
+          "81920038-8df0-417f-b864-508d900a95c6"
+        ],
+        "x-ms-correlation-request-id": [
+          "81920038-8df0-417f-b864-508d900a95c6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20260718T010327Z:81920038-8df0-417f-b864-508d900a95c6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 626C2AE505274C2F994350EC2825C9FD Ref B: BY1AA1072315023 Ref C: 2026-07-18T01:03:27Z"
+        ],
+        "Date": [
+          "Sat, 18 Jul 2026 01:03:27 GMT"
+        ],
+        "Content-Length": [
+          "154"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'ps7810' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps7810?api-version=2025-07-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczc4MTA/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a77cf1c1-4bcb-429b-9940-faeee9e2d43f"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Resources.DeploymentStacks.DeploymentStacksClient/10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "834"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {},\r\n      \"variables\": {},\r\n      \"resources\": [],\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {},\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"None\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"deploymentStackResourceId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps7810\",\r\n    \"retentionInterval\": \"P1D\"\r\n  },\r\n  \"location\": \"West US 2\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fdcf3cc4-8823-4a45-a75f-c1523cc0aa49"
+        ],
+        "x-ms-failure-cause": [
+          "service"
+        ],
+        "x-ms-operation-identifier": [
+          ""
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "f9ae960b-15fb-4e27-b02f-1ac6b2d2a9cd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20260718T010349Z:f9ae960b-15fb-4e27-b02f-1ac6b2d2a9cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 33FE05F54CC048DFB685F0273B5E6C5F Ref B: BY1AA1072315023 Ref C: 2026-07-18T01:03:49Z"
+        ],
+        "Date": [
+          "Sat, 18 Jul 2026 01:03:48 GMT"
+        ],
+        "Content-Length": [
+          "326"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DeploymentStackWhatIfOperationFailed\",\r\n    \"message\": \"Resource Provider has encountered an internal server error. Diagnostic information: timestamp '2026-07-18 01:03:49Z', request ID 'fdcf3cc4-8823-4a45-a75f-c1523cc0aa49', request correlation ID 'f9ae960b-15fb-4e27-b02f-1ac6b2d2a9cd'.\"\r\n  }\r\n}",
+      "StatusCode": 500
+    }
+  ],
+  "Names": {
+    "Test-RemoveManagementGroupDeploymentStackWhatIfResult": [
+      "ps7810"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+  }
+}

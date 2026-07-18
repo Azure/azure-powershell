@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         /// </summary>
         protected abstract PSDeploymentStackWhatIfParameters BuildWhatIfParameters();
 
+        protected virtual bool IsSetCmdlet => false;
+
         protected override void OnProcessRecord()
         {
             var parameters = this.BuildWhatIfParameters();
@@ -73,12 +75,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 this.WriteObject(whatIfResult);
             };
 
-            if (existing != null)
+            if (!Force.IsPresent && !IsSetCmdlet && existing != null)
             {
                 ConfirmAction(
                     Force.IsPresent,
                     $"A WhatIf result '{parameters.StackName}' already exists. Overwriting it will replace any existing changes.",
                     "Overwrite WhatIf result",
+                    parameters.StackName,
+                    executeAction);
+            }
+            else if (!Force.IsPresent && IsSetCmdlet && existing == null)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    $"A WhatIf result '{parameters.StackName}' does not exist. Do you want to create it?",
+                    "Create WhatIf result",
                     parameters.StackName,
                     executeAction);
             }

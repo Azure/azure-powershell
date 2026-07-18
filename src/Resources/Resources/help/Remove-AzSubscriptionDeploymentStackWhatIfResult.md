@@ -45,6 +45,22 @@ Remove-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Force
 
 Removes the deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Remove a subscription scoped deployment stack WhatIf result by resource ID
+```powershell
+$whatIfResultId = "/subscriptions/$((Get-AzContext).Subscription.Id)/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Remove-AzSubscriptionDeploymentStackWhatIfResult -ResourceId $whatIfResultId -Force
+```
+
+Removes the deployment stack WhatIf result by its fully-qualified resource ID.
+
+### Example 3: Remove a subscription scoped deployment stack WhatIf result from an input object
+```powershell
+$result = Get-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult
+$result | Remove-AzSubscriptionDeploymentStackWhatIfResult -Force
+```
+
+Removes a deployment stack WhatIf result passed through the pipeline.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken

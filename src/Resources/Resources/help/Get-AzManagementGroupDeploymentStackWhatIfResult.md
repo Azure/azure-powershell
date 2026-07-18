@@ -35,12 +35,34 @@ Gets one or more management group scoped deployment stack WhatIf result resource
 
 ## EXAMPLES
 
-### Example 1: Use Get-AzManagementGroupDeploymentStackWhatIfResult
+### Example 1: List deployment stack WhatIf results in a management group
 ```powershell
 Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId MyManagementGroup
 ```
 
-Gets management group scoped deployment stack WhatIf results.
+Gets deployment stack WhatIf results in management group `MyManagementGroup`.
+
+### Example 2: Get a deployment stack WhatIf result by name
+```powershell
+Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId MyManagementGroup -Name MyWhatIfResult
+```
+
+Gets the deployment stack WhatIf result named `MyWhatIfResult` in management group `MyManagementGroup`.
+
+### Example 3: Get a deployment stack WhatIf result with property changes
+```powershell
+Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId MyManagementGroup -Name MyWhatIfResult -WithPropertyChanges
+```
+
+Gets the deployment stack WhatIf result named `MyWhatIfResult` with resource property changes populated.
+
+### Example 4: Get a deployment stack WhatIf result by resource ID
+```powershell
+$whatIfResultId = "/providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Get-AzManagementGroupDeploymentStackWhatIfResult -ResourceId $whatIfResultId
+```
+
+Gets the deployment stack WhatIf result by its fully-qualified resource ID.
 
 ## PARAMETERS
 

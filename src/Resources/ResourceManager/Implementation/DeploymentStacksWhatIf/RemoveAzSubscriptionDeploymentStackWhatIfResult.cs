@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 
     /// <summary>
     /// Deletes an existing WhatIf result for a Subscription Deployment Stack.
@@ -90,7 +91,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             }
             catch (Exception ex)
             {
-                WriteExceptionError(ex);
+                if (ex is ErrorResponseException dex)
+                {
+                    throw new PSArgumentException(dex.Message + " : " + dex.Body.Error.Code + " : " + dex.Body.Error.Message);
+                }
+                else
+                {
+                    WriteExceptionError(ex);
+                }
             }
         }
     }

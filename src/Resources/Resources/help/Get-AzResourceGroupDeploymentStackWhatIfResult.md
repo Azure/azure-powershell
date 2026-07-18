@@ -44,10 +44,26 @@ Gets deployment stack WhatIf results in resource group `MyResourceGroup`.
 
 ### Example 2: Get a deployment stack WhatIf result by name
 ```powershell
+Get-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup
+```
+
+Gets the deployment stack WhatIf result named `MyWhatIfResult` in resource group `MyResourceGroup`.
+
+### Example 3: Get a deployment stack WhatIf result with property changes
+```powershell
 Get-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -WithPropertyChanges
 ```
 
-Gets the deployment stack WhatIf result named `MyWhatIfResult` with property changes populated.
+Gets the deployment stack WhatIf result named `MyWhatIfResult` with resource property changes populated.
+
+### Example 4: Get a deployment stack WhatIf result by resource ID
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.Id
+$whatIfResultId = "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId $whatIfResultId
+```
+
+Gets the deployment stack WhatIf result by its fully-qualified resource ID.
 
 ## PARAMETERS
 

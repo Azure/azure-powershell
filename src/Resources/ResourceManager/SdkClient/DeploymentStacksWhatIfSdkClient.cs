@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public Action<string> VerboseLogger { get; set; }
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
+        public Action<int> DelayAction { get; set; } = milliseconds => System.Threading.Thread.Sleep(milliseconds);
         private IAzureContext azureContext;
 
         public DeploymentStacksWhatIfSdkClient(IDeploymentStacksClient deploymentStacksClient)
@@ -51,6 +52,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private void WriteVerbose(string msg) => VerboseLogger?.Invoke(msg);
         private void WriteError(string msg) => ErrorLogger?.Invoke(msg);
         private void WriteWarning(string msg) => WarningLogger?.Invoke(msg);
+
+        public DeploymentStacksWhatIfResult WaitWhatIfResultCompletion(
+            DeploymentStacksWhatIfResult initialResult,
+            Func<DeploymentStacksWhatIfResult> getResult,
+            params string[] terminalStates)
+        {
+            DeploymentStacksWhatIfResult finalResult = initialResult;
+            const int maxPollingAttempts = 60;
+            const int pollingIntervalInMilliseconds = 5000;
+            int attempts = 0;
+
+            while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
+            {
+                WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
+                DelayAction(pollingIntervalInMilliseconds);
+                finalResult = getResult();
+                attempts++;
+            }
+
+            return finalResult;
+        }
 
         private IDictionary<string, DeploymentParameter> ConvertParameterHashtableToDictionary(Hashtable parameters)
         {
@@ -200,11 +222,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         #region What-If Resource CRUD Operations
 
-        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName, bool throwIfNotExists = true)
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
@@ -215,7 +237,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     {
                         if (!throwIfNotExists)
                             return null;
-                        throw new PSArgumentException($"WhatIf result '{stackName}' in Resource Group '{resourceGroupName}' not found.");
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' in Resource Group '{resourceGroupName}' not found.");
                     }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
                 }
@@ -223,17 +245,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResultWithPropertyChanges(string resourceGroupName, string stackName)
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResultWithPropertyChanges(string resourceGroupName, string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        if (!throwIfNotExists)
+                            return null;
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' in Resource Group '{resourceGroupName}' not found.");
+                    }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
         }
@@ -260,11 +290,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public void DeleteResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName)
+        public void DeleteResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string whatIfResultName)
         {
             try
             {
-                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Delete(resourceGroupName, stackName);
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Delete(resourceGroupName, whatIfResultName);
             }
             catch (Exception ex)
             {
@@ -274,11 +304,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName, bool throwIfNotExists = true)
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
@@ -289,7 +319,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     {
                         if (!throwIfNotExists)
                             return null;
-                        throw new PSArgumentException($"WhatIf result '{stackName}' not found in the current subscription.");
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' not found in the current subscription.");
                     }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
                 }
@@ -297,17 +327,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(string stackName)
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        if (!throwIfNotExists)
+                            return null;
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' not found in the current subscription.");
+                    }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
         }
@@ -334,11 +372,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public void DeleteSubscriptionDeploymentStackWhatIfResult(string stackName)
+        public void DeleteSubscriptionDeploymentStackWhatIfResult(string whatIfResultName)
         {
             try
             {
-                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Delete(stackName);
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Delete(whatIfResultName);
             }
             catch (Exception ex)
             {
@@ -348,11 +386,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName, bool throwIfNotExists = true)
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
@@ -363,7 +401,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     {
                         if (!throwIfNotExists)
                             return null;
-                        throw new PSArgumentException($"WhatIf result '{stackName}' in Management Group '{managementGroupId}' not found.");
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' in Management Group '{managementGroupId}' not found.");
                     }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
                 }
@@ -371,17 +409,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResultWithPropertyChanges(string managementGroupId, string stackName)
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResultWithPropertyChanges(string managementGroupId, string whatIfResultName, bool throwIfNotExists = true)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, stackName);
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, whatIfResultName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        if (!throwIfNotExists)
+                            return null;
+                        throw new PSArgumentException($"WhatIf result '{whatIfResultName}' in Management Group '{managementGroupId}' not found.");
+                    }
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
         }
@@ -408,11 +454,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public void DeleteManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName)
+        public void DeleteManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string whatIfResultName)
         {
             try
             {
-                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Delete(managementGroupId, stackName);
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Delete(managementGroupId, whatIfResultName);
             }
             catch (Exception ex)
             {

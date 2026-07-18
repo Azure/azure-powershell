@@ -424,14 +424,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (!string.IsNullOrEmpty(parameters.TemplateSpecId))
             {
-                deployment.Properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink
+                deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Id = parameters.TemplateSpecId
                 };
             }
             else if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
-                deployment.Properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink
+                deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Uri = parameters.TemplateFile
                 };
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
             {
-                deployment.Properties.ParametersLink = new Microsoft.Azure.Management.Resources.Models.ParametersLink
+                deployment.Properties.ParametersLink = new ParametersLink
                 {
                     Uri = parameters.ParameterUri
                 };

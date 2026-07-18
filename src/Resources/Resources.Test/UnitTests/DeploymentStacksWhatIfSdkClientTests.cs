@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
 
     public class DeploymentStacksWhatIfSdkClientTests
     {
+        // Verify a running What-If result is polled once and uses the injectable delay hook.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WaitWhatIfResultCompletion_UsesInjectedDelayAndPollsUntilTerminalState()
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             Assert.Equal(5000, delayMilliseconds);
         }
 
+        // Verify a terminal initial What-If result returns immediately without polling or delaying.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WaitWhatIfResultCompletion_DoesNotPollTerminalInitialResult()
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             Assert.Equal(0, delayCount);
         }
 
+        // Verify StackResourceId construction fails with a clear error when subscription context is unavailable.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateDeploymentStacksWhatIfResult_ThrowsClearErrorWhenSubscriptionContextIsRequiredButMissing()

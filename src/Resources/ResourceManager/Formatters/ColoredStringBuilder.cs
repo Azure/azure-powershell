@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(string value)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.stringBuilder.Append(value);
 
             return this;
@@ -40,8 +41,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(string value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.Append(value);
+            this.stringBuilder.Append(value);
             this.PopColor();
 
             return this;
@@ -59,16 +61,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(object value)
         {
-            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
-            this.stringBuilder.Append(indent + value);
+            this.AppendIndentIfAtStartOfLine();
+            this.stringBuilder.Append(value);
 
             return this;
         }
 
         public ColoredStringBuilder Append(object value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.Append(value);
+            this.stringBuilder.Append(value);
             this.PopColor();
 
             return this;
@@ -83,16 +86,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder AppendLine(string value)
         {
-            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
-            this.stringBuilder.AppendLine(indent + value);
+            this.AppendIndentIfAtStartOfLine();
+            this.stringBuilder.AppendLine(value);
 
             return this;
         }
 
         public ColoredStringBuilder AppendLine(string value, Color color)
         {
+            this.AppendIndentIfAtStartOfLine();
             this.PushColor(color);
-            this.AppendLine(value);
+            this.stringBuilder.AppendLine(value);
             this.PopColor();
 
             return this;
@@ -132,6 +136,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         public void PushIndent(string indent)
         {
             this.indentStack.Add(indent);
+            if (this.IsAtStartOfLine())
+            {
+                this.stringBuilder.Append(indent);
+            }
         }
 
         public void PopIndent()
@@ -185,6 +193,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         {
             this.colorStack.Pop();
             this.stringBuilder.Append(this.colorStack.Count > 0 ? this.colorStack.Peek() : Color.Reset);
+        }
+
+        private bool IsAtStartOfLine()
+        {
+            int lastVisibleCharIndex = this.GetLastVisibleCharIndex();
+            return lastVisibleCharIndex < 0 || this.stringBuilder[lastVisibleCharIndex] == '\n';
+        }
+
+        private void AppendIndentIfAtStartOfLine()
+        {
+            if (this.IsAtStartOfLine() && this.indentStack.Count > 0)
+            {
+                this.stringBuilder.Append(string.Join("", this.indentStack));
+            }
+        }
+
+        private int GetLastVisibleCharIndex()
+        {
+            int index = this.stringBuilder.Length - 1;
+            while (index >= 0 && this.stringBuilder[index] == 'm')
+            {
+                int escapeIndex = index;
+                while (escapeIndex >= 0 && this.stringBuilder[escapeIndex] != (char)27)
+                {
+                    escapeIndex--;
+                }
+
+                if (escapeIndex < 0 || escapeIndex + 1 >= this.stringBuilder.Length || this.stringBuilder[escapeIndex + 1] != '[')
+                {
+                    break;
+                }
+
+                index = escapeIndex - 1;
+            }
+
+            return index;
         }
 
         public class AnsiColorScope : IDisposable

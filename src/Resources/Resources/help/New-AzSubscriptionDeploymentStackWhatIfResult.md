@@ -180,6 +180,21 @@ New-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location wes
 
 Creates a deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Create a subscription scoped deployment stack WhatIf result with template parameters
+```powershell
+New-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location westus2 -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -TemplateParameterObject @{ location = "westus2" } -ActionOnUnmanage DetachAll -DenySettingsMode None
+```
+
+Creates a deployment stack WhatIf result named `MyWhatIfResult` using inline template parameters.
+
+### Example 3: Create a subscription scoped deployment stack WhatIf result for a resource group deployment scope
+```powershell
+$deploymentScope = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/MyResourceGroup"
+New-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location westus2 -StackResourceId <stack-resource-id> -DeploymentScope $deploymentScope -RetentionInterval P1D -TemplateFile ./main.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+```
+
+Creates a subscription scoped deployment stack WhatIf result that targets a resource group deployment scope.
+
 ## PARAMETERS
 
 ### -ActionOnUnmanage

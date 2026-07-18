@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps6591?api-version=2025-07-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczY1OTE/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps4590?api-version=2025-07-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczQ1OTA/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "5b1cdb64-4549-4f66-a610-b1526da2d7ea"
+          "8af9d03c-211f-4ae8-a196-5245c3959a49"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2826.26413",
+          "FxVersion/8.0.2926.32403",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Management.Resources.DeploymentStacks.DeploymentStacksClient/10.0.0"
@@ -33,13 +33,13 @@
           "2199"
         ],
         "x-ms-request-id": [
-          "e56f1fa7-0724-48ef-aa3a-7972dc0474f9"
+          "680833df-20b5-4395-a069-dd86e443ded7"
         ],
         "x-ms-correlation-request-id": [
-          "e56f1fa7-0724-48ef-aa3a-7972dc0474f9"
+          "680833df-20b5-4395-a069-dd86e443ded7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20260624T074508Z:e56f1fa7-0724-48ef-aa3a-7972dc0474f9"
+          "WESTUS:20260718T010602Z:680833df-20b5-4395-a069-dd86e443ded7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5AF0CE8E6AE240BDB1D78830A54F4DA0 Ref B: SJC211051201049 Ref C: 2026-06-24T07:45:08Z"
+          "Ref A: F8D6B7C706A64AF6BAFF974A5A7ACE89 Ref B: SJC211051203039 Ref C: 2026-07-18T01:06:02Z"
         ],
         "Date": [
-          "Wed, 24 Jun 2026 07:45:08 GMT"
+          "Sat, 18 Jul 2026 01:06:01 GMT"
         ],
         "Content-Length": [
           "154"
@@ -69,22 +69,22 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'ps6591' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'ps4590' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps6591?api-version=2025-07-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczY1OTE/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps4590?api-version=2025-07-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczQ1OTA/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "5b1cdb64-4549-4f66-a610-b1526da2d7ea"
+          "8af9d03c-211f-4ae8-a196-5245c3959a49"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2826.26413",
+          "FxVersion/8.0.2926.32403",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Management.Resources.DeploymentStacks.DeploymentStacksClient/10.0.0"
@@ -96,7 +96,7 @@
           "834"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {},\r\n      \"variables\": {},\r\n      \"resources\": [],\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {},\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"None\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"deploymentStackResourceId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps6591\",\r\n    \"retentionInterval\": \"P1D\"\r\n  },\r\n  \"location\": \"West US 2\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {},\r\n      \"variables\": {},\r\n      \"resources\": [],\r\n      \"outputs\": {}\r\n    },\r\n    \"parameters\": {},\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"None\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"deploymentStackResourceId\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps4590\",\r\n    \"retentionInterval\": \"P1D\"\r\n  },\r\n  \"location\": \"West US 2\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -105,7 +105,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "eaaa1682-ecc4-4ee7-acdc-462468e7b3ef"
+          "7e980475-9dca-4a7f-8b5b-ad1cd92b5cc8"
         ],
         "x-ms-failure-cause": [
           "service"
@@ -117,10 +117,10 @@
           "799"
         ],
         "x-ms-correlation-request-id": [
-          "ba13cad3-b5fa-46d8-9c31-61750177db04"
+          "46c5da76-828e-4744-b5ab-e9b246e217b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20260624T074530Z:ba13cad3-b5fa-46d8-9c31-61750177db04"
+          "WESTUS:20260718T010624Z:46c5da76-828e-4744-b5ab-e9b246e217b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -132,10 +132,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 8C65336BD52C419DB055F8BDF75CF380 Ref B: SJC211051201049 Ref C: 2026-06-24T07:45:30Z"
+          "Ref A: A97D571FF3CC4B61909A996F28BE2392 Ref B: SJC211051203039 Ref C: 2026-07-18T01:06:24Z"
         ],
         "Date": [
-          "Wed, 24 Jun 2026 07:45:30 GMT"
+          "Sat, 18 Jul 2026 01:06:23 GMT"
         ],
         "Content-Length": [
           "326"
@@ -150,22 +150,22 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DeploymentStackWhatIfOperationFailed\",\r\n    \"message\": \"Resource Provider has encountered an internal server error. Diagnostic information: timestamp '2026-06-24 07:45:30Z', request ID 'eaaa1682-ecc4-4ee7-acdc-462468e7b3ef', request correlation ID 'ba13cad3-b5fa-46d8-9c31-61750177db04'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DeploymentStackWhatIfOperationFailed\",\r\n    \"message\": \"Resource Provider has encountered an internal server error. Diagnostic information: timestamp '2026-07-18 01:06:24Z', request ID '7e980475-9dca-4a7f-8b5b-ad1cd92b5cc8', request correlation ID '46c5da76-828e-4744-b5ab-e9b246e217b6'.\"\r\n  }\r\n}",
       "StatusCode": 500
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps6591?api-version=2025-07-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczY1OTE/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacksWhatIfResults/ps4590?api-version=2025-07-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzV2hhdElmUmVzdWx0cy9wczQ1OTA/YXBpLXZlcnNpb249MjAyNS0wNy0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "394872f8-9a6c-4c26-836a-de3c4aa9df4f"
+          "dbd6637b-d7c6-4efe-80f5-5edcbcbe8e39"
         ],
         "User-Agent": [
-          "FxVersion/8.0.2826.26413",
+          "FxVersion/8.0.2926.32403",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.26200",
           "Microsoft.Azure.Management.Resources.DeploymentStacks.DeploymentStacksClient/10.0.0"
@@ -186,13 +186,13 @@
           "799"
         ],
         "x-ms-request-id": [
-          "750da6ab-3675-467f-b121-79fc50f7109f"
+          "1d2ab4c7-a114-4950-b988-fafcfe88e66b"
         ],
         "x-ms-correlation-request-id": [
-          "750da6ab-3675-467f-b121-79fc50f7109f"
+          "1d2ab4c7-a114-4950-b988-fafcfe88e66b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20260624T074531Z:750da6ab-3675-467f-b121-79fc50f7109f"
+          "WESTUS:20260718T010624Z:1d2ab4c7-a114-4950-b988-fafcfe88e66b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -204,10 +204,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 033E11260125436CB899891E2F5C1A17 Ref B: SJC211051201035 Ref C: 2026-06-24T07:45:31Z"
+          "Ref A: 7F114890018049D799F72B59F624769B Ref B: BY1AA1072318040 Ref C: 2026-07-18T01:06:24Z"
         ],
         "Date": [
-          "Wed, 24 Jun 2026 07:45:30 GMT"
+          "Sat, 18 Jul 2026 01:06:23 GMT"
         ],
         "Expires": [
           "-1"
@@ -221,8 +221,8 @@
     }
   ],
   "Names": {
-    "Test-NewManagementGroupDeploymentStackWhatIfResult": [
-      "ps6591"
+    "Test-SetManagementGroupDeploymentStackWhatIfResult": [
+      "ps4590"
     ]
   },
   "Variables": {

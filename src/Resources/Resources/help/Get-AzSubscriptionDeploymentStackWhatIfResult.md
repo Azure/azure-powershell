@@ -35,12 +35,35 @@ Gets one or more subscription scoped deployment stack WhatIf result resources.
 
 ## EXAMPLES
 
-### Example 1: Use Get-AzSubscriptionDeploymentStackWhatIfResult
+### Example 1: List deployment stack WhatIf results in the current subscription
 ```powershell
 Get-AzSubscriptionDeploymentStackWhatIfResult
 ```
 
-Gets subscription scoped deployment stack WhatIf results.
+Gets deployment stack WhatIf results in the current subscription.
+
+### Example 2: Get a deployment stack WhatIf result by name
+```powershell
+Get-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult
+```
+
+Gets the deployment stack WhatIf result named `MyWhatIfResult` in the current subscription.
+
+### Example 3: Get a deployment stack WhatIf result with property changes
+```powershell
+Get-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -WithPropertyChanges
+```
+
+Gets the deployment stack WhatIf result named `MyWhatIfResult` with resource property changes populated.
+
+### Example 4: Get a deployment stack WhatIf result by resource ID
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.Id
+$whatIfResultId = "/subscriptions/$subscriptionId/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId $whatIfResultId
+```
+
+Gets the deployment stack WhatIf result by its fully-qualified resource ID.
 
 ## PARAMETERS
 

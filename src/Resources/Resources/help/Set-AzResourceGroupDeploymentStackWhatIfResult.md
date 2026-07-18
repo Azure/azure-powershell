@@ -180,6 +180,13 @@ Set-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGro
 
 Updates the deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Update a resource group scoped deployment stack WhatIf result and bypass confirmation
+```powershell
+Set-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -TemplateParameterObject @{ location = "westus2" } -ActionOnUnmanage DeleteAll -DenySettingsMode None -Force
+```
+
+Updates the deployment stack WhatIf result named `MyWhatIfResult` using inline template parameters and bypasses confirmation.
+
 ## PARAMETERS
 
 ### -ActionOnUnmanage

@@ -180,6 +180,13 @@ Set-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location wes
 
 Updates the deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Update a subscription scoped deployment stack WhatIf result and bypass confirmation
+```powershell
+Set-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location westus2 -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -TemplateParameterObject @{ location = "westus2" } -ActionOnUnmanage DeleteAll -DenySettingsMode None -Force
+```
+
+Updates the deployment stack WhatIf result named `MyWhatIfResult` using inline template parameters and bypasses confirmation.
+
 ## PARAMETERS
 
 ### -ActionOnUnmanage

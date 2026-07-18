@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 ManagementGroups = managementGroupsCleanupAction,
                 ResourcesWithoutDeleteSupport = resourcesWithoutDeleteSupport
             };
-            var denySettings = new Microsoft.Azure.Management.Resources.DeploymentStacks.Models.DenySettings
+            var denySettings = new DenySettings
             {
                 Mode = denySettingsMode,
                 ExcludedPrincipals = denySettingsExcludedPrincipals,

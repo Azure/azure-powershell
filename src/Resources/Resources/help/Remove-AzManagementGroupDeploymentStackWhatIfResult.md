@@ -45,6 +45,22 @@ Remove-AzManagementGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -Manage
 
 Removes the deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Remove a management group scoped deployment stack WhatIf result by resource ID
+```powershell
+$whatIfResultId = "/providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Resources/deploymentStacksWhatIfResults/MyWhatIfResult"
+Remove-AzManagementGroupDeploymentStackWhatIfResult -ResourceId $whatIfResultId -Force
+```
+
+Removes the deployment stack WhatIf result by its fully-qualified resource ID.
+
+### Example 3: Remove a management group scoped deployment stack WhatIf result from an input object
+```powershell
+$result = Get-AzManagementGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ManagementGroupId MyManagementGroup
+$result | Remove-AzManagementGroupDeploymentStackWhatIfResult -Force
+```
+
+Removes a deployment stack WhatIf result passed through the pipeline.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken

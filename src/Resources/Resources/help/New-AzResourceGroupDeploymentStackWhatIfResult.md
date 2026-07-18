@@ -180,6 +180,20 @@ New-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGro
 
 Creates a deployment stack WhatIf result named MyWhatIfResult.
 
+### Example 2: Create a resource group scoped deployment stack WhatIf result with template parameters
+```powershell
+New-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -TemplateParameterObject @{ location = "westus2" } -ActionOnUnmanage DetachAll -DenySettingsMode None
+```
+
+Creates a deployment stack WhatIf result named `MyWhatIfResult` using inline template parameters.
+
+### Example 3: Create a resource group scoped deployment stack WhatIf result from a template spec
+```powershell
+New-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateSpecId <template-spec-version-resource-id> -ActionOnUnmanage DetachAll -DenySettingsMode None
+```
+
+Creates a deployment stack WhatIf result named `MyWhatIfResult` using a template spec version.
+
 ## PARAMETERS
 
 ### -ActionOnUnmanage
