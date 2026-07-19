@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Added Cross Subscription Backup (CSB) support for Azure VM:
+    - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
+    - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).
+    - Added `ContainerSubscriptionId` property to the backup item response of `Get-AzRecoveryServicesBackupItem`.
+    - Added `ContainerSubscriptionId` property to the detailed job response of `Get-AzRecoveryServicesBackupJobDetail`.
+    - Added client-side validation when `-ContainerSubscriptionId` is supplied so a non-existent VM/resource group/subscription or a VM in a different region than the vault fails with a clear, VM-specific error message.
 * Fixed Private Disk Access parameters being silently dropped when adding disks to, reprotecting, or cluster-reprotecting an Azure-to-Azure managed-disk replication
     - `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk` now honors `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` supplied on the disk replication configuration
     - `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) forwards the same three fields on the switch-protection call

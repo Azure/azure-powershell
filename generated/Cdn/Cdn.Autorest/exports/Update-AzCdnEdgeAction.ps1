@@ -20,11 +20,7 @@ Update EdgeAction resource
 .Description
 Update EdgeAction resource
 .Example
-$tags = @{"Environment" = "Staging"; "Owner" = "Team2"}
-Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -Tag $tags
-.Example
-$jsonString = '{"tags":{"Environment":"Development","Team":"DevOps"}}'
-Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -Name edgeaction001 -JsonString $jsonString
+Update-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Tag @{Environment="Staging"}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
