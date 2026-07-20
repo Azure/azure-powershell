@@ -992,6 +992,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source name &quot;{0}&quot; resolves outside the destination directory &quot;{1}&quot;..
+        /// </summary>
+        internal static string DownloadDestinationPathTraversal {
+            get {
+                return ResourceManager.GetString("DownloadDestinationPathTraversal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is an invalid HTTP method..
         /// </summary>
         internal static string InvalidHTTPMethod {
