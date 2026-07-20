@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.0.2
 * Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
 * Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
 

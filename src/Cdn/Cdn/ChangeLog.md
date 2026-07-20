@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Upgraded API version to 2026-04-01-preview.
 * Fixed CDN long-running operations that returned completed resource responses without a Location header.
 
