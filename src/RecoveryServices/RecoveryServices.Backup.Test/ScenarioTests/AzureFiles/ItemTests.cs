@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSGetItemSecondaryRegion()
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSGetRPsSecondaryRegion()
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFS)]
         public void TestAzureFSRestoreToSecondaryRegion()

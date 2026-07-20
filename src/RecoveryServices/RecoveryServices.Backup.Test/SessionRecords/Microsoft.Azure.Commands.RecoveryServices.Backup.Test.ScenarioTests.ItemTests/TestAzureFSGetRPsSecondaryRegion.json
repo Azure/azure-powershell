@@ -1,0 +1,296 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy?api-version=2025-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTRkMTZhMmEtNTZmNi00Yzc1LWIwOTEtMDg0ZGY5NjQwMjk3L3Jlc291cmNlR3JvdXBzL2Fmc2J2dGxvbmdoYXVscmdjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hZnNidnRjcnJsb25naGF1bHZhdWx0Y2N5P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "bd15455b-a5c3-4867-927a-62b97149a66d"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.13.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f66b6f4c-1b08-4c0b-9f44-982ad0a4659e"
+        ],
+        "x-ms-client-request-id": [
+          "bd15455b-a5c3-4867-927a-62b97149a66d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "f66b6f4c-1b08-4c0b-9f44-982ad0a4659e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260720T063005Z:f66b6f4c-1b08-4c0b-9f44-982ad0a4659e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 17645B04FAC54E619C5E08F62D9B67BD Ref B: MAA211070112042 Ref C: 2026-07-20T06:30:05Z"
+        ],
+        "Date": [
+          "Mon, 20 Jul 2026 06:30:05 GMT"
+        ],
+        "Content-Length": [
+          "1070"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"afsbvtcrrlonghaulvaultccy\",\r\n  \"etag\": \"W/\\\"datetime'2025-08-14T03%3A05%3A03.7214862Z'\\\"\",\r\n  \"tags\": {\r\n    \"MAB Used\": \"Yes\",\r\n    \"Purpose\": \"Testing\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\",\r\n        \"enhancedSecurityState\": \"Disabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Enabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupProtectedItems/?$filter=backupManagementType%20eq%20'AzureStorage'%20and%20itemType%20eq%20'AzureFileShare'&api-version=2021-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTRkMTZhMmEtNTZmNi00Yzc1LWIwOTEtMDg0ZGY5NjQwMjk3L3Jlc291cmNlR3JvdXBzL2Fmc2J2dGxvbmdoYXVscmdjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hZnNidnRjcnJsb25naGF1bHZhdWx0Y2N5L2JhY2t1cFByb3RlY3RlZEl0ZW1zLz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTdG9yYWdlJyUyMGFuZCUyMGl0ZW1UeXBlJTIwZXElMjAnQXp1cmVGaWxlU2hhcmUnJmFwaS12ZXJzaW9uPTIwMjEtMTEtMTU=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "f1067175-a9c1-4833-888e-d9dfbcbf5c87"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.RecoveryServicesBackupClient/7.13.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "cafd6600-638b-4cc6-b5da-0889e3c83841"
+        ],
+        "x-ms-client-request-id": [
+          "f1067175-a9c1-4833-888e-d9dfbcbf5c87"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d5f45f9e-867c-4805-9aba-55121e6bdbb8/centraluseuap/07e3db9d-dd45-4e6a-8e50-cd3bb42b4701"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "cafd6600-638b-4cc6-b5da-0889e3c83841"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260720T063007Z:cafd6600-638b-4cc6-b5da-0889e3c83841"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: ABA195A66A194DD7B69CEF53F76133E5 Ref B: MAA211070115062 Ref C: 2026-07-20T06:30:06Z"
+        ],
+        "Date": [
+          "Mon, 20 Jul 2026 06:30:06 GMT"
+        ],
+        "Content-Length": [
+          "3237"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare;B0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6\",\r\n      \"name\": \"AzureFileShare;B0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"afscrrfs\",\r\n        \"fileShareProtocol\": \"SMB\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2026-07-20T02:48:45.412946Z\",\r\n        \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workloadType\": \"AzureFileShare\",\r\n        \"containerName\": \"StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy\",\r\n        \"sourceResourceId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.Storage/storageAccounts/afsbvtlonghaulcrrsaccy\",\r\n        \"policyId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupPolicies/AFSCrossRegionRestoreLongHaulSimplePolicyV2\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare;0DF35A739C647421158FB0251BFF7BEEFE9EEFE9977ED7492209C288A90BAC14\",\r\n      \"name\": \"AzureFileShare;0DF35A739C647421158FB0251BFF7BEEFE9EEFE9977ED7492209C288A90BAC14\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"afsbvtlonghaulcrrafsccy\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2026-07-19T19:42:39.4167798Z\",\r\n        \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workloadType\": \"AzureFileShare\",\r\n        \"containerName\": \"StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy\",\r\n        \"sourceResourceId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.Storage/storageAccounts/afsbvtlonghaulcrrsaccy\",\r\n        \"policyId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupPolicies/AFSCrossRegionRestoreLongHaulSimplePolicyV2\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bafsbvtlonghaulrgccy%3Bafsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare%3BB0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6?$filter=expand%20eq%20'extendedinfo'&api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTRkMTZhMmEtNTZmNi00Yzc1LWIwOTEtMDg0ZGY5NjQwMjk3L3Jlc291cmNlR3JvdXBzL2Fmc2J2dGxvbmdoYXVscmdjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hZnNidnRjcnJsb25naGF1bHZhdWx0Y2N5L2JhY2t1cEZhYnJpY3MvQXp1cmUvcHJvdGVjdGlvbkNvbnRhaW5lcnMvU3RvcmFnZUNvbnRhaW5lciUzQlN0b3JhZ2UlM0JhZnNidnRsb25naGF1bHJnY2N5JTNCYWZzYnZ0bG9uZ2hhdWxjcnJzYWNjeS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQkIwNDMyQUI3NkJBMUM1MUJERjgxOThDOUUzRjg5QTkyOUE4OTQ3RTY2OTMxQjE4MEI5RTBDN0JGNEM5RTBDRDY/JGZpbHRlcj1leHBhbmQlMjBlcSUyMCdleHRlbmRlZGluZm8nJmFwaS12ZXJzaW9uPTIwMjUtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "f1067175-a9c1-4833-888e-d9dfbcbf5c87"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.13.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ba302b0e-ff36-4d7b-864d-5baf68e9e3c5"
+        ],
+        "x-ms-client-request-id": [
+          "f1067175-a9c1-4833-888e-d9dfbcbf5c87"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d5f45f9e-867c-4805-9aba-55121e6bdbb8/centraluseuap/f2e5aa25-6979-4315-abfc-19647b4a0c59"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba302b0e-ff36-4d7b-864d-5baf68e9e3c5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260720T063008Z:ba302b0e-ff36-4d7b-864d-5baf68e9e3c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D7E584223B3C4358828ED7D79FB31802 Ref B: MAA211070112052 Ref C: 2026-07-20T06:30:07Z"
+        ],
+        "Date": [
+          "Mon, 20 Jul 2026 06:30:07 GMT"
+        ],
+        "Content-Length": [
+          "1844"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare;B0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6\",\r\n  \"name\": \"AzureFileShare;B0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"afscrrfs\",\r\n    \"fileShareProtocol\": \"SMB\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2026-07-20T02:48:45.412946Z\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2026-07-20T02:48:46Z\",\r\n      \"recoveryPointCount\": 1,\r\n      \"policyState\": \"Consistent\",\r\n      \"resourceState\": \"Active\",\r\n      \"resourceStateSyncTime\": \"2026-07-20T03:17:29Z\"\r\n    },\r\n    \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workloadType\": \"AzureFileShare\",\r\n    \"containerName\": \"StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy\",\r\n    \"sourceResourceId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.Storage/storageAccounts/afsbvtlonghaulcrrsaccy\",\r\n    \"policyId\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupPolicies/AFSCrossRegionRestoreLongHaulSimplePolicyV2\",\r\n    \"lastRecoveryPoint\": \"2026-07-20T02:48:46Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bafsbvtlonghaulrgccy%3Bafsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare%3BB0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6/recoveryPoints/?$filter=startDate%20eq%20'2026-06-20%2002:48:45%20AM'%20and%20endDate%20eq%20'2026-07-21%2002:48:45%20AM'&api-version=2021-11-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTRkMTZhMmEtNTZmNi00Yzc1LWIwOTEtMDg0ZGY5NjQwMjk3L3Jlc291cmNlR3JvdXBzL2Fmc2J2dGxvbmdoYXVscmdjY3kvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9hZnNidnRjcnJsb25naGF1bHZhdWx0Y2N5L2JhY2t1cEZhYnJpY3MvQXp1cmUvcHJvdGVjdGlvbkNvbnRhaW5lcnMvU3RvcmFnZUNvbnRhaW5lciUzQlN0b3JhZ2UlM0JhZnNidnRsb25naGF1bHJnY2N5JTNCYWZzYnZ0bG9uZ2hhdWxjcnJzYWNjeS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQkIwNDMyQUI3NkJBMUM1MUJERjgxOThDOUUzRjg5QTkyOUE4OTQ3RTY2OTMxQjE4MEI5RTBDN0JGNEM5RTBDRDYvcmVjb3ZlcnlQb2ludHMvPyRmaWx0ZXI9c3RhcnREYXRlJTIwZXElMjAnMjAyNi0wNi0yMCUyMDAyOjQ4OjQ1JTIwQU0nJTIwYW5kJTIwZW5kRGF0ZSUyMGVxJTIwJzIwMjYtMDctMjElMjAwMjo0ODo0NSUyMEFNJyZhcGktdmVyc2lvbj0yMDIxLTExLTE1",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "dfc36954-97fc-4001-b9db-a10fe530723d"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.RecoveryServicesBackupClient/7.13.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "c4bbc4e3-55db-48ec-bbe8-e5175176a8cf"
+        ],
+        "x-ms-client-request-id": [
+          "dfc36954-97fc-4001-b9db-a10fe530723d"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d5f45f9e-867c-4805-9aba-55121e6bdbb8/centraluseuap/7fb00674-a94d-428c-8a96-80719bf9ea47"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "c4bbc4e3-55db-48ec-bbe8-e5175176a8cf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260720T063009Z:c4bbc4e3-55db-48ec-bbe8-e5175176a8cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3402BA82ED464D7B99CA0E1311B5DAC1 Ref B: MAA201060514029 Ref C: 2026-07-20T06:30:08Z"
+        ],
+        "Date": [
+          "Mon, 20 Jul 2026 06:30:09 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/14d16a2a-56f6-4c75-b091-084df9640297/resourceGroups/afsbvtlonghaulrgccy/providers/Microsoft.RecoveryServices/vaults/afsbvtcrrlonghaulvaultccy/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;afsbvtlonghaulrgccy;afsbvtlonghaulcrrsaccy/protectedItems/AzureFileShare;B0432AB76BA1C51BDF8198C9E3F89A929A8947E66931B180B9E0C7BF4C9E0CD6/recoveryPoints/13792011854188\",\r\n      \"name\": \"13792011854188\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints\",\r\n      \"properties\": {\r\n        \"objectType\": \"AzureFileShareRecoveryPoint\",\r\n        \"recoveryPointType\": \"FileSystemConsistent\",\r\n        \"crossRegionRestoreState\": \"Supported\",\r\n        \"recoveryPointTime\": \"2026-07-20T02:48:46Z\",\r\n        \"fileShareSnapshotUri\": \"https://afsbvtlonghaulcrrsaccy.file.core.windows.net/afscrrfs?sharesnapshot=2026-07-20T02:48:46.0000000Z\",\r\n        \"recoveryPointSizeInGB\": 0,\r\n        \"recoveryPointTierDetails\": [\r\n          {\r\n            \"type\": \"InstantRP\",\r\n            \"status\": \"Valid\"\r\n          },\r\n          {\r\n            \"type\": \"HardenedRP\",\r\n            \"status\": \"Valid\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "14d16a2a-56f6-4c75-b091-084df9640297"
+  }
+}
