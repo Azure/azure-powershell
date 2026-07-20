@@ -5084,7 +5084,7 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?AlertsManagement'
+            pattern: '[Aa]z\.?AlertsManagement|[Aa]zAlertProcessingRule'
             isRegex: True
       then:
       - addLabel:
@@ -5190,7 +5190,7 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.Resources|[Aa]z(ResourceGroup|ResourceGroupDeployment|ResourceLock|ManagedApplication)'
+            pattern: '[Aa]z\.Resources|[Aa]z(ResourceGroup|ResourceGroupDeployment|ResourceLock|ManagedApplication|ProviderFeature|ResourceProvider)'
             isRegex: True
       then:
       - addLabel:
@@ -6208,7 +6208,7 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z(VpnGateway|VirtualNetworkGateway)'
+            pattern: '[Aa]z(VpnGateway|VirtualNetworkGateway|VpnConnection)'
             isRegex: True
       then:
       - addLabel:
@@ -6700,6 +6700,54 @@ configuration:
       - addLabel:
           label: Workloads
       description: '[Workloads] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(PolicyAssignment|PolicyDefinition|PolicySetDefinition|PolicyExemption)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Policy
+      description: '[Policy] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]z(ADApplication|ADServicePrincipal|ADGroup|ADUser|ADAppCredential|ADSpCredential)'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Graph.Microsoft
+      description: '[Graph.Microsoft] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zCostManagementQuery'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Cost Management - Query
+      description: '[Cost Management - Query] auto assign module label based on issue description.'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - or:
+        - titleContains:
+            pattern: '[Aa]zCostManagementExport'
+            isRegex: True
+      then:
+      - addLabel:
+          label: Cost Management - UsageDetailsAndExport
+      description: '[Cost Management - UsageDetailsAndExport] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - labelAdded:
