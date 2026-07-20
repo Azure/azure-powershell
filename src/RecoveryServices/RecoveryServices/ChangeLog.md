@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Cross Region Restore support for Azure File share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion` `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion` `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 
 ## Version 7.13.0
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.

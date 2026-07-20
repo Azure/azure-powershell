@@ -110,6 +110,8 @@ Please refer to different possible parameter sets and parameter text for more in
 
 You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
 
+For Cross Region Restore (`-RestoreToSecondaryRegion`), Azure File share supports only full-share restore to an alternate location. Item-level restore (`-SourceFilePath`/`-MultipleSourceFilePath`) and restore to the original location are not supported from the secondary region.
+
 **For Azure Workloads**
 
 You can restore SQL DBs within Azure VMs
@@ -358,6 +360,23 @@ WorkloadName    Operation       Status          StartTime              EndTime
 ```
 
 In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
+
+### Example 14: Cross Region Restore of an Azure File share to an alternate location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID -UseSecondaryRegion
+$RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    fileshareitem   CrossRegionRestore  InProgress  26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+This example triggers a Cross Region Restore for an Azure File share. The first command gets the vault. The second command gets the backup item from the secondary region using `-UseSecondaryRegion`. The third command gets the secondary region recovery points. The last command restores the entire file share to an alternate location in the secondary region using `-RestoreToSecondaryRegion`. Cross Region Restore for Azure File shares supports only full-share restore to an alternate location; item-level restore and original-location restore are not supported.
 
 ## PARAMETERS
 
