@@ -1896,7 +1896,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
         /// <summary>
-        ///   Looks up a localized string similar to Item level restore is not supported for Cross Region Restore of Azure Files. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full share restore..
+        ///   Looks up a localized string similar to Item-level restore is not supported for Cross Region Restore of Azure Files. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore..
         /// </summary>
         public static string AzureFileShareCrossRegionRestoreItemLevelNotSupported
         {

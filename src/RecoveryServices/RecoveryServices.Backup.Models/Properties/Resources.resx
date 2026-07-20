@@ -626,7 +626,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Cross Region Restore for Azure Files supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.</value>
   </data>
   <data name="AzureFileShareCrossRegionRestoreItemLevelNotSupported" xml:space="preserve">
-    <value>Item level restore is not supported for Cross Region Restore of Azure Files. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full share restore.</value>
+    <value>Item-level restore is not supported for Cross Region Restore of Azure Files. Please remove -SourceFilePath/-MultipleSourceFilePath and retry a full-share restore.</value>
   </data>
   <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
     <value>Please ensure that the given RP recovery type is either 'VaultStandard' or SnapshotAndVaultStandard, or remove TargetZone</value>

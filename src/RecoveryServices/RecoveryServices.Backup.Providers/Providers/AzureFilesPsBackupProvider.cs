@@ -261,20 +261,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
 
-            //validate alternate location restore request
-            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
-
-            // CRR supports only Alternate Location Restore for AFS
-            if (useSecondaryRegion && targetStorageAccountName == null)
-            {
-                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
-            }
-
-            // CRR supports only Full Share Restore for AFS; item level restore is not supported cross-region
+            // CRR supports only Full Share Restore for AFS; item-level restore is not supported cross-region
             if (useSecondaryRegion && (sourceFilePath != null || multipleSourceFilePaths != null))
             {
                 throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreItemLevelNotSupported);
             }
+
+            // CRR supports only Alternate Location Restore for AFS; both target storage account and target file share are required
+            if (useSecondaryRegion && (targetStorageAccountName == null || targetFileShareName == null))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
+            }
+
+            //validate alternate location restore request
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
             {

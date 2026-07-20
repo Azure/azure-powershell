@@ -110,7 +110,7 @@ Please refer to different possible parameter sets and parameter text for more in
 
 You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
 
-For Cross Region Restore (`-RestoreToSecondaryRegion`), Azure File share supports only full-share restore to an alternate location. Item-level restore (`-SourceFilePath`/`-MultipleSourceFilePath`) and restore to the original location are not supported from the secondary region.
+For Cross Region Restore (`-RestoreToSecondaryRegion`), Azure File Share supports only full-share restore to an alternate location. Item-level restore (`-SourceFilePath`/`-MultipleSourceFilePath`) and restore to the original location are not supported from the secondary region.
 
 **For Azure Workloads**
 

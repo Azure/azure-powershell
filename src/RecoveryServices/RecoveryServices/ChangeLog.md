@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added Cross Region Restore support for Azure File share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion` `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion` `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
+* Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
 * Added Cross Subscription Backup (CSB) support for Azure VM:
     - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
     - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).

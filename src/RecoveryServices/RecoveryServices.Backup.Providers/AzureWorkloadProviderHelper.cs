@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             List<CmdletModel.ItemBase> itemModels = ConversionHelpers.GetItemModelListCrr(protectedItems);
-            if (!string.IsNullOrEmpty(itemName))
+            if (!string.IsNullOrEmpty(itemName) || !string.IsNullOrEmpty(friendlyName))
             {
                 for (int i = 0; i < itemModels.Count; i++)
                 {
