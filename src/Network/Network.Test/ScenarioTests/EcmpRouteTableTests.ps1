@@ -29,7 +29,7 @@ function Test-EcmpRouteTableCreateBasic
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create ECMP route config with 2 IPs (minimum)
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
 
         # Verify in-memory config
         Assert-AreEqual "ecmpRoute" $ecmpRoute.Name
@@ -78,7 +78,7 @@ function Test-EcmpRouteTableCreateMax16
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute16" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses $ecmpIps
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute16" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress $ecmpIps
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
@@ -115,7 +115,7 @@ function Test-EcmpRouteTableCreate3Ips
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute3" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5","10.0.0.6"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute3" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5","10.0.0.6"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
@@ -156,7 +156,7 @@ function Test-EcmpRouteTableAddRemoveRoute
 
         # Add ECMP route
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname | `
-            Add-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.10","10.0.0.11" | `
+            Add-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.10","10.0.0.11" | `
             Set-AzRouteTable
 
         Assert-AreEqual 2 @($getRT.Routes).Count
@@ -198,12 +198,12 @@ function Test-EcmpRouteTableUpdateRoute
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
         # Update ECMP route to 4 IPs
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname | `
-            Set-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5","10.0.0.6","10.0.0.7" | `
+            Set-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5","10.0.0.6","10.0.0.7" | `
             Set-AzRouteTable
 
         $route = $getRT | Get-AzRouteConfig -name "ecmpRoute"
@@ -235,7 +235,7 @@ function Test-EcmpRouteTableDeleteTable
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
         $delete = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
@@ -266,7 +266,7 @@ function Test-EcmpRouteTableGetVerifyFields
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5","10.0.0.6"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5","10.0.0.6"
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname
@@ -314,7 +314,7 @@ function Test-EcmpRouteTableMixed
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         $stdRoute = New-AzRouteConfig -name "stdRoute" -AddressPrefix "192.168.1.0/24" -NextHopIpAddress "10.0.0.4" -NextHopType "VirtualAppliance"
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.10","10.0.0.11"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.10","10.0.0.11"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $stdRoute, $ecmpRoute
 
@@ -361,7 +361,7 @@ function Test-EcmpRouteTableConvertTypes
 
         # Convert standard -> ECMP
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname | `
-            Set-AzRouteConfig -name "route1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5" | `
+            Set-AzRouteConfig -name "route1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5" | `
             Set-AzRouteTable
 
         $route = $getRT | Get-AzRouteConfig -name "route1"
@@ -404,7 +404,7 @@ function Test-EcmpRouteTableDenseIpRange
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "denseEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses $ecmpIps
+        $ecmpRoute = New-AzRouteConfig -name "denseEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress $ecmpIps
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname
@@ -437,8 +437,8 @@ function Test-EcmpRouteTableDefaultAndNarrowPrefix
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $defaultRoute = New-AzRouteConfig -name "defaultEcmp" -AddressPrefix "0.0.0.0/0" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
-        $narrowRoute = New-AzRouteConfig -name "narrowEcmp" -AddressPrefix "10.5.5.5/32" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.6","10.0.0.7"
+        $defaultRoute = New-AzRouteConfig -name "defaultEcmp" -AddressPrefix "0.0.0.0/0" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
+        $narrowRoute = New-AzRouteConfig -name "narrowEcmp" -AddressPrefix "10.5.5.5/32" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.6","10.0.0.7"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $defaultRoute, $narrowRoute
 
@@ -479,7 +479,7 @@ function Test-EcmpRouteTableBgpOverride
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpBgp" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpBgp" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute -DisableBgpRoutePropagation
 
@@ -515,9 +515,9 @@ function Test-EcmpRouteTableConvertAllToStandard
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create with 3 ECMP routes
-        $r1 = New-AzRouteConfig -name "ecmp1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
-        $r2 = New-AzRouteConfig -name "ecmp2" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.6","10.0.0.7"
-        $r3 = New-AzRouteConfig -name "ecmp3" -AddressPrefix "10.3.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.8","10.0.0.9"
+        $r1 = New-AzRouteConfig -name "ecmp1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
+        $r2 = New-AzRouteConfig -name "ecmp2" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.6","10.0.0.7"
+        $r3 = New-AzRouteConfig -name "ecmp3" -AddressPrefix "10.3.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.8","10.0.0.9"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $r1, $r2, $r3
 
@@ -562,7 +562,7 @@ function Test-EcmpRouteTableIdempotentPut
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
 
         # First PUT
         $rt1 = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
@@ -600,7 +600,7 @@ function Test-EcmpRouteTableIpv6
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        $ecmpRoute = New-AzRouteConfig -name "ipv6Ecmp" -AddressPrefix "fd00::/64" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "fd00::1","fd00::2","fd00::3"
+        $ecmpRoute = New-AzRouteConfig -name "ipv6Ecmp" -AddressPrefix "fd00::/64" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "fd00::1","fd00::2","fd00::3"
 
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
@@ -639,10 +639,10 @@ function Test-EcmpRouteTableRejectBelow2Ips
 
         # NEG-02/P0-10: ECMP with only 1 IP (below minimum of 2) should fail.
         # Validation happens client-side in New-AzRouteConfig, before any service call.
-        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4" } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4" } "NextHopIpAddress"
 
         # NEG-01/P0-11: ECMP with empty IP list should fail
-        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad0" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses @() } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad0" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress @() } "NextHopIpAddress"
     }
     finally
     {
@@ -673,7 +673,7 @@ function Test-EcmpRouteTableRejectAbove64Ips
 
         # 65 IPs should fail (exceeds the maximum of 64). Validation happens client-side
         # in New-AzRouteConfig, before any service call.
-        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad65" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses $ecmpIps65 } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad65" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress $ecmpIps65 } "NextHopIpAddress"
     }
     finally
     {
@@ -698,11 +698,11 @@ function Test-EcmpRouteTableRejectDuplicateIps
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # NEG-25: Exact duplicate IPs
-        $route = New-AzRouteConfig -name "ecmpDupe" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5","10.0.0.4"
+        $route = New-AzRouteConfig -name "ecmpDupe" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5","10.0.0.4"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route } "Duplicate"
 
         # NEG-26: All IPs identical
-        $route2 = New-AzRouteConfig -name "ecmpAllDupe" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.4"
+        $route2 = New-AzRouteConfig -name "ecmpAllDupe" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.4"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route2 } "Duplicate"
     }
     finally
@@ -728,23 +728,23 @@ function Test-EcmpRouteTableRejectForbiddenIps
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # P0-24/NEG-16: Loopback IP 127.0.0.1
-        $route = New-AzRouteConfig -name "ecmpLoopback" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","127.0.0.1"
+        $route = New-AzRouteConfig -name "ecmpLoopback" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","127.0.0.1"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route } "InvalidNextHopIpAddress"
 
         # P0-25/NEG-18: Multicast IP 224.0.0.1
-        $route2 = New-AzRouteConfig -name "ecmpMulticast" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","224.0.0.1"
+        $route2 = New-AzRouteConfig -name "ecmpMulticast" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","224.0.0.1"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route2 } "InvalidNextHopIpAddress"
 
         # P1-04/NEG-20: Broadcast 255.255.255.255
-        $route3 = New-AzRouteConfig -name "ecmpBcast" -AddressPrefix "10.3.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","255.255.255.255"
+        $route3 = New-AzRouteConfig -name "ecmpBcast" -AddressPrefix "10.3.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","255.255.255.255"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route3 } "InvalidNextHopIpAddress"
 
         # P1-05/NEG-21: Link-local/APIPA 169.254.1.1
-        $route4 = New-AzRouteConfig -name "ecmpApipa" -AddressPrefix "10.4.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","169.254.1.1"
+        $route4 = New-AzRouteConfig -name "ecmpApipa" -AddressPrefix "10.4.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","169.254.1.1"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route4 } "InvalidNextHopIpAddress"
 
         # P1-06/NEG-23: Azure wireserver 168.63.129.16
-        $route5 = New-AzRouteConfig -name "ecmpWireserver" -AddressPrefix "10.5.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","168.63.129.16"
+        $route5 = New-AzRouteConfig -name "ecmpWireserver" -AddressPrefix "10.5.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","168.63.129.16"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route5 } "InvalidNextHopIpAddress"
     }
     finally
@@ -755,7 +755,8 @@ function Test-EcmpRouteTableRejectForbiddenIps
 
 <#
 .SYNOPSIS
-P0-17/NEG-33/NEG-34: Reject setting both nextHopIpAddress and nextHop on ECMP/standard routes.
+P0-17/NEG-33/NEG-34: Reject supplying multiple next hop IP addresses for a non-ECMP next hop type.
+Multiple -NextHopIpAddress values are only valid for the 'VirtualApplianceEcmp' next hop type.
 #>
 function Test-EcmpRouteTableRejectMutualExclusivity
 {
@@ -769,11 +770,12 @@ function Test-EcmpRouteTableRejectMutualExclusivity
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # P0-18/NEG-34: Standard VirtualAppliance with NextHop set should fail
-        # Passing both -NextHopIpAddress and -NextHopIpAddresses is not allowed by PowerShell parameter binding
-        Assert-Throws {
-            New-AzRouteConfig -name "badStdRoute" -AddressPrefix "10.1.0.0/16" -NextHopIpAddress "10.0.0.4" -NextHopType "VirtualAppliance" -NextHopIpAddresses "10.0.0.5","10.0.0.6"
-        }
+        # NEG-34: A standard 'VirtualAppliance' route accepts only a single next hop IP address.
+        # Supplying multiple addresses is only valid for 'VirtualApplianceEcmp', so this must fail
+        # client-side in New-AzRouteConfig, before any service call.
+        Assert-ThrowsContains {
+            New-AzRouteConfig -name "badStdRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.0.4","10.0.0.5"
+        } "Multiple"
     }
     finally
     {
@@ -797,17 +799,17 @@ function Test-EcmpRouteTableRejectNextHopOnNonVaTypes
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # -NextHopIpAddresses is only valid for the 'VirtualApplianceEcmp' next hop type.
+        # -NextHopIpAddress is only valid for the 'VirtualApplianceEcmp' next hop type.
         # New-AzRouteConfig rejects it client-side for any other type, before any service call.
 
         # P1-07/NEG-35: Internet type + NextHopIpAddresses should fail
-        Assert-ThrowsContains { New-AzRouteConfig -name "internetWithEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "Internet" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "internetWithEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "Internet" -NextHopIpAddress "10.0.0.4","10.0.0.5" } "NextHopIpAddress"
 
         # P1-08/NEG-36: VnetLocal type + NextHopIpAddresses should fail
-        Assert-ThrowsContains { New-AzRouteConfig -name "vnetLocalWithEcmp" -AddressPrefix "10.2.0.0/16" -NextHopType "VnetLocal" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "vnetLocalWithEcmp" -AddressPrefix "10.2.0.0/16" -NextHopType "VnetLocal" -NextHopIpAddress "10.0.0.4","10.0.0.5" } "NextHopIpAddress"
 
         # P1-09/NEG-37: None type + NextHopIpAddresses should fail
-        Assert-ThrowsContains { New-AzRouteConfig -name "noneWithEcmp" -AddressPrefix "10.3.0.0/16" -NextHopType "None" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "noneWithEcmp" -AddressPrefix "10.3.0.0/16" -NextHopType "None" -NextHopIpAddress "10.0.0.4","10.0.0.5" } "NextHopIpAddress"
     }
     finally
     {
@@ -832,15 +834,15 @@ function Test-EcmpRouteTableRejectAddressFamilyMismatch
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # P1-02/NEG-29: IPv4 prefix with IPv6 next hops
-        $route = New-AzRouteConfig -name "v4PrefixV6Hops" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "fd00::1","fd00::2"
+        $route = New-AzRouteConfig -name "v4PrefixV6Hops" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "fd00::1","fd00::2"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route } "DifferentAddressFamilies"
 
         # P1-03/NEG-31: Mixed IPv4 and IPv6 in same IP list
-        $route2 = New-AzRouteConfig -name "mixedIps" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","fd00::1"
+        $route2 = New-AzRouteConfig -name "mixedIps" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","fd00::1"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route2 } "DifferentAddressFamilies"
 
         # NEG-30: IPv6 prefix with IPv4 next hops
-        $route3 = New-AzRouteConfig -name "v6PrefixV4Hops" -AddressPrefix "fd00::/64" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $route3 = New-AzRouteConfig -name "v6PrefixV4Hops" -AddressPrefix "fd00::/64" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
         Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route3 } "DifferentAddressFamilies"
     }
     finally
@@ -866,7 +868,7 @@ function Test-EcmpRouteTableSubnetAssociation
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create ECMP route table
-        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
+        $ecmpRoute = New-AzRouteConfig -name "ecmpRoute" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.4","10.0.0.5"
         $rt = New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $ecmpRoute
 
         # Verify ECMP route table was created
@@ -880,7 +882,7 @@ function Test-EcmpRouteTableSubnetAssociation
 
         # Add another ECMP route
         $getRT = Get-AzRouteTable -name $routeTableName -ResourceGroupName $rgname | `
-            Add-AzRouteConfig -name "ecmpRoute2" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.6","10.0.0.7" | `
+            Add-AzRouteConfig -name "ecmpRoute2" -AddressPrefix "10.2.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddress "10.0.0.6","10.0.0.7" | `
             Set-AzRouteTable
 
         Assert-AreEqual 2 @($getRT.Routes).Count

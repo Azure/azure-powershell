@@ -13,17 +13,9 @@ Creates a route for a route table.
 
 ## SYNTAX
 
-### StandardRoute (Default)
 ```
 New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
-```
-
-### EcmpRoute
-```
-New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddresses <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-NextHopIpAddress <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -148,30 +140,13 @@ Accept wildcard characters: False
 ```
 
 ### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
-This route forwards packets to that address.
-Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
-
-```yaml
-Type: System.String
-Parameter Sets: StandardRoute
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NextHopIpAddresses
-Specifies the list of next hop IP addresses for equal-cost multi-path (ECMP) routing.
-Specify this parameter only if you specify a value of VirtualApplianceEcmp for the *NextHopType* parameter.
-A minimum of 2 addresses is required.
+Specifies the next hop IP address(es) that this route forwards packets to.
+For a *NextHopType* of VirtualAppliance, supply a single IP address of a virtual appliance that you add to your Azure virtual network.
+For a *NextHopType* of VirtualApplianceEcmp, supply between 2 and 64 IP addresses to load-balance traffic across using equal-cost multi-path (ECMP) routing.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EcmpRoute
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -191,7 +166,7 @@ If you specify this value, the route does not forward packets.
 - VirtualAppliance.
 A virtual appliance that you add to your Azure virtual network. 
 - VirtualApplianceEcmp.
-Multiple virtual appliances that traffic is load-balanced across using equal-cost multi-path (ECMP) routing. Provide the appliance IP addresses through the *NextHopIpAddresses* parameter. 
+Multiple virtual appliances that traffic is load-balanced across using equal-cost multi-path (ECMP) routing. Provide the appliance IP addresses through the *NextHopIpAddress* parameter. 
 - VirtualNetworkGateway.
 An Azure server-to-server virtual private network gateway. 
 - VnetLocal.
