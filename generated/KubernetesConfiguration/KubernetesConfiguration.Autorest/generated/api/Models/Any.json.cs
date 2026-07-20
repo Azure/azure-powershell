@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

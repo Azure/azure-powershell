@@ -75,7 +75,7 @@ Param(
     $Configuration='Debug',
 
     [String]
-    $TestFramework='net6.0',
+    $TestFramework='net8.0',
 
     [String]
     $TestOutputDirectory='artifacts/TestResults',
@@ -246,7 +246,7 @@ If ($Build)
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
-        
+
         # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
         # Also the analysis check and test is not necessary for Az.Accounts in these branches.
         If ($Env:IsGenerateBased -eq "true")

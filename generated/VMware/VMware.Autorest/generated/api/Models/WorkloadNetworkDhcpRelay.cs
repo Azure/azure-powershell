@@ -29,10 +29,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Segment</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal.Segment { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).Segment; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).Segment = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal.Segment { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).Segment; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).Segment = value ?? null /* arrayOf */; }
 
         /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]

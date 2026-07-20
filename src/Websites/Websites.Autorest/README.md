@@ -37,13 +37,6 @@ input-file:
 title: Websites
 module-version: 0.1.0
 subject-prefix: $(service-name)
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   #Modify operationId
@@ -151,7 +144,7 @@ directive:
       subject: (.*)PrivateEndpoint(.*)
     remove: true
 
-  # swagger definiition incorrect.
+  # swagger definition incorrect.
   - where:
       subject: PreviewWorkflow
     remove: true
@@ -206,58 +199,20 @@ directive:
       verb: Unregister
       subject: BuildUserProvidedFunctionApp
 
-# Remove variant
+  # Remove variant
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^CreateViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      subject: CustomDomain|BuildAppSetting|FunctionAppSetting|Setting|BuildFunctionAppSetting|UserRoleInvitationLink
+      variant: ^Create(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+
+  - where:
+      variant: ^CreateViaIdentityExpanded$
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: CustomDomain
-
-    remove: true
-  - where:
-      verb: Test
-      variant: ^Validate$|^ValidateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: CustomDomain
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: BuildAppSetting
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: FunctionAppSetting
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: Setting
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: BuildFunctionAppSetting
-    remove: true
-
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: UserRoleInvitationLink
     remove: true
 
   - where:
@@ -268,8 +223,16 @@ directive:
 
   - where:
       verb: Update
-      subjet: null
+      subject: null
       variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
+      verb: Test
+      variant: ^Validate$|^ValidateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
     remove: true
 
   - where:
@@ -332,13 +295,13 @@ directive:
     set:
       parameter-name: ForkRepository$1
 
-  # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
+  # Hide New/Update-AzStaticWebApp for remove no-require sku parameters.
   - where:
       verb: New
       subject: ^$
     hide: true
   
-  # Customise for webapp swagger. Only keep continuouswebjobs path and delete others path.
+  # Customize for webapp swagger. Only keep continuouswebjobs path and delete others path.
 
   - from: swagger-document
     where: $.paths
@@ -1626,4 +1589,18 @@ directive:
       property-name: Id1
     set:
       property-name: Id
+
+  - where:
+      verb: Get
+      subject: ContinuousWebJob|SlotContinuousWebJob|SlotTriggeredWebJob|TriggeredWebJob|TriggeredWebJobHistory
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+
+  - where:
+      verb: Get|Update
+      subject: ""
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

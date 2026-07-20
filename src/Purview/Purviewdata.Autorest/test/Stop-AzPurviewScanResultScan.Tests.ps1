@@ -18,8 +18,4 @@ Describe 'Stop-AzPurviewScanResultScan' {
     It 'Cancel' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'CancelViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

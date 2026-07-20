@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
             bool result = false;
             if (profile != null)
             {
+                string authorityHost = profile.DefaultContext?.Environment?.ActiveDirectoryAuthority;
+                string tenantId = profile.DefaultContext?.Tenant?.Id;
+
                 var contexts = profile.Contexts.Values;
                 foreach (var context in contexts)
                 {
@@ -78,11 +81,19 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 }
                 else
                 {
-                    tokenCacheProvider.ClearCache();
+                    string authority = null;
+                    if (authorityHost != null)
+                    {
+                        authority = $"{authorityHost}/{tenantId}";
+                    }
+                    WriteDebug($"Clearing token cache for authority: {authority}");
+                    tokenCacheProvider.ClearCache(authority);
                     var defaultContext = new AzureContext();
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
                 }
+
+
                 if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
                 {
                     keyStore?.Clear();

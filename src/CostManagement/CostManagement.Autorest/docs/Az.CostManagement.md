@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CostManagement
-Module Guid: 4cd9af10-559e-4fb9-8dcd-d3e8eb9e03b7
+Module Guid: 357ea1ef-9042-434d-8155-d0ed25190a96
 Download Help Link: https://learn.microsoft.com/powershell/module/az.costmanagement
 Help Version: 1.0.0.0
 Locale: en-US
@@ -45,10 +45,10 @@ You may obtain the latest eTag by performing a get operation.
 Create operation does not require eTag.
 
 ### [New-AzCostManagementQueryComparisonExpressionObject](New-AzCostManagementQueryComparisonExpressionObject.md)
-Create a in-memory object for QueryComparisonExpression
+Create an in-memory object for QueryComparisonExpression.
 
 ### [New-AzCostManagementQueryFilterObject](New-AzCostManagementQueryFilterObject.md)
-Create a in-memory object for QueryFilter
+Create an in-memory object for QueryFilter.
 
 ### [Remove-AzCostManagementExport](Remove-AzCostManagementExport.md)
 The operation to delete a export.

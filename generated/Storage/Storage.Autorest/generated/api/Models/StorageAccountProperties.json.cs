@@ -77,19 +77,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_primaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("primaryEndpoints"), out var __jsonPrimaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonPrimaryEndpoints) : _primaryEndpoint;}
             {_customDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("customDomain"), out var __jsonCustomDomain) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.CustomDomain.FromJson(__jsonCustomDomain) : _customDomain;}
             {_sasPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sasPolicy"), out var __jsonSasPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SasPolicy.FromJson(__jsonSasPolicy) : _sasPolicy;}
             {_keyPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyPolicy"), out var __jsonKeyPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyPolicy.FromJson(__jsonKeyPolicy) : _keyPolicy;}
             {_keyCreationTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyCreationTime"), out var __jsonKeyCreationTime) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyCreationTime.FromJson(__jsonKeyCreationTime) : _keyCreationTime;}
-            {_secondaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("secondaryEndpoints"), out var __jsonSecondaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonSecondaryEndpoints) : _secondaryEndpoint;}
             {_azureFilesIdentityBasedAuthentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("azureFilesIdentityBasedAuthentication"), out var __jsonAzureFilesIdentityBasedAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AzureFilesIdentityBasedAuthentication.FromJson(__jsonAzureFilesIdentityBasedAuthentication) : _azureFilesIdentityBasedAuthentication;}
             {_networkRuleSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("networkAcls"), out var __jsonNetworkAcls) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.NetworkRuleSet.FromJson(__jsonNetworkAcls) : _networkRuleSet;}
             {_geoReplicationStat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("geoReplicationStats"), out var __jsonGeoReplicationStats) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoReplicationStats.FromJson(__jsonGeoReplicationStats) : _geoReplicationStat;}
             {_routingPreference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("routingPreference"), out var __jsonRoutingPreference) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.RoutingPreference.FromJson(__jsonRoutingPreference) : _routingPreference;}
+            {_dualStackEndpointPreference = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("dualStackEndpointPreference"), out var __jsonDualStackEndpointPreference) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.DualStackEndpointPreference.FromJson(__jsonDualStackEndpointPreference) : _dualStackEndpointPreference;}
             {_blobRestoreStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("blobRestoreStatus"), out var __jsonBlobRestoreStatus) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreStatus.FromJson(__jsonBlobRestoreStatus) : _blobRestoreStatus;}
             {_immutableStorageWithVersioning = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("immutableStorageWithVersioning"), out var __jsonImmutableStorageWithVersioning) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ImmutableStorageAccount.FromJson(__jsonImmutableStorageWithVersioning) : _immutableStorageWithVersioning;}
             {_storageAccountSkuConversionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("storageAccountSkuConversionStatus"), out var __jsonStorageAccountSkuConversionStatus) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSkuConversionStatus.FromJson(__jsonStorageAccountSkuConversionStatus) : _storageAccountSkuConversionStatus;}
+            {_geoPriorityReplicationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("geoPriorityReplicationStatus"), out var __jsonGeoPriorityReplicationStatus) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatus.FromJson(__jsonGeoPriorityReplicationStatus) : _geoPriorityReplicationStatus;}
+            {_allowSharedKeyAccessForService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("allowSharedKeyAccessForServices"), out var __jsonAllowSharedKeyAccessForServices) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountSharedKeyAccessProperties.FromJson(__jsonAllowSharedKeyAccessForServices) : _allowSharedKeyAccessForService;}
+            {_dataCollaborationPolicyProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("dataCollaborationPolicyProperties"), out var __jsonDataCollaborationPolicyProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageDataCollaborationPolicyProperties.FromJson(__jsonDataCollaborationPolicyProperties) : _dataCollaborationPolicyProperty;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_primaryLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("primaryLocation"), out var __jsonPrimaryLocation) ? (string)__jsonPrimaryLocation : (string)_primaryLocation;}
             {_statusOfPrimary = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("statusOfPrimary"), out var __jsonStatusOfPrimary) ? (string)__jsonStatusOfPrimary : (string)_statusOfPrimary;}
@@ -101,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_enableHttpsTrafficOnly = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("supportsHttpsTrafficOnly"), out var __jsonSupportsHttpsTrafficOnly) ? (bool?)__jsonSupportsHttpsTrafficOnly : _enableHttpsTrafficOnly;}
             {_isSftpEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isSftpEnabled"), out var __jsonIsSftpEnabled) ? (bool?)__jsonIsSftpEnabled : _isSftpEnabled;}
             {_isLocalUserEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isLocalUserEnabled"), out var __jsonIsLocalUserEnabled) ? (bool?)__jsonIsLocalUserEnabled : _isLocalUserEnabled;}
+            {_enableExtendedGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enableExtendedGroups"), out var __jsonEnableExtendedGroups) ? (bool?)__jsonEnableExtendedGroups : _enableExtendedGroup;}
             {_isHnsEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isHnsEnabled"), out var __jsonIsHnsEnabled) ? (bool?)__jsonIsHnsEnabled : _isHnsEnabled;}
             {_failoverInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("failoverInProgress"), out var __jsonFailoverInProgress) ? (bool?)__jsonFailoverInProgress : _failoverInProgress;}
             {_largeFileSharesState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("largeFileSharesState"), out var __jsonLargeFileSharesState) ? (string)__jsonLargeFileSharesState : (string)_largeFileSharesState;}
@@ -116,6 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_dnsEndpointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("dnsEndpointType"), out var __jsonDnsEndpointType) ? (string)__jsonDnsEndpointType : (string)_dnsEndpointType;}
             {_isSkuConversionBlocked = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isSkuConversionBlocked"), out var __jsonIsSkuConversionBlocked) ? (bool?)__jsonIsSkuConversionBlocked : _isSkuConversionBlocked;}
             {_accountMigrationInProgress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("accountMigrationInProgress"), out var __jsonAccountMigrationInProgress) ? (bool?)__jsonAccountMigrationInProgress : _accountMigrationInProgress;}
+            {_primaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("primaryEndpoints"), out var __jsonPrimaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonPrimaryEndpoints) : _primaryEndpoint;}
+            {_secondaryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("secondaryEndpoints"), out var __jsonSecondaryEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Endpoints.FromJson(__jsonSecondaryEndpoints) : _secondaryEndpoint;}
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Encryption.FromJson(__jsonEncryption) : _encryption;}
             AfterFromJson(json);
         }
@@ -141,10 +146,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._primaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._primaryEndpoint.ToJson(null,serializationMode) : null, "primaryEndpoints" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
-            {
                 AddIf( null != this._customDomain ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._customDomain.ToJson(null,serializationMode) : null, "customDomain" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
@@ -159,10 +160,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 AddIf( null != this._keyCreationTime ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._keyCreationTime.ToJson(null,serializationMode) : null, "keyCreationTime" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._secondaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._secondaryEndpoint.ToJson(null,serializationMode) : null, "secondaryEndpoints" ,container.Add );
-            }
             AddIf( null != this._azureFilesIdentityBasedAuthentication ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._azureFilesIdentityBasedAuthentication.ToJson(null,serializationMode) : null, "azureFilesIdentityBasedAuthentication" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
@@ -173,12 +170,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 AddIf( null != this._geoReplicationStat ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._geoReplicationStat.ToJson(null,serializationMode) : null, "geoReplicationStats" ,container.Add );
             }
             AddIf( null != this._routingPreference ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._routingPreference.ToJson(null,serializationMode) : null, "routingPreference" ,container.Add );
+            AddIf( null != this._dualStackEndpointPreference ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._dualStackEndpointPreference.ToJson(null,serializationMode) : null, "dualStackEndpointPreference" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._blobRestoreStatus ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._blobRestoreStatus.ToJson(null,serializationMode) : null, "blobRestoreStatus" ,container.Add );
             }
             AddIf( null != this._immutableStorageWithVersioning ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._immutableStorageWithVersioning.ToJson(null,serializationMode) : null, "immutableStorageWithVersioning" ,container.Add );
             AddIf( null != this._storageAccountSkuConversionStatus ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._storageAccountSkuConversionStatus.ToJson(null,serializationMode) : null, "storageAccountSkuConversionStatus" ,container.Add );
+            AddIf( null != this._geoPriorityReplicationStatus ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._geoPriorityReplicationStatus.ToJson(null,serializationMode) : null, "geoPriorityReplicationStatus" ,container.Add );
+            AddIf( null != this._allowSharedKeyAccessForService ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._allowSharedKeyAccessForService.ToJson(null,serializationMode) : null, "allowSharedKeyAccessForServices" ,container.Add );
+            AddIf( null != this._dataCollaborationPolicyProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._dataCollaborationPolicyProperty.ToJson(null,serializationMode) : null, "dataCollaborationPolicyProperties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -214,6 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             AddIf( null != this._enableHttpsTrafficOnly ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._enableHttpsTrafficOnly) : null, "supportsHttpsTrafficOnly" ,container.Add );
             AddIf( null != this._isSftpEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._isSftpEnabled) : null, "isSftpEnabled" ,container.Add );
             AddIf( null != this._isLocalUserEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._isLocalUserEnabled) : null, "isLocalUserEnabled" ,container.Add );
+            AddIf( null != this._enableExtendedGroup ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._enableExtendedGroup) : null, "enableExtendedGroups" ,container.Add );
             AddIf( null != this._isHnsEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._isHnsEnabled) : null, "isHnsEnabled" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
@@ -248,6 +250,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._accountMigrationInProgress ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._accountMigrationInProgress) : null, "accountMigrationInProgress" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._primaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._primaryEndpoint.ToJson(null,serializationMode) : null, "primaryEndpoints" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._secondaryEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._secondaryEndpoint.ToJson(null,serializationMode) : null, "secondaryEndpoints" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {

@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -695,3 +695,59 @@ function Test-SimpleGalleryCrossTenant
         Clean-ResourceGroup $vmname
     }
 }
+<#
+.SYNOPSIS
+Test Simple Parameter Set for New-AzVM with ScheduledEventsPolicy parameters
+Note: This test requires a region where ScheduledEventsPolicy is enabled
+#>
+function Test-SimpleNewVmScheduledEventsPolicy
+{
+    param ($loc)
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        if ($loc -eq $null)
+        {
+            $loc = "eastus2euap";
+        }
+
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $stnd = "Standard";
+        $apiVersion = "2020-07-01";
+
+        # Create VM with ScheduledEventsPolicy parameters
+        $vm = New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel `
+            -SecurityType $stnd -ScheduledEventsApiVersion $apiVersion -EnableAllInstancesDown $true
+
+        # Verify VM creation succeeded and the ScheduledEventsPolicy was set
+        Assert-NotNull $vm;
+        Assert-AreEqual $vmname $vm.Name;
+        Assert-NotNull $vm.ScheduledEventsPolicy;
+        Assert-NotNull $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $vm.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $vm.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+
+        # Update the VM's ScheduledEventsPolicy and verify the change is persisted
+        $vmToUpdate = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Update-AzVM -ResourceGroupName $vmname -VM $vmToUpdate -EnableAllInstancesDown $false;
+
+        $updatedVm = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Assert-NotNull $updatedVm.ScheduledEventsPolicy;
+        Assert-NotNull $updatedVm.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $false $updatedVm.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+

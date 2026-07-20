@@ -48,13 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultProperty { get => (this._keyVaultProperty = this._keyVaultProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionKeyVaultProperties()); set { {_keyVaultProperty = value;} } }
 
         /// <summary>Internal Acessors for KeyVaultPropertyAutoDetectedKeyVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).AutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).AutoDetectedKeyVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).AutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).AutoDetectedKeyVersion = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).KeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).KeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).KeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).KeyState = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyVersionType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).VersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).VersionType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).VersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultPropertiesInternal)KeyVaultProperty).VersionType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;

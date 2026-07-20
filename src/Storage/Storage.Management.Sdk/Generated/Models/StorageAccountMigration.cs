@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// account migration in order to update its current SKU or region.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class StorageAccountMigration
+    public partial class StorageAccountMigration : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the StorageAccountMigration class.
@@ -26,13 +26,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the StorageAccountMigration class.
         /// </summary>
 
-        /// <param name="id">Migration Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">current value is &#39;default&#39; for customer initiated migration
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">SrpAccountMigrationType in ARM contract which is &#39;accountMigrations&#39;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="migrationStatus">Current status of migration
@@ -42,19 +48,18 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="targetSkuName">Target sku name for the account
         /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;,
         /// &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;,
-        /// &#39;Standard_RAGZRS&#39;</param>
+        /// &#39;Standard_RAGZRS&#39;, &#39;StandardV2_LRS&#39;, &#39;StandardV2_GRS&#39;, &#39;StandardV2_ZRS&#39;,
+        /// &#39;StandardV2_GZRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;PremiumV2_ZRS&#39;</param>
 
         /// <param name="migrationFailedReason">Error code for migration failure
         /// </param>
 
         /// <param name="migrationFailedDetailedReason">Reason for migration failure
         /// </param>
-        public StorageAccountMigration(string targetSkuName, string id = default(string), string name = default(string), string type = default(string), string migrationStatus = default(string), string migrationFailedReason = default(string), string migrationFailedDetailedReason = default(string))
+        public StorageAccountMigration(string targetSkuName, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string migrationStatus = default(string), string migrationFailedReason = default(string), string migrationFailedDetailedReason = default(string))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.MigrationStatus = migrationStatus;
             this.TargetSkuName = targetSkuName;
             this.MigrationFailedReason = migrationFailedReason;
@@ -69,32 +74,13 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets migration Resource Id
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets or sets current value is &#39;default&#39; for customer initiated migration
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets or sets srpAccountMigrationType in ARM contract which is
-        /// &#39;accountMigrations&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
-
-        /// <summary>
         /// Gets current status of migration Possible values include: &#39;Invalid&#39;, &#39;SubmittedForConversion&#39;, &#39;InProgress&#39;, &#39;Complete&#39;, &#39;Failed&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.migrationStatus")]
         public string MigrationStatus {get; private set; }
 
         /// <summary>
-        /// Gets or sets target sku name for the account Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;, &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGZRS&#39;
+        /// Gets or sets target sku name for the account Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;, &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGZRS&#39;, &#39;StandardV2_LRS&#39;, &#39;StandardV2_GRS&#39;, &#39;StandardV2_ZRS&#39;, &#39;StandardV2_GZRS&#39;, &#39;PremiumV2_LRS&#39;, &#39;PremiumV2_ZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetSkuName")]
         public string TargetSkuName {get; set; }
@@ -122,9 +108,6 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TargetSkuName");
             }
-
-
-
 
 
 

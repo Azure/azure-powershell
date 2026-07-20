@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IOutboundEnvironmentEndpoint
 
 ## NOTES
 

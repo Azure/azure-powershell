@@ -664,5 +664,8 @@ namespace Commands.StorageSync.Interop.Clients
         public IConnectionPoint GetScrubbingEngineConnectionPoint() => null;
 
         public IConnectionPoint GetStableVersionDeepGcConnectionPoint() => null;
+
+        public int ResetServerCertificateSettingsRegistry() => 0;
+
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDetailUpgradableVersion
 
 ## SYNOPSIS
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticDetailUpgradableVersion -InputObject <IElasticIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 
 ## EXAMPLES
 
@@ -56,7 +56,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -157,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUpgradableVersionsList
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUpgradableVersionsList
 
 ## NOTES
 

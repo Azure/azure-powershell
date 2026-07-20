@@ -34,7 +34,7 @@ Deletes a BackupVault resource from the resource group.
 Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 ```
 
-This command deletes an existing vault.
+This command soft deletes an existing vault.
 
 ## PARAMETERS
 
@@ -71,7 +71,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity

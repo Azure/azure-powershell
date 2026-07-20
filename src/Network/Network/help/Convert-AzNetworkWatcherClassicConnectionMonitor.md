@@ -14,7 +14,8 @@ Convert a classic connection monitor into connection monitor v2 with specified n
 
 ```
 Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

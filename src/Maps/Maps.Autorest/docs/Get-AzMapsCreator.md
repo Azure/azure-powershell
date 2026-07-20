@@ -29,6 +29,12 @@ Get-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <Strin
 Get-AzMapsCreator -InputObject <IMapsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityAccount
+```
+Get-AzMapsCreator -AccountInputObject <IMapsIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a Maps Creator resource.
 
@@ -75,6 +81,21 @@ This command gets a Maps Creator resource by pipeline.
 
 ## PARAMETERS
 
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: GetViaIdentityAccount
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AccountName
 The name of the Maps Account.
 
@@ -108,7 +129,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
@@ -127,7 +147,7 @@ The name of the Maps Creator instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityAccount
 Aliases: CreatorName
 
 Required: True
@@ -177,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreator
 
 ## NOTES
 

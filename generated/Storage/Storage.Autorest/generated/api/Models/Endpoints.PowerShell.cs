@@ -112,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("InternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Ipv6Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints) content.GetValueForProperty("Ipv6Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6Endpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountIpv6EndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Blob"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
@@ -136,45 +140,117 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Df, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointBlob"))
+            if (content.Contains("MicrosoftEndpointsBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointBlob = (string) content.GetValueForProperty("MicrosoftEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsBlob = (string) content.GetValueForProperty("MicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsBlob, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointQueue"))
+            if (content.Contains("MicrosoftEndpointsQueue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointQueue = (string) content.GetValueForProperty("MicrosoftEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointQueue, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsQueue = (string) content.GetValueForProperty("MicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsQueue, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointTable"))
+            if (content.Contains("MicrosoftEndpointsTable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointTable = (string) content.GetValueForProperty("MicrosoftEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointTable, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsTable = (string) content.GetValueForProperty("MicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsTable, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointFile"))
+            if (content.Contains("MicrosoftEndpointsFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointFile = (string) content.GetValueForProperty("MicrosoftEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsFile = (string) content.GetValueForProperty("MicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsFile, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointWeb"))
+            if (content.Contains("MicrosoftEndpointsWeb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointWeb = (string) content.GetValueForProperty("MicrosoftEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsWeb = (string) content.GetValueForProperty("MicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsWeb, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointDf"))
+            if (content.Contains("MicrosoftEndpointsDf"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointDf = (string) content.GetValueForProperty("MicrosoftEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsDf = (string) content.GetValueForProperty("MicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsDf, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointBlob"))
+            if (content.Contains("InternetEndpointsBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointBlob = (string) content.GetValueForProperty("InternetEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsBlob = (string) content.GetValueForProperty("InternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsBlob, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointFile"))
+            if (content.Contains("InternetEndpointsFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointFile = (string) content.GetValueForProperty("InternetEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsFile = (string) content.GetValueForProperty("InternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsFile, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointWeb"))
+            if (content.Contains("InternetEndpointsWeb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointWeb = (string) content.GetValueForProperty("InternetEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsWeb = (string) content.GetValueForProperty("InternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsWeb, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointDf"))
+            if (content.Contains("InternetEndpointsDf"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointDf = (string) content.GetValueForProperty("InternetEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsDf = (string) content.GetValueForProperty("InternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointMicrosoftEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("Ipv6EndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Ipv6EndpointInternetEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("Ipv6EndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Ipv6EndpointBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointBlob = (string) content.GetValueForProperty("Ipv6EndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointQueue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointQueue = (string) content.GetValueForProperty("Ipv6EndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointQueue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointTable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointTable = (string) content.GetValueForProperty("Ipv6EndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointTable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointFile = (string) content.GetValueForProperty("Ipv6EndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointWeb = (string) content.GetValueForProperty("Ipv6EndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointDf = (string) content.GetValueForProperty("Ipv6EndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsQueue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsTable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsFile = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsDf = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsDf, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -201,6 +277,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("InternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Ipv6Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountIpv6Endpoints) content.GetValueForProperty("Ipv6Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6Endpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountIpv6EndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Blob"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Blob = (string) content.GetValueForProperty("Blob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Blob, global::System.Convert.ToString);
@@ -225,45 +305,117 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Df = (string) content.GetValueForProperty("Df",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Df, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointBlob"))
+            if (content.Contains("MicrosoftEndpointsBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointBlob = (string) content.GetValueForProperty("MicrosoftEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsBlob = (string) content.GetValueForProperty("MicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsBlob, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointQueue"))
+            if (content.Contains("MicrosoftEndpointsQueue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointQueue = (string) content.GetValueForProperty("MicrosoftEndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointQueue, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsQueue = (string) content.GetValueForProperty("MicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsQueue, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointTable"))
+            if (content.Contains("MicrosoftEndpointsTable"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointTable = (string) content.GetValueForProperty("MicrosoftEndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointTable, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsTable = (string) content.GetValueForProperty("MicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsTable, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointFile"))
+            if (content.Contains("MicrosoftEndpointsFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointFile = (string) content.GetValueForProperty("MicrosoftEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsFile = (string) content.GetValueForProperty("MicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsFile, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointWeb"))
+            if (content.Contains("MicrosoftEndpointsWeb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointWeb = (string) content.GetValueForProperty("MicrosoftEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsWeb = (string) content.GetValueForProperty("MicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsWeb, global::System.Convert.ToString);
             }
-            if (content.Contains("MicrosoftEndpointDf"))
+            if (content.Contains("MicrosoftEndpointsDf"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointDf = (string) content.GetValueForProperty("MicrosoftEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsDf = (string) content.GetValueForProperty("MicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).MicrosoftEndpointsDf, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointBlob"))
+            if (content.Contains("InternetEndpointsBlob"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointBlob = (string) content.GetValueForProperty("InternetEndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointBlob, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsBlob = (string) content.GetValueForProperty("InternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsBlob, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointFile"))
+            if (content.Contains("InternetEndpointsFile"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointFile = (string) content.GetValueForProperty("InternetEndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointFile, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsFile = (string) content.GetValueForProperty("InternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsFile, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointWeb"))
+            if (content.Contains("InternetEndpointsWeb"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointWeb = (string) content.GetValueForProperty("InternetEndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointWeb, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsWeb = (string) content.GetValueForProperty("InternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsWeb, global::System.Convert.ToString);
             }
-            if (content.Contains("InternetEndpointDf"))
+            if (content.Contains("InternetEndpointsDf"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointDf = (string) content.GetValueForProperty("InternetEndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointDf, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsDf = (string) content.GetValueForProperty("InternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).InternetEndpointsDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointMicrosoftEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointMicrosoftEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMicrosoftEndpoints) content.GetValueForProperty("Ipv6EndpointMicrosoftEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointMicrosoftEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Ipv6EndpointInternetEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointInternetEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternetEndpoints) content.GetValueForProperty("Ipv6EndpointInternetEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointInternetEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Ipv6EndpointBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointBlob = (string) content.GetValueForProperty("Ipv6EndpointBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointQueue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointQueue = (string) content.GetValueForProperty("Ipv6EndpointQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointQueue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointTable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointTable = (string) content.GetValueForProperty("Ipv6EndpointTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointTable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointFile = (string) content.GetValueForProperty("Ipv6EndpointFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointWeb = (string) content.GetValueForProperty("Ipv6EndpointWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointDf = (string) content.GetValueForProperty("Ipv6EndpointDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsBlob = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsQueue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsQueue = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsQueue",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsQueue, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsTable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsTable = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsTable",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsTable, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsFile = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsWeb = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsMicrosoftEndpointsDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsDf = (string) content.GetValueForProperty("Ipv6EndpointsMicrosoftEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsMicrosoftEndpointsDf, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsBlob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsBlob = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsBlob",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsBlob, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsFile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsFile = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsFile",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsFile, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsWeb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsWeb = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsWeb",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsWeb, global::System.Convert.ToString);
+            }
+            if (content.Contains("Ipv6EndpointsInternetEndpointsDf"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsDf = (string) content.GetValueForProperty("Ipv6EndpointsInternetEndpointsDf",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEndpointsInternal)this).Ipv6EndpointsInternetEndpointsDf, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

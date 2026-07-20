@@ -37,7 +37,7 @@ Update-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtab
 ```
 
 ## DESCRIPTION
-The Update-AzIotSecuritySolution cmdlet updayes one or more of the following properties in a specific IoT security solution: tags, recommendation configuration, user defined resources.
+The Update-AzIotSecuritySolution cmdlet updates one or more of the following properties in a specific IoT security solution: tags, recommendation configuration, user defined resources.
 Only the specified properties will be updated inside the iot security solution.
 The IoT security solution collects security data and events from iot devices and iot hub to help prevent and detect threats.
 

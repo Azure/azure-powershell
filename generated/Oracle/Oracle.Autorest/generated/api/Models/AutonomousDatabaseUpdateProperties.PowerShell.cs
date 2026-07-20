@@ -76,10 +76,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ScheduledOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperation = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate) content.GetValueForProperty("ScheduledOperation",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperation, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdateTypeConverter.ConvertFrom);
-            }
             if (content.Contains("LongTermBackupSchedule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupSchedule = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails) content.GetValueForProperty("LongTermBackupSchedule",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupSchedule, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.LongTermBackUpScheduleDetailsTypeConverter.ConvertFrom);
@@ -140,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LicenseModel = (string) content.GetValueForProperty("LicenseModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LicenseModel, global::System.Convert.ToString);
             }
+            if (content.Contains("ScheduledOperationsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationsList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate>) content.GetValueForProperty("ScheduledOperationsList",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationsList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdateTypeConverter.ConvertFrom));
+            }
             if (content.Contains("DatabaseEdition"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DatabaseEdition = (string) content.GetValueForProperty("DatabaseEdition",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DatabaseEdition, global::System.Convert.ToString);
@@ -171,22 +171,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LongTermBackupScheduleRetentionPeriodInDay"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay = (int?) content.GetValueForProperty("LongTermBackupScheduleRetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ScheduledOperationDayOfWeek"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationDayOfWeek = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate) content.GetValueForProperty("ScheduledOperationDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationDayOfWeek, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DayOfWeekUpdateTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperationScheduledStartTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStartTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStartTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationScheduledStopTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStopTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStopTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStopTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("DayOfWeekName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DayOfWeekName = (string) content.GetValueForProperty("DayOfWeekName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DayOfWeekName, global::System.Convert.ToString);
             }
             if (content.Contains("LongTermBackupScheduleRepeatCadence"))
             {
@@ -217,10 +201,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ScheduledOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperation = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate) content.GetValueForProperty("ScheduledOperation",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperation, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdateTypeConverter.ConvertFrom);
-            }
             if (content.Contains("LongTermBackupSchedule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupSchedule = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ILongTermBackUpScheduleDetails) content.GetValueForProperty("LongTermBackupSchedule",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupSchedule, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.LongTermBackUpScheduleDetailsTypeConverter.ConvertFrom);
@@ -281,6 +261,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LicenseModel = (string) content.GetValueForProperty("LicenseModel",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LicenseModel, global::System.Convert.ToString);
             }
+            if (content.Contains("ScheduledOperationsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationsList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate>) content.GetValueForProperty("ScheduledOperationsList",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationsList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsTypeUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeUpdateTypeConverter.ConvertFrom));
+            }
             if (content.Contains("DatabaseEdition"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DatabaseEdition = (string) content.GetValueForProperty("DatabaseEdition",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DatabaseEdition, global::System.Convert.ToString);
@@ -312,22 +296,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LongTermBackupScheduleRetentionPeriodInDay"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay = (int?) content.GetValueForProperty("LongTermBackupScheduleRetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ScheduledOperationDayOfWeek"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationDayOfWeek = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeekUpdate) content.GetValueForProperty("ScheduledOperationDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationDayOfWeek, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DayOfWeekUpdateTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperationScheduledStartTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStartTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStartTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationScheduledStopTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStopTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStopTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).ScheduledOperationScheduledStopTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("DayOfWeekName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DayOfWeekName = (string) content.GetValueForProperty("DayOfWeekName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdatePropertiesInternal)this).DayOfWeekName, global::System.Convert.ToString);
             }
             if (content.Contains("LongTermBackupScheduleRepeatCadence"))
             {

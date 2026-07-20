@@ -42,7 +42,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="channelEncryption">SMB channel encryption supported by server. Valid values are AES-128-CCM,
         /// AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter &#39;;&#39;.
         /// </param>
-        public SmbSetting(Multichannel multichannel = default(Multichannel), string versions = default(string), string authenticationMethods = default(string), string kerberosTicketEncryption = default(string), string channelEncryption = default(string))
+
+        /// <param name="encryptionInTransit">Encryption in transit setting.
+        /// </param>
+        public SmbSetting(Multichannel multichannel = default(Multichannel), string versions = default(string), string authenticationMethods = default(string), string kerberosTicketEncryption = default(string), string channelEncryption = default(string), EncryptionInTransit encryptionInTransit = default(EncryptionInTransit))
 
         {
             this.Multichannel = multichannel;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.AuthenticationMethods = authenticationMethods;
             this.KerberosTicketEncryption = kerberosTicketEncryption;
             this.ChannelEncryption = channelEncryption;
+            this.EncryptionInTransit = encryptionInTransit;
             CustomInit();
         }
 
@@ -93,5 +97,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "channelEncryption")]
         public string ChannelEncryption {get; set; }
+
+        /// <summary>
+        /// Gets or sets encryption in transit setting.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "encryptionInTransit")]
+        public EncryptionInTransit EncryptionInTransit {get; set; }
     }
 }

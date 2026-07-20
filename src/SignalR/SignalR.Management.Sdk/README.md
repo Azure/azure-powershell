@@ -24,9 +24,9 @@ useDateTimeOffset: true
 
 ###
 ``` yaml
-commit: dad4abaabaf043b347551523185925fac5b72543
+commit: 8600539fa5ba6c774b4454a401d9cd3cf01a36a7
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/signalr/resource-manager/Microsoft.SignalRService/preview/2021-04-01-preview/signalr.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/signalr/resource-manager/Microsoft.SignalRService/preview/2025-01-01-preview/signalr.json
 
 output-folder: Generated
 

@@ -112,7 +112,7 @@ ZoneRedundant                   : True
 
 The output type of New and Set cmdlets `IEhNamespace` has a property named `UserAssignedIdentity` which is a hashtable.
 The keys
-of this hastable are the resource ID's of the managed identities the namespace is part of.
+of this hashtable are the resource ID's of the managed identities the namespace is part of.
 To add or remove an IdentityId, extract the 
 keys from the hashtable, which would result in an array of strings which can then be queried and fed as input to set cmdlet as shown above.
 

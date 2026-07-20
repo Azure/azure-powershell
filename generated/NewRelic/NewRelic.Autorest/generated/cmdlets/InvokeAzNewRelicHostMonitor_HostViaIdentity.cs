@@ -11,16 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using System;
 
     /// <summary>
-    /// Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+    /// Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing
+    /// the necessary configuration details
     /// </summary>
     /// <remarks>
     /// [OpenAPI] VmHostPayload=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/vmHostPayloads"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzNewRelicHostMonitor_HostViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMExtensionPayload))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing the necessary configuration details")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/vmHostPayloads", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/vmHostPayloads", ApiVersion = "2025-05-01-preview")]
     public partial class InvokeAzNewRelicHostMonitor_HostViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

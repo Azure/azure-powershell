@@ -12,32 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Azure.Core;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Test;
+using Microsoft.Azure.Commands.TestFx.Mocks;
+using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 using Xunit;
 using Xunit.Abstractions;
-using System.Text.RegularExpressions;
-using System.Net.Http;
-using System.Threading;
-using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
-using Azure.Identity;
-using Moq;
-using System.ServiceModel.Channels;
-using Azure.Core;
-using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Common.Authentication.Test
 {

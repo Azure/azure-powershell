@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update a gallery Application Version.
+Create a gallery Application Version.
 .Description
-Create or update a gallery Application Version.
+Create a gallery Application Version.
 .Example
 $ctx = New-AzStorageContext -StorageAccountName $storAccName
 $SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
@@ -28,55 +28,75 @@ $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName 
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
 New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+APPLICATIONINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
 PUBLISHINGPROFILETARGETEXTENDEDLOCATION <IGalleryTargetExtendedLocation[]>: The target extended locations where the Image Version is going to be replicated to. This property is updatable.
-  [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
+  [EncryptionDataDiskImage <List<IDataDiskImageEncryption>>]: A list of encryption specifications for data disk images.
     Lun <Int32>: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-    [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [ExtendedLocationName <String>]: 
   [ExtendedLocationReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per extended location. This property is updatable.
-  [ExtendedLocationType <GalleryExtendedLocationType?>]: It is type of the extended location.
+  [ExtendedLocationType <String>]: It is type of the extended location.
   [Name <String>]: The name of the region.
   [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
-  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileConfidentialVMEncryptionType <String>]: confidential VM encryption types
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
-  [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
+  [StorageAccountType <String>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
   Name <String>: The name of the region.
-  [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
+  [EncryptionDataDiskImage <List<IDataDiskImageEncryption>>]: A list of encryption specifications for data disk images.
     Lun <Int32>: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-    [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [RegionalReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per region. This property is updatable.
-  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileConfidentialVMEncryptionType <String>]: confidential VM encryption types
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
-  [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
+  [StorageAccountType <String>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 #>
 function New-AzGalleryApplicationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the gallery Application Definition in which the Application Version is to be created.
-    ${GalleryApplicationName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the Shared Application Gallery in which the Application Definition resides.
-    ${GalleryName},
-
     [Parameter(Mandatory)]
     [Alias('GalleryApplicationVersionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
@@ -87,13 +107,34 @@ param(
     # Format: <MajorVersion>.<MinorVersion>.<Patch>
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the gallery Application Definition in which the Application Version is to be created.
+    ${GalleryApplicationName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the Shared Application Gallery in which the Application Definition resides.
+    ${GalleryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -101,13 +142,29 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${ApplicationInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -116,14 +173,18 @@ param(
     # If not specified, the config file will be named the Gallery Application name appended with "_config".
     ${ConfigFileName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
     # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
     ${DefaultConfigFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
@@ -131,14 +192,18 @@ param(
     # This is limited to 4096 characters.
     ${Install},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
     # The mediaLink of the artifact, must be a readable storage page blob.
     ${PackageFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -147,7 +212,9 @@ param(
     # If not specified, the package file will be named the same as the Gallery Application name.
     ${PackageFileName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.DateTime]
     # The end of life date of the gallery image version.
@@ -155,13 +222,17 @@ param(
     # This property is updatable.
     ${PublishingProfileEndOfLifeDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
     ${PublishingProfileExcludeFromLatest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
@@ -169,7 +240,9 @@ param(
     # This is limited to 4096 characters.
     ${Remove},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The number of replicas of the Image Version to be created per region.
@@ -177,23 +250,28 @@ param(
     # This property is updatable.
     ${ReplicaCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
     # The target regions where the Image Version is going to be replicated to.
     # This property is updatable.
-    # To construct, see NOTES section for TARGETREGION properties and create a hash table.
     ${TargetRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -201,6 +279,18 @@ param(
     # If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application.
     # This is limited to 4096 characters.
     ${Update},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -270,13 +360,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.Compute.private\New-AzGalleryApplicationVersion_CreateExpanded';
+            CreateViaIdentityApplicationExpanded = 'Az.Compute.private\New-AzGalleryApplicationVersion_CreateViaIdentityApplicationExpanded';
+            CreateViaIdentityGalleryExpanded = 'Az.Compute.private\New-AzGalleryApplicationVersion_CreateViaIdentityGalleryExpanded';
+            CreateViaJsonFilePath = 'Az.Compute.private\New-AzGalleryApplicationVersion_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Compute.private\New-AzGalleryApplicationVersion_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -285,6 +380,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

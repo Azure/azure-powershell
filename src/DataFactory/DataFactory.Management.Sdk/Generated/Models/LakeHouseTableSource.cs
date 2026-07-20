@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// A copy activity source for Microsoft Fabric LakeHouse Table.
+    /// A copy activity source for Microsoft Fabric Lakehouse Table.
     /// </summary>
     [Newtonsoft.Json.JsonObject("LakeHouseTableSource")]
     public partial class LakeHouseTableSource : CopySource

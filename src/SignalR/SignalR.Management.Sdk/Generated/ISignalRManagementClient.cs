@@ -42,11 +42,9 @@ namespace Microsoft.Azure.Management.SignalR
 
 
         /// <summary>
-        /// Gets subscription Id which uniquely identify the Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -86,6 +84,16 @@ namespace Microsoft.Azure.Management.SignalR
         IUsagesOperations Usages { get; }
 
         /// <summary>
+        /// Gets the ISignalRCustomCertificatesOperations
+        /// </summary>
+        ISignalRCustomCertificatesOperations SignalRCustomCertificates { get; }
+
+        /// <summary>
+        /// Gets the ISignalRCustomDomainsOperations
+        /// </summary>
+        ISignalRCustomDomainsOperations SignalRCustomDomains { get; }
+
+        /// <summary>
         /// Gets the ISignalRPrivateEndpointConnectionsOperations
         /// </summary>
         ISignalRPrivateEndpointConnectionsOperations SignalRPrivateEndpointConnections { get; }
@@ -94,6 +102,16 @@ namespace Microsoft.Azure.Management.SignalR
         /// Gets the ISignalRPrivateLinkResourcesOperations
         /// </summary>
         ISignalRPrivateLinkResourcesOperations SignalRPrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the ISignalRReplicasOperations
+        /// </summary>
+        ISignalRReplicasOperations SignalRReplicas { get; }
+
+        /// <summary>
+        /// Gets the ISignalRReplicaSharedPrivateLinkResourcesOperations
+        /// </summary>
+        ISignalRReplicaSharedPrivateLinkResourcesOperations SignalRReplicaSharedPrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the ISignalRSharedPrivateLinkResourcesOperations

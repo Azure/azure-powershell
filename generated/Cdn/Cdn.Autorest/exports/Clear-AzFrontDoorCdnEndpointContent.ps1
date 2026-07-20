@@ -27,7 +27,7 @@ $content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -38,23 +38,46 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CONTENT <IAfdPurgeParameters>: Parameters required for content purge.
-  ContentPath <String[]>: The path to the content to be purged. Can describe a file path or a wild card directory.
-  [Domain <String[]>]: List of domains.
+  ContentPath <List<String>>: The path to the content to be purged. Can describe a file path or a wild card directory.
+  [Domain <List<String>>]: List of domains.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
+
+PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
 #>
@@ -64,6 +87,10 @@ function Clear-AzFrontDoorCdnEndpointContent {
 param(
     [Parameter(ParameterSetName='Purge', Mandatory)]
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # Name of the endpoint under the profile which is unique globally.
@@ -71,24 +98,32 @@ param(
 
     [Parameter(ParameterSetName='Purge', Mandatory)]
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='Purge', Mandatory)]
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Purge')]
     [Parameter(ParameterSetName='PurgeExpanded')]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath')]
+    [Parameter(ParameterSetName='PurgeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
@@ -96,19 +131,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='PurgeViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
 
     [Parameter(ParameterSetName='Purge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters]
     # Parameters required for content purge.
-    # To construct, see NOTES section for CONTENT properties and create a hash table.
     ${Content},
 
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
     [Parameter(ParameterSetName='PurgeViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfileExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
@@ -118,11 +160,24 @@ param(
 
     [Parameter(ParameterSetName='PurgeExpanded')]
     [Parameter(ParameterSetName='PurgeViaIdentityExpanded')]
+    [Parameter(ParameterSetName='PurgeViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String[]]
     # List of domains.
     ${Domain},
+
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Purge operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Purge operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -198,6 +253,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -221,10 +284,12 @@ begin {
             PurgeExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeExpanded';
             PurgeViaIdentity = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentity';
             PurgeViaIdentityExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityExpanded';
+            PurgeViaIdentityProfile = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityProfile';
+            PurgeViaIdentityProfileExpanded = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaIdentityProfileExpanded';
+            PurgeViaJsonFilePath = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaJsonFilePath';
+            PurgeViaJsonString = 'Az.Cdn.private\Clear-AzFrontDoorCdnEndpointContent_PurgeViaJsonString';
         }
-        if (('Purge', 'PurgeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Purge', 'PurgeExpanded', 'PurgeViaJsonFilePath', 'PurgeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -238,6 +303,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

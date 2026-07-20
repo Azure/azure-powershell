@@ -415,7 +415,7 @@ Standard and Premium tiers.
 Configures the number of databases.
 This property can be configured only at cache creation.
 Standard and Premium tiers.
-For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://go.microsoft.com/fwlink/?LinkId=800051 (http://go.microsoft.com/fwlink/?LinkId=800051).
+For more information, see [Manage Azure Redis Cache with Azure PowerShell](/azure/redis/how-to-manage-redis-cache-powershell).
 - preferred-data-archive-auth-method
 Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
 - preferred-data-persistence-auth-method
@@ -597,7 +597,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+Specifies one or more comma separated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
 Type: System.String[]

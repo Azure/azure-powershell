@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkAzureStackEdgeObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedNetwork/new-azconnectednetworkazurestackedgeobject
 schema: 2.0.0
 ---
 
 # New-AzConnectedNetworkAzureStackEdgeObject
 
 ## SYNOPSIS
-Create a in-memory object for AzureStackEdgeFormat
+Create an in-memory object for AzureStackEdgeFormat.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzConnectedNetworkAzureStackEdgeObject [-AzureStackEdgeId <String>] [<Common
 ```
 
 ## DESCRIPTION
-Create a in-memory object for AzureStackEdgeFormat
+Create an in-memory object for AzureStackEdgeFormat.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscriptions/xxx
 ```
 
 ```output
-eviceType     ProvisioningState Status
+DeviceType     ProvisioningState Status
 ----------     ----------------- ------
 AzureStackEdge
 ```
@@ -58,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.AzureStackEdgeFormat
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.AzureStackEdgeFormat
 
 ## NOTES
 

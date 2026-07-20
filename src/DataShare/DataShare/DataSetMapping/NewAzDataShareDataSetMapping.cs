@@ -260,12 +260,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                     if (this.FilePath != null)
                     {
 
-                        var newDataSetMapping = (ADLSGen2FileDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
+                        var newDataSetMapping = (AdlsGen2FileDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareSubscriptionName,
                             this.Name,
-                            new ADLSGen2FileDataSetMapping()
+                            new AdlsGen2FileDataSetMapping()
                             {
                                 DataSetId = this.DataSetId,
                                 FileSystem = this.FileSystem,
@@ -281,12 +281,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                     else if (this.FolderPath != null)
                     {
 
-                        var newDataSetMapping = (ADLSGen2FolderDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
+                        var newDataSetMapping = (AdlsGen2FolderDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareSubscriptionName,
                             this.Name,
-                            new ADLSGen2FolderDataSetMapping()
+                            new AdlsGen2FolderDataSetMapping()
                             {
                                 DataSetId = this.DataSetId,
                                 FileSystem = this.FileSystem,
@@ -302,12 +302,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                     else
                     {
 
-                        var newDataSetMapping = (ADLSGen2FileSystemDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
+                        var newDataSetMapping = (AdlsGen2FileSystemDataSetMapping)this.DataShareManagementClient.DataSetMappings.Create(
                             this.ResourceGroupName,
                             this.AccountName,
                             this.ShareSubscriptionName,
                             this.Name,
-                            new ADLSGen2FileSystemDataSetMapping()
+                            new AdlsGen2FileSystemDataSetMapping()
                             {
                                 DataSetId = this.DataSetId,
                                 FileSystem = this.FileSystem,

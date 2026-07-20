@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCustomProvider
 
 ## SYNOPSIS
-Updates an existing custom resource provider.
+update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 
 ## SYNTAX
@@ -20,6 +20,20 @@ Update-AzCustomProvider -Name <String> -ResourceGroupName <String> [-Subscriptio
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzCustomProvider -InputObject <ICustomProvidersIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -27,7 +41,7 @@ Update-AzCustomProvider -InputObject <ICustomProvidersIdentity> [-Tag <Hashtable
 ```
 
 ## DESCRIPTION
-Updates an existing custom resource provider.
+update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
 
 ## EXAMPLES
@@ -84,7 +98,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity
@@ -98,12 +111,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: ResourceProviderName
 
 Required: True
@@ -118,7 +161,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -135,7 +178,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -150,7 +193,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest
+### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest
 
 ## NOTES
 

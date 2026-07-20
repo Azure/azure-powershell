@@ -12,17 +12,33 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Returns the properties for a lab virtual machine.
+.Description
+Returns the properties for a lab virtual machine.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesvm
+#>
+
 function Get-AzLabServicesVM_Lab {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+        # The object of lab service lab.
         ${Lab},
-   
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
         [System.String]
+        # The ID of the virtual machine that uniquely identifies it within the containing lab.
+        # Used in resource URIs.
         ${Name},
 
         [Parameter()]
@@ -37,7 +53,8 @@ function Get-AzLabServicesVM_Lab {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

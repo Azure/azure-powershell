@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricManagedCmdletBase : ServiceFabricCommonCmdletBase
     {
-        private Lazy<ServiceFabricManagementClient> sfrpMcClient;
+        private Lazy<ServiceFabricManagedClustersManagementClient> sfrpMcClient;
 
-        internal ServiceFabricManagementClient SfrpMcClient
+        internal ServiceFabricManagedClustersManagementClient SfrpMcClient
         {
             get { return sfrpMcClient.Value; }
-            set { sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() => value); }
+            set { sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() => value); }
         }
 
         public ServiceFabricManagedCmdletBase()
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void InitializeManagementClients()
         {
-            this.sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() =>
+            this.sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() =>
             {
                 var armClient = AzureSession.Instance.ClientFactory.
-                CreateArmClient<ServiceFabricManagementClient>(
+                CreateArmClient<ServiceFabricManagedClustersManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager);
                 return armClient;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.PollLongRunningOperation(response2);
         }
 
-        protected T PollLongRunningOperation<T>(AzureOperationResponse<T> beginRequestResponse) where T : class
+        protected TBody PollLongRunningOperation<TBody>(AzureOperationResponse<TBody> beginRequestResponse) where TBody : class
         {
             var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
             WriteProgress(progress);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                         beginRequestResponse.RequestId,
                                         beginRequestResponse.Response.StatusCode));
 
-            AzureOperationResponse<T> result = null;
+            AzureOperationResponse<TBody> result = null;
             var tokenSource = new CancellationTokenSource();
             Uri asyncOperationStatusEndpoint = null;
             HttpRequestMessage asyncOpStatusRequest = null;
@@ -102,6 +102,180 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             });
 
             
+            while (!tokenSource.IsCancellationRequested)
+            {
+                tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                if (asyncOpStatusRequest != null && asyncOperationStatusEndpoint != null)
+                {
+                    try
+                    {
+                        using (HttpClient client = new HttpClient())
+                        {
+                            asyncOpStatusRequest = this.CloneAndDisposeRequest(asyncOpStatusRequest, asyncOperationStatusEndpoint, HttpMethod.Get);
+                            HttpResponseMessage responseJson = client.SendAsync(asyncOpStatusRequest).GetAwaiter().GetResult();
+                            string content = responseJson.Content.ReadAsStringAsync().Result;
+                            Operation op = this.ConvertToOperation(content);
+
+                            if (op != null)
+                            {
+                                string progressMessage = $"Operation Status: {op.Status}. Progress: {op.PercentComplete} %";
+                                WriteDebugWithTimestamp(progressMessage);
+                                progress.StatusDescription = progressMessage;
+                                progress.PercentComplete = Convert.ToInt32(op.PercentComplete);
+                                WriteProgress(progress);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // don't throw if poll operation state fails
+                        WriteDebugWithTimestamp("Error polling operation status {0}", ex);
+                    }
+                }
+                else
+                {
+                    if (progress.StatusDescription != "In progress")
+                    {
+                        progress.StatusDescription = "In progress";
+                        WriteProgress(progress);
+                    }
+                }
+            }
+
+            if (requestTask.IsFaulted)
+            {
+                var errorMessage = string.Format(
+                    "Long Running Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}' operationId '{0}'",
+                    beginRequestResponse.RequestId,
+                    beginRequestResponse.Response.StatusCode,
+                    this.GetOperationIdFromAsyncHeader(beginRequestResponse.Response.Headers));
+
+                WriteErrorWithTimestamp(errorMessage);
+                throw requestTask.Exception;
+            }
+
+            return result?.Body;
+        }
+
+        protected void PollLongRunningOperation<THeader>(AzureOperationHeaderResponse<THeader> beginRequestResponse) where THeader : class
+        {
+            var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
+            WriteProgress(progress);
+            WriteVerboseWithTimestamp(string.Format("Begin request ARM correlationId: '{0}' response: '{1}'",
+                                        beginRequestResponse.RequestId,
+                                        beginRequestResponse.Response.StatusCode));
+
+            AzureOperationHeaderResponse<THeader> result = null;
+            var tokenSource = new CancellationTokenSource();
+            Uri asyncOperationStatusEndpoint = null;
+            HttpRequestMessage asyncOpStatusRequest = null;
+            if (beginRequestResponse.Response.Headers.TryGetValues(Constants.AzureAsyncOperationHeader, out IEnumerable<string> headerValues))
+            {
+                asyncOperationStatusEndpoint = new Uri(headerValues.First());
+                asyncOpStatusRequest = beginRequestResponse.Request;
+            }
+
+            var requestTask = Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    result = this.SfrpMcClient.GetLongRunningOperationResultAsync(beginRequestResponse, null, CancellationToken.None).GetAwaiter().GetResult();
+                }
+                finally
+                {
+                    tokenSource.Cancel();
+                }
+            });
+
+            
+            while (!tokenSource.IsCancellationRequested)
+            {
+                tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                if (asyncOpStatusRequest != null && asyncOperationStatusEndpoint != null)
+                {
+                    try
+                    {
+                        using (HttpClient client = new HttpClient())
+                        {
+                            asyncOpStatusRequest = this.CloneAndDisposeRequest(asyncOpStatusRequest, asyncOperationStatusEndpoint, HttpMethod.Get);
+                            HttpResponseMessage responseJson = client.SendAsync(asyncOpStatusRequest).GetAwaiter().GetResult();
+                            string content = responseJson.Content.ReadAsStringAsync().Result;
+                            Operation op = this.ConvertToOperation(content);
+
+                            if (op != null)
+                            {
+                                string progressMessage = $"Operation Status: {op.Status}. Progress: {op.PercentComplete} %";
+                                WriteDebugWithTimestamp(progressMessage);
+                                progress.StatusDescription = progressMessage;
+                                progress.PercentComplete = Convert.ToInt32(op.PercentComplete);
+                                WriteProgress(progress);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // don't throw if poll operation state fails
+                        WriteDebugWithTimestamp("Error polling operation status {0}", ex);
+                    }
+                }
+                else
+                {
+                    if (progress.StatusDescription != "In progress")
+                    {
+                        progress.StatusDescription = "In progress";
+                        WriteProgress(progress);
+                    }
+                }
+            }
+
+            if (requestTask.IsFaulted)
+            {
+                var errorMessage = string.Format(
+                    "Long Running Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}' operationId '{0}'",
+                    beginRequestResponse.RequestId,
+                    beginRequestResponse.Response.StatusCode,
+                    this.GetOperationIdFromAsyncHeader(beginRequestResponse.Response.Headers));
+
+                WriteErrorWithTimestamp(errorMessage);
+                throw requestTask.Exception;
+            }
+
+            return;
+        }
+
+        protected T PollLongRunningOperation<T, THeader>(AzureOperationResponse<T, THeader> beginRequestResponse)
+            where T : class
+            where THeader : class
+        {
+            var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
+            WriteProgress(progress);
+            WriteVerboseWithTimestamp(string.Format("Begin request ARM correlationId: '{0}' response: '{1}'",
+                                        beginRequestResponse.RequestId,
+                                        beginRequestResponse.Response.StatusCode));
+
+            AzureOperationResponse<T, THeader> result = null;
+            var tokenSource = new CancellationTokenSource();
+            Uri asyncOperationStatusEndpoint = null;
+            HttpRequestMessage asyncOpStatusRequest = null;
+            if (beginRequestResponse.Response.Headers.TryGetValues(Constants.AzureAsyncOperationHeader, out IEnumerable<string> headerValues))
+            {
+                asyncOperationStatusEndpoint = new Uri(headerValues.First());
+                asyncOpStatusRequest = beginRequestResponse.Request;
+            }
+
+            var requestTask = Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    result = this.SfrpMcClient.GetLongRunningOperationResultAsync(beginRequestResponse, null, CancellationToken.None).GetAwaiter().GetResult();
+                }
+                finally
+                {
+                    tokenSource.Cancel();
+                }
+            });
+
+
             while (!tokenSource.IsCancellationRequested)
             {
                 tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));

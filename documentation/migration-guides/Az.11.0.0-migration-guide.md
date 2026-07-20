@@ -682,8 +682,8 @@ The cmdlet 'Reset-AzPowerBIWorkspaceCollectionAccessKey' has been removed as Wor
 
 ## AZ.Storage
 
-### `Get-AzStorageQueueStoredAcessPolicy`
-Permissions in the ouput access policy is changed to a string like "raup"
+### `Get-AzStorageQueueStoredAccessPolicy`
+Permissions in the output access policy is changed to a string like "raup"
 
 ### `New-AzStorageAccountSasToken`
 The leading question mark '?' of the created SAS token is removed
@@ -707,5 +707,5 @@ The leading question mark '?' of the created SAS token is removed
 The leading question mark '?' of the created SAS token is removed
 
 ### `Set-AzStorageQueueStoredAccessPolicy`
-Permissions in the ouput access policy is changed to a string like "raup"
+Permissions in the output access policy is changed to a string like "raup"
 

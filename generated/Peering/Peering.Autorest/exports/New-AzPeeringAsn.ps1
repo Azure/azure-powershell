@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
+create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Description
-Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
+create a new peer ASN or create an existing peer ASN with the specified name under the given subscription.
 .Example
 $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
 $PeerContactList = ,$contactDetail
 New-AzPeeringAsn -Name PsTestAsn -PeerAsn 65001 -PeerContactDetail $PeerContactList -PeerName DemoPeering
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn
+Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeerAsn
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,12 +34,12 @@ To create the parameters described below, construct a hash table containing the 
 PEERCONTACTDETAIL <IContactDetail[]>: The contact details of the peer.
   [Email <String>]: The e-mail address of the contact.
   [Phone <String>]: The phone number of the contact.
-  [Role <Role?>]: The role of the contact.
+  [Role <String>]: The role of the contact.
 .Link
 https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringasn
 #>
 function New-AzPeeringAsn {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeerAsn])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,9 +65,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Peering.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IContactDetail[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IContactDetail[]]
     # The contact details of the peer.
-    # To construct, see NOTES section for PEERCONTACTDETAIL properties and create a hash table.
     ${PeerContactDetail},
 
     [Parameter()]
@@ -132,6 +131,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -153,9 +161,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.Peering.private\New-AzPeeringAsn_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -169,6 +175,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

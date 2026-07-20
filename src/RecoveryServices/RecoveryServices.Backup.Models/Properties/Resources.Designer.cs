@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. Alteast one is expected..
+        ///   Looks up a localized string similar to All retention schedules are empty in RetentionPolicy. At least one is expected..
         /// </summary>
         public static string AllRetentionSchedulesEmptyException
         {
@@ -757,6 +757,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("InvalidAzureVMName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; was not found in resource group &apos;{1}&apos; under subscription &apos;{2}&apos;. Verify that the VM exists and that -Name, -ResourceGroupName and -ContainerSubscriptionId are correct..
+        /// </summary>
+        public static string CSBVMNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine &apos;{0}&apos; (location &apos;{1}&apos;) is not in the same location as the Recovery Services vault (location &apos;{2}&apos;). For Cross Subscription Backup, the VM must reside in the same region as the vault..
+        /// </summary>
+        public static string CSBVMNotInVaultLocation
+        {
+            get
+            {
+                return ResourceManager.GetString("CSBVMNotInVaultLocation", resourceCulture);
             }
         }
 
@@ -1722,7 +1744,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be spceified. Please give Only one parameter and retry.
+        ///   Looks up a localized string similar to Both RestoreAsUnmanagedDisks and TargetResourceGroupName can't be specified. Please give Only one parameter and retry.
         /// </summary>
         public static string TargetRGUnmanagedRestoreDuplicateParamsException
         {
@@ -1854,7 +1876,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to please provide a vaild target storage account.
+        ///   Looks up a localized string similar to please provide a valid target storage account.
         /// </summary>
         public static string InvalidTargetStorageAccount
         {
@@ -2850,6 +2872,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("InvalidSoftDeleteFeatureStateException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Both Token and SecureToken parameters cannot be provided together.
+        /// </summary>
+        public static string BothTokenProvided
+        {
+            get
+            {
+                return ResourceManager.GetString("BothTokenProvided", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The Token parameter is deprecated and will be removed in future versions. Please use SecureToken instead.
+        /// </summary>
+        public static string TokenParameterDepricate
+        {
+            get
+            {
+                return ResourceManager.GetString("TokenParameterDepricate", resourceCulture);
             }
         }
     }

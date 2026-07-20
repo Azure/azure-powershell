@@ -13,8 +13,8 @@ Lists all of the legacy peerings under the given subscription matching the speci
 ## SYNTAX
 
 ```
-Get-AzPeeringLegacy [-SubscriptionId <String[]>] -Kind <LegacyPeeringsKind> -PeeringLocation <String>
- [-Asn <Int32>] [-DirectPeeringType <DirectPeeringType>] [-DefaultProfile <PSObject>]
+Get-AzPeeringLegacy [-SubscriptionId <String[]>] -Kind <String> -PeeringLocation <String> [-Asn <Int32>]
+ [-DirectPeeringType <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The direct peering type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The kind of the peering.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LegacyPeeringsKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 
 ## NOTES
 

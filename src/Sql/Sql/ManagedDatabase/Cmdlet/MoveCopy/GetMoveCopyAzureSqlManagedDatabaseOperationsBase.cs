@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ValidateNotNullOrEmpty]
         public MoveCopyManagedDatabaseModel ModelObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Return only latest opereation per managed database")]
+        [Parameter(Mandatory = false, HelpMessage = "Return only latest operation per managed database")]
         public SwitchParameter OnlyLatestPerDatabase { get; set; }
 
         /// <summary>

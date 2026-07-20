@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -218,6 +219,31 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the policy for virtual machine's placement in availability zone. Possible values are: **Any** - An availability zone will be automatically picked by system as part of virtual machine creation.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Any")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the regional disks should be aligned/moved to the VM zone. This is applicable only for VMs with placement property set. Please note that this change is irreversible.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AlignRegionalDisksToVMZone { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -455,6 +481,43 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
+
+            if (this.IsParameterBound(c => c.ZonePlacementPolicy))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.ZonePlacementPolicy = this.ZonePlacementPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.IncludeZone))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.IncludeZones = this.IncludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.ExcludeZone))
+            {
+                if (vm.Placement == null)
+                {
+                    vm.Placement = new Placement();
+                }
+                vm.Placement.ExcludeZones = this.ExcludeZone;
+            }
+
+            if (this.IsParameterBound(c => c.AlignRegionalDisksToVMZone))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                vm.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
+            }
+
 
             WriteObject(vm);
         }

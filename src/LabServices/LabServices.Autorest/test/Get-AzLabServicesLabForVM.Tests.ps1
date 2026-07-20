@@ -18,8 +18,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 . ($loadVarsPath)
 
 Describe 'Get-AzLabServicesLabForVM' {
-    It 'Get Lab from VM' -Skip {
-        $vm = Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
+    It 'Get Lab from VM' {
+        $vm = Get-AzLabServicesVM -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name 0
         Get-AzLabServicesLabForVM -ResourceId $vm.Id | Should -Not -BeNullOrEmpty
     }
 }

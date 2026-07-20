@@ -10,5 +10,5 @@ Location  Name     Type
 East US 2 MyAssoc  Microsoft.CustomProviders/associations
 ```
 
-Create a custom provider association, the associated target provioder must be properly configured with a route for "associations"
+Create a custom provider association, the associated target provider must be properly configured with a route for "associations"
 

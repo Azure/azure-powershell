@@ -19,6 +19,42 @@
 -->
 ## Upcoming Release
 
+## Version 7.2.1
+* Added support for `AzureContainerLinux` OS SKU in `New-AzAksCluster` (`-NodeOsSKU`) and `New-AzAksNodePool` (`-OsSKU`)
+    - Azure Container Linux is a container-optimized, immutable Linux OS for AKS node images. See https://aka.ms/azurecontainerlinux
+* Bumped API version to 2026-03-01
+
+## Version 7.2.0
+* Added ChangeSafety Support
+
+## Version 7.1.2
+* Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`
+    - This ensures compatibility with the latest Azure Monitor agent which requires AAD authentication
+
+## Version 7.1.1
+* Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
+
+## Version 7.1.0
+* Bumped API version to 2025-08-01
+* Added cmdlets `Get-AzAksMachine`, `Get-AzAksManagedClusterMeshRevisionProfile`, `Get-AzAksManagedClusterMeshUpgradeProfile`, `Get-AzAksTrustedAccessRole`, `Get-AzAksTrustedAccessRoleBinding`, `New-AzAksTrustedAccessRoleBinding`, `Remove-AzAksAgentPoolMachine`, `Remove-AzAksTrustedAccessRoleBinding`, `Update-AzAksTrustedAccessRoleBinding`
+* Added necessary parameters for `New-AzAksCluster`, `Set-AzAksCluster`, `New-AzAksNodePool`, `Update-AzAksNodePool`
+* Removed cmdlet `Get-AzAksManagedClusterOSOption`
+
+## Version 7.0.0
+* Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated the default value of `-NodeVmSize` parameter in `New-AzAksCluster` and `-VmSize` parameter in `New-AzAksNodePool` from 'Standard_D2_V2' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+
+## Version 6.1.1
+* Preannounced breaking change: The default value of `-NodeVmSize` parameter of `New-AzAksCluster` will be changing from 'Standard_DS2_V2 (Linux), Standard_DS2_V3 (Windows)' to being dynamically selected by the AKS resource provider based on quota and capacity in the next major release.
+* The code base is going to be refactored, the following cmdlet adds a BreakingChange announcement:
+  * `Get-AzAksMaintenanceConfiguration`
+  * `Get-AzAksManagedClusterOSOption`
+  * `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`
+  * `Get-AzAksNodePoolUpgradeProfile`
+  * `Get-AzAksUpgradeProfile`
+  * `Get-AzAksVersion`
+  * `New-AzAksMaintenanceConfiguration`
+
 ## Version 6.1.0
 * Upgraded nuget package to signed package.
 * Fixed the issue that HTTP request body contains empty userAssignedIdentities object when identity type is `SystemAssigned`.

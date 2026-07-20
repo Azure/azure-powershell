@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Rest;
 using System;
+using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -83,12 +85,12 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, ICmdletContext cmdletContext)
         {
             throw new NotImplementedException();
         }
 
-        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint, ICmdletContext cmdletContext)
         {
             throw new NotImplementedException();
         }
@@ -99,6 +101,31 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AuthenticationTelemetryData GetDataForTelemetry(string requestId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            return GetServiceClientCredentials(context, AzureCmdletContext.CmdletNone);
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            return GetServiceClientCredentials(context, targetEndpoint, AzureCmdletContext.CmdletNone); ;
+        }
+
+        public IAccessToken Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Action<string> promptAction, IDictionary<string, object> optionalParameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUser(IAzureAccount account, IAzureEnvironment environment)
         {
             throw new NotImplementedException();
         }

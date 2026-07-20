@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <summary>
         /// If operation is Wrap, the value is wrapped key
         /// If operation is Unwrap, the value is unwrapped key
-        /// If operation is Encrypt, the value is encryted data
+        /// If operation is Encrypt, the value is encrypted data
         /// If operation is Decrypt, the value is decrypted data
         /// </summary>
         [Ps1Xml(Target = ViewControl.List, Label = nameof(RawResult), Position = 1)]

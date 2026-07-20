@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SapVirtualInstance
-Module Guid: afd2bdc9-d7ac-4bb4-941e-b8371d57b833
+Module Guid: 3b3448b8-cc97-45d8-b74d-3456b3c3ac2c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sapvirtualinstance
 Help Version: 1.0.0.0
 Locale: en-US
@@ -27,13 +27,13 @@ Gets a Virtual Instance for SAP solutions resource
 Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
 ### [Invoke-AzWorkloadsSapSizingRecommendation](Invoke-AzWorkloadsSapSizingRecommendation.md)
-Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
+Gets the sizing recommendations.
 
 ### [Invoke-AzWorkloadsSapSupportedSku](Invoke-AzWorkloadsSapSupportedSku.md)
 Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 
 ### [New-AzWorkloadsSapVirtualInstance](New-AzWorkloadsSapVirtualInstance.md)
-Creates a Virtual Instance for SAP solutions (VIS) resource
+Create a Virtual Instance for SAP solutions (VIS) resource
 
 ### [Remove-AzWorkloadsSapVirtualInstance](Remove-AzWorkloadsSapVirtualInstance.md)
 Deletes a Virtual Instance for SAP solutions resource and its child resources, that is the associated Central Services Instance, Application Server Instances and Database Instance.
@@ -63,19 +63,15 @@ Stops the database instance of the SAP system.
 Stops the SAP Application, that is the Application server instances and Central Services instance.
 
 ### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
-Updates the SAP Application server instance resource.
-This can be used to update tags on the resource.
+Puts the SAP Application Server Instance resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
-Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+Update the SAP Central Services Instance resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)
-Updates the Database instance resource.
-This can be used to update tags on the resource.
+Update the Database resource.
 
 ### [Update-AzWorkloadsSapVirtualInstance](Update-AzWorkloadsSapVirtualInstance.md)
-Updates a Virtual Instance for SAP solutions resource
+Update a Virtual Instance for SAP solutions resource
 

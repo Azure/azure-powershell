@@ -138,26 +138,11 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -172,7 +157,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +173,7 @@ The URI of the KeyVault Secret.
 Please ensure it follows the format: `https://<vault-name>.vault.azure.net/secrets/<secret-name>/<version>`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretUri
 Aliases: SecretId
 
@@ -199,26 +184,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InRemovedState
-If present, removes the previously deleted secret permanently.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Key Vault Secret Object
 
 ```yaml
-Type: PSKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -229,12 +199,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+If present, removes the previously deleted secret permanently.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a secret.
 This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the key vault, and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases: SecretName
 
@@ -250,7 +235,7 @@ Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -266,7 +251,7 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -277,13 +262,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

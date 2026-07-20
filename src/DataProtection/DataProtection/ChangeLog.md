@@ -19,6 +19,39 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.1
+* Deprecated the `-OverwriteLifeCycle` parameter on `Edit-AzDataProtectionPolicyRetentionRuleClientObject`
+    - The parameter will be removed in an upcoming release; existing retention rule lifecycles are replaced in place by default
+* Updated the retention rule `-Name` help messages in `Edit-AzDataProtectionPolicyRetentionRuleClientObject` for clarity
+
+## Version 3.0.0
+* Changed retention rule to require `-Name Default_OperationalStore`
+* Added `RenameTo` to restore request
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Added Cosmos DB protection support
+
+## Version 2.10.1
+* Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
+
+## Version 2.10.0
+* Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
+    - Added `-AutoProtection` switch parameter to enable auto-protection
+    - Added `-AutoProtectionExclusionRule` parameter to specify exclusion rules for auto-protection
+* Updated API version from 2025-09-01 to 2026-03-01
+
+## Version 2.9.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.9.0
+* Added support for Data Protection Platform vault soft delete feature
+
+## Version 2.8.0
+* Added support for AzureDataLakeStorage workload
+
+## Version 2.7.0
+* Added new cmdlet for validate for Modify backup - Test-AzDataProtectionBackupInstanceUpdate.
+* Added new parameters for UAMI based restore in Initialize-AzDataProtectionRestoreRequest cmdlet.
+
 ## Version 2.6.1
 * Updated Help Doc of Get-AzAccessToken Usage in DataProtection
 
@@ -33,7 +66,7 @@
 
 ## Version 2.4.0
 * Added vault tier restore and update backup instance for blobs.
-* Added CmkEnryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
+* Added CmkEncryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
 * Added MUA support for DisableVaultImmutability, Restore, Stop-Protection, Suspend-backup, Disable soft delete operations.
 
 ## Version 2.3.0

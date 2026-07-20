@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes an API key for a given Azure Cognitive Search service that has
-    /// permissions for query operations only.
+    /// Describes an API key for a given Azure AI Search service that conveys
+    /// read-only permissions on the docs collection of an index.
     /// </summary>
     public partial class QueryKey
     {
@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the QueryKey class.
         /// </summary>
 
-        /// <param name="name">The name of the query API key; may be empty.
+        /// <param name="name">The name of the query API key. Query names are optional, but assigning a
+        /// name can help you remember how it&#39;s used.
         /// </param>
 
         /// <param name="key">The value of the query API key.
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets the name of the query API key; may be empty.
+        /// Gets the name of the query API key. Query names are optional, but assigning
+        /// a name can help you remember how it&#39;s used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }

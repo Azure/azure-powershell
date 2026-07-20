@@ -79,5 +79,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string DataAccessAuthMode { get; set; }
         public double? CompletionPercent { get; set; }
         public bool? OptimizedForFrequentAttach { get; set; }
+        public AvailabilityPolicy AvailabilityPolicy { get; set; }
+        public string SecurityDataUri { get; set; }
+        public string SecurityMetadataUri { get; set; }
     }
 }

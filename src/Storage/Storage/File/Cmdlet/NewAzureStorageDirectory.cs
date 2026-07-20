@@ -15,8 +15,11 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using System;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -60,6 +63,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The mode permissions to be set on the directory. Symbolic (rwxrw-rw-) is supported.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern("([r-][w-][xsS-]){2}([r-][w-][xtT-])")]
+        public string FileMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner user identifier (UID) to be set on the directory. The default value is 0 (root).")]
+        [ValidateNotNullOrEmpty]
+        public string Owner { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Only applicable to NFS Directory. The owner group identifier (GID) to be set on the directory. The default value is 0 (root group).")]
+        [ValidateNotNullOrEmpty]
+        public string Group { get; set; }
+
         public override void ExecuteCmdlet()
         {
 
@@ -87,8 +103,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             ShareDirectoryClient directoryToBeCreated = baseDirClient.GetSubdirectoryClient(this.Path);
-            directoryToBeCreated.Create(cancellationToken: this.CmdletCancellationToken);
-            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));           
+
+            ShareDirectoryCreateOptions createOptions = new ShareDirectoryCreateOptions();
+
+            // set nfs properties
+            if (this.FileMode != null || this.Owner != null || this.Group != null)
+            {
+                createOptions.PosixProperties = new FilePosixProperties()
+                {
+                    FileMode = this.FileMode is null ? null : NfsFileMode.ParseSymbolicFileMode(this.FileMode),
+                    Group = this.Group,
+                    Owner = this.Owner
+                };
+            }
+
+            directoryToBeCreated.Create(createOptions, cancellationToken: this.CmdletCancellationToken);
+            WriteObject(new AzureStorageFileDirectory(directoryToBeCreated, (AzureStorageContext)this.Context, shareDirectoryProperties: null, ClientOptions));
         }
     }
 }

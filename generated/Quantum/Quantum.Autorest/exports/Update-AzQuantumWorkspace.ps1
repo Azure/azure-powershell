@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing workspace's tags.
+update an existing workspace's tags.
 .Description
-Updates an existing workspace's tags.
+update an existing workspace's tags.
 .Example
 Update-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw -Tag @{"abc"="123"}
 .Example
@@ -27,7 +27,7 @@ Get-AzQuantumWorkspace -ResourceGroupName azps_test_group_quantum -Name azps-qw 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IQuantumWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,10 +43,12 @@ INPUTOBJECT <IQuantumIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.quantum/update-azquantumworkspace
 #>
 function Update-AzQuantumWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IQuantumWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('WorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Path')]
     [System.String]
@@ -54,12 +56,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -70,15 +76,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.IQuantumIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Quantum.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -136,6 +154,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -157,10 +184,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Quantum.private\Update-AzQuantumWorkspace_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Quantum.private\Update-AzQuantumWorkspace_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Quantum.private\Update-AzQuantumWorkspace_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Quantum.private\Update-AzQuantumWorkspace_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -174,6 +201,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

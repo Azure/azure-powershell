@@ -9,7 +9,7 @@ $vnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/pr
 $subnetName = "delegated"
 $subnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
 
-[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "******" -AsPlainText -Force
 
 $adbsName = "OFakePowerShellTestAdbs"
 New-AzOracleAutonomousDatabase -Name $adbsName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $adbsName -DbWorkload "OLTP" -ComputeCount 2.0 -ComputeModel "ECPU" -DbVersion "19c" -DataStorageSizeInGb 32 -AdminPassword $adbsAdminPassword -LicenseModel "BringYourOwnLicense" -SubnetId $subnetId -VnetId $vnetId -DataBaseType "Regular" -CharacterSet "AL32UTF8" -NcharacterSet "AL16UTF16"

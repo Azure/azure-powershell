@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationAlertSettings
-                .ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(
+                 asrVaultCreds.ResourceGroupName,
+                 asrVaultCreds.ResourceName,
+                this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -55,6 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationAlertSettings
                 .CreateWithHttpMessagesAsync(
+                    asrVaultCreds.ResourceGroupName,
+                    asrVaultCreds.ResourceName,
                     Constants.DefaultAlertSettingName,
                     input.Properties,
                     this.GetRequestHeaders(true))

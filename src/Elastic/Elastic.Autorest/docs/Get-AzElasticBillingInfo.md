@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticBillingInfo
 
 ## SYNOPSIS
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticBillingInfo -InputObject <IElasticIdentity> [-DefaultProfile <PSObj
 ```
 
 ## DESCRIPTION
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 
 ## EXAMPLES
 
@@ -66,7 +66,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -167,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IBillingInfoResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IBillingInfoResponse
 
 ## NOTES
 

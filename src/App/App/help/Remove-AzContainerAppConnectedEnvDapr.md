@@ -57,7 +57,7 @@ Delete a Dapr Component from a connected environment.
 ```powershell
 $connectedenvdapr = Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr
 
-Remove-AzContainerAppConnectedEnvDapr -InpitObject $connectedenvdapr
+Remove-AzContainerAppConnectedEnvDapr -InputObject $connectedenvdapr
 ```
 
 Delete a Dapr Component from a connected environment.

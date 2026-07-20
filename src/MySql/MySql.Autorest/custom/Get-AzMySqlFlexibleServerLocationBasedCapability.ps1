@@ -20,8 +20,13 @@ Get the available SKU information for the location
 #>
 
 function Get-AzMySqlFlexibleServerLocationBasedCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ICapabilityProperties])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PreviewMessage("**********************************************************************************************`n
+* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+* At least one change applies to this cmdlet.                                                     *`n
+* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+***************************************************************************************************")]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]

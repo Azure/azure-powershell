@@ -25,12 +25,12 @@ Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -Base
 Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contoso" -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Prod"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
+Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICheckinManifestInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
 #>
 function Invoke-AzProviderHubManifestCheckin {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICheckinManifestInfo])]
 [CmdletBinding(DefaultParameterSetName='ManifestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -46,17 +46,29 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ManifestExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # The baseline ARM manifest location supplied to the checkin manifest operation.
     ${BaselineArmManifestLocation},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ManifestExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
     [System.String]
     # The environment supplied to the checkin manifest operation.
     ${Environment},
+
+    [Parameter(ParameterSetName='ManifestViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Manifest operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ManifestViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Manifest operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -114,6 +126,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -134,10 +155,10 @@ begin {
 
         $mapping = @{
             ManifestExpanded = 'Az.ProviderHub.private\Invoke-AzProviderHubManifestCheckin_ManifestExpanded';
+            ManifestViaJsonFilePath = 'Az.ProviderHub.private\Invoke-AzProviderHubManifestCheckin_ManifestViaJsonFilePath';
+            ManifestViaJsonString = 'Az.ProviderHub.private\Invoke-AzProviderHubManifestCheckin_ManifestViaJsonString';
         }
-        if (('ManifestExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ManifestExpanded', 'ManifestViaJsonFilePath', 'ManifestViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -151,6 +172,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

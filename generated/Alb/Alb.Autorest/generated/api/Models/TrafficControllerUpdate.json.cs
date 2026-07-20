@@ -85,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
                 return container;
             }
             AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb.Models
                 return;
             }
             {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdateTags.FromJson(__jsonTags) : _tag;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerUpdateProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
     }

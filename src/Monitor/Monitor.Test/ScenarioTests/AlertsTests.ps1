@@ -534,7 +534,7 @@ function Test-DisableAzureRmMetricAlertRuleV2WithActionGroups
 
 	<#
 .SYNOPSIS
-Tests adding a GenV2 dyanmic metric alert rule.
+Tests adding a GenV2 dynamic metric alert rule.
 #>
 function Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold
 {

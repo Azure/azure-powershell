@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Helper
         private readonly VirtualNetwork virtualNetwork;
 
         /// <summary>
-        /// Target subent.
+        /// Target subnet.
         /// </summary>
         private readonly Subnet subNet;
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Helper
         /// </summary>
         /// <param name="storageAccountName">Storage account name.</param>
         /// <param name="containerName"> Storage container name.</param>
-        /// <param name="namespacePath"> namepace path.</param>
+        /// <param name="namespacePath"> namespace path.</param>
         /// <param name="subscriptionId">Subscription id.</param>
         /// <param name="resourceGroupName">Resource group name.</param>
         /// <returns>CLFS storage target parameters.</returns>

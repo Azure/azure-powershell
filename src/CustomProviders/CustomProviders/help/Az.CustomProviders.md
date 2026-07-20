@@ -18,10 +18,10 @@ Gets the custom resource provider manifest.
 Get an association.
 
 ### [New-AzCustomProvider](New-AzCustomProvider.md)
-Creates or updates the custom resource provider.
+create the custom resource provider.
 
 ### [New-AzCustomProviderAssociation](New-AzCustomProviderAssociation.md)
-Create or update an association.
+create an association.
 
 ### [Remove-AzCustomProvider](Remove-AzCustomProvider.md)
 Deletes the custom resource provider.
@@ -30,6 +30,9 @@ Deletes the custom resource provider.
 Delete an association.
 
 ### [Update-AzCustomProvider](Update-AzCustomProvider.md)
-Updates an existing custom resource provider.
+update an existing custom resource provider.
 The only value that can be updated via PATCH currently is the tags.
+
+### [Update-AzCustomProviderAssociation](Update-AzCustomProviderAssociation.md)
+update an association.
 

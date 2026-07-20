@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// Capacity pool patch resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CapacityPoolPatch : Microsoft.Rest.Azure.IResource
+    public partial class CapacityPoolPatch
     {
         /// <summary>
         /// Initializes a new instance of the CapacityPoolPatch class.
@@ -49,7 +49,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="coolAccess">If enabled (true) the pool can contain cool Access enabled volumes.
         /// </param>
-        public CapacityPoolPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string qosType = default(string), long? size = default(long?), bool? coolAccess = default(bool?))
+
+        /// <param name="customThroughputMibps">Maximum throughput in MiB/s that can be achieved by this pool and this will
+        /// be accepted as input only for manual qosType pool with Flexible service
+        /// level
+        /// </param>
+        public CapacityPoolPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string qosType = default(string), long? size = default(long?), bool? coolAccess = default(bool?), int? customThroughputMibps = default(int?))
 
         {
             this.Location = location;
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.QosType = qosType;
             this.Size = size;
             this.CoolAccess = coolAccess;
+            this.CustomThroughputMibps = customThroughputMibps;
             CustomInit();
         }
 
@@ -118,5 +124,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.coolAccess")]
         public bool? CoolAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by this pool
+        /// and this will be accepted as input only for manual qosType pool with
+        /// Flexible service level
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customThroughputMibps")]
+        public int? CustomThroughputMibps {get; set; }
     }
 }

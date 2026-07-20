@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             {
                 return;
             }
-            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
-            {_diagnosticsResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("diagnosticsResourceName"), out var __jsonDiagnosticsResourceName) ? (string)__jsonDiagnosticsResourceName : (string)DiagnosticsResourceName;}
-            {_solutionResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("solutionResourceName"), out var __jsonSolutionResourceName) ? (string)__jsonSolutionResourceName : (string)SolutionResourceName;}
-            {_simplifiedSolutionsResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("simplifiedSolutionsResourceName"), out var __jsonSimplifiedSolutionsResourceName) ? (string)__jsonSimplifiedSolutionsResourceName : (string)SimplifiedSolutionsResourceName;}
-            {_troubleshooterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("troubleshooterName"), out var __jsonTroubleshooterName) ? (string)__jsonTroubleshooterName : (string)TroubleshooterName;}
-            {_solutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("solutionId"), out var __jsonSolutionId) ? (string)__jsonSolutionId : (string)SolutionId;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
+            {_diagnosticsResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("diagnosticsResourceName"), out var __jsonDiagnosticsResourceName) ? (string)__jsonDiagnosticsResourceName : (string)_diagnosticsResourceName;}
+            {_solutionResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("solutionResourceName"), out var __jsonSolutionResourceName) ? (string)__jsonSolutionResourceName : (string)_solutionResourceName;}
+            {_simplifiedSolutionsResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("simplifiedSolutionsResourceName"), out var __jsonSimplifiedSolutionsResourceName) ? (string)__jsonSimplifiedSolutionsResourceName : (string)_simplifiedSolutionsResourceName;}
+            {_troubleshooterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("troubleshooterName"), out var __jsonTroubleshooterName) ? (string)__jsonTroubleshooterName : (string)_troubleshooterName;}
+            {_solutionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("solutionId"), out var __jsonSolutionId) ? (string)__jsonSolutionId : (string)_solutionId;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

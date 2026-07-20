@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.PowerShell;
 
-    /// <summary>Password hash resource</summary>
+    /// <summary>The object representing a firmware analysis password hash result resource</summary>
     [System.ComponentModel.TypeConverter(typeof(PasswordHashResourceTypeConverter))]
     public partial class PasswordHashResource
     {
@@ -153,6 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("PasswordHashId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).PasswordHashId = (string) content.GetValueForProperty("PasswordHashId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).PasswordHashId, global::System.Convert.ToString);
@@ -242,6 +246,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("PasswordHashId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).PasswordHashId = (string) content.GetValueForProperty("PasswordHashId",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IPasswordHashResourceInternal)this).PasswordHashId, global::System.Convert.ToString);
@@ -290,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             return ToJsonString();
         }
     }
-    /// Password hash resource
+    /// The object representing a firmware analysis password hash result resource
     [System.ComponentModel.TypeConverter(typeof(PasswordHashResourceTypeConverter))]
     public partial interface IPasswordHashResource
 

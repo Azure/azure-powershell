@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string Path { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 2, Mandatory = true, HelpMessage =
-                "The deletion ID associated with the soft deleted path. You can get soft deleted paths and their assocaited deletion IDs with cmdlet 'Get-AzDataLakeGen2DeletedItem'.", ParameterSetName = ManualParameterSet)]
+                "The deletion ID associated with the soft deleted path. You can get soft deleted paths and their associated deletion IDs with cmdlet 'Get-AzDataLakeGen2DeletedItem'.", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string DeletionId { get; set; }
 

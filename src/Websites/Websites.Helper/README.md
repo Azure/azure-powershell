@@ -4,18 +4,20 @@ This directory contains the service clients of other services for Azure PowerShe
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest.cmd README.md --version=v2 --tag=Network
-autorest.cmd README.md --version=v2 --tag=PrivateDns
+autorest --reset
+autorest --use:@autorest/powershell@4.x --tag=Network
+autorest --use:@autorest/powershell@4.x --tag=PrivateDns
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
+openapi-type: arm
 clear-output-folder: true
 reflect-api-versions: true
-openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 2
@@ -89,7 +91,7 @@ directive:
     - ServiceAssociationLinksListResult
     - VirtualNetworkPeeringListResult
     - VirtualNetworkListUsageResult
-    - NetworkInterfaceListResult
+    # - NetworkInterfaceListResult
     - EffectiveNetworkSecurityGroupListResult
     - EffectiveRouteListResult
     - NetworkInterfaceTapConfigurationListResult

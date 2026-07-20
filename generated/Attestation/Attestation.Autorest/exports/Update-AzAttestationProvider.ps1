@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates the Attestation Provider.
+Update the Attestation Provider.
 .Description
-Updates the Attestation Provider.
+Update the Attestation Provider.
 .Example
 Update-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg -Tag @{"k"="v"} | fl
 .Example
@@ -27,7 +27,7 @@ Get-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg | Update
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,10 +44,12 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.attestation/update-azattestationprovider
 #>
 function Update-AzAttestationProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ProviderName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Path')]
     [System.String]
@@ -55,6 +57,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,6 +66,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -72,15 +78,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationServicePatchParamsTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationServicePatchParamsTags]))]
     [System.Collections.Hashtable]
     # The tags that will be assigned to the attestation provider.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -138,6 +156,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,10 +186,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Attestation.private\Update-AzAttestationProvider_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Attestation.private\Update-AzAttestationProvider_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Attestation.private\Update-AzAttestationProvider_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Attestation.private\Update-AzAttestationProvider_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -176,6 +203,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

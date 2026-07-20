@@ -15,19 +15,21 @@ Deploys the Azure Firewall Policy draft and all Rule Collection Group drafts ass
 ### DeployByNameParameterSet (Default)
 ```
 Deploy-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeployByResourceIdParameterSet
 ```
-Deploy-AzFirewallPolicy [-AsJob] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Deploy-AzFirewallPolicy [-AsJob] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeployByInputObjectParameterSet
 ```
 Deploy-AzFirewallPolicy [-AsJob] -InputObject <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

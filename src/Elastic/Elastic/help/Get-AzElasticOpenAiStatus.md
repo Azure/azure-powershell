@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticOpenAiStatus
 
 ## SYNOPSIS
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -19,6 +19,12 @@ Get-AzElasticOpenAiStatus -IntegrationName <String> -MonitorName <String> -Resou
  [-Confirm] [<CommonParameters>]
 ```
 
+### GetViaIdentityMonitor
+```
+Get-AzElasticOpenAiStatus -IntegrationName <String> -MonitorInputObject <IElasticIdentity>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzElasticOpenAiStatus -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>]
@@ -26,7 +32,7 @@ Get-AzElasticOpenAiStatus -InputObject <IElasticIdentity> [-DefaultProfile <PSOb
 ```
 
 ## DESCRIPTION
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 
@@ -62,7 +68,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -81,13 +86,28 @@ OpenAI Integration name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMonitor
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: GetViaIdentityMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -178,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationStatusResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationStatusResponse
 
 ## NOTES
 

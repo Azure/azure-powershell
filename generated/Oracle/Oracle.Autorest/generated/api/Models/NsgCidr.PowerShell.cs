@@ -119,11 +119,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("DestinationPortRangeMin"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin = (int) content.GetValueForProperty("DestinationPortRangeMin",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin = (int?) content.GetValueForProperty("DestinationPortRangeMin",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("DestinationPortRangeMax"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax = (int) content.GetValueForProperty("DestinationPortRangeMax",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax = (int?) content.GetValueForProperty("DestinationPortRangeMax",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -152,11 +152,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             if (content.Contains("DestinationPortRangeMin"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin = (int) content.GetValueForProperty("DestinationPortRangeMin",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin = (int?) content.GetValueForProperty("DestinationPortRangeMin",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMin, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("DestinationPortRangeMax"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax = (int) content.GetValueForProperty("DestinationPortRangeMax",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax = (int?) content.GetValueForProperty("DestinationPortRangeMax",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidrInternal)this).DestinationPortRangeMax, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

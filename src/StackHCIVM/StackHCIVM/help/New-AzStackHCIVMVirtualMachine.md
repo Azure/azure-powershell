@@ -21,7 +21,7 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-DynamicMemoryTargetBuffer <Int32>] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <String>]
  [-IdentityType <String>] [-DisablePasswordAuthentication] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-DataDiskId <String[]>]
- [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-AdminPassword <String>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-AdminPassword <SecureString>]
  [-AdminUsername <String>] [-ComputerName <String>] [-EnableTpm] [-SshPublicKey <String[]>]
  [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
  [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -36,11 +36,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-VmProcessor <Int32>] [-VmSize <String>] [-IdentityType <String>] [-DisablePasswordAuthentication]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-AdminPassword <String>] [-AdminUsername <String>] [-ComputerName <String>]
- [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
- -ImageName <String> [-ImageResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataDiskResourceGroup <String>] [-AdminPassword <SecureString>] [-AdminUsername <String>]
+ [-ComputerName <String>] [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate]
+ [-TimeZone <String>] -ImageName <String> [-ImageResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -51,10 +51,10 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-VmProcessor <Int32>] [-VmSize <String>] [-IdentityType <String>] [-DisablePasswordAuthentication]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-AdminPassword <String>] [-AdminUsername <String>] [-ComputerName <String>]
- [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
- -OSDiskId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DataDiskResourceGroup <String>] [-AdminPassword <SecureString>] [-AdminUsername <String>]
+ [-ComputerName <String>] [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate]
+ [-TimeZone <String>] -OSDiskId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,11 +66,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-VmProcessor <Int32>] [-VmSize <String>] [-IdentityType <String>] [-DisablePasswordAuthentication]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-AdminPassword <String>] [-AdminUsername <String>] [-ComputerName <String>]
- [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
- -OSDiskName <String> [-OSDiskResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataDiskResourceGroup <String>] [-AdminPassword <SecureString>] [-AdminUsername <String>]
+ [-ComputerName <String>] [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate]
+ [-TimeZone <String>] -OSDiskName <String> [-OSDiskResourceGroup <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,10 +108,10 @@ This command creates a virtual machine from a disk.
 ## PARAMETERS
 
 ### -AdminPassword
-AdminPassword - admin password
+AdminPassword - admin password (as SecureString)
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -546,7 +546,7 @@ Accept wildcard characters: False
 
 ### -ProvisionVMAgent
 Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
-VM Agent is provsioned by default.
+VM Agent is provisioned by default.
 Please pass -ProvisionVMAgent:$false to disable.
 
 ```yaml

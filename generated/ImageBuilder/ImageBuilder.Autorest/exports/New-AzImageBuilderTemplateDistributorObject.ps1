@@ -27,11 +27,11 @@ New-AzImageBuilderTemplateDistributorObject -ArtifactTag @{tag='vhd'} -VhdDistri
 New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ ARTIFACTTAG <IImageTemplateDistributorArtifactTags>: Tags that will be applied t
 TARGETREGION <ITargetRegion[]>: The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
   Name <String>: The name of the region.
   [ReplicaCount <Int32?>]: The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
-  [StorageAccountType <SharedImageStorageAccountType?>]: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+  [StorageAccountType <String>]: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
 
 VERSIONING <IDistributeVersioner>: Describes how to generate new x.y.z version number for distribution.
   Scheme <String>: Version numbering scheme to be used.
@@ -51,7 +51,7 @@ VERSIONING <IDistributeVersioner>: Describes how to generate new x.y.z version n
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor])]
 [CmdletBinding(DefaultParameterSetName='VhdDistributor', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -80,9 +80,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags]
     # Tags that will be applied to the artifact once it has been created/updated by the distributor.
-    # To construct, see NOTES section for ARTIFACTTAG properties and create a hash table.
     ${ArtifactTag},
 
     [Parameter(ParameterSetName='SharedImageDistributor', Mandatory)]
@@ -113,9 +112,9 @@ param(
     ${ReplicationRegion},
 
     [Parameter(ParameterSetName='SharedImageDistributor')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PSArgumentCompleterAttribute("Standard_LRS", "Standard_ZRS", "Premium_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
+    [System.String]
     # [Deprecated] Storage account type to be used to store the shared image.
     # Omit to use the default (Standard_LRS).
     # This field can be specified only if replicationRegions is specified.
@@ -124,17 +123,15 @@ param(
 
     [Parameter(ParameterSetName='SharedImageDistributor')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITargetRegion[]]
     # The target regions where the distributed Image Version is going to be replicated to.
     # This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
-    # To construct, see NOTES section for TARGETREGION properties and create a hash table.
     ${TargetRegion},
 
     [Parameter(ParameterSetName='SharedImageDistributor')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IDistributeVersioner]
     # Describes how to generate new x.y.z version number for distribution.
-    # To construct, see NOTES section for VERSIONING properties and create a hash table.
     ${Versioning},
 
     [Parameter(ParameterSetName='VhdDistributor', Mandatory)]
@@ -158,6 +155,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -188,6 +188,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

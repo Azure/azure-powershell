@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dns.private.dll'
   FormatsToProcess = './Az.Dns.format.ps1xml'
-  FunctionsToExport = 'Get-AzDnsDnssecConfig', 'New-AzDnsDnssecConfig', 'Remove-AzDnsDnssecConfig', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzDnsDnssecConfig', 'New-AzDnsDnssecConfig', 'Remove-AzDnsDnssecConfig'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Dns'

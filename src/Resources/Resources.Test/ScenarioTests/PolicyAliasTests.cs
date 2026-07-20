@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private void VerifyListCallPatternAndReset()
         {
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
-            this.commandRuntimeMock.ResetCalls();
+            this.commandRuntimeMock.Invocations.Clear();
         }
     }
 }

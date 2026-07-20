@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticVMHost
 
 ## SYNOPSIS
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticVMHost -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 ```
 
 ## DESCRIPTION
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## EXAMPLES
 
@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMResources
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMResources
 
 ## NOTES
 

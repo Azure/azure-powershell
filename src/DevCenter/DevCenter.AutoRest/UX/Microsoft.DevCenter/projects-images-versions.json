@@ -1,0 +1,57 @@
+{
+  "resourceType": "projects/images/versions",
+  "apiVersion": "2025-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminImageVersion",
+      "description": "Gets an image version.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}/versions/{versionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminimageversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ImageName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VersionName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an image version.",
+          "parameters": [
+            {
+              "name": "-ImageName",
+              "value": "[Path.imageName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VersionName",
+              "value": "[Path.versionName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

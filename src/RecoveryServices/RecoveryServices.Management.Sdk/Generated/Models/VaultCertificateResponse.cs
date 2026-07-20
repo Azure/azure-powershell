@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
     /// Certificate corresponding to a vault that can be used by clients to
     /// register themselves with the vault.
     /// </summary>
-    public partial class VaultCertificateResponse : Microsoft.Rest.Azure.IResource
+    public partial class VaultCertificateResponse
     {
         /// <summary>
         /// Initializes a new instance of the VaultCertificateResponse class.

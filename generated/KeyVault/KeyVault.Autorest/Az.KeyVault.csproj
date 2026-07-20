@@ -3,6 +3,7 @@
     <PsModuleName>KeyVault</PsModuleName>
     <PsRootModuleName>KeyVault</PsRootModuleName>
     <PsModuleFolder>KeyVault.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.KeyVault</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

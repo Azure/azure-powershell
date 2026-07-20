@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragecredentialscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for AzureStorageCredentialScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureStorageCredentialScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
- [-CredentialType <CredentialType>] [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>]
- [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAzureStorageCredentialScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>] [-CredentialType <String>]
+ [-ScanRulesetName <String>] [-ScanRulesetType <String>] [-Worker <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for AzureStorageCredentialScan.
 
 ### Example 1: Create Azure Storage Credential scan object
 ```powershell
-New-AzPurviewAzureStorageCredentialScanObject -Kind 'AzureStorageCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageCredentialScanObject -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'datascantestdataparv-accountkey' -CredentialType 'AccountKey' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
 ```
 
 ```output
@@ -110,25 +110,11 @@ Accept wildcard characters: False
 ### -CredentialType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,7 +138,7 @@ Accept wildcard characters: False
 ### -ScanRulesetType
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageCredentialScan
 
 ## NOTES
 

@@ -48,7 +48,7 @@ Creates an ASRVmNicConfig object with the failover and test failover networking 
 $nicConfig = New-AzRecoveryServicesAsrVMNicConfig -NicId $AsrNicGuid -ReplicationProtectedItem $Rpi -TfoNicName $TfoNicName -TfoNicResourceGroupName $TfoNicRgName -TfoReuseExistingNic
 ```
 
-Creates an ASRVmNicConfig object with the test faiover networking settings configured for the NIC renaming. Any property that's not passed above is fetched from the protected item passed.
+Creates an ASRVmNicConfig object with the test failover networking settings configured for the NIC renaming. Any property that's not passed above is fetched from the protected item passed.
 
 ## PARAMETERS
 

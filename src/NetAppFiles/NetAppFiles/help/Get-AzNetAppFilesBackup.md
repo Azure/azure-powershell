@@ -57,7 +57,6 @@ Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -Back
 
 This command gets the backups for the volume with resource Id volume with resource Id $volumeResourceId from the Backup Vault "MyVault".
 
-
 ## PARAMETERS
 
 ### -AccountName

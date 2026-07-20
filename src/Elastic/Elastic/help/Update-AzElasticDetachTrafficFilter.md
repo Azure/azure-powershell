@@ -8,26 +8,26 @@ schema: 2.0.0
 # Update-AzElasticDetachTrafficFilter
 
 ## SYNOPSIS
-Detach traffic filter for the given deployment.
+Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## SYNTAX
 
 ### Update (Default)
 ```
 Update-AzElasticDetachTrafficFilter -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-RulesetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-RulesetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzElasticDetachTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Detach traffic filter for the given deployment.
+Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ## EXAMPLES
 
@@ -73,7 +73,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -104,6 +103,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

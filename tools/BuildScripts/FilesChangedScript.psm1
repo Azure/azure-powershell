@@ -5,25 +5,27 @@ function Get-OutdatedSubModule {
         [switch]$ForceRegenerate
     )
     $outdatedSubModule = @()
-    $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
-    foreach ($subModule in $subModuleSource) {
-        $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
-        $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
-        if (-not (Test-Path $generateInfoSource)) {
-            Write-Error "$generateInfoSource was not found!"
-            Exit 1
-        }
-        if (Test-Path $generateInfoGenerated) {
-            $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
-            $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
-            Write-Host "Submodule $subModule generate Id src: $generateIdSource" -ForegroundColor Cyan
-            Write-Host "Submodule $subModule generate Id generated: $generateIdGenerated" -ForegroundColor Cyan
-            if ($generateIdSource -And $generateIdGenerated -And ($generateIdSource -eq $generateIdGenerated) -And (-not $ForceRegenerate)) {
-                continue
+    if (Test-Path $SourceDirectory) {
+        $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
+        foreach ($subModule in $subModuleSource) {
+            $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
+            $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
+            if (-not (Test-Path $generateInfoSource)) {
+                Write-Error "$generateInfoSource was not found!"
+                Exit 1
             }
+            if (Test-Path $generateInfoGenerated) {
+                $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
+                $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
+                Write-Host "Submodule $subModule generate Id src: $generateIdSource" -ForegroundColor Cyan
+                Write-Host "Submodule $subModule generate Id generated: $generateIdGenerated" -ForegroundColor Cyan
+                if ($generateIdSource -And $generateIdGenerated -And ($generateIdSource -eq $generateIdGenerated) -And (-not $ForceRegenerate)) {
+                    continue
+                }
+            }
+            Write-Host "Found outdated submodule: $subModule" -ForegroundColor DarkMagenta
+            $outDatedSubModule += $subModule
         }
-        Write-Host "Found outdated submodule: $subModule" -ForegroundColor DarkMagenta
-        $outDatedSubModule += $subModule
     }
     return $outDatedSubModule
 }

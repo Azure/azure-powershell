@@ -39,16 +39,19 @@ namespace Microsoft.Azure.Management.Search
         public SearchManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of all supported private link resource types for the given service.
+        /// Gets a list of all supported private link resource types for the given
+        /// service.
         /// </summary>
         /// <param name='searchManagementRequestOptions'>
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group within the current subscription. You can
+        /// obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='searchServiceName'>
-        /// The name of the Azure Cognitive Search service associated with the specified resource group.
+        /// The name of the Azure AI Search service associated with the specified
+        /// resource group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -99,7 +102,13 @@ namespace Microsoft.Azure.Management.Search
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "searchServiceName");
             }
-
+            if (searchServiceName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(searchServiceName, "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "searchServiceName", "^(?=.{2,60}$)[a-z0-9][a-z0-9]+(-[a-z0-9]+)*$");
+                }
+            }
             System.Guid? clientRequestId = default(System.Guid?);
             if (searchManagementRequestOptions != null)
             {

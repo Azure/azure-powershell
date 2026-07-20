@@ -160,12 +160,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 address.AddressLine3 = this.AddressLine3;
             }
 
-            var order = new ResourceModel(contactDetails, address);
+            var order = new ResourceModel(contactInformation: contactDetails, shippingAddress: address);
             var psResourceModel = new PSResourceModel(
                 _operations.CreateOrUpdate(
                     this.DeviceName,
-                    order,
-                    this.ResourceGroupName));
+                    this.ResourceGroupName,
+                    order));
             return psResourceModel;
         }
 

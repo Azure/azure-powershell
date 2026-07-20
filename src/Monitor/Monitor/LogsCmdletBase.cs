@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Insights
         }
 
         /// <summary>
-        /// Validates that the range of dates (start / end) makes sense, it is not to great (less 15 days), and adds the defaul values if needed
+        /// Validates that the range of dates (start / end) makes sense, it is not to great (less 15 days), and adds the default values if needed
         /// </summary>
         /// <returns>A query filter string with the time conditions</returns>
         private string ValidateDateTimeRangeAndAddDefaults()
@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Commands.Insights
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
         /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time.
-        /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
+        /// The SDK does not allow these two fields to be in the query filter together. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
         /// <returns>true if the record should kept in the result, false if it should be filtered out</returns>
         protected virtual bool KeepTheRecord(EventData record)
         {
-            // Do not filter in this funtion, use a filter in the descendants only
+            // Do not filter in this function, use a filter in the descendants only
             return true;
         }
 

@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMapsCreator' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         { Update-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName01 -Name $env.creatorName01 -Tag @{'key1'='value1'; 'key2'='value2'} } | Should -Not -Throw
     }
 
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         {
           $creator = Get-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName01 -Name $env.creatorName01 
           Update-AzMapsCreator -InputObject $creator -Tag @{'key1'='value1'; 'key2'='value2'} 

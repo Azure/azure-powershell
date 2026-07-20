@@ -134,25 +134,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Encryption()); set { {_encryption = value;} } }
 
         /// <summary>Internal Acessors for EncryptionKeyVaultProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyAutoDetectedKeyVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyAutoDetectedKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyAutoDetectedKeyVersion = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyKeyState = value ?? null; }
 
         /// <summary>Internal Acessors for KeyVaultPropertyVersionType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.KeyVaultPropertyVersionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionInternal)Encryption).KeyVaultPropertyVersionType = value ?? null; }
 
         /// <summary>Internal Acessors for ManagementCluster</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementCluster { get => (this._managementCluster = this._managementCluster ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementCluster()); set { {_managementCluster = value;} } }
 
         /// <summary>Internal Acessors for ManagementClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ClusterId = value ?? default(int); }
 
         /// <summary>Internal Acessors for ManagementClusterProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal.ManagementClusterProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementClusterInternal)ManagementCluster).ProvisioningState = value ?? null; }
 
         /// <summary>Creates an new <see cref="PrivateCloudUpdateProperties" /> instance.</summary>
         public PrivateCloudUpdateProperties()

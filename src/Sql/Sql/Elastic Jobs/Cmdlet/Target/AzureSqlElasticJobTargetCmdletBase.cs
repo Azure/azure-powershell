@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public virtual SwitchParameter Exclude { get; set; }
 
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The Azure Elastic Job Adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()

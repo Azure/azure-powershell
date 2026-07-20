@@ -156,5 +156,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzRouteConfig](./New-AzRouteConfig.md)
 
 [Set-AzRouteConfig](./Set-AzRouteConfig.md)
-
-

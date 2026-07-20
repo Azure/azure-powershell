@@ -67,7 +67,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionBandwidth">Expected bandwidth in MBPS.
         /// </param>
 
-        /// <param name="sharedKey">SharedKey for the vpn connection.
+        /// <param name="sharedKey">SharedKey for the vpn link connection. We will no longer return sharedKey
+        /// in any Create/Update/Get/List/UpdateTags
+        /// VpnGateway/VpnConnection/VpnLinkConnection APIs response. Please use &#39;Vpn
+        /// Link Connections - List Default Shared Key&#39; API to fetch Vpn link
+        /// connection sharedKey.
         /// </param>
 
         /// <param name="enableBgp">EnableBgp flag.
@@ -206,7 +210,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? ConnectionBandwidth {get; set; }
 
         /// <summary>
-        /// Gets or sets sharedKey for the vpn connection.
+        /// Gets or sets sharedKey for the vpn link connection. We will no longer
+        /// return sharedKey in any Create/Update/Get/List/UpdateTags
+        /// VpnGateway/VpnConnection/VpnLinkConnection APIs response. Please use &#39;Vpn
+        /// Link Connections - List Default Shared Key&#39; API to fetch Vpn link
+        /// connection sharedKey.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sharedKey")]
         public string SharedKey {get; set; }

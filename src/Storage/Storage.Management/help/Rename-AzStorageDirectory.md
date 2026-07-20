@@ -213,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareClient
-ShareClienr indicated the share where the directory would be listed.
+ShareClient indicated the share where the directory would be listed.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareClient

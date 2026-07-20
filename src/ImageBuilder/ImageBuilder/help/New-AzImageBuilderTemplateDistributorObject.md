@@ -30,9 +30,9 @@ New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -ImageId <St
 ```
 New-AzImageBuilderTemplateDistributorObject -RunOutputName <String>
  [-ArtifactTag <IImageTemplateDistributorArtifactTags>] -GalleryImageId <String> [-SharedImageDistributor]
- [-ExcludeFromLatest <Boolean>] [-ReplicationRegion <String[]>]
- [-StorageAccountType <SharedImageStorageAccountType>] [-TargetRegion <ITargetRegion[]>]
- [-Versioning <IDistributeVersioner>] [<CommonParameters>]
+ [-ExcludeFromLatest <Boolean>] [-ReplicationRegion <String[]>] [-StorageAccountType <String>]
+ [-TargetRegion <ITargetRegion[]>] [-Versioning <IDistributeVersioner>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,10 +83,9 @@ This command creates a shared image distributor.
 
 ### -ArtifactTag
 Tags that will be applied to the artifact once it has been created/updated by the distributor.
-To construct, see NOTES section for ARTIFACTTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +226,7 @@ This field can be specified only if replicationRegions is specified.
 This field is deprecated - use targetRegions instead.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType
+Type: System.String
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -241,10 +240,9 @@ Accept wildcard characters: False
 ### -TargetRegion
 The target regions where the distributed Image Version is going to be replicated to.
 This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
-To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ITargetRegion[]
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -273,10 +271,9 @@ Accept wildcard characters: False
 
 ### -Versioning
 Describes how to generate new x.y.z version number for distribution.
-To construct, see NOTES section for VERSIONING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IDistributeVersioner
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -309,11 +306,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateManagedImageDistributor
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateSharedImageDistributor
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor
 
 ## NOTES
 

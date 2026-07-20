@@ -21,12 +21,13 @@ Create an in-memory object for AlertRuleLeafCondition.
 Create an in-memory object for AlertRuleLeafCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleLeafConditionObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertalertruleleafconditionobject
 #>
 function New-AzActivityLogAlertAlertRuleLeafConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +44,7 @@ function New-AzActivityLogAlertAlertRuleLeafConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ContainsAny')) {
             $Object.ContainsAny = $ContainsAny

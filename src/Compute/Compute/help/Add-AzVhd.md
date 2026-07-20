@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskHyperVGeneration
-The hypervisor generation of the Virtual Machine. Applicable to OS disks only. Posssible values are: 'V1', 'V2'.
+The hypervisor generation of the Virtual Machine. Applicable to OS disks only. Possible values are: 'V1', 'V2'.
 
 ```yaml
 Type: System.String

@@ -16,27 +16,35 @@
 
 <#
 .Synopsis
-Create a TestLine
+create a TestLine
 .Description
-Create a TestLine
+create a TestLine
 .Example
 New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 -Location westcentralus -Purpose 'Automated' -PhoneNumber "+1-555-1234"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine
+Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+COMMUNICATIONSGATEWAYINPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
+  [CommunicationsGatewayName <String>]: Unique identifier for this deployment
+  [Id <String>]: Resource identity path
+  [Location <String>]: The location in which uniqueness will be verified.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TestLineName <String>]: Unique identifier for this test line
 .Link
 https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationstestline
 #>
 function New-AzVoiceServicesCommunicationsTestLine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITestLine])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
-    [System.String]
-    # Unique identifier for this deployment
-    ${CommunicationsGatewayName},
-
     [Parameter(Mandatory)]
     [Alias('TestLineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
@@ -44,46 +52,80 @@ param(
     # Unique identifier for this test line
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
+    [System.String]
+    # Unique identifier for this deployment
+    ${CommunicationsGatewayName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityCommunicationsGatewayExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity]
+    # Identity Parameter
+    ${CommunicationsGatewayInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityCommunicationsGatewayExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCommunicationsGatewayExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
     [System.String]
     # The phone number
     ${PhoneNumber},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCommunicationsGatewayExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PSArgumentCompleterAttribute("Manual", "Automated")]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose]
+    [System.String]
     # Purpose of this test line, e.g.
     # automated or manual testing
     ${Purpose},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCommunicationsGatewayExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -153,6 +195,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,10 +224,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VoiceServices.private\New-AzVoiceServicesCommunicationsTestLine_CreateExpanded';
+            CreateViaIdentityCommunicationsGatewayExpanded = 'Az.VoiceServices.private\New-AzVoiceServicesCommunicationsTestLine_CreateViaIdentityCommunicationsGatewayExpanded';
+            CreateViaJsonFilePath = 'Az.VoiceServices.private\New-AzVoiceServicesCommunicationsTestLine_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.VoiceServices.private\New-AzVoiceServicesCommunicationsTestLine_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +242,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

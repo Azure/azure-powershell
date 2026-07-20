@@ -117,10 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Otlp = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver) content.GetValueForProperty("Otlp",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Otlp, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.OtlpReceiverTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Udp"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Udp = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver) content.GetValueForProperty("Udp",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Udp, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiverTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Type, global::System.Convert.ToString);
@@ -129,29 +125,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("SyslogProtocol"))
+            if (content.Contains("TlsConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogProtocol = (string) content.GetValueForProperty("SyslogProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogProtocol, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).TlsConfiguration = (string) content.GetValueForProperty("TlsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).TlsConfiguration, global::System.Convert.ToString);
+            }
+            if (content.Contains("SyslogTransportProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogTransportProtocol = (string) content.GetValueForProperty("SyslogTransportProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogTransportProtocol, global::System.Convert.ToString);
             }
             if (content.Contains("SyslogEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogEndpoint = (string) content.GetValueForProperty("SyslogEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogEndpoint, global::System.Convert.ToString);
             }
+            if (content.Contains("SyslogAllowedFormat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowedFormat = (System.Collections.Generic.List<string>) content.GetValueForProperty("SyslogAllowedFormat",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowedFormat, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SyslogAllowSkipPriHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowSkipPriHeader = (bool?) content.GetValueForProperty("SyslogAllowSkipPriHeader",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowSkipPriHeader, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("OtlpEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).OtlpEndpoint = (string) content.GetValueForProperty("OtlpEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).OtlpEndpoint, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEndpoint = (string) content.GetValueForProperty("UdpEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEndpoint, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpEncoding"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEncoding = (string) content.GetValueForProperty("UdpEncoding",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEncoding, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpReadQueueLength"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpReadQueueLength = (int?) content.GetValueForProperty("UdpReadQueueLength",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpReadQueueLength, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -178,10 +174,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Otlp = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver) content.GetValueForProperty("Otlp",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Otlp, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.OtlpReceiverTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Udp"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Udp = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver) content.GetValueForProperty("Udp",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Udp, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiverTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Type, global::System.Convert.ToString);
@@ -190,29 +182,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("SyslogProtocol"))
+            if (content.Contains("TlsConfiguration"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogProtocol = (string) content.GetValueForProperty("SyslogProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogProtocol, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).TlsConfiguration = (string) content.GetValueForProperty("TlsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).TlsConfiguration, global::System.Convert.ToString);
+            }
+            if (content.Contains("SyslogTransportProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogTransportProtocol = (string) content.GetValueForProperty("SyslogTransportProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogTransportProtocol, global::System.Convert.ToString);
             }
             if (content.Contains("SyslogEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogEndpoint = (string) content.GetValueForProperty("SyslogEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogEndpoint, global::System.Convert.ToString);
             }
+            if (content.Contains("SyslogAllowedFormat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowedFormat = (System.Collections.Generic.List<string>) content.GetValueForProperty("SyslogAllowedFormat",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowedFormat, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SyslogAllowSkipPriHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowSkipPriHeader = (bool?) content.GetValueForProperty("SyslogAllowSkipPriHeader",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).SyslogAllowSkipPriHeader, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("OtlpEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).OtlpEndpoint = (string) content.GetValueForProperty("OtlpEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).OtlpEndpoint, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpEndpoint"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEndpoint = (string) content.GetValueForProperty("UdpEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEndpoint, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpEncoding"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEncoding = (string) content.GetValueForProperty("UdpEncoding",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpEncoding, global::System.Convert.ToString);
-            }
-            if (content.Contains("UdpReadQueueLength"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpReadQueueLength = (int?) content.GetValueForProperty("UdpReadQueueLength",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal)this).UdpReadQueueLength, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

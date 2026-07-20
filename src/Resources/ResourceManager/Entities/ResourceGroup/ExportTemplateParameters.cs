@@ -32,5 +32,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGrou
         /// </summary>
         [JsonProperty(Required = Required.Always)]
         public string[] Resources { get; set; }
+
+        /// <summary>
+        /// Gets or sets the output format.
+        /// </summary>
+        public string OutputFormat { get; set; }
     }
 }

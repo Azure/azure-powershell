@@ -105,12 +105,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_communicationsGatewayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("communicationsGatewayName"), out var __jsonCommunicationsGatewayName) ? (string)__jsonCommunicationsGatewayName : (string)CommunicationsGatewayName;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_testLineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("testLineName"), out var __jsonTestLineName) ? (string)__jsonTestLineName : (string)TestLineName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_communicationsGatewayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("communicationsGatewayName"), out var __jsonCommunicationsGatewayName) ? (string)__jsonCommunicationsGatewayName : (string)_communicationsGatewayName;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_testLineName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("testLineName"), out var __jsonTestLineName) ? (string)__jsonTestLineName : (string)_testLineName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
     }

@@ -19,8 +19,8 @@ New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> -Location <St
  [-DomainNameLabel <String>] [-DomainNameLabelScope <PSDomainNameLabelScopeType>] [-IpTag <PSPublicIpTag[]>]
  [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>]
  [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -388,7 +388,7 @@ The public IP Sku name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Basic, Standard, StandardV2
 
 Required: False
 Position: Named

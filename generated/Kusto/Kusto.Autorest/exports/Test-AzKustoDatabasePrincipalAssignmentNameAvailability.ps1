@@ -27,11 +27,28 @@ Test-AzKustoDatabasePrincipalAssignmentNameAvailability -ResourceGroupName "test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
@@ -53,22 +70,29 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodatabaseprincipalassignmentnameavailability
 #>
 function Test-AzKustoDatabasePrincipalAssignmentNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
     ${ClusterName},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the database in the Kusto cluster.
     ${DatabaseName},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -76,24 +100,45 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter(ParameterSetName='CheckViaJsonFilePath')]
+    [Parameter(ParameterSetName='CheckViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CheckViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
     [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # Principal Assignment resource name.
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,6 +196,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -171,11 +224,12 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.Kusto.private\Test-AzKustoDatabasePrincipalAssignmentNameAvailability_CheckExpanded';
+            CheckViaIdentityClusterExpanded = 'Az.Kusto.private\Test-AzKustoDatabasePrincipalAssignmentNameAvailability_CheckViaIdentityClusterExpanded';
             CheckViaIdentityExpanded = 'Az.Kusto.private\Test-AzKustoDatabasePrincipalAssignmentNameAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.Kusto.private\Test-AzKustoDatabasePrincipalAssignmentNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.Kusto.private\Test-AzKustoDatabasePrincipalAssignmentNameAvailability_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -189,6 +243,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

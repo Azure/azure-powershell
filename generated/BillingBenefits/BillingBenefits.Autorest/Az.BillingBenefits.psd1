@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.BillingBenefits.private.dll'
   FormatsToProcess = './Az.BillingBenefits.format.ps1xml'
-  FunctionsToExport = 'Get-AzBillingBenefitsReservationOrderAlias', 'Get-AzBillingBenefitsSavingsPlan', 'Get-AzBillingBenefitsSavingsPlanList', 'Get-AzBillingBenefitsSavingsPlanOrder', 'Get-AzBillingBenefitsSavingsPlanOrderAlias', 'Invoke-AzBillingBenefitsElevateSavingPlanOrder', 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation', 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation', 'New-AzBillingBenefitsReservationOrderAlias', 'New-AzBillingBenefitsSavingsPlanOrderAlias', 'Update-AzBillingBenefitsSavingsPlan', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzBillingBenefitsReservationOrderAlias', 'Get-AzBillingBenefitsSavingsPlan', 'Get-AzBillingBenefitsSavingsPlanList', 'Get-AzBillingBenefitsSavingsPlanOrder', 'Get-AzBillingBenefitsSavingsPlanOrderAlias', 'Invoke-AzBillingBenefitsElevateSavingPlanOrder', 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation', 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation', 'New-AzBillingBenefitsReservationOrderAlias', 'New-AzBillingBenefitsSavingsPlanOrderAlias', 'Update-AzBillingBenefitsSavingsPlan', 'Update-AzBillingBenefitsSavingsPlanOrderAlias'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'BillingBenefits'

@@ -16,27 +16,27 @@
 
 <#
 .Synopsis
-Description for Creates a backup of an app.
+Description for backup a backup of an app.
 .Description
-Description for Creates a backup of an app.
+Description for backup a backup of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupRequest
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupItem
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATABASE <IDatabaseBackupSetting[]>: Databases included in the backup.
-  DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
   [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   [Name <String>]: 
@@ -49,7 +49,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -79,7 +79,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -116,12 +116,12 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
   [Kind <String>]: Kind of resource.
   [BackupName <String>]: Name of the backup.
   [BackupScheduleFrequencyInterval <Int32?>]: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-  [BackupScheduleFrequencyUnit <FrequencyUnit?>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+  [BackupScheduleFrequencyUnit <String>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
   [BackupScheduleKeepAtLeastOneBackup <Boolean?>]: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
   [BackupScheduleRetentionPeriodInDay <Int32?>]: After how many days backups should be deleted.
   [BackupScheduleStartTime <DateTime?>]: When the schedule should start working.
-  [Database <IDatabaseBackupSetting[]>]: Databases included in the backup.
-    DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  [Database <List<IDatabaseBackupSetting>>]: Databases included in the backup.
+    DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
     [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
@@ -131,11 +131,13 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
 https://learn.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupItem])]
 [CmdletBinding(DefaultParameterSetName='BackupExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Backup', Mandatory)]
     [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -143,6 +145,8 @@ param(
 
     [Parameter(ParameterSetName='Backup', Mandatory)]
     [Parameter(ParameterSetName='BackupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -150,6 +154,8 @@ param(
 
     [Parameter(ParameterSetName='Backup')]
     [Parameter(ParameterSetName='BackupExpanded')]
+    [Parameter(ParameterSetName='BackupViaJsonFilePath')]
+    [Parameter(ParameterSetName='BackupViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -163,15 +169,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Backup', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='BackupViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IBackupRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBackupRequest]
     # Description of a backup which will be performed.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='BackupExpanded')]
@@ -191,9 +195,9 @@ param(
 
     [Parameter(ParameterSetName='BackupExpanded')]
     [Parameter(ParameterSetName='BackupViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Day", "Hour")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FrequencyUnit]
+    [System.String]
     # The unit of time for how often the backup should be executed (e.g.
     # for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
     ${BackupScheduleFrequencyUnit},
@@ -223,9 +227,8 @@ param(
     [Parameter(ParameterSetName='BackupViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDatabaseBackupSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDatabaseBackupSetting[]]
     # Databases included in the backup.
-    # To construct, see NOTES section for DATABASE properties and create a hash table.
     ${Database},
 
     [Parameter(ParameterSetName='BackupExpanded')]
@@ -248,6 +251,18 @@ param(
     [System.String]
     # SAS URL to the container.
     ${StorageAccountUrl},
+
+    [Parameter(ParameterSetName='BackupViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Backup operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='BackupViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Backup operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -305,16 +320,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Backup = 'Az.Functions.private\Backup-AzFunctionApp_Backup';
             BackupExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupExpanded';
             BackupViaIdentity = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaIdentity';
             BackupViaIdentityExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaIdentityExpanded';
+            BackupViaJsonFilePath = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaJsonFilePath';
+            BackupViaJsonString = 'Az.Functions.private\Backup-AzFunctionApp_BackupViaJsonString';
         }
-        if (('Backup', 'BackupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Backup', 'BackupExpanded', 'BackupViaJsonFilePath', 'BackupViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -323,6 +341,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -365,13 +386,13 @@ Get the API Key for this key id.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentApiKey
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponentApiKey
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+COMPONENTINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [ActionName <String>]: The workflow action name.
   [AnalysisName <String>]: Analysis Name
@@ -379,7 +400,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -409,7 +430,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -445,10 +537,11 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
 #>
 function Get-AzAppInsightsApiKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentApiKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponentApiKey])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityComponent', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The API Key ID.
@@ -484,8 +577,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityComponent', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${ComponentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -543,15 +641,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsightsApiKey_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzAppInsightsApiKey_GetViaIdentity';
+            GetViaIdentityComponent = 'Az.Functions.private\Get-AzAppInsightsApiKey_GetViaIdentityComponent';
             List = 'Az.Functions.private\Get-AzAppInsightsApiKey_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -560,6 +660,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -602,7 +705,7 @@ Returns an Application Insights component.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -616,7 +719,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -646,7 +749,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -682,7 +785,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azappinsights
 #>
 function Get-AzAppInsights {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -714,7 +817,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -773,6 +875,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsights_Get';
@@ -780,9 +885,7 @@ begin {
             List = 'Az.Functions.private\Get-AzAppInsights_List';
             List1 = 'Az.Functions.private\Get-AzAppInsights_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -791,6 +894,353 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets properties of a specified container.
+.Description
+Gets properties of a specified container.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IListContainerItem
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+STORAGEACCOUNTINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/get-azblobcontainer
+#>
+function Get-AzBlobContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IListContainerItem])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityStorageAccount', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${StorageAccountInputObject},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # When specified, only container names starting with the filter will be listed.
+    ${Filter},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # Specified maximum number of containers that can be included in the list.
+    ${Maxpagesize},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
+    [System.String]
+    # Optional.
+    # Continuation token for the list operation.
+    ${SkipToken},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.Functions.private\Get-AzBlobContainer_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzBlobContainer_GetViaIdentity';
+            GetViaIdentityStorageAccount = 'Az.Functions.private\Get-AzBlobContainer_GetViaIdentityStorageAccount';
+            List = 'Az.Functions.private\Get-AzBlobContainer_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -831,14 +1281,18 @@ Get-AzFunctionAppAvailableLocation
 Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 .Example
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+.Example
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IGeoRegion
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IGeoRegion])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -863,9 +1317,9 @@ param(
     ${LinuxWorkersEnabled},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "Free", "Shared", "Basic", "Standard", "Premium", "Dynamic", "Isolated", "IsolatedV2", "PremiumV2", "PremiumV3", "PremiumContainer", "ElasticPremium", "ElasticIsolated", "FlexConsumption")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName]
+    [System.String]
     # Name of SKU used to filter the regions.
     ${Sku},
 
@@ -931,13 +1385,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzFunctionAppAvailableLocation_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -946,6 +1401,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -992,7 +1450,7 @@ Get-AzFunctionAppPlan -Location "Central US"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1006,7 +1464,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -1036,7 +1494,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -1072,7 +1530,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1103,7 +1561,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1143,13 +1600,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
     [System.Uri]
@@ -1177,6 +1627,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionAppPlan_Get';
@@ -1184,9 +1637,7 @@ begin {
             List = 'Az.Functions.private\Get-AzFunctionAppPlan_List';
             List1 = 'Az.Functions.private\Get-AzFunctionAppPlan_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1195,6 +1646,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1243,7 +1697,7 @@ Get-AzFunctionApp -Location "Central US"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1257,7 +1711,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -1287,7 +1741,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -1323,7 +1777,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1354,7 +1808,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List1')]
@@ -1393,13 +1846,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
     [System.Uri]
@@ -1427,6 +1873,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionApp_Get';
@@ -1434,9 +1883,7 @@ begin {
             List = 'Az.Functions.private\Get-AzFunctionApp_List';
             List1 = 'Az.Functions.private\Get-AzFunctionApp_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1445,6 +1892,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1487,7 +1937,7 @@ Description for Get function information by its ID for web site, or a deployment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionEnvelope
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionEnvelope
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1501,7 +1951,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -1531,7 +1981,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -1567,7 +2088,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunction
 #>
 function Get-AzFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionEnvelope])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionEnvelope])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1578,6 +2099,7 @@ param(
     ${FunctionAppName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Function name.
@@ -1604,8 +2126,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1636,12 +2163,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
     [System.Uri]
@@ -1669,15 +2190,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunction_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunction_GetViaIdentity';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzFunction_GetViaIdentitySite';
             List = 'Az.Functions.private\Get-AzFunction_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1686,6 +2209,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1726,12 +2252,12 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStorageAccountListKeysResult
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
 #>
 function Get-AzStorageAccountKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStorageAccountListKeysResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1758,9 +2284,9 @@ param(
     ${SubscriptionId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ListKeyExpand])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("kerb")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ListKeyExpand]
+    [System.String]
     # Specifies type of the key to be listed.
     # Possible value is kerb.
     ${Expand},
@@ -1821,13 +2347,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccountKey_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1836,6 +2363,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1878,12 +2408,12 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStorageAccount
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStorageAccount])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -1958,14 +2488,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccount_List';
             List1 = 'Az.Functions.private\Get-AzStorageAccount_List1';
         }
-        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1974,6 +2505,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2013,105 +2547,21 @@ Gets the systemAssignedIdentity available under the specified RP scope.
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISystemAssignedIdentity
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISystemAssignedIdentity])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The resource provider scope of the resource.
     # Parent resource being extended by Managed Identities.
     ${Scope},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2169,13 +2619,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzSystemAssignedIdentity_Get';
-            GetViaIdentity = 'Az.Functions.private\Get-AzSystemAssignedIdentity_GetViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2218,7 +2673,7 @@ Gets the identity.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2232,7 +2687,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -2262,7 +2717,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -2298,7 +2753,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2329,7 +2784,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2388,6 +2842,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzUserAssignedIdentity_Get';
@@ -2395,9 +2852,7 @@ begin {
             List = 'Az.Functions.private\Get-AzUserAssignedIdentity_List';
             List1 = 'Az.Functions.private\Get-AzUserAssignedIdentity_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2406,6 +2861,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2446,12 +2904,12 @@ Description for Gets the application settings of an app.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2538,13 +2996,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSettingSlot_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2553,6 +3012,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2593,12 +3055,12 @@ Description for Gets the application settings of an app.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2678,13 +3140,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSetting_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2693,6 +3156,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2733,12 +3199,12 @@ Description for Returns whether Scm basic auth is allowed and whether Ftp is all
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicyslot
 #>
 function Get-AzWebAppBasicPublishingCredentialsPolicySlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2824,13 +3290,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicySlot_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2839,6 +3306,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2879,12 +3349,12 @@ Description for Returns whether Scm basic auth is allowed and whether Ftp is all
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
 #>
 function Get-AzWebAppBasicPublishingCredentialsPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2964,13 +3434,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2979,6 +3450,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3021,7 +3495,7 @@ Description for Gets the configuration of an app, such as platform version and b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3035,7 +3509,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -3065,7 +3539,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -3101,7 +3646,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
 #>
 function Get-AzWebAppConfigurationSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3119,6 +3664,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
@@ -3140,8 +3686,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3199,15 +3750,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentity';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentitySite';
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3216,6 +3769,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3258,12 +3814,12 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigurationSnapshotInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
 #>
 function Get-AzWebAppConfigurationSnapshotInfoSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigurationSnapshotInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3350,13 +3906,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfoSlot_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3365,6 +3922,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3407,12 +3967,12 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigurationSnapshotInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigurationSnapshotInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3492,13 +4052,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfo_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3507,6 +4068,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3549,7 +4113,7 @@ Description for Gets a snapshot of the configuration of an app at a previous poi
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3563,7 +4127,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -3593,7 +4157,149 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SNAPSHOTINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -3629,7 +4335,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
 #>
 function Get-AzWebAppConfigurationSnapshotSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3645,6 +4351,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySnapshot', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the deployment slot.
@@ -3652,6 +4360,7 @@ param(
     ${Slot},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The ID of the snapshot to read.
@@ -3670,8 +4379,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySnapshot', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SnapshotInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3729,14 +4449,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentity';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentitySite';
+            GetViaIdentitySnapshot = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentitySnapshot';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3745,6 +4468,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3787,7 +4513,7 @@ Description for Gets a snapshot of the configuration of an app at a previous poi
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3801,7 +4527,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -3831,7 +4557,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -3867,7 +4664,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
 #>
 function Get-AzWebAppConfigurationSnapshot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -3883,6 +4680,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The ID of the snapshot to read.
@@ -3901,8 +4699,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3960,14 +4763,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_GetViaIdentity';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_GetViaIdentitySite';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3976,6 +4781,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4018,7 +4826,7 @@ Description for Gets the configuration of an app, such as platform version and b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4032,7 +4840,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -4062,7 +4870,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -4098,7 +4906,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
 #>
 function Get-AzWebAppConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4129,7 +4937,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4188,15 +4995,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfiguration_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfiguration_GetViaIdentity';
             List = 'Az.Functions.private\Get-AzWebAppConfiguration_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4205,6 +5013,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4245,12 +5056,12 @@ Description for Get function keys for a function in a web site, or a deployment 
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
 #>
 function Get-AzWebAppFunctionKeySlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4342,13 +5153,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppFunctionKeySlot_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4357,6 +5169,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4397,12 +5212,12 @@ Description for Get function keys for a function in a web site, or a deployment 
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
 #>
 function Get-AzWebAppFunctionKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4488,13 +5303,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppFunctionKey_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4503,6 +5319,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4545,7 +5364,7 @@ Description for Returns whether Scm basic auth is allowed on the site or not.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4559,7 +5378,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -4589,7 +5408,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -4625,7 +5515,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappscmallowedslot
 #>
 function Get-AzWebAppScmAllowedSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4641,6 +5531,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # .
@@ -4659,8 +5550,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4718,14 +5614,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppScmAllowedSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppScmAllowedSlot_GetViaIdentity';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppScmAllowedSlot_GetViaIdentitySite';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4734,6 +5632,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4776,7 +5677,7 @@ Description for Returns whether Scm basic auth is allowed on the site or not.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4790,7 +5691,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -4820,7 +5721,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -4856,7 +5757,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappscmallowed
 #>
 function Get-AzWebAppScmAllowed {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -4884,7 +5785,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4943,14 +5843,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppScmAllowed_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppScmAllowed_GetViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4959,6 +5860,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5001,13 +5905,13 @@ Description for Gets the config reference app settings and status of an app
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IApiKvReference
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApiKvReference
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+APPSETTINGINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [ActionName <String>]: The workflow action name.
   [AnalysisName <String>]: Analysis Name
@@ -5015,7 +5919,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -5045,7 +5949,220 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITE1INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -5081,7 +6198,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreferenceslot
 #>
 function Get-AzWebAppSettingKeyVaultReferenceSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IApiKvReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApiKvReference])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -5100,6 +6217,9 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAppsetting', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # .
@@ -5116,6 +6236,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # App Setting key name.
@@ -5126,8 +6247,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAppsetting', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${AppsettingInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${Site1InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5185,16 +6323,20 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_Get';
             Get1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_Get1';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_GetViaIdentity';
             GetViaIdentity1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_GetViaIdentity1';
+            GetViaIdentityAppsetting = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_GetViaIdentityAppsetting';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_GetViaIdentitySite';
+            GetViaIdentitySite1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReferenceSlot_GetViaIdentitySite1';
         }
-        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5203,6 +6345,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5245,7 +6390,7 @@ Description for Gets the config reference app settings and status of an app
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IApiKvReference
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApiKvReference
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5259,7 +6404,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -5289,7 +6434,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -5325,7 +6541,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
 #>
 function Get-AzWebAppSettingKeyVaultReference {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IApiKvReference])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApiKvReference])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -5353,6 +6569,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # App Setting key name.
@@ -5363,8 +6580,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5422,16 +6644,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get';
             Get1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get1';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity';
             GetViaIdentity1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity1';
+            GetViaIdentitySite = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentitySite';
         }
-        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5440,6 +6664,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5577,13 +6804,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppSyncStatusSlot_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5592,6 +6820,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5723,13 +6954,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppSyncStatus_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5738,6 +6970,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5778,9 +7013,7 @@ Description for Move resources between resource groups.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmMoveResourceEnvelope
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmMoveResourceEnvelope
 .Outputs
 System.Boolean
 .Notes
@@ -5788,79 +7021,8 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
-
 MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resources that need to be moved and the resource group they should be moved to.
-  [Resource <String[]>]: 
+  [Resource <List<String>>]: 
   [TargetResourceGroup <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/move-az
@@ -5869,15 +7031,13 @@ function Move-Az {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='MoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Move', Mandatory)]
-    [Parameter(ParameterSetName='MoveExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Move')]
-    [Parameter(ParameterSetName='MoveExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -5886,24 +7046,13 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Move', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmMoveResourceEnvelope]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmMoveResourceEnvelope]
     # Object with a list of the resources that need to be moved and the resource group they should be moved to.
-    # To construct, see NOTES section for MOVERESOURCEENVELOPE properties and create a hash table.
     ${MoveResourceEnvelope},
 
     [Parameter(ParameterSetName='MoveExpanded')]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
@@ -5911,11 +7060,22 @@ param(
     ${Resource},
 
     [Parameter(ParameterSetName='MoveExpanded')]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # .
     ${TargetResourceGroup},
+
+    [Parameter(ParameterSetName='MoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Move operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='MoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Move operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5979,16 +7139,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Move = 'Az.Functions.private\Move-Az_Move';
             MoveExpanded = 'Az.Functions.private\Move-Az_MoveExpanded';
-            MoveViaIdentity = 'Az.Functions.private\Move-Az_MoveViaIdentity';
-            MoveViaIdentityExpanded = 'Az.Functions.private\Move-Az_MoveViaIdentityExpanded';
+            MoveViaJsonFilePath = 'Az.Functions.private\Move-Az_MoveViaJsonFilePath';
+            MoveViaJsonString = 'Az.Functions.private\Move-Az_MoveViaJsonString';
         }
-        if (('Move', 'MoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Move', 'MoveExpanded', 'MoveViaJsonFilePath', 'MoveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5997,6 +7158,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6028,10 +7192,10 @@ end {
 
 <#
 .Synopsis
-Creates (or updates) an Application Insights component.
+Create (or create  an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Creates (or updates) an Application Insights component.
+Create (or create  an Application Insights component.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 {{ Add code here }}
@@ -6039,11 +7203,11 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6057,7 +7221,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -6087,7 +7251,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -6121,24 +7285,30 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkflowName <String>]: Workflow name.
 
 INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights component definition.
-  Location <String>: Resource location
   Kind <String>: The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
+  [Location <String>]: Resource location
   [Tag <IComponentsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
-  [ApplicationType <ApplicationType?>]: Type of application being monitored.
-  [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
-  [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
-  [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
-  [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
+  [ApplicationType <String>]: Type of application being monitored.
+  [DisableIPMasking <Boolean?>]: Disable IP masking.
+  [FlowType <String>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
+  [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp. Please visit external url https://aka.ms/ewjuel to get more information.
+  [ImmediatePurgeDataOn30Day <Boolean?>]: Purge data immediately after 30 days.
+  [IngestionMode <String>]: Indicates the flow of the ingestion.
+  [RequestSource <String>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
+  [RetentionInDay <Int32?>]: Retention period in days.
+  [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry. Please visit external url https://aka.ms/sl0yqd to get more information.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/new-azappinsights
 #>
 function New-AzAppInsights {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -6147,6 +7317,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the Application Insights component resource.
@@ -6154,6 +7326,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6167,15 +7341,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent]
     # An Application Insights component definition.
-    # To construct, see NOTES section for INSIGHTPROPERTY properties and create a hash table.
     ${InsightProperty},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -6195,17 +7367,24 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("web", "other")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType]
+    [System.String]
     # Type of application being monitored.
     ${ApplicationType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType]
+    [System.Management.Automation.SwitchParameter]
+    # Disable IP masking.
+    ${DisableIPMasking},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Bluefield")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
     # Used by the Application Insights system to determine what kind of flow this component was created by.
     # This is to be set to 'Bluefield' when creating/updating a component via the REST API.
     ${FlowType},
@@ -6215,13 +7394,29 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+    # Please visit external url https://aka.ms/ewjuel to get more information.
     ${HockeyAppId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource]
+    [System.Management.Automation.SwitchParameter]
+    # Purge data immediately after 30 days.
+    ${ImmediatePurgeDataOn30Day},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("ApplicationInsights", "ApplicationInsightsWithDiagnosticSettings", "LogAnalytics")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Indicates the flow of the ingestion.
+    ${IngestionMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("rest")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
     # Describes what tool created this Application Insights component.
     # Customers using this API should set this to the default 'rest'.
     ${RequestSource},
@@ -6229,17 +7424,37 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Retention period in days.
+    ${RetentionInDay},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Double]
     # Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
+    # Please visit external url https://aka.ms/sl0yqd to get more information.
     ${SamplingPercentage},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IComponentsResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6297,16 +7512,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzAppInsights_Create';
             CreateExpanded = 'Az.Functions.private\New-AzAppInsights_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzAppInsights_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzAppInsights_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzAppInsights_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzAppInsights_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6315,6 +7533,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6346,65 +7567,33 @@ end {
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Create a new container under the specified account as described by request body.
+The container resource includes metadata and properties for that container.
+It does not include a list of the blobs contained by the container.
 .Description
-Description for Creates or updates an App Service Plan.
+Create a new container under the specified account as described by request body.
+The container resource includes metadata and properties for that container.
+It does not include a list of the blobs contained by the container.
 .Example
-New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                      -Name MyPremiumPlan `
-                      -Location WestEurope `
-                      -MinimumWorkerCount 1 `
-                      -MaximumWorkerCount 10 `
-                      -Sku EP1 `
-                      -WorkerType Windows
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-APPSERVICEPLAN <IAppServicePlan>: App Service plan.
-  Location <String>: Resource Location.
-  [Kind <String>]: Kind of resource.
-  [Tag <IResourceTags>]: Resource tags.
+BLOBCONTAINER <IBlobContainer>: Properties of the blob container, including Id, resource name, resource type, Etag.
+  [ContainerPropertyMetadata <IContainerPropertiesMetadata>]: A name-value pair to associate with the container as metadata.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [Capacity <Int32?>]: Current number of instances assigned to the resource.
-  [ElasticScaleEnabled <Boolean?>]: ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
-  [ExtendedLocationName <String>]: Name of extended location.
-  [FreeOfferExpirationTime <DateTime?>]: The time when the server farm free offer expires.
-  [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HyperV <Boolean?>]: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-  [IsSpot <Boolean?>]: If <code>true</code>, this App Service Plan owns spot instances.
-  [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-  [KubeEnvironmentProfileId <String>]: Resource ID of the Kubernetes Environment.
-  [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
-  [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-  [SkuCapability <ICapability[]>]: Capabilities of the SKU, e.g., is traffic manager enabled?
-    [Name <String>]: Name of the SKU capability.
-    [Reason <String>]: Reason of the SKU capability.
-    [Value <String>]: Value of the SKU capability.
-  [SkuCapacityDefault <Int32?>]: Default number of workers for this App Service plan SKU.
-  [SkuCapacityElasticMaximum <Int32?>]: Maximum number of Elastic workers for this App Service plan SKU.
-  [SkuCapacityMaximum <Int32?>]: Maximum number of workers for this App Service plan SKU.
-  [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
-  [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
-  [SkuFamily <String>]: Family code of the resource SKU.
-  [SkuLocation <String[]>]: Locations of the SKU.
-  [SkuName <String>]: Name of the resource SKU.
-  [SkuSize <String>]: Size specifier of the resource SKU.
-  [SkuTier <String>]: Service tier of the resource SKU.
-  [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
-  [TargetWorkerCount <Int32?>]: Scaling worker count.
-  [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
-  [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
-  [ZoneRedundant <Boolean?>]: If <code>true</code>, this App Service Plan will perform availability zone balancing.         If <code>false</code>, this App Service Plan will not perform availability zone balancing.
+  [ContainerPropertyPublicAccess <String>]: Specifies whether data in the container may be accessed publicly and the level of access.
 
 INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
@@ -6414,7 +7603,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -6444,7 +7633,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -6477,33 +7666,120 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
   [WorkflowName <String>]: Workflow name.
 
-SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
-  [Name <String>]: Name of the SKU capability.
-  [Reason <String>]: Reason of the SKU capability.
-  [Value <String>]: Value of the SKU capability.
+STORAGEACCOUNTINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 .Link
-https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/new-azblobcontainer
 #>
-function New-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+function New-AzBlobContainer {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
-    # Name of the App Service plan.
-    ${Name},
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccount', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccountExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
-    # Name of the resource group to which the resource belongs.
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6517,15 +7793,350 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccountExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${StorageAccountInputObject},
+
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IBlobContainer]
+    # Properties of the blob container, including Id, resource name, resource type, Etag.
+    ${BlobContainer},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccountExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IContainerPropertiesMetadata]))]
+    [System.Collections.Hashtable]
+    # A name-value pair to associate with the container as metadata.
+    ${ContainerPropertyMetadata},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityStorageAccountExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Container", "Blob", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Specifies whether data in the container may be accessed publicly and the level of access.
+    ${ContainerPropertyPublicAccess},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Create = 'Az.Functions.private\New-AzBlobContainer_Create';
+            CreateExpanded = 'Az.Functions.private\New-AzBlobContainer_CreateExpanded';
+            CreateViaIdentity = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentityExpanded';
+            CreateViaIdentityStorageAccount = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentityStorageAccount';
+            CreateViaIdentityStorageAccountExpanded = 'Az.Functions.private\New-AzBlobContainer_CreateViaIdentityStorageAccountExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzBlobContainer_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzBlobContainer_CreateViaJsonString';
+        }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Description for create an App Service Plan.
+.Description
+Description for create an App Service Plan.
+.Example
+New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                      -Name MyPremiumPlan `
+                      -Location WestEurope `
+                      -MinimumWorkerCount 1 `
+                      -MaximumWorkerCount 10 `
+                      -Sku EP1 `
+                      -WorkerType Windows
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPSERVICEPLAN <IAppServicePlan>: App Service plan.
+  Location <String>: Resource Location.
+  [Kind <String>]: Kind of resource.
+  [Tag <IResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Capacity <Int32?>]: Current number of instances assigned to the resource.
+  [ElasticScaleEnabled <Boolean?>]: ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
+  [ExtendedLocationName <String>]: Name of extended location.
+  [FreeOfferExpirationTime <DateTime?>]: The time when the server farm free offer expires.
+  [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
+  [HyperV <Boolean?>]: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  [IsSpot <Boolean?>]: If <code>true</code>, this App Service Plan owns spot instances.
+  [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  [KubeEnvironmentProfileId <String>]: Resource ID of the Kubernetes Environment.
+  [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
+  [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  [SkuCapability <List<ICapability>>]: Capabilities of the SKU, e.g., is traffic manager enabled?
+    [Name <String>]: Name of the SKU capability.
+    [Reason <String>]: Reason of the SKU capability.
+    [Value <String>]: Value of the SKU capability.
+  [SkuCapacityDefault <Int32?>]: Default number of workers for this App Service plan SKU.
+  [SkuCapacityElasticMaximum <Int32?>]: Maximum number of Elastic workers for this App Service plan SKU.
+  [SkuCapacityMaximum <Int32?>]: Maximum number of workers for this App Service plan SKU.
+  [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
+  [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
+  [SkuFamily <String>]: Family code of the resource SKU.
+  [SkuLocation <List<String>>]: Locations of the SKU.
+  [SkuName <String>]: Name of the resource SKU.
+  [SkuSize <String>]: Size specifier of the resource SKU.
+  [SkuTier <String>]: Service tier of the resource SKU.
+  [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
+  [TargetWorkerCount <Int32?>]: Scaling worker count.
+  [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
+  [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
+  [ZoneRedundant <Boolean?>]: If <code>true</code>, this App Service Plan will perform availability zone balancing.         If <code>false</code>, this App Service Plan will not perform availability zone balancing.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled?
+  [Name <String>]: Name of the SKU capability.
+  [Reason <String>]: Reason of the SKU capability.
+  [Value <String>]: Value of the SKU capability.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
+#>
+function New-AzFunctionAppPlan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the App Service plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan]
     # App Service plan.
-    # To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
     ${AppServicePlan},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -6631,9 +8242,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICapability[]]
-    # Capabilities of the SKU, e.g., is traffic manager enabled
-    # To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICapability[]]
+    # Capabilities of the SKU, e.g., is traffic manager enabled?
     ${SkuCapability},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -6718,7 +8328,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -6750,6 +8360,18 @@ param(
     [System.Management.Automation.SwitchParameter]
     # If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.
     ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6819,16 +8441,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionAppPlan_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6837,6 +8462,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6868,9 +8496,9 @@ end {
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for create a new web, mobile, or API app in an existing resource group, or create an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for create a new web, mobile, or API app in an existing resource group, or create an existing app.
 .Example
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
@@ -6895,22 +8523,28 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -StorageAccountName MyStorageAccountName `
                   -Environment MyEnvironment `
                   -WorkloadProfileName MyWorkloadProfileName
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-  [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
   [Name <String>]: Hostname.
-  [SslState <SslState?>]: SSL type.
+  [SslState <String>]: SSL type.
   [Thumbprint <String>]: SSL certificate thumbprint.
   [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
@@ -6923,7 +8557,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -6953,7 +8587,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -6987,71 +8621,71 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkflowName <String>]: Workflow name.
 
 SCALEANDCONCURRENCYALWAYSREADY <IFunctionsAlwaysReadyConfig[]>: 'Always Ready' configuration for the function app.
-  [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -7061,18 +8695,14 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -7090,11 +8720,11 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -7103,28 +8733,28 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -7142,12 +8772,12 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AuthenticationStorageAccountConnectionStringName <String>]: Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  [AuthenticationType <AuthenticationType?>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
+  [AuthenticationType <String>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
   [AuthenticationUserAssignedIdentityResourceId <String>]: Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
   [ClientAffinityEnabled <Boolean?>]: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
   [ClientCertEnabled <Boolean?>]: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
   [ClientCertExclusionPath <String>]: client certificate authentication comma-separated exclusion paths
-  [ClientCertMode <ClientCertMode?>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
+  [ClientCertMode <String>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
   [CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>]: Application setting overrides for cloned app. If specified, these settings override the settings cloned         from source app. Otherwise, application settings from source app are retained.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CloningInfoCloneCustomHostName <Boolean?>]: <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
@@ -7164,64 +8794,64 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
     [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-    [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+    [ActionType <String>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
     [ApiDefinitionUrl <String>]: The URL of the API definition.
     [ApiManagementConfigId <String>]: APIM-Api Identifier.
     [AppCommandLine <String>]: App command line to launch.
-    [AppSetting <INameValuePair[]>]: Application settings.
+    [AppSetting <List<INameValuePair>>]: Application settings.
       [Name <String>]: Pair name.
       [Value <String>]: Pair value.
     [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
     [AutoSwapSlotName <String>]: Auto-swap slot name.
     [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
       [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-    [ConnectionString <IConnStringInfo[]>]: Connection strings.
+    [ConnectionString <List<IConnStringInfo>>]: Connection strings.
       [ConnectionString <String>]: Connection string value.
       [Name <String>]: Name of connection string.
-      [Type <ConnectionStringType?>]: Type of database.
-    [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+      [Type <String>]: Type of database.
+    [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
     [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
     [CustomActionExe <String>]: Executable to be run.
     [CustomActionParameter <String>]: Parameters for the executable.
-    [DefaultDocument <String[]>]: Default documents.
+    [DefaultDocument <List<String>>]: Default documents.
     [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
     [DocumentRoot <String>]: Document root.
     [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-    [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+    [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
       [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
       [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
       [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-    [FtpsState <FtpsState?>]: State of FTP / FTPS service
+    [FtpsState <String>]: State of FTP / FTPS service
     [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
     [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-    [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+    [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
       [Argument <String>]: Command-line arguments to be passed to the script processor.
       [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
       [ScriptProcessor <String>]: The absolute path to the FastCGI application.
     [HealthCheckPath <String>]: Health check path
     [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
     [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-    [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+    [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
       [Action <String>]: Allow or Deny access for this IP range.
       [Description <String>]: IP restriction rule description.
       [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-        [(Any) <String[]>]: This indicates any property can be added to this object.
+        [(Any) <List<String>>]: This indicates any property can be added to this object.
       [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
       [Name <String>]: IP restriction rule name.
       [Priority <Int32?>]: Priority of IP restriction rule.
       [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
       [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-      [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+      [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-    [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+    [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
     [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
@@ -7231,18 +8861,14 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
     [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
     [LinuxFxVersion <String>]: Linux App Framework and version
-    [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+    [LoadBalancing <String>]: Site load balancing.
     [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
     [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-    [MachineKeyDecryption <String>]: Algorithm used for decryption.
-    [MachineKeyDecryptionKey <String>]: Decryption key.
-    [MachineKeyValidation <String>]: MachineKey validation.
-    [MachineKeyValidationKey <String>]: Validation key.
-    [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+    [ManagedPipelineMode <String>]: Managed pipeline mode.
     [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-    [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-    [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-    [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+    [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+    [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+    [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
     [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
     [NetFrameworkVersion <String>]: .NET Framework version.
     [NodeVersion <String>]: Version of Node.js.
@@ -7260,11 +8886,11 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [RequestTimeInterval <String>]: Time interval.
     [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
     [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-    [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-    [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+    [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+    [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
     [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-    [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-    [ScmType <ScmType?>]: SCM type.
+    [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+    [ScmType <String>]: SCM type.
     [SlowRequestCount <Int32?>]: Request Count.
     [SlowRequestPath <String>]: Request Path.
     [SlowRequestTimeInterval <String>]: Time interval.
@@ -7273,28 +8899,28 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
     [TracingOption <String>]: Tracing options.
     [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-    [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+    [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path.
       [TimeInterval <String>]: Time interval.
       [TimeTaken <String>]: Time taken.
-    [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+    [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path
       [Status <Int32?>]: HTTP status code.
       [SubStatus <Int32?>]: Request Sub Status.
       [TimeInterval <String>]: Time interval.
       [Win32Status <Int32?>]: Win32 error code.
-    [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+    [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
       [Count <Int32?>]: Request Count.
       [Path <String>]: 
       [StatusCode <String>]: HTTP status code.
       [TimeInterval <String>]: Time interval.
     [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-    [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+    [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
       [PhysicalPath <String>]: Physical path.
       [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-      [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+      [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
         [PhysicalPath <String>]: Physical path.
         [VirtualPath <String>]: Path to virtual application.
       [VirtualPath <String>]: Virtual path.
@@ -7314,48 +8940,49 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DaprConfigEnabled <Boolean?>]: Boolean indicating if the Dapr side car is enabled
   [DaprConfigHttpMaxRequestSize <Int32?>]: Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
   [DaprConfigHttpReadBufferSize <Int32?>]: Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  [DaprConfigLogLevel <DaprLogLevel?>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+  [DaprConfigLogLevel <String>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
   [DnsConfigurationDnsAltServer <String>]: Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
   [DnsConfigurationDnsMaxCacheTimeout <Int32?>]: Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
   [DnsConfigurationDnsRetryAttemptCount <Int32?>]: Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
-  [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+  [DnsConfigurationDnsServer <List<String>>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
-  [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostNameSslState <List<IHostNameSslState>>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
+    [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
     [Name <String>]: Hostname.
-    [SslState <SslState?>]: SSL type.
+    [SslState <String>]: SSL type.
     [Thumbprint <String>]: SSL certificate thumbprint.
     [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
+  [IdentityType <String>]: Type of managed service identity.
   [IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [IsXenon <Boolean?>]: Obsolete: Hyper-V sandbox.
   [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
   [ManagedEnvironmentId <String>]: Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   [PublicNetworkAccess <String>]: Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
-  [RedundancyMode <RedundancyMode?>]: Site redundancy mode
+  [RedundancyMode <String>]: Site redundancy mode
   [Reserved <Boolean?>]: <code>true</code> if reserved; otherwise, <code>false</code>.
   [ResourceConfigCpu <Double?>]: Required CPU in cores, e.g. 0.5
   [ResourceConfigMemory <String>]: Required memory, e.g. "1Gi"
-  [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+  [RuntimeName <String>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
-  [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [ScaleAndConcurrencyAlwaysReady <List<IFunctionsAlwaysReadyConfig>>]: 'Always Ready' configuration for the function app.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
-  [StorageType <FunctionsDeploymentStorageType?>]: Property to select Azure Storage type. Available options: blobContainer.
+  [StorageType <String>]: Property to select Azure Storage type. Available options: blobContainer.
   [StorageValue <String>]: Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
   [VirtualNetworkSubnetId <String>]: Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.         This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
   [VnetBackupRestoreEnabled <Boolean?>]: To enable Backup and Restore operations over virtual network
@@ -7367,11 +8994,13 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
 https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Unique name of the app to create or update.
@@ -7380,6 +9009,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -7387,6 +9018,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -7400,15 +9033,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
     # A web app, a mobile app backend, or an API app.
-    # To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
     ${SiteEnvelope},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -7429,9 +9060,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity", "StorageAccountConnectionString")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType]
+    [System.String]
     # Property to select authentication type to access the selected storage account.
     # Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
     ${AuthenticationType},
@@ -7470,16 +9101,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Required", "Optional", "OptionalInteractiveUser")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode]
+    [System.String]
     # This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
     ${ClientCertMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICloningInfoAppSettingsOverrides]))]
     [System.Collections.Hashtable]
     # Application setting overrides for cloned app.
     # If specified, these settings override the settings cloned from source app.
@@ -7628,9 +9259,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("info", "debug", "warn", "error")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel]
+    [System.String]
     # Sets the log level for the Dapr sidecar.
     # Allowed values are debug, info, warn, error.
     # Default is info.
@@ -7685,9 +9316,23 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the app is enabled; otherwise, <code>false</code>.
     # Setting this value to false disables the app (takes the app offline).
     ${Enabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to use end to end encryption between the FrontEnd and the Worker
+    ${EndToEndEncryptionEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -7700,9 +9345,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHostNameSslState[]]
     # Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    # To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
     ${HostNameSslState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -7723,7 +9367,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of concurrent HTTP trigger invocations per instance.
     ${HttpPerInstanceConcurrency},
 
@@ -7741,23 +9385,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Hyper-V sandbox.
     ${HyperV},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-    # Type of managed service identity.
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user assigned identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    ${IdentityUserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -7798,9 +9425,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Manual", "Failover", "ActiveActive", "GeoRedundant")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]
+    [System.String]
     # Site redundancy mode
     ${RedundancyMode},
 
@@ -7829,9 +9456,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("dotnet-isolated", "node", "java", "powershell", "python", "custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName]
+    [System.String]
     # Function app runtime name.
     # Available options: dotnet-isolated, node, java, powershell, python, custom
     ${RuntimeName},
@@ -7848,15 +9475,14 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsAlwaysReadyConfig[]]
     # 'Always Ready' configuration for the function app.
-    # To construct, see NOTES section for SCALEANDCONCURRENCYALWAYSREADY properties and create a hash table.
     ${ScaleAndConcurrencyAlwaysReady},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # Set the amount of memory allocated to each instance of the function app in MB.
     # CPU and network bandwidth are allocated proportionally.
     ${ScaleAndConcurrencyInstanceMemoryMb},
@@ -7864,7 +9490,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of instances for the function app.
     ${ScaleAndConcurrencyMaximumInstanceCount},
 
@@ -7886,9 +9512,8 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfig]
     # Configuration of the app.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -7900,9 +9525,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("blobContainer")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType]
+    [System.String]
     # Property to select Azure Storage type.
     # Available options: blobContainer.
     ${StorageType},
@@ -7918,10 +9543,19 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -7966,6 +9600,18 @@ param(
     # Workload profile name for function app to execute on.
     ${WorkloadProfileName},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -8034,16 +9680,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionApp_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionApp_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzFunctionApp_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzFunctionApp_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzFunctionApp_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzFunctionApp_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8052,6 +9701,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8083,16 +9735,16 @@ end {
 
 <#
 .Synopsis
-Description for Create function for web site, or a deployment slot.
+Description for create function for web site, or a deployment slot.
 .Description
-Description for Create function for web site, or a deployment slot.
+Description for create function for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionEnvelope
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionEnvelope
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
@@ -8127,7 +9779,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -8157,7 +9809,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -8198,6 +9921,8 @@ function New-AzFunction {
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Site name.
@@ -8205,6 +9930,10 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Function name.
@@ -8212,6 +9941,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -8219,6 +9950,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -8232,19 +9965,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionEnvelope]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionEnvelope]
     # Function information.
-    # To construct, see NOTES section for FUNCTIONENVELOPE properties and create a hash table.
     ${FunctionEnvelope},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAny]
     # Config information.
@@ -8252,6 +9992,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Config URI.
@@ -8259,14 +10000,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionEnvelopePropertiesFiles]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionEnvelopePropertiesFiles]))]
     [System.Collections.Hashtable]
     # File list.
     ${File},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Function App ID.
@@ -8274,6 +10017,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Function URI.
@@ -8281,6 +10025,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The invocation URL
@@ -8288,6 +10033,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a value indicating whether the function is disabled
@@ -8295,6 +10041,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -8302,6 +10049,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The function language
@@ -8309,6 +10057,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Script URI.
@@ -8316,6 +10065,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Script root path URI.
@@ -8323,6 +10073,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Secrets file URI.
@@ -8330,6 +10081,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Test data used when testing via the Azure Portal.
@@ -8337,10 +10089,23 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Test data URI.
     ${TestDataHref},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8410,16 +10175,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunction_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunction_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzFunction_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzFunction_CreateViaIdentityExpanded';
+            CreateViaIdentitySite = 'Az.Functions.private\New-AzFunction_CreateViaIdentitySite';
+            CreateViaIdentitySiteExpanded = 'Az.Functions.private\New-AzFunction_CreateViaIdentitySiteExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzFunction_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzFunction_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8428,6 +10198,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8459,20 +10232,20 @@ end {
 
 <#
 .Synopsis
-Create or update an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Description
-Create or update an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8486,7 +10259,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -8516,7 +10289,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -8550,18 +10323,20 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkflowName <String>]: Workflow name.
 
 PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the Resource Group to which the identity belongs.
@@ -8569,6 +10344,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the identity resource.
@@ -8576,6 +10353,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -8589,15 +10368,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated]
     # Describes an identity resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -8610,10 +10387,22 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -8671,16 +10460,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzUserAssignedIdentity_Create';
             CreateExpanded = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8689,6 +10481,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8720,20 +10515,20 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for create the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for create the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8746,11 +10541,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -8771,7 +10566,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -8801,7 +10596,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -8838,13 +10633,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -8856,13 +10651,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -8871,64 +10666,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -8938,18 +10733,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -8967,11 +10758,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -8980,28 +10771,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -9012,6 +10803,77 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [WebsiteTimeZone <String>]: Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
   [WindowsFxVersion <String>]: Xenon App Framework and version
   [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 
 TRIGGERSLOWREQUESTSWITHPATH <ISlowRequestsBasedTrigger[]>: A rule based on multiple Slow Requests Rule with path
   [Count <Int32?>]: Request Count.
@@ -9036,7 +10898,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -9044,11 +10906,13 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
 #>
 function New-AzWebAppConfigurationSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -9056,6 +10920,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -9063,6 +10929,10 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the deployment slot.
@@ -9071,6 +10941,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -9084,19 +10956,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySite', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Flag to use Managed Identity Creds for ACR pull
@@ -9104,6 +10983,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # If using user managed identity, the user managed identity ClientId
@@ -9111,6 +10991,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
@@ -9118,14 +10999,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9133,6 +11016,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The URL of the API definition.
@@ -9140,6 +11024,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # APIM-Api Identifier.
@@ -9147,6 +11032,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # App command line to launch.
@@ -9154,15 +11040,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
@@ -9170,6 +11057,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Auto-swap slot name.
@@ -9177,23 +11065,25 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
@@ -9203,6 +11093,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets whether CORS requests with credentials are allowed.
@@ -9211,6 +11102,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Executable to be run.
@@ -9218,6 +11110,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Parameters for the executable.
@@ -9225,6 +11118,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
@@ -9233,6 +11127,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
@@ -9240,6 +11135,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Document root.
@@ -9247,6 +11143,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
@@ -9254,6 +11151,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Maximum number of workers that a site can scale out to.This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
@@ -9261,23 +11159,25 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Maximum number of workers that a site can scale out to.This setting only applies to the Consumption and Elastic Premium Plans
@@ -9285,6 +11185,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a value indicating whether functions runtime scale monitoring is enabled.
@@ -9293,15 +11194,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Health check path
@@ -9309,6 +11211,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Http20Enabled: configures a web site to allow clients to connect over http2.0
@@ -9316,6 +11219,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
@@ -9323,23 +11227,25 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a flag indicating whether the Push endpoint is enabled.
@@ -9347,6 +11253,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java container.
@@ -9354,6 +11261,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java container version.
@@ -9361,6 +11269,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java version.
@@ -9368,6 +11277,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Identity to use for Key Vault Reference authentication.
@@ -9375,6 +11285,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -9382,6 +11293,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int64]
     # Maximum allowed disk size usage in MB.
@@ -9389,6 +11301,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int64]
     # Maximum allowed memory usage in MB.
@@ -9396,6 +11309,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Double]
     # Maximum allowed CPU usage percentage.
@@ -9403,6 +11317,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Linux App Framework and version
@@ -9410,14 +11325,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
@@ -9425,6 +11342,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # HTTP logs directory size limit.
@@ -9432,14 +11350,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Managed Service Identity Id
@@ -9447,32 +11367,35 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of minimum instance count for a siteThis setting only applies to the Elastic Plans
@@ -9480,6 +11403,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # .NET Framework version.
@@ -9487,6 +11411,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of Node.js.
@@ -9494,6 +11419,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of workers.
@@ -9501,6 +11427,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of PHP.
@@ -9508,6 +11435,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of PowerShell.
@@ -9515,6 +11443,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of preWarmed instances.This setting only applies to the Consumption and Elastic Plans
@@ -9522,6 +11451,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Property to allow or block all public traffic.
@@ -9529,6 +11459,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Publishing user name.
@@ -9536,6 +11467,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -9543,6 +11475,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of Python.
@@ -9550,6 +11483,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
@@ -9557,6 +11491,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Remote debugging version.
@@ -9564,6 +11499,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Request Count.
@@ -9571,6 +11507,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time interval.
@@ -9578,6 +11515,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
@@ -9585,6 +11523,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.DateTime]
     # Request tracing expiration time.
@@ -9592,23 +11531,25 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # IP security restrictions for scm to use main.
@@ -9616,22 +11557,25 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Request Count.
@@ -9639,6 +11583,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Request Path.
@@ -9646,6 +11591,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time interval.
@@ -9653,6 +11599,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time taken.
@@ -9660,6 +11607,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
@@ -9667,6 +11615,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.Tags can consist of alphanumeric characters and the following:'_', '@', '#', '.', ':', '-'.
@@ -9675,6 +11624,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Tracing options.
@@ -9682,6 +11632,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # A rule based on private bytes.
@@ -9689,33 +11640,34 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
@@ -9723,15 +11675,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Virtual Network name.
@@ -9739,6 +11692,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # The number of private ports assigned to this app.
@@ -9747,6 +11701,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Virtual Network Route All enabled.
@@ -9755,6 +11710,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
@@ -9762,6 +11718,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Sets the time zone a site uses for generating timestamps.
@@ -9773,6 +11730,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Xenon App Framework and version
@@ -9780,10 +11738,23 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -9841,16 +11812,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfigurationSlot_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaIdentityExpanded';
+            CreateViaIdentitySite = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaIdentitySite';
+            CreateViaIdentitySiteExpanded = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaIdentitySiteExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9859,6 +11835,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -9890,20 +11869,20 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for create the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for create the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -9916,11 +11895,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -9941,7 +11920,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -9971,7 +11950,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -10008,13 +11987,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -10026,13 +12005,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -10041,64 +12020,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -10108,18 +12087,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -10137,11 +12112,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -10150,28 +12125,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -10206,7 +12181,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -10214,11 +12189,13 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
 #>
 function New-AzWebAppConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -10226,6 +12203,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -10233,6 +12212,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -10246,15 +12227,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10280,9 +12259,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
@@ -10318,9 +12297,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10340,7 +12318,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
@@ -10349,9 +12327,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10425,16 +12402,15 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
@@ -10457,9 +12433,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10487,16 +12462,15 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
@@ -10572,9 +12546,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
@@ -10594,9 +12568,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
@@ -10611,25 +12585,24 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
@@ -10756,16 +12729,15 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
@@ -10778,17 +12750,17 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
@@ -10853,27 +12825,24 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10887,9 +12856,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10947,6 +12915,18 @@ param(
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -11003,16 +12983,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfiguration_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfiguration_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzWebAppConfiguration_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzWebAppConfiguration_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzWebAppConfiguration_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzWebAppConfiguration_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11021,6 +13004,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11052,13 +13038,13 @@ end {
 
 <#
 .Synopsis
-Description for Delete an App Service plan.
+Deletes an Application Insights component.
 .Description
-Description for Delete an App Service plan.
+Deletes an Application Insights component.
 .Example
-Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
+{{ Add code here }}
 .Example
-Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
@@ -11077,7 +13063,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -11107,7 +13093,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -11140,23 +13126,24 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
   [WorkflowName <String>]: Workflow name.
 .Link
-https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/remove-azappinsights
 #>
-function Remove-AzFunctionAppPlan {
+function Remove-AzAppInsights {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
-    # Name of the App Service plan.
-    ${Name},
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
-    # Name of the resource group to which the resource belongs.
-    ${ResourceGroupName},
+    # The name of the Application Insights component resource.
+    ${ResourceName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
@@ -11171,7 +13158,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -11236,14 +13222,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Delete = 'Az.Functions.private\Remove-AzFunctionAppPlan_Delete';
-            DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionAppPlan_DeleteViaIdentity';
+            Delete = 'Az.Functions.private\Remove-AzAppInsights_Delete';
+            DeleteViaIdentity = 'Az.Functions.private\Remove-AzAppInsights_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11252,6 +13239,566 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes specified container under its account.
+.Description
+Deletes specified container under its account.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+STORAGEACCOUNTINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/remove-azblobcontainer
+#>
+function Remove-AzBlobContainer {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the storage account within the specified resource group.
+    # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageAccount', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the blob container within the specified storage account.
+    # Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only.
+    # Every dash (-) character must be immediately preceded and followed by a letter or number.
+    ${ContainerName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # The name of the resource group within the user's subscription.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStorageAccount', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${StorageAccountInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.Functions.private\Remove-AzBlobContainer_Delete';
+            DeleteViaIdentity = 'Az.Functions.private\Remove-AzBlobContainer_DeleteViaIdentity';
+            DeleteViaIdentityStorageAccount = 'Az.Functions.private\Remove-AzBlobContainer_DeleteViaIdentityStorageAccount';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Description for Delete an App Service plan.
+.Description
+Description for Delete an App Service plan.
+.Example
+Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
+.Example
+Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+.Link
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
+#>
+function Remove-AzFunctionAppPlan {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the App Service plan.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the resource group to which the resource belongs.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Your Azure subscription ID.
+    # This is a GUID-formatted string (e.g.
+    # 00000000-0000-0000-0000-000000000000).
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Delete = 'Az.Functions.private\Remove-AzFunctionAppPlan_Delete';
+            DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionAppPlan_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11308,7 +13855,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -11338,7 +13885,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -11402,7 +13949,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -11480,14 +14026,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionApp_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionApp_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11496,6 +14043,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11552,7 +14102,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -11582,7 +14132,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -11628,6 +14249,7 @@ param(
     ${FunctionAppName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Function name.
@@ -11652,8 +14274,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -11717,14 +14344,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunction_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunction_DeleteViaIdentity';
+            DeleteViaIdentitySite = 'Az.Functions.private\Remove-AzFunction_DeleteViaIdentitySite';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11733,6 +14362,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -11789,7 +14421,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -11819,7 +14451,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -11883,7 +14515,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -11948,14 +14579,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzUserAssignedIdentity_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzUserAssignedIdentity_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -11964,6 +14596,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12020,7 +14655,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -12050,7 +14685,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -12114,7 +14749,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -12193,14 +14827,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Restart = 'Az.Functions.private\Restart-AzFunctionApp_Restart';
             RestartViaIdentity = 'Az.Functions.private\Restart-AzFunctionApp_RestartViaIdentity';
         }
-        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12209,6 +14844,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12249,9 +14887,9 @@ Description for Restores a specific backup to another app (or deployment slot, i
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRestoreRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRestoreRequest
 .Outputs
 System.Boolean
 .Notes
@@ -12260,7 +14898,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATABASE <IDatabaseBackupSetting[]>: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
-  DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
   [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   [Name <String>]: 
@@ -12273,7 +14911,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -12303,7 +14941,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -12341,18 +14979,89 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [AdjustConnectionString <Boolean?>]: <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
   [AppServicePlan <String>]: Specify app service plan that will own restored site.
   [BlobName <String>]: Name of a blob which contains the backup.
-  [Database <IDatabaseBackupSetting[]>]: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
-    DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  [Database <List<IDatabaseBackupSetting>>]: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
+    DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
     [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
   [HostingEnvironment <String>]: App Service Environment name, if needed (only when restoring an app to an App Service Environment).
   [IgnoreConflictingHostName <Boolean?>]: Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to         the app's object when it is being restored, but that might fail due to conflicts during the operation.
   [IgnoreDatabase <Boolean?>]: Ignore the databases and only restore the site content
-  [OperationType <BackupRestoreOperationType?>]: Operation type.
+  [OperationType <String>]: Operation type.
   [Overwrite <Boolean?>]: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
   [SiteName <String>]: Name of an app.
   [StorageAccountUrl <String>]: SAS URL to the container.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
@@ -12362,6 +15071,10 @@ function Restore-AzFunctionApp {
 param(
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # ID of the backup.
@@ -12369,6 +15082,8 @@ param(
 
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -12376,6 +15091,8 @@ param(
 
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -12383,6 +15100,8 @@ param(
 
     [Parameter(ParameterSetName='Restore')]
     [Parameter(ParameterSetName='RestoreExpanded')]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath')]
+    [Parameter(ParameterSetName='RestoreViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -12396,19 +15115,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter(ParameterSetName='Restore', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRestoreRequest]
     # Description of a restore request.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
@@ -12416,6 +15142,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Specify app service plan that will own restored site.
@@ -12423,6 +15150,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of a blob which contains the backup.
@@ -12430,16 +15158,17 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDatabaseBackupSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDatabaseBackupSetting[]]
     # Collection of databases which should be restored.
     # This list has to match the list of databases included in the backup.
-    # To construct, see NOTES section for DATABASE properties and create a hash table.
     ${Database},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # App Service Environment name, if needed (only when restoring an app to an App Service Environment).
@@ -12447,6 +15176,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Changes a logic when restoring an app with custom domains.
@@ -12456,6 +15186,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Ignore the databases and only restore the site content
@@ -12463,6 +15194,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -12470,14 +15202,16 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType])]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Default", "Clone", "Relocation", "Snapshot", "CloudFS")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType]
+    [System.String]
     # Operation type.
     ${OperationType},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>.
@@ -12486,6 +15220,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of an app.
@@ -12493,10 +15228,23 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # SAS URL to the container.
     ${StorageAccountUrl},
+
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Restore operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Restore operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -12572,16 +15320,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Restore = 'Az.Functions.private\Restore-AzFunctionApp_Restore';
             RestoreExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreExpanded';
             RestoreViaIdentity = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentity';
             RestoreViaIdentityExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentityExpanded';
+            RestoreViaIdentitySite = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentitySite';
+            RestoreViaIdentitySiteExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentitySiteExpanded';
+            RestoreViaJsonFilePath = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaJsonFilePath';
+            RestoreViaJsonString = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaJsonString';
         }
-        if (('Restore', 'RestoreExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restore', 'RestoreExpanded', 'RestoreViaJsonFilePath', 'RestoreViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12590,6 +15343,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -12621,18 +15377,18 @@ end {
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Description for update an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Description for update an App Service Plan.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -12655,7 +15411,7 @@ APPSERVICEPLAN <IAppServicePlan>: App Service plan.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
   [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-  [SkuCapability <ICapability[]>]: Capabilities of the SKU, e.g., is traffic manager enabled?
+  [SkuCapability <List<ICapability>>]: Capabilities of the SKU, e.g., is traffic manager enabled?
     [Name <String>]: Name of the SKU capability.
     [Reason <String>]: Reason of the SKU capability.
     [Value <String>]: Value of the SKU capability.
@@ -12665,7 +15421,7 @@ APPSERVICEPLAN <IAppServicePlan>: App Service plan.
   [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
   [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
   [SkuFamily <String>]: Family code of the resource SKU.
-  [SkuLocation <String[]>]: Locations of the SKU.
+  [SkuLocation <List<String>>]: Locations of the SKU.
   [SkuName <String>]: Name of the resource SKU.
   [SkuSize <String>]: Size specifier of the resource SKU.
   [SkuTier <String>]: Service tier of the resource SKU.
@@ -12675,7 +15431,7 @@ APPSERVICEPLAN <IAppServicePlan>: App Service plan.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
   [ZoneRedundant <Boolean?>]: If <code>true</code>, this App Service Plan will perform availability zone balancing.         If <code>false</code>, this App Service Plan will not perform availability zone balancing.
 
-SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
+SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled?
   [Name <String>]: Name of the SKU capability.
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
@@ -12683,7 +15439,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
 https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
 #>
 function Set-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -12709,9 +15465,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan]
     # App Service plan.
-    # To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
     ${AppServicePlan},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -12802,9 +15557,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICapability[]]
-    # Capabilities of the SKU, e.g., is traffic manager enabled
-    # To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICapability[]]
+    # Capabilities of the SKU, e.g., is traffic manager enabled?
     ${SkuCapability},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -12877,7 +15631,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -12905,6 +15659,18 @@ param(
     [System.Management.Automation.SwitchParameter]
     # If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.
     ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -12974,14 +15740,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionAppPlan_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzFunctionAppPlan_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzFunctionAppPlan_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -12990,6 +15759,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -13021,97 +15793,97 @@ end {
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for update a new web, mobile, or API app in an existing resource group, or update an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for update a new web, mobile, or API app in an existing resource group, or update an existing app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-  [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
   [Name <String>]: Hostname.
-  [SslState <SslState?>]: SSL type.
+  [SslState <String>]: SSL type.
   [Thumbprint <String>]: SSL certificate thumbprint.
   [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
 
 SCALEANDCONCURRENCYALWAYSREADY <IFunctionsAlwaysReadyConfig[]>: 'Always Ready' configuration for the function app.
-  [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -13121,18 +15893,14 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -13150,11 +15918,11 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -13163,28 +15931,28 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -13202,12 +15970,12 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AuthenticationStorageAccountConnectionStringName <String>]: Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  [AuthenticationType <AuthenticationType?>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
+  [AuthenticationType <String>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
   [AuthenticationUserAssignedIdentityResourceId <String>]: Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
   [ClientAffinityEnabled <Boolean?>]: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
   [ClientCertEnabled <Boolean?>]: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
   [ClientCertExclusionPath <String>]: client certificate authentication comma-separated exclusion paths
-  [ClientCertMode <ClientCertMode?>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
+  [ClientCertMode <String>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
   [CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>]: Application setting overrides for cloned app. If specified, these settings override the settings cloned         from source app. Otherwise, application settings from source app are retained.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CloningInfoCloneCustomHostName <Boolean?>]: <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
@@ -13224,64 +15992,64 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
     [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-    [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+    [ActionType <String>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
     [ApiDefinitionUrl <String>]: The URL of the API definition.
     [ApiManagementConfigId <String>]: APIM-Api Identifier.
     [AppCommandLine <String>]: App command line to launch.
-    [AppSetting <INameValuePair[]>]: Application settings.
+    [AppSetting <List<INameValuePair>>]: Application settings.
       [Name <String>]: Pair name.
       [Value <String>]: Pair value.
     [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
     [AutoSwapSlotName <String>]: Auto-swap slot name.
     [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
       [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-    [ConnectionString <IConnStringInfo[]>]: Connection strings.
+    [ConnectionString <List<IConnStringInfo>>]: Connection strings.
       [ConnectionString <String>]: Connection string value.
       [Name <String>]: Name of connection string.
-      [Type <ConnectionStringType?>]: Type of database.
-    [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+      [Type <String>]: Type of database.
+    [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
     [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
     [CustomActionExe <String>]: Executable to be run.
     [CustomActionParameter <String>]: Parameters for the executable.
-    [DefaultDocument <String[]>]: Default documents.
+    [DefaultDocument <List<String>>]: Default documents.
     [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
     [DocumentRoot <String>]: Document root.
     [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-    [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+    [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
       [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
       [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
       [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-    [FtpsState <FtpsState?>]: State of FTP / FTPS service
+    [FtpsState <String>]: State of FTP / FTPS service
     [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
     [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-    [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+    [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
       [Argument <String>]: Command-line arguments to be passed to the script processor.
       [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
       [ScriptProcessor <String>]: The absolute path to the FastCGI application.
     [HealthCheckPath <String>]: Health check path
     [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
     [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-    [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+    [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
       [Action <String>]: Allow or Deny access for this IP range.
       [Description <String>]: IP restriction rule description.
       [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-        [(Any) <String[]>]: This indicates any property can be added to this object.
+        [(Any) <List<String>>]: This indicates any property can be added to this object.
       [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
       [Name <String>]: IP restriction rule name.
       [Priority <Int32?>]: Priority of IP restriction rule.
       [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
       [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-      [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+      [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-    [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+    [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
     [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
@@ -13291,18 +16059,14 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
     [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
     [LinuxFxVersion <String>]: Linux App Framework and version
-    [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+    [LoadBalancing <String>]: Site load balancing.
     [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
     [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-    [MachineKeyDecryption <String>]: Algorithm used for decryption.
-    [MachineKeyDecryptionKey <String>]: Decryption key.
-    [MachineKeyValidation <String>]: MachineKey validation.
-    [MachineKeyValidationKey <String>]: Validation key.
-    [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+    [ManagedPipelineMode <String>]: Managed pipeline mode.
     [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-    [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-    [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-    [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+    [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+    [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+    [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
     [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
     [NetFrameworkVersion <String>]: .NET Framework version.
     [NodeVersion <String>]: Version of Node.js.
@@ -13320,11 +16084,11 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [RequestTimeInterval <String>]: Time interval.
     [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
     [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-    [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-    [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+    [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+    [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
     [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-    [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-    [ScmType <ScmType?>]: SCM type.
+    [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+    [ScmType <String>]: SCM type.
     [SlowRequestCount <Int32?>]: Request Count.
     [SlowRequestPath <String>]: Request Path.
     [SlowRequestTimeInterval <String>]: Time interval.
@@ -13333,28 +16097,28 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
     [TracingOption <String>]: Tracing options.
     [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-    [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+    [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path.
       [TimeInterval <String>]: Time interval.
       [TimeTaken <String>]: Time taken.
-    [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+    [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path
       [Status <Int32?>]: HTTP status code.
       [SubStatus <Int32?>]: Request Sub Status.
       [TimeInterval <String>]: Time interval.
       [Win32Status <Int32?>]: Win32 error code.
-    [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+    [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
       [Count <Int32?>]: Request Count.
       [Path <String>]: 
       [StatusCode <String>]: HTTP status code.
       [TimeInterval <String>]: Time interval.
     [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-    [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+    [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
       [PhysicalPath <String>]: Physical path.
       [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-      [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+      [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
         [PhysicalPath <String>]: Physical path.
         [VirtualPath <String>]: Path to virtual application.
       [VirtualPath <String>]: Virtual path.
@@ -13374,48 +16138,49 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DaprConfigEnabled <Boolean?>]: Boolean indicating if the Dapr side car is enabled
   [DaprConfigHttpMaxRequestSize <Int32?>]: Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
   [DaprConfigHttpReadBufferSize <Int32?>]: Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  [DaprConfigLogLevel <DaprLogLevel?>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+  [DaprConfigLogLevel <String>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
   [DnsConfigurationDnsAltServer <String>]: Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
   [DnsConfigurationDnsMaxCacheTimeout <Int32?>]: Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
   [DnsConfigurationDnsRetryAttemptCount <Int32?>]: Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
-  [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+  [DnsConfigurationDnsServer <List<String>>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
-  [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostNameSslState <List<IHostNameSslState>>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
+    [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
     [Name <String>]: Hostname.
-    [SslState <SslState?>]: SSL type.
+    [SslState <String>]: SSL type.
     [Thumbprint <String>]: SSL certificate thumbprint.
     [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
+  [IdentityType <String>]: Type of managed service identity.
   [IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [IsXenon <Boolean?>]: Obsolete: Hyper-V sandbox.
   [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
   [ManagedEnvironmentId <String>]: Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   [PublicNetworkAccess <String>]: Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
-  [RedundancyMode <RedundancyMode?>]: Site redundancy mode
+  [RedundancyMode <String>]: Site redundancy mode
   [Reserved <Boolean?>]: <code>true</code> if reserved; otherwise, <code>false</code>.
   [ResourceConfigCpu <Double?>]: Required CPU in cores, e.g. 0.5
   [ResourceConfigMemory <String>]: Required memory, e.g. "1Gi"
-  [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+  [RuntimeName <String>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
-  [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [ScaleAndConcurrencyAlwaysReady <List<IFunctionsAlwaysReadyConfig>>]: 'Always Ready' configuration for the function app.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
-  [StorageType <FunctionsDeploymentStorageType?>]: Property to select Azure Storage type. Available options: blobContainer.
+  [StorageType <String>]: Property to select Azure Storage type. Available options: blobContainer.
   [StorageValue <String>]: Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
   [VirtualNetworkSubnetId <String>]: Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.         This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
   [VnetBackupRestoreEnabled <Boolean?>]: To enable Backup and Restore operations over virtual network
@@ -13427,7 +16192,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
 https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionapp
 #>
 function Set-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -13454,9 +16219,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
     # A web app, a mobile app backend, or an API app.
-    # To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
     ${SiteEnvelope},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -13474,9 +16238,9 @@ param(
     ${AuthenticationStorageAccountConnectionStringName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity", "StorageAccountConnectionString")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType]
+    [System.String]
     # Property to select authentication type to access the selected storage account.
     # Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
     ${AuthenticationType},
@@ -13510,15 +16274,15 @@ param(
     ${ClientCertExclusionPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Required", "Optional", "OptionalInteractiveUser")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode]
+    [System.String]
     # This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
     ${ClientCertMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICloningInfoAppSettingsOverrides]))]
     [System.Collections.Hashtable]
     # Application setting overrides for cloned app.
     # If specified, these settings override the settings cloned from source app.
@@ -13647,9 +16411,9 @@ param(
     ${DaprConfigHttpReadBufferSize},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("info", "debug", "warn", "error")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel]
+    [System.String]
     # Sets the log level for the Dapr sidecar.
     # Allowed values are debug, info, warn, error.
     # Default is info.
@@ -13697,10 +16461,22 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the app is enabled; otherwise, <code>false</code>.
     # Setting this value to false disables the app (takes the app offline).
     ${Enabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to use end to end encryption between the FrontEnd and the Worker
+    ${EndToEndEncryptionEnabled},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -13711,9 +16487,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHostNameSslState[]]
     # Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    # To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
     ${HostNameSslState},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -13731,7 +16506,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of concurrent HTTP trigger invocations per instance.
     ${HttpPerInstanceConcurrency},
 
@@ -13747,21 +16522,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Hyper-V sandbox.
     ${HyperV},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-    # Type of managed service identity.
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user assigned identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    ${IdentityUserAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -13796,9 +16556,9 @@ param(
     ${PublicNetworkAccess},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Manual", "Failover", "ActiveActive", "GeoRedundant")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]
+    [System.String]
     # Site redundancy mode
     ${RedundancyMode},
 
@@ -13823,9 +16583,9 @@ param(
     ${ResourceConfigMemory},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("dotnet-isolated", "node", "java", "powershell", "python", "custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName]
+    [System.String]
     # Function app runtime name.
     # Available options: dotnet-isolated, node, java, powershell, python, custom
     ${RuntimeName},
@@ -13840,21 +16600,20 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsAlwaysReadyConfig[]]
     # 'Always Ready' configuration for the function app.
-    # To construct, see NOTES section for SCALEANDCONCURRENCYALWAYSREADY properties and create a hash table.
     ${ScaleAndConcurrencyAlwaysReady},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # Set the amount of memory allocated to each instance of the function app in MB.
     # CPU and network bandwidth are allocated proportionally.
     ${ScaleAndConcurrencyInstanceMemoryMb},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of instances for the function app.
     ${ScaleAndConcurrencyMaximumInstanceCount},
 
@@ -13873,9 +16632,8 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfig]
     # Configuration of the app.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -13885,9 +16643,9 @@ param(
     ${StorageAccountRequired},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("blobContainer")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType]
+    [System.String]
     # Property to select Azure Storage type.
     # Available options: blobContainer.
     ${StorageType},
@@ -13901,10 +16659,18 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -13942,6 +16708,18 @@ param(
     [System.String]
     # Workload profile name for function app to execute on.
     ${WorkloadProfileName},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -14011,14 +16789,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionApp_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzFunctionApp_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzFunctionApp_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -14027,6 +16808,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14058,32 +16842,32 @@ end {
 
 <#
 .Synopsis
-Create or update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-Create or update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
-  Location <String>: The geo-location where the resource lives
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14109,9 +16893,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated]
     # Describes an identity resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -14122,10 +16905,22 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -14183,14 +16978,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzUserAssignedIdentity_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzUserAssignedIdentity_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzUserAssignedIdentity_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -14199,6 +16997,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14239,9 +17040,9 @@ Description for Replaces the application settings of an app.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14255,7 +17056,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
 #>
 function Set-AzWebAppApplicationSettingSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14288,9 +17089,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary]
     # String dictionary resource.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -14301,10 +17101,22 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionaryProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionaryProperties]))]
     [System.Collections.Hashtable]
     # Settings.
     ${Property},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -14362,14 +17174,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -14378,6 +17193,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14418,9 +17236,9 @@ Description for Replaces the application settings of an app.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14434,7 +17252,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
 #>
 function Set-AzWebAppApplicationSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14460,9 +17278,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionary]
     # String dictionary resource.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -14473,10 +17290,22 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionaryProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStringDictionaryProperties]))]
     [System.Collections.Hashtable]
     # Settings.
     ${Property},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -14534,14 +17363,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSetting_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSetting_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppApplicationSetting_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppApplicationSetting_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -14550,6 +17382,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -14581,18 +17416,18 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -14605,11 +17440,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -14626,13 +17461,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -14644,13 +17479,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -14659,64 +17494,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -14726,18 +17561,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -14755,11 +17586,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -14768,28 +17599,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -14824,7 +17655,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -14832,7 +17663,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
 #>
 function Set-AzWebAppConfigurationSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -14865,9 +17696,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -14889,9 +17719,9 @@ param(
     ${ActionMinProcessExecutionTime},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
@@ -14922,9 +17752,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -14941,7 +17770,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
@@ -14949,9 +17778,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15015,15 +17843,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
@@ -15043,9 +17870,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15069,15 +17895,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
@@ -15142,9 +17967,9 @@ param(
     ${LinuxFxVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
@@ -15161,9 +17986,9 @@ param(
     ${LogsDirectorySizeLimit},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
@@ -15176,23 +18001,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
@@ -15301,15 +18125,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
@@ -15320,16 +18143,16 @@ param(
     ${ScmIPSecurityRestrictionsUseMain},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
@@ -15385,25 +18208,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15415,9 +18235,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15467,6 +18286,18 @@ param(
     [System.Int32]
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -15524,14 +18355,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -15540,6 +18374,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -15571,18 +18408,18 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -15595,11 +18432,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -15616,13 +18453,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -15634,13 +18471,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -15649,64 +18486,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -15716,18 +18553,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -15745,11 +18578,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -15758,28 +18591,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -15814,7 +18647,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -15822,7 +18655,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
 #>
 function Set-AzWebAppConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -15848,9 +18681,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15872,9 +18704,9 @@ param(
     ${ActionMinProcessExecutionTime},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
@@ -15905,9 +18737,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15924,7 +18755,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
@@ -15932,9 +18763,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -15998,15 +18828,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
@@ -16026,9 +18855,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -16052,15 +18880,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
@@ -16125,9 +18952,9 @@ param(
     ${LinuxFxVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
@@ -16144,9 +18971,9 @@ param(
     ${LogsDirectorySizeLimit},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
@@ -16159,23 +18986,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
@@ -16284,15 +19110,14 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
@@ -16303,16 +19128,16 @@ param(
     ${ScmIPSecurityRestrictionsUseMain},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
@@ -16368,25 +19193,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -16398,9 +19220,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -16451,6 +19272,18 @@ param(
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -16507,14 +19340,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfiguration_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppConfiguration_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppConfiguration_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -16523,6 +19359,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16554,18 +19393,18 @@ end {
 
 <#
 .Synopsis
-Description for Updates whether user publishing credentials are allowed on the site or not.
+Description for update whether user publishing credentials are allowed on the site or not.
 .Description
-Description for Updates whether user publishing credentials are allowed on the site or not.
+Description for update whether user publishing credentials are allowed on the site or not.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -16578,7 +19417,7 @@ CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Pub
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowedslot
 #>
 function Set-AzWebAppScmAllowedSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -16610,9 +19449,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity]
     # Publishing Credentials Policies parameters.
-    # To construct, see NOTES section for CSMPUBLISHINGACCESSPOLICIESENTITY properties and create a hash table.
     ${CsmPublishingAccessPoliciesEntity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -16626,6 +19464,18 @@ param(
     [System.String]
     # Kind of resource.
     ${Kind},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -16683,14 +19533,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppScmAllowedSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppScmAllowedSlot_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppScmAllowedSlot_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppScmAllowedSlot_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -16699,6 +19552,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16730,18 +19586,18 @@ end {
 
 <#
 .Synopsis
-Description for Updates whether user publishing credentials are allowed on the site or not.
+Description for update whether user publishing credentials are allowed on the site or not.
 .Description
-Description for Updates whether user publishing credentials are allowed on the site or not.
+Description for update whether user publishing credentials are allowed on the site or not.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -16754,7 +19610,7 @@ CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Pub
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
 #>
 function Set-AzWebAppScmAllowed {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -16780,9 +19636,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICsmPublishingCredentialsPoliciesEntity]
     # Publishing Credentials Policies parameters.
-    # To construct, see NOTES section for CSMPUBLISHINGACCESSPOLICIESENTITY properties and create a hash table.
     ${CsmPublishingAccessPoliciesEntity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -16796,6 +19651,18 @@ param(
     [System.String]
     # Kind of resource.
     ${Kind},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -16853,14 +19720,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppScmAllowed_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppScmAllowed_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzWebAppScmAllowed_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzWebAppScmAllowed_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -16869,6 +19739,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -16925,7 +19798,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -16955,7 +19828,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -17019,7 +19892,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -17084,14 +19956,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Start = 'Az.Functions.private\Start-AzFunctionApp_Start';
             StartViaIdentity = 'Az.Functions.private\Start-AzFunctionApp_StartViaIdentity';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -17100,6 +19973,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -17156,7 +20032,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -17186,7 +20062,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -17250,7 +20126,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -17315,14 +20190,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Stop = 'Az.Functions.private\Stop-AzFunctionApp_Stop';
             StopViaIdentity = 'Az.Functions.private\Stop-AzFunctionApp_StopViaIdentity';
         }
-        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -17331,6 +20207,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -17387,7 +20266,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -17417,7 +20296,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -17481,7 +20360,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -17546,14 +20424,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzFunction_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzFunction_SyncViaIdentity';
         }
-        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -17562,6 +20441,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -17618,7 +20500,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -17648,7 +20530,78 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -17700,6 +20653,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Parameter(ParameterSetName='SyncViaIdentitySite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the deployment slot.
@@ -17718,8 +20672,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='SyncViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -17783,14 +20742,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_SyncViaIdentity';
+            SyncViaIdentitySite = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_SyncViaIdentitySite';
         }
-        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -17799,6 +20760,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -17839,101 +20803,27 @@ Description for Check if a resource name is available.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceNameAvailabilityRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceNameAvailabilityRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceNameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceNameAvailability
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
-
 REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request content.
   Name <String>: Resource name to verify.
-  Type <CheckNameResourceTypes>: Resource type used for verification.
+  Type <String>: Resource type used for verification.
   [EnvironmentId <String>]: Azure Resource Manager ID of the customer's selected Container Apps Environment on which to host the Function app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   [IsFqdn <Boolean?>]: Is fully qualified domain name.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/test-aznameavailability
 #>
 function Test-AzNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceNameAvailability])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceNameAvailability])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -17942,39 +20832,26 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceNameAvailabilityRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceNameAvailabilityRequest]
     # Resource name availability request content.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Resource name to verify.
     ${Name},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CheckNameResourceTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Site", "Slot", "HostingEnvironment", "PublishingUser", "Microsoft.Web/sites", "Microsoft.Web/sites/slots", "Microsoft.Web/hostingEnvironments", "Microsoft.Web/publishingUsers")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.CheckNameResourceTypes]
+    [System.String]
     # Resource type used for verification.
     ${Type},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Azure Resource Manager ID of the customer's selected Container Apps Environment on which to host the Function app.
@@ -17982,11 +20859,22 @@ param(
     ${EnvironmentId},
 
     [Parameter(ParameterSetName='CheckExpanded')]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Is fully qualified domain name.
     ${IsFqdn},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -18044,16 +20932,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Check = 'Az.Functions.private\Test-AzNameAvailability_Check';
             CheckExpanded = 'Az.Functions.private\Test-AzNameAvailability_CheckExpanded';
-            CheckViaIdentity = 'Az.Functions.private\Test-AzNameAvailability_CheckViaIdentity';
-            CheckViaIdentityExpanded = 'Az.Functions.private\Test-AzNameAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.Functions.private\Test-AzNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.Functions.private\Test-AzNameAvailability_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -18062,6 +20951,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -18102,11 +20994,9 @@ Description for Validate if a resource can be created.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateResponse
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -18116,7 +21006,7 @@ APPSERVICEENVIRONMENT <IAppServiceEnvironment>: App Service Environment Properti
   VirtualNetworkId <String>: Resource id of the Virtual Network.
   [AllowNewPrivateEndpointConnection <Boolean?>]: Property to enable and disable new private endpoint connection creation on ASE
   [CertificateUrl <String>]: The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-  [ClusterSetting <INameValuePair[]>]: Custom settings for changing the behavior of the App Service Environment.
+  [ClusterSetting <List<INameValuePair>>]: Custom settings for changing the behavior of the App Service Environment.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [CustomDnsSuffixConfigurationKind <String>]: Kind of resource.
@@ -18126,97 +21016,26 @@ APPSERVICEENVIRONMENT <IAppServiceEnvironment>: App Service Environment Properti
   [FrontEndScaleFactor <Int32?>]: Scale factor for front-ends.
   [FtpEnabled <Boolean?>]: Property to enable and disable FTP on ASEV3
   [InboundIPAddressOverride <String>]: Customer provided Inbound IP Address. Only able to be set on Ase create.
-  [InternalLoadBalancingMode <LoadBalancingMode?>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+  [InternalLoadBalancingMode <String>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   [IpsslAddressCount <Int32?>]: Number of IP SSL addresses reserved for the App Service Environment.
   [KeyVaultReferenceIdentity <String>]: The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   [MultiSize <String>]: Front-end VM size, e.g. "Medium", "Large".
   [NetworkingConfigurationKind <String>]: Kind of resource.
   [RemoteDebugEnabled <Boolean?>]: Property to enable and disable Remote Debug on ASEV3
-  [UpgradePreference <UpgradePreference?>]: Upgrade Preference
-  [UserWhitelistedIPRange <String[]>]: User added ip ranges to whitelist on ASE db
+  [UpgradePreference <String>]: Upgrade Preference
+  [UserWhitelistedIPRange <List<String>>]: User added ip ranges to whitelist on ASE db
   [VirtualNetworkSubnet <String>]: Subnet within the Virtual Network.
   [ZoneRedundant <Boolean?>]: Whether or not this App Service Environment is zone-redundant.
-
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
 
 VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
   Location <String>: Expected location of the resource.
   Name <String>: Resource name to verify.
-  Type <ValidateResourceTypes>: Resource type used for verification.
+  Type <String>: Resource type used for verification.
   [AppServiceEnvironment <IAppServiceEnvironment>]: App Service Environment Properties
     VirtualNetworkId <String>: Resource id of the Virtual Network.
     [AllowNewPrivateEndpointConnection <Boolean?>]: Property to enable and disable new private endpoint connection creation on ASE
     [CertificateUrl <String>]: The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-    [ClusterSetting <INameValuePair[]>]: Custom settings for changing the behavior of the App Service Environment.
+    [ClusterSetting <List<INameValuePair>>]: Custom settings for changing the behavior of the App Service Environment.
       [Name <String>]: Pair name.
       [Value <String>]: Pair value.
     [CustomDnsSuffixConfigurationKind <String>]: Kind of resource.
@@ -18226,14 +21045,14 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
     [FrontEndScaleFactor <Int32?>]: Scale factor for front-ends.
     [FtpEnabled <Boolean?>]: Property to enable and disable FTP on ASEV3
     [InboundIPAddressOverride <String>]: Customer provided Inbound IP Address. Only able to be set on Ase create.
-    [InternalLoadBalancingMode <LoadBalancingMode?>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+    [InternalLoadBalancingMode <String>]: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
     [IpsslAddressCount <Int32?>]: Number of IP SSL addresses reserved for the App Service Environment.
     [KeyVaultReferenceIdentity <String>]: The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
     [MultiSize <String>]: Front-end VM size, e.g. "Medium", "Large".
     [NetworkingConfigurationKind <String>]: Kind of resource.
     [RemoteDebugEnabled <Boolean?>]: Property to enable and disable Remote Debug on ASEV3
-    [UpgradePreference <UpgradePreference?>]: Upgrade Preference
-    [UserWhitelistedIPRange <String[]>]: User added ip ranges to whitelist on ASE db
+    [UpgradePreference <String>]: Upgrade Preference
+    [UserWhitelistedIPRange <List<String>>]: User added ip ranges to whitelist on ASE db
     [VirtualNetworkSubnet <String>]: Subnet within the Virtual Network.
     [ZoneRedundant <Boolean?>]: Whether or not this App Service Environment is zone-redundant.
   [Capacity <Int32?>]: Target capacity of the App Service plan (number of VMs).
@@ -18253,18 +21072,16 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
 https://learn.microsoft.com/powershell/module/az.functions/test-az
 #>
 function Test-Az {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateResponse])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Validate', Mandatory)]
-    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Validate')]
-    [Parameter(ParameterSetName='ValidateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -18273,142 +21090,126 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IValidateRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IValidateRequest]
     # Resource validation request content.
-    # To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
     ${ValidateRequest},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Expected location of the resource.
     ${Location},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Resource name to verify.
     ${Name},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("ServerFarm", "Site", "Microsoft.Web/hostingEnvironments")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes]
+    [System.String]
     # Resource type used for verification.
     ${Type},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServiceEnvironment]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServiceEnvironment]
     # App Service Environment Properties
-    # To construct, see NOTES section for APPSERVICEENVIRONMENT properties and create a hash table.
     ${AppServiceEnvironment},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Target capacity of the App Service plan (number of VMs).
     ${Capacity},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Platform (windows or linux)
     ${ContainerImagePlatform},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Repository name (image name)
     ${ContainerImageRepository},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Image tag
     ${ContainerImageTag},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Base URL of the container registry
     ${ContainerRegistryBaseUrl},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Password for to access the container registry
     ${ContainerRegistryPassword},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Username for to access the container registry
     ${ContainerRegistryUsername},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of App Service Environment where app or App Service plan should be created.
     ${HostingEnvironment},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.
     ${IsSpot},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is running as a windows container
     ${IsXenon},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
     ${NeedLinuxWorker},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # ARM resource ID of an App Service plan that would host the app.
     ${ServerFarmId},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of the target SKU for the App Service plan.
     ${SkuName},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -18466,16 +21267,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Validate = 'Az.Functions.private\Test-Az_Validate';
             ValidateExpanded = 'Az.Functions.private\Test-Az_ValidateExpanded';
-            ValidateViaIdentity = 'Az.Functions.private\Test-Az_ValidateViaIdentity';
-            ValidateViaIdentityExpanded = 'Az.Functions.private\Test-Az_ValidateViaIdentityExpanded';
+            ValidateViaJsonFilePath = 'Az.Functions.private\Test-Az_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.Functions.private\Test-Az_ValidateViaJsonString';
         }
-        if (('Validate', 'ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Validate', 'ValidateExpanded', 'ValidateViaJsonFilePath', 'ValidateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -18484,6 +21286,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -18515,9 +21320,9 @@ end {
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Description for update an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Description for update an App Service Plan.
 .Example
 Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Name MyPremiumPlan `
@@ -18526,11 +21331,11 @@ Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Force
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlanPatchResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlanPatchResource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -18562,7 +21367,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -18592,7 +21397,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -18628,11 +21433,13 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the App Service plan.
@@ -18640,6 +21447,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -18647,6 +21456,8 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -18660,15 +21471,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlanPatchResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlanPatchResource]
     # ARM resource for a app service plan.
-    # To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
     ${AppServicePlan},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18689,30 +21498,9 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Resource ID of the App Service Environment.
-    ${HostingEnvironmentProfileId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-    ${HyperV},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If <code>true</code>, this App Service Plan owns spot instances.
     ${IsSpot},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
-    ${IsXenon},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -18741,13 +21529,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # If <code>true</code>, apps assigned to this App Service plan can be scaled independently.If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
     ${PerSiteScaling},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-    ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -18785,6 +21566,18 @@ param(
     # If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.
     ${ZoneRedundant},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -18841,16 +21634,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateExpanded';
             UpdateViaIdentity = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -18859,920 +21655,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
-.Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
-.Example
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
-.Example
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType SystemAssigned -Force
-.Example
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
-.Example
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -IdentityType None -Force
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePatchResource
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-  [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
-  [Name <String>]: Hostname.
-  [SslState <SslState?>]: SSL type.
-  [Thumbprint <String>]: SSL certificate thumbprint.
-  [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
-  [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
-
-INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
-  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  [ActionName <String>]: The workflow action name.
-  [AnalysisName <String>]: Analysis Name
-  [AppSettingKey <String>]: App Setting key name.
-  [Authprovider <String>]: The auth provider for the users.
-  [BackupId <String>]: ID of the backup.
-  [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
-  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
-  [CertificateOrderName <String>]: Name of the certificate order..
-  [ConnectionStringKey <String>]: 
-  [ContainerName <String>]: Site Container Name
-  [DatabaseConnectionName <String>]: Name of the database connection.
-  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
-  [DetectorName <String>]: Detector Resource Name
-  [DiagnosticCategory <String>]: Diagnostic Category
-  [DiagnosticsName <String>]: Name of the diagnostics item.
-  [DomainName <String>]: Name of the domain.
-  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
-  [EntityName <String>]: Name of the hybrid connection.
-  [EnvironmentName <String>]: The stage site identifier.
-  [FunctionAppName <String>]: Name of the function app registered with the static site build.
-  [FunctionName <String>]: Function name.
-  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
-  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
-  [HostName <String>]: Hostname in the hostname binding.
-  [HostingEnvironmentName <String>]: Name of the hosting environment.
-  [Id <String>]: Deployment ID.
-  [Id1 <String>]: Resource identity path
-  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
-  [Instance <String>]: Name of the instance in the multi-role pool.
-  [InstanceId <String>]: 
-  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
-  [KeyName <String>]: The name of the key.
-  [KeyType <String>]: The type of host key.
-  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
-  [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
-  [Name <String>]: Name of the certificate.
-  [NamespaceName <String>]: The namespace for this hybrid connection.
-  [OperationId <String>]: GUID of the operation.
-  [PremierAddOnName <String>]: Add-on name.
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
-  [ProcessId <String>]: PID.
-  [PublicCertificateName <String>]: Public certificate name.
-  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
-  [RelayName <String>]: The relay name for this hybrid connection.
-  [RepetitionName <String>]: The workflow repetition.
-  [RequestHistoryName <String>]: The request history name.
-  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
-  [ResourceName <String>]: The name of the Application Insights component resource.
-  [RouteName <String>]: Name of the Virtual Network route.
-  [RunName <String>]: The workflow run name.
-  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  [SiteExtensionId <String>]: Site extension name.
-  [SiteName <String>]: Site Name
-  [Slot <String>]: Slot Name
-  [SnapshotId <String>]: The ID of the snapshot to read.
-  [SourceControlType <String>]: Type of source control
-  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [TriggerName <String>]: The workflow trigger name.
-  [Userid <String>]: The user id of the user.
-  [VersionId <String>]: The workflow versionId.
-  [View <String>]: The type of view. Only "summary" is supported at this time.
-  [VnetName <String>]: Name of the virtual network.
-  [WebJobName <String>]: Name of Web Job.
-  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
-  [WorkerPoolName <String>]: Name of the worker pool.
-  [WorkflowName <String>]: Workflow name.
-
-SITECONFIG <ISiteConfig>: Configuration of the app.
-  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
-  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
-  [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
-  [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
-  [ApiDefinitionUrl <String>]: The URL of the API definition.
-  [ApiManagementConfigId <String>]: APIM-Api Identifier.
-  [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
-    [Name <String>]: Pair name.
-    [Value <String>]: Pair value.
-  [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
-  [AutoSwapSlotName <String>]: Auto-swap slot name.
-  [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
-    [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
-    [ConnectionString <String>]: Connection string value.
-    [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
-  [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
-  [CustomActionExe <String>]: Executable to be run.
-  [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
-  [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
-  [DocumentRoot <String>]: Document root.
-  [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
-  [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
-    [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
-    [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
-    [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
-    [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
-    [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
-    [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
-    [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
-  [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
-  [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
-    [Argument <String>]: Command-line arguments to be passed to the script processor.
-    [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
-    [ScriptProcessor <String>]: The absolute path to the FastCGI application.
-  [HealthCheckPath <String>]: Health check path
-  [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
-  [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
-    [Action <String>]: Allow or Deny access for this IP range.
-    [Description <String>]: IP restriction rule description.
-    [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
-    [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
-    [Name <String>]: IP restriction rule name.
-    [Priority <Int32?>]: Priority of IP restriction rule.
-    [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
-    [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
-    [VnetSubnetResourceId <String>]: Virtual network resource id
-    [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
-  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
-  [JavaContainer <String>]: Java container.
-  [JavaContainerVersion <String>]: Java container version.
-  [JavaVersion <String>]: Java version.
-  [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
-  [LimitMaxDiskSizeInMb <Int64?>]: Maximum allowed disk size usage in MB.
-  [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
-  [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
-  [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
-  [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
-  [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
-  [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
-  [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
-  [NetFrameworkVersion <String>]: .NET Framework version.
-  [NodeVersion <String>]: Version of Node.js.
-  [NumberOfWorker <Int32?>]: Number of workers.
-  [PhpVersion <String>]: Version of PHP.
-  [PowerShellVersion <String>]: Version of PowerShell.
-  [PreWarmedInstanceCount <Int32?>]: Number of preWarmed instances.         This setting only applies to the Consumption and Elastic Plans
-  [PublicNetworkAccess <String>]: Property to allow or block all public traffic.
-  [PublishingUsername <String>]: Publishing user name.
-  [PushKind <String>]: Kind of resource.
-  [PythonVersion <String>]: Version of Python.
-  [RemoteDebuggingEnabled <Boolean?>]: <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
-  [RemoteDebuggingVersion <String>]: Remote debugging version.
-  [RequestCount <Int32?>]: Request Count.
-  [RequestTimeInterval <String>]: Time interval.
-  [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
-  [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
-  [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
-  [SlowRequestCount <Int32?>]: Request Count.
-  [SlowRequestPath <String>]: Request Path.
-  [SlowRequestTimeInterval <String>]: Time interval.
-  [SlowRequestTimeTaken <String>]: Time taken.
-  [TagWhitelistJson <String>]: Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
-  [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
-  [TracingOption <String>]: Tracing options.
-  [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
-    [Count <Int32?>]: Request Count.
-    [Path <String>]: Request Path.
-    [TimeInterval <String>]: Time interval.
-    [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
-    [Count <Int32?>]: Request Count.
-    [Path <String>]: Request Path
-    [Status <Int32?>]: HTTP status code.
-    [SubStatus <Int32?>]: Request Sub Status.
-    [TimeInterval <String>]: Time interval.
-    [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
-    [Count <Int32?>]: Request Count.
-    [Path <String>]: 
-    [StatusCode <String>]: HTTP status code.
-    [TimeInterval <String>]: Time interval.
-  [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
-    [PhysicalPath <String>]: Physical path.
-    [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
-      [PhysicalPath <String>]: Physical path.
-      [VirtualPath <String>]: Path to virtual application.
-    [VirtualPath <String>]: Virtual path.
-  [VnetName <String>]: Virtual Network name.
-  [VnetPrivatePortsCount <Int32?>]: The number of private ports assigned to this app. These will be assigned dynamically on runtime.
-  [VnetRouteAllEnabled <Boolean?>]: Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-  [WebSocketsEnabled <Boolean?>]: <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
-  [WebsiteTimeZone <String>]: Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
-  [WindowsFxVersion <String>]: Xenon App Framework and version
-  [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
-
-SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
-  [Kind <String>]: Kind of resource.
-  [ClientAffinityEnabled <Boolean?>]: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
-  [ClientCertEnabled <Boolean?>]: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
-  [ClientCertExclusionPath <String>]: client certificate authentication comma-separated exclusion paths
-  [ClientCertMode <ClientCertMode?>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
-  [CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>]: Application setting overrides for cloned app. If specified, these settings override the settings cloned         from source app. Otherwise, application settings from source app are retained.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [CloningInfoCloneCustomHostName <Boolean?>]: <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
-  [CloningInfoCloneSourceControl <Boolean?>]: <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
-  [CloningInfoConfigureLoadBalancing <Boolean?>]: <code>true</code> to configure load balancing for source and destination app.
-  [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
-  [CloningInfoHostingEnvironment <String>]: App Service Environment.
-  [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
-  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
-  [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
-  [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
-  [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
-  [ContainerSize <Int32?>]: Size of the function container.
-  [CustomDomainVerificationId <String>]: Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for verification.
-  [DailyMemoryTimeQuota <Int32?>]: Maximum allowed daily memory-time quota (applicable on dynamic apps only).
-  [DnsConfigurationDnsAltServer <String>]: Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
-  [DnsConfigurationDnsMaxCacheTimeout <Int32?>]: Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
-  [DnsConfigurationDnsRetryAttemptCount <Int32?>]: Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
-  [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
-  [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
-  [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
-  [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
-    [Name <String>]: Hostname.
-    [SslState <SslState?>]: SSL type.
-    [Thumbprint <String>]: SSL certificate thumbprint.
-    [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
-    [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
-  [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
-  [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
-  [HyperV <Boolean?>]: Hyper-V sandbox.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
-  [IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
-  [IsXenon <Boolean?>]: Obsolete: Hyper-V sandbox.
-  [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
-  [RedundancyMode <RedundancyMode?>]: Site redundancy mode
-  [Reserved <Boolean?>]: <code>true</code> if reserved; otherwise, <code>false</code>.
-  [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
-  [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
-  [SiteConfig <ISiteConfig>]: Configuration of the app.
-    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
-    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
-    [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-    [ActionType <AutoHealActionType?>]: Predefined action to be taken.
-    [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
-    [ApiDefinitionUrl <String>]: The URL of the API definition.
-    [ApiManagementConfigId <String>]: APIM-Api Identifier.
-    [AppCommandLine <String>]: App command line to launch.
-    [AppSetting <INameValuePair[]>]: Application settings.
-      [Name <String>]: Pair name.
-      [Value <String>]: Pair value.
-    [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
-    [AutoSwapSlotName <String>]: Auto-swap slot name.
-    [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
-      [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-    [ConnectionString <IConnStringInfo[]>]: Connection strings.
-      [ConnectionString <String>]: Connection string value.
-      [Name <String>]: Name of connection string.
-      [Type <ConnectionStringType?>]: Type of database.
-    [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
-    [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
-    [CustomActionExe <String>]: Executable to be run.
-    [CustomActionParameter <String>]: Parameters for the executable.
-    [DefaultDocument <String[]>]: Default documents.
-    [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
-    [DocumentRoot <String>]: Document root.
-    [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
-    [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-    [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
-      [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
-      [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
-      [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
-      [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
-      [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
-      [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
-      [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-    [FtpsState <FtpsState?>]: State of FTP / FTPS service
-    [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
-    [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-    [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
-      [Argument <String>]: Command-line arguments to be passed to the script processor.
-      [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
-      [ScriptProcessor <String>]: The absolute path to the FastCGI application.
-    [HealthCheckPath <String>]: Health check path
-    [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
-    [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-    [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
-      [Action <String>]: Allow or Deny access for this IP range.
-      [Description <String>]: IP restriction rule description.
-      [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-        [(Any) <String[]>]: This indicates any property can be added to this object.
-      [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
-      [Name <String>]: IP restriction rule name.
-      [Priority <Int32?>]: Priority of IP restriction rule.
-      [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
-      [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-      [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
-      [VnetSubnetResourceId <String>]: Virtual network resource id
-      [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-    [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
-    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
-    [JavaContainer <String>]: Java container.
-    [JavaContainerVersion <String>]: Java container version.
-    [JavaVersion <String>]: Java version.
-    [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
-    [LimitMaxDiskSizeInMb <Int64?>]: Maximum allowed disk size usage in MB.
-    [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
-    [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
-    [LinuxFxVersion <String>]: Linux App Framework and version
-    [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
-    [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
-    [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-    [MachineKeyDecryption <String>]: Algorithm used for decryption.
-    [MachineKeyDecryptionKey <String>]: Decryption key.
-    [MachineKeyValidation <String>]: MachineKey validation.
-    [MachineKeyValidationKey <String>]: Validation key.
-    [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
-    [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-    [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-    [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-    [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
-    [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
-    [NetFrameworkVersion <String>]: .NET Framework version.
-    [NodeVersion <String>]: Version of Node.js.
-    [NumberOfWorker <Int32?>]: Number of workers.
-    [PhpVersion <String>]: Version of PHP.
-    [PowerShellVersion <String>]: Version of PowerShell.
-    [PreWarmedInstanceCount <Int32?>]: Number of preWarmed instances.         This setting only applies to the Consumption and Elastic Plans
-    [PublicNetworkAccess <String>]: Property to allow or block all public traffic.
-    [PublishingUsername <String>]: Publishing user name.
-    [PushKind <String>]: Kind of resource.
-    [PythonVersion <String>]: Version of Python.
-    [RemoteDebuggingEnabled <Boolean?>]: <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
-    [RemoteDebuggingVersion <String>]: Remote debugging version.
-    [RequestCount <Int32?>]: Request Count.
-    [RequestTimeInterval <String>]: Time interval.
-    [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
-    [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-    [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-    [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
-    [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-    [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-    [ScmType <ScmType?>]: SCM type.
-    [SlowRequestCount <Int32?>]: Request Count.
-    [SlowRequestPath <String>]: Request Path.
-    [SlowRequestTimeInterval <String>]: Time interval.
-    [SlowRequestTimeTaken <String>]: Time taken.
-    [TagWhitelistJson <String>]: Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
-    [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
-    [TracingOption <String>]: Tracing options.
-    [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-    [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
-      [Count <Int32?>]: Request Count.
-      [Path <String>]: Request Path.
-      [TimeInterval <String>]: Time interval.
-      [TimeTaken <String>]: Time taken.
-    [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
-      [Count <Int32?>]: Request Count.
-      [Path <String>]: Request Path
-      [Status <Int32?>]: HTTP status code.
-      [SubStatus <Int32?>]: Request Sub Status.
-      [TimeInterval <String>]: Time interval.
-      [Win32Status <Int32?>]: Win32 error code.
-    [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
-      [Count <Int32?>]: Request Count.
-      [Path <String>]: 
-      [StatusCode <String>]: HTTP status code.
-      [TimeInterval <String>]: Time interval.
-    [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-    [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
-      [PhysicalPath <String>]: Physical path.
-      [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-      [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
-        [PhysicalPath <String>]: Physical path.
-        [VirtualPath <String>]: Path to virtual application.
-      [VirtualPath <String>]: Virtual path.
-    [VnetName <String>]: Virtual Network name.
-    [VnetPrivatePortsCount <Int32?>]: The number of private ports assigned to this app. These will be assigned dynamically on runtime.
-    [VnetRouteAllEnabled <Boolean?>]: Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-    [WebSocketsEnabled <Boolean?>]: <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
-    [WebsiteTimeZone <String>]: Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
-    [WindowsFxVersion <String>]: Xenon App Framework and version
-    [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
-  [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
-  [VirtualNetworkSubnetId <String>]: Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.         This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
-.Link
-https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionapp
-#>
-function Update-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [System.String]
-    # Unique name of the app to create or update.
-    # To create or update a deployment slot, use the {slot} parameter.
-    ${Name},
-
-    [Parameter(ParameterSetName='Update', Mandatory)]
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [System.String]
-    # Name of the resource group to which the resource belongs.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Update')]
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Your Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000).
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePatchResource]
-    # ARM resource for a site.
-    # To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
-    ${SiteEnvelope},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance.
-    # Default is <code>true</code>.
-    ${ClientAffinityEnabled},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>.
-    # Default is <code>false</code>.
-    ${ClientCertEnabled},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # client certificate authentication comma-separated exclusion paths
-    ${ClientCertExclusionPath},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode]
-    # This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
-    ${ClientCertMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides]))]
-    [System.Collections.Hashtable]
-    # Application setting overrides for cloned app.
-    # If specified, these settings override the settings cloned from source app.
-    # Otherwise, application settings from source app are retained.
-    ${CloningInfoAppSettingsOverride},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
-    ${CloningInfoCloneCustomHostName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to clone source control from source app; otherwise, <code>false</code>.
-    ${CloningInfoCloneSourceControl},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to configure load balancing for source and destination app.
-    ${CloningInfoConfigureLoadBalancing},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Correlation ID of cloning operation.
-    # This ID ties multiple cloning operationstogether to use the same snapshot.
-    ${CloningInfoCorrelationId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # App Service Environment.
-    ${CloningInfoHostingEnvironment},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
-    ${CloningInfoOverwrite},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # ARM resource ID of the source app.
-    # App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
-    ${CloningInfoSourceWebAppId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Location of source app ex: West US or North Europe
-    ${CloningInfoSourceWebAppLocation},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # ARM resource ID of the Traffic Manager profile to use, if it exists.
-    # Traffic Manager resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
-    ${CloningInfoTrafficManagerProfileId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Name of Traffic Manager profile to create.
-    # This is only needed if Traffic Manager profile does not already exist.
-    ${CloningInfoTrafficManagerProfileName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Int32]
-    # Size of the function container.
-    ${ContainerSize},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Unique identifier that verifies the custom domains assigned to the app.
-    # Customer will add this id to a txt record for verification.
-    ${CustomDomainVerificationId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Int32]
-    # Maximum allowed daily memory-time quota (applicable on dynamic apps only).
-    ${DailyMemoryTimeQuota},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Alternate DNS server to be used by apps.
-    # This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
-    ${DnsConfigurationDnsAltServer},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Int32]
-    # Custom time for DNS to be cached in seconds.
-    # Allowed range: 0-60.
-    # Default is 30 seconds.
-    # 0 means caching disabled.
-    ${DnsConfigurationDnsMaxCacheTimeout},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Int32]
-    # Total number of retries for dns lookup.
-    # Allowed range: 1-5.
-    # Default is 3.
-    ${DnsConfigurationDnsRetryAttemptCount},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Int32]
-    # Timeout for a single dns lookup in seconds.
-    # Allowed range: 1-30.
-    # Default is 3.
-    ${DnsConfigurationDnsRetryAttemptTimeout},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String[]]
-    # List of custom DNS servers to be used by an app for lookups.
-    # Maximum 5 dns servers can be set.
-    ${DnsConfigurationDnsServer},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> if the app is enabled; otherwise, <code>false</code>.
-    # Setting this value to false disables the app (takes the app offline).
-    ${Enabled},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState[]]
-    # Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    # To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
-    ${HostNameSslState},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-    # If <code>true</code>, the app is only accessible via API management process.
-    ${HostNamesDisabled},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Resource ID of the App Service Environment.
-    ${HostingEnvironmentProfileId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # HttpsOnly: configures a web site to accept only https requests.
-    # Issues redirect forhttp requests
-    ${HttpsOnly},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Hyper-V sandbox.
-    ${HyperV},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-    # Type of managed service identity.
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user assigned identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Obsolete: Hyper-V sandbox.
-    ${IsXenon},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Identity to use for Key Vault Reference authentication.
-    ${KeyVaultReferenceIdentity},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Kind of resource.
-    ${Kind},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]
-    # Site redundancy mode
-    ${RedundancyMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> if reserved; otherwise, <code>false</code>.
-    ${Reserved},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>.
-    # The default is <code>false</code>.
-    ${ScmSiteAlsoStopped},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
-    ${ServerFarmId},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig]
-    # Configuration of the app.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
-    ${SiteConfig},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Checks if Customer provided storage account is required
-    ${StorageAccountRequired},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
-    ${VirtualNetworkSubnetId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            Update = 'Az.Functions.private\Update-AzFunctionApp_Update';
-            UpdateExpanded = 'Az.Functions.private\Update-AzFunctionApp_UpdateExpanded';
-            UpdateViaIdentity = 'Az.Functions.private\Update-AzFunctionApp_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzFunctionApp_UpdateViaIdentityExpanded';
-        }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -19813,11 +21698,11 @@ Update an identity in the specified subscription and resource group.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityUpdate
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityUpdate
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -19831,7 +21716,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -19861,7 +21746,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -19902,11 +21787,13 @@ PARAMETER <IIdentityUpdate>: Describes an identity resource.
 https://learn.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the Resource Group to which the identity belongs.
@@ -19914,6 +21801,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # The name of the identity resource.
@@ -19921,6 +21810,8 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -19934,31 +21825,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityUpdate]
     # Describes an identity resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIdentityUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -20016,16 +21910,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateExpanded';
             UpdateViaIdentity = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -20034,6 +21931,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -20065,20 +21965,20 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -20091,11 +21991,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -20116,7 +22016,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -20146,7 +22046,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -20183,13 +22083,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -20201,13 +22101,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -20216,64 +22116,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -20283,18 +22183,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -20312,11 +22208,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -20325,28 +22221,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -20357,6 +22253,77 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [WebsiteTimeZone <String>]: Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
   [WindowsFxVersion <String>]: Xenon App Framework and version
   [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 
 TRIGGERSLOWREQUESTSWITHPATH <ISlowRequestsBasedTrigger[]>: A rule based on multiple Slow Requests Rule with path
   [Count <Int32?>]: Request Count.
@@ -20381,7 +22348,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -20389,11 +22356,13 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
 #>
 function Update-AzWebAppConfigurationSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -20401,6 +22370,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -20408,6 +22379,10 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the deployment slot.
@@ -20416,6 +22391,8 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -20429,19 +22406,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentitySite', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Flag to use Managed Identity Creds for ACR pull
@@ -20449,6 +22433,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # If using user managed identity, the user managed identity ClientId
@@ -20456,6 +22441,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
@@ -20463,14 +22449,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -20478,6 +22466,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The URL of the API definition.
@@ -20485,6 +22474,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # APIM-Api Identifier.
@@ -20492,6 +22482,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # App command line to launch.
@@ -20499,15 +22490,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
@@ -20515,6 +22507,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Auto-swap slot name.
@@ -20522,23 +22515,25 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
@@ -20548,6 +22543,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets whether CORS requests with credentials are allowed.
@@ -20556,6 +22552,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Executable to be run.
@@ -20563,6 +22560,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Parameters for the executable.
@@ -20570,6 +22568,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
@@ -20578,6 +22577,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
@@ -20585,6 +22585,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Document root.
@@ -20592,6 +22593,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
@@ -20599,6 +22601,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Maximum number of workers that a site can scale out to.This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
@@ -20606,23 +22609,25 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Maximum number of workers that a site can scale out to.This setting only applies to the Consumption and Elastic Premium Plans
@@ -20630,6 +22635,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a value indicating whether functions runtime scale monitoring is enabled.
@@ -20638,15 +22644,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Health check path
@@ -20654,6 +22661,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Http20Enabled: configures a web site to allow clients to connect over http2.0
@@ -20661,6 +22669,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
@@ -20668,23 +22677,25 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Gets or sets a flag indicating whether the Push endpoint is enabled.
@@ -20692,6 +22703,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java container.
@@ -20699,6 +22711,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java container version.
@@ -20706,6 +22719,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Java version.
@@ -20713,6 +22727,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Identity to use for Key Vault Reference authentication.
@@ -20720,6 +22735,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -20727,6 +22743,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int64]
     # Maximum allowed disk size usage in MB.
@@ -20734,6 +22751,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int64]
     # Maximum allowed memory usage in MB.
@@ -20741,6 +22759,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Double]
     # Maximum allowed CPU usage percentage.
@@ -20748,6 +22767,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Linux App Framework and version
@@ -20755,14 +22775,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
@@ -20770,6 +22792,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # HTTP logs directory size limit.
@@ -20777,14 +22800,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Managed Service Identity Id
@@ -20792,32 +22817,35 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of minimum instance count for a siteThis setting only applies to the Elastic Plans
@@ -20825,6 +22853,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # .NET Framework version.
@@ -20832,6 +22861,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of Node.js.
@@ -20839,6 +22869,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of workers.
@@ -20846,6 +22877,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of PHP.
@@ -20853,6 +22885,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of PowerShell.
@@ -20860,6 +22893,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Number of preWarmed instances.This setting only applies to the Consumption and Elastic Plans
@@ -20867,6 +22901,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Property to allow or block all public traffic.
@@ -20874,6 +22909,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Publishing user name.
@@ -20881,6 +22917,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -20888,6 +22925,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Version of Python.
@@ -20895,6 +22933,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
@@ -20902,6 +22941,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Remote debugging version.
@@ -20909,6 +22949,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Request Count.
@@ -20916,6 +22957,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time interval.
@@ -20923,6 +22965,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
@@ -20930,6 +22973,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.DateTime]
     # Request tracing expiration time.
@@ -20937,23 +22981,25 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # IP security restrictions for scm to use main.
@@ -20961,22 +23007,25 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Request Count.
@@ -20984,6 +23033,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Request Path.
@@ -20991,6 +23041,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time interval.
@@ -20998,6 +23049,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Time taken.
@@ -21005,6 +23057,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
@@ -21012,6 +23065,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.Tags can consist of alphanumeric characters and the following:'_', '@', '#', '.', ':', '-'.
@@ -21020,6 +23074,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Tracing options.
@@ -21027,6 +23082,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # A rule based on private bytes.
@@ -21034,33 +23090,34 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
@@ -21068,22 +23125,16 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Virtual Network name.
-    ${VnetName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # The number of private ports assigned to this app.
@@ -21092,6 +23143,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Virtual Network Route All enabled.
@@ -21100,6 +23152,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
@@ -21107,6 +23160,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Sets the time zone a site uses for generating timestamps.
@@ -21118,6 +23172,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Xenon App Framework and version
@@ -21125,10 +23180,23 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Int32]
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -21186,16 +23254,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateExpanded';
             UpdateViaIdentity = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaIdentityExpanded';
+            UpdateViaIdentitySite = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaIdentitySite';
+            UpdateViaIdentitySiteExpanded = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaIdentitySiteExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -21204,6 +23277,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -21235,20 +23311,20 @@ end {
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Description for update the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -21261,11 +23337,11 @@ APPSETTING <INameValuePair[]>: Application settings.
 CONNECTIONSTRING <IConnStringInfo[]>: Connection strings.
   [ConnectionString <String>]: Connection string value.
   [Name <String>]: Name of connection string.
-  [Type <ConnectionStringType?>]: Type of database.
+  [Type <String>]: Type of database.
 
 EXPERIMENTRAMPUPRULE <IRampUpRule[]>: List of ramp-up rules.
   [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+  [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
   [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
   [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
   [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -21286,7 +23362,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -21316,7 +23392,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -21353,13 +23429,13 @@ IPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions for m
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -21371,13 +23447,13 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [Action <String>]: Allow or Deny access for this IP range.
   [Description <String>]: IP restriction rule description.
   [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-    [(Any) <String[]>]: This indicates any property can be added to this object.
+    [(Any) <List<String>>]: This indicates any property can be added to this object.
   [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
   [Name <String>]: IP restriction rule name.
   [Priority <Int32?>]: Priority of IP restriction rule.
   [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
   [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-  [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+  [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
   [VnetSubnetResourceId <String>]: Virtual network resource id
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
@@ -21386,64 +23462,64 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -21453,18 +23529,14 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -21482,11 +23554,11 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -21495,28 +23567,28 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -21551,7 +23623,7 @@ TRIGGERSTATUSCODESRANGE <IStatusCodesRangeBasedTrigger[]>: A rule based on statu
 VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
   [PhysicalPath <String>]: Physical path.
   [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-  [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+  [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
     [PhysicalPath <String>]: Physical path.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
@@ -21559,11 +23631,13 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
 https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
 #>
 function Update-AzWebAppConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -21571,6 +23645,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -21578,6 +23654,8 @@ param(
 
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -21591,15 +23669,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource]
     # Web app configuration ARM resource.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -21625,9 +23701,9 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType]
+    [System.String]
     # Predefined action to be taken.
     ${ActionType},
 
@@ -21663,9 +23739,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application settings.
-    # To construct, see NOTES section for APPSETTING properties and create a hash table.
     ${AppSetting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -21685,7 +23760,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts]))]
     [System.Collections.Hashtable]
     # List of Azure Storage Accounts.
     ${AzureStorageAccount},
@@ -21694,9 +23769,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[]]
     # Connection strings.
-    # To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
     ${ConnectionString},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -21770,16 +23844,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[]]
     # List of ramp-up rules.
-    # To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
     ${ExperimentRampUpRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState]
+    [System.String]
     # State of FTP / FTPS service
     ${FtpsState},
 
@@ -21802,9 +23875,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[]]
     # Handler mappings.
-    # To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
     ${HandlerMapping},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -21832,16 +23904,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for main.
-    # To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
     ${IPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for main access restriction if no rules are matched.
     ${IPSecurityRestrictionsDefaultAction},
 
@@ -21917,9 +23988,9 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing]
+    [System.String]
     # Site load balancing.
     ${LoadBalancing},
 
@@ -21939,9 +24010,9 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode]
+    [System.String]
     # Managed pipeline mode.
     ${ManagedPipelineMode},
 
@@ -21956,25 +24027,24 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[]]
     # Application metadata.
     # This property cannot be retrieved, since it may contain secrets.
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites]
+    [System.String]
     # The minimum strength TLS cipher suite allowed for an application
     ${MinTlsCipherSuite},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # MinTlsVersion: configures the minimum version of TLS required for SSL requests
     ${MinTlsVersion},
 
@@ -22101,16 +24171,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[]]
     # IP security restrictions for scm.
-    # To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
     ${ScmIPSecurityRestriction},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction]
+    [System.String]
     # Default action for scm access restriction if no rules are matched.
     ${ScmIPSecurityRestrictionsDefaultAction},
 
@@ -22123,17 +24192,17 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions]
+    [System.String]
     # ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
     ${ScmMinTlsVersion},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType]
+    [System.String]
     # SCM type.
     ${ScmType},
 
@@ -22198,27 +24267,24 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[]]
     # A rule based on multiple Slow Requests Rule with path
-    # To construct, see NOTES section for TRIGGERSLOWREQUESTSWITHPATH properties and create a hash table.
     ${TriggerSlowRequestsWithPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[]]
     # A rule based on status codes.
-    # To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
     ${TriggerStatusCode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[]]
     # A rule based on status codes ranges.
-    # To construct, see NOTES section for TRIGGERSTATUSCODESRANGE properties and create a hash table.
     ${TriggerStatusCodesRange},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -22232,17 +24298,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[]]
     # Virtual applications.
-    # To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
     ${VirtualApplication},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Virtual Network name.
-    ${VnetName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -22291,6 +24349,18 @@ param(
     [System.Int32]
     # Explicit Managed Service Identity Id
     ${XManagedServiceIdentityId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -22348,16 +24418,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateExpanded';
             UpdateViaIdentity = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -22366,6 +24439,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

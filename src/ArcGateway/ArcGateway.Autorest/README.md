@@ -48,7 +48,7 @@ input-file:
 module-version: 0.1.0
 title: ArcGateway
 subject-prefix: 'Arc'
-# becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
+# because autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
 # we hide the original cmdlet and custom it under /custom folder
 disable-transform-identity-type-for-operation:
   - Machines_Update

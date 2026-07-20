@@ -17,6 +17,7 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {

@@ -331,16 +331,17 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 
 function Test-AzureVmWorkloadBackupProtectionItem
 {
-	$resourceGroupName = "hiagarg"
-	$vaultName = "hiagaVault"	
+	$resourceGroupName = "sqlcontainer-pstest-rg" #"hiagarg"
+	$vaultName = "sqlcontainer-pstest-vault"	
 	$sourceDBName = "master"
-	$containerFriendlyName = "sql-pstest-vm2"
+	$containerFriendlyName = "sql-pstest-vm" #"sql-pstest-vm2"
 
 	try
 	{   
 		# test trigger adhoc backup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name -match $sourceDBName -and $_.ContainerName -match $containerFriendlyName}
+
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name.EndsWith($sourceDBName) -and $_.ContainerName -match $containerFriendlyName}
 
 		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -527,7 +528,7 @@ function Test-AzureVmWorkloadFullRestore
 			-Item $item | Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 				-VaultId $vault.ID `
 				-TargetItem $protectableInstances[0] `
-				–AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
+				-AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
 					-VaultId $vault.ID | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
@@ -535,7 +536,7 @@ function Test-AzureVmWorkloadFullRestore
 		$restoreConfig2 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 			-VaultId $vault.ID `
 			-RecoveryPoint $recoveryPoint[0] `
-			–OriginalWorkloadRestore;
+			-OriginalWorkloadRestore;
 
 		Assert-NotNull $restoreConfig2
 
@@ -570,7 +571,7 @@ function Test-AzureVmWorkloadFullRestore
 			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
 			-Item $item[0] `
 			-TargetItem $protectableInstances[0] `
-			–AlternateWorkloadRestore;
+			-AlternateWorkloadRestore;
 
 		Assert-NotNull $restoreConfig3
 
@@ -584,7 +585,7 @@ function Test-AzureVmWorkloadFullRestore
 			-VaultId $vault.ID `
 			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
 			-Item $item[0] `
-			–OriginalWorkloadRestore;
+			-OriginalWorkloadRestore;
 
 		Assert-NotNull $restoreConfig4
 
@@ -659,7 +660,7 @@ function Test-AzureVmWorkloadFullRestoreWithFiles
 			-Item $item | Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 				-VaultId $vault.ID `
 				-TargetItem $protectableInstances[0] `
-				–AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
+				-AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
 					-VaultId $vault.ID | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }

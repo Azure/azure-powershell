@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class EthernetAddressType
     {
+        /// <summary>
+        /// Dynamic
+        /// </summary>
         public const string Dynamic = "Dynamic";
+        /// <summary>
+        /// Static
+        /// </summary>
         public const string Static = "Static";
     }
 }

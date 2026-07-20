@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RoutingRuleDestinationType
     {
+        /// <summary>
+        /// Destination specified as an IP address prefix (CIDR).
+        /// </summary>
         public const string AddressPrefix = "AddressPrefix";
+        /// <summary>
+        /// Destination specified as an Azure service tag.
+        /// </summary>
         public const string ServiceTag = "ServiceTag";
     }
 }

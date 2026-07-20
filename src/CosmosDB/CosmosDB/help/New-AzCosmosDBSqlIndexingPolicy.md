@@ -15,7 +15,8 @@ Creates a new CosmosDB Sql IndexingPolicy object.
 ```
 New-AzCosmosDBSqlIndexingPolicy [-IncludedPath <PSIncludedPath[]>] [-SpatialSpec <PSSpatialSpec[]>]
  [-CompositePath <PSCompositePath[][]>] [-ExcludedPath <String[]>] [-Automatic <Boolean>]
- [-IndexingMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IndexingMode <String>] [-VectorIndex <PSVectorIndex[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,8 @@ $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Po
 $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
 $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
 $compositePath = (($cp1, $cp2), ($cp2, $cp1))
-New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+$VectorIndex = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat"
+New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $compositePath -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent -VectorIndex $VectorIndex
 ```
 
 ```output
@@ -43,6 +45,7 @@ ExcludedPaths    : {Microsoft.Azure.Commands.CosmosDB.Models.PSExcludedPath}
 CompositeIndexes : {Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath,
                    Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath}
 SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
+VectorIndexes    : {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex}
 ```
 
 ## PARAMETERS
@@ -143,6 +146,21 @@ Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VectorIndex
+Array of objects of type Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorIndex.
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVectorIndex[]
 Parameter Sets: (All)
 Aliases:
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 .Description
-Updates the applied scopes of the `Reservation`.
+Update the applied scopes of the `Reservation`.
 .Example
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Name "testName"
 .Example
@@ -32,11 +32,9 @@ Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" 
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/{your resource group name}"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -55,93 +53,66 @@ RENEWPROPERTY <IPatchPropertiesRenewProperties>: .
     [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
     [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
     [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
-    [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-    [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
+    [AppliedScopeType <String>]: Type of the Applied Scope.
+    [AppliedScopes <List<String>>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
+    [BillingPlan <String>]: Represent the billing plans.
     [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
     [DisplayName <String>]: Friendly name of the reservation
-    [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
+    [InstanceFlexibility <String>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
     [Location <String>]: The Azure region where the reserved resource lives.
     [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
     [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
-    [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+    [ReservedResourceType <String>]: The type of the resource that is being reserved.
     [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
     [Sku <String>]: 
-    [Term <ReservationTerm?>]: Represent the term of reservation.
+    [Term <String>]: Represent the term of reservation.
 
-RESERVATION <IPatch>: The request for reservation patch
-  [AppliedScope <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-  [AppliedScopePropertyDisplayName <String>]: Display name
-  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
-  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
-  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Name <String>]: Display name of the reservation
-  [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
-  [RenewProperty <IPatchPropertiesRenewProperties>]: 
-    [PurchaseProperty <IPurchaseRequest>]: The request for reservation purchase
-      [AppliedScopePropertyDisplayName <String>]: Display name
-      [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
-      [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
-      [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
-      [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
-      [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-      [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-      [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-      [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
-      [DisplayName <String>]: Friendly name of the reservation
-      [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-      [Location <String>]: The Azure region where the reserved resource lives.
-      [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
-      [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
-      [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
-      [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
-      [Sku <String>]: 
-      [Term <ReservationTerm?>]: Represent the term of reservation.
-  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
+RESERVATIONORDERINPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the reservation item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 #>
 function Update-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ReservationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Id of the reservation item
     ${Id},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ReservationOrderId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
     # Order Id of the reservation
     ${OrderId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch]
-    # The request for reservation patch
-    # To construct, see NOTES section for RESERVATION properties and create a hash table.
-    ${Reservation},
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    ${ReservationOrderInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String[]]
@@ -152,6 +123,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Display name
@@ -159,6 +131,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the management group where the benefit must be applied.
@@ -166,6 +139,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the resource group.
@@ -173,6 +147,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Fully-qualified identifier of the subscription.
@@ -180,6 +155,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Tenant ID where the savings plan should apply benefit.
@@ -187,23 +163,26 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType])]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("Single", "Shared", "ManagementGroup")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType]
+    [System.String]
     # Type of the Applied Scope.
     ${AppliedScopeType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility])]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.PSArgumentCompleterAttribute("On", "Off")]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.InstanceFlexibility]
+    [System.String]
     # Turning this on will apply the reservation discount to other VMs in the same VM size group.
     # Only specify for VirtualMachines reserved resource type.
     ${InstanceFlexibility},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # Display name of the reservation
@@ -211,6 +190,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Setting this to true will automatically purchase a new reservation on the expiration date time.
@@ -218,18 +198,31 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatchPropertiesRenewProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesRenewProperties]
     # .
-    # To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
     ${RenewProperty},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityReservationOrderExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.DateTime]
     # This is the date-time when the Azure hybrid benefit needs to be reviewed.
     ${ReviewDateTime},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -299,6 +292,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -318,10 +320,11 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.Reservations.private\Update-AzReservation_Update';
             UpdateExpanded = 'Az.Reservations.private\Update-AzReservation_UpdateExpanded';
-            UpdateViaIdentity = 'Az.Reservations.private\Update-AzReservation_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.Reservations.private\Update-AzReservation_UpdateViaIdentityExpanded';
+            UpdateViaIdentityReservationOrderExpanded = 'Az.Reservations.private\Update-AzReservation_UpdateViaIdentityReservationOrderExpanded';
+            UpdateViaJsonFilePath = 'Az.Reservations.private\Update-AzReservation_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Reservations.private\Update-AzReservation_UpdateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -330,6 +333,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

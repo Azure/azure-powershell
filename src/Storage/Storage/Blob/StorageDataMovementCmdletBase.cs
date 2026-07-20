@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using OpContext = Microsoft.Azure.Storage.OperationContext;
     using System.Collections.Generic;
     using System.Security.Cryptography;
+    using Microsoft.Azure.Documents;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
@@ -75,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="source">Indicating the source.</param>
         /// <param name="destination">Indicating the destination.</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -87,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="source">Indicating the source.</param>
         /// <param name="destination">Indicating the destination.</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
@@ -185,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
-        /// Get the block id arrary from block blob length, block size and blob name
+        /// Get the block id array from block blob length, block size and blob name
         /// </summary>
         public static string[] GetBlockIDs(long contentLength, long blockLength, string blobname)
         {
@@ -199,18 +200,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 blockCount++;
             }
             List<string> blockIDs = new List<string>();
-            string blockIdPrefix = Convert.ToBase64String(MD5.Create().ComputeHash(System.Text.Encoding.UTF8.GetBytes(blobname)));
             for (int i = 0; i < (int)blockCount; i++)
             {
-                string idNo = i.ToString();
-                while (idNo.Length < 5)
-                {
-                    idNo = "0" + idNo;
-                }
-                string blockID = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(blockIdPrefix + idNo));
+                string blockID = GenerateBlockId(i * blockLength);
                 blockIDs.Add(blockID);
             }
             return blockIDs.ToArray();
+        }
+        public static string GenerateBlockId(long offset)
+        {
+            byte[] id = new byte[48]; // 48 raw bytes => 64 byte string once Base64 encoded
+            BitConverter.GetBytes(offset).CopyTo(id, 0);
+            return Convert.ToBase64String(id);
         }
     }
 }

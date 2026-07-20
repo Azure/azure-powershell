@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="multiVMGroupId">The multi vm group id.
         /// </param>
 
+        /// <param name="protectionClusterId">The replication protection cluster Id.
+        /// </param>
+
         /// <param name="recoveryBootDiagStorageAccountId">The boot diagnostic storage account.
         /// </param>
 
@@ -78,7 +81,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="recoveryCapacityReservationGroupId">The recovery capacity reservation group Id.
         /// </param>
-        public A2AEnableProtectionInput(string fabricObjectId, string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string multiVMGroupName = default(string), string multiVMGroupId = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string))
+
+        /// <param name="platformFaultDomain">the platform fault domain.
+        /// </param>
+
+        /// <param name="autoProtectionOfDataDisk">A value indicating whether the auto protection is enabled.
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
+        public A2AEnableProtectionInput(string fabricObjectId, string recoveryContainerId = default(string), string recoveryResourceGroupId = default(string), string recoveryCloudServiceId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryProximityPlacementGroupId = default(string), System.Collections.Generic.IList<A2AVmDiskInputDetails> vmDisks = default(System.Collections.Generic.IList<A2AVmDiskInputDetails>), System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string multiVMGroupName = default(string), string multiVMGroupId = default(string), string protectionClusterId = default(string), string recoveryBootDiagStorageAccountId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryAvailabilityZone = default(string), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string recoveryAzureNetworkId = default(string), string recoverySubnetName = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), int? platformFaultDomain = default(int?), string autoProtectionOfDataDisk = default(string))
 
         {
             this.FabricObjectId = fabricObjectId;
@@ -91,6 +100,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.VMManagedDisks = vmManagedDisks;
             this.MultiVMGroupName = multiVMGroupName;
             this.MultiVMGroupId = multiVMGroupId;
+            this.ProtectionClusterId = protectionClusterId;
             this.RecoveryBootDiagStorageAccountId = recoveryBootDiagStorageAccountId;
             this.DiskEncryptionInfo = diskEncryptionInfo;
             this.RecoveryAvailabilityZone = recoveryAvailabilityZone;
@@ -99,6 +109,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoverySubnetName = recoverySubnetName;
             this.RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
+            this.PlatformFaultDomain = platformFaultDomain;
+            this.AutoProtectionOfDataDisk = autoProtectionOfDataDisk;
             CustomInit();
         }
 
@@ -169,6 +181,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string MultiVMGroupId {get; set; }
 
         /// <summary>
+        /// Gets or sets the replication protection cluster Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protectionClusterId")]
+        public string ProtectionClusterId {get; set; }
+
+        /// <summary>
         /// Gets or sets the boot diagnostic storage account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryBootDiagStorageAccountId")]
@@ -215,6 +233,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryCapacityReservationGroupId")]
         public string RecoveryCapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
+        public int? PlatformFaultDomain {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the auto protection is enabled. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoProtectionOfDataDisk")]
+        public string AutoProtectionOfDataDisk {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -258,10 +288,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
 
 
+
             if (this.RecoveryExtendedLocation != null)
             {
                 this.RecoveryExtendedLocation.Validate();
             }
+
 
 
 

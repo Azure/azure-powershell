@@ -2,107 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.CompanyInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>IntegrationName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MonitorName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuleSetName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IntegrationName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MonitorName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuleSetName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api50.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api50.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.CompanyInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.CompanyInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.CompanyInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -146,9 +48,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ConnectedPartnerResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ConnectedPartnerResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -186,9 +88,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourcesListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ConnectedPartnerResourcesListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourcesListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ConnectedPartnerResourcesListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -208,12 +110,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.DeploymentInfoResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.DeploymentInfoResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.DeploymentInfoResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.DeploymentInfoResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>ConfigurationType</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeploymentUrl</Label>
           </TableColumnHeader>
@@ -227,6 +132,9 @@
             <Label>MemoryCapacity</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ProjectType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Status</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -236,6 +144,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ConfigurationType</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeploymentUrl</PropertyName>
               </TableColumnItem>
@@ -249,6 +160,9 @@
                 <PropertyName>MemoryCapacity</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProjectType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Status</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -260,9 +174,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudDeployment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticCloudDeployment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudDeployment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticCloudDeployment#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -318,9 +232,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudUser</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticCloudUser</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudUser</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticCloudUser#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -346,9 +260,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ConfigurationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IntegrationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MonitorName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RuleSetName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ConfigurationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IntegrationName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MonitorName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RuleSetName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -386,9 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -408,9 +374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -430,9 +396,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorResourceUpdateParametersTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -452,9 +418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorUpgrade</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorUpgrade</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorUpgrade</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticMonitorUpgrade#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -474,9 +440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticOrganizationToAzureSubscriptionMappingResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticOrganizationToAzureSubscriptionMappingResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticOrganizationToAzureSubscriptionMappingResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticOrganizationToAzureSubscriptionMappingResponseProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticTrafficFilter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticTrafficFilter#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -548,9 +514,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilterRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticTrafficFilterRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilterRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticTrafficFilterRule#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -588,9 +554,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionListProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticVersionListProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionListProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticVersionListProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -610,9 +576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionsListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticVersionsListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionsListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticVersionsListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -632,9 +598,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ErrorResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ErrorResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -666,9 +632,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserCreationResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponseBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserCreationResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ErrorResponseBody#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ExternalUserCreationResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ExternalUserCreationResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -688,9 +688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ExternalUserInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ExternalUserInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -702,9 +702,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Password</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Role</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>UserName</Label>
@@ -723,9 +720,6 @@
                 <PropertyName>Password</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Role</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>UserName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -734,9 +728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.FilteringTag</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.FilteringTag#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -768,9 +762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IdentityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IdentityProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -796,9 +790,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.LogRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.LogRules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.LogRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.LogRules#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -830,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MarketplaceSaaSInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MarketplaceSaaSInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -876,9 +870,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfoMarketplaceSubscription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfoMarketplaceSubscription#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OfferId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublisherId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OfferId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -904,9 +926,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredResourceListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -926,9 +948,93 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscription#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Error</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Error</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionPropertiesList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoredSubscriptionPropertiesList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRules</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRules#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -954,9 +1060,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRulesListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRulesListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -976,9 +1082,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRulesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitoringTagRulesProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -998,14 +1104,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MonitorProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>GenerateApiKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HostingType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LiftrResourceCategory</Label>
@@ -1042,6 +1151,9 @@
                 <PropertyName>GenerateApiKey</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>HostingType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LiftrResourceCategory</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1074,9 +1186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1085,6 +1197,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastRefreshAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OpenAiConnectorId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OpenAiResourceEndpoint</Label>
@@ -1103,6 +1218,9 @@
                 <PropertyName>LastRefreshAt</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>OpenAiConnectorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OpenAiResourceEndpoint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1114,9 +1232,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodel</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationRpmodel</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodel</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationRpmodel#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1142,9 +1260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodelListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationRpmodelListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodelListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationRpmodelListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1164,9 +1282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationStatusResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationStatusResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationStatusResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OpenAiIntegrationStatusResponseProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1186,9 +1304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1226,9 +1344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1248,9 +1366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.OperationResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1282,9 +1400,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PartnerBillingEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PartnerBillingEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PartnerBillingEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PartnerBillingEntity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1310,9 +1428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PlanDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PlanDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1356,9 +1474,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ConfigurationType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProjectType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ConfigurationType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProjectType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResourceSku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResourceSku#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1378,17 +1524,140 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UpgradableVersionsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResubscribeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UpgradableVersionsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ResubscribeProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OrganizationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlanId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TargetSubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Term</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OrganizationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlanId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TargetSubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Term</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.SubscriptionList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.SubscriptionList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UpgradableVersionsList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UpgradableVersionsList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>CurrentVersion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpgradableVersion</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1397,18 +1666,15 @@
               <TableColumnItem>
                 <PropertyName>CurrentVersion</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpgradableVersion</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserApiKeyResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserApiKeyResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserApiKeyResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserApiKeyResponseProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1428,9 +1694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserEmailId</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserEmailId</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserEmailId</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserEmailId#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1450,9 +1716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1490,9 +1756,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMCollectionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMCollectionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMCollectionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMCollectionUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1518,9 +1784,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMHostListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMHostListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMHostListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMHostListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1540,9 +1806,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMIngestionDetailsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMIngestionDetailsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMIngestionDetailsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMIngestionDetailsResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1568,9 +1834,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMResources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMResources</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.VMResources#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

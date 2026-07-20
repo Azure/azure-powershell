@@ -20,10 +20,10 @@ Describe 'Get-AzElasticVersion' {
         $region = 'westus2'
         $elasticVersions = Get-AzElasticVersion -Region $region
         $elasticVersions | Should -Not -BeNullOrEmpty
-        $elasticVersions | Should -BeOfType 'Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticVersionListFormat'
+        $elasticVersions | Should -BeOfType 'Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticVersionListFormat'
         
         # Ensure output contains version data
-        $elasticVersions.version | Should -Contain '8.15.2'
-        $elasticVersions.version | Should -Contain '8.14.3'
+        $elasticVersions.version | Should -Contain '8.19.5'
+        $elasticVersions.version | Should -Contain '9.1.5'
     }
 }

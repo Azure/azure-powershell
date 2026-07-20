@@ -9,19 +9,21 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a new instance of IP Traffic
+
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIPTraffic -SourceIp <System.Collections.Generic.IList`1[System.String]>
- -DestinationIp <System.Collections.Generic.IList`1[System.String]>
- -SourcePort <System.Collections.Generic.IList`1[System.String]>
- -DestinationPort <System.Collections.Generic.IList`1[System.String]>
- -Protocol <System.Collections.Generic.IList`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+New-AzNetworkManagerIPTraffic -SourceIp <System.Collections.Generic.List`1[System.String]>
+ -DestinationIp <System.Collections.Generic.List`1[System.String]>
+ -SourcePort <System.Collections.Generic.List`1[System.String]>
+ -DestinationPort <System.Collections.Generic.List`1[System.String]>
+ -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 **New-AzNetworkManagerIPTraffic** cmdlet creates a new instance of IP Traffic
+
 ## EXAMPLES
 
 ### Example 1
@@ -52,18 +54,17 @@ IpTrafficText    : {
                        "TCP"
                      ]
                    }
-
 ```
 
-
 Created a new instance of IP Traffic
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,7 +79,7 @@ Accept wildcard characters: False
 The destination IPs.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +94,7 @@ Accept wildcard characters: False
 The destination ports.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +109,7 @@ Accept wildcard characters: False
 The protocols (e.g., TCP, UDP).
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 The source IPs.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 The source ports.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +154,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +170,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -19,12 +19,12 @@ API to get lab plans.
 API to get lab plans.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan_ListByLabPlanName {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -37,6 +37,7 @@ param(
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
+    # The name of lab service user.
     ${Name},
           
     [Parameter()]
@@ -88,10 +89,10 @@ param(
 )
 
 process {
-
+    $CheckForWildcards = Join-Path $PSScriptRoot 'Utilities' 'CheckForWildcards.ps1'
     $currentLabPlan = $PSBoundParameters.Name
     $PSBoundParameters.Remove('Name') > $null
-    if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $currentLabPlan))
+    if ($(. $CheckForWildcards -ResourceId $currentLabPlan))
     {
         # Uses Powershell wildcards
         return Az.LabServices.private\Get-AzLabServicesLabPlan_List @PSBoundParameters |  Where-Object { $_.Name -like $currentLabPlan }

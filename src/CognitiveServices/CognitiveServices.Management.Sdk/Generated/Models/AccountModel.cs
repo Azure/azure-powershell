@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Initializes a new instance of the AccountModel class.
         /// </summary>
 
+        /// <param name="publisher">Deployment model publisher.
+        /// </param>
+
         /// <param name="format">Deployment model format.
         /// </param>
 
@@ -39,10 +42,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="source">Optional. Deployment model source ARM resource ID.
         /// </param>
 
+        /// <param name="sourceAccount">Optional. Source of the model, another Microsoft.CognitiveServices accounts
+        /// ARM resource ID.
+        /// </param>
+
         /// <param name="callRateLimit">The call rate limit Cognitive Services account.
         /// </param>
 
-        /// <param name="baseModel">Base Model Identifier.
+        /// <param name="baseModel">Properties of Cognitive Services account deployment model.
         /// </param>
 
         /// <param name="isDefaultVersion">If the model is default version.
@@ -64,13 +71,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="lifecycleStatus">Model lifecycle status.
-        /// Possible values include: 'GenerallyAvailable', 'Preview'</param>
+        /// Possible values include: &#39;Stable&#39;, &#39;Preview&#39;, &#39;GenerallyAvailable&#39;,
+        /// &#39;Deprecating&#39;, &#39;Deprecated&#39;</param>
 
         /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
         /// </param>
-        public AccountModel(string format = default(string), string name = default(string), string version = default(string), string source = default(string), CallRateLimit callRateLimit = default(CallRateLimit), DeploymentModel baseModel = default(DeploymentModel), bool? isDefaultVersion = default(bool?), System.Collections.Generic.IList<ModelSku> skus = default(System.Collections.Generic.IList<ModelSku>), int? maxCapacity = default(int?), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> finetuneCapabilities = default(System.Collections.Generic.IDictionary<string, string>), ModelDeprecationInfo deprecation = default(ModelDeprecationInfo), string lifecycleStatus = default(string), SystemData systemData = default(SystemData))
+        public AccountModel(string publisher = default(string), string format = default(string), string name = default(string), string version = default(string), string source = default(string), string sourceAccount = default(string), CallRateLimit callRateLimit = default(CallRateLimit), DeploymentModel baseModel = default(DeploymentModel), bool? isDefaultVersion = default(bool?), System.Collections.Generic.IList<ModelSku> skus = default(System.Collections.Generic.IList<ModelSku>), int? maxCapacity = default(int?), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> finetuneCapabilities = default(System.Collections.Generic.IDictionary<string, string>), ModelDeprecationInfo deprecation = default(ModelDeprecationInfo), string lifecycleStatus = default(string), SystemData systemData = default(SystemData))
 
-        : base(format, name, version, source, callRateLimit)
+        : base(publisher, format, name, version, source, sourceAccount, callRateLimit)
         {
             this.BaseModel = baseModel;
             this.IsDefaultVersion = isDefaultVersion;
@@ -91,7 +99,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
 
         /// <summary>
-        /// Gets or sets base Model Identifier.
+        /// Gets or sets properties of Cognitive Services account deployment model.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "baseModel")]
         public DeploymentModel BaseModel {get; set; }
@@ -133,7 +141,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public ModelDeprecationInfo Deprecation {get; set; }
 
         /// <summary>
-        /// Gets or sets model lifecycle status. Possible values include: &#39;GenerallyAvailable&#39;, &#39;Preview&#39;
+        /// Gets or sets model lifecycle status. Possible values include: &#39;Stable&#39;, &#39;Preview&#39;, &#39;GenerallyAvailable&#39;, &#39;Deprecating&#39;, &#39;Deprecated&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lifecycleStatus")]
         public string LifecycleStatus {get; set; }

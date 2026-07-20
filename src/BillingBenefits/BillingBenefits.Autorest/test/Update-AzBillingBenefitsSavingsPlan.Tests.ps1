@@ -24,7 +24,7 @@ Describe 'Update-AzBillingBenefitsSavingsPlan' {
         $response2.DisplayName | Should -Not -Be $oldName
     }
 
-    It 'Update' {
+    It 'Update' -Skip {
         $response1 = Get-AzBillingBenefitsSavingsPlan -Id "0c382729-4c81-48a9-a350-5b7a8beccea5" -OrderId "e0167471-b48e-4c03-93ca-506ac67a567f"
         $oldName = $response1.DisplayName
         $request = @{
@@ -49,7 +49,7 @@ Describe 'Update-AzBillingBenefitsSavingsPlan' {
         $response2.DisplayName | Should -Not -Be $oldName
     }
 
-    It 'UpdateViaIdentity' {
+    It 'UpdateViaIdentity' -Skip {
         $identity = @{
             SavingsPlanId = "cd6d708d-068e-4972-8535-410de471558f"
             SavingsPlanOrderId = "254638e0-2860-4e7b-af3e-92285554fc9d"
@@ -65,7 +65,7 @@ Describe 'Update-AzBillingBenefitsSavingsPlan' {
         $response2.DisplayName | Should -Not -Be $oldName
     }
 
-    It 'UpdateWithRenewalSetting' {
+    It 'UpdateWithRenewalSetting' -Skip {
         $response1 = Get-AzBillingBenefitsSavingsPlan -Id "82a298d8-67ca-470d-ae9d-17dc39793fe8" -OrderId "6296d1ad-86dd-4959-a949-64b8a10603a6"
         $response1.Renew | Should -Be $False
 

@@ -131,14 +131,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
 
                 var functionInfos = GetScriptCmdlets(ExportsFolder).ToArray();
                 // FunctionsToExport
-                if (!IsUndefined("'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"))
+                if (!IsUndefined("'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppFlexConsumptionRuntime', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"))
                 {
-                    sb.AppendLine($@"{Indent}FunctionsToExport = @({"'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"})");
+                    sb.AppendLine($@"{Indent}FunctionsToExport = @({"'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppFlexConsumptionRuntime', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"})");
                 }
                 else
                 {
-                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().Append("*").ToPsList();
-                    
+                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().ToPsList();
+                    sb.AppendLine($@"{Indent}FunctionsToExport = {cmdletsList}");
                 }
 
                 // AliasesToExport
@@ -148,8 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
                 }
                 else
                 {
-                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().Append("*").ToPsList();
-                    
+                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().ToPsList();
+                    if (!String.IsNullOrEmpty(aliasesList)) {
+                        sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    }
                 }
 
                 // CmdletsToExport

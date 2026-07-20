@@ -18,7 +18,7 @@ using System;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the EventData and exposes all the localized strings as invariant/localized properties
+    /// Wraps around the EventData and exposes all the localized strings as invariant/localized properties
     /// </summary>
     public class PSEventData : EventData
     {

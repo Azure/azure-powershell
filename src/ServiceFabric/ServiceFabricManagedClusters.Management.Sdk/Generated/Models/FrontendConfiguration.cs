@@ -26,22 +26,22 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="ipAddressType">The IP address type of this frontend configuration. If omitted the default
         /// value is IPv4.
-        /// Possible values include: 'IPv4', 'IPv6'</param>
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
 
         /// <param name="loadBalancerBackendAddressPoolId">The resource Id of the Load Balancer backend address pool that the VM
         /// instances of the node type are associated with. The format of the resource
         /// Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;&#39;.
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}&#39;.
         /// </param>
 
         /// <param name="loadBalancerInboundNatPoolId">The resource Id of the Load Balancer inbound NAT pool that the VM instances
         /// of the node type are associated with. The format of the resource Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/inboundNatPools/&lt;inboundNatPoolName&gt;&#39;.
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}&#39;.
         /// </param>
 
         /// <param name="applicationGatewayBackendAddressPoolId">The resource Id of application gateway backend address pool. The format of
         /// the resource Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/applicationGateways/&lt;applicationGatewayName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;&#39;.
+        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}&#39;.
         /// </param>
         public FrontendConfiguration(string ipAddressType = default(string), string loadBalancerBackendAddressPoolId = default(string), string loadBalancerInboundNatPoolId = default(string), string applicationGatewayBackendAddressPoolId = default(string))
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Gets or sets the resource Id of the Load Balancer backend address pool that
         /// the VM instances of the node type are associated with. The format of the
         /// resource Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;&#39;.
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalancerBackendAddressPoolId")]
         public string LoadBalancerBackendAddressPoolId {get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Gets or sets the resource Id of the Load Balancer inbound NAT pool that the
         /// VM instances of the node type are associated with. The format of the
         /// resource Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/inboundNatPools/&lt;inboundNatPoolName&gt;&#39;.
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalancerInboundNatPoolId")]
         public string LoadBalancerInboundNatPoolId {get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <summary>
         /// Gets or sets the resource Id of application gateway backend address pool.
         /// The format of the resource Id is
-        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/applicationGateways/&lt;applicationGatewayName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;&#39;.
+        /// &#39;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "applicationGatewayBackendAddressPoolId")]
         public string ApplicationGatewayBackendAddressPoolId {get; set; }

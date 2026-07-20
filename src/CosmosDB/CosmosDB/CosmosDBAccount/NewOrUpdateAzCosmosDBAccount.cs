@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
         public string KeyVaultKeyUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableLocalAuthHelpMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
@@ -116,6 +119,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
         [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
         public string MinimalTlsVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePerRegionPerPartitionAutoscaleHelpMessage)]
+        public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePriorityBasedExecutionHelpMessage)]
+        public bool? EnablePriorityBasedExecution { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DefaultPriorityLevelHelpMessage)]
+        [PSArgumentCompleter("High", "Low")]
+        public string DefaultPriorityLevel { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// Describes a policy that determines how resources within the search service
-    /// are to be encrypted with Customer Managed Keys.
+    /// are to be encrypted with customer managed keys.
     /// </summary>
     public partial class EncryptionWithCmk
     {
@@ -25,15 +25,14 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the EncryptionWithCmk class.
         /// </summary>
 
-        /// <param name="enforcement">Describes how a search service should enforce having one or more non
-        /// customer encrypted resources.
-        /// Possible values include: 'Disabled', 'Enabled', 'Unspecified'</param>
+        /// <param name="enforcement">Describes how a search service should enforce compliance if it finds
+        /// objects that aren&#39;t encrypted with the customer-managed key.
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Unspecified&#39;</param>
 
-        /// <param name="encryptionComplianceStatus">Describes whether the search service is compliant or not with respect to
-        /// having non customer encrypted resources. If a service has more than one non
-        /// customer encrypted resource and &#39;Enforcement&#39; is &#39;enabled&#39; then the service
-        /// will be marked as &#39;nonCompliant&#39;.
-        /// Possible values include: 'Compliant', 'NonCompliant'</param>
+        /// <param name="encryptionComplianceStatus">Returns the status of search service compliance with respect to
+        /// non-CMK-encrypted objects. If a service has more than one unencrypted
+        /// object, and enforcement is enabled, the service is marked as noncompliant.
+        /// Possible values include: &#39;Compliant&#39;, &#39;NonCompliant&#39;</param>
         public EncryptionWithCmk(SearchEncryptionWithCmk? enforcement = default(SearchEncryptionWithCmk?), SearchEncryptionComplianceStatus? encryptionComplianceStatus = default(SearchEncryptionComplianceStatus?))
 
         {
@@ -49,17 +48,16 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets describes how a search service should enforce having one or
-        /// more non customer encrypted resources. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Unspecified&#39;
+        /// Gets or sets describes how a search service should enforce compliance if it
+        /// finds objects that aren&#39;t encrypted with the customer-managed key. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;, &#39;Unspecified&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enforcement")]
         public SearchEncryptionWithCmk? Enforcement {get; set; }
 
         /// <summary>
-        /// Gets describes whether the search service is compliant or not with respect
-        /// to having non customer encrypted resources. If a service has more than one
-        /// non customer encrypted resource and &#39;Enforcement&#39; is &#39;enabled&#39; then the
-        /// service will be marked as &#39;nonCompliant&#39;. Possible values include: &#39;Compliant&#39;, &#39;NonCompliant&#39;
+        /// Gets returns the status of search service compliance with respect to
+        /// non-CMK-encrypted objects. If a service has more than one unencrypted
+        /// object, and enforcement is enabled, the service is marked as noncompliant. Possible values include: &#39;Compliant&#39;, &#39;NonCompliant&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "encryptionComplianceStatus")]
         public SearchEncryptionComplianceStatus? EncryptionComplianceStatus {get; private set; }

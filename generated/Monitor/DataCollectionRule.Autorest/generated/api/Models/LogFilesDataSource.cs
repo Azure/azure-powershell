@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSourceSettings Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSourceInternal.Setting { get => (this._setting = this._setting ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSourceSettings()); set { {_setting = value;} } }
 
         /// <summary>Internal Acessors for SettingText</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsText Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSourceInternal.SettingText { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)Setting).Text; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)Setting).Text = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsText Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSourceInternal.SettingText { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)Setting).Text; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFileSettingsInternal)Setting).Text = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

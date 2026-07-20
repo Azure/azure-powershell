@@ -18,10 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
 
         /// <summary>The Oracle Autonomous Database supported national character sets.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
-        public string CharacterSet { get => this._characterSet; }
-
-        /// <summary>Internal Acessors for CharacterSet</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseNationalCharacterSetPropertiesInternal.CharacterSet { get => this._characterSet; set { {_characterSet = value;} } }
+        public string CharacterSet { get => this._characterSet; set => this._characterSet = value; }
 
         /// <summary>
         /// Creates an new <see cref="AutonomousDatabaseNationalCharacterSetProperties" /> instance.
@@ -37,15 +34,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
     {
         /// <summary>The Oracle Autonomous Database supported national character sets.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The Oracle Autonomous Database supported national character sets.",
         SerializedName = @"characterSet",
         PossibleTypes = new [] { typeof(string) })]
-        string CharacterSet { get;  }
+        string CharacterSet { get; set; }
 
     }
     /// AutonomousDatabaseNationalCharacterSet resource model

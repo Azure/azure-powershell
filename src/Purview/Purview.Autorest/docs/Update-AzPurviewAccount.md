@@ -8,26 +8,39 @@ schema: 2.0.0
 # Update-AzPurviewAccount
 
 ## SYNOPSIS
-Updates an account
+Update an account
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzPurviewAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ManagedResourceGroupName <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPurviewAccount -InputObject <IPurviewIdentity> [-ManagedResourceGroupName <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPurviewAccount -InputObject <IPurviewIdentity> [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzPurviewAccount -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzPurviewAccount -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an account
+Update an account
 
 ## EXAMPLES
 
@@ -39,7 +52,7 @@ Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
@@ -71,17 +84,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -100,7 +113,7 @@ Update-AzPurviewAccount -InputObject $get -Tag @{"k"="v"}
 ```output
 CloudConnectorAwsExternalId      : xxxxxxxxxx-d074-4f8f-9d7f-10811b250738
 CreatedAt                        : 8/17/2021 6:18:57 AM
-CreatedBy                        : xxxxx.Zhou@microsoft.com
+CreatedBy                        : xxxxx.xxxxx@microsoft.com
 CreatedByObjectId                : xxxxxxx-5be9-4f43-abd2-04561777c8b0
 EndpointCatalog                  : https://test-pa.catalog.purview.azure.com
 EndpointGuardian                 : https://test-pa.guardian.purview.azure.com
@@ -132,17 +145,17 @@ SkuCapacity                      : 1
 SkuName                          : Standard
 SystemData                       : {
                                      "createdAt": "2021-08-17T06:18:57.7274115Z",
-                                     "createdBy": "xxxxx.Zhou@microsoft.com",
+                                     "createdBy": "xxxxx.xxxxx@microsoft.com",
                                      "createdByType": "User",
                                      "lastModifiedAt": "xxxxxx-08-17T06:18:57.7274115Z",
-                                     "lastModifiedBy": "Beisi.Zhou@microsoft.com",
+                                     "lastModifiedBy": "xxxxx.xxxxx@microsoft.com",
                                      "lastModifiedByType": "User"
                                    }
 SystemDataCreatedAt              : 8/17/2021 6:18:57 AM
-SystemDataCreatedBy              : xxxxx.Zhou@microsoft.com
+SystemDataCreatedBy              : xxxxx.xxxxx@microsoft.com
 SystemDataCreatedByType          : User
 SystemDataLastModifiedAt         : 8/17/2021 6:18:57 AM
-SystemDataLastModifiedBy         : xxxxxx.Zhou@microsoft.com
+SystemDataLastModifiedBy         : xxxxxx.xxxxx@microsoft.com
 SystemDataLastModifiedByType     : User
 Tag                              : {
                                      "k": "v"
@@ -187,7 +200,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IPurviewIdentity
@@ -201,15 +213,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedResourceGroupName
-Gets or sets the managed resource group name
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,7 +248,7 @@ The name of the account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AccountName
 
 Required: True
@@ -250,8 +277,8 @@ Accept wildcard characters: False
 Gets or sets the public network access.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -266,7 +293,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -281,7 +308,7 @@ The subscription identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -296,7 +323,7 @@ Tags on the azure resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -346,7 +373,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 
 ## NOTES
 

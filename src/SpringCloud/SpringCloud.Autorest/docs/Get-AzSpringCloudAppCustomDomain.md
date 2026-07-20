@@ -30,6 +30,18 @@ Get-AzSpringCloudAppCustomDomain -InputObject <ISpringCloudIdentity> [-DefaultPr
  [<CommonParameters>]
 ```
 
+### GetViaIdentityApp
+```
+Get-AzSpringCloudAppCustomDomain -AppInputObject <ISpringCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringCloudAppCustomDomain -AppName <String> -Name <String> -SpringInputObject <ISpringCloudIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the custom domain of one lifecycle application.
 
@@ -65,12 +77,27 @@ Get the custom domain of one lifecycle application.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentityApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentitySpring, List
 Aliases:
 
 Required: True
@@ -98,7 +125,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
@@ -117,7 +143,7 @@ The name of the custom domain resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityApp, GetViaIdentitySpring
 Aliases:
 
 Required: True
@@ -158,6 +184,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -183,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICustomDomainResource
 
 ## NOTES
 

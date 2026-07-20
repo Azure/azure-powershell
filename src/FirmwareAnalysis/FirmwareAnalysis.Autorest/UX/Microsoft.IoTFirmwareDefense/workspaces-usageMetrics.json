@@ -1,0 +1,52 @@
+{
+  "resourceType": "workspaces/usageMetrics",
+  "apiVersion": "2025-08-02",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFirmwareAnalysisUsageMetric",
+      "description": "Gets monthly usage information for a workspace.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisusagemetric"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets monthly usage information for a workspace.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

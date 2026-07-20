@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Gets elastic pool activity
         /// </summary>
-        /// <returns>List of elastic pool activies</returns>
+        /// <returns>List of elastic pool activities</returns>
         protected override IEnumerable<AzureSqlElasticPoolActivityModel> GetEntity()
         {
             return ModelAdapter.GetElasticPoolActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);

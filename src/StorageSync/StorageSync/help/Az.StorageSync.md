@@ -27,15 +27,7 @@ This command lists all server endpoints within a given sync group.
 This command lists all storage sync services within a given scope of subscription/resource group.
 
 ### [Invoke-AzStorageSyncChangeDetection](Invoke-AzStorageSyncChangeDetection.md)
-This command can be used to manually initiate the detection of namespace changes. It can be targeted to the entire share, subfolder or set of files. When running the command with the -DirectoryPath or -Path parameters, a maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit. Alternatively, you can avoid the item limit by running the cmdlet without these parameters, invoking share-level change detection.
-
-> [!Note]  
-> If run with -DirectoryPath or -Path parameters, the command will not detect the following changes in the Azure file share:
-> - Files that are deleted. 
-> - Files that are moved out of the share.
-> - Files that are deleted and created with the same name.  
-> 
->  If share-level change detection is invoked, all of these changes will be detected. These changes will also be detected when the scheduled [change detection job](https://learn.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
+This command can be used to manually initiate the detection of namespace changes. It can be targeted to the entire share, subfolder or set of files. When running the command with the -DirectoryPath or -Path parameters, a maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit. Alternatively, you can avoid the item limit by running the cmdlet without these parameters, invoking share-level change detection.  > [!Note]   > If run with -DirectoryPath or -Path parameters, the command will not detect the following changes in the Azure file share: > - Files that are deleted.  > - Files that are moved out of the share. > - Files that are deleted and created with the same name.   >  >  If share-level change detection is invoked, all of these changes will be detected. These changes will also be detected when the scheduled [change detection job](https://learn.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ### [Invoke-AzStorageSyncCompatibilityCheck](Invoke-AzStorageSyncCompatibilityCheck.md)
 Checks for potential compatibility issues between your system and Azure File Sync.
@@ -64,6 +56,9 @@ This command will delete the specified sync group.
 ### [Remove-AzStorageSyncServerEndpoint](Remove-AzStorageSyncServerEndpoint.md)
 This command will delete the specified server endpoint. Sync to this location will stop immediately.
 
+### [Remove-AzStorageSyncServerEndpointPermission](Remove-AzStorageSyncServerEndpointPermission.md)
+This command removes the RBAC permission required for Server endpoint to work.
+
 ### [Remove-AzStorageSyncService](Remove-AzStorageSyncService.md)
 This command will delete the specified storage sync service.
 
@@ -71,22 +66,22 @@ This command will delete the specified storage sync service.
 Use for troubleshooting only. This command will roll the storage sync server certificate used to describe the server identity to the storage sync service.
 
 ### [Set-AzStorageSyncCloudEndpointPermission](Set-AzStorageSyncCloudEndpointPermission.md)
-This command will set the Cloud Endpoint permissions in a Storage Sync Service in a resource group.
+This command sets RBAC permission required for an Azure File Sync cloud endpoint in a sync group.
 
 ### [Set-AzStorageSyncServer](Set-AzStorageSyncServer.md)
-This command allows for changes on the adjustable parameters of a registered server.
+This command will set the server with identity. This helps to enable the server with identity features.
 
 ### [Set-AzStorageSyncServerEndpoint](Set-AzStorageSyncServerEndpoint.md)
 This command allows for changes on the adjustable parameters of a server endpoint.
 
 ### [Set-AzStorageSyncServerEndpointPermission](Set-AzStorageSyncServerEndpointPermission.md)
-This command will set the Server Endpoint permissions in a Storage Sync Service in a resource group.
+This command sets the RBAC permission required for Server endpoint to work.
 
 ### [Set-AzStorageSyncService](Set-AzStorageSyncService.md)
 This command sets storage sync service in a resource group.
 
 ### [Set-AzStorageSyncServiceIdentity](Set-AzStorageSyncServiceIdentity.md)
-This command sets storage sync service identity in a resource group.
+This command helps to migrate storage sync service in a resource group to start using managed identity.
 
 ### [Unregister-AzStorageSyncServer](Unregister-AzStorageSyncServer.md)
 Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.

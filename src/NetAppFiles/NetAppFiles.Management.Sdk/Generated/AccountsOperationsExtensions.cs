@@ -151,42 +151,6 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Delete the specified NetApp account
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        public static void Delete(this IAccountsOperations operations, string resourceGroupName, string accountName)
-        {
-                ((IAccountsOperations)operations).DeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the specified NetApp account
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Patch the specified NetApp account
         /// </summary>
         /// <param name='operations'>
@@ -226,6 +190,133 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
+        /// Delete the specified NetApp account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsDeleteHeaders Delete(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IAccountsOperations)operations).DeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete the specified NetApp account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsDeleteHeaders> DeleteAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Affects existing volumes that are encrypted with Key Vault/Managed HSM, and
+        /// new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and
+        /// Key Vault to Key Vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsChangeKeyVaultHeaders ChangeKeyVault(this IAccountsOperations operations, string resourceGroupName, string accountName, ChangeKeyVault body = default(ChangeKeyVault))
+        {
+                return ((IAccountsOperations)operations).ChangeKeyVaultAsync(resourceGroupName, accountName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Affects existing volumes that are encrypted with Key Vault/Managed HSM, and
+        /// new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and
+        /// Key Vault to Key Vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsChangeKeyVaultHeaders> ChangeKeyVaultAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, ChangeKeyVault body = default(ChangeKeyVault), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ChangeKeyVaultWithHttpMessagesAsync(resourceGroupName, accountName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Contains data from encryption.keyVaultProperties as well as information
+        /// about which private endpoint is used by each encryption sibling set.
+        /// Response from this endpoint can be modified and used as request body for
+        /// POST request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static GetKeyVaultStatusResponse GetChangeKeyVaultInformation(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IAccountsOperations)operations).GetChangeKeyVaultInformationAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Contains data from encryption.keyVaultProperties as well as information
+        /// about which private endpoint is used by each encryption sibling set.
+        /// Response from this endpoint can be modified and used as request body for
+        /// POST request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GetKeyVaultStatusResponse> GetChangeKeyVaultInformationAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetChangeKeyVaultInformationWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Renew identity credentials that are used to authenticate to key vault, for
         /// customer-managed key encryption. If encryption.identity.principalId does
         /// not match identity.principalId, running this operation will fix it.
@@ -239,9 +330,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        public static void RenewCredentials(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        public static AccountsRenewCredentialsHeaders RenewCredentials(this IAccountsOperations operations, string resourceGroupName, string accountName)
         {
-                ((IAccountsOperations)operations).RenewCredentialsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IAccountsOperations)operations).RenewCredentialsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -261,9 +352,55 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RenewCredentialsAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AccountsRenewCredentialsHeaders> RenewCredentialsAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RenewCredentialsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RenewCredentialsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Transitions all volumes in a VNet to a different encryption key source
+        /// (Microsoft-managed key or Azure Key Vault). Operation fails if targeted
+        /// volumes share encryption sibling set with volumes from another account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsTransitionToCmkHeaders TransitionToCmk(this IAccountsOperations operations, string resourceGroupName, string accountName, EncryptionTransitionRequest body = default(EncryptionTransitionRequest))
+        {
+                return ((IAccountsOperations)operations).TransitionToCmkAsync(resourceGroupName, accountName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Transitions all volumes in a VNet to a different encryption key source
+        /// (Microsoft-managed key or Azure Key Vault). Operation fails if targeted
+        /// volumes share encryption sibling set with volumes from another account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsTransitionToCmkHeaders> TransitionToCmkAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, EncryptionTransitionRequest body = default(EncryptionTransitionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.TransitionToCmkWithHttpMessagesAsync(resourceGroupName, accountName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create or update the specified NetApp account within the resource group
@@ -305,42 +442,6 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Delete the specified NetApp account
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        public static void BeginDelete(this IAccountsOperations operations, string resourceGroupName, string accountName)
-        {
-                ((IAccountsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Delete the specified NetApp account
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the NetApp account
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Patch the specified NetApp account
         /// </summary>
         /// <param name='operations'>
@@ -380,6 +481,133 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
+        /// Delete the specified NetApp account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsDeleteHeaders BeginDelete(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IAccountsOperations)operations).BeginDeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete the specified NetApp account
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsDeleteHeaders> BeginDeleteAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Affects existing volumes that are encrypted with Key Vault/Managed HSM, and
+        /// new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and
+        /// Key Vault to Key Vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsChangeKeyVaultHeaders BeginChangeKeyVault(this IAccountsOperations operations, string resourceGroupName, string accountName, ChangeKeyVault body = default(ChangeKeyVault))
+        {
+                return ((IAccountsOperations)operations).BeginChangeKeyVaultAsync(resourceGroupName, accountName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Affects existing volumes that are encrypted with Key Vault/Managed HSM, and
+        /// new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and
+        /// Key Vault to Key Vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsChangeKeyVaultHeaders> BeginChangeKeyVaultAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, ChangeKeyVault body = default(ChangeKeyVault), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginChangeKeyVaultWithHttpMessagesAsync(resourceGroupName, accountName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Contains data from encryption.keyVaultProperties as well as information
+        /// about which private endpoint is used by each encryption sibling set.
+        /// Response from this endpoint can be modified and used as request body for
+        /// POST request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static GetKeyVaultStatusResponse BeginGetChangeKeyVaultInformation(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IAccountsOperations)operations).BeginGetChangeKeyVaultInformationAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Contains data from encryption.keyVaultProperties as well as information
+        /// about which private endpoint is used by each encryption sibling set.
+        /// Response from this endpoint can be modified and used as request body for
+        /// POST request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GetKeyVaultStatusResponse> BeginGetChangeKeyVaultInformationAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetChangeKeyVaultInformationWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Renew identity credentials that are used to authenticate to key vault, for
         /// customer-managed key encryption. If encryption.identity.principalId does
         /// not match identity.principalId, running this operation will fix it.
@@ -393,9 +621,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='accountName'>
         /// The name of the NetApp account
         /// </param>
-        public static void BeginRenewCredentials(this IAccountsOperations operations, string resourceGroupName, string accountName)
+        public static AccountsRenewCredentialsHeaders BeginRenewCredentials(this IAccountsOperations operations, string resourceGroupName, string accountName)
         {
-                ((IAccountsOperations)operations).BeginRenewCredentialsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((IAccountsOperations)operations).BeginRenewCredentialsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -415,9 +643,55 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRenewCredentialsAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<AccountsRenewCredentialsHeaders> BeginRenewCredentialsAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRenewCredentialsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRenewCredentialsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Transitions all volumes in a VNet to a different encryption key source
+        /// (Microsoft-managed key or Azure Key Vault). Operation fails if targeted
+        /// volumes share encryption sibling set with volumes from another account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        public static AccountsTransitionToCmkHeaders BeginTransitionToCmk(this IAccountsOperations operations, string resourceGroupName, string accountName, EncryptionTransitionRequest body = default(EncryptionTransitionRequest))
+        {
+                return ((IAccountsOperations)operations).BeginTransitionToCmkAsync(resourceGroupName, accountName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Transitions all volumes in a VNet to a different encryption key source
+        /// (Microsoft-managed key or Azure Key Vault). Operation fails if targeted
+        /// volumes share encryption sibling set with volumes from another account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AccountsTransitionToCmkHeaders> BeginTransitionToCmkAsync(this IAccountsOperations operations, string resourceGroupName, string accountName, EncryptionTransitionRequest body = default(EncryptionTransitionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginTransitionToCmkWithHttpMessagesAsync(resourceGroupName, accountName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// List and describe all NetApp accounts in the subscription.

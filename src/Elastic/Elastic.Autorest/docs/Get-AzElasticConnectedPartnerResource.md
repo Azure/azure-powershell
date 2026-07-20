@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticConnectedPartnerResource
 
 ## SYNOPSIS
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticConnectedPartnerResource -MonitorName <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
 
 ## EXAMPLES
 
@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IConnectedPartnerResourcesListFormat
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListFormat
 
 ## NOTES
 

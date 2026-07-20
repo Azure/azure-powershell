@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     public abstract class AzureSqlManagedInstanceLinkCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlManagedInstanceLinkModel>, AzureSqlManagedInstanceLinkAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns></returns>
         protected override AzureSqlManagedInstanceLinkAdapter InitModelAdapter()

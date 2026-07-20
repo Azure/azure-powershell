@@ -50,9 +50,22 @@
 	if($nick -gt -1)
 	{
 		$name += $nick
+	} 	
+
+	try {
+		$resourceGroup = Get-AzResourceGroup -Name $name -ErrorAction Ignore
 	}
- 	$resourceGroup = Get-AzResourceGroup -Name $name -ErrorAction Ignore
-	
+	catch {
+		if ($_.Exception.Message -like "*NotFound*" -or $_.Exception.Message -like "*not found*") {
+			# Vault not found - continue silently as it's already deleted
+			Write-Verbose "Resource Group $($name) doesn't exist"
+		}
+		else {
+			# Re-throw other errors
+			throw
+		}
+	}
+
 	if ($resourceGroup -eq $null)
 	{
 		New-AzResourceGroup -Name $name -Location $location | Out-Null

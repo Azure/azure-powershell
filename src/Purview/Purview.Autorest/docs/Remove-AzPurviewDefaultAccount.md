@@ -13,7 +13,7 @@ Removes the default account from the scope.
 ## SYNTAX
 
 ```
-Remove-AzPurviewDefaultAccount -ScopeTenantId <String> -ScopeType <ScopeType> [-Scope <String>]
+Remove-AzPurviewDefaultAccount -ScopeTenantId <String> -ScopeType <String> [-Scope <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The scope for the default account.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

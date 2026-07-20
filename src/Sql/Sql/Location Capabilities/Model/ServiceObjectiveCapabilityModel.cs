@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique ID of the Service Level Objecive
+        /// Gets or sets the unique ID of the Service Level Objective
         /// </summary>
         public Guid? Id { get; set; }
 

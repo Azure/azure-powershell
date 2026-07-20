@@ -62,6 +62,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of an Mixed Reality Account.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -78,6 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The location in which uniqueness will be verified.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -86,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of an Azure resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

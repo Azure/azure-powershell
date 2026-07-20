@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>The response to the List Topics operation.</summary>
+    /// <summary>The response of a SBTopic list operation.</summary>
     public partial class SbTopicListResult
     {
 

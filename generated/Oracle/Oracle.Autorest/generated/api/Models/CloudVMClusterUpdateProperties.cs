@@ -75,6 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
+        /// <summary>Backing field for <see cref="FileSystemConfigurationDetail" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> _fileSystemConfigurationDetail;
+
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get => this._fileSystemConfigurationDetail; set => this._fileSystemConfigurationDetail = value; }
+
         /// <summary>Backing field for <see cref="LicenseModel" /> property.</summary>
         private string _licenseModel;
 
@@ -223,6 +230,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = false,
+        Update = true,
+        Description = @"Array of mount path and size.",
+        SerializedName = @"fileSystemConfigurationDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>
         /// The Oracle license model that applies to the cloud VM cluster. The default is LICENSE_INCLUDED.
         /// </summary>
@@ -317,6 +335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? DbNodeStorageSizeInGb { get; set; }
         /// <summary>Display Name</summary>
         string DisplayName { get; set; }
+        /// <summary>Array of mount path and size.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>
         /// The Oracle license model that applies to the cloud VM cluster. The default is LICENSE_INCLUDED.
         /// </summary>

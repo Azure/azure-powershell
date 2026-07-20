@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (existingResource != null)
             {
-                throw new PSInvalidOperationException(string.Format("Linked Storage Accounts for workpsace: '{0}' under resource group: '{1}' already exists. Please use Update-AzOperationalInsightsLinkedStorageAccount for updating.", workspaceName, resourceGroupName));
+                throw new PSInvalidOperationException(string.Format("Linked Storage Accounts for workspace: '{0}' under resource group: '{1}' already exists. Please use Update-AzOperationalInsightsLinkedStorageAccount for updating.", workspaceName, resourceGroupName));
             }
 
             return new PSLinkedStorageAccountsResource(CreateOrUpdateLinkedStorageAccount(resourceGroupName, workspaceName, dataSourceType, storageAccountIds));

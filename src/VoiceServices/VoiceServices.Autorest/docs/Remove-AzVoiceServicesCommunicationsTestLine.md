@@ -25,6 +25,13 @@ Remove-AzVoiceServicesCommunicationsTestLine -InputObject <IVoiceServicesIdentit
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityCommunicationsGateway
+```
+Remove-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayInputObject <IVoiceServicesIdentity>
+ -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a TestLine
 
@@ -61,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommunicationsGatewayInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
+Parameter Sets: DeleteViaIdentityCommunicationsGateway
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CommunicationsGatewayName
 Unique identifier for this deployment
 
@@ -94,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
@@ -113,7 +134,7 @@ Unique identifier for this test line
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityCommunicationsGateway
 Aliases: TestLineName
 
 Required: True

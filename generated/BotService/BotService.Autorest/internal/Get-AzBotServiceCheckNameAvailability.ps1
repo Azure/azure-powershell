@@ -25,9 +25,9 @@ Check whether a bot name is available.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityRequestBody
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityResponseBody
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityResponseBody
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,14 +40,13 @@ PARAMETER <ICheckNameAvailabilityRequestBody>: The request body for a request to
 https://learn.microsoft.com/powershell/module/az.botservice/get-azbotservicechecknameavailability
 #>
 function Get-AzBotServiceCheckNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityResponseBody])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityResponseBody])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.ICheckNameAvailabilityRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.ICheckNameAvailabilityRequestBody]
     # The request body for a request to Bot Service Management to check availability of a bot name.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='GetExpanded')]
@@ -61,6 +60,18 @@ param(
     [System.String]
     # the type of the bot for which availability needs to be checked
     ${Type},
+
+    [Parameter(ParameterSetName='GetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Get operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='GetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Json string supplied to the Get operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -118,13 +129,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_Get';
             GetExpanded = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetExpanded';
+            GetViaJsonFilePath = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetViaJsonFilePath';
+            GetViaJsonString = 'Az.BotService.private\Get-AzBotServiceCheckNameAvailability_GetViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

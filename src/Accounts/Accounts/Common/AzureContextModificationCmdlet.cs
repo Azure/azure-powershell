@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Profile.Common
             {
                 var client = new RMProfileClient(profile)
                 {
-                    WarningLog = (s) => WriteWarning(s)
+                    WarningLog = (s) => WriteWarning(s),
+                    CmdletContext = _cmdletContext
                 };
                 contextAction(profile.ToProfile(), client);
             }

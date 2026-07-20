@@ -18,8 +18,4 @@ Describe 'Invoke-AzPurviewTagClassificationRuleClassificationVersion' {
     It 'Tag' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'TagViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

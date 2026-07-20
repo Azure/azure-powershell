@@ -14,8 +14,7 @@ Searches for deleted entries in trash which match the filter.
 ## SYNTAX
 
 ```
-Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeStoreDeletedItem [-Account] <String> [-Filter] <String> [-Count <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Collections.Generic.List<Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreDeletedItem>
 
 ## NOTES
+
+If you want to fetch the results in pages with pagination support, use the `Get-AzDataLakeStoreDeletedItemsWithToken` cmdlet instead.
 
 ## RELATED LINKS
 

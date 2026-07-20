@@ -19,12 +19,12 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesSchedule' {
     It 'Update with Lab' {
-        $lab = Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:LabName
-        Update-AzLabServicesSchedule -Lab $lab -Name $ENV:ScheduleName -Note "This is an updated note." | Select -ExpandProperty Note | Should -Be "This is an updated note."
+        $lab = Get-AzLabServicesLab -ResourceGroupName $env.ResourceGroupName -Name $env.LabName
+        Update-AzLabServicesSchedule -Lab $lab -Name $env.ScheduleName -Note "This is an updated note." | Select -ExpandProperty Note | Should -Be "This is an updated note."
     }
 
     It 'Update with ID' -Skip {
-        $schedule = Get-AzLabServicesSchedule -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:ScheduleName
+        $schedule = Get-AzLabServicesSchedule -LabName $env.LabName -ResourceGroupName $env.ResourceGroupName -Name $env.ScheduleName
         Update-AzLabServicesSchedule -ResourceId $($schedule.Id) -Note "This is a second updated note." | Select -ExpandProperty Note | Should -Be "This is a second updated note."
     }
 

@@ -27,7 +27,7 @@ Updates a SQL virtual machine.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,8 +45,13 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
 #>
 function Update-AzSqlVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PreviewMessage("**********************************************************************************************`n
+* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+* At least one change applies to this cmdlet.                                                     *`n
+* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+***************************************************************************************************")]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('SqlVirtualMachineName', 'SqlVMName')]
@@ -77,9 +82,9 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PAYG","AHUB","DR")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+    [System.String]
     # SQL Server license type.
     ${LicenseType},
 	
@@ -91,30 +96,30 @@ param(
     ${Offer},
 	
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Developer","Express","Standard","Enterprise","Web")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+    [System.String]
     # SQL Server edition type.
     ${Sku},
 	
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Full","Lightweight","NoAgent")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+    [System.String]
     # SQL Server Management type.
     ${SqlManagementType},
 	
 	[Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 	
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Manual","Automated")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+    [System.String]
     # Backup schedule type.
     ${AutoBackupSettingBackupScheduleType},
 
@@ -126,9 +131,9 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+    [System.String[]]
     # Days of the week for the backups when FullBackupFrequency is set to Weekly.
     ${AutoBackupSettingDaysOfWeek},
 
@@ -145,9 +150,9 @@ param(
     ${AutoBackupSettingEnableEncryption},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Daily","Weekly")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+    [System.String]
     # Frequency of full backups.
     # In both cases, full backups begin during the next scheduled time window.
     ${AutoBackupSettingFullBackupFrequency},
@@ -204,9 +209,9 @@ param(
     ${AutoBackupSettingStorageContainerName},
     
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Everyday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+    [System.String]
     # Day of week to apply the patch on.
     ${AutoPatchingSettingDayOfWeek},
 
@@ -242,9 +247,9 @@ param(
     ${AssessmentSettingRunImmediately},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+    [System.String]
     # Day of the week to run assessment.
     ${ScheduleDayOfWeek},
 

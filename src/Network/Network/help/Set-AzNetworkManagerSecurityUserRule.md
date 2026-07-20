@@ -15,7 +15,8 @@ Updates a network manager security user rule.
 ### ByInputObject (Default)
 ```
 Set-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByNameParameters
@@ -24,8 +25,8 @@ Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> 
  -SecurityUserConfigurationName <String> -RuleCollectionName <String> [-Description <String>]
  -Protocol <String> -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -33,8 +34,8 @@ Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> 
 Set-AzNetworkManagerSecurityUserRule -ResourceId <String> [-Description <String>] -Protocol <String>
  -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
- [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

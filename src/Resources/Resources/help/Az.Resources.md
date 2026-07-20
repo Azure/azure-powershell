@@ -287,6 +287,11 @@ Creates key credentials or password credentials for an service principal.
 ### [New-AzADUser](New-AzADUser.md)
 Adds new entity to users
 
+### [New-AzDenyAssignment](New-AzDenyAssignment.md)
+Creates a user-assigned deny assignment at the specified scope.
+By default, the deny assignment targets Everyone and requires at least one excluded principal.
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
+
 ### [New-AzDeployment](New-AzDeployment.md)
 Create a deployment at the current subscription scope.
 
@@ -357,7 +362,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ### [New-AzRoleAssignmentScheduleRequest](New-AzRoleAssignmentScheduleRequest.md)
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
@@ -367,7 +372,7 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzRoleEligibilityScheduleRequest](New-AzRoleEligibilityScheduleRequest.md)
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ### [New-AzRoleManagementPolicyAssignment](New-AzRoleManagementPolicyAssignment.md)
 Create a role management policy assignment
@@ -433,6 +438,9 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
+### [Remove-AzDenyAssignment](Remove-AzDenyAssignment.md)
+Removes a user-assigned deny assignment at the specified scope.
+
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations
 
@@ -472,7 +480,7 @@ This operation deletes a policy exemption, given its name and the scope it was c
 The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
 
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+This operation deletes the policy set definition in the given subscription with the given name.
 
 ### [Remove-AzPrivateLinkAssociation](Remove-AzPrivateLinkAssociation.md)
 Delete a specific azure private link association.
@@ -493,7 +501,7 @@ Removes a Resource Group scoped Deployment Stack.
 Removes a resource lock.
 
 ### [Remove-AzResourceManagementPrivateLink](Remove-AzResourceManagementPrivateLink.md)
-Deletes the Resource Manangement Private Link.
+Deletes the Resource Management Private Link.
 
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
@@ -657,19 +665,19 @@ Removes a feature registration from your account.
 Unregisters a resource provider.
 
 ### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
-update the navigation property federatedIdentityCredentials in applications
+Update the navigation property federatedIdentityCredentials in applications
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
 
 ### [Update-AzADGroup](Update-AzADGroup.md)
-update entity in groups
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
 
 ### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
-update the navigation property appRoleAssignments in servicePrincipals
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates entity in users
@@ -694,8 +702,17 @@ This operation updates a policy exemption with the given scope and name.
 ### [Update-AzPolicySetDefinition](Update-AzPolicySetDefinition.md)
 This operation updates an existing policy set definition in the given subscription or management group with the given name.
 
+### [Update-AzRoleAssignmentScheduleRequest](Update-AzRoleAssignmentScheduleRequest.md)
+Update a role assignment schedule request.
+
+### [Update-AzRoleEligibilityScheduleRequest](Update-AzRoleEligibilityScheduleRequest.md)
+Update a role eligibility schedule request.
+
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy
+
+### [Update-AzRoleManagementPolicyAssignment](Update-AzRoleManagementPolicyAssignment.md)
+Update a role management policy assignment
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.

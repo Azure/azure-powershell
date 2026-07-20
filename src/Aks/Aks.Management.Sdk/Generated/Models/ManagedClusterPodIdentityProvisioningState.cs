@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class ManagedClusterPodIdentityProvisioningState
     {
+        /// <summary>
+        /// Pod identity is assigned.
+        /// </summary>
         public const string Assigned = "Assigned";
+        /// <summary>
+        /// Pod identity assignment was canceled.
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// Pod identity is being deleted.
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// Pod identity assignment failed.
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Pod identity assignment succeeded.
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Pod identity is being updated.
+        /// </summary>
         public const string Updating = "Updating";
     }
 }

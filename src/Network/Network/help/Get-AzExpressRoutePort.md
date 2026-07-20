@@ -20,7 +20,8 @@ Get-AzExpressRoutePort [-ResourceGroupName <String>] [-Name <String>]
 
 ### ResourceIdParameterSet
 ```
-Get-AzExpressRoutePort -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExpressRoutePort -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

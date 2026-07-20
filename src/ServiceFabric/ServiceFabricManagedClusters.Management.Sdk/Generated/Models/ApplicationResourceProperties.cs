@@ -24,6 +24,10 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Initializes a new instance of the ApplicationResourceProperties class.
         /// </summary>
 
+        /// <param name="managedIdentities">List of user assigned identities for the application, each mapped to a
+        /// friendly name.
+        /// </param>
+
         /// <param name="provisioningState">The current deployment or provisioning state, which only appears in the
         /// response
         /// </param>
@@ -39,18 +43,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="upgradePolicy">Describes the policy for a monitored application upgrade.
         /// </param>
-
-        /// <param name="managedIdentities">List of user assigned identities for the application, each mapped to a
-        /// friendly name.
-        /// </param>
-        public ApplicationResourceProperties(string provisioningState = default(string), string version = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpgradePolicy upgradePolicy = default(ApplicationUpgradePolicy), System.Collections.Generic.IList<ApplicationUserAssignedIdentity> managedIdentities = default(System.Collections.Generic.IList<ApplicationUserAssignedIdentity>))
+        public ApplicationResourceProperties(System.Collections.Generic.IList<ApplicationUserAssignedIdentity> managedIdentities = default(System.Collections.Generic.IList<ApplicationUserAssignedIdentity>), string provisioningState = default(string), string version = default(string), System.Collections.Generic.IDictionary<string, string> parameters = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpgradePolicy upgradePolicy = default(ApplicationUpgradePolicy))
 
         {
+            this.ManagedIdentities = managedIdentities;
             this.ProvisioningState = provisioningState;
             this.Version = version;
             this.Parameters = parameters;
             this.UpgradePolicy = upgradePolicy;
-            this.ManagedIdentities = managedIdentities;
             CustomInit();
         }
 
@@ -59,6 +59,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets list of user assigned identities for the application, each
+        /// mapped to a friendly name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "managedIdentities")]
+        public System.Collections.Generic.IList<ApplicationUserAssignedIdentity> ManagedIdentities {get; set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only appears in
@@ -88,13 +95,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "upgradePolicy")]
         public ApplicationUpgradePolicy UpgradePolicy {get; set; }
-
-        /// <summary>
-        /// Gets or sets list of user assigned identities for the application, each
-        /// mapped to a friendly name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "managedIdentities")]
-        public System.Collections.Generic.IList<ApplicationUserAssignedIdentity> ManagedIdentities {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -103,13 +103,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
-
-            if (this.UpgradePolicy != null)
-            {
-                this.UpgradePolicy.Validate();
-            }
             if (this.ManagedIdentities != null)
             {
                 foreach (var element in this.ManagedIdentities)
@@ -119,6 +112,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                         element.Validate();
                     }
                 }
+            }
+
+
+
+            if (this.UpgradePolicy != null)
+            {
+                this.UpgradePolicy.Validate();
             }
         }
     }

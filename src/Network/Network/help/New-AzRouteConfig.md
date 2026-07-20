@@ -15,8 +15,8 @@ Creates a route for a route table.
 
 ```
 New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azurevirtual network.
+Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
 This route forwards packets to that address.
 Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
 
@@ -205,5 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
 [Set-AzRouteConfig](./Set-AzRouteConfig.md)
-
-

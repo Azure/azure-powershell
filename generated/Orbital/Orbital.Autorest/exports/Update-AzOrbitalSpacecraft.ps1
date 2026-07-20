@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates the specified spacecraft tags.
+update the specified spacecraft tags.
 .Description
-Updates the specified spacecraft tags.
+update the specified spacecraft tags.
 .Example
 Update-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA -Tag @{"123"="abc"}
 .Example
@@ -28,7 +28,7 @@ Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,16 +47,20 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
 #>
 function Update-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [System.String]
     # Spacecraft ID.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -64,6 +68,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -74,15 +80,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -152,6 +170,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,10 +200,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Orbital.private\Update-AzOrbitalSpacecraft_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Orbital.private\Update-AzOrbitalSpacecraft_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Orbital.private\Update-AzOrbitalSpacecraft_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Orbital.private\Update-AzOrbitalSpacecraft_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -190,6 +217,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

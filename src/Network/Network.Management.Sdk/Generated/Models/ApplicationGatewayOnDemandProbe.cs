@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Default value is false.
         /// </param>
 
+        /// <param name="enableProbeProxyProtocolHeader">Whether to send Proxy Protocol header along with the Health Probe over TCP
+        /// or TLS protocol. Default value is false.
+        /// </param>
+
         /// <param name="match">Criterion for classifying a healthy probe response.
         /// </param>
 
@@ -53,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="backendHttpSettings">Reference to backend http setting of application gateway to be used for
         /// test probe.
         /// </param>
-        public ApplicationGatewayOnDemandProbe(string protocol = default(string), string host = default(string), string path = default(string), int? timeout = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource))
+        public ApplicationGatewayOnDemandProbe(string protocol = default(string), string host = default(string), string path = default(string), int? timeout = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), bool? enableProbeProxyProtocolHeader = default(bool?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource))
 
         {
             this.Protocol = protocol;
@@ -61,6 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Path = path;
             this.Timeout = timeout;
             this.PickHostNameFromBackendHttpSettings = pickHostNameFromBackendHttpSettings;
+            this.EnableProbeProxyProtocolHeader = enableProbeProxyProtocolHeader;
             this.Match = match;
             this.BackendAddressPool = backendAddressPool;
             this.BackendHttpSettings = backendHttpSettings;
@@ -106,6 +111,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "pickHostNameFromBackendHttpSettings")]
         public bool? PickHostNameFromBackendHttpSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to send Proxy Protocol header along with the Health
+        /// Probe over TCP or TLS protocol. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableProbeProxyProtocolHeader")]
+        public bool? EnableProbeProxyProtocolHeader {get; set; }
 
         /// <summary>
         /// Gets or sets criterion for classifying a healthy probe response.

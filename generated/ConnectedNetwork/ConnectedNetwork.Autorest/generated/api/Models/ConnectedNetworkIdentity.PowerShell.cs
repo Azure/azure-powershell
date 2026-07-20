@@ -75,6 +75,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -82,10 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
             if (content.Contains("NetworkFunctionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).NetworkFunctionName = (string) content.GetValueForProperty("NetworkFunctionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).NetworkFunctionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("VendorName"))
             {
@@ -140,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -147,10 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models
             if (content.Contains("NetworkFunctionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).NetworkFunctionName = (string) content.GetValueForProperty("NetworkFunctionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).NetworkFunctionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("VendorName"))
             {

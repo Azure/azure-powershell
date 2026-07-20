@@ -32,11 +32,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -75,7 +75,7 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
 https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
 #>
 function Update-AzStreamAnalyticsInput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IInput])]
 [CmdletBinding(DefaultParameterSetName='Update', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -179,9 +179,9 @@ begin {
     try {
         $inputParameters = Get-Content -Path $File | Out-String
             
-        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::CanConvertFrom($inputParameters))
+        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.InputTypeConverter]::CanConvertFrom($inputParameters))
         {
-          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.InputTypeConverter]::ConvertFrom($inputParameters)
+          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.InputTypeConverter]::ConvertFrom($inputParameters)
         } else {
           throw "The json format is invalid"
         }

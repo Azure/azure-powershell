@@ -106,6 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).PanoramaStatus = (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus) content.GetValueForProperty("PanoramaStatus",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).PanoramaStatus, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StrataCloudManagerInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StrataCloudManagerInfo = (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo) content.GetValueForProperty("StrataCloudManagerInfo",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StrataCloudManagerInfo, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IsPanoramaManaged"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsPanoramaManaged = (string) content.GetValueForProperty("IsPanoramaManaged",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsPanoramaManaged, global::System.Convert.ToString);
@@ -121,6 +125,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsStrataCloudManaged"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsStrataCloudManaged = (string) content.GetValueForProperty("IsStrataCloudManaged",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsStrataCloudManaged, global::System.Convert.ToString);
+            }
+            if (content.Contains("StratumCloudManagerInfoFolderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoFolderName = (string) content.GetValueForProperty("StratumCloudManagerInfoFolderName",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoFolderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StratumCloudManagerInfoHubUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoHubUrl = (string) content.GetValueForProperty("StratumCloudManagerInfoHubUrl",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoHubUrl, global::System.Convert.ToString);
             }
             if (content.Contains("PanoramaStatusPanoramaServerStatus"))
             {
@@ -151,6 +167,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).PanoramaStatus = (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaStatus) content.GetValueForProperty("PanoramaStatus",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).PanoramaStatus, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatusTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StrataCloudManagerInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StrataCloudManagerInfo = (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerInfo) content.GetValueForProperty("StrataCloudManagerInfo",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StrataCloudManagerInfo, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("IsPanoramaManaged"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsPanoramaManaged = (string) content.GetValueForProperty("IsPanoramaManaged",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsPanoramaManaged, global::System.Convert.ToString);
@@ -166,6 +186,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsStrataCloudManaged"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsStrataCloudManaged = (string) content.GetValueForProperty("IsStrataCloudManaged",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).IsStrataCloudManaged, global::System.Convert.ToString);
+            }
+            if (content.Contains("StratumCloudManagerInfoFolderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoFolderName = (string) content.GetValueForProperty("StratumCloudManagerInfoFolderName",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoFolderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StratumCloudManagerInfoHubUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoHubUrl = (string) content.GetValueForProperty("StratumCloudManagerInfoHubUrl",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallStatusPropertyInternal)this).StratumCloudManagerInfoHubUrl, global::System.Convert.ToString);
             }
             if (content.Contains("PanoramaStatusPanoramaServerStatus"))
             {

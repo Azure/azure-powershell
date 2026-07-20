@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdHostPool
 
 ## SYNOPSIS
-create a host pool.
+Create a host pool.
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <S
 ```
 
 ## DESCRIPTION
-create a host pool.
+Create a host pool.
 
 ## EXAMPLES
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
 Type: System.String
@@ -331,8 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-E.g.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
 ApiApps are a kind of Microsoft.Web/sites type.
 If supported, the resource provider must validate and persist this value.
 

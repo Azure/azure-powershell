@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Name of a NAT gateway SKU.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(MNM.NatGatewaySkuName.Standard)]
+        [PSArgumentCompleter(MNM.NatGatewaySkuName.Standard, "StandardV2")]
         public string Sku { get; set; }
 
         [Parameter(
@@ -80,13 +80,28 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
+            HelpMessage = "An array of public IPv4 addresses associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
+            HelpMessage = "An array of public IPv6 addresses associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpAddressV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of public IPv4 prefixes associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of public IPv6 prefixes associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpPrefixV6 { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The id of the source virtual network using this nat gateway resource.")]
+        public PSResourceId SourceVirtualNetwork { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -109,17 +124,25 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vSku = new PSNatGatewaySku();
                 }
-                vSku.Name = MNM.NatGatewaySkuName.Standard;
+                vSku.Name = this.Sku;
             }
 
             // PublicIpAddresses
             List<PSResourceId> vPublicIpAddresses = null;
 
+            // PublicIpAddressesV6
+            List<PSResourceId> vPublicIpAddressesV6 = null;
+
             // PublicIpPrefixes
             List<PSResourceId> vPublicIpPrefixes = null;
 
+            // PublicIpPrefixesV6
+            List<PSResourceId> vPublicIpPrefixesV6 = null;
+
             vPublicIpAddresses = this.PublicIpAddress?.ToList();
+            vPublicIpAddressesV6 = this.PublicIpAddressV6?.ToList();
             vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
+            vPublicIpPrefixesV6 = this.PublicIpPrefixV6?.ToList();
 
             var vNatGateway = new PSNatGateway
             {
@@ -128,6 +151,9 @@ namespace Microsoft.Azure.Commands.Network
                 Sku = vSku,
                 PublicIpAddresses = vPublicIpAddresses,
                 PublicIpPrefixes = vPublicIpPrefixes,
+                PublicIpAddressesV6 = vPublicIpAddressesV6,
+                PublicIpPrefixesV6 = vPublicIpPrefixesV6,
+                SourceVirtualNetwork = this.SourceVirtualNetwork
             };
 
             vNatGateway.Zones = this.Zone?.ToList();

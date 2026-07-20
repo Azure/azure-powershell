@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="sourceIPAddressType">The source IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
 
         /// <param name="sourceNetworkId">Source network Id.
         /// </param>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="targetIPAddressType">The target IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
 
         /// <param name="targetSubnetName">Target subnet name.
         /// </param>
@@ -61,8 +61,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="testIPAddressType">The test IP address type.
-        /// Possible values include: 'Dynamic', 'Static'</param>
-        public InMageRcmNicDetails(string nicId = default(string), string isPrimaryNic = default(string), string isSelectedForFailover = default(string), string sourceIPAddress = default(string), string sourceIPAddressType = default(string), string sourceNetworkId = default(string), string sourceSubnetName = default(string), string targetIPAddress = default(string), string targetIPAddressType = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string testIPAddress = default(string), string testIPAddressType = default(string))
+        /// Possible values include: &#39;Dynamic&#39;, &#39;Static&#39;</param>
+
+        /// <param name="targetNicName">The target NIC name.
+        /// </param>
+        public InMageRcmNicDetails(string nicId = default(string), string isPrimaryNic = default(string), string isSelectedForFailover = default(string), string sourceIPAddress = default(string), string sourceIPAddressType = default(string), string sourceNetworkId = default(string), string sourceSubnetName = default(string), string targetIPAddress = default(string), string targetIPAddressType = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string testIPAddress = default(string), string testIPAddressType = default(string), string targetNicName = default(string))
 
         {
             this.NicId = nicId;
@@ -78,6 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TestSubnetName = testSubnetName;
             this.TestIPAddress = testIPAddress;
             this.TestIPAddressType = testIPAddressType;
+            this.TargetNicName = targetNicName;
             CustomInit();
         }
 
@@ -164,5 +168,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "testIPAddressType")]
         public string TestIPAddressType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target NIC name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicName")]
+        public string TargetNicName {get; set; }
     }
 }

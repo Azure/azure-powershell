@@ -16,7 +16,7 @@ Describe 'Get-AzCloudServiceRoleInstanceRemoteDesktopFile' {
     It 'Get remote desktop file' {
         $RDPOutputFile = [System.IO.Path]::Combine($PSScriptRoot, "test-artifacts", $env.RDPOutputFile)
         RemoveFile $RDPOutputFile
-        $x = Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstance $env.RoleInstanceName -OutFile $RDPOutputFile
+        $x = Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName -RoleInstanceName $env.RoleInstanceName -OutFile $RDPOutputFile
         Test-Path $RDPOutputFile | Should be $true
         $content = Get-Content $RDPOutputFile
         $content[2].contains($env.RoleInstanceName) | Should be $true

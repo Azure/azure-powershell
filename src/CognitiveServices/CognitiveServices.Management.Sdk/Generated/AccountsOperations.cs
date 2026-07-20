@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         public CognitiveServicesManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -349,7 +351,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -995,7 +998,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Regenerates the specified account key for the specified Cognitive Services account.
+        /// Regenerates the specified account key for the specified Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1492,7 +1496,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1968,7 +1974,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide
+        /// resource type. It holds the keys for developer to access intelligent APIs.
+        /// It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2530,7 +2538,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2747,7 +2755,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource group
+        /// Returns all the resources of a particular type belonging to a resource
+        /// group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

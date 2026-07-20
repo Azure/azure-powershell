@@ -111,8 +111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
             return this.DataBoxEdgeManagementClient.Users.CreateOrUpdate(
                 this.DeviceName,
                 this.Name,
-                user,
-                this.ResourceGroupName);
+                this.ResourceGroupName,
+                user);
         }
 
         private PSResourceModel SetResource()

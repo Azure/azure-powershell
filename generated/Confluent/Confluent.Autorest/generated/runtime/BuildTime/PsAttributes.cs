@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class DescriptionAttribute : Attribute
@@ -19,6 +19,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class DoNotExportAttribute : Attribute
+    {
+    }
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    public class ModelCmdletAttribute : Attribute
     {
     }
 
@@ -53,6 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
     {
         public string Path { get; set; }
         public string ApiVersion { get; set; }
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class NotSuggestDefaultParameterSetAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
@@ -107,6 +117,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
         Inherited = 0,
         Owned,
         Inlined
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class ConstantAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Property)]

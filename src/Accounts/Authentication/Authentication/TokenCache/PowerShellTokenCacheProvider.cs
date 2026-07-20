@@ -15,17 +15,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 
 using Azure.Identity;
 
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Extensions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Broker;
 
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
-        //Reanme CommonTenant to OrganizationTenant with reference to
+        //Rename CommonTenant to OrganizationTenant with reference to
         //https://learn.microsoft.com/en-us/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority?view=msal-dotnet-latest#microsoft-identity-client-abstractapplicationbuilder-1-withauthority(system-string-system-boolean
         //From MSAL, we shall always use "organizations" for both work and school and MSA accounts
         private const string organizationTenant = "organizations";
@@ -57,9 +59,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
         }
 
+        public virtual void ClearCache(string authority)
+        {
+            ClearCache();
+        }
+
         public bool TryRemoveAccount(string accountId)
         {
-            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling TryRemoveAccount"));
             var client = CreatePublicClient();
             var account = client.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult()
@@ -71,7 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             try
             {
-                TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling RemoveAsync - Account: '{0}'", account.Username));
+                TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling TryRemoveAccount - Account: '{0}'", account.Username));
                 client.RemoveAsync(account)
                     .ConfigureAwait(false).GetAwaiter().GetResult();
             }
@@ -92,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, IAzureEnvironment environment, Action<string> promptAction)
+        public List<IAccessToken> GetTenantTokensForAccount(IAccount account, IAzureEnvironment environment, Action<string> promptAction, ICmdletContext cmdletContext)
         {
             TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire tenant tokens for account '{0}'.", account.Username));
             List<IAccessToken> result = new List<IAccessToken>();
@@ -101,7 +108,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Id = account.Username,
                 Type = AzureAccount.AccountType.User
             };
-            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction);
+
+            var commonToken = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, organizationTenant, null, null, promptAction, cmdletContext.ToExtensibleParameters());
             IEnumerable<string> tenants = Enumerable.Empty<string>();
             using (SubscriptionClient subscriptionClient = GetSubscriptionClient(commonToken, environment))
             {
@@ -112,7 +120,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 try
                 {
-                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction);
+                    var token = AzureSession.Instance.AuthenticationFactory.Authenticate(azureAccount, environment, tenant, null, null, promptAction, cmdletContext.ToExtensibleParameters());
                     if (token != null)
                     {
                         result.Add(token);
@@ -207,6 +215,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         public abstract TokenCachePersistenceOptions GetTokenCachePersistenceOptions();
+
+        /// <summary>
+        /// Creates a confidential client app with a client secret.
+        /// Used for Service Principal SSH certificate authentication.
+        /// </summary>
+        public virtual IConfidentialClientApplication CreateConfidentialClient(string authority, string tenantId, string clientId, string clientSecret)
+        {
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId)
+                .WithClientSecret(clientSecret)
+                .WithExperimentalFeatures();
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            return builder.Build();
+        }
+
+        /// <summary>
+        /// Creates a confidential client app with a certificate.
+        /// Used for Service Principal SSH certificate authentication.
+        /// </summary>
+        public virtual IConfidentialClientApplication CreateConfidentialClient(string authority, string tenantId, string clientId, X509Certificate2 certificate)
+        {
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId)
+                .WithCertificate(certificate)
+                .WithExperimentalFeatures();
+            if (!string.IsNullOrEmpty(authority))
+            {
+                builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            return builder.Build();
+        }
 
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirmwareAnalysisCryptoKey
 
 ## SYNOPSIS
-Lists cryptographic key analysis results found in a firmware.
+Lists crypto key analysis results of a firmware.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzFirmwareAnalysisCryptoKey -FirmwareId <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-Lists cryptographic key analysis results found in a firmware.
+Lists crypto key analysis results of a firmware.
 
 ## EXAMPLES
 

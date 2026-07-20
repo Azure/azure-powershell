@@ -3,6 +3,7 @@
     <PsModuleName>ComputeFleet</PsModuleName>
     <PsRootModuleName>ComputeFleet</PsRootModuleName>
     <PsModuleFolder>ComputeFleet.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

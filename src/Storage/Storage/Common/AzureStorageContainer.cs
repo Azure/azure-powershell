@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public CloudBlobContainer CloudBlobContainer {
             get
             {
-                // cloudBlobContainer is not null, but not fetach attribute yet.
+                // cloudBlobContainer is not null, but not fetch attribute yet.
                 if (cloudBlobContainer!=null 
                     && cloudBlobContainer.Properties != null 
                     && cloudBlobContainer.Properties.LeaseStatus == Azure.Storage.Blob.LeaseStatus.Unspecified 
@@ -252,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 if (context == null)
                 {
                     //TODO : Get Oauth context from current login user.
-                    throw new System.Exception("Need Storage Context to convert Track1 object in token credentail to Track2 object.");
+                    throw new System.Exception("Need Storage Context to convert Track1 object in token credential to Track2 object.");
                 }
                 blobContainerClient = new BlobContainerClient(cloubContainer.Uri, context.Track2OauthToken, options);
 
@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <param name="credentials"></param>
         public static CloudBlobContainer GetTrack1BlobContainer(BlobContainerClient track2BlobContainerClient, StorageCredentials credentials)
         {
-            if (credentials.IsSAS) // the Uri already contains credentail.
+            if (credentials.IsSAS) // the Uri already contains credential.
             {
                 credentials = null;
             }

@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         [System.Runtime.Serialization.EnumMember(Value = "Custom_B32")]
         CustomB32,
         [System.Runtime.Serialization.EnumMember(Value = "Custom_B6")]
-        CustomB6
+        CustomB6,
+        [System.Runtime.Serialization.EnumMember(Value = "Custom_C42")]
+        CustomC42,
+        [System.Runtime.Serialization.EnumMember(Value = "Custom_C10")]
+        CustomC10
     }
     internal static class ManagedHsmSkuNameEnumExtension
     {
@@ -37,6 +41,10 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return "Custom_B32";
                 case ManagedHsmSkuName.CustomB6:
                     return "Custom_B6";
+                case ManagedHsmSkuName.CustomC42:
+                    return "Custom_C42";
+                case ManagedHsmSkuName.CustomC10:
+                    return "Custom_C10";
             }
             return null;
         }
@@ -50,6 +58,10 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return ManagedHsmSkuName.CustomB32;
                 case "Custom_B6":
                     return ManagedHsmSkuName.CustomB6;
+                case "Custom_C42":
+                    return ManagedHsmSkuName.CustomC42;
+                case "Custom_C10":
+                    return ManagedHsmSkuName.CustomC10;
             }
             return null;
         }

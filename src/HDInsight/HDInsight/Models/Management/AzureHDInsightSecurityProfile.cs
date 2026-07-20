@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
 
     /// <summary>
-    /// Represents and AzureHDInsightSecurityProfile which contans the parameters to create secure cluster.
+    /// Represents and AzureHDInsightSecurityProfile which contains the parameters to create secure cluster.
     /// </summary>
     public class AzureHDInsightSecurityProfile
     {

@@ -124,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.EdgeStor
                     DeviceName,
                     EdgeStorageAccountName,
                     Name,
-                    container,
-                    this.ResourceGroupName
+                    this.ResourceGroupName,
+                    container
                 ));
         }
 

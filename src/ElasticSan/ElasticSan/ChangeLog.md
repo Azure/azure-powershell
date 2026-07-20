@@ -19,6 +19,38 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.0
+* Supported auto scale when creating and updating an Elastic SAN.
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+    
+## Version 1.6.0
+* Reverted changes for auto scale, pre-backup, and pre-restore 
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+
+## Version 1.5.0
+* Supported auto scale when creating and updating an Elastic SAN.
+    - `New-AzElasticSan`
+    - `Update-AzElasticSan`
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - `Test-AzElasticSanVolumeBackup`
+    - `Test-AzElasticSanVolumeRestore`
+
+## Version 1.4.1
+* Added warning message for data integrity checking when create/update a volume group.
+    - `New-AzElasticSanVolumeGroup`
+    - `Update-AzElasticSanVolumeGroup`
+
+## Version 1.4.0
+* Changed parameters `BaseSizeTiB` and `ExtendedCapacitySizeTiB` in cmdlet `New-AzElasticSan` to be optional.
+    - `New-AzElasticSan`
+
 ## Version 1.2.1
 * Upgraded nuget package to signed package.
 

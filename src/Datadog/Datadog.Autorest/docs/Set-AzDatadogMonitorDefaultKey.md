@@ -12,10 +12,23 @@ Set the default api key.
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
-Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Key <String>
- [-SubscriptionId <String>] [-CreatedAt <String>] [-CreatedBy <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CreatedAt <String>] [-CreatedBy <String>] [-Key <String>] [-Name <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaJsonFilePath
+```
+Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaJsonString
+```
+Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +56,7 @@ The time of creation of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -58,7 +71,7 @@ The user that created the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -84,15 +97,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Set operation
+
+```yaml
+Type: System.String
+Parameter Sets: SetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Key
 The value of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +162,7 @@ The name of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False

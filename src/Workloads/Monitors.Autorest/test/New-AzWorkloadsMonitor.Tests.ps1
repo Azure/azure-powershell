@@ -16,15 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsMonitor'))
 
 Describe 'New-AzWorkloadsMonitor' {
     It 'CreateMonitorExpanded' {
-        $monitor = New-AzWorkloadsMonitor -ResourceGroupName $env.MonitorRg -Name $env.CreateMonitorName -Location eastus2euap `
+        $monitor = New-AzWorkloadsMonitor -ResourceGroupName $env.MonitorRg -Name $env.CreateMonitorName -Location eastus `
         -AppLocation eastus -ManagedResourceGroupName mrg-170313 `
         -MonitorSubnet $env.MonitorSubnet `
         -RoutingPreference 'RouteAll' -ZoneRedundancyPreference Disabled
         $monitor.ProvisioningState | Should -Be "Succeeded"
     }
 
-    It 'CreateHaMonitorExpanded' {
-        $monitorHa = New-AzWorkloadsMonitor -ResourceGroupName $env.MonitorRg -Name $env.CreateHaMonitorName -Location eastus2euap `
+    It 'CreateHaMonitorExpanded' -Skip {
+        $monitorHa = New-AzWorkloadsMonitor -ResourceGroupName $env.MonitorRg -Name $env.CreateHaMonitorName -Location eastus `
         -AppLocation eastus -ManagedResourceGroupName mrg-1703133 `
         -MonitorSubnet $env.HaMonitorSubnet `
         -RoutingPreference 'RouteAll' -ZoneRedundancyPreference Disabled

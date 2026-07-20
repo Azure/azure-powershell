@@ -20,22 +20,22 @@ Gets the details of the fabric.
 .Description
 Gets the details of the fabric.
 .Example
-Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
 .Example
-$InputObject = Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
+$InputObject = Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
 
-Get-AzMigrateHCIReplicationFabric -InputObject $InputObject
+Get-AzMigrateLocalReplicationFabric -InputObject $InputObject
 
-$InputObject | Get-AzMigrateHCIReplicationFabric
+$InputObject | Get-AzMigrateLocalReplicationFabric
 .Example
-Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg"
+Get-AzMigrateLocalReplicationFabric -ResourceGroupName "test-rg"
 .Example
-Get-AzMigrateHCIReplicationFabric
+Get-AzMigrateLocalReplicationFabric
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IFabricModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IFabricModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,11 +50,12 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -68,6 +69,9 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -76,6 +80,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -88,10 +93,10 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcireplicationfabric
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalreplicationfabric
 #>
-function Get-AzMigrateHCIReplicationFabric {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IFabricModel])]
+function Get-AzMigrateLocalReplicationFabric {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IFabricModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -122,10 +127,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
     [System.String]
@@ -188,6 +191,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -207,14 +218,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Migrate.private\Get-AzMigrateHCIReplicationFabric_Get';
-            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateHCIReplicationFabric_GetViaIdentity';
-            List = 'Az.Migrate.private\Get-AzMigrateHCIReplicationFabric_List';
-            List1 = 'Az.Migrate.private\Get-AzMigrateHCIReplicationFabric_List1';
+            Get = 'Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_Get';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_GetViaIdentity';
+            List = 'Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List';
+            List1 = 'Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -228,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -280,12 +292,12 @@ Method to get a migrate project.
 Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -Name BugBashAVSVMware
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProject
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProject])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -364,6 +376,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -385,9 +405,7 @@ begin {
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateProject_Get';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -401,6 +419,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -454,41 +475,110 @@ Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -
 .Example
 Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IFabric
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IFabric
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IFabric])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IFabric])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Fabric name.
     ${FabricName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
+
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetViaIdentityVault')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
     [System.String]
     # OData filter options.
@@ -550,6 +640,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -570,11 +668,10 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateReplicationFabric_Get';
+            GetViaIdentityVault = 'Az.Migrate.private\Get-AzMigrateReplicationFabric_GetViaIdentityVault';
             List = 'Az.Migrate.private\Get-AzMigrateReplicationFabric_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -588,6 +685,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -641,39 +741,107 @@ Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -
 .Example
 Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault -PolicyName  migrateAzMigratePWSHTc8d1sitepolicy
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Replication policy name.
     ${PolicyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -731,6 +899,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -751,11 +927,10 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateReplicationPolicy_Get';
+            GetViaIdentityVault = 'Az.Migrate.private\Get-AzMigrateReplicationPolicy_GetViaIdentityVault';
             List = 'Az.Migrate.private\Get-AzMigrateReplicationPolicy_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -769,6 +944,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -820,28 +998,179 @@ Gets the details of a protection container mapping.
 .Example
 Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault -FabricName AzMigratePWSHTc8d1replicationfabric -ProtectionContainerName AzMigratePWSHTc8d1replicationcontainer -MappingName "containermapping"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+REPLICATIONPROTECTIONCONTAINERINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
 #>
 function Get-AzMigrateReplicationProtectionContainerMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
@@ -849,24 +1178,65 @@ param(
     ${FabricName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReplicationProtectionContainer', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Protection Container mapping name.
     ${MappingName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Protection container name.
     ${ProtectionContainerName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationFabricInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityReplicationProtectionContainer', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationProtectionContainerInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -924,6 +1294,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -944,12 +1322,13 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_Get';
+            GetViaIdentityReplicationFabric = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_GetViaIdentityReplicationFabric';
+            GetViaIdentityReplicationProtectionContainer = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_GetViaIdentityReplicationProtectionContainer';
+            GetViaIdentityVault = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_GetViaIdentityVault';
             List = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_List';
             List1 = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainerMapping_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -963,6 +1342,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1016,28 +1398,127 @@ Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtest
 .Example
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtestasr13072020  -ResourceName AzMigrateTestProjectPWSH02aarsvault -FabricName AzMigratePWSHTc8d1replicationfabric -ProtectionContainerName AzMigratePWSHTc8d1replicationcontainer
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainer
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 #>
 function Get-AzMigrateReplicationProtectionContainer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainer])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
@@ -1045,17 +1526,49 @@ param(
     ${FabricName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Protection container name.
     ${ProtectionContainerName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationFabricInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1113,6 +1626,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1133,12 +1654,12 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_Get';
+            GetViaIdentityReplicationFabric = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_GetViaIdentityReplicationFabric';
+            GetViaIdentityVault = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_GetViaIdentityVault';
             List = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_List';
             List1 = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionContainer_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1152,6 +1673,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1203,45 +1727,177 @@ Gets the details of registered recovery services provider.
 .Example
 Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IRecoveryServicesProvider
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IRecoveryServicesProvider
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+REPLICATIONFABRICINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+VAULTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IRecoveryServicesProvider])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IRecoveryServicesProvider])]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the recovery services vault.
-    ${ResourceName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Fabric name.
     ${FabricName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Recovery services provider name.
     ${ProviderName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityReplicationFabric', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${ReplicationFabricInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VaultInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1299,6 +1955,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1319,11 +1983,12 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateReplicationRecoveryServicesProvider_Get';
+            GetViaIdentityReplicationFabric = 'Az.Migrate.private\Get-AzMigrateReplicationRecoveryServicesProvider_GetViaIdentityReplicationFabric';
+            GetViaIdentityVault = 'Az.Migrate.private\Get-AzMigrateReplicationRecoveryServicesProvider_GetViaIdentityVault';
             List = 'Az.Migrate.private\Get-AzMigrateReplicationRecoveryServicesProvider_List';
+            List1 = 'Az.Migrate.private\Get-AzMigrateReplicationRecoveryServicesProvider_List1';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1337,6 +2002,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1390,40 +2058,168 @@ Get-AzMigrateRunAsAccount  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBas
 .Example
 Get-AzMigrateRunAsAccount  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -SiteName BBVMwareAVScbbcsite -AccountName b090bef3-b733-5e34-bc8f-eb6f2701432a
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareRunAsAccount
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+VMWARESITEINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareRunAsAccount])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityVMwareSite', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Run as account ARM name.
+    ${AccountName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Site name.
     ${SiteName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Run as account ARM name.
-    ${AccountName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${SubscriptionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityVMwareSite', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${VMwareSiteInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1481,6 +2277,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1501,11 +2305,11 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateRunAsAccount_Get';
+            GetViaIdentitySubscription = 'Az.Migrate.private\Get-AzMigrateRunAsAccount_GetViaIdentitySubscription';
+            GetViaIdentityVMwareSite = 'Az.Migrate.private\Get-AzMigrateRunAsAccount_GetViaIdentityVMwareSite';
             List = 'Az.Migrate.private\Get-AzMigrateRunAsAccount_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1519,6 +2323,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1570,14 +2377,180 @@ Method to get a site.
 .Example
 Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -SiteName BBVMwareAVScbbcsite
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISiteHealthSummary
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareSite
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareSiteUsage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+SUBSCRIPTION1INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+SUBSCRIPTION2INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+SUBSCRIPTIONINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareSite], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISiteHealthSummary], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareSiteUsage])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('SiteName')]
@@ -1586,19 +2559,37 @@ param(
     # Site name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${SubscriptionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${Subscription1InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentitySubscription2', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${Subscription2InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1656,6 +2647,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1676,10 +2675,11 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateSite_Get';
+            GetViaIdentitySubscription = 'Az.Migrate.private\Get-AzMigrateSite_GetViaIdentitySubscription';
+            GetViaIdentitySubscription1 = 'Az.Migrate.private\Get-AzMigrateSite_GetViaIdentitySubscription1';
+            GetViaIdentitySubscription2 = 'Az.Migrate.private\Get-AzMigrateSite_GetViaIdentitySubscription2';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1693,6 +2693,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1744,21 +2747,73 @@ Gets a solution in the migrate project.
 .Example
 Get-AzMigrateSolution -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Name Servers-Migration-ServerMigration
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISolution
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MIGRATEPROJECTINPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISolution])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Name of the Azure Migrate project.
-    ${MigrateProjectName},
-
     [Parameter(Mandatory)]
     [Alias('SolutionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -1766,18 +2821,30 @@ param(
     # Unique name of a migration solution within a migrate project.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Name of the Azure Migrate project.
+    ${MigrateProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Name of the Azure Resource Group that migrate project is part of.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityMigrateProject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    ${MigrateProjectInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1835,6 +2902,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1855,10 +2930,9 @@ begin {
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateSolution_Get';
+            GetViaIdentityMigrateProject = 'Az.Migrate.private\Get-AzMigrateSolution_GetViaIdentityMigrateProject';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1872,6 +2946,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1929,7 +3006,7 @@ $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
 New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName ResourceGroup -ResourceName VaultName -SubscriptionId SubscriptionId -ProviderSpecificInput $providerSpecificPolicy
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1941,7 +3018,7 @@ PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSet
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1969,12 +3046,23 @@ param(
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicyProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicyProviderSpecificInput]
     # The ReplicationProviderSettings.
-    # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2044,6 +3132,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2064,10 +3160,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Migrate.private\New-AzMigrateReplicationPolicy_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2081,6 +3177,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2142,7 +3241,7 @@ $providerSpecificInput.TargetLocation = "centraluseuap"
 New-AzMigrateReplicationProtectionContainerMapping -FabricName "AzMigratePWSHTc8d1replicationfabric" -MappingName "containermapping" -ProtectionContainerName "AzMigratePWSHTc8d1replicationcontainer" -ResourceGroupName "azmigratepwshtestasr13072020" -ResourceName "AzMigrateTestProjectPWSH02aarsvault"  -PolicyId "/subscriptionsxxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy"  -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId  "Microsoft Azure"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2154,7 +3253,7 @@ PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provi
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainerMapping])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2194,24 +3293,35 @@ param(
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # Applicable policy.
     ${PolicyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IReplicationProviderSpecificContainerMappingInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProviderSpecificContainerMappingInput]
     # Provider specific input for pairing.
-    # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # The target unique protection container name.
     ${TargetProtectionContainerId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2281,6 +3391,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2301,10 +3419,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainerMapping_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainerMapping_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Migrate.private\New-AzMigrateReplicationProtectionContainerMapping_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2318,6 +3436,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2370,12 +3491,12 @@ Registers a tool with the migrate project.
 Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -MigrateProjectName BugBashAVSVMware -Tool Zerto
 
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IRegistrationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
-[OutputType([System.Boolean])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IRegistrationResult])]
 [CmdletBinding(DefaultParameterSetName='RegisterExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2404,11 +3525,23 @@ param(
     # Used by service to respond to client in appropriate language.
     ${AcceptLanguage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RegisterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # Gets or sets the tool to be registered.
     ${Tool},
+
+    [Parameter(ParameterSetName='RegisterViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Register operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegisterViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Register operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2466,6 +3599,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2486,10 +3627,10 @@ begin {
 
         $mapping = @{
             RegisterExpanded = 'Az.Migrate.private\Register-AzMigrateProjectTool_RegisterExpanded';
+            RegisterViaJsonFilePath = 'Az.Migrate.private\Register-AzMigrateProjectTool_RegisterViaJsonFilePath';
+            RegisterViaJsonString = 'Az.Migrate.private\Register-AzMigrateProjectTool_RegisterViaJsonString';
         }
-        if (('RegisterExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegisterExpanded', 'RegisterViaJsonFilePath', 'RegisterViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2503,6 +3644,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2654,6 +3798,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2675,9 +3827,7 @@ begin {
         $mapping = @{
             Delete = 'Az.Migrate.private\Remove-AzMigrateProject_Delete';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2691,6 +3841,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2755,14 +3908,14 @@ Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName Bu
 Get-AzMigrateDiscoveredServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName "test-rg" -ProjectName "testproj" -SourceMachineType "HyperV" | Format-Table DisplayName,Name,Type
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 function Get-AzMigrateDiscoveredServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVMachine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2785,7 +3938,6 @@ param(
     ${DisplayName},
 
     [Parameter()]
-    [ArgumentCompleter({ "VMware", "HyperV" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the source machine type.
@@ -2799,22 +3951,22 @@ param(
     # Specifies the subscription id.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='ListInSite', Mandatory)]
     [Parameter(ParameterSetName='GetInSite', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the appliance name.
+    # This internally maps to a site.
+    ${ApplianceName},
+
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetInSite', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the source machine name.
     # This is an internal Name.
     # For users, use display name.
-    ${Name},
-
-    [Parameter(ParameterSetName='GetInSite', Mandatory)]
-    [Parameter(ParameterSetName='ListInSite', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the appliance name.
-    # This internally maps to a site.
-    ${ApplianceName}
+    ${Name}
 )
 
 begin {
@@ -2824,6 +3976,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2844,13 +4004,11 @@ begin {
 
         $mapping = @{
             List = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
-            GetInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
-            Get = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
             ListInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
+            Get = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
+            GetInSite = 'Az.Migrate.custom\Get-AzMigrateDiscoveredServer';
         }
-        if (('List', 'GetInSite', 'Get', 'ListInSite') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List', 'ListInSite', 'Get', 'GetInSite') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2864,6 +4022,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2911,553 +4072,7 @@ end {
 .Synopsis
 Retrieves the status of an Azure Migrate job.
 .Description
-The Get-AzMigrateHCIJob cmdlet retrives the status of an Azure Migrate job.
-.Example
-Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
-.Example
-Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj" -Name "0203aa1b-1dff-4653-89a9-b90a76d1601a"
-.Example
-$InputObject = Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
-
-Get-AzMigrateHCIJob -InputObject $InputObject
-
-$InputObject | Get-AzMigrateHCIJob
-.Example
-Get-AzMigrateHCIJob -ResourceGroupID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg" -ProjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Migrate/MigrateProjects/testproj"
-.Example
-Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating server.
-  [AccountName <String>]: Run as account ARM name.
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [ClusterName <String>]: Cluster ARM name.
-  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
-  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
-  [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
-  [FabricName <String>]: Fabric name.
-  [HostName <String>]: Host ARM name.
-  [Id <String>]: Resource identity path
-  [IntentObjectName <String>]: Replication protection intent name.
-  [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
-  [LogicalNetworkName <String>]: Logical network name.
-  [MachineName <String>]: Machine ARM name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrateProjectName <String>]: Name of the Azure Migrate project.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [OperationStatusName <String>]: Operation status ARM name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name.
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [SiteName <String>]: Site name.
-  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
-  [VaultSettingName <String>]: Vault setting name.
-  [VcenterName <String>]: VCenter ARM name.
-  [VirtualMachineName <String>]: Virtual Machine name.
-.Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcijob
-#>
-function Get-AzMigrateHCIJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
-[CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='ListByName', Mandatory)]
-    [Parameter(ParameterSetName='GetByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the resource group where the recovery services vault is present.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='ListByName', Mandatory)]
-    [Parameter(ParameterSetName='GetByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # The name of the migrate project.
-    ${ProjectName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the job id for which the details needs to be retrieved.
-    ${ID},
-
-    [Parameter(ParameterSetName='GetByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Job identifier
-    ${Name},
-
-    [Parameter(ParameterSetName='GetByInputObject', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Specifies the job object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='ListById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
-    ${ResourceGroupID},
-
-    [Parameter(ParameterSetName='ListById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Azure Migrate Project in which servers are replicating.
-    ${ProjectID},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            ListByName = 'Az.Migrate.custom\Get-AzMigrateHCIJob';
-            GetById = 'Az.Migrate.custom\Get-AzMigrateHCIJob';
-            GetByName = 'Az.Migrate.custom\Get-AzMigrateHCIJob';
-            GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateHCIJob';
-            ListById = 'Az.Migrate.custom\Get-AzMigrateHCIJob';
-        }
-        if (('ListByName', 'GetById', 'GetByName', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Retrieves the details of the replicating server.
-.Description
-The Get-AzMigrateHCIServerReplication cmdlet retrieves the object for the replicating server.
-.Example
-Get-AzMigrateHCIServerReplication -TargetObjectID '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5'
-.Example
-Get-AzMigrateHCIServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5" 
-
-.Example
-Get-AzMigrateServerReplication -ResourceGroupName testResourceGroup -ProjectName testProjectName
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IMigrateIdentity>: Specifies the machine object of the replicating server.
-  [AccountName <String>]: Run as account ARM name.
-  [AlertSettingName <String>]: The name of the email notification configuration.
-  [ClusterName <String>]: Cluster ARM name.
-  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
-  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
-  [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
-  [FabricName <String>]: Fabric name.
-  [HostName <String>]: Host ARM name.
-  [Id <String>]: Resource identity path
-  [IntentObjectName <String>]: Replication protection intent name.
-  [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
-  [LogicalNetworkName <String>]: Logical network name.
-  [MachineName <String>]: Machine ARM name.
-  [MappingName <String>]: Protection Container mapping name.
-  [MigrateProjectName <String>]: Name of the Azure Migrate project.
-  [MigrationItemName <String>]: Migration item name.
-  [MigrationRecoveryPointName <String>]: The migration recovery point name.
-  [NetworkMappingName <String>]: Network mapping name.
-  [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [OperationStatusName <String>]: Operation status ARM name.
-  [PolicyName <String>]: Replication policy name.
-  [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
-  [ProtectionContainerName <String>]: Protection container name.
-  [ProviderName <String>]: Recovery services provider name.
-  [RecoveryPlanName <String>]: Name of the recovery plan.
-  [RecoveryPointName <String>]: The recovery point name.
-  [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceName <String>]: The name of the recovery services vault.
-  [SiteName <String>]: Site name.
-  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
-  [StorageClassificationMappingName <String>]: Storage classification mapping name.
-  [StorageClassificationName <String>]: Storage classification name.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
-  [VaultSettingName <String>]: Vault setting name.
-  [VcenterName <String>]: VCenter ARM name.
-  [VirtualMachineName <String>]: Virtual Machine name.
-.Link
-https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehciserverreplication
-#>
-function Get-AzMigrateHCIServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel])]
-[CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='ListByName', Mandatory)]
-    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='ListByName', Mandatory)]
-    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Azure Migrate project  in the current subscription.
-    ${ProjectName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Azure Subscription ID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetByItemID', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the replicating server ARM ID.
-    ${TargetObjectID},
-
-    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the display name of the replicating machine.
-    ${MachineName},
-
-    [Parameter(ParameterSetName='GetBySDSID', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the machine ID of the discovered server.
-    ${DiscoveredMachineId},
-
-    [Parameter(ParameterSetName='GetByInputObject', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Specifies the machine object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='ListById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
-    ${ResourceGroupID},
-
-    [Parameter(ParameterSetName='ListById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the Azure Migrate Project in which servers are replicating.
-    ${ProjectID},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            ListByName = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-            GetByItemID = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-            GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-            GetBySDSID = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-            GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-            ListById = 'Az.Migrate.custom\Get-AzMigrateHCIServerReplication';
-        }
-        if (('ListByName', 'GetByItemID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Retrieves the status of an Azure Migrate job.
-.Description
-The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
+The Get-AzMigrateJob cmdlet retrieves the status of an Azure Migrate job.
 .Example
 Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/997e2a92-5afe-49c7-a81a-89660aec9b7b" 
 .Example
@@ -3466,7 +4081,7 @@ Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 
 Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH' -JobName 7ae1ee7c-442c-499d-8b0e-81d52a42b71e
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3475,12 +4090,12 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
   [Location <String>]: Resource Location
   [ActivityId <String>]: The activity id.
-  [AllowedAction <String[]>]: The Allowed action the job.
+  [AllowedAction <List<String>>]: The Allowed action the job.
   [CustomDetailAffectedObjectDetail <IJobDetailsAffectedObjectDetails>]: The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CustomDetailInstanceType <String>]: Gets the type of job details (see JobDetailsTypes enum for possible values).
   [EndTime <DateTime?>]: The end time.
-  [Error <IJobErrorDetails[]>]: The errors.
+  [Error <List<IJobErrorDetails>>]: The errors.
     [CreationTime <DateTime?>]: The creation time of job error.
     [ErrorLevel <String>]: Error level of error.
     [ProviderErrorDetailErrorCode <Int32?>]: The Error code.
@@ -3502,13 +4117,13 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
   [TargetInstanceType <String>]: The type of the affected object which is of Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType class.
   [TargetObjectId <String>]: The affected Object Id.
   [TargetObjectName <String>]: The name of the affected object.
-  [Task <IAsrTask[]>]: The tasks.
-    [AllowedAction <String[]>]: The state/actions applicable on this task.
+  [Task <List<IAsrTask>>]: The tasks.
+    [AllowedAction <List<String>>]: The state/actions applicable on this task.
     [CustomDetailInstanceType <String>]: The type of task details.
     [EndTime <DateTime?>]: The end time.
-    [Error <IJobErrorDetails[]>]: The task error details.
+    [Error <List<IJobErrorDetails>>]: The task error details.
     [FriendlyName <String>]: The name.
-    [GroupTaskCustomDetailChildTask <IAsrTask[]>]: The child tasks.
+    [GroupTaskCustomDetailChildTask <List<IAsrTask>>]: The child tasks.
     [GroupTaskCustomDetailInstanceType <String>]: The type of task details.
     [Name <String>]: The unique Task name.
     [StartTime <DateTime?>]: The start time.
@@ -3520,7 +4135,7 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -3544,23 +4159,22 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the job id for which the details needs to be retrieved.
-    ${JobID},
-
     [Parameter(ParameterSetName='GetByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Job identifier
     ${JobName},
 
+    [Parameter(ParameterSetName='GetById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the job id for which the details needs to be retrieved.
+    ${JobID},
+
     [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob]
     # Specifies the job object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ListById', Mandatory)]
@@ -3637,6 +4251,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3657,14 +4279,12 @@ begin {
 
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateJob';
-            GetById = 'Az.Migrate.custom\Get-AzMigrateJob';
             GetByName = 'Az.Migrate.custom\Get-AzMigrateJob';
+            GetById = 'Az.Migrate.custom\Get-AzMigrateJob';
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateJob';
             ListById = 'Az.Migrate.custom\Get-AzMigrateJob';
         }
-        if (('ListByName', 'GetById', 'GetByName', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetByName', 'GetById', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3678,6 +4298,809 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Retrieves the status of an Azure Migrate job.
+.Description
+The Get-AzMigrateLocalJob cmdlet retrieves the status of an Azure Migrate job.
+.Example
+Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+.Example
+Get-AzMigrateLocalJob -ResourceGroupName "test-rg" -ProjectName "testproj" -Name "0203aa1b-1dff-4653-89a9-b90a76d1601a"
+.Example
+$InputObject = Get-AzMigrateLocalJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+
+Get-AzMigrateLocalJob -InputObject $InputObject
+
+$InputObject | Get-AzMigrateLocalJob
+.Example
+Get-AzMigrateLocalJob -ResourceGroupID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg" -ProjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.Migrate/MigrateProjects/testproj"
+.Example
+Get-AzMigrateLocalJob -ResourceGroupName "test-rg" -ProjectName "testproj"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating server.
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocaljob
+#>
+function Get-AzMigrateLocalJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
+[CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the migrate project.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetByName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Job identifier
+    ${Name},
+
+    [Parameter(ParameterSetName='GetById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the job id for which the details needs to be retrieved.
+    ${ID},
+
+    [Parameter(ParameterSetName='GetByInputObject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Specifies the job object of the replicating server.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ListById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    ${ResourceGroupID},
+
+    [Parameter(ParameterSetName='ListById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Azure Migrate Project in which servers are replicating.
+    ${ProjectID},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ListByName = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+            GetByName = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+            GetById = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+            GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+            ListById = 'Az.Migrate.custom\Get-AzMigrateLocalJob';
+        }
+        if (('ListByName', 'GetByName', 'GetById', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Retrieves the details of the replicating server.
+.Description
+The Get-AzMigrateLocalServerReplication cmdlet retrieves the object for the replicating server.
+.Example
+Get-AzMigrateLocalServerReplication -TargetObjectID '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5'
+.Example
+Get-AzMigrateLocalServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5" 
+
+.Example
+Get-AzMigrateServerReplication -ResourceGroupName testResourceGroup -ProjectName testProjectName
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Specifies the machine object of the replicating server.
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
+#>
+function Get-AzMigrateLocalServerReplication {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel])]
+[CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='ListByName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Azure Migrate project  in the current subscription.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetByItemID', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the replicating server ARM ID.
+    ${TargetObjectID},
+
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='GetBySDSID', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the machine ID of the discovered server.
+    ${DiscoveredMachineId},
+
+    [Parameter(ParameterSetName='GetByInputObject', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Specifies the machine object of the replicating server.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ListById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    ${ResourceGroupID},
+
+    [Parameter(ParameterSetName='ListById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Azure Migrate Project in which servers are replicating.
+    ${ProjectID},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ListByName = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+            GetByItemID = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+            GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+            GetBySDSID = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+            GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+            ListById = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
+        }
+        if (('ListByName', 'GetByItemID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Retrieves the details of the replicating server status.
+.Description
+The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status for the replicating server.
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg"
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm"
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -ApplianceName "cbtresyncgql"
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm" -Expedite
+
+.Outputs
+System.Management.Automation.PSObject[]
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateservermigrationstatus
+#>
+function Get-AzMigrateServerMigrationStatus {
+[OutputType([System.Management.Automation.PSObject[]])]
+[CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Azure Migrate project  in the current subscription.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription ID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to expedite the operation of a replicating server.
+    ${Expedite},
+
+    [Parameter(ParameterSetName='GetByApplianceName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the name of the appliance.
+    ${ApplianceName},
+
+    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether the health issues to show for replicating server.
+    ${Health},
+
+    [Parameter(ParameterSetName='ListByName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # OData filter options.
+    ${Filter},
+
+    [Parameter(ParameterSetName='ListByName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # The pagination token.
+    ${SkipToken},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ListByName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetByPrioritiseServer = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetByApplianceName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetHealthByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+        }
+        if (('ListByName', 'GetByPrioritiseServer', 'GetByApplianceName', 'GetHealthByMachineName', 'GetByMachineName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3734,7 +5157,7 @@ Get-AzMigrateServerReplication -ResourceGroupID /Subscriptions/xxx-xxx-xxx/resou
 Get-AzMigrateServerReplication -ResourceGroupName azmigratepwshtestasr13072020 -ProjectName AzMigrateTestProjectPWSH
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3748,7 +5171,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -3792,9 +5215,8 @@ param(
 
     [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the machine object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ListById', Mandatory)]
@@ -3878,6 +5300,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3904,9 +5334,7 @@ begin {
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
             ListById = 'Az.Migrate.custom\Get-AzMigrateServerReplication';
         }
-        if (('ListByName', 'GetBySRSID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetBySRSID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3920,6 +5348,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3967,22 +5398,22 @@ end {
 .Synopsis
 Initializes the infrastructure for the migrate project.
 .Description
-The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzStackHCI scenario.
+The Initialize-AzMigrateLocalReplicationInfrastructure cmdlet initializes the infrastructure for the migrate project in AzLocal scenario.
 .Example
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 .Example
 $cacheStorageAccountId = "/subscriptions/xxx-xxx-xxxx/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/testSa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+Initialize-AzMigrateLocalReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 
 .Outputs
 System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehcireplicationinfrastructure
+https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure
 #>
-function Initialize-AzMigrateHCIReplicationInfrastructure {
+function Initialize-AzMigrateLocalReplicationInfrastructure {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='AzStackHCI', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='AzLocal', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [ValidateNotNull()]
@@ -4001,13 +5432,13 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the source appliance name for the AzStackHCI scenario.
+    # Specifies the source appliance name for the AzLocal scenario.
     ${SourceApplianceName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the target appliance name for the AzStackHCI scenario.
+    # Specifies the target appliance name for the AzLocal scenario.
     ${TargetApplianceName},
 
     [Parameter()]
@@ -4084,6 +5515,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4103,11 +5542,9 @@ begin {
         }
 
         $mapping = @{
-            AzStackHCI = 'Az.Migrate.custom\Initialize-AzMigrateHCIReplicationInfrastructure';
+            AzLocal = 'Az.Migrate.custom\Initialize-AzMigrateLocalReplicationInfrastructure';
         }
-        if (('AzStackHCI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('AzLocal') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4121,6 +5558,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4279,6 +5719,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4300,9 +5748,7 @@ begin {
         $mapping = @{
             agentlessVMware = 'Az.Migrate.custom\Initialize-AzMigrateReplicationInfrastructure';
         }
-        if (('agentlessVMware') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('agentlessVMware') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4316,6 +5762,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4370,12 +5819,12 @@ New-AzMigrateDiskMapping -DiskID a -DiskType Standard_LRS -IsOSDisk 'true'
 New-AzMigrateDiskMapping -DiskID b -DiskType PremiumV2_LRS -IsOSDisk 'false'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4392,7 +5841,7 @@ param(
     ${IsOSDisk},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS"})]
+    [ArgumentCompleter({ "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS"})]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the type of disks to be used for the Azure VM.
@@ -4401,7 +5850,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID}
 )
 
@@ -4412,6 +5861,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4440,6 +5892,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4487,17 +5942,17 @@ end {
 .Synopsis
 Creates a new disk mapping
 .Description
-The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateLocalDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Example
-New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
+New-AzMigrateLocalDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocaldiskmappingobject
 #>
-function New-AzMigrateHCIDiskMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput])]
+function New-AzMigrateLocalDiskMappingObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4531,7 +5986,15 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the disk format.
-    ${Format}
+    # 'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
+    ${Format},
+
+    [Parameter()]
+    [ArgumentCompleter({ "512", "4096" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Int64]
+    # Specifies the disk physical sector size in bytes.
+    ${PhysicalSectorSize}
 )
 
 begin {
@@ -4541,6 +6004,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4560,7 +6026,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.Migrate.custom\New-AzMigrateHCIDiskMappingObject';
+            __AllParameterSets = 'Az.Migrate.custom\New-AzMigrateLocalDiskMappingObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4569,6 +6035,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4616,18 +6085,18 @@ end {
 .Synopsis
 Creates an object to update NIC properties of a replicating server.
 .Description
-The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated.
+The New-AzMigrateLocalNicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated.
 This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Example
-New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
+New-AzMigrateLocalNicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalnicmappingobject
 #>
-function New-AzMigrateHCINicMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput])]
+function New-AzMigrateLocalNicMappingObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4652,7 +6121,7 @@ param(
     [ArgumentCompleter({ "true" , "false" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies whether the this Nic should be created at target.
+    # Specifies whether this Nic should be created at target.
     ${CreateAtTarget}
 )
 
@@ -4663,6 +6132,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4682,7 +6154,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.Migrate.custom\New-AzMigrateHCINicMappingObject';
+            __AllParameterSets = 'Az.Migrate.custom\New-AzMigrateLocalNicMappingObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4691,6 +6163,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4738,29 +6213,29 @@ end {
 .Synopsis
 Starts replication for the specified server.
 .Description
-The New-AzMigrateHCIServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
+The New-AzMigrateLocalServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Example
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
+New-AzMigrateLocalServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
 .Example
-[AzStackHCIDiskInput[]]$DisksToInclude = @()
-$OSDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
-$DataDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
+[AzLocalDiskInput[]]$DisksToInclude = @()
+$OSDisk = New-AzMigrateLocalDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
+$DataDisk = New-AzMigrateLocalDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
 $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 
-[AzStackHCINicInput[]]$NicsToInclude = @()
-$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
+[AzLocalNicInput[]]$NicsToInclude = @()
+$Nic = New-AzMigrateLocalNicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 $NicsToInclude += $Nic
 
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
+New-AzMigrateLocalServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 #>
-function New-AzMigrateHCIServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+function New-AzMigrateLocalServerReplication {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4778,7 +6253,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the target Resource Group Id where the migrated VM resources will reside.
+    # Specifies the target resource group ARM ID where the migrated VM resources will reside.
     ${TargetResourceGroupId},
 
     [Parameter(Mandatory)]
@@ -4786,6 +6261,18 @@ param(
     [System.String]
     # Specifies the name of the VM to be created.
     ${TargetVMName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the source appliance name for the AzLocal scenario.
+    ${SourceApplianceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target appliance name for the AzLocal scenario.
+    ${TargetApplianceName},
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -4796,7 +6283,7 @@ param(
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the Operating System disk for the source server to be migrated.
+    # Specifies the operating system disk for the source server to be migrated.
     ${OSDiskID},
 
     [Parameter()]
@@ -4833,13 +6320,13 @@ param(
 
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]]
     # Specifies the disks on the source server to be included for replication.
     ${DiskToInclude},
 
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
     # Specifies the NICs on the source server to be included for replication.
     ${NicToInclude},
 
@@ -4898,6 +6385,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4917,12 +6412,10 @@ begin {
         }
 
         $mapping = @{
-            ByIdDefaultUser = 'Az.Migrate.custom\New-AzMigrateHCIServerReplication';
-            ByIdPowerUser = 'Az.Migrate.custom\New-AzMigrateHCIServerReplication';
+            ByIdDefaultUser = 'Az.Migrate.custom\New-AzMigrateLocalServerReplication';
+            ByIdPowerUser = 'Az.Migrate.custom\New-AzMigrateLocalServerReplication';
         }
-        if (('ByIdDefaultUser', 'ByIdPowerUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIdDefaultUser', 'ByIdPowerUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4936,6 +6429,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4989,12 +6485,12 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -5048,6 +6544,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5076,6 +6575,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5133,8 +6635,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
-  [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
-  [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
+  [ProvisioningState <String>]: Provisioning state of the migrate project.
+  [RegisteredTool <List<String>>]: Gets or sets the list of tools registered with the migrate project.
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 #>
@@ -5167,9 +6669,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProjectProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProjectProperties]
     # Specifies the project properties.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter()]
@@ -5187,6 +6688,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5208,9 +6712,7 @@ begin {
         $mapping = @{
             PutExpandedCustom = 'Az.Migrate.custom\New-AzMigrateProject';
         }
-        if (('PutExpandedCustom') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('PutExpandedCustom') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5224,6 +6726,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5281,9 +6786,11 @@ $DisksToInclude = @()
 $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 New-AzMigrateServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskToInclude $DisksToInclude -PerformAutoResync true
+.Example
+New-AzMigrateServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskType "Standard_LRS" -OSDiskID "6000C299-343d-7bcd-c05e-a94bd63316dd" -TargetSecurityType "TrustedLaunch" -TargetVMSecureBootEnabled $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5298,11 +6805,11 @@ DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server 
   LogStorageAccountId <String>: The log storage account ARM Id.
   LogStorageAccountSasSecretName <String>: The key vault secret name of the log storage account.
   [DiskEncryptionSetId <String>]: The DiskEncryptionSet ARM Id.
-  [DiskType <DiskAccountType?>]: The disk type.
+  [DiskSizeInGb <Int64?>]: The target disk size in GB.
+  [DiskType <String>]: The disk type.
+  [Iop <Int64?>]: The number of IOPS allowed for Premium V2 and Ultra disks.
   [SectorSizeInByte <Int32?>]: The logical sector size (in bytes), 512 by default.
-
-INPUTOBJECT <IVMwareMachine>: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-  [GuestOSDetailOstype <String>]: Type of the operating system.
+  [ThroughputInMbps <Int64?>]: The total throughput in Mbps for Premium V2 and Ultra disks.
 
 NICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>: Specifies the tag to be used for NIC creation.
   [(Any) <String>]: This indicates any property can be added to this object.
@@ -5313,7 +6820,7 @@ VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -5434,23 +6941,20 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags]
     # Specifies the tag to be used for VM creation.
-    # To construct, see NOTES section for VMTAG properties and create a hash table.
     ${VMTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags]
     # Specifies the tag to be used for NIC creation.
-    # To construct, see NOTES section for NICTAG properties and create a hash table.
     ${NicTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags]
     # Specifies the tag to be used for disk creation.
-    # To construct, see NOTES section for DISKTAG properties and create a hash table.
     ${DiskTag},
 
     [Parameter()]
@@ -5465,11 +6969,24 @@ param(
     # Specifies the storage account to be used for boot diagnostics.
     ${TargetBootDiagnosticsStorageAccount},
 
+    [Parameter()]
+    [ArgumentCompleter({ "Standard" , "TrustedLaunch" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the security type for the Azure VM.
+    ${TargetSecurityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Boolean]
+    # Specifies if secure boot needs to be enabled on target VM.
+    ${TargetVMSecureBootEnabled},
+
     [Parameter(ParameterSetName='ByIdDefaultUser')]
     [Parameter(ParameterSetName='ByInputObjectDefaultUser')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk encyption set to be used.
+    # Specifies the disk encryption set to be used.
     ${DiskEncryptionSetID},
 
     [Parameter()]
@@ -5479,21 +6996,25 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+    ${TargetCapacityReservationGroupId},
+
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput[]]
     # Specifies the disks on the source server to be included for replication.
-    # To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
     ${DiskToInclude},
 
     [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine]
     # Specifies the discovered server to be migrated.
     # The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5551,6 +7072,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5575,9 +7099,7 @@ begin {
             ByInputObjectPowerUser = 'Az.Migrate.custom\New-AzMigrateServerReplication';
             ByInputObjectDefaultUser = 'Az.Migrate.custom\New-AzMigrateServerReplication';
         }
-        if (('ByIdDefaultUser', 'ByIdPowerUser', 'ByInputObjectPowerUser', 'ByInputObjectDefaultUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIdDefaultUser', 'ByIdPowerUser', 'ByInputObjectPowerUser', 'ByInputObjectDefaultUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5591,6 +7113,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5644,12 +7169,12 @@ This object is provided as an input to the Start-AzMigrateTestMigration cmdlet t
 New-AzMigrateTestNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TestNicSubnet subnet1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
 #>
 function New-AzMigrateTestNicMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5672,6 +7197,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5700,6 +7228,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5747,26 +7278,26 @@ end {
 .Synopsis
 Stops replication for the migrated server.
 .Description
-The Remove-AzMigrateHCIServerReplication cmdlet stops the replication for a migrated server.
+The Remove-AzMigrateLocalServerReplication cmdlet stops the replication for a migrated server.
 .Example
-Remove-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+Remove-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 .Example
-$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Remove-AzMigrateHCIServerReplication -InputObject $InputObject
+Remove-AzMigrateLocalServerReplication -InputObject $InputObject
 
-$InputObject | Remove-AzMigrateHCIServerReplication
+$InputObject | Remove-AzMigrateLocalServerReplication
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMigrateIdentity>: Specifies the replcating server for which the replication needs to be disabled. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which the replication needs to be disabled. The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
   [AccountName <String>]: Run as account ARM name.
   [AlertSettingName <String>]: The name of the email notification configuration.
   [ClusterName <String>]: Cluster ARM name.
@@ -5775,11 +7306,12 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replcating server for which the re
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -5793,6 +7325,9 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replcating server for which the re
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -5801,6 +7336,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replcating server for which the re
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -5813,17 +7349,17 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replcating server for which the re
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratelocalserverreplication
 #>
-function Remove-AzMigrateHCIServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+function Remove-AzMigrateLocalServerReplication {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ByID', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByID', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the replcating server for which the replication needs to be disabled.
-    # The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+    # The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
     ${TargetObjectID},
 
     [Parameter()]
@@ -5836,9 +7372,8 @@ param(
     [Parameter(ParameterSetName='ByInputObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-    # Specifies the replcating server for which the replication needs to be disabled.
-    # The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # Specifies the replicating server for which the replication needs to be disabled.
+    # The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
     ${InputObject},
 
     [Parameter()]
@@ -5904,6 +7439,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5923,12 +7466,10 @@ begin {
         }
 
         $mapping = @{
-            ByID = 'Az.Migrate.custom\Remove-AzMigrateHCIServerReplication';
-            ByInputObject = 'Az.Migrate.custom\Remove-AzMigrateHCIServerReplication';
+            ByID = 'Az.Migrate.custom\Remove-AzMigrateLocalServerReplication';
+            ByInputObject = 'Az.Migrate.custom\Remove-AzMigrateLocalServerReplication';
         }
-        if (('ByID', 'ByInputObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByID', 'ByInputObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5942,6 +7483,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5997,7 +7541,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID "/Subscriptions/xxx-xxx-xx
 Remove-AzMigrateServerReplication -InputObject $obj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6011,7 +7555,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replcating server for which the repl
 https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -6030,10 +7574,9 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replcating server for which the replication needs to be disabled.
     # The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6097,6 +7640,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6119,9 +7670,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Remove-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Remove-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6135,6 +7684,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6190,7 +7742,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID "/Subscriptions/xxx-xxx-xx
 $output = Restart-AzMigrateServerReplication -InputObject $obj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6204,13 +7756,13 @@ INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating se
 https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the replcating server for which the resync needs to be initiated.
+    # Specifies the replicating server for which the resync needs to be initiated.
     # The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
     ${TargetObjectID},
 
@@ -6223,9 +7775,8 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the machine object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6283,6 +7834,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6305,9 +7864,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Restart-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Restart-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6321,6 +7878,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6376,7 +7936,7 @@ $obj = Get-AzMigrateServerReplication -ProjectName "signoffccyproj" -ResourceGro
 Resume-AzMigrateServerReplication -InputObject $obj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6390,7 +7950,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the res
 https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
 #>
 function Resume-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -6415,10 +7975,9 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the resume replication needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6482,6 +8041,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6504,9 +8071,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Resume-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Resume-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6520,6 +8085,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6572,12 +8140,12 @@ The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attache
 Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
 #>
 function Set-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -6607,6 +8175,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6635,6 +8206,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6682,9 +8256,7 @@ end {
 .Synopsis
 Updates the target properties for the replicating server.
 .Description
-The Set-AzMigrateHCIServerReplication cmdlet updates the target properties for the replicating server.
-.Example
-Set-AzMigrateHCIServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5' -TargetVMName "targetName1"
+The Set-AzMigrateLocalServerReplication cmdlet updates the target properties for the replicating server.
 .Example
 $memoryConfig = [PSCustomObject]@{
 	MinimumMemoryInMegaByte = 1024
@@ -6692,38 +8264,32 @@ $memoryConfig = [PSCustomObject]@{
 	TargetMemoryBufferPercentage = 20
 }
 
-Set-AzMigrateHCIServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5' -DynamicMemoryConfig $memoryConfig
+Set-AzMigrateLocalServerReplication -TargetObjectID  '/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5' -DynamicMemoryConfig $memoryConfig
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configration of RAM.
+DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configuration of RAM.
   MaximumMemoryInMegaByte <Int64>: Gets or sets maximum memory in MB.
   MinimumMemoryInMegaByte <Int64>: Gets or sets minimum memory in MB.
   TargetMemoryBufferPercentage <Int32>: Gets or sets target memory buffer in %.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehciserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratelocalserverreplication
 #>
-function Set-AzMigrateHCIServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+function Set-AzMigrateLocalServerReplication {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ById', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the replicating server for which the properties need to be updated.
-    # The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+    # The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
     ${TargetObjectID},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the target VM name.
-    ${TargetVMName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -6740,9 +8306,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]
-    # Specifies the dynamic memory configration of RAM.
-    # To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]
+    # Specifies the dynamic memory configuration of RAM.
     ${DynamicMemoryConfig},
 
     [Parameter()]
@@ -6753,9 +8318,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
     # Specifies the nics on the source server to be included for replication.
     ${NicToInclude},
+
+    [Parameter()]
+    [ArgumentCompleter({ "WindowsGuest" , "LinuxGuest" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+    ${OsType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -6819,6 +8391,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6838,11 +8418,9 @@ begin {
         }
 
         $mapping = @{
-            ById = 'Az.Migrate.custom\Set-AzMigrateHCIServerReplication';
+            ById = 'Az.Migrate.custom\Set-AzMigrateLocalServerReplication';
         }
-        if (('ById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6856,6 +8434,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6913,7 +8494,7 @@ $DiskMapping = $OSDisk, $DataDisk
 Set-AzMigrateServerReplication -TargetObjectId "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015f6d8-fc84-afdf-de47-1eab79330f00" -DiskToUpdate $DiskMapping
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6921,8 +8502,11 @@ To create the parameters described below, construct a hash table containing the 
 
 DISKTOUPDATE <IVMwareCbtUpdateDiskInput[]>: Updates the disk for the Azure VM to be created.
   DiskId <String>: The disk Id.
+  [DiskSizeInGb <Int64?>]: The target disk size in GB.
+  [Iop <Int64?>]: The number of IOPS allowed for Premium V2 and Ultra disks.
   [IsOSDisk <String>]: A value indicating whether the disk is the OS disk.
   [TargetDiskName <String>]: The target disk name.
+  [ThroughputInMbps <Int64?>]: The total throughput in Mbps for Premium V2 and Ultra disks.
 
 INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   [Location <String>]: Resource Location
@@ -6951,7 +8535,7 @@ UPDATEVMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to b
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -7000,16 +8584,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput[]]
     # Updates the NIC for the Azure VM to be created.
-    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
     ${NicToUpdate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput[]]
     # Updates the disk for the Azure VM to be created.
-    # To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
     ${DiskToUpdate},
 
     [Parameter()]
@@ -7053,9 +8635,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags]
     # Specifies the tag to be used for VM creation.
-    # To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
     ${UpdateVMTag},
 
     [Parameter()]
@@ -7067,9 +8648,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags]
     # Specifies the tag to be used for NIC creation.
-    # To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
     ${UpdateNicTag},
 
     [Parameter()]
@@ -7081,9 +8661,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags]
     # Specifies the tag to be used for disk creation.
-    # To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
     ${UpdateDiskTag},
 
     [Parameter()]
@@ -7106,12 +8685,17 @@ param(
     # The subscription Id.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+    ${TargetCapacityReservationGroupId},
+
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the properties need to be updated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7169,6 +8753,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7191,9 +8783,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Set-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Set-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7207,6 +8797,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7256,24 +8849,24 @@ Starts the migration for the replicating server.
 .Description
 Starts the migration for the replicating server.
 .Example
-Start-AzMigrateHCIServerMigration -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+Start-AzMigrateLocalServerMigration -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 .Example
-$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateLocalServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Start-AzMigrateHCIServerMigration -InputObject $InputObject
+Start-AzMigrateLocalServerMigration -InputObject $InputObject
 
-$InputObject | Start-AzMigrateHCIServerMigration
+$InputObject | Start-AzMigrateLocalServerMigration
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
   [AccountName <String>]: Run as account ARM name.
   [AlertSettingName <String>]: The name of the email notification configuration.
   [ClusterName <String>]: Cluster ARM name.
@@ -7282,11 +8875,12 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [DeploymentId <String>]: Deployment Id.
   [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
+  [FabricAgentName <String>]: The fabric agent name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -7300,6 +8894,9 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
@@ -7308,6 +8905,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -7320,17 +8918,17 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the replicating server for which migra
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratehciservermigration
+https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratelocalservermigration
 #>
-function Start-AzMigrateHCIServerMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+function Start-AzMigrateLocalServerMigration {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ByID', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByID', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the replcating server for which migration needs to be initiated.
-    # The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
+    # The ID should be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
     ${TargetObjectID},
 
     [Parameter()]
@@ -7350,8 +8948,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Specifies the replicating server for which migration needs to be initiated.
-    # The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # The server object can be retrieved using the Get-AzMigrateLocalServerReplication cmdlet.
     ${InputObject},
 
     [Parameter()]
@@ -7409,6 +9006,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7428,12 +9033,10 @@ begin {
         }
 
         $mapping = @{
-            ByID = 'Az.Migrate.custom\Start-AzMigrateHCIServerMigration';
-            ByInputObject = 'Az.Migrate.custom\Start-AzMigrateHCIServerMigration';
+            ByID = 'Az.Migrate.custom\Start-AzMigrateLocalServerMigration';
+            ByInputObject = 'Az.Migrate.custom\Start-AzMigrateLocalServerMigration';
         }
-        if (('ByID', 'ByInputObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByID', 'ByInputObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7447,6 +9050,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7499,7 +9105,7 @@ Starts the migration for the replicating server.
 Start-AzMigrateServerMigration -TargetObjectID "/Subscriptions/7xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_52f42ee7-8eb3-1aa4-e2d5-1ae83f86b085"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7513,7 +9119,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -7543,12 +9149,17 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+    ${TargetCapacityReservationGroupId},
+
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which migration needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7606,6 +9217,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7628,9 +9247,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateServerMigration';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateServerMigration';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7644,6 +9261,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7699,7 +9319,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -Subscri
 Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7723,7 +9343,7 @@ NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be creat
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -7748,9 +9368,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput[]]
     # Updates the NIC for the Azure VM to be created.
-    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
     ${NicToUpdate},
 
     [Parameter()]
@@ -7762,10 +9381,9 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the test migration needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7823,6 +9441,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7845,9 +9471,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateTestMigration';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateTestMigration';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7861,6 +9485,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7916,7 +9543,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -Subscri
 Start-AzMigrateTestMigrationCleanup -InputObject $ob
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7930,7 +9557,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigrationcleanup
 #>
 function Start-AzMigrateTestMigrationCleanup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -7949,10 +9576,9 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the test migration cleanup needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -8010,6 +9636,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8032,9 +9666,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateTestMigrationCleanup';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Start-AzMigrateTestMigrationCleanup';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8048,6 +9680,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8103,7 +9738,7 @@ $obj = Get-AzMigrateServerReplication -ProjectName "signoffccyproj" -ResourceGro
 Suspend-AzMigrateServerReplication -InputObject $obj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8117,7 +9752,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the sus
 https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
 #>
 function Suspend-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -8136,10 +9771,9 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the suspend replication needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -8197,6 +9831,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8219,9 +9861,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Suspend-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Suspend-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8235,6 +9875,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

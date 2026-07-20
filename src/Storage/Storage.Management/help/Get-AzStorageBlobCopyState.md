@@ -73,8 +73,8 @@ $destBlob = Start-AzStorageBlobCopy -SrcContainer "contosouploads" -SrcBlob "Con
 $destBlob | Get-AzStorageBlobCopyState
 ```
 
-The first command starts copy blob "ContosoPlanning2015" to "ContosoPlanning2015_copy", and output the destiantion blob object. 
-The second command pipeline the destiantion blob object to Get-AzStorageBlobCopyState, to get blob copy state. 
+The first command starts copy blob "ContosoPlanning2015" to "ContosoPlanning2015_copy", and output the destination blob object. 
+The second command pipeline the destination blob object to Get-AzStorageBlobCopyState, to get blob copy state. 
 
 ## PARAMETERS
 

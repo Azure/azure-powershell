@@ -10,15 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get metric status</summary>
+    /// <summary>
+    /// Retrieves the metric status that are configured in the New Relic monitor resource
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] GetMetricStatus=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getMetricStatus"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicMonitorMetricStatus_GetViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Get metric status")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Retrieves the metric status that are configured in the New Relic monitor resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getMetricStatus", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getMetricStatus", ApiVersion = "2025-05-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.NotSuggestDefaultParameterSet]
     public partial class GetAzNewRelicMonitorMetricStatus_GetViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,

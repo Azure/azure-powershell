@@ -24,18 +24,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAPIServerAccessProfile class.
         /// </summary>
 
-        /// <param name="authorizedIPRanges">IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This
-        /// feature is not compatible with clusters that use Public IP Per Node, or
-        /// clusters that are using a Basic Load Balancer. For more information see
-        /// [API server authorized IP
+        /// <param name="authorizedIPRanges">The IP ranges authorized to access the Kubernetes API server. IP ranges are
+        /// specified in CIDR format, e.g. 137.117.106.88/29. This feature is not
+        /// compatible with clusters that use Public IP Per Node, or clusters that are
+        /// using a Basic Load Balancer. For more information see [API server
+        /// authorized IP
         /// ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </param>
 
-        /// <param name="enablePrivateCluster">For more details, see [Creating a private AKS
+        /// <param name="enablePrivateCluster">Whether to create the cluster as a private cluster or not. For more
+        /// details, see [Creating a private AKS
         /// cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </param>
 
-        /// <param name="privateDnsZone">The default is System. For more details see [configure private DNS
+        /// <param name="privateDnsZone">The private DNS zone mode for the cluster. The default is System. For more
+        /// details see [configure private DNS
         /// zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are &#39;system&#39; and &#39;none&#39;.
         /// </param>
@@ -45,7 +48,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="disableRunCommand">Whether to disable run command for the cluster or not.
         /// </param>
-        public ManagedClusterAPIServerAccessProfile(System.Collections.Generic.IList<string> authorizedIPRanges = default(System.Collections.Generic.IList<string>), bool? enablePrivateCluster = default(bool?), string privateDnsZone = default(string), bool? enablePrivateClusterPublicFqdn = default(bool?), bool? disableRunCommand = default(bool?))
+
+        /// <param name="enableVnetIntegration">Whether to enable apiserver vnet integration for the cluster or not. See
+        /// aka.ms/AksVnetIntegration for more details.
+        /// </param>
+
+        /// <param name="subnetId">The subnet to be used when apiserver vnet integration is enabled. It is
+        /// required when creating a new cluster with BYO Vnet, or when updating an
+        /// existing cluster to enable apiserver vnet integration.
+        /// </param>
+        public ManagedClusterAPIServerAccessProfile(System.Collections.Generic.IList<string> authorizedIPRanges = default(System.Collections.Generic.IList<string>), bool? enablePrivateCluster = default(bool?), string privateDnsZone = default(string), bool? enablePrivateClusterPublicFqdn = default(bool?), bool? disableRunCommand = default(bool?), bool? enableVnetIntegration = default(bool?), string subnetId = default(string))
 
         {
             this.AuthorizedIPRanges = authorizedIPRanges;
@@ -53,6 +65,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             this.PrivateDnsZone = privateDnsZone;
             this.EnablePrivateClusterPublicFqdn = enablePrivateClusterPublicFqdn;
             this.DisableRunCommand = disableRunCommand;
+            this.EnableVnetIntegration = enableVnetIntegration;
+            this.SubnetId = subnetId;
             CustomInit();
         }
 
@@ -63,25 +77,27 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets iP ranges are specified in CIDR format, e.g.
-        /// 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For
-        /// more information see [API server authorized IP
+        /// Gets or sets the IP ranges authorized to access the Kubernetes API server.
+        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This
+        /// feature is not compatible with clusters that use Public IP Per Node, or
+        /// clusters that are using a Basic Load Balancer. For more information see
+        /// [API server authorized IP
         /// ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "authorizedIPRanges")]
         public System.Collections.Generic.IList<string> AuthorizedIPRanges {get; set; }
 
         /// <summary>
-        /// Gets or sets for more details, see [Creating a private AKS
+        /// Gets or sets whether to create the cluster as a private cluster or not. For
+        /// more details, see [Creating a private AKS
         /// cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePrivateCluster")]
         public bool? EnablePrivateCluster {get; set; }
 
         /// <summary>
-        /// Gets or sets the default is System. For more details see [configure private
-        /// DNS
+        /// Gets or sets the private DNS zone mode for the cluster. The default is
+        /// System. For more details see [configure private DNS
         /// zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are &#39;system&#39; and &#39;none&#39;.
         /// </summary>
@@ -100,5 +116,20 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "disableRunCommand")]
         public bool? DisableRunCommand {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable apiserver vnet integration for the cluster
+        /// or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableVnetIntegration")]
+        public bool? EnableVnetIntegration {get; set; }
+
+        /// <summary>
+        /// Gets or sets the subnet to be used when apiserver vnet integration is
+        /// enabled. It is required when creating a new cluster with BYO Vnet, or when
+        /// updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subnetId")]
+        public string SubnetId {get; set; }
     }
 }

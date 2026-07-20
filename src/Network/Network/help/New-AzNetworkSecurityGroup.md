@@ -16,7 +16,8 @@ Creates a network security group.
 ```
 New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String> [-FlushConnection]
  [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -6,19 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates or updates the provider registration.</summary>
+    /// <summary>create the provider registration.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzProviderHubProviderRegistration_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Description(@"Creates or updates the provider registration.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Description(@"create the provider registration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}", ApiVersion = "2020-11-20")]
     public partial class NewAzProviderHubProviderRegistration_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,7 +37,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ProviderRegistration();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ProviderRegistration();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -46,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -55,8 +73,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"capabilities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilities[] Capability { get => _propertiesBody.Capability ?? null /* arrayOf */; set => _propertiesBody.Capability = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderCapabilities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderCapabilities[] Capability { get => _propertiesBody.Capability?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.Capability = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderCapabilities>(value) : null); }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ProviderHub Client => Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.ClientAPI;
@@ -70,6 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -140,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"manifestOwners",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ManagementManifestOwner { get => _propertiesBody.ManagementManifestOwner ?? null /* arrayOf */; set => _propertiesBody.ManagementManifestOwner = value; }
+        public string[] ManagementManifestOwner { get => _propertiesBody.ManagementManifestOwner?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ManagementManifestOwner = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -150,9 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"resourceAccessPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceAccessPolicy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceAccessPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceAccessPolicy ManagementResourceAccessPolicy { get => _propertiesBody.ManagementResourceAccessPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceAccessPolicy)""); set => _propertiesBody.ManagementResourceAccessPolicy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "AcisReadAllowed", "AcisActionAllowed")]
+        public string ManagementResourceAccessPolicy { get => _propertiesBody.ManagementResourceAccessPolicy ?? null; set => _propertiesBody.ManagementResourceAccessPolicy = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -164,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"resourceAccessRoles",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny[] ManagementResourceAccessRole { get => _propertiesBody.ManagementResourceAccessRole ?? null /* arrayOf */; set => _propertiesBody.ManagementResourceAccessRole = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny[] ManagementResourceAccessRole { get => _propertiesBody.ManagementResourceAccessRole?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ManagementResourceAccessRole = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -176,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"schemaOwners",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ManagementSchemaOwner { get => _propertiesBody.ManagementSchemaOwner ?? null /* arrayOf */; set => _propertiesBody.ManagementSchemaOwner = value; }
+        public string[] ManagementSchemaOwner { get => _propertiesBody.ManagementSchemaOwner?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ManagementSchemaOwner = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -187,16 +208,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"serviceTreeInfos",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[] ManagementServiceTreeInfo { get => _propertiesBody.ManagementServiceTreeInfo ?? null /* arrayOf */; set => _propertiesBody.ManagementServiceTreeInfo = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[] ManagementServiceTreeInfo { get => _propertiesBody.ManagementServiceTreeInfo?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ManagementServiceTreeInfo = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo>(value) : null); }
 
-        /// <summary>Any object</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Any object")]
+        /// <summary>Anything</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Anything")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Any object",
+        Description = @"Anything",
         SerializedName = @"metadata",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny Metadata { get => _propertiesBody.Metadata ?? null /* object */; set => _propertiesBody.Metadata = value; }
@@ -231,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -243,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"allowedAudiences",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ProviderAuthenticationAllowedAudience { get => _propertiesBody.ProviderAuthenticationAllowedAudience ?? null /* arrayOf */; set => _propertiesBody.ProviderAuthenticationAllowedAudience = value; }
+        public string[] ProviderAuthenticationAllowedAudience { get => _propertiesBody.ProviderAuthenticationAllowedAudience?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ProviderAuthenticationAllowedAudience = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -254,8 +275,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"providerAuthorizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization[] ProviderAuthorization { get => _propertiesBody.ProviderAuthorization ?? null /* arrayOf */; set => _propertiesBody.ProviderAuthorization = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization[] ProviderAuthorization { get => _propertiesBody.ProviderAuthorization?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ProviderAuthorization = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -267,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"allowedAudiences",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ProviderHubMetadataProviderAuthenticationAllowedAudience { get => _propertiesBody.ProviderHubMetadataProviderAuthenticationAllowedAudience ?? null /* arrayOf */; set => _propertiesBody.ProviderHubMetadataProviderAuthenticationAllowedAudience = value; }
+        public string[] ProviderHubMetadataProviderAuthenticationAllowedAudience { get => _propertiesBody.ProviderHubMetadataProviderAuthenticationAllowedAudience?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ProviderHubMetadataProviderAuthenticationAllowedAudience = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -278,8 +299,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"providerAuthorizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization[] ProviderHubMetadataProviderAuthorization { get => _propertiesBody.ProviderHubMetadataProviderAuthorization ?? null /* arrayOf */; set => _propertiesBody.ProviderHubMetadataProviderAuthorization = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization[] ProviderHubMetadataProviderAuthorization { get => _propertiesBody.ProviderHubMetadataProviderAuthorization?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ProviderHubMetadataProviderAuthorization = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization>(value) : null); }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"authorizations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILightHouseAuthorization) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILightHouseAuthorization[] ProviderHubMetadataThirdPartyProviderAuthorization { get => _propertiesBody.ProviderHubMetadataThirdPartyProviderAuthorizationAuthorizations?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.ProviderHubMetadataThirdPartyProviderAuthorizationAuthorizations = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILightHouseAuthorization>(value) : null); }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"managedByTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProviderHubMetadataThirdPartyProviderAuthorizationManagedByTenantId { get => _propertiesBody.ProviderHubMetadataThirdPartyProviderAuthorizationManagedByTenantId ?? null; set => _propertiesBody.ProviderHubMetadataThirdPartyProviderAuthorizationManagedByTenantId = value; }
 
         /// <summary>Backing field for <see cref="ProviderNamespace" /> property.</summary>
         private string _providerNamespace;
@@ -303,9 +347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"providerType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType ProviderType { get => _propertiesBody.ProviderType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType)""); set => _propertiesBody.ProviderType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Internal", "External", "Hidden", "RegistrationFree", "LegacyRegistrationRequired", "TenantOnly", "AuthorizationFree")]
+        public string ProviderType { get => _propertiesBody.ProviderType ?? null; set => _propertiesBody.ProviderType = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -326,9 +370,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState ProvisioningState { get => _propertiesBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); set => _propertiesBody.ProvisioningState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "Accepted", "Running", "Creating", "Created", "Deleting", "Deleted", "Canceled", "Failed", "Succeeded", "MovingResources", "TransientFailure", "RolloutInProgress")]
+        public string ProvisioningState { get => _propertiesBody.ProvisioningState ?? null; set => _propertiesBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -354,9 +398,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"optInHeaders",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType RequestHeaderOptionOptInHeader { get => _propertiesBody.RequestHeaderOptionOptInHeader ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType)""); set => _propertiesBody.RequestHeaderOptionOptInHeader = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("NotSpecified", "SignedUserToken", "ClientGroupMembership", "SignedAuxiliaryTokens", "UnboundedClientGroupMembership")]
+        public string RequestHeaderOptionOptInHeader { get => _propertiesBody.RequestHeaderOptionOptInHeader ?? null; set => _propertiesBody.RequestHeaderOptionOptInHeader = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -368,7 +412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         Description = @".",
         SerializedName = @"requiredFeatures",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] RequiredFeature { get => _propertiesBody.RequiredFeature ?? null /* arrayOf */; set => _propertiesBody.RequiredFeature = value; }
+        public string[] RequiredFeature { get => _propertiesBody.RequiredFeature?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.RequiredFeature = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -384,7 +428,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -408,8 +453,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"subscriptionStateOverrideActions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[] SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction { get => _propertiesBody.SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction ?? null /* arrayOf */; set => _propertiesBody.SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[] SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction { get => _propertiesBody.SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -420,9 +465,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"preflightOptions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[] TemplateDeploymentOptionPreflightOption { get => _propertiesBody.TemplateDeploymentOptionPreflightOption ?? null /* arrayOf */; set => _propertiesBody.TemplateDeploymentOptionPreflightOption = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PSArgumentCompleterAttribute("None", "ContinueDeploymentOnFailure", "DefaultValidationOnly")]
+        public string[] TemplateDeploymentOptionPreflightOption { get => _propertiesBody.TemplateDeploymentOptionPreflightOption?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.TemplateDeploymentOptionPreflightOption = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -435,52 +480,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter TemplateDeploymentOptionPreflightSupported { get => _propertiesBody.TemplateDeploymentOptionPreflightSupported ?? default(global::System.Management.Automation.SwitchParameter); set => _propertiesBody.TemplateDeploymentOptionPreflightSupported = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
-        SerializedName = @"authorizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization[] ThirdPartyProviderAuthorizationAuthorization { get => _propertiesBody.ThirdPartyProviderAuthorizationAuthorization ?? null /* arrayOf */; set => _propertiesBody.ThirdPartyProviderAuthorizationAuthorization = value; }
-
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
-        SerializedName = @"managedByTenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ThirdPartyProviderAuthorizationManagedByTenantId { get => _propertiesBody.ThirdPartyProviderAuthorizationManagedByTenantId ?? null; set => _propertiesBody.ThirdPartyProviderAuthorizationManagedByTenantId = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -526,6 +548,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -590,11 +617,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -606,10 +658,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -619,7 +687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzProviderHubProviderRegistration_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzProviderHubProviderRegistration_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzProviderHubProviderRegistration_CreateExpanded()
         {
@@ -685,7 +753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -698,12 +766,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ProviderRegistrationsCreateOrUpdate(SubscriptionId, ProviderNamespace, _propertiesBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ProviderRegistrationsCreateOrUpdate(SubscriptionId, ProviderNamespace, _propertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ProviderNamespace=ProviderNamespace,body=_propertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ProviderNamespace=ProviderNamespace})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -741,12 +809,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -758,20 +826,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                     return ;
                 }
                 // Error Response : default
-                var code = (await response)?.Error?.Code;
-                var message = (await response)?.Error?.Message;
+                var code = (await response)?.Code;
+                var message = (await response)?.Message;
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ProviderNamespace=ProviderNamespace, body=_propertiesBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ProviderNamespace=ProviderNamespace, body=_propertiesBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -781,12 +849,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration">Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration> response)
         {
             using( NoSynchronizationContext )
             {
@@ -798,8 +866,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

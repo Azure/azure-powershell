@@ -33,6 +33,21 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+DICOMSERVICEINPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
+  [DicomServiceName <String>]: The name of DICOM Service resource.
+  [FhirDestinationName <String>]: The name of IoT Connector FHIR destination resource.
+  [FhirServiceName <String>]: The name of FHIR Service resource.
+  [GroupName <String>]: The name of the private link resource group.
+  [Id <String>]: Resource identity path
+  [IotConnectorName <String>]: The name of IoT Connector resource.
+  [LocationName <String>]: The location of the operation.
+  [OperationResultId <String>]: The ID of the operation result to get.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [ResourceGroupName <String>]: The name of the resource group that contains the service instance.
+  [ResourceName <String>]: The name of the service instance.
+  [SubscriptionId <String>]: The subscription identifier.
+  [WorkspaceName <String>]: The name of workspace resource.
+
 INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [DicomServiceName <String>]: The name of DICOM Service resource.
   [FhirDestinationName <String>]: The name of IoT Connector FHIR destination resource.
@@ -75,6 +90,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityDicomservice', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [System.String]
     # The name of workspace resource.
@@ -84,8 +100,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityDicomservice', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IHealthcareApisIdentity]
+    # Identity Parameter
+    ${DicomserviceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,6 +182,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,10 +212,9 @@ begin {
         $mapping = @{
             Delete = 'Az.HealthcareApis.private\Remove-AzHealthcareDicomService_Delete';
             DeleteViaIdentity = 'Az.HealthcareApis.private\Remove-AzHealthcareDicomService_DeleteViaIdentity';
+            DeleteViaIdentityDicomservice = 'Az.HealthcareApis.private\Remove-AzHealthcareDicomService_DeleteViaIdentityDicomservice';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -199,6 +228,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

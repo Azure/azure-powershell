@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     public abstract class SharedPrivateLinkResourceBaseCmdlet : SearchServiceBaseCmdlet
     {
-        protected const string SharedPrivateLinkResourceNameHelpMessage = "Azure Cognitive Search Shared private link resource";
+        protected const string SharedPrivateLinkResourceNameHelpMessage = "Azure AI Search Shared private link resource";
         protected const string PrivateLinkResourceIdHelpMessage = "Shared private link target resource id";
         protected const string GroupIdHelpMessage = "Shared private link resource group id";
         protected const string RequestMessageHelpMessage = "Shared private link resource request message";

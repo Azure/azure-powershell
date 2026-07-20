@@ -21,12 +21,13 @@ Create an in-memory object for ForestTrust.
 Create an in-memory object for ForestTrust.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust
 .Link
-https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceForestTrustObject
+https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-azaddomainserviceforesttrustobject
 #>
 function New-AzADDomainServiceForestTrustObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +49,7 @@ function New-AzADDomainServiceForestTrustObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust]::New()
 
         if ($PSBoundParameters.ContainsKey('FriendlyName')) {
             $Object.FriendlyName = $FriendlyName

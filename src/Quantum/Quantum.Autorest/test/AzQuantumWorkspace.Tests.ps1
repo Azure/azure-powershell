@@ -18,7 +18,7 @@ Describe 'AzQuantumWorkspace' {
     It 'CreateExpanded' {
         {
             $object = New-AzQuantumProviderObject -Id "ionq" -Sku "pay-as-you-go-cred"
-            $config = New-AzQuantumWorkspace -Name $env.quantumWorkspaceName -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -Provider $object -StorageAccount "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Storage/storageAccounts/azpssa"
+            $config = New-AzQuantumWorkspace -Name $env.quantumWorkspaceName -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity -Provider $object -StorageAccount "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Storage/storageAccounts/azpssa"
             $config.Name | Should -Be $env.quantumWorkspaceName
         } | Should -Not -Throw
     }

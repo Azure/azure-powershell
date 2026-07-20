@@ -43,7 +43,7 @@ function ConvertTo-ArcAgentryConfiguration {
     if ($CCRP) {
         # This ensures that when a new feature is implemented, only the ConfigDP
         # needs to change and not the Powershell script (or az CLI).
-        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
+        $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ArcAgentryConfigurations]
         $combinedKeys = $ConfigurationSetting.Keys
     }
     else {
@@ -64,7 +64,7 @@ function ConvertTo-ArcAgentryConfiguration {
             $settings = @{}
         }
         if ($CCRP) {
-            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
+            $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ArcAgentryConfigurations]@{
                 Feature = $feature
                 Setting = $settings
             }

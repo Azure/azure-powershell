@@ -55,14 +55,14 @@ function setupEnv() {
     Write-Host -ForegroundColor Green 'Deploying operational insights workspace'
     $workspacesName01 = 'monitoringworkspace-' + (RandomString -allChars $false -len 6)
     $workspacesName02 = 'monitoringworkspace-' + (RandomString -allChars $false -len 6)
-    <# Deploy failed, azure portal responsed error message: "statusMessage": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Error converting value \\\"insights-jxvq9o\\\" to type 'Microsoft.WindowsAzure.ResourceStack.Frontdoor.Data.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.workspaces_name', line 5, position 42.'.\"}}",
+    <# Deploy failed, azure portal responded error message: "statusMessage": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Error converting value \\\"insights-jxvq9o\\\" to type 'Microsoft.WindowsAzure.ResourceStack.Frontdoor.Data.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.workspaces_name', line 5, position 42.'.\"}}",
     $workspacesParam = Get-Content .\test\deployment-templates\operational-insightsworkspace\parameters.json | ConvertFrom-Json
     $workspacesParam.parameters.workspaces_yemingmonitor_name = 'lucasmonitor'
     set-content -Path .\test\deployment-templates\operational-insightsworkspace\parameters.json -Value (ConvertTo-Json $workspacesParam)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\operational-insightsworkspace\template.json -TemplateParameterFile .\test\deployment-templates\operational-insightsworkspace\parameters.json -ResourceGroupName $env.resourceGroup
     #>
-    $workspace01 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName01 -Location $env.location -Sku "Standard"
-    $workspace02 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName02 -Location $env.location -Sku "Standard"
+    $workspace01 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName01 -Location $env.location
+    $workspace02 = New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $workspacesName02 -Location $env.location
     $null = $env.Add('workspaceResourceId01', $workspace01.ResourceId)
     $null = $env.Add('workspaceResourceId02', $workspace02.ResourceId)
     Write-Host -ForegroundColor Green 'The operational insights workspace deployed successfully'

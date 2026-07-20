@@ -88,6 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Endpoint Resource.",
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -96,6 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -104,6 +110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Location of DigitalTwinsInstance.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -112,6 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -120,6 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group that contains the DigitalTwinsInstance.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -128,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
@@ -136,6 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DigitalTwinsInstance.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -144,6 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The subscription identifier.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -152,6 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of time series database connection.",
         SerializedName = @"timeSeriesDatabaseConnectionName",
         PossibleTypes = new [] { typeof(string) })]

@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="osType">Cluster operating system, the default will be Windows
-        /// Possible values include: 'Windows'</param>
-        public ManagedClusterVersionDetails(string clusterCodeVersion = default(string), string supportExpiryUtc = default(string), string osType = default(string))
+        /// Possible values include: &#39;Windows&#39;</param>
+        public ManagedClusterVersionDetails(string clusterCodeVersion = default(string), System.DateTime? supportExpiryUtc = default(System.DateTime?), string osType = default(string))
 
         {
             this.ClusterCodeVersion = clusterCodeVersion;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// Gets or sets the date of expiry of support of the version.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportExpiryUtc")]
-        public string SupportExpiryUtc {get; set; }
+        public System.DateTime? SupportExpiryUtc {get; set; }
 
         /// <summary>
         /// Gets or sets cluster operating system, the default will be Windows Possible values include: &#39;Windows&#39;

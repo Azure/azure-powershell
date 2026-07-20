@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -DaysAfterLastAccessTimeGreaterThan
-Integer value indicating the age in days after last blob access. This property can only be used in conjuction with last access time tracking policy.
+Integer value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy.
 
 ```yaml
 Type: System.Int32

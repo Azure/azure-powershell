@@ -8,20 +8,39 @@ schema: 2.0.0
 # New-AzMapsCreator
 
 ## SYNOPSIS
-Create or update a Maps Creator resource.
+create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  -StorageUnit <Int32> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityAccountExpanded
+```
+New-AzMapsCreator -AccountInputObject <IMapsIdentity> -Name <String> -Location <String> -StorageUnit <Int32>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a Maps Creator resource.
+create a Maps Creator resource.
 Creator resource will manage Azure resources required to populate a custom set of mapping data.
 It requires an account to exist before it can be created.
 
@@ -44,12 +63,27 @@ It requires an account to exist before it can be created.
 
 ## PARAMETERS
 
+### -AccountInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+Parameter Sets: CreateViaIdentityAccountExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AccountName
 The name of the Maps Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -75,12 +109,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAccountExpanded
 Aliases:
 
 Required: True
@@ -111,7 +175,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -127,7 +191,7 @@ Integer values from 1 to 100, inclusive.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAccountExpanded
 Aliases:
 
 Required: True
@@ -142,7 +206,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -157,7 +221,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityAccountExpanded
 Aliases:
 
 Required: False
@@ -203,9 +267,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator
+### Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.ICreator
 
 ## NOTES
 

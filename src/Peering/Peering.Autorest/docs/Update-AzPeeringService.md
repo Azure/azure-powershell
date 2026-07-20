@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzPeeringService
 
 ## SYNOPSIS
-Updates tags for a peering service with the specified name under the given subscription and resource group.
+update tags for a peering service with the specified name under the given subscription and resource group.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzPeeringService -InputObject <IPeeringIdentity> [-Tag <Hashtable>] [-Def
 ```
 
 ## DESCRIPTION
-Updates tags for a peering service with the specified name under the given subscription and resource group.
+update tags for a peering service with the specified name under the given subscription and resource group.
 
 ## EXAMPLES
 
@@ -63,7 +63,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
@@ -177,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringService
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringService
 
 ## NOTES
 

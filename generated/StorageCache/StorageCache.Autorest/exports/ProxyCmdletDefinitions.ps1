@@ -16,716 +16,27 @@
 
 <#
 .Synopsis
-Tells the cache to write all dirty data to the Storage Target's backend storage.
-Client requests to this storage target's namespace will return errors until the flush operation completes.
-.Description
-Tells the cache to write all dirty data to the Storage Target's backend storage.
-Client requests to this storage target's namespace will return errors until the flush operation completes.
-.Example
-Clear-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Clear-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/clear-azstoragecachetarget
-#>
-function Clear-AzStorageCacheTarget {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Flush', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Flush', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Flush', Mandatory)]
-    [Alias('StorageTargetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of Storage Target.
-    ${Name},
-
-    [Parameter(ParameterSetName='Flush', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Flush')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Flush = 'Az.StorageCache.private\Clear-AzStorageCacheTarget_Flush';
-            FlushViaIdentity = 'Az.StorageCache.private\Clear-AzStorageCacheTarget_FlushViaIdentity';
-        }
-        if (('Flush') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells a cache to write all dirty data to the Storage Target(s).
-During the flush, clients will see errors returned until the flush is complete.
-.Description
-Tells a cache to write all dirty data to the Storage Target(s).
-During the flush, clients will see errors returned until the flush is complete.
-.Example
-Clear-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Clear-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/clear-azstoragecache
-#>
-function Clear-AzStorageCache {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Flush', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Flush', Mandatory)]
-    [Alias('CacheName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${Name},
-
-    [Parameter(ParameterSetName='Flush', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Flush')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Flush = 'Az.StorageCache.private\Clear-AzStorageCache_Flush';
-            FlushViaIdentity = 'Az.StorageCache.private\Clear-AzStorageCache_FlushViaIdentity';
-        }
-        if (('Flush') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells a cache to write generate debug info for support to process.
-.Description
-Tells a cache to write generate debug info for support to process.
-.Example
-Debug-AzStorageCache -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Debug-AzStorageCache -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/debug-azstoragecache
-#>
-function Debug-AzStorageCache {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Debug', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Debug', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Debug', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Debug')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DebugViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Debug = 'Az.StorageCache.private\Debug-AzStorageCache_Debug';
-            DebugViaIdentity = 'Az.StorageCache.private\Debug-AzStorageCache_DebugViaIdentity';
-        }
-        if (('Debug') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Get the number of available IP addresses needed for the AML file system information provided.
 .Description
 Get the number of available IP addresses needed for the AML file system information provided.
 .Example
 Get-AzStorageCacheAmlFileSystemSubnetRequiredSize -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-System.Int32
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheamlfilesystemsubnetrequiredsize
 #>
 function Get-AzStorageCacheAmlFileSystemSubnetRequiredSize {
-[OutputType([System.Int32])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IRequiredAmlFilesystemSubnetsSize])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='GetExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
@@ -795,6 +106,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -815,11 +134,8 @@ begin {
 
         $mapping = @{
             GetExpanded = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystemSubnetRequiredSize_GetExpanded';
-            GetViaIdentityExpanded = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystemSubnetRequiredSize_GetViaIdentityExpanded';
         }
-        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -833,6 +149,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -891,7 +210,7 @@ Get-AzStorageCacheAmlFileSystem -ResourceGroupName azps_test_gp_storagecache -Na
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -899,18 +218,18 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem
 #>
 function Get-AzStorageCacheAmlFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -943,7 +262,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1002,6 +320,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1026,9 +352,7 @@ begin {
             List = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystem_List';
             List1 = 'Az.StorageCache.private\Get-AzStorageCacheAmlFileSystem_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1042,6 +366,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1087,378 +414,64 @@ end {
 
 <#
 .Synopsis
-Gets the quantity used and quota limit for resources
+Returns an auto export job.
 .Description
-Gets the quantity used and quota limit for resources
+Returns an auto export job.
 .Example
-Get-AzStorageCacheAscUsage -Location eastus
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IResourceUsage
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheascusage
-#>
-function Get-AzStorageCacheAscUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IResourceUsage])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the region to query for usage information.
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            List = 'Az.StorageCache.private\Get-AzStorageCacheAscUsage_List';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get the list of StorageCache.Cache SKUs available to this subscription.
-.Description
-Get the list of StorageCache.Cache SKUs available to this subscription.
-.Example
-Get-AzStorageCacheSku
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IResourceSku
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecachesku
-#>
-function Get-AzStorageCacheSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IResourceSku])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            List = 'Az.StorageCache.private\Get-AzStorageCacheSku_List';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Returns a Storage Target from a cache.
-.Description
-Returns a Storage Target from a cache.
-.Example
-Get-AzStorageCacheTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Get-AzStorageCacheTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -Name azps-cachetarget
+Get-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTarget
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecachetarget
+https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheautoexportjob
 #>
-function Get-AzStorageCacheTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTarget])]
+function Get-AzStorageCacheAutoExportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('StorageTargetName')]
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('AutoExportJobName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of Storage Target.
+    # Name for the auto export job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1481,170 +494,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.StorageCache.private\Get-AzStorageCacheTarget_Get';
-            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCacheTarget_GetViaIdentity';
-            List = 'Az.StorageCache.private\Get-AzStorageCacheTarget_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Get the list of cache usage models available to this subscription.
-.Description
-Get the list of cache usage models available to this subscription.
-.Example
-Get-AzStorageCacheUsageModel
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IUsageModel
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheusagemodel
-#>
-function Get-AzStorageCacheUsageModel {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IUsageModel])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter()]
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1702,6 +558,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1721,11 +585,12 @@ begin {
         }
 
         $mapping = @{
-            List = 'Az.StorageCache.private\Get-AzStorageCacheUsageModel_List';
+            Get = 'Az.StorageCache.private\Get-AzStorageCacheAutoExportJob_Get';
+            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCacheAutoExportJob_GetViaIdentity';
+            GetViaIdentityAmlFilesystem = 'Az.StorageCache.private\Get-AzStorageCacheAutoExportJob_GetViaIdentityAmlFilesystem';
+            List = 'Az.StorageCache.private\Get-AzStorageCacheAutoExportJob_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1739,6 +604,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1784,51 +652,68 @@ end {
 
 <#
 .Synopsis
-Returns a cache.
+Returns an auto import job.
 .Description
-Returns a cache.
+Returns an auto import job.
 .Example
-Get-AzStorageCache
-.Example
-Get-AzStorageCache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Get-AzStorageCache -ResourceGroupName azps_test_gp_storagecache -Name azps-storagecache
+Get-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecache
+https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheautoimportjob
 #>
-function Get-AzStorageCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache])]
+function Get-AzStorageCacheAutoImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('CacheName')]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('AutoImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the auto import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -1837,7 +722,6 @@ param(
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -1848,8 +732,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1907,6 +796,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1926,14 +823,12 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.StorageCache.private\Get-AzStorageCache_Get';
-            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCache_GetViaIdentity';
-            List = 'Az.StorageCache.private\Get-AzStorageCache_List';
-            List1 = 'Az.StorageCache.private\Get-AzStorageCache_List1';
+            Get = 'Az.StorageCache.private\Get-AzStorageCacheAutoImportJob_Get';
+            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCacheAutoImportJob_GetViaIdentity';
+            GetViaIdentityAmlFilesystem = 'Az.StorageCache.private\Get-AzStorageCacheAutoImportJob_GetViaIdentityAmlFilesystem';
+            List = 'Az.StorageCache.private\Get-AzStorageCacheAutoImportJob_List';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1947,6 +842,487 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns an expansion job.
+.Description
+Returns an expansion job.
+.Example
+Get-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -ResourceGroupName 'scgroup'
+.Example
+Get-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheexpansionjob
+#>
+function Get-AzStorageCacheExpansionJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('ExpansionJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the expansion job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.StorageCache.private\Get-AzStorageCacheExpansionJob_Get';
+            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCacheExpansionJob_GetViaIdentity';
+            GetViaIdentityAmlFilesystem = 'Az.StorageCache.private\Get-AzStorageCacheExpansionJob_GetViaIdentityAmlFilesystem';
+            List = 'Az.StorageCache.private\Get-AzStorageCacheExpansionJob_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Returns an import job.
+.Description
+Returns an import job.
+.Example
+Get-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -ResourceGroupName 'myresourcegroup'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheimportjob
+#>
+function Get-AzStorageCacheImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('ImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.StorageCache.private\Get-AzStorageCacheImportJob_Get';
+            GetViaIdentity = 'Az.StorageCache.private\Get-AzStorageCacheImportJob_GetViaIdentity';
+            GetViaIdentityAmlFilesystem = 'Az.StorageCache.private\Get-AzStorageCacheImportJob_GetViaIdentityAmlFilesystem';
+            List = 'Az.StorageCache.private\Get-AzStorageCacheImportJob_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2011,12 +1387,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/invoke-azstoragecacheamlfilesystemarchive
@@ -2026,6 +1402,8 @@ function Invoke-AzStorageCacheAmlFileSystemArchive {
 [CmdletBinding(DefaultParameterSetName='ArchiveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ArchiveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # Name for the AML file system.
@@ -2034,6 +1412,8 @@ param(
     ${AmlFilesystemName},
 
     [Parameter(ParameterSetName='ArchiveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -2041,6 +1421,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ArchiveExpanded')]
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath')]
+    [Parameter(ParameterSetName='ArchiveViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2051,15 +1433,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ArchiveExpanded')]
+    [Parameter(ParameterSetName='ArchiveViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Lustre file system path to archive relative to the file system root.
     # Specify '/' to archive all modified data.
     ${FilesystemPath},
+
+    [Parameter(ParameterSetName='ArchiveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Archive operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ArchiveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Archive operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2123,6 +1517,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2144,10 +1546,10 @@ begin {
         $mapping = @{
             ArchiveExpanded = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveExpanded';
             ArchiveViaIdentityExpanded = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaIdentityExpanded';
+            ArchiveViaJsonFilePath = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaJsonFilePath';
+            ArchiveViaJsonString = 'Az.StorageCache.private\Invoke-AzStorageCacheAmlFileSystemArchive_ArchiveViaJsonString';
         }
-        if (('ArchiveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ArchiveExpanded', 'ArchiveViaJsonFilePath', 'ArchiveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2161,6 +1563,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2206,20 +1611,18 @@ end {
 
 <#
 .Synopsis
-Invalidate all cached data for a storage target.
-Cached files are discarded and fetched from the back end on the next request.
+Create an AML file system.
 .Description
-Invalidate all cached data for a storage target.
-Cached files are discarded and fetched from the back end on the next request.
+Create an AML file system.
 .Example
-Invoke-AzStorageCacheInvalidateTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget
+New-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -Location eastus -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-management-identity" -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-kv" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
 .Example
-Invoke-AzStorageCacheInvalidateTarget -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget -PassThru
+New-AzStorageCacheAmlFileSystem -Name azps-cache-fs-hsm -ResourceGroupName azps_test_gp_storagecache -Location eastus -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/default" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1 -SettingContainer "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Storage/storageAccounts/azpssa/blobServices/default/containers/az-blob-login" -SettingImportPrefix "/" -SettingLoggingContainer "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Storage/storageAccounts/azpssa/blobServices/default/containers/az-blob"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2227,229 +1630,23 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/invoke-azstoragecacheinvalidatetarget
-#>
-function Invoke-AzStorageCacheInvalidateTarget {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Invalidate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Invalidate', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Invalidate', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Invalidate', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of Storage Target.
-    ${StorageTargetName},
-
-    [Parameter(ParameterSetName='Invalidate')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='InvalidateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Invalidate = 'Az.StorageCache.private\Invoke-AzStorageCacheInvalidateTarget_Invalidate';
-            InvalidateViaIdentity = 'Az.StorageCache.private\Invoke-AzStorageCacheInvalidateTarget_InvalidateViaIdentity';
-        }
-        if (('Invalidate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update an AML file system.
-.Description
-Create or update an AML file system.
-.Example
-New-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -Location eastus -IdentityType 'UserAssigned' -IdentityUserAssignedIdentity @{"/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-management-identity" = @{}} -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-kv" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
-.Example
-New-AzStorageCacheAmlFileSystem -Name azps-cache-fs-hsm -ResourceGroupName azps_test_gp_storagecache -Location eastus -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/default" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1 -SettingContainer "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Storage/storageAccounts/azpssa/blobServices/default/containers/az-blob-login" -SettingImportPrefix "/" -SettingLoggingContainer "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Storage/storageAccounts/azpssa/blobServices/default/containers/az-blob"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheamlfilesystem
 #>
 function New-AzStorageCacheAmlFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('AmlFilesystemName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
@@ -2458,80 +1655,135 @@ param(
     # Start and end with alphanumeric.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Subnet used for managing the AML file system and for client-facing operations.
     # This subnet should have at least a /24 subnet mask within the VNET's address space.
     ${FilesystemSubnet},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.AmlFilesystemIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.AmlFilesystemIdentityType]
-    # The type of identity used for the resource.
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The URL referencing a key encryption key in key vault.
     ${KeyEncryptionKeyUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType]
+    [System.String]
     # Day of the week on which the maintenance window will occur.
     ${MaintenanceWindowDayOfWeek},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The time of day (in UTC) to start the maintenance window.
     ${MaintenanceWindowTimeOfDayUtc},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Squash mode of the AML file system.
+    # 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+    # 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+    # 'None': No squashing of User and Group IDs is performed for any users on any systems.
+    ${RootSquashSettingMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+    ${RootSquashSettingNoSquashNidList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Group ID to squash to.
+    ${RootSquashSettingSquashGid},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # User ID to squash to.
+    ${RootSquashSettingSquashUid},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource ID of storage container used for hydrating the namespace and archiving from the namespace.
     # The resource provider must have permission to create SAS tokens on the storage account.
     ${SettingContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+    # Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace.
+    # This is only used during initial creation of the AML file system.
+    # It automatically creates an import job resource that can be deleted.
     ${SettingImportPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String[]]
+    # Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace.
+    # This is only used during initial creation of the AML file system and has '/' as the default value.
+    # It automatically creates an import job resource that can be deleted.
+    ${SettingImportPrefixesInitial},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource ID of storage container used for logging events and errors.
@@ -2539,39 +1791,65 @@ param(
     # The resource provider must have permission to create SAS tokens on the storage account.
     ${SettingLoggingContainer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # SKU name for this resource.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource Id.
     ${SourceVaultId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.Single]
     # The size of the AML file system, in TiB.
     # This might be rounded up.
     ${StorageCapacityTiB},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String[]]
     # Availability zones for resources.
     # This field should only contain a single element in the array.
     ${Zone},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2641,6 +1919,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2661,10 +1947,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheAmlFileSystem_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.StorageCache.private\New-AzStorageCacheAmlFileSystem_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.StorageCache.private\New-AzStorageCacheAmlFileSystem_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageCache.private\New-AzStorageCacheAmlFileSystem_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2678,6 +1965,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2723,496 +2013,150 @@ end {
 
 <#
 .Synopsis
-Create or update a Storage Target.
-This operation is allowed at any time, but if the cache is down or unhealthy, the actual creation/modification of the Storage Target may be delayed until the cache is healthy again.
+Create an auto export job.
 .Description
-Create or update a Storage Target.
-This operation is allowed at any time, but if the cache is down or unhealthy, the actual creation/modification of the Storage Target may be delayed until the cache is healthy again.
+Create an auto export job.
 .Example
-New-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -Nfs3Target "10.0.44.44" -Nfs3UsageModel "READ_WRITE" -Nfs3VerificationTimer 30 -TargetType 'nfs3'
+New-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -Location 'East US' -AutoExportPrefix @('/path1')
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTarget
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-JUNCTION <INamespaceJunction[]>: List of cache namespace junctions to target for namespace associations.
-  [NamespacePath <String>]: Namespace path on a cache for a Storage Target.
-  [NfsAccessPolicy <String>]: Name of the access policy applied to this junction.
-  [NfsExport <String>]: NFS export where targetPath exists.
-  [TargetPath <String>]: Path in Storage Target to which namespacePath points.
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecachetarget
+https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheautoexportjob
 #>
-function New-AzStorageCacheTarget {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTarget])]
+function New-AzStorageCacheAutoExportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
 
-    [Parameter(Mandatory)]
-    [Alias('StorageTargetName')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('AutoExportJobName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of Storage Target.
+    # Name for the auto export job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Resource ID of the storage container.
-    ${BlobNfTarget},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Identifies the StorageCache usage model to be used for this storage target.
-    ${BlobNfUsageModel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
-    ${BlobNfVerificationTimer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
-    ${BlobNfWriteBackTimer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Resource ID of storage container.
-    ${ClfTarget},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.INamespaceJunction[]]
-    # List of cache namespace junctions to target for namespace associations.
-    # To construct, see NOTES section for JUNCTION properties and create a hash table.
-    ${Junction},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-    ${Nfs3Target},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Identifies the StorageCache usage model to be used for this storage target.
-    ${Nfs3UsageModel},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
-    ${Nfs3VerificationTimer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
-    ${Nfs3WriteBackTimer},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.OperationalStateType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.OperationalStateType]
-    # Storage target operational state.
-    ${State},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.StorageTargetType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.StorageTargetType]
-    # Type of the Storage Target.
-    ${TargetType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IUnknownProperties]))]
-    [System.Collections.Hashtable]
-    # Dictionary of string->string pairs containing information about the Storage Target.
-    ${UnknownAttribute},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheTarget_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create or update a cache.
-.Description
-Create or update a cache.
-.Example
-New-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -Location eastus -CacheSizeGb "3072" -Subnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache_2/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/default" -SkuName "Standard_2G" -Zone 1
-.Example
-New-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -IdentityType 'UserAssigned' -IdentityUserAssignedIdentity @{"/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-management-identity" = @{}} -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault" -Location eastus -CacheSizeGb "3072" -Subnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/default" -SkuName "Standard_2G" -Zone 1
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-DIRECTORYSERVICESSETTING <ICacheDirectorySettings>: Specifies Directory Services settings of the cache.
-  [ActiveDirectoryCacheNetBiosName <String>]: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
-  [ActiveDirectoryDomainName <String>]: The fully qualified domain name of the Active Directory domain controller.
-  [ActiveDirectoryDomainNetBiosName <String>]: The Active Directory domain's NetBIOS name.
-  [ActiveDirectoryPrimaryDnsIPAddress <String>]: Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  [ActiveDirectorySecondaryDnsIPAddress <String>]: Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  [CredentialsBindDn <String>]: The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  [CredentialsBindPassword <String>]: The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  [CredentialsPassword <String>]: Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  [CredentialsUsername <String>]: Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  [UsernameDownloadAutoDownloadCertificate <Boolean?>]: Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
-  [UsernameDownloadCaCertificateUri <String>]: The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
-  [UsernameDownloadEncryptLdapConnection <Boolean?>]: Whether or not the LDAP connection should be encrypted.
-  [UsernameDownloadExtendedGroup <Boolean?>]: Whether or not Extended Groups is enabled.
-  [UsernameDownloadGroupFileUri <String>]: The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
-  [UsernameDownloadLdapBaseDn <String>]: The base distinguished name for the LDAP domain.
-  [UsernameDownloadLdapServer <String>]: The fully qualified domain name or IP address of the LDAP server to use.
-  [UsernameDownloadRequireValidCertificate <Boolean?>]: Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
-  [UsernameDownloadUserFileUri <String>]: The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
-  [UsernameDownloadUsernameSource <UsernameSource?>]: This setting determines how the cache gets username and group names for clients.
-
-SECURITYSETTINGACCESSPOLICY <INfsAccessPolicy[]>: NFS access policies defined for this cache.
-  AccessRule <INfsAccessRule[]>: The set of rules describing client accesses allowed under this policy.
-    Access <NfsAccessRuleAccess>: Access allowed by this rule.
-    Scope <NfsAccessRuleScope>: Scope for this rule. The scope and filter determine which clients match the rule.
-    [AnonymousGid <String>]: GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-    [AnonymousUid <String>]: UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-    [Filter <String>]: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-    [RootSquash <Boolean?>]: Map root accesses to anonymousUID and anonymousGID.
-    [SubmountAccess <Boolean?>]: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-    [Suid <Boolean?>]: Allow SUID semantics.
-  Name <String>: Name identifying this policy. Access Policy names are not case sensitive.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecache
-#>
-function New-AzStorageCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('CacheName')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${Name},
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # The size of this Cache, in GB.
-    ${CacheSizeGb},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheDirectorySettings]
-    # Specifies Directory Services settings of the cache.
-    # To construct, see NOTES section for DIRECTORYSERVICESSETTING properties and create a hash table.
-    ${DirectoryServicesSetting},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
-    ${EncryptionSettingRotationToLatestKeyVersionEnabled},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.CacheIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.CacheIdentityType]
-    # The type of identity used for the cache
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # The URL referencing a key encryption key in key vault.
-    ${KeyEncryptionKeyUrl},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Region name string.
+    # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # DNS search domain
-    ${NetworkSettingDnsSearchDomain},
+    # The administrative status of the auto export job.
+    # Possible values: 'Enable', 'Disable'.
+    # Passing in a value of 'Disable' will disable the current active auto export job.
+    # By default it is set to 'Enable'.
+    ${AdminStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String[]]
-    # DNS servers for the cache to use.
-    # It will be set from the network configuration if no value is provided.
-    ${NetworkSettingDnsServer},
+    # An array of blob paths/prefixes that get auto exported to the cluster namespace.
+    # It has '/' as the default value.
+    # Number of maximum allowed paths for now is 1.
+    ${AutoExportPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # The IPv4 maximum transmission unit configured for the subnet.
-    ${NetworkSettingMtu},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # NTP server IP Address or FQDN for the cache to use.
-    # The default is time.windows.com.
-    ${NetworkSettingNtpServer},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.INfsAccessPolicy[]]
-    # NFS access policies defined for this cache.
-    # To construct, see NOTES section for SECURITYSETTINGACCESSPOLICY properties and create a hash table.
-    ${SecuritySettingAccessPolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # SKU name for this cache.
-    ${SkuName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Resource Id.
-    ${SourceVaultId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Subnet used for the cache.
-    ${Subnet},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.DateTime]
-    # When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time.
-    # At the user-chosen time, the firmware update will automatically be installed on the cache.
-    ${UpgradeSettingScheduledTime},
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # True if the user chooses to select an installation time between now and firmwareUpdateDeadline.
-    # Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
-    ${UpgradeSettingUpgradeScheduleEnabled},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String[]]
-    # Availability zones for resources.
-    # This field should only contain a single element in the array.
-    ${Zone},
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3282,6 +2226,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3301,11 +2253,13 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCache_CreateExpanded';
+            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoExportJob_CreateExpanded';
+            CreateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoExportJob_CreateViaIdentityAmlFilesystemExpanded';
+            CreateViaIdentityExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoExportJob_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.StorageCache.private\New-AzStorageCacheAutoExportJob_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageCache.private\New-AzStorageCacheAutoExportJob_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3319,6 +2273,977 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an auto import job.
+.Description
+Create an auto import job.
+.Example
+New-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoimportjob' -ResourceGroupName 'myresourcegroup' -Location 'East US' -AutoImportPrefix @('/path1', '/path2')
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheautoimportjob
+#>
+function New-AzStorageCacheAutoImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('AutoImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the auto import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Enable", "Disable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The administrative status of the auto import job.
+    # Possible values: 'Enable', 'Disable'.
+    # Passing in a value of 'Disable' will disable the current active auto import job.
+    # By default it is set to 'Enable'.
+    ${AdminStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String[]]
+    # An array of blob paths/prefixes that get auto imported to the cluster namespace.
+    # It has '/' as the default value.
+    # Number of maximum allowed paths is 100.
+    ${AutoImportPrefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Fail", "Skip", "OverwriteIfDirty", "OverwriteAlways")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # How the auto import job will handle conflicts.
+    # For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it.
+    # Fail indicates that the auto import job should stop immediately and not do anything with the conflict.
+    # Skip indicates that it should pass over the conflict.
+    # OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released.
+    # OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty.
+    # Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes.
+    ${ConflictResolutionMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether or not to enable deletions during auto import.
+    # This only affects overwrite-dirty.
+    ${EnableDeletion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Total non-conflict-oriented errors (e.g., OS errors) Import will tolerate before exiting with failure.
+    # -1 means infinite.
+    # 0 means exit immediately on any error.
+    ${MaximumError},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoImportJob_CreateExpanded';
+            CreateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoImportJob_CreateViaIdentityAmlFilesystemExpanded';
+            CreateViaIdentityExpanded = 'Az.StorageCache.private\New-AzStorageCacheAutoImportJob_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.StorageCache.private\New-AzStorageCacheAutoImportJob_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageCache.private\New-AzStorageCacheAutoImportJob_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an expansion job.
+.Description
+Create an expansion job.
+.Example
+New-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup' -Location 'eastus' -NewStorageCapacityTiB 16
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheexpansionjob
+#>
+function New-AzStorageCacheExpansionJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('ExpansionJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the expansion job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Single]
+    # The new storage capacity in TiB for the AML file system after expansion.
+    # This must be a multiple of the Sku step size, and greater than the current storage capacity of the AML file system.
+    ${NewStorageCapacityTiB},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheExpansionJob_CreateExpanded';
+            CreateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\New-AzStorageCacheExpansionJob_CreateViaIdentityAmlFilesystemExpanded';
+            CreateViaIdentityExpanded = 'Az.StorageCache.private\New-AzStorageCacheExpansionJob_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.StorageCache.private\New-AzStorageCacheExpansionJob_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageCache.private\New-AzStorageCacheExpansionJob_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create an import job.
+.Description
+Create an import job.
+.Example
+New-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myimportjob' -ResourceGroupName 'myresourcegroup' -Location 'East US' -ImportPrefix @('/path1', '/path2')
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheimportjob
+#>
+function New-AzStorageCacheImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('ImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Active", "Cancel")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The administrative status of the import job.
+    # Possible values: 'Active', 'Cancel'.
+    # Passing in a value of 'Cancel' will cancel the current active import job.
+    # By default it is set to 'Active'.
+    ${AdminStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Fail", "Skip", "OverwriteIfDirty", "OverwriteAlways")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # How the import job will handle conflicts.
+    # For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it.
+    # Fail indicates that the import job should stop immediately and not do anything with the conflict.
+    # Skip indicates that it should pass over the conflict.
+    # OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported.
+    # OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty.
+    # Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes.
+    ${ConflictResolutionMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String[]]
+    # An array of blob paths/prefixes that get imported into the cluster namespace.
+    # It has '/' as the default value.
+    ${ImportPrefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int32]
+    # Total non-conflict oriented errors the import job will tolerate before exiting with failure.
+    # -1 means infinite.
+    # 0 means exit immediately and is the default.
+    ${MaximumError},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.StorageCache.private\New-AzStorageCacheImportJob_CreateExpanded';
+            CreateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\New-AzStorageCacheImportJob_CreateViaIdentityAmlFilesystemExpanded';
+            CreateViaIdentityExpanded = 'Az.StorageCache.private\New-AzStorageCacheImportJob_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.StorageCache.private\New-AzStorageCacheImportJob_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StorageCache.private\New-AzStorageCacheImportJob_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3383,12 +3308,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheamlfilesystem
@@ -3424,7 +3349,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3501,6 +3425,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3523,9 +3455,7 @@ begin {
             Delete = 'Az.StorageCache.private\Remove-AzStorageCacheAmlFileSystem_Delete';
             DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheAmlFileSystem_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3539,6 +3469,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3584,17 +3517,11 @@ end {
 
 <#
 .Synopsis
-Removes a Storage Target from a cache.
-This operation is allowed at any time, but if the cache is down or unhealthy, the actual removal of the Storage Target may be delayed until the cache is healthy again.
-Note that if the cache has data to flush to the Storage Target, the data will be flushed before the Storage Target will be deleted.
+Schedules an auto export job for deletion.
 .Description
-Removes a Storage Target from a cache.
-This operation is allowed at any time, but if the cache is down or unhealthy, the actual removal of the Storage Target may be delayed until the cache is healthy again.
-Note that if the cache has data to flush to the Storage Target, the data will be flushed before the Storage Target will be deleted.
+Schedules an auto export job for deletion.
 .Example
-Remove-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Get-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache | Remove-AzStorageCacheTarget
+Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -Confirm:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
@@ -3605,34 +3532,48 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecachetarget
+https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheautoexportjob
 #>
-function Remove-AzStorageCacheTarget {
+function Remove-AzStorageCacheAutoExportJob {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('StorageTargetName')]
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('AutoExportJobName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of Storage Target.
+    # Name for the auto export job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -3653,15 +3594,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Query')]
-    [System.String]
-    # Boolean value requesting the force delete operation for a storage target.
-    # Force delete discards unwritten-data in the cache instead of flushing it to back-end storage.
-    ${Force},
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3737,6 +3676,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3756,12 +3703,11 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.StorageCache.private\Remove-AzStorageCacheTarget_Delete';
-            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheTarget_DeleteViaIdentity';
+            Delete = 'Az.StorageCache.private\Remove-AzStorageCacheAutoExportJob_Delete';
+            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheAutoExportJob_DeleteViaIdentity';
+            DeleteViaIdentityAmlFilesystem = 'Az.StorageCache.private\Remove-AzStorageCacheAutoExportJob_DeleteViaIdentityAmlFilesystem';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3775,6 +3721,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3820,13 +3769,11 @@ end {
 
 <#
 .Synopsis
-Schedules a cache for deletion.
+Schedules an auto import job for deletion.
 .Description
-Schedules a cache for deletion.
+Schedules an auto import job for deletion.
 .Example
-Remove-AzStorageCache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Get-AzStorageCache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache | Remove-AzStorageCache
+Remove-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoimportjob' -ResourceGroupName 'myresourcegroup' -Confirm:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
@@ -3837,28 +3784,48 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecache
+https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheautoimportjob
 #>
-function Remove-AzStorageCache {
+function Remove-AzStorageCacheAutoImportJob {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('CacheName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('AutoImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the auto import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -3879,232 +3846,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.StorageCache.private\Remove-AzStorageCache_Delete';
-            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCache_DeleteViaIdentity';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells a storage target to restore its settings to their default values.
-.Description
-Tells a storage target to restore its settings to their default values.
-.Example
-Restore-AzStorageCacheTargetSetting -CacheName azps-storagecache -StorageTargetName azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Restore-AzStorageCacheTargetSetting -CacheName azps-storagecache -StorageTargetName azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/restore-azstoragecachetargetsetting
-#>
-function Restore-AzStorageCacheTargetSetting {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Restore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Restore', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Restore', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Restore', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of Storage Target.
-    ${StorageTargetName},
-
-    [Parameter(ParameterSetName='Restore')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4180,6 +3928,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4199,12 +3955,11 @@ begin {
         }
 
         $mapping = @{
-            Restore = 'Az.StorageCache.private\Restore-AzStorageCacheTargetSetting_Restore';
-            RestoreViaIdentity = 'Az.StorageCache.private\Restore-AzStorageCacheTargetSetting_RestoreViaIdentity';
+            Delete = 'Az.StorageCache.private\Remove-AzStorageCacheAutoImportJob_Delete';
+            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheAutoImportJob_DeleteViaIdentity';
+            DeleteViaIdentityAmlFilesystem = 'Az.StorageCache.private\Remove-AzStorageCacheAutoImportJob_DeleteViaIdentityAmlFilesystem';
         }
-        if (('Restore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4218,6 +3973,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4263,13 +4021,11 @@ end {
 
 <#
 .Synopsis
-Resumes a paused priming job.
+Schedules an expansion job for deletion.
 .Description
-Resumes a paused priming job.
+Schedules an expansion job for deletion.
 .Example
-Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
-.Example
-Resume-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
+Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
@@ -4280,280 +4036,75 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/resume-azstoragecacheprimingjob
-#>
-function Resume-AzStorageCachePrimingJob {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ResumeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='ResumeExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='ResumeExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='ResumeExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ResumeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The unique identifier of the priming job.
-    ${PrimingJobId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            ResumeExpanded = 'Az.StorageCache.private\Resume-AzStorageCachePrimingJob_ResumeExpanded';
-            ResumeViaIdentityExpanded = 'Az.StorageCache.private\Resume-AzStorageCachePrimingJob_ResumeViaIdentityExpanded';
-        }
-        if (('ResumeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Resumes client access to a previously suspended storage target.
-.Description
-Resumes client access to a previously suspended storage target.
-.Example
-Resume-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Resume-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/resume-azstoragecachetarget
+https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheexpansionjob
 #>
-function Resume-AzStorageCacheTarget {
+function Remove-AzStorageCacheExpansionJob {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Resume', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Resume', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
 
-    [Parameter(ParameterSetName='Resume', Mandatory)]
-    [Alias('StorageTargetName')]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('ExpansionJobName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of Storage Target.
+    # Name for the expansion job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
-    [Parameter(ParameterSetName='Resume', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Resume')]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ResumeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4629,6 +4180,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4648,12 +4207,11 @@ begin {
         }
 
         $mapping = @{
-            Resume = 'Az.StorageCache.private\Resume-AzStorageCacheTarget_Resume';
-            ResumeViaIdentity = 'Az.StorageCache.private\Resume-AzStorageCacheTarget_ResumeViaIdentity';
+            Delete = 'Az.StorageCache.private\Remove-AzStorageCacheExpansionJob_Delete';
+            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheExpansionJob_DeleteViaIdentity';
+            DeleteViaIdentityAmlFilesystem = 'Az.StorageCache.private\Remove-AzStorageCacheExpansionJob_DeleteViaIdentityAmlFilesystem';
         }
-        if (('Resume') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4667,6 +4225,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4712,15 +4273,11 @@ end {
 
 <#
 .Synopsis
-Create a priming job.
-This operation is only allowed when the cache is healthy.
+Schedules an import job for deletion.
 .Description
-Create a priming job.
-This operation is only allowed when the cache is healthy.
+Schedules an import job for deletion.
 .Example
-Start-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobName azps-priming-job -PrimingManifestUrl "https://contosostorage.blob.core.windows.net/contosoblob/00000000_00000000000000000000000000000000.00000000000.FFFFFFFF.00000000?sp=r&st=2021-08-11T19:33:35Z&se=2021-08-12T03:33:35Z&spr=https&sv=2020-08-04&sr=b&sig=<secret-value-from-key>"
-.Example
-Start-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobName azps-priming-job3 -PrimingManifestUrl "https://contosostorage.blob.core.windows.net/contosoblob/00000000_00000000000000000000000000000000.00000000000.FFFFFFFF.00000000?sp=r&st=2021-08-11T19:33:35Z&se=2021-08-12T03:33:35Z&spr=https&sv=2020-08-04&sr=b&sig=<secret-value-from-key>" -PassThru
+Remove-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myimportjob' -ResourceGroupName 'myresourcegroup' -Confirm:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
@@ -4731,282 +4288,75 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/start-azstoragecacheprimingjob
-#>
-function Start-AzStorageCachePrimingJob {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='StartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='StartExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The priming job name.
-    ${PrimingJobName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The URL for the priming manifest file to download.
-    # This file must be readable from the HPC Cache.
-    # When the file is in Azure blob storage the URL should include a Shared Access Signature (SAS) granting read permissions on the blob.
-    ${PrimingManifestUrl},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            StartExpanded = 'Az.StorageCache.private\Start-AzStorageCachePrimingJob_StartExpanded';
-            StartViaIdentityExpanded = 'Az.StorageCache.private\Start-AzStorageCachePrimingJob_StartViaIdentityExpanded';
-        }
-        if (('StartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells a Stopped state cache to transition to Active state.
-.Description
-Tells a Stopped state cache to transition to Active state.
-.Example
-Start-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Start-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/start-azstoragecache
+https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheimportjob
 #>
-function Start-AzStorageCache {
+function Remove-AzStorageCacheImportJob {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Alias('CacheName')]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory)]
+    [Alias('ImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
-    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityAmlFilesystem', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5082,6 +4432,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5101,12 +4459,11 @@ begin {
         }
 
         $mapping = @{
-            Start = 'Az.StorageCache.private\Start-AzStorageCache_Start';
-            StartViaIdentity = 'Az.StorageCache.private\Start-AzStorageCache_StartViaIdentity';
+            Delete = 'Az.StorageCache.private\Remove-AzStorageCacheImportJob_Delete';
+            DeleteViaIdentity = 'Az.StorageCache.private\Remove-AzStorageCacheImportJob_DeleteViaIdentity';
+            DeleteViaIdentityAmlFilesystem = 'Az.StorageCache.private\Remove-AzStorageCacheImportJob_DeleteViaIdentityAmlFilesystem';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5120,6 +4477,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5182,12 +4542,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/stop-azstoragecacheamlfilesystemarchive
@@ -5222,7 +4582,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5287,6 +4646,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -5309,9 +4676,7 @@ begin {
             Cancel = 'Az.StorageCache.private\Stop-AzStorageCacheAmlFilesystemArchive_Cancel';
             CancelViaIdentity = 'Az.StorageCache.private\Stop-AzStorageCacheAmlFilesystemArchive_CancelViaIdentity';
         }
-        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Cancel') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5325,6 +4690,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -5370,922 +4738,14 @@ end {
 
 <#
 .Synopsis
-Schedule a priming job for deletion.
+Check that subnets will be valid for AML file system check calls.
 .Description
-Schedule a priming job for deletion.
-.Example
-Stop-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000"
-.Example
-Stop-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/stop-azstoragecacheprimingjob
-#>
-function Stop-AzStorageCachePrimingJob {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='StopExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='StopExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='StopExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='StopExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='StopViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The unique identifier of the priming job.
-    ${PrimingJobId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            StopExpanded = 'Az.StorageCache.private\Stop-AzStorageCachePrimingJob_StopExpanded';
-            StopViaIdentityExpanded = 'Az.StorageCache.private\Stop-AzStorageCachePrimingJob_StopViaIdentityExpanded';
-        }
-        if (('StopExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells an Active cache to transition to Stopped state.
-.Description
-Tells an Active cache to transition to Stopped state.
-.Example
-Stop-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Stop-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/stop-azstoragecache
-#>
-function Stop-AzStorageCache {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Alias('CacheName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${Name},
-
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Stop')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='StopViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Stop = 'Az.StorageCache.private\Stop-AzStorageCache_Stop';
-            StopViaIdentity = 'Az.StorageCache.private\Stop-AzStorageCache_StopViaIdentity';
-        }
-        if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Schedule a priming job to be paused.
-.Description
-Schedule a priming job to be paused.
-.Example
-Suspend-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000"
-.Example
-Suspend-AzStorageCachePrimingJob -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PrimingJobId "00000000000_0000000000" -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/suspend-azstoragecacheprimingjob
-#>
-function Suspend-AzStorageCachePrimingJob {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='PauseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='PauseExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='PauseExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='PauseExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='PauseViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The unique identifier of the priming job.
-    ${PrimingJobId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            PauseExpanded = 'Az.StorageCache.private\Suspend-AzStorageCachePrimingJob_PauseExpanded';
-            PauseViaIdentityExpanded = 'Az.StorageCache.private\Suspend-AzStorageCachePrimingJob_PauseViaIdentityExpanded';
-        }
-        if (('PauseExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Suspends client access to a storage target.
-.Description
-Suspends client access to a storage target.
-.Example
-Suspend-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache
-.Example
-Suspend-AzStorageCacheTarget -CacheName azps-storagecache -Name azps-cachetarget -ResourceGroupName azps_test_gp_storagecache -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/suspend-azstoragecachetarget
-#>
-function Suspend-AzStorageCacheTarget {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Suspend', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Suspend', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Suspend', Mandatory)]
-    [Alias('StorageTargetName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of Storage Target.
-    ${Name},
-
-    [Parameter(ParameterSetName='Suspend', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Suspend')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='SuspendViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Suspend = 'Az.StorageCache.private\Suspend-AzStorageCacheTarget_Suspend';
-            SuspendViaIdentity = 'Az.StorageCache.private\Suspend-AzStorageCacheTarget_SuspendViaIdentity';
-        }
-        if (('Suspend') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Check that subnets will be valid for AML file system create calls.
-.Description
-Check that subnets will be valid for AML file system create calls.
+Check that subnets will be valid for AML file system check calls.
 .Example
 Test-AzStorageCacheAmlFileSystemSubnet -Location eastus -Name "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-kv" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -PassThru
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/test-azstoragecacheamlfilesystemsubnet
 #>
@@ -6293,44 +4753,49 @@ function Test-AzStorageCacheAmlFileSystemSubnet {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Region that the AML file system will be created in.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Subnet used for managing the AML file system and for client-facing operations.
     # This subnet should have at least a /24 subnet mask within the VNET's address space.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # SKU name for this resource.
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.Single]
     # The size of the AML file system, in TiB.
     ${StorageCapacityTiB},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6394,6 +4859,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6414,11 +4887,10 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckExpanded';
-            CheckViaIdentityExpanded = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.StorageCache.private\Test-AzStorageCacheAmlFileSystemSubnet_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6432,6 +4904,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6486,7 +4961,7 @@ Update-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_t
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6494,21 +4969,23 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheamlfilesystem
 #>
 function Update-AzStorageCacheAmlFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AmlFilesystemName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
@@ -6518,6 +4995,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -6525,6 +5004,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6535,40 +5016,88 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The URL referencing a key encryption key in key vault.
     ${KeyEncryptionKeyUrl},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.MaintenanceDayOfWeekType]
+    [System.String]
     # Day of the week on which the maintenance window will occur.
     ${MaintenanceWindowDayOfWeek},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # The time of day (in UTC) to start the maintenance window.
     ${MaintenanceWindowTimeOfDayUtc},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Squash mode of the AML file system.
+    # 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+    # 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+    # 'None': No squashing of User and Group IDs is performed for any users on any systems.
+    ${RootSquashSettingMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+    ${RootSquashSettingNoSquashNidList},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Group ID to squash to.
+    ${RootSquashSettingSquashGid},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # User ID to squash to.
+    ${RootSquashSettingSquashUid},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource Id.
     ${SourceVaultId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IAmlFilesystemUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -6638,6 +5167,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -6659,10 +5196,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheAmlFileSystem_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6676,6 +5213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -6721,759 +5261,72 @@ end {
 
 <#
 .Synopsis
-Upgrade a cache's firmware if a new version is available.
-Otherwise, this operation has no effect.
+Update an auto export job instance.
 .Description
-Upgrade a cache's firmware if a new version is available.
-Otherwise, this operation has no effect.
+Update an auto export job instance.
 .Example
-Update-AzStorageCacheFirmware -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache
-.Example
-Update-AzStorageCacheFirmware -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -PassThru
+Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoexportjob' -ResourceGroupName 'myresourcegroup' -AdminStatus 'Disable'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecachefirmware
-#>
-function Update-AzStorageCacheFirmware {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Upgrade', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Upgrade')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Upgrade = 'Az.StorageCache.private\Update-AzStorageCacheFirmware_Upgrade';
-            UpgradeViaIdentity = 'Az.StorageCache.private\Update-AzStorageCacheFirmware_UpgradeViaIdentity';
-        }
-        if (('Upgrade') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update cache space allocation.
-.Description
-Update cache space allocation.
-.Example
-$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
-Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object
-.Example
-$object = New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
-Update-AzStorageCacheSpaceAllocation -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -SpaceAllocation $object -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTargetSpaceAllocation[]
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-
-SPACEALLOCATION <IStorageTargetSpaceAllocation[]>: List of storage target space allocations.
-  [AllocationPercentage <Int32?>]: The percentage of cache space allocated for this storage target
-  [Name <String>]: Name of the storage target.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecachespaceallocation
-#>
-function Update-AzStorageCacheSpaceAllocation {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='SpaceViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Space', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Space', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Space')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='SpaceViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(Mandatory, ValueFromPipeline)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.IStorageTargetSpaceAllocation[]]
-    # List of storage target space allocations.
-    # To construct, see NOTES section for SPACEALLOCATION properties and create a hash table.
-    ${SpaceAllocation},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Space = 'Az.StorageCache.private\Update-AzStorageCacheSpaceAllocation_Space';
-            SpaceViaIdentity = 'Az.StorageCache.private\Update-AzStorageCacheSpaceAllocation_SpaceViaIdentity';
-        }
-        if (('Space') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Tells a storage target to refresh its DNS information.
-.Description
-Tells a storage target to refresh its DNS information.
-.Example
-Update-AzStorageCacheTargetDns -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget
-.Example
-Update-AzStorageCacheTargetDns -CacheName azps-storagecache -ResourceGroupName azps_test_gp_storagecache -StorageTargetName azps-cachetarget -PassThru
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecachetargetdns
+https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheautoexportjob
 #>
-function Update-AzStorageCacheTargetDns {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Refresh', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Refresh', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-    ${CacheName},
-
-    [Parameter(ParameterSetName='Refresh', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Refresh', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [System.String]
-    # Name of Storage Target.
-    ${StorageTargetName},
-
-    [Parameter(ParameterSetName='Refresh')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='RefreshViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Refresh = 'Az.StorageCache.private\Update-AzStorageCacheTargetDns_Refresh';
-            RefreshViaIdentity = 'Az.StorageCache.private\Update-AzStorageCacheTargetDns_RefreshViaIdentity';
-        }
-        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Update a cache instance.
-.Description
-Update a cache instance.
-.Example
-Update-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -Tag @{"123"="abc"}
-.Example
-Update-AzStorageCache -Name azps-storagecache -ResourceGroupName azps_test_gp_storagecache -IdentityType 'UserAssigned' -IdentityUserAssignedIdentity @{"/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-management-identity" = @{}} -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault" -CacheSizeGb "3072" -Subnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-pub" -SkuName "Standard_2G" -Zone 1
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-DIRECTORYSERVICESSETTING <ICacheDirectorySettings>: Specifies Directory Services settings of the cache.
-  [ActiveDirectoryCacheNetBiosName <String>]: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
-  [ActiveDirectoryDomainName <String>]: The fully qualified domain name of the Active Directory domain controller.
-  [ActiveDirectoryDomainNetBiosName <String>]: The Active Directory domain's NetBIOS name.
-  [ActiveDirectoryPrimaryDnsIPAddress <String>]: Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  [ActiveDirectorySecondaryDnsIPAddress <String>]: Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  [CredentialsBindDn <String>]: The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  [CredentialsBindPassword <String>]: The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  [CredentialsPassword <String>]: Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  [CredentialsUsername <String>]: Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  [UsernameDownloadAutoDownloadCertificate <Boolean?>]: Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
-  [UsernameDownloadCaCertificateUri <String>]: The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
-  [UsernameDownloadEncryptLdapConnection <Boolean?>]: Whether or not the LDAP connection should be encrypted.
-  [UsernameDownloadExtendedGroup <Boolean?>]: Whether or not Extended Groups is enabled.
-  [UsernameDownloadGroupFileUri <String>]: The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
-  [UsernameDownloadLdapBaseDn <String>]: The base distinguished name for the LDAP domain.
-  [UsernameDownloadLdapServer <String>]: The fully qualified domain name or IP address of the LDAP server to use.
-  [UsernameDownloadRequireValidCertificate <Boolean?>]: Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
-  [UsernameDownloadUserFileUri <String>]: The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
-  [UsernameDownloadUsernameSource <UsernameSource?>]: This setting determines how the cache gets username and group names for clients.
-
-INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
-  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  [CacheName <String>]: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [StorageTargetName <String>]: Name of Storage Target.
-  [SubscriptionId <String>]: The ID of the target subscription.
-
-SECURITYSETTINGACCESSPOLICY <INfsAccessPolicy[]>: NFS access policies defined for this cache.
-  AccessRule <INfsAccessRule[]>: The set of rules describing client accesses allowed under this policy.
-    Access <NfsAccessRuleAccess>: Access allowed by this rule.
-    Scope <NfsAccessRuleScope>: Scope for this rule. The scope and filter determine which clients match the rule.
-    [AnonymousGid <String>]: GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-    [AnonymousUid <String>]: UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-    [Filter <String>]: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-    [RootSquash <Boolean?>]: Map root accesses to anonymousUID and anonymousGID.
-    [SubmountAccess <Boolean?>]: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-    [Suid <Boolean?>]: Allow SUID semantics.
-  Name <String>: Name identifying this policy. Access Policy names are not case sensitive.
-.Link
-https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecache
-#>
-function Update-AzStorageCache {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICache])]
+function Update-AzStorageCacheAutoExportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('CacheName')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name of cache.
-    # Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('AutoExportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the auto export job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -7481,145 +5334,58 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # The size of this Cache, in GB.
-    ${CacheSizeGb},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheDirectorySettings]
-    # Specifies Directory Services settings of the cache.
-    # To construct, see NOTES section for DIRECTORYSERVICESSETTING properties and create a hash table.
-    ${DirectoryServicesSetting},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
-    ${EncryptionSettingRotationToLatestKeyVersionEnabled},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.CacheIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.CacheIdentityType]
-    # The type of identity used for the cache
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # The URL referencing a key encryption key in key vault.
-    ${KeyEncryptionKeyUrl},
+    # The administrative status of the auto export job.
+    # Possible values: 'Enable', 'Disable'.
+    # Passing in a value of 'Disable' will disable the current active auto export job.
+    # By default it is set to 'Enable'.
+    ${AdminStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Region name string.
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # DNS search domain
-    ${NetworkSettingDnsSearchDomain},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String[]]
-    # DNS servers for the cache to use.
-    # It will be set from the network configuration if no value is provided.
-    ${NetworkSettingDnsServer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # The IPv4 maximum transmission unit configured for the subnet.
-    ${NetworkSettingMtu},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # NTP server IP Address or FQDN for the cache to use.
-    # The default is time.windows.com.
-    ${NetworkSettingNtpServer},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.INfsAccessPolicy[]]
-    # NFS access policies defined for this cache.
-    # To construct, see NOTES section for SECURITYSETTINGACCESSPOLICY properties and create a hash table.
-    ${SecuritySettingAccessPolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # SKU name for this cache.
-    ${SkuName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Resource Id.
-    ${SourceVaultId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Subnet used for the cache.
-    ${Subnet},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.ICacheTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJobUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.DateTime]
-    # When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time.
-    # At the user-chosen time, the firmware update will automatically be installed on the cache.
-    ${UpgradeSettingScheduledTime},
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # True if the user chooses to select an installation time between now and firmwareUpdateDeadline.
-    # Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
-    ${UpgradeSettingUpgradeScheduleEnabled},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String[]]
-    # Availability zones for resources.
-    # This field should only contain a single element in the array.
-    ${Zone},
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -7689,6 +5455,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7708,12 +5482,13 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCache_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCache_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoExportJob_UpdateExpanded';
+            UpdateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoExportJob_UpdateViaIdentityAmlFilesystemExpanded';
+            UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoExportJob_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheAutoExportJob_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheAutoExportJob_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7727,6 +5502,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7772,656 +5550,191 @@ end {
 
 <#
 .Synopsis
-Create an in-memory object for CacheDirectorySettings.
+Update an auto import job instance.
 .Description
-Create an in-memory object for CacheDirectorySettings.
+Update an auto import job instance.
 .Example
-New-AzStorageCacheDirectorySettingObject -ActiveDirectoryCacheNetBiosName "contosoSmb" -ActiveDirectoryDomainName "contosoAd.contoso.local" -ActiveDirectoryDomainNetBiosName "contosoAd" -ActiveDirectoryPrimaryDnsIPAddress "192.0.2.10" -ActiveDirectorySecondaryDnsIPAddress "192.0.2.11" -CredentialsBindDn "cn=ldapadmin,dc=contosoad,dc=contoso,dc=local" -CredentialsBindPassword "<bindPassword>" -CredentialsPassword "<password>" -CredentialsUsername "consotoAdmin" -UsernameDownloadCaCertificateUri "http://contoso.net/cacert.pem" -UsernameDownloadAutoDownloadCertificate:$False -UsernameDownloadEncryptLdapConnection:$False -UsernameDownloadExtendedGroup:$False -UsernameDownloadGroupFileUri "http://contoso.net/group.file" -UsernameDownloadLdapBaseDn "dc=contosoad,dc=contoso,dc=local" -UsernameDownloadLdapServer "192.0.2.12" -UsernameDownloadRequireValidCertificate:$False -UsernameDownloadUsernameSource 'LDAP' -UsernameDownloadUserFileUri "http://contoso.net/passwd.file"
+Update-AzStorageCacheAutoImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myautoimportjob' -ResourceGroupName 'myresourcegroup' -AdminStatus 'Disable'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.CacheDirectorySettings
-.Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheDirectorySettingObject
-#>
-function New-AzStorageCacheDirectorySettingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.CacheDirectorySettings])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server.
-    # Length must 1-15 characters from the class [-0-9a-zA-Z].
-    ${ActiveDirectoryCacheNetBiosName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The fully qualified domain name of the Active Directory domain controller.
-    ${ActiveDirectoryDomainName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The Active Directory domain's NetBIOS name.
-    ${ActiveDirectoryDomainNetBiosName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-    ${ActiveDirectoryPrimaryDnsIPAddress},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-    ${ActiveDirectorySecondaryDnsIPAddress},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The Bind Distinguished Name identity to be used in the secure LDAP connection.
-    # This value is stored encrypted and not returned on response.
-    ${CredentialsBindDn},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The Bind password to be used in the secure LDAP connection.
-    # This value is stored encrypted and not returned on response.
-    ${CredentialsBindPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Plain text password of the Active Directory domain administrator.
-    # This value is stored encrypted and not returned on response.
-    ${CredentialsPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Username of the Active Directory domain administrator.
-    # This value is stored encrypted and not returned on response.
-    ${CredentialsUsername},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Determines if the certificate should be automatically downloaded.
-    # This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
-    ${UsernameDownloadAutoDownloadCertificate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The URI of the CA certificate to validate the LDAP secure connection.
-    # This field must be populated when 'requireValidCertificate' is set to true.
-    ${UsernameDownloadCaCertificateUri},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Whether or not the LDAP connection should be encrypted.
-    ${UsernameDownloadEncryptLdapConnection},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Whether or not Extended Groups is enabled.
-    ${UsernameDownloadExtendedGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The URI of the file containing group information (in /etc/group file format).
-    # This field must be populated when 'usernameSource' is set to 'File'.
-    ${UsernameDownloadGroupFileUri},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The base distinguished name for the LDAP domain.
-    ${UsernameDownloadLdapBaseDn},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The fully qualified domain name or IP address of the LDAP server to use.
-    ${UsernameDownloadLdapServer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Determines if the certificates must be validated by a certificate authority.
-    # When true, caCertificateURI must be provided.
-    ${UsernameDownloadRequireValidCertificate},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The URI of the file containing user information (in /etc/passwd file format).
-    # This field must be populated when 'usernameSource' is set to 'File'.
-    ${UsernameDownloadUserFileUri},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.UsernameSource])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.UsernameSource]
-    # This setting determines how the cache gets username and group names for clients.
-    ${UsernameDownloadUsernameSource}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCacheDirectorySettingObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for NamespaceJunction.
-.Description
-Create an in-memory object for NamespaceJunction.
-.Example
-New-AzStorageCacheNamespaceJunctionObject -NamespacePath "/path/on/cache" -NfsAccessPolicy "default" -NfsExport "exp2" -TargetPath "/path/on/exp1"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NamespaceJunction
-.Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheNamespaceJunctionObject
-#>
-function New-AzStorageCacheNamespaceJunctionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NamespaceJunction])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Namespace path on a cache for a Storage Target.
-    ${NamespacePath},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Name of the access policy applied to this junction.
-    ${NfsAccessPolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # NFS export where targetPath exists.
-    ${NfsExport},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Path in Storage Target to which namespacePath points.
-    ${TargetPath}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCacheNamespaceJunctionObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for NfsAccessPolicy.
-.Description
-Create an in-memory object for NfsAccessPolicy.
-.Example
-$objcet = New-AzStorageCacheNfsAccessRuleObject -Access 'rw' -Scope 'network' -AnonymousUid "65534" -AnonymousGid "65534" -SubmountAccess:$True -RootSquash:$True -Suid:$False -Filter "10.99.1.0/24"
-New-AzStorageCacheNfsAccessPolicyObject -AccessRule $object -Name azps-nfsaccesspolicy
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NfsAccessPolicy
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACCESSRULE <INfsAccessRule[]>: The set of rules describing client accesses allowed under this policy.
-  Access <NfsAccessRuleAccess>: Access allowed by this rule.
-  Scope <NfsAccessRuleScope>: Scope for this rule. The scope and filter determine which clients match the rule.
-  [AnonymousGid <String>]: GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-  [AnonymousUid <String>]: UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-  [Filter <String>]: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-  [RootSquash <Boolean?>]: Map root accesses to anonymousUID and anonymousGID.
-  [SubmountAccess <Boolean?>]: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-  [Suid <Boolean?>]: Allow SUID semantics.
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheNfsAccessPolicyObject
+https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheautoimportjob
 #>
-function New-AzStorageCacheNfsAccessPolicyObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NfsAccessPolicy])]
-[CmdletBinding(PositionalBinding=$false)]
+function Update-AzStorageCacheAutoImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJob])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.INfsAccessRule[]]
-    # The set of rules describing client accesses allowed under this policy.
-    # To construct, see NOTES section for ACCESSRULE properties and create a hash table.
-    ${AccessRule},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # Name identifying this policy.
-    # Access Policy names are not case sensitive.
-    ${Name}
-)
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCacheNfsAccessPolicyObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for NfsAccessRule.
-.Description
-Create an in-memory object for NfsAccessRule.
-.Example
-New-AzStorageCacheNfsAccessRuleObject -Access 'rw' -Scope 'network' -AnonymousUid "65534" -AnonymousGid "65534" -SubmountAccess:$True -RootSquash:$True -Suid:$False -Filter "10.99.1.0/24"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NfsAccessRule
-.Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheNfsAccessRuleObject
-#>
-function New-AzStorageCacheNfsAccessRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.NfsAccessRule])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.NfsAccessRuleAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.NfsAccessRuleAccess]
-    # Access allowed by this rule.
-    ${Access},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.NfsAccessRuleScope])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Support.NfsAccessRuleScope]
-    # Scope for this rule.
-    # The scope and filter determine which clients match the rule.
-    ${Scope},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('AutoImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
     [System.String]
-    # GID value that replaces 0 when rootSquash is true.
-    # This will use the value of anonymousUID if not provided.
-    ${AnonymousGid},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # UID value that replaces 0 when rootSquash is true.
-    # 65534 will be used if not provided.
-    ${AnonymousUid},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # Filter applied to the scope for this rule.
-    # The filter's format depends on its scope.
-    # 'default' scope matches all clients and has no filter value.
-    # 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24).
-    # 'host' takes an IP address or fully qualified domain name as filter.
-    # If a client does not match any filter rule and there is no default rule, access is denied.
-    ${Filter},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Map root accesses to anonymousUID and anonymousGID.
-    ${RootSquash},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # For the default policy, allow access to subdirectories under the root export.
-    # If this is set to no, clients can only mount the path '/'.
-    # If set to yes, clients can mount a deeper path, like '/a/b'.
-    ${SubmountAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Boolean]
-    # Allow SUID semantics.
-    ${Suid}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCacheNfsAccessRuleObject';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create an in-memory object for PrimingJob.
-.Description
-Create an in-memory object for PrimingJob.
-.Example
-New-AzStorageCachePrimingJobObject -Name azps-primingjob -PrimingManifestUrl "https://contosostorage.blob.core.windows.net/contosoblob/00000000_00000000000000000000000000000000.00000000000.FFFFFFFF.00000000?sp=r&st=2021-08-11T19:33:35Z&se=2021-08-12T03:33:35Z&spr=https&sv=2020-08-04&sr=b&sig=<secret-value-from-key>"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.PrimingJob
-.Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCachePrimingJobObject
-#>
-function New-AzStorageCachePrimingJobObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.PrimingJob])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.String]
-    # The priming job name.
+    # Name for the auto import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Enable", "Disable")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # The URL for the priming manifest file to download.
-    # This file must be readable from the HPC Cache.
-    # When the file is in Azure blob storage the URL should include a Shared Access Signature (SAS) granting read permissions on the blob.
-    ${PrimingManifestUrl}
+    # The administrative status of the auto import job.
+    # Possible values: 'Enable', 'Disable'.
+    # Passing in a value of 'Disable' will disable the current active auto import job.
+    # By default it is set to 'Enable'.
+    ${AdminStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoImportJobUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
 )
 
 begin {
@@ -8431,6 +5744,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8450,7 +5771,18 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCachePrimingJobObject';
+            UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoImportJob_UpdateExpanded';
+            UpdateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoImportJob_UpdateViaIdentityAmlFilesystemExpanded';
+            UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheAutoImportJob_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheAutoImportJob_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheAutoImportJob_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8459,6 +5791,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8504,32 +5839,179 @@ end {
 
 <#
 .Synopsis
-Create an in-memory object for StorageTargetSpaceAllocation.
+Update an expansion job instance.
 .Description
-Create an in-memory object for StorageTargetSpaceAllocation.
+Update an expansion job instance.
 .Example
-New-AzStorageCacheTargetSpaceAllocationObject -AllocationPercentage 100 -Name azps-cachetarget
+Update-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup' -Tag @{'Dept' = 'ContosoFinance'}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.StorageTargetSpaceAllocation
-.Link
-https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheTargetSpaceAllocationObject
-#>
-function New-AzStorageCacheTargetSpaceAllocationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.Api20230501.StorageTargetSpaceAllocation])]
-[CmdletBinding(PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
-    [System.Int32]
-    # The percentage of cache space allocated for this storage target.
-    ${AllocationPercentage},
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
 
-    [Parameter()]
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheexpansionjob
+#>
+function Update-AzStorageCacheExpansionJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJob])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ExpansionJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the expansion job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IExpansionJobUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # Name of the storage target.
-    ${Name}
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
 )
 
 begin {
@@ -8539,6 +6021,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8558,7 +6048,18 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.StorageCache.custom\New-AzStorageCacheTargetSpaceAllocationObject';
+            UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheExpansionJob_UpdateExpanded';
+            UpdateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\Update-AzStorageCacheExpansionJob_UpdateViaIdentityAmlFilesystemExpanded';
+            UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheExpansionJob_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheExpansionJob_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheExpansionJob_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8567,6 +6068,297 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an import job instance.
+.Description
+Update an import job instance.
+.Example
+Update-AzStorageCacheImportJob -AmlFilesystemName 'myamlfilesystem' -Name 'myimportjob' -ResourceGroupName 'myresourcegroup' -AdminStatus 'Cancel'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AMLFILESYSTEMINPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
+  [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ExpansionJobName <String>]: Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecacheimportjob
+#>
+function Update-AzStorageCacheImportJob {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJob])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the AML file system.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${AmlFilesystemName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ImportJobName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # Name for the import job.
+    # Allows alphanumerics, underscores, and hyphens.
+    # Start and end with alphanumeric.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${AmlFilesystemInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Active", "Cancel")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # The administrative status of the import job.
+    # Possible values: 'Active', 'Cancel'.
+    # Passing in a value of 'Cancel' will cancel the current active import job.
+    ${AdminStatus},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmlFilesystemExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IImportJobUpdateTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.StorageCache.private\Update-AzStorageCacheImportJob_UpdateExpanded';
+            UpdateViaIdentityAmlFilesystemExpanded = 'Az.StorageCache.private\Update-AzStorageCacheImportJob_UpdateViaIdentityAmlFilesystemExpanded';
+            UpdateViaIdentityExpanded = 'Az.StorageCache.private\Update-AzStorageCacheImportJob_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageCache.private\Update-AzStorageCacheImportJob_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageCache.private\Update-AzStorageCacheImportJob_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

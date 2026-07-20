@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -76,6 +76,7 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name specified when alias and namespace names are same.
   [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
+  [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Event Hubs namespace.
   [EnableAutoInflate <Boolean?>]: Value that indicates whether AutoInflate is enabled for eventhub namespace.
   [GeoDataReplicationLocation <List<INamespaceReplicaLocation>>]: A list of regions where replicas of the namespace are maintained.
@@ -159,6 +160,13 @@ param(
     ${ClusterArmId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Event Hubs namespace.
@@ -226,7 +234,7 @@ param(
     ${MaximumThroughputUnit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.
@@ -369,14 +377,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.EventHub.private\New-AzEventHubNamespace_CreateExpanded';
             CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -385,6 +394,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

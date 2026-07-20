@@ -91,5 +91,11 @@ Describe 'New-AzEventHubNamespaceV2' {
         $listOfNamespaces = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup
         $listOfNamespaces.Count | Should -BeGreaterOrEqual 5
 
+        # Create a geo-Dr namespace
+        $primaryReplica = New-AzEventHubLocationsNameObject -LocationName centraluseuap -RoleType Primary
+        $secondaryReplica =  New-AzEventHubLocationsNameObject -LocationName eastus2euap -RoleType Secondary
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV12 -SkuName Premium -Location centraluseuap -GeoDataReplicationLocation $primaryReplica, $secondaryReplica
+        $eventHubNamespace.GeoDataReplicationLocation.Count | Should -Be 2
+
     }
 }

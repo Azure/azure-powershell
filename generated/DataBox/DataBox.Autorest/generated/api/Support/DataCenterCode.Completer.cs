@@ -262,6 +262,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'BJS20'", "BJS20", global::System.Management.Automation.CompletionResultType.ParameterValue, "BJS20");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BL24".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'BL24'", "BL24", global::System.Management.Automation.CompletionResultType.ParameterValue, "BL24");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "IDC5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'IDC5'", "IDC5", global::System.Management.Automation.CompletionResultType.ParameterValue, "IDC5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "TYO23".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'TYO23'", "TYO23", global::System.Management.Automation.CompletionResultType.ParameterValue, "TYO23");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CPQ21".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CPQ21'", "CPQ21", global::System.Management.Automation.CompletionResultType.ParameterValue, "CPQ21");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NTG20".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NTG20'", "NTG20", global::System.Management.Automation.CompletionResultType.ParameterValue, "NTG20");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DXB23".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DXB23'", "DXB23", global::System.Management.Automation.CompletionResultType.ParameterValue, "DXB23");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DSM11".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DSM11'", "DSM11", global::System.Management.Automation.CompletionResultType.ParameterValue, "DSM11");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OSA23".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OSA23'", "OSA23", global::System.Management.Automation.CompletionResultType.ParameterValue, "OSA23");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AMS25".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AMS25'", "AMS25", global::System.Management.Automation.CompletionResultType.ParameterValue, "AMS25");
+            }
         }
     }
 }

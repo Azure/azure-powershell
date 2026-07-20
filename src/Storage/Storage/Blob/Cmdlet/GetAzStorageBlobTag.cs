@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// container pipeline paremeter set name
+        /// container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParameterSet = "ContainerPipeline";
 

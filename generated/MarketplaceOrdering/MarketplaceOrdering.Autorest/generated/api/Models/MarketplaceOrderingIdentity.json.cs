@@ -76,12 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_offerType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("offerType"), out var __jsonOfferType) ? (string)__jsonOfferType : (string)OfferType;}
-            {_publisherId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("publisherId"), out var __jsonPublisherId) ? (string)__jsonPublisherId : (string)PublisherId;}
-            {_offerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("offerId"), out var __jsonOfferId) ? (string)__jsonOfferId : (string)OfferId;}
-            {_planId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("planId"), out var __jsonPlanId) ? (string)__jsonPlanId : (string)PlanId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_offerType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("offerType"), out var __jsonOfferType) ? (string)__jsonOfferType : (string)_offerType;}
+            {_publisherId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("publisherId"), out var __jsonPublisherId) ? (string)__jsonPublisherId : (string)_publisherId;}
+            {_offerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("offerId"), out var __jsonOfferId) ? (string)__jsonOfferId : (string)_offerId;}
+            {_planId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("planId"), out var __jsonPlanId) ? (string)__jsonPlanId : (string)_planId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

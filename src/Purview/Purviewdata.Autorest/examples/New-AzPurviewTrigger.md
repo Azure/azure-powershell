@@ -1,6 +1,6 @@
 ### Example 1: Create trigger schedule for scan run
 ```powershell
-$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 New-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -Body $obj
 ```
 
@@ -28,5 +28,5 @@ ScheduleMonthlyOccurrence  :
 ScheduleWeekDay            :
 ```
 
-Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occuring every 1 month, on 10th of the month, at 09:00 AM UTC
+Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/2022 12:00:00 AM, occurring every 1 month, on 10th of the month, at 09:00 AM UTC
 

@@ -15,7 +15,8 @@ Gets a routing rule collection in a network manager.
 ### ByList (Default)
 ```
 Get-AzNetworkManagerRoutingRuleCollection -RoutingConfigurationName <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName

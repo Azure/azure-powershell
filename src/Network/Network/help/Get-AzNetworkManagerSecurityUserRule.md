@@ -81,7 +81,7 @@ SystemData            : {
                         }
 ```
 
-Gets a security user rule in a rule rollection.
+Gets a security user rule in a rule collection.
 
 ### Example 2
 ```powershell

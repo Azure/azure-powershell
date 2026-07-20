@@ -30,6 +30,8 @@ $buildProjPath = Join-Path $RepoRoot 'build.proj'
 if ($PowerShellPlatform) {
     $Env:PowerShellPlatform = $PowerShellPlatform
 }
+$CIPlanPath = Join-Path $RepoRoot 'artifacts' 'PipelineResult' 'CIPlan.json'
+New-Item -ItemType File -Path $CIPlanPath -Force
 dotnet msbuild $buildProjPath /t:FilterBuild "/p:FilesChangedOutputPath=$FilesChangedOutputPath;SubTasksFilePath=$SubTasksFilePath;IsSecurityCheck=$IsSecurityCheck"
 Write-Host -ForegroundColor DarkGreen "-------------------- End filtering changed files ... --------------------`n`n`n`n`n"
 

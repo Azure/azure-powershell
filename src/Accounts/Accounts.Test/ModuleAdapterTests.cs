@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExceptionHandler()
+        public async Task TestExceptionHandler()
         {
             // setup
             var store = new EventStore();
@@ -362,11 +362,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.CmdletException;
-            module.OnCmdletException(Events.CmdletException, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, new HttpRequestException("Sample exception")).GetAwaiter().GetResult();
+            await module.OnCmdletException(Events.CmdletException, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, new HttpRequestException("Sample exception"));
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [InlineData("X-MS-REQUEST-ID")]
         [InlineData("REQUEST-ID")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestClientRequestHandler(string headerName)
+        public async Task TestClientRequestHandler(string headerName)
         {
             var store = new EventStore();
             var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
@@ -398,10 +398,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
             var signalEvents = new List<EventArgs>();
             // Create a QOS record
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.BeforeCall;
-            module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data, (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data, (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [InlineData("X-MS-REQUEST-ID")]
         [InlineData("REQUEST-ID")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResponseCreatedHandler(string headerName)
+        public async Task TestResponseCreatedHandler(string headerName)
         {
             var store = new EventStore();
             var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
@@ -433,11 +433,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage =  request, ResponseMessage = response};
             var signalEvents = new List<EventArgs>();
             // Create a QOS record
-            module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -447,7 +447,46 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResponseCreatedNegative()
+        public async Task TestClientRequestIdPreservedFromRequestNotOverwrittenByResponse()
+        {
+            var store = new EventStore();
+            var provider = MockTelemetryProvider.Create(store) as MockTelemetryProvider;
+            var module = new AzModule(new MockCommandRuntime(), store, provider);
+            var signalEvents = new List<EventArgs>();
+            
+            string clientRequestId = Guid.NewGuid().ToString();
+            string serverRequestId = Guid.NewGuid().ToString();
+            
+            var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions")};
+            request.Headers.Add("x-ms-client-request-id", clientRequestId);
+            
+            var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            response.Headers.Add("x-ms-request-id", serverRequestId);
+            
+            var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response};
+            
+            await module.OnProcessRecordAsyncStart(Events.CmdletProcessRecordAsyncStart, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId, null, "", clientRequestId);
+            
+            data.Id = Events.BeforeCall;
+            await module.OnBeforeCall(Events.BeforeCall, CancellationToken.None, () => data,
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId);
+            
+            data.Id = Events.ResponseCreated;
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), clientRequestId);
+            
+            Assert.True(provider.ContainsKey(clientRequestId));
+            var qos = provider[clientRequestId];
+            Assert.NotNull(qos);
+            Assert.Equal(clientRequestId, qos.ClientRequestId);
+            Assert.NotEqual(serverRequestId, qos.ClientRequestId);
+            provider.Clear();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public async Task TestResponseCreatedNegative()
         {
             // setup
             var store = new EventStore();
@@ -460,11 +499,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             var request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             var data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             var qos = provider[id];
             Assert.NotNull(qos);
@@ -477,11 +516,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             response.Headers.Add("x-ms-test-header", id);
             request = new HttpRequestMessage { Method = HttpMethod.Get, RequestUri = new Uri("https://microsoft.azure.com/subscriptions") };
             data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, RequestMessage = request, ResponseMessage = response };
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             qos = provider[id];
             Assert.NotNull(qos);
@@ -491,11 +530,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // No request or response
             id = Guid.NewGuid().ToString();
             data = new EventData { Id = Events.CmdletProcessRecordAsyncStart, Message = "Simple message"};
-            module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id).GetAwaiter().GetResult();
+            await module.OnProcessRecordAsyncStart(id, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id, null, "", id);
             data.Id = Events.ResponseCreated;
-            module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
-                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id).GetAwaiter().GetResult();
+            await module.OnResponseCreated(Events.ResponseCreated, CancellationToken.None, () => data, 
+                (nid, token, getEventData) => ProcessSignal(signalEvents, nid, token, getEventData), id);
             Assert.True(provider.ContainsKey(id));
             qos = provider[id];
             Assert.NotNull(qos);

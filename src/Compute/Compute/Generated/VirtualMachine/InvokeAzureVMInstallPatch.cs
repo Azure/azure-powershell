@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     VirtualMachineInstallPatchesParameters vmInstallPatchesParameters = new VirtualMachineInstallPatchesParameters();
-                    vmInstallPatchesParameters.MaximumDuration = this.MaximumDuration;
+                    vmInstallPatchesParameters.MaximumDuration = System.Xml.XmlConvert.ToTimeSpan(this.MaximumDuration);
                     vmInstallPatchesParameters.RebootSetting = this.RebootSetting;
 
                     // divde linux and windows 

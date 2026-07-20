@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrateIdentity"
         /// />.
         /// </summary>
@@ -212,13 +220,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
             }
-            if (content.Contains("VaultName"))
+            if (content.Contains("ReplicationProtectionClusterName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
             }
-            if (content.Contains("ProtectedItemName"))
+            if (content.Contains("JobId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName = (string) content.GetValueForProperty("ProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
             }
             if (content.Contains("MappingName"))
             {
@@ -252,29 +260,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("FabricAgentName"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName = (string) content.GetValueForProperty("FabricAgentName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("VaultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId = (string) content.GetValueForProperty("DeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId, global::System.Convert.ToString);
             }
             if (content.Contains("OperationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
+            if (content.Contains("FabricAgentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName = (string) content.GetValueForProperty("FabricAgentName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName, global::System.Convert.ToString);
+            }
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionProxyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateLinkResourceName = (string) content.GetValueForProperty("PrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateLinkResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedItemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName = (string) content.GetValueForProperty("ProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName, global::System.Convert.ToString);
+            }
             if (content.Contains("ReplicationExtensionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationExtensionName = (string) content.GetValueForProperty("ReplicationExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationExtensionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId = (string) content.GetValueForProperty("DeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -409,13 +437,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
             }
-            if (content.Contains("VaultName"))
+            if (content.Contains("ReplicationProtectionClusterName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
             }
-            if (content.Contains("ProtectedItemName"))
+            if (content.Contains("JobId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName = (string) content.GetValueForProperty("ProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
             }
             if (content.Contains("MappingName"))
             {
@@ -449,29 +477,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("FabricAgentName"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName = (string) content.GetValueForProperty("FabricAgentName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("VaultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName = (string) content.GetValueForProperty("VaultName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId = (string) content.GetValueForProperty("DeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId, global::System.Convert.ToString);
             }
             if (content.Contains("OperationId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
+            if (content.Contains("FabricAgentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName = (string) content.GetValueForProperty("FabricAgentName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricAgentName, global::System.Convert.ToString);
+            }
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionProxyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateLinkResourceName = (string) content.GetValueForProperty("PrivateLinkResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateLinkResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedItemName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName = (string) content.GetValueForProperty("ProtectedItemName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ProtectedItemName, global::System.Convert.ToString);
+            }
             if (content.Contains("ReplicationExtensionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationExtensionName = (string) content.GetValueForProperty("ReplicationExtensionName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationExtensionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId = (string) content.GetValueForProperty("DeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).DeploymentId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -484,6 +532,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(MigrateIdentityTypeConverter))]
     public partial interface IMigrateIdentity

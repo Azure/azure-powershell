@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1545?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTU0NT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg7751?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNzc1MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6ba5e943-0e8e-46cf-b0fe-23af37e52f5c"
+          "0e110e40-5c07-4737-a5a1-7b91eb3d7d20"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,16 +33,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
         ],
         "x-ms-request-id": [
-          "c2cfbad7-769b-488e-ab5c-9051eab3e1ff"
+          "b2103d04-2089-4773-bc08-dcfb2e8d3cc0"
         ],
         "x-ms-correlation-request-id": [
-          "c2cfbad7-769b-488e-ab5c-9051eab3e1ff"
+          "b2103d04-2089-4773-bc08-dcfb2e8d3cc0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010533Z:c2cfbad7-769b-488e-ab5c-9051eab3e1ff"
+          "WESTUS2:20250306T000808Z:b2103d04-2089-4773-bc08-dcfb2e8d3cc0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,8 +53,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 71794C7C37244FAEBB4CD8C2AB7AE260 Ref B: CO6AA3150218033 Ref C: 2025-03-06T00:08:08Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:05:33 GMT"
+          "Thu, 06 Mar 2025 00:08:08 GMT"
         ],
         "Content-Length": [
           "178"
@@ -63,24 +72,24 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1545\",\r\n  \"name\": \"pstestrg1545\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7751\",\r\n  \"name\": \"pstestrg7751\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1545/providers/Microsoft.CognitiveServices/accounts/csapstestrg1545?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTU0NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTU0NT9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7751/providers/Microsoft.CognitiveServices/accounts/csapstestrg7751?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzc1MT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fbe69456-400f-4b24-bafe-32fe4cfe5edc"
+          "41db7e82-9a57-47ee-8ec8-e4f523b33f63"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ],
         "Content-Type": [
@@ -90,7 +99,7 @@
           "443"
         ]
       },
-      "RequestBody": "{\r\n  \"kind\": \"SpeechServices\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"EastUS2\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg1545\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"kind\": \"SpeechServices\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"EastUS2\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg7751\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -99,37 +108,43 @@
           "no-cache"
         ],
         "ETag": [
-          "\"b6007f01-0000-0200-0000-64939e610000\""
+          "\"9d004d42-0000-0200-0000-67c8e76d0000\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "6f0e138c-8b11-4169-8422-504cbe192dd6"
+          "350522e1-cdc2-46d0-b762-56b9990458ce"
         ],
         "x-envoy-upstream-service-time": [
-          "1984"
-        ],
-        "Server": [
-          "istio-envoy"
+          "2610"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "febe3338-3932-4fdb-b866-53e66204809e"
+          "04fcb6f2-94de-451e-aed2-0e5a9e585ec2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010538Z:febe3338-3932-4fdb-b866-53e66204809e"
+          "WESTUS2:20250306T000813Z:04fcb6f2-94de-451e-aed2-0e5a9e585ec2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 08B434628DD048FCB24E62E918358A88 Ref B: CO6AA3150219017 Ref C: 2025-03-06T00:08:09Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:05:38 GMT"
+          "Thu, 06 Mar 2025 00:08:13 GMT"
         ],
         "Content-Length": [
-          "4422"
+          "5887"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,24 +153,24 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1545/providers/Microsoft.CognitiveServices/accounts/csapstestrg1545\",\r\n  \"name\": \"csapstestrg1545\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"b6007f01-0000-0200-0000-64939e610000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n    \"internalId\": \"a85236172c8b4c20bbff6b7dea10e7e9\",\r\n    \"dateCreated\": \"2023-06-22T01:05:36.9830816Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg1545\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ],\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text v2.0\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.0\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1-preview.1\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Unified Speech\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Container\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Model Distribution Service\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Token API\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"a35f7719-93cd-4592-ad8c-9a55097d83a6\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-06-22T01:05:35.0602726Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-06-22T01:05:35.0602726Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7751/providers/Microsoft.CognitiveServices/accounts/csapstestrg7751\",\r\n  \"name\": \"csapstestrg7751\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"9d004d42-0000-0200-0000-67c8e76d0000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n    \"internalId\": \"aa69fa2c8e054d0eb3df877a21de2084\",\r\n    \"dateCreated\": \"2025-03-06T00:08:11.1427596Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.aoaivoicesynthesize\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/aoaivoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.aoaihdvoicesynthesize\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 3,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/aoaihdvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.liveavatarconnect\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/liveavatarconnect\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.livecustomavatarconnect\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/livecustomavatarconnect\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.batchavatarcreate\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 2,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"avatar/batchsyntheses/*\",\r\n              \"method\": \"PUT\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.batchtexttospeechcreate\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/batchsyntheses/*\",\r\n              \"method\": \"PUT\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoice\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"customvoice/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg7751\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ],\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"CommitmentPlan\"\r\n      },\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*,SpeechServices.CustomSpeechToText,SpeechServices.NeuralTextToSpeech,SpeechServices.NeuralTextToSpeechOnPrem,SpeechServices.DPP,SpeechServices.SpeechToText,SpeechServices.ctsdiarizer,SpeechServices.diarization\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text v3.2\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text 2024-05-15-preview\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text 2024-11-15\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text v3.2_internal.1\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Voice Trial\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Video Translation\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Avatar\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Batch Avatar\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Batch Text to Speech\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text (Standard)\": \"https://eastus2.stt.speech.microsoft.com\",\r\n      \"Speech Services Text to Speech (Neural)\": \"https://eastus2.tts.speech.microsoft.com\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Voice Agent Realtime API\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Token\": \"https://csapstestrg7751.cognitiveservices.azure.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"5f374dd6-51be-4e06-8750-b81118055f6b\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"tianxinliu@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-03-06T00:08:09.9651719Z\",\r\n    \"lastModifiedBy\": \"tianxinliu@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-03-06T00:08:09.9651719Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1545/providers/Microsoft.CognitiveServices/accounts/csapstestrg1545?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMTU0NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnMTU0NT9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7751/providers/Microsoft.CognitiveServices/accounts/csapstestrg7751?api-version=2024-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzc1MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNzc1MT9hcGktdmVyc2lvbj0yMDI0LTEwLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fbe69456-400f-4b24-bafe-32fe4cfe5edc"
+          "41db7e82-9a57-47ee-8ec8-e4f523b33f63"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
         ]
       },
@@ -168,37 +183,43 @@
           "no-cache"
         ],
         "ETag": [
-          "\"b6007f01-0000-0200-0000-64939e610000\""
+          "\"9d004d42-0000-0200-0000-67c8e76d0000\""
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "3f996d2c-8b22-4fb5-ac54-fb5eb3935b1a"
+          "7d750d22-a1dc-4e26-9776-d413d984de90"
         ],
         "x-envoy-upstream-service-time": [
-          "12"
-        ],
-        "Server": [
-          "istio-envoy"
+          "8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "fe45cb51-e833-481c-bf63-c7436316cf78"
+          "7584ff93-0b31-4e75-971e-d85b0701948a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010538Z:fe45cb51-e833-481c-bf63-c7436316cf78"
+          "WESTUS2:20250306T000813Z:7584ff93-0b31-4e75-971e-d85b0701948a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0AA89C868A2643A2A0CA9485CC8E5254 Ref B: CO6AA3150219017 Ref C: 2025-03-06T00:08:13Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:05:38 GMT"
+          "Thu, 06 Mar 2025 00:08:13 GMT"
         ],
         "Content-Length": [
-          "4422"
+          "5887"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -207,25 +228,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg1545/providers/Microsoft.CognitiveServices/accounts/csapstestrg1545\",\r\n  \"name\": \"csapstestrg1545\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"b6007f01-0000-0200-0000-64939e610000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n    \"internalId\": \"a85236172c8b4c20bbff6b7dea10e7e9\",\r\n    \"dateCreated\": \"2023-06-22T01:05:36.9830816Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg1545\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ],\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text v2.0\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.0\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1-preview.1\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Unified Speech\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Container\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Model Distribution Service\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Token API\": \"https://csapstestrg1545.cognitiveservices.azure.com/sts/v1.0/issuetoken\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"a35f7719-93cd-4592-ad8c-9a55097d83a6\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-06-22T01:05:35.0602726Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-06-22T01:05:35.0602726Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg7751/providers/Microsoft.CognitiveServices/accounts/csapstestrg7751\",\r\n  \"name\": \"csapstestrg7751\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"9d004d42-0000-0200-0000-67c8e76d0000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n    \"internalId\": \"aa69fa2c8e054d0eb3df877a21de2084\",\r\n    \"dateCreated\": \"2025-03-06T00:08:11.1427596Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.aoaivoicesynthesize\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 10,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/aoaivoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.aoaihdvoicesynthesize\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 3,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/aoaihdvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.liveavatarconnect\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 1,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/liveavatarconnect\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.livecustomavatarconnect\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/livecustomavatarconnect\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.batchavatarcreate\",\r\n          \"renewalPeriod\": 60,\r\n          \"count\": 2,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"avatar/batchsyntheses/*\",\r\n              \"method\": \"PUT\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.batchtexttospeechcreate\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/batchsyntheses/*\",\r\n              \"method\": \"PUT\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoice\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"customvoice/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg7751\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ],\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"CommitmentPlan\"\r\n      },\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*,SpeechServices.CustomSpeechToText,SpeechServices.NeuralTextToSpeech,SpeechServices.NeuralTextToSpeechOnPrem,SpeechServices.DPP,SpeechServices.SpeechToText,SpeechServices.ctsdiarizer,SpeechServices.diarization\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text v3.2\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text 2024-05-15-preview\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text 2024-11-15\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text v3.2_internal.1\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Voice Trial\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Video Translation\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Custom Avatar\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Batch Avatar\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Batch Text to Speech\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speech to Text (Standard)\": \"https://eastus2.stt.speech.microsoft.com\",\r\n      \"Speech Services Text to Speech (Neural)\": \"https://eastus2.tts.speech.microsoft.com\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Voice Agent Realtime API\": \"https://csapstestrg7751.cognitiveservices.azure.com/\",\r\n      \"Token\": \"https://csapstestrg7751.cognitiveservices.azure.com/\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"5f374dd6-51be-4e06-8750-b81118055f6b\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"tianxinliu@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2025-03-06T00:08:09.9651719Z\",\r\n    \"lastModifiedBy\": \"tianxinliu@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2025-03-06T00:08:09.9651719Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg1545?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMTU0NT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg7751?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNzc1MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "333c5275-af89-480c-b4a3-364a29c4abc7"
+          "04460cb8-a850-4142-b4d3-0917dc7b7cf7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -237,79 +258,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768164955115802&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=UmRC5Om3uRtTlOP77F_yv0U8tBkHHy0kHBrwvIJb1S0pX95blGz2Le1jTHaw0ayVy58Z_H66S8c3B8zTAgi-LnLPQPlH7eiLZJkft1OjApE2kfEX3c8uAKN7JIKwUeQTjlWwBcIyiblyKbR4FOX8MDMwY5w0c7VCSp1G_KRULDyJXx66VCnQ58Qqbsmnz8E-f8HrcAA0aKvshBXAxqzQ-p5Aut3kkXsXPhoo0mjvIPvOz9szdb1gwAzPoBaxDNe8UsJuuwfRAvJpoMjpnxo36g7coRI5lUIb6qjBgdOfzvMpIeYNG1kSIUDYqvpOHfHbj8sKW8bUz9WgbBWrA-EAvw&h=mSqfv2chm51mcd8BvolyXpsN9Ddg8gr9nRTM8-ymmac"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "799"
         ],
-        "x-ms-request-id": [
-          "8343dbad-e99e-47da-b757-db4976a26d80"
-        ],
-        "x-ms-correlation-request-id": [
-          "8343dbad-e99e-47da-b757-db4976a26d80"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010539Z:8343dbad-e99e-47da-b757-db4976a26d80"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:05:38 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [
           "11999"
         ],
         "x-ms-request-id": [
-          "38b8ccf0-2fac-45bb-8fb0-6a9f3cadb854"
+          "837358e4-d071-4d7c-9217-0a36246f833b"
         ],
         "x-ms-correlation-request-id": [
-          "38b8ccf0-2fac-45bb-8fb0-6a9f3cadb854"
+          "837358e4-d071-4d7c-9217-0a36246f833b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010555Z:38b8ccf0-2fac-45bb-8fb0-6a9f3cadb854"
+          "WESTUS2:20250306T000815Z:837358e4-d071-4d7c-9217-0a36246f833b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -317,8 +284,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 45092E7A605F415C9F2AB18A75C61119 Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:08:13Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:05:54 GMT"
+          "Thu, 06 Mar 2025 00:08:15 GMT"
         ],
         "Expires": [
           "-1"
@@ -331,15 +304,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768164955115802&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=UmRC5Om3uRtTlOP77F_yv0U8tBkHHy0kHBrwvIJb1S0pX95blGz2Le1jTHaw0ayVy58Z_H66S8c3B8zTAgi-LnLPQPlH7eiLZJkft1OjApE2kfEX3c8uAKN7JIKwUeQTjlWwBcIyiblyKbR4FOX8MDMwY5w0c7VCSp1G_KRULDyJXx66VCnQ58Qqbsmnz8E-f8HrcAA0aKvshBXAxqzQ-p5Aut3kkXsXPhoo0mjvIPvOz9szdb1gwAzPoBaxDNe8UsJuuwfRAvJpoMjpnxo36g7coRI5lUIb6qjBgdOfzvMpIeYNG1kSIUDYqvpOHfHbj8sKW8bUz9WgbBWrA-EAvw&h=mSqfv2chm51mcd8BvolyXpsN9Ddg8gr9nRTM8-ymmac",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjQ5NTUxMTU4MDImYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPVVtUkM1T20zdVJ0VGxPUDc3Rl95djBVOHRCa0hIeTBrSEJyd3ZJSmIxUzBwWDk1YmxHejJMZTFqVEhhdzBheVZ5NThaX0g2NlM4YzNCOHpUQWdpLUxuTFBRUGxIN2VpTFpKa2Z0MU9qQXBFMmtmRVgzYzh1QUtON0pJS3dVZVFUamxXd0JjSXlpYmx5S2JSNEZPWDhNRE13WTV3MGM3VkNTcDFHX0tSVUxEeUpYeDY2VkNuUTU4UXFic21uejhFLWY4SHJjQUEwYUt2c2hCWEF4cXpRLXA1QXV0M2trWHNYUGhvbzBtanZJUHZPejlzemRiMWd3QXpQb0JheEROZThVc0p1dXdmUkF2SnBvTWpwbnhvMzZnN2NvUkk1bFVJYjZxakJnZE9menZNcEllWU5HMWtTSVVEWXF2cE9IZkhiajhzS1c4YlV6OVdnYkJXckEtRUF2dyZoPW1TcWZ2MmNobTUxbWNkOEJ2b2x5WHBzTjlEZGc4Z3I5blJUTTgteW1tYWM=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -351,22 +324,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165109229164&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=S1BxNR6-3_dQeghGyiBiem6eZRYQGLivAFCB1L1wup-fLbBtZNtYzzM6Y4Pmg4EwvnEykPAFuT210ad87QrRdj4dU2pJK1A6FIdPnw1UgVDGNydTAcRr8OZFm75asg4SinrnIpml1nMenzYeb_keIhHVxa-L0tJk1TJ-5KgpvF4mlyJgv0N2CS8TL6Bnw_pzN8t-yaI3GqTnMxH5B1MRmnoRzZTUHyr1O1smo7UTOsct8iB4B0xQk0cnq6M8CsKu4nu9crvNNiwySUkRroodY5fWhyUuBA2W-bnEXfvJtmzXCJEJBhVYeuIXa1hmA-VBxGrC84VEBTCv7x33pkfAsg&h=WamaudPuuOh3YlaknqxFarRSmK5sfdski6C1CT0YpQc"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "d972c76a-76a5-4f80-a886-08265e352c6a"
+          "98b5062a-603c-4432-a2b0-ef27a35adb86"
         ],
         "x-ms-correlation-request-id": [
-          "d972c76a-76a5-4f80-a886-08265e352c6a"
+          "98b5062a-603c-4432-a2b0-ef27a35adb86"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010610Z:d972c76a-76a5-4f80-a886-08265e352c6a"
+          "WESTUS2:20250306T000830Z:98b5062a-603c-4432-a2b0-ef27a35adb86"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -374,8 +350,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6B1865070E354758850F4CACA13E64EE Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:08:30Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:06:10 GMT"
+          "Thu, 06 Mar 2025 00:08:30 GMT"
         ],
         "Expires": [
           "-1"
@@ -388,15 +370,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165109229164&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=S1BxNR6-3_dQeghGyiBiem6eZRYQGLivAFCB1L1wup-fLbBtZNtYzzM6Y4Pmg4EwvnEykPAFuT210ad87QrRdj4dU2pJK1A6FIdPnw1UgVDGNydTAcRr8OZFm75asg4SinrnIpml1nMenzYeb_keIhHVxa-L0tJk1TJ-5KgpvF4mlyJgv0N2CS8TL6Bnw_pzN8t-yaI3GqTnMxH5B1MRmnoRzZTUHyr1O1smo7UTOsct8iB4B0xQk0cnq6M8CsKu4nu9crvNNiwySUkRroodY5fWhyUuBA2W-bnEXfvJtmzXCJEJBhVYeuIXa1hmA-VBxGrC84VEBTCv7x33pkfAsg&h=WamaudPuuOh3YlaknqxFarRSmK5sfdski6C1CT0YpQc",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjUxMDkyMjkxNjQmYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPVMxQnhOUjYtM19kUWVnaEd5aUJpZW02ZVpSWVFHTGl2QUZDQjFMMXd1cC1mTGJCdFpOdFl6ek02WTRQbWc0RXd2bkV5a1BBRnVUMjEwYWQ4N1FyUmRqNGRVMnBKSzFBNkZJZFBudzFVZ1ZER055ZFRBY1JyOE9aRm03NWFzZzRTaW5ybklwbWwxbk1lbnpZZWJfa2VJaEhWeGEtTDB0SmsxVEotNUtncHZGNG1seUpndjBOMkNTOFRMNkJud19wek44dC15YUkzR3FUbk14SDVCMU1SbW5vUnpaVFVIeXIxTzFzbW83VVRPc2N0OGlCNEIweFFrMGNucTZNOENzS3U0bnU5Y3J2Tk5pd3lTVWtScm9vZFk1ZldoeVV1QkEyVy1ibkVYZnZKdG16WENKRUpCaFZZZXVJWGExaG1BLVZCeEdyQzg0VkVCVEN2N3gzM3BrZkFzZyZoPVdhbWF1ZFB1dU9oM1lsYWtucXhGYXJSU21LNXNmZHNraTZDMUNUMFlwUWM=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -408,22 +390,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165261386166&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=puHCHQh030wLBzuk7wLfjctJ5rImJQ4RIzFT_6EweqKWOK5viogfzKm0G32zvqdYoPFsm-nyZDr_sE-isk7SU_bFEPcuXSwD_eWSbyPKVWuBIWxjCecVzwrh9wE1-a6_53ZIYe5CDrLCP8nepfftMZZLgGaffa4EwmHJo3D72wnx8pQw0CimrlXLDiAl0AER-h4tWlwNmpagSOk34bxsH5wyKL1Zh5TU23HSBcTDdvGj7ADmiGMVTyH8iZ70GRzToQOkEPXkJZ6cK10IUBitt9eX3cI8NB3Ao5c8NHEEyfhMAnmNnSveBKLsKUXQMbXwrFRvcIY2O7cEgJLtaNoCPQ&h=n8f8WT76cpOUlajpiCDG6C9_7h-RBzl042Z1FTTnu_Y"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "9c2742cc-a201-44c4-9faa-516f47da0922"
+          "00607022-655a-4fe0-ade5-ced8ea8628a3"
         ],
         "x-ms-correlation-request-id": [
-          "9c2742cc-a201-44c4-9faa-516f47da0922"
+          "00607022-655a-4fe0-ade5-ced8ea8628a3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010625Z:9c2742cc-a201-44c4-9faa-516f47da0922"
+          "WESTUS2:20250306T000846Z:00607022-655a-4fe0-ade5-ced8ea8628a3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -431,8 +416,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B5F338B3DEE14F0EAA50E6CDE1788179 Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:08:45Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:06:25 GMT"
+          "Thu, 06 Mar 2025 00:08:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -445,15 +436,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165261386166&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=puHCHQh030wLBzuk7wLfjctJ5rImJQ4RIzFT_6EweqKWOK5viogfzKm0G32zvqdYoPFsm-nyZDr_sE-isk7SU_bFEPcuXSwD_eWSbyPKVWuBIWxjCecVzwrh9wE1-a6_53ZIYe5CDrLCP8nepfftMZZLgGaffa4EwmHJo3D72wnx8pQw0CimrlXLDiAl0AER-h4tWlwNmpagSOk34bxsH5wyKL1Zh5TU23HSBcTDdvGj7ADmiGMVTyH8iZ70GRzToQOkEPXkJZ6cK10IUBitt9eX3cI8NB3Ao5c8NHEEyfhMAnmNnSveBKLsKUXQMbXwrFRvcIY2O7cEgJLtaNoCPQ&h=n8f8WT76cpOUlajpiCDG6C9_7h-RBzl042Z1FTTnu_Y",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjUyNjEzODYxNjYmYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPXB1SENIUWgwMzB3TEJ6dWs3d0xmamN0SjVySW1KUTRSSXpGVF82RXdlcUtXT0s1dmlvZ2Z6S20wRzMyenZxZFlvUEZzbS1ueVpEcl9zRS1pc2s3U1VfYkZFUGN1WFN3RF9lV1NieVBLVld1QklXeGpDZWNWendyaDl3RTEtYTZfNTNaSVllNUNEckxDUDhuZXBmZnRNWlpMZ0dhZmZhNEV3bUhKbzNENzJ3bng4cFF3MENpbXJsWExEaUFsMEFFUi1oNHRXbHdObXBhZ1NPazM0YnhzSDV3eUtMMVpoNVRVMjNIU0JjVERkdkdqN0FEbWlHTVZUeUg4aVo3MEdSelRvUU9rRVBYa0paNmNLMTBJVUJpdHQ5ZVgzY0k4TkIzQW81YzhOSEVFeWZoTUFubU5uU3ZlQktMc0tVWFFNYlh3ckZSdmNJWTJPN2NFZ0pMdGFOb0NQUSZoPW44ZjhXVDc2Y3BPVWxhanBpQ0RHNkM5XzdoLVJCemwwNDJaMUZUVG51X1k=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -465,22 +456,25 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165415271850&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=p9CheB8EC4mdwto4vOPfsLClA-RVPqKr5tAM0OW6mxwHeJVLWIcUGoi9G6ih6nyEir0nR6iRU0jCCIQk5ydUdWud69Pv3UccT4JIzDMMEz2F0Zr5cwSqyH7td0xe8JMd6AG_iv7T8be3IYBhMFKBx5JbBnCy-KmZEZDVf7t0g4Io8HQmolDMpFa0VA7q4ZOxLti1OJgMa2GqZLb6JTtNdKVZ_zjBLAGNmWQfB0KJ3JVao6j-RXw8QDV9gBE-nt4nYxCNYlhMKMKSFSqdkq5PHHDK_PyEaE2C2R4gYVSbaiZ8R7pfIwrBWYOQUKGFlyhBLTfVWacSXE7XkiYdKOAxAQ&h=c1_Q-yWw7AY75oRvI1pSczgNFIaUKDvy-xk_ZYjDOdA"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "bd41b3b8-6f33-4ac5-b87d-7f04e11e8973"
+          "bcc9a428-77d3-48e4-8ef6-9d4415ed7a81"
         ],
         "x-ms-correlation-request-id": [
-          "bd41b3b8-6f33-4ac5-b87d-7f04e11e8973"
+          "bcc9a428-77d3-48e4-8ef6-9d4415ed7a81"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010640Z:bd41b3b8-6f33-4ac5-b87d-7f04e11e8973"
+          "WESTUS2:20250306T000901Z:bcc9a428-77d3-48e4-8ef6-9d4415ed7a81"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -488,8 +482,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 62E90C4C347B49B7B8AAE583D7EBB886 Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:09:01Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:06:40 GMT"
+          "Thu, 06 Mar 2025 00:09:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -502,15 +502,81 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165415271850&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=p9CheB8EC4mdwto4vOPfsLClA-RVPqKr5tAM0OW6mxwHeJVLWIcUGoi9G6ih6nyEir0nR6iRU0jCCIQk5ydUdWud69Pv3UccT4JIzDMMEz2F0Zr5cwSqyH7td0xe8JMd6AG_iv7T8be3IYBhMFKBx5JbBnCy-KmZEZDVf7t0g4Io8HQmolDMpFa0VA7q4ZOxLti1OJgMa2GqZLb6JTtNdKVZ_zjBLAGNmWQfB0KJ3JVao6j-RXw8QDV9gBE-nt4nYxCNYlhMKMKSFSqdkq5PHHDK_PyEaE2C2R4gYVSbaiZ8R7pfIwrBWYOQUKGFlyhBLTfVWacSXE7XkiYdKOAxAQ&h=c1_Q-yWw7AY75oRvI1pSczgNFIaUKDvy-xk_ZYjDOdA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjU0MTUyNzE4NTAmYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPXA5Q2hlQjhFQzRtZHd0bzR2T1Bmc0xDbEEtUlZQcUtyNXRBTTBPVzZteHdIZUpWTFdJY1VHb2k5RzZpaDZueUVpcjBuUjZpUlUwakNDSVFrNXlkVWRXdWQ2OVB2M1VjY1Q0Skl6RE1NRXoyRjBacjVjd1NxeUg3dGQweGU4Sk1kNkFHX2l2N1Q4YmUzSVlCaE1GS0J4NUpiQm5DeS1LbVpFWkRWZjd0MGc0SW84SFFtb2xETXBGYTBWQTdxNFpPeEx0aTFPSmdNYTJHcVpMYjZKVHROZEtWWl96akJMQUdObVdRZkIwS0ozSlZhbzZqLVJYdzhRRFY5Z0JFLW50NG5ZeENOWWxoTUtNS1NGU3Fka3E1UEhIREtfUHlFYUUyQzJSNGdZVlNiYWlaOFI3cGZJd3JCV1lPUVVLR0ZseWhCTFRmVldhY1NYRTdYa2lZZEtPQXhBUSZoPWMxX1EteVd3N0FZNzVvUnZJMXBTY3pnTkZJYVVLRHZ5LXhrX1pZakRPZEE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165569414079&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=M8TOuZ3a8qIgqUyTjDUFzMEFVA7qGk0wx9cHWicWJYEbiZ6M0OyXa0V1BC8cumL_hf2pISPsqn4EJEZbQsMOrFRRnmGWpM6qvj8Rh54HzESqleCY8ppei_iotr8044h9tRwET76yf5_4QoGF2v42zSyvKDQP-XbKh5O4xGEz6J4Fphi1yEgDYTIYUXoSQI7_cw9MHpPxwL7U7X3Xf0lH8HvKk1oT88xBSX0tpgsiBG-SFZVpB2zVmbvK2boZ-hEz3XjOj9Sg2r4jlNZTkJf0zGd6DN4nrcK9dI-5oqAd2fHTEmRsMopjemtmJhLwbfXe5vU4oxk4l1ZCP446vd3bpQ&h=yK0Jx05zCtzxiIR6WMWUUWaramSIe40QS4rUIMSLrTI"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "300ef3ee-7a49-44f8-85ab-49c170a7b4f8"
+        ],
+        "x-ms-correlation-request-id": [
+          "300ef3ee-7a49-44f8-85ab-49c170a7b4f8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20250306T000916Z:300ef3ee-7a49-44f8-85ab-49c170a7b4f8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C93FAA873A5848E0BD2768280EDBDD5C Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:09:16Z"
+        ],
+        "Date": [
+          "Thu, 06 Mar 2025 00:09:16 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165569414079&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=M8TOuZ3a8qIgqUyTjDUFzMEFVA7qGk0wx9cHWicWJYEbiZ6M0OyXa0V1BC8cumL_hf2pISPsqn4EJEZbQsMOrFRRnmGWpM6qvj8Rh54HzESqleCY8ppei_iotr8044h9tRwET76yf5_4QoGF2v42zSyvKDQP-XbKh5O4xGEz6J4Fphi1yEgDYTIYUXoSQI7_cw9MHpPxwL7U7X3Xf0lH8HvKk1oT88xBSX0tpgsiBG-SFZVpB2zVmbvK2boZ-hEz3XjOj9Sg2r4jlNZTkJf0zGd6DN4nrcK9dI-5oqAd2fHTEmRsMopjemtmJhLwbfXe5vU4oxk4l1ZCP446vd3bpQ&h=yK0Jx05zCtzxiIR6WMWUUWaramSIe40QS4rUIMSLrTI",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjU1Njk0MTQwNzkmYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPU04VE91WjNhOHFJZ3FVeVRqRFVGek1FRlZBN3FHazB3eDljSFdpY1dKWUViaVo2TTBPeVhhMFYxQkM4Y3VtTF9oZjJwSVNQc3FuNEVKRVpiUXNNT3JGUlJubUdXcE02cXZqOFJoNTRIekVTcWxlQ1k4cHBlaV9pb3RyODA0NGg5dFJ3RVQ3NnlmNV80UW9HRjJ2NDJ6U3l2S0RRUC1YYktoNU80eEdFejZKNEZwaGkxeUVnRFlUSVlVWG9TUUk3X2N3OU1IcFB4d0w3VTdYM1hmMGxIOEh2S2sxb1Q4OHhCU1gwdHBnc2lCRy1TRlpWcEIyelZtYnZLMmJvWi1oRXozWGpPajlTZzJyNGpsTlpUa0pmMHpHZDZETjRucmNLOWRJLTVvcUFkMmZIVEVtUnNNb3BqZW10bUpoTHdiZlhlNXZVNG94azRsMVpDUDQ0NnZkM2JwUSZoPXlLMEp4MDV6Q3R6eGlJUjZXTVdVVVdhcmFtU0llNDBRUzRyVUlNU0xyVEk=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -522,16 +588,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "edf23a10-f416-4ca5-b86e-09030810e09d"
+          "b35b52bd-3054-4636-8725-a454d258b836"
         ],
         "x-ms-correlation-request-id": [
-          "edf23a10-f416-4ca5-b86e-09030810e09d"
+          "b35b52bd-3054-4636-8725-a454d258b836"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010655Z:edf23a10-f416-4ca5-b86e-09030810e09d"
+          "WESTUS2:20250306T000932Z:b35b52bd-3054-4636-8725-a454d258b836"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -539,8 +608,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D564ABDADD8F4289B5FDBDCEF193AA5F Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:09:31Z"
+        ],
         "Date": [
-          "Thu, 22 Jun 2023 01:06:55 GMT"
+          "Thu, 06 Mar 2025 00:09:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -553,15 +628,15 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzE1NDUtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekUxTkRVdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzc3NTEtRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01&t=638768165569414079&c=MIIHpTCCBo2gAwIBAgITfwTYu0qoRwcN0bP8jwAEBNi7SjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjUwMTIzMjA0ODUxWhcNMjUwNzIyMjA0ODUxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJiyUikcpMswfhvdsI_rXYHu5usdpZW7yAqWPwx7nyvDBbA6tYMOwIWDF3lmy48lA46kFg2__zl_gVcj_Jw_2ue8USufQFsjmlCYmhbryemgmCuZucLrVs0nOW_5HVAX7QY9eBRWotqXIDJPTRyoGqWrXm2qO_sMjVacTB19-WMO5gHXKvOrm3HRspddB5sJUi15aHoSTlGgepJ8Bc6vMEFWUSNkkRqGt-EtMDQGAf2PFA2rkeizLvEPyGwqA04f56eXcnvVc-9t6jGFggfFusEW3_EaE1CqF_Aemzi9kaAhLfj5fOyZHybExiqyzL3WDGLAe-mC9uhOggcp5HjtKECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFghfmRS4WsmTQCAWQCAQcwggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTFiuatBch4getEuR5ddJpfuPsJ8DAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwIwDAYKKwYBBAGCN3sEAjAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIxmxJ5xNUiG8PRXsUSme6IbA37JinZso0lwEjfgtHmK1DZhhGugl-cdjEw10JLCVwaiKd-q2yljbccx_MpSj2rx5yGUNb32Cv2p40-HWzxtYMw0j9JGcrJWoP_apkjIELce110mKIOL4dJ3r8N5cXuhEatDvAPjNYjdG9YgGTE1s1CLy9MvJsLRVQnWtxDWlWsj_XgzlBhvgxwXILR7A48GZLe9ENWEJwEl_AmMGT_o5kKmBfcKl6mjYWjCchXL5bHKE5dnl9X3W2eQTdqqGqh2z2KAUwyCu2xOV5xh6Zjg6SDEuPHvcBqAHqMgqi3E38hUBBXw4AXVsmQhz5FyOg8&s=M8TOuZ3a8qIgqUyTjDUFzMEFVA7qGk0wx9cHWicWJYEbiZ6M0OyXa0V1BC8cumL_hf2pISPsqn4EJEZbQsMOrFRRnmGWpM6qvj8Rh54HzESqleCY8ppei_iotr8044h9tRwET76yf5_4QoGF2v42zSyvKDQP-XbKh5O4xGEz6J4Fphi1yEgDYTIYUXoSQI7_cw9MHpPxwL7U7X3Xf0lH8HvKk1oT88xBSX0tpgsiBG-SFZVpB2zVmbvK2boZ-hEz3XjOj9Sg2r4jlNZTkJf0zGd6DN4nrcK9dI-5oqAd2fHTEmRsMopjemtmJhLwbfXe5vU4oxk4l1ZCP446vd3bpQ&h=yK0Jx05zCtzxiIR6WMWUUWaramSIe40QS4rUIMSLrTI",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSemMzTlRFdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDEmdD02Mzg3NjgxNjU1Njk0MTQwNzkmYz1NSUlIcFRDQ0JvMmdBd0lCQWdJVGZ3VFl1MHFvUndjTjBiUDhqd0FFQk5pN1NqQU5CZ2txaGtpRzl3MEJBUXNGQURCRU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFIwSk1NUk13RVFZS0NaSW1pWlB5TEdRQkdSWURRVTFGTVJnd0ZnWURWUVFERXc5QlRVVWdTVzVtY21FZ1EwRWdNREl3SGhjTk1qVXdNVEl6TWpBME9EVXhXaGNOTWpVd056SXlNakEwT0RVeFdqQkFNVDR3UEFZRFZRUURFelZoYzNsdVkyOXdaWEpoZEdsdmJuTnBaMjVwYm1kalpYSjBhV1pwWTJGMFpTNXRZVzVoWjJWdFpXNTBMbUY2ZFhKbExtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMSml5VWlrY3BNc3dmaHZkc0lfclhZSHU1dXNkcFpXN3lBcVdQd3g3bnl2REJiQTZ0WU1Pd0lXREYzbG15NDhsQTQ2a0ZnMl9femxfZ1Zjal9Kd18ydWU4VVN1ZlFGc2ptbENZbWhicnllbWdtQ3VadWNMclZzMG5PV181SFZBWDdRWTllQlJXb3RxWElESlBUUnlvR3FXclhtMnFPX3NNalZhY1RCMTktV01PNWdIWEt2T3JtM0hSc3BkZEI1c0pVaTE1YUhvU1RsR2dlcEo4QmM2dk1FRldVU05ra1JxR3QtRXRNRFFHQWYyUEZBMnJrZWl6THZFUHlHd3FBMDRmNTZlWGNudlZjLTl0NmpHRmdnZkZ1c0VXM19FYUUxQ3FGX0FlbXppOWthQWhMZmo1Zk95Wkh5YkV4aXF5ekwzV0RHTEFlLW1DOXVoT2dnY3A1SGp0S0VDQXdFQUFhT0NCSkl3Z2dTT01DY0dDU3NHQVFRQmdqY1ZDZ1FhTUJnd0NnWUlLd1lCQlFVSEF3RXdDZ1lJS3dZQkJRVUhBd0l3UFFZSkt3WUJCQUdDTnhVSEJEQXdMZ1ltS3dZQkJBR0NOeFVJaHBEakRZVFZ0SGlFOFlzLWhadmRGczZkRW9GZ2hmbVJTNFdzbVRRQ0FXUUNBUWN3Z2dIYUJnZ3JCZ0VGQlFjQkFRU0NBY3d3Z2dISU1HWUdDQ3NHQVFVRkJ6QUNobHBvZEhSd09pOHZZM0pzTG0xcFkzSnZjMjltZEM1amIyMHZjR3RwYVc1bWNtRXZRMlZ5ZEhNdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtd3hMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNRllHQ0NzR0FRVUZCekFDaGtwb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyRnBZUzlDVERKUVMwbEpUbFJEUVRBeExrRk5SUzVIUWt4ZlFVMUZKVEl3U1c1bWNtRWxNakJEUVNVeU1EQXlLRFFwTG1OeWREQldCZ2dyQmdFRkJRY3dBb1pLYUhSMGNEb3ZMMk55YkRNdVlXMWxMbWRpYkM5aGFXRXZRa3d5VUV0SlNVNVVRMEV3TVM1QlRVVXVSMEpNWDBGTlJTVXlNRWx1Wm5KaEpUSXdRMEVsTWpBd01pZzBLUzVqY25Rd1ZnWUlLd1lCQlFVSE1BS0dTbWgwZEhBNkx5OWpjbXcwTG1GdFpTNW5ZbXd2WVdsaEwwSk1NbEJMU1VsT1ZFTkJNREV1UVUxRkxrZENURjlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0owTUIwR0ExVWREZ1FXQkJURml1YXRCY2g0Z2V0RXVSNWRkSnBmdVBzSjhEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd2dnRTFCZ05WSFI4RWdnRXNNSUlCS0RDQ0FTU2dnZ0Vnb0lJQkhJWkNhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwzQnJhV2x1Wm5KaEwwTlNUQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01TNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc01pNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc015NWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzaGpSb2RIUndPaTh2WTNKc05DNWhiV1V1WjJKc0wyTnliQzlCVFVVbE1qQkpibVp5WVNVeU1FTkJKVEl3TURJb05Da3VZM0pzTUlHZEJnTlZIU0FFZ1pVd2daSXdEQVlLS3dZQkJBR0NOM3NCQVRCbUJnb3JCZ0VFQVlJM2V3SUNNRmd3VmdZSUt3WUJCUVVIQWdJd1NoNUlBRE1BTXdCbEFEQUFNUUE1QURJQU1RQXRBRFFBWkFBMkFEUUFMUUEwQUdZQU9BQmpBQzBBWVFBd0FEVUFOUUF0QURVQVlnQmtBR0VBWmdCbUFHUUFOUUJsQURNQU13QmtNQXdHQ2lzR0FRUUJnamQ3QXdJd0RBWUtLd1lCQkFHQ04zc0VBakFmQmdOVkhTTUVHREFXZ0JTdWVjSnJYU1dJRXdiMkJ3bkRsM3g3bDQ4ZFZUQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUhBd0l3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUl4bXhKNXhOVWlHOFBSWHNVU21lNkliQTM3SmluWnNvMGx3RWpmZ3RIbUsxRFpoaEd1Z2wtY2RqRXcxMEpMQ1Z3YWlLZC1xMnlsamJjY3hfTXBTajJyeDV5R1VOYjMyQ3YycDQwLUhXenh0WU13MGo5SkdjckpXb1BfYXBraklFTGNlMTEwbUtJT0w0ZEozcjhONWNYdWhFYXREdkFQak5ZamRHOVlnR1RFMXMxQ0x5OU12SnNMUlZRbld0eERXbFdzal9YZ3psQmh2Z3h3WElMUjdBNDhHWkxlOUVOV0VKd0VsX0FtTUdUX281a0ttQmZjS2w2bWpZV2pDY2hYTDViSEtFNWRubDlYM1cyZVFUZHFxR3FoMnoyS0FVd3lDdTJ4T1Y1eGg2WmpnNlNERXVQSHZjQnFBSHFNZ3FpM0UzOGhVQkJYdzRBWFZzbVFoejVGeU9nOCZzPU04VE91WjNhOHFJZ3FVeVRqRFVGek1FRlZBN3FHazB3eDljSFdpY1dKWUViaVo2TTBPeVhhMFYxQkM4Y3VtTF9oZjJwSVNQc3FuNEVKRVpiUXNNT3JGUlJubUdXcE02cXZqOFJoNTRIekVTcWxlQ1k4cHBlaV9pb3RyODA0NGg5dFJ3RVQ3NnlmNV80UW9HRjJ2NDJ6U3l2S0RRUC1YYktoNU80eEdFejZKNEZwaGkxeUVnRFlUSVlVWG9TUUk3X2N3OU1IcFB4d0w3VTdYM1hmMGxIOEh2S2sxb1Q4OHhCU1gwdHBnc2lCRy1TRlpWcEIyelZtYnZLMmJvWi1oRXozWGpPajlTZzJyNGpsTlpUa0pmMHpHZDZETjRucmNLOWRJLTVvcUFkMmZIVEVtUnNNb3BqZW10bUpoTHdiZlhlNXZVNG94azRsMVpDUDQ0NnZkM2JwUSZoPXlLMEp4MDV6Q3R6eGlJUjZXTVdVVVdhcmFtU0llNDBRUzRyVUlNU0xyVEk=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.3624.51421",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.104"
         ]
       },
       "RequestBody": "",
@@ -573,16 +648,19 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-request-id": [
-          "29870b06-c3fc-4d07-9ad8-a81ee934508b"
+          "6711b73c-64c8-4a9d-a6d3-6b175ab72497"
         ],
         "x-ms-correlation-request-id": [
-          "29870b06-c3fc-4d07-9ad8-a81ee934508b"
+          "6711b73c-64c8-4a9d-a6d3-6b175ab72497"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010656Z:29870b06-c3fc-4d07-9ad8-a81ee934508b"
+          "WESTUS2:20250306T000932Z:6711b73c-64c8-4a9d-a6d3-6b175ab72497"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -590,686 +668,14 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:06:55 GMT"
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg4117?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDExNz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d5644a74-9f2f-40b1-a2ee-c4fce8df9b42"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "29"
-        ]
-      },
-      "RequestBody": "{\r\n  \"location\": \"EastUS2\"\r\n}",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-request-id": [
-          "77bb677d-73b0-460c-8ef6-0a0c87565c95"
-        ],
-        "x-ms-correlation-request-id": [
-          "77bb677d-73b0-460c-8ef6-0a0c87565c95"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010656Z:77bb677d-73b0-460c-8ef6-0a0c87565c95"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "X-MSEdge-Ref": [
+          "Ref A: 460AC5D155EF4B4FB69882DA45CE149B Ref B: CO6AA3150220023 Ref C: 2025-03-06T00:09:32Z"
         ],
         "Date": [
-          "Thu, 22 Jun 2023 01:06:56 GMT"
-        ],
-        "Content-Length": [
-          "178"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117\",\r\n  \"name\": \"pstestrg4117\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDExNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNDExNz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0cf88971-146a-4bc2-a7c1-3eb3507b5511"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "218"
-        ]
-      },
-      "RequestBody": "{\r\n  \"kind\": \"SpeechServices\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"EastUS2\",\r\n  \"properties\": {\r\n    \"customSubDomainName\": \"csapstestrg4117\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"b6008b01-0000-0200-0000-64939eb40000\""
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "1999e6e2-2321-46e3-93c5-d8d336edd5c5"
-        ],
-        "x-envoy-upstream-service-time": [
-          "1753"
-        ],
-        "Server": [
-          "istio-envoy"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "00bbc08b-2d41-47c7-84f9-30b4c2191e44"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010701Z:00bbc08b-2d41-47c7-84f9-30b4c2191e44"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:01 GMT"
-        ],
-        "Content-Length": [
-          "4237"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117\",\r\n  \"name\": \"csapstestrg4117\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"b6008b01-0000-0200-0000-64939eb40000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n    \"internalId\": \"8cf33260262944af8dc330a53f3568e7\",\r\n    \"dateCreated\": \"2023-06-22T01:06:59.9112054Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg4117\",\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text v2.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1-preview.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Unified Speech\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Container\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Model Distribution Service\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Token API\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"1e93223c-84f6-44ed-986c-4a77122cd0fa\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-06-22T01:06:57.8951924Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-06-22T01:06:57.8951924Z\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDExNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNDExNz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0cf88971-146a-4bc2-a7c1-3eb3507b5511"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"b6008b01-0000-0200-0000-64939eb40000\""
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "bdb1b422-7b49-41ca-99dc-47a8ffda35cc"
-        ],
-        "x-envoy-upstream-service-time": [
-          "18"
-        ],
-        "Server": [
-          "istio-envoy"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "27d4988a-acec-4311-b543-0ee938fa80b9"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010701Z:27d4988a-acec-4311-b543-0ee938fa80b9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:01 GMT"
-        ],
-        "Content-Length": [
-          "4237"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117\",\r\n  \"name\": \"csapstestrg4117\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"b6008b01-0000-0200-0000-64939eb40000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n    \"internalId\": \"8cf33260262944af8dc330a53f3568e7\",\r\n    \"dateCreated\": \"2023-06-22T01:06:59.9112054Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg4117\",\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text v2.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1-preview.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Unified Speech\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Container\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Model Distribution Service\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Token API\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"1e93223c-84f6-44ed-986c-4a77122cd0fa\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-06-22T01:06:57.8951924Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-06-22T01:06:57.8951924Z\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDExNy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvZ25pdGl2ZVNlcnZpY2VzL2FjY291bnRzL2NzYXBzdGVzdHJnNDExNz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
-      "RequestMethod": "PATCH",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "629e343c-a4cb-4a5a-aec5-782e621afd98"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CognitiveServices.CognitiveServicesManagementClient/9.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "252"
-        ]
-      },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"b6008d01-0000-0200-0000-64939eb70000\""
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "70a5b8e4-238c-4126-a958-8d227979a476"
-        ],
-        "x-envoy-upstream-service-time": [
-          "135"
-        ],
-        "Server": [
-          "istio-envoy"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "bc7eda7a-d8d9-4488-a9eb-a8b1c2e4e38e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010704Z:bc7eda7a-d8d9-4488-a9eb-a8b1c2e4e38e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:04 GMT"
-        ],
-        "Content-Length": [
-          "4422"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/pstestrg4117/providers/Microsoft.CognitiveServices/accounts/csapstestrg4117\",\r\n  \"name\": \"csapstestrg4117\",\r\n  \"type\": \"Microsoft.CognitiveServices/accounts\",\r\n  \"etag\": \"\\\"b6008d01-0000-0200-0000-64939eb70000\\\"\",\r\n  \"location\": \"EastUS2\",\r\n  \"sku\": {\r\n    \"name\": \"S0\"\r\n  },\r\n  \"kind\": \"SpeechServices\",\r\n  \"properties\": {\r\n    \"endpoint\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"internalId\": \"8cf33260262944af8dc330a53f3568e7\",\r\n    \"dateCreated\": \"2023-06-22T01:06:59.9112054Z\",\r\n    \"callRateLimit\": {\r\n      \"rules\": [\r\n        {\r\n          \"key\": \"token\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 50,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"sts/v1.0/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.synthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/synthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.neuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/neuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.customneuralvoicesynthesize\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 200,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/customneuralvoicesynthesize\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.conversationtranscription\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speech/singlechannelaudioconversationtranscription\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/multichannelaudioconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speech/videoconversationtranscribe\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speechtotext\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speechtotext/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.texttospeech\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"texttospeech/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv2\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 20,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"speaker/*\",\r\n              \"method\": \"*\"\r\n            },\r\n            {\r\n              \"path\": \"speaker-recognition/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"speech.speakerrecognitionv1\",\r\n          \"renewalPeriod\": 1,\r\n          \"count\": 5,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"spid/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"container.billing\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 500,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"billing/*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"key\": \"default\",\r\n          \"renewalPeriod\": 10,\r\n          \"count\": 100,\r\n          \"matchPatterns\": [\r\n            {\r\n              \"path\": \"*\",\r\n              \"method\": \"*\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"isMigrated\": false,\r\n    \"customSubDomainName\": \"csapstestrg4117\",\r\n    \"userOwnedStorage\": [\r\n      {\r\n        \"resourceId\": \"/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583\"\r\n      }\r\n    ],\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"VirtualNetworks\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedKey\"\r\n      },\r\n      {\r\n        \"name\": \"CustomerManagedStorage\"\r\n      },\r\n      {\r\n        \"name\": \"Container\",\r\n        \"value\": \"SpeechServices.*\"\r\n      }\r\n    ],\r\n    \"endpoints\": {\r\n      \"Speech Services Speech to Text v2.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.0\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1-preview.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speech to Text v3.1\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Custom Voice\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Audio Content Creation\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Unified Speech\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Verification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Speech Services Speaker Identification\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Container\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Model Distribution Service\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\",\r\n      \"Token API\": \"https://csapstestrg4117.cognitiveservices.azure.com/sts/v1.0/issuetoken\"\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"1e93223c-84f6-44ed-986c-4a77122cd0fa\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-06-22T01:06:57.8951924Z\",\r\n    \"lastModifiedBy\": \"50841d5f-166a-406c-8472-6800c9698b43\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-06-22T01:07:02.8586714Z\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourcegroups/pstestrg4117?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDExNz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "DELETE",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "698ace0d-8e95-4434-9882-bc5542ce7344"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "b3298628-5127-48c3-a60a-6adf2b67dca8"
-        ],
-        "x-ms-correlation-request-id": [
-          "b3298628-5127-48c3-a60a-6adf2b67dca8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010706Z:b3298628-5127-48c3-a60a-6adf2b67dca8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:05 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "4f5b26aa-d42a-4a81-88b9-8ecd2e9f4c68"
-        ],
-        "x-ms-correlation-request-id": [
-          "4f5b26aa-d42a-4a81-88b9-8ecd2e9f4c68"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010721Z:4f5b26aa-d42a-4a81-88b9-8ecd2e9f4c68"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:20 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-request-id": [
-          "08e86189-3c0c-4494-a7f6-b97fde745219"
-        ],
-        "x-ms-correlation-request-id": [
-          "08e86189-3c0c-4494-a7f6-b97fde745219"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010736Z:08e86189-3c0c-4494-a7f6-b97fde745219"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:35 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-request-id": [
-          "a5ee57ff-2a11-4d63-9cde-2e79be254e20"
-        ],
-        "x-ms-correlation-request-id": [
-          "a5ee57ff-2a11-4d63-9cde-2e79be254e20"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010751Z:a5ee57ff-2a11-4d63-9cde-2e79be254e20"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:07:50 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "43d6828e-2909-485e-bab0-876f7343f88f"
-        ],
-        "x-ms-correlation-request-id": [
-          "43d6828e-2909-485e-bab0-876f7343f88f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010806Z:43d6828e-2909-485e-bab0-876f7343f88f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:08:05 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-request-id": [
-          "7ee7c9bb-7b54-4407-b4a6-1ab0f337d071"
-        ],
-        "x-ms-correlation-request-id": [
-          "7ee7c9bb-7b54-4407-b4a6-1ab0f337d071"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010821Z:7ee7c9bb-7b54-4407-b4a6-1ab0f337d071"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:08:21 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQxMTctRUFTVFVTMiIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjliOTZiMzYtMWY1ZS00MDIxLTg5NTktNTE1MjdlMjZlNmQzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF4TVRjdFJVRlRWRlZUTWlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpNaUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "1d86ed76-137c-451e-89ec-f8ea0b6cb97e"
-        ],
-        "x-ms-correlation-request-id": [
-          "1d86ed76-137c-451e-89ec-f8ea0b6cb97e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230622T010822Z:1d86ed76-137c-451e-89ec-f8ea0b6cb97e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 22 Jun 2023 01:08:21 GMT"
+          "Thu, 06 Mar 2025 00:09:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -1284,8 +690,7 @@
   ],
   "Names": {
     "Test-UserOwnedStorage": [
-      "pstestrg1545",
-      "pstestrg4117"
+      "pstestrg7751"
     ]
   },
   "Variables": {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDetailVMIngestion
 
 ## SYNOPSIS
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticDetailVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 
@@ -75,7 +75,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
@@ -176,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMIngestionDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse
 
 ## NOTES
 

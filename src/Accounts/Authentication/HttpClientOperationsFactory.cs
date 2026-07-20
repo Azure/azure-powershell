@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             /// <summary>
-            /// Invalidate a cache value due to an event (for example, the cache value was aritten)
+            /// Invalidate a cache value due to an event (for example, the cache value was written)
             /// </summary>
             /// <param name="requestUri">The uri of the entity to cache</param>
             protected virtual void InvalidateCache(string requestUri)

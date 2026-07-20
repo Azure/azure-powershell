@@ -44,7 +44,6 @@ namespace VersionController.Models
         private AzurePSVersion _assignedVersion { get; set;}
 
         public AzurePSVersion MinimalVersion { get; set; }
-        public string PSRepositories { get; set; }
 
         private ReleaseType _releaseType { get; set; }
 
@@ -85,6 +84,7 @@ namespace VersionController.Models
             {
                 _newVersion = IsNewModule() ? _oldVersion : GetBumpedVersion();
             }
+            Console.WriteLine("_assignedVersion: " + _assignedVersion);
             if (MinimalVersion != null && MinimalVersion > new AzurePSVersion(_newVersion))
             {
                 Console.WriteLine($"Adjust version from {_newVersion} to {MinimalVersion} due to MinimalVersion.csv");
@@ -227,7 +227,7 @@ namespace VersionController.Models
                 versionBump = Version.MINOR;
             }
 
-            List<AzurePSVersion> galleryVersion = ModuleHelper.GetAllVersionsFromGallery(_fileHelper.ModuleName, PSRepositories);
+            List<AzurePSVersion> galleryVersion = ModuleHelper.GetAllVersionsFromGallery(_fileHelper.ModuleName);
             AzurePSVersion bumpedVersion = galleryVersion.Count == 0 ? new AzurePSVersion(0, 1, 0) : GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
             AzurePSVersion maxGAedVersionInGallery = ModuleHelper.GetLatestVersionFromGalleryUnderSameMajorVersion(bumpedVersion, galleryVersion, false);
             AzurePSVersion maxPreGAedVersionInGallery = ModuleHelper.GetLatestVersionFromGalleryUnderSameMajorVersion(bumpedVersion, galleryVersion, true);
@@ -238,6 +238,17 @@ namespace VersionController.Models
                 string warningMsg = $"The GA version of {moduleName} in gallery ({maxGAedVersionInGallery}) is greater or equal to the bumped version({bumpedVersion}). Continue bumping version for {moduleName}.";
                 _logger.LogWarning(warningMsg);
                 bumpedVersion = GetBumpedVersionByType(bumpedVersion, versionBump);
+                // Normalize version numbers if they exceed or equal 1000. Add this to avoid infinite loop when patch version is bumped but actually the minor version is less than maxGAedVersionInGallery.minor.
+                if (bumpedVersion.Patch >= 1000)
+                {
+                    bumpedVersion = new AzurePSVersion(bumpedVersion.Major, bumpedVersion.Minor + 1, bumpedVersion.Patch - 1000, bumpedVersion.Label);
+                    _logger.LogWarning($"Patch version exceeded 999. Normalized version to {bumpedVersion}");
+                }
+                if (bumpedVersion.Minor >= 1000)
+                {
+                    bumpedVersion = new AzurePSVersion(bumpedVersion.Major + 1, bumpedVersion.Minor - 1000, bumpedVersion.Patch, bumpedVersion.Label);
+                    _logger.LogWarning($"Minor version exceeded 999. Normalized version to {bumpedVersion}");
+                }
             }
 
             // Continue bumping version until bumpedVersion is higher than maxPreGAedVersionInGallery in same major version

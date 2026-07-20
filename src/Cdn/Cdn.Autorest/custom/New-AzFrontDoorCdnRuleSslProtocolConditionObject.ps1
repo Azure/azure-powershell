@@ -21,34 +21,36 @@ Create an in-memory object for DeliveryRuleSslProtocolCondition.
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSslProtocolCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition
 .Link
-https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSslProtocolConditionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulesslprotocolconditionobject
 #>
 function New-AzFrontDoorCdnRuleSslProtocolConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSslProtocolCondition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SslProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SslProtocol[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("TLSv1", "TLSv1.1", "TLSv1.2")]
+        [string[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
+        [string[]]
         $ParameterTransform,
-        [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
-        $Name
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
+        [string]
+        [alias('Name')]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleSslProtocolCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -59,8 +61,8 @@ function New-AzFrontDoorCdnRuleSslProtocolConditionObject {
         if ($PSBoundParameters.ContainsKey('ParameterTransform')) {
             $Object.ParameterTransform = $ParameterTransform
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
+            $Object.ParameterTypeName = $ParameterTypeName
         }
         return $Object
     }

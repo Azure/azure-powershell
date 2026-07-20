@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             }
             else
             {
-                // List all servers in given resource group if avaliable otherwise all servers in the subscription
+                // List all servers in given resource group if available otherwise all servers in the subscription
                 var list = AnalysisServicesClient.ListServers(ResourceGroupName);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServerCollection(list), true);
             }

@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                     {
                         WriteWarning(
                             $"Accessing network path {Path}' as {UserName} didn't work." + Environment.NewLine +
-                            $"Consider using -Credential parameter to provide creentials of the user account with appropriate access.");
+                            $"Consider using -Credential parameter to provide credentials of the user account with appropriate access.");
                     }
                     throw;
                 }

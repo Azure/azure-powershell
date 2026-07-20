@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Base class for backup rentention policy.
+    /// Base class for backup retention policy.
     /// </summary>
     public class RetentionPolicyBase : ObjectBase
     {

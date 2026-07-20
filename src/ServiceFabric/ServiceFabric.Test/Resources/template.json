@@ -152,6 +152,23 @@
     "vmNodeType0Size": {
       "type": "string",
       "defaultValue": "Standard_D2s_v3"
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "allowedValues": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultValue": "Silver"
+    },
+    "reliabilityLevel": {
+      "type": "string",
+      "allowedValues": [
+        "Silver",
+        "Gold",
+        "Platinum"
+      ],
+      "defaultValue": "Silver"
     }
   },
   "variables": {
@@ -270,7 +287,10 @@
         "dnsSettings": {
           "domainNameLabel": "[variables('dnsName')]"
         },
-        "publicIPAllocationMethod": "Dynamic"
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard"
       },
       "tags": {
         "resourceType": "Service Fabric",
@@ -433,13 +453,16 @@
           }
         ]
       },
+      "sku": {
+        "name": "Standard"
+      },
       "tags": {
         "resourceType": "Service Fabric",
         "clusterName": "[parameters('clusterName')]"
       }
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[concat('nsg', variables('subnet0Name'))]",
       "location": "[resourceGroup().location]",
@@ -456,8 +479,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "VirtualNetwork",
               "sourcePortRange": "*"
-            },
-            "comments": "allow SMB traffic within the net, used by fabric to move packages around"
+            }
           },
           {
             "name": "allowSvcFabCluser",
@@ -470,8 +492,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "VirtualNetwork",
               "sourcePortRange": "*"
-            },
-            "comments": "allow ports within vnet that are used by the fabric to talk between nodes"
+            }
           },
           {
             "name": "allowSvcFabEphemeral",
@@ -484,8 +505,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "VirtualNetwork",
               "sourcePortRange": "*"
-            },
-            "comments": "allow fabric ephemeral ports within the vnet"
+            }
           },
           {
             "name": "allowSvcFabPortal",
@@ -498,8 +518,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "allow port used to access the fabric cluster web portal"
+            }
           },
           {
             "name": "allowSvcFabClient",
@@ -512,8 +531,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "allow port used by the fabric client (includes powershell)"
+            }
           },
           {
             "name": "allowSvcFabApplication",
@@ -526,8 +544,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "allow fabric application ports within the vnet"
+            }
           },
           {
             "name": "blockAll",
@@ -540,8 +557,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "block all traffic except what we've explicitly allowed"
+            }
           },
           {
             "name": "allowVNetRDP",
@@ -554,8 +570,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-      },
-            "comments": "allow RDP within the net"
+            }
           },
           {
             "name": "allowAppPort1",
@@ -568,8 +583,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "allow public application port 1"
+            }
           },
           {
             "name": "allowAppPort2",
@@ -582,8 +596,7 @@
               "protocol": "*",
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*"
-            },
-            "comments": "allow public application port 2"
+            }
           }
         ]
       },
@@ -638,7 +651,7 @@
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
                     "nodeTypeRef": "[variables('vmNodeType0Name')]",
                     "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Silver",
+                    "durabilityLevel": "[parameters('durabilityLevel')]",
                     "enableParallelJobs": true,
                     "nicPrefixOverride": "[variables('subnet0Prefix')]",
                     "certificate": {
@@ -823,7 +836,7 @@
               "startPort": "[variables('nt0applicationStartPort')]"
             },
             "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-            "durabilityLevel": "Silver",
+            "durabilityLevel": "[parameters('durabilityLevel')]",
             "ephemeralPorts": {
               "endPort": "[variables('nt0ephemeralEndPort')]",
               "startPort": "[variables('nt0ephemeralStartPort')]"
@@ -834,7 +847,7 @@
           }
         ],
         "provisioningState": "Default",
-        "reliabilityLevel": "Silver",
+        "reliabilityLevel": "[parameters('reliabilityLevel')]",
         "upgradeMode": "Automatic",
         "vmImage": "Windows"
       },

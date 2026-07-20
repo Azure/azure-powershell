@@ -12,13 +12,26 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Update an image resource.
+.Description
+Update an image resource.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
+#>
 function Update-AzLabServicesPlanImage_LabPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    # The object of lab service lab plan.
     ${LabPlan},
 
     [Parameter(Mandatory)]
@@ -28,9 +41,9 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Is the image enabled
     ${EnabledState},
 

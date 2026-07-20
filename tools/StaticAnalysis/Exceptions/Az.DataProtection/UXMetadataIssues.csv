@@ -3,3 +3,4 @@
 "Az.DataProtection","1","Microsoft.DataProtection","backupVaults-backupResourceGuardProxies","Get-AzDataProtectionResourceGuardMapping","resourceGuardProxyName is defined in path but cannot find in example"
 "Az.DataProtection","1","Microsoft.DataProtection","backupVaults-backupResourceGuardProxies","Remove-AzDataProtectionResourceGuardMapping","resourceGuardProxyName is defined in path but cannot find in example"
 "Az.DataProtection","1","Microsoft.DataProtection","backupVaults","Test-AzDataProtectionBackupInstanceReadiness","Cannot find a matched parameter set for example of Test-AzDataProtectionBackupInstanceReadiness"
+"Az.DataProtection","1","Microsoft.DataProtection","backupVaults-backupInstances","Test-AzDataProtectionBackupInstanceUpdate","Cannot find a matched parameter set for example of Test-AzDataProtectionBackupInstanceUpdate"

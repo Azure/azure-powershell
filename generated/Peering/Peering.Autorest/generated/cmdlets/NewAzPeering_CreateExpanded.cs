@@ -6,22 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Creates a new peering or updates an existing peering with the specified name under the given subscription and resource
-    /// group.
+    /// create a new peering or create an existing peering with the specified name under the given subscription and resource group.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPeering_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.Description(@"Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.Description(@"create a new peering or create an existing peering with the specified name under the given subscription and resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}", ApiVersion = "2022-10-01")]
     public partial class NewAzPeering_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -37,15 +39,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>
         /// Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering _peeringBody = new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.Peering();
+        private Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering _peeringBody = new Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Peering();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Peering.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering Client => Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.ClientAPI;
@@ -69,8 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         ReadOnly = false,
         Description = @"The set of connections that constitute a direct peering.",
         SerializedName = @"connections",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IDirectConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IDirectConnection[] DirectConnection { get => _peeringBody.DirectConnection ?? null /* arrayOf */; set => _peeringBody.DirectConnection = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection[] DirectConnection { get => _peeringBody.DirectConnection?.ToArray() ?? null /* fixedArrayOf */; set => _peeringBody.DirectConnection = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection>(value) : null); }
 
         /// <summary>The identifier of the referenced resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identifier of the referenced resource.")]
@@ -91,9 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         ReadOnly = false,
         Description = @"The type of direct peering.",
         SerializedName = @"directPeeringType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType DirectPeeringType { get => _peeringBody.DirectPeeringType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType)""); set => _peeringBody.DirectPeeringType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Edge", "Transit", "Cdn", "Internal", "Ix", "IxRs", "Voice", "EdgeZoneForOperators")]
+        public string DirectPeeringType { get => _peeringBody.DirectPeeringType ?? null; set => _peeringBody.DirectPeeringType = value; }
 
         /// <summary>The set of connections that constitute an exchange peering.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -104,8 +121,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         ReadOnly = false,
         Description = @"The set of connections that constitute an exchange peering.",
         SerializedName = @"connections",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IExchangeConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IExchangeConnection[] ExchangeConnection { get => _peeringBody.ExchangeConnection ?? null /* arrayOf */; set => _peeringBody.ExchangeConnection = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection[] ExchangeConnection { get => _peeringBody.ExchangeConnection?.ToArray() ?? null /* fixedArrayOf */; set => _peeringBody.ExchangeConnection = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection>(value) : null); }
 
         /// <summary>The identifier of the referenced resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identifier of the referenced resource.")]
@@ -117,6 +134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         public string ExchangePeerAsnId { get => _peeringBody.ExchangePeerAsnId ?? null; set => _peeringBody.ExchangePeerAsnId = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -141,9 +161,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         ReadOnly = false,
         Description = @"The kind of the peering.",
         SerializedName = @"kind",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.Kind Kind { get => _peeringBody.Kind; set => _peeringBody.Kind = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.PSArgumentCompleterAttribute("Direct", "Exchange")]
+        public string Kind { get => _peeringBody.Kind ?? null; set => _peeringBody.Kind = value; }
 
         /// <summary>The location of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The location of the resource.")]
@@ -193,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -251,7 +271,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Peering.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Peering.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -264,44 +285,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         ReadOnly = false,
         Description = @"The resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringTags Tag { get => _peeringBody.Tag ?? null /* object */; set => _peeringBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringTags Tag { get => _peeringBody.Tag ?? null /* object */; set => _peeringBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -324,6 +345,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -388,8 +414,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -399,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzPeering_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzPeering_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzPeering_CreateExpanded()
         {
@@ -453,7 +504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Peering.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -466,12 +517,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.PeeringsCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, _peeringBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.PeeringsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _peeringBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_peeringBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -507,12 +558,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering> response)
         {
             using( NoSynchronizationContext )
             {
@@ -524,8 +575,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -533,12 +602,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -555,15 +624,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_peeringBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Peering.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_peeringBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -573,12 +642,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering">Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering> response)
         {
             using( NoSynchronizationContext )
             {
@@ -590,8 +659,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

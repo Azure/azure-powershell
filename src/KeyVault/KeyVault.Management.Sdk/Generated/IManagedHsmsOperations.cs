@@ -121,10 +121,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedHsm>> GetWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -147,10 +149,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedHsm>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, int? top = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </remarks>
         /// <param name='top'>
         /// Maximum number of results to return.
@@ -170,10 +174,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedHsm>>> ListBySubscriptionWithHttpMessagesAsync(int? top = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -366,10 +372,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedHsmsPurgeDeletedHeaders>> BeginPurgeDeletedWithHttpMessagesAsync(string name, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -389,10 +397,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedHsm>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -412,10 +422,12 @@ namespace Microsoft.Azure.Management.KeyVault
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedHsm>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <remarks>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

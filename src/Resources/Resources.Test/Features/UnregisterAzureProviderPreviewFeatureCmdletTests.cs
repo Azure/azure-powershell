@@ -131,8 +131,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.featureOperationsMock.Verify(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Never() : Times.Once());
 
-            this.featureOperationsMock.ResetCalls();
-            this.commandRuntimeMock.ResetCalls();
+            this.featureOperationsMock.Invocations.Clear();
+            this.commandRuntimeMock.Invocations.Clear();
         }
     }
 }

@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="id">The ID of the private link resource.
         /// </param>
 
-        /// <param name="name">The name of the private link resource.
+        /// <param name="name">The name of the private link resource. See [naming
+        /// rules](https://aka.ms/search-naming-rules) for more details.
         /// </param>
 
         /// <param name="type">The resource type.
@@ -67,7 +68,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string Id {get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the private link resource.
+        /// Gets or sets the name of the private link resource. See [naming
+        /// rules](https://aka.ms/search-naming-rules) for more details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

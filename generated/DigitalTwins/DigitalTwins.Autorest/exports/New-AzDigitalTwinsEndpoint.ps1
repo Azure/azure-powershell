@@ -16,72 +16,76 @@
 
 <#
 .Synopsis
-Create or update DigitalTwinsInstance endpoint.
+Create DigitalTwinsInstance endpoint.
 .Description
-Create or update DigitalTwinsInstance endpoint.
+Create DigitalTwinsInstance endpoint.
 .Example
-New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -connectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
+New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eh -EndpointType EventHub -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -ConnectionStringPrimaryKey 'Endpoint=sb://azps-eventhubs.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-eh' -AuthenticationType 'KeyBased'
 .Example
 New-AzDigitalTwinsEndpoint -EndpointName azps-dt-eg -EndpointType EventGrid -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -TopicEndpoint 'https://azps-eventgrid.eastus-1.eventgrid.azure.net/api/events' -AccessKey1 '******=' -AuthenticationType 'KeyBased'
 .Example
 New-AzDigitalTwinsEndpoint -EndpointName azps-dt-sb -EndpointType ServiceBus -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrimaryConnectionString "Endpoint=sb://azps-servicebus.servicebus.windows.net/;SharedAccessKeyName=abc123;SharedAccessKey=******;EntityPath=azps-sb" -AuthenticationType 'KeyBased'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>: DigitalTwinsInstance endpoint resource.
-  EndpointType <EndpointType>: The type of Digital Twins endpoint
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AuthenticationType <AuthenticationType?>]: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
+ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>: DigitalTwinsInstance endpoint resource. To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
+  EndpointType <String>: The type of Digital Twins endpoint
+  [AuthenticationType <String>]: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
   [DeadLetterSecret <String>]: Dead letter storage secret for key-based authentication. Will be obfuscated during read.
   [DeadLetterUri <String>]: Dead letter storage URL for identity-based authentication.
 .Link
 https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
 #>
 function New-AzDigitalTwinsEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
 [CmdletBinding(DefaultParameterSetName='EventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='EventHub', Mandatory)]
+    [Parameter(ParameterSetName='ServiceBus', Mandatory)]
+    [Parameter(ParameterSetName='EventGrid', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # Name of Endpoint Resource.
     ${EndpointName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='EventHub', Mandatory)]
+    [Parameter(ParameterSetName='ServiceBus', Mandatory)]
+    [Parameter(ParameterSetName='EventGrid', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the resource group that contains the DigitalTwinsInstance.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='EventHub', Mandatory)]
+    [Parameter(ParameterSetName='ServiceBus', Mandatory)]
+    [Parameter(ParameterSetName='EventGrid', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [System.String]
     # The name of the DigitalTwinsInstance.
     ${ResourceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EventHub')]
+    [Parameter(ParameterSetName='ServiceBus')]
+    [Parameter(ParameterSetName='EventGrid')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription identifier.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType])]
+    [Parameter(ParameterSetName='EventHub', Mandatory)]
+    [Parameter(ParameterSetName='ServiceBus', Mandatory)]
+    [Parameter(ParameterSetName='EventGrid', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("EventHub", "EventGrid", "ServiceBus")]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType]
+    [System.String]
     # The type of Digital Twins endpoint
     ${EndpointType},
 
@@ -91,17 +95,21 @@ param(
     # The subscription identifier.
     ${ConnectionStringPrimaryKey},
 
-    [Parameter(ValueFromPipeline)]
+    [Parameter(ParameterSetName='EventHub', ValueFromPipeline)]
+    [Parameter(ParameterSetName='ServiceBus', ValueFromPipeline)]
+    [Parameter(ParameterSetName='EventGrid', ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource]
     # DigitalTwinsInstance endpoint resource.
     # To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
     ${EndpointDescription},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType])]
+    [Parameter(ParameterSetName='EventHub')]
+    [Parameter(ParameterSetName='ServiceBus')]
+    [Parameter(ParameterSetName='EventGrid')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PSArgumentCompleterAttribute("KeyBased", "IdentityBased")]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType]
+    [System.String]
     # Specifies the authentication type being used for connecting to the endpoint.
     # Defaults to 'KeyBased'.
     # If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string).
@@ -114,14 +122,16 @@ param(
     # The subscription identifier.
     ${ConnectionStringSecondaryKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
     [System.String]
     # Dead letter storage secret for key-based authentication.
     # Will be obfuscated during read.
     ${DeadLetterSecret},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EventHub')]
+    [Parameter(ParameterSetName='ServiceBus')]
+    [Parameter(ParameterSetName='EventGrid')]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
     [System.String]
     # Dead letter storage URL for identity-based authentication.
@@ -145,12 +155,25 @@ param(
     # The subscription identifier.
     ${AccessKey1},
 
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -212,6 +235,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -234,10 +266,10 @@ begin {
             EventHub = 'Az.DigitalTwins.custom\New-AzDigitalTwinsEndpoint';
             ServiceBus = 'Az.DigitalTwins.custom\New-AzDigitalTwinsEndpoint';
             EventGrid = 'Az.DigitalTwins.custom\New-AzDigitalTwinsEndpoint';
+            CreateViaJsonFilePath = 'Az.DigitalTwins.custom\New-AzDigitalTwinsEndpoint';
+            CreateViaJsonString = 'Az.DigitalTwins.custom\New-AzDigitalTwinsEndpoint';
         }
-        if (('EventHub', 'ServiceBus', 'EventGrid') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('EventHub', 'ServiceBus', 'EventGrid') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -251,6 +283,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+
+* Updated control plane to 2025-04-01-preview
+* Updated data plane to 2025-04-01-preview
+
+## Version 2.0.2
+* Added preannouncement breaking change messages.
+
 ## Version 2.0.1
 * Upgraded nuget package to signed package.
 

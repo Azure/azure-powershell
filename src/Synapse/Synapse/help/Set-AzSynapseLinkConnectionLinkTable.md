@@ -15,22 +15,21 @@ Edits link tables under a link connection.
 ### SetByName (Default)
 ```
 Set-AzSynapseLinkConnectionLinkTable -WorkspaceName <String> -EditTablesRequestFile <String>
- -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseLinkConnectionLinkTable -WorkspaceObject <PSSynapseWorkspace> -EditTablesRequestFile <String>
- -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
 Set-AzSynapseLinkConnectionLinkTable -EditTablesRequestFile <String> -InputObject <PSLinkConnectionResource>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

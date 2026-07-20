@@ -21,7 +21,7 @@ Returns the Workspace resource associated with the given name.
 Create an in-memory object for Provider.
 
 ### [New-AzQuantumWorkspace](New-AzQuantumWorkspace.md)
-Creates or updates a workspace resource.
+create a workspace resource.
 
 ### [Remove-AzQuantumWorkspace](Remove-AzQuantumWorkspace.md)
 Deletes a Workspace resource.
@@ -30,5 +30,5 @@ Deletes a Workspace resource.
 Check the availability of the resource name.
 
 ### [Update-AzQuantumWorkspace](Update-AzQuantumWorkspace.md)
-Updates an existing workspace's tags.
+update an existing workspace's tags.
 

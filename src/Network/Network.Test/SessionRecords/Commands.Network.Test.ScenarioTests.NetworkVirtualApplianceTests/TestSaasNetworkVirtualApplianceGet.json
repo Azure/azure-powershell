@@ -1,0 +1,228 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/virtualHubs/hubtest?api-version=2024-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODQyYWM0ZTEtMjEwOS00YzE1LWFhMDEtOTcwODdhYWU5NzIyL3Jlc291cmNlR3JvdXBzL3JzYXB0LXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxIdWJzL2h1YnRlc3Q/YXBpLXZlcnNpb249MjAyNC0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bab1544a-267a-45e1-80d6-f7834b82f899"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "87a6df03-4561-46eb-ad32-000f08646153"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb8d3443-729e-47b0-99aa-5c382e5eead8"
+        ],
+        "x-ms-arm-service-request-id": [
+          "bcce5f1c-38a5-442c-9ed6-d074c56cf291"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20250221T014403Z:eb8d3443-729e-47b0-99aa-5c382e5eead8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3521C6352E8648DDA02DB1EE9B953394 Ref B: CO6AA3150217023 Ref C: 2025-02-21T01:44:02Z"
+        ],
+        "Date": [
+          "Fri, 21 Feb 2025 01:44:02 GMT"
+        ],
+        "Content-Length": [
+          "1026"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"hubtest\",\r\n  \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/virtualHubs/hubtest\",\r\n  \"etag\": \"W/\\\"b46ada3c-c7df-4500-b37b-f61890d8e42b\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualHubs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"\\\"AzSecPackAutoConfigReady\\\"\": \"\\\"true\\\"\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"virtualHubRouteTableV2s\": [],\r\n    \"addressPrefix\": \"10.4.0.0/16\",\r\n    \"virtualRouterAsn\": 65515,\r\n    \"virtualRouterIps\": [\r\n      \"10.4.32.5\",\r\n      \"10.4.32.6\"\r\n    ],\r\n    \"routeTable\": {\r\n      \"routes\": []\r\n    },\r\n    \"virtualRouterAutoScaleConfiguration\": {\r\n      \"minCapacity\": 2\r\n    },\r\n    \"virtualWan\": {\r\n      \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/virtualWans/wan-test\"\r\n    },\r\n    \"networkVirtualAppliances\": [\r\n      {\r\n        \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/networkVirtualAppliances/test-nva5\"\r\n      }\r\n    ],\r\n    \"sku\": \"Standard\",\r\n    \"routingState\": \"Provisioned\",\r\n    \"allowBranchToBranchTraffic\": false,\r\n    \"hubRoutingPreference\": \"ExpressRoute\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/virtualHubs/hubtest/hubVirtualNetworkConnections?api-version=2024-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODQyYWM0ZTEtMjEwOS00YzE1LWFhMDEtOTcwODdhYWU5NzIyL3Jlc291cmNlR3JvdXBzL3JzYXB0LXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxIdWJzL2h1YnRlc3QvaHViVmlydHVhbE5ldHdvcmtDb25uZWN0aW9ucz9hcGktdmVyc2lvbj0yMDI0LTAxLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bab1544a-267a-45e1-80d6-f7834b82f899"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ee8cf330-a882-4557-b72a-43dc985ee235"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a2497ed-771f-4110-8c96-80b9a8c0d10f"
+        ],
+        "x-ms-arm-service-request-id": [
+          "148628b3-8e7c-4ec8-9f87-57a69a330ee4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20250221T014405Z:0a2497ed-771f-4110-8c96-80b9a8c0d10f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C2580786CE4F4C64B1FD5551E2E40657 Ref B: CO6AA3150217029 Ref C: 2025-02-21T01:44:04Z"
+        ],
+        "Date": [
+          "Fri, 21 Feb 2025 01:44:04 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/networkVirtualAppliances/test-nva5?api-version=2024-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODQyYWM0ZTEtMjEwOS00YzE1LWFhMDEtOTcwODdhYWU5NzIyL3Jlc291cmNlR3JvdXBzL3JzYXB0LXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL25ldHdvcmtWaXJ0dWFsQXBwbGlhbmNlcy90ZXN0LW52YTU/YXBpLXZlcnNpb249MjAyNC0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9dd23a53-f089-4b10-90d9-3c8545d2a180"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3624.51421",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/27.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"26eab9e3-6584-4fe9-bd52-a0b8c5cdf932\""
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "30419566-fb57-4a23-8b29-0cf075bb20ea"
+        ],
+        "x-ms-correlation-request-id": [
+          "30419566-fb57-4a23-8b29-0cf075bb20ea"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20250221T014406Z:30419566-fb57-4a23-8b29-0cf075bb20ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 97329B7C06524759898DF304BC3FE97E Ref B: CO6AA3150217049 Ref C: 2025-02-21T01:44:05Z"
+        ],
+        "Date": [
+          "Fri, 21 Feb 2025 01:44:06 GMT"
+        ],
+        "Content-Length": [
+          "1550"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"virtualHub\": {\r\n      \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/virtualHubs/hubtest\"\r\n    },\r\n    \"cloudInitConfiguration\": \"\",\r\n    \"addressPrefix\": \"\",\r\n    \"virtualApplianceNics\": [],\r\n    \"delegation\": {\r\n      \"serviceName\": \"PaloAltoNetworks.Cloudngfw/firewalls\",\r\n      \"provisioningState\": \"Succeeded\"\r\n    },\r\n    \"deploymentType\": \"PartnerManaged\",\r\n    \"partnerManagedResource\": {\r\n      \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt_test/providers/PaloAltoNetworks.Cloudngfw/firewalls/testID\",\r\n      \"internalLoadBalancerId\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rg-name/providers/Microsoft.Network/loadBalancers/trustILB\",\r\n      \"standardLoadBalancerId\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rg-name/providers/Microsoft.Network/loadBalancers/unTrustSLB\"\r\n    },\r\n    \"isInternetIngressCompatible\": false,\r\n    \"virtualApplianceSites\": [],\r\n    \"inboundSecurityRules\": [],\r\n    \"virtualApplianceConnections\": [],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/842ac4e1-2109-4c15-aa01-97087aae9722/resourceGroups/rsapt-test/providers/Microsoft.Network/networkVirtualAppliances/test-nva5\",\r\n  \"name\": \"test-nva5\",\r\n  \"type\": \"Microsoft.Network/NetworkVirtualAppliances\",\r\n  \"etag\": \"26eab9e3-6584-4fe9-bd52-a0b8c5cdf932\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"\\\"AzSecPackAutoConfigReady\\\"\": \"\\\"true\\\"\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-SaasNetworkVirtualApplianceGet": [
+      "ps474"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "842ac4e1-2109-4c15-aa01-97087aae9722"
+  }
+}

@@ -28,7 +28,7 @@ $DiskMapping = $OSDisk, $DataDisk
 Set-AzMigrateServerReplication -TargetObjectId "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015f6d8-fc84-afdf-de47-1eab79330f00" -DiskToUpdate $DiskMapping
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,8 +36,11 @@ To create the parameters described below, construct a hash table containing the 
 
 DISKTOUPDATE <IVMwareCbtUpdateDiskInput[]>: Updates the disk for the Azure VM to be created.
   DiskId <String>: The disk Id.
+  [DiskSizeInGb <Int64?>]: The target disk size in GB.
+  [Iop <Int64?>]: The number of IOPS allowed for Premium V2 and Ultra disks.
   [IsOSDisk <String>]: A value indicating whether the disk is the OS disk.
   [TargetDiskName <String>]: The target disk name.
+  [ThroughputInMbps <Int64?>]: The total throughput in Mbps for Premium V2 and Ultra disks.
 
 INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   [Location <String>]: Resource Location
@@ -66,7 +69,7 @@ UPDATEVMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to b
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -115,16 +118,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput[]]
     # Updates the NIC for the Azure VM to be created.
-    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
     ${NicToUpdate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtUpdateDiskInput[]]
     # Updates the disk for the Azure VM to be created.
-    # To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
     ${DiskToUpdate},
 
     [Parameter()]
@@ -168,9 +169,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags]
     # Specifies the tag to be used for VM creation.
-    # To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
     ${UpdateVMTag},
 
     [Parameter()]
@@ -182,9 +182,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags]
     # Specifies the tag to be used for NIC creation.
-    # To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
     ${UpdateNicTag},
 
     [Parameter()]
@@ -196,9 +195,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags]
     # Specifies the tag to be used for disk creation.
-    # To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
     ${UpdateDiskTag},
 
     [Parameter()]
@@ -221,12 +219,17 @@ param(
     # The subscription Id.
     ${SubscriptionId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Target Capacity Reservation Group Id within the destination Azure subscription.
+    ${TargetCapacityReservationGroupId},
+
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem]
     # Specifies the replicating server for which the properties need to be updated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -284,6 +287,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -306,9 +317,7 @@ begin {
             ByIDVMwareCbt = 'Az.Migrate.custom\Set-AzMigrateServerReplication';
             ByInputObjectVMwareCbt = 'Az.Migrate.custom\Set-AzMigrateServerReplication';
         }
-        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -322,6 +331,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -18,9 +18,10 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateFile <String> [-SkipTemplateParameterPrompt]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterFile
@@ -29,7 +30,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateFile <String> -TemplateParameterFile <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateFile <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -40,7 +42,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateFile <String> -TemplateParameterUri <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateFile <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -51,7 +54,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateFile <String> -TemplateParameterObject <Hashtable>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateFile <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -62,7 +66,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateUri <String> -TemplateParameterFile <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateUri <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -73,7 +78,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateUri <String> -TemplateParameterUri <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateUri <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -84,7 +90,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateUri <String> -TemplateParameterObject <Hashtable>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateUri <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -95,9 +102,10 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateUri <String> [-SkipTemplateParameterPrompt]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterFile
@@ -106,7 +114,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateSpecId <String> -TemplateParameterFile <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateSpecId <String> -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -117,7 +126,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateSpecId <String> -TemplateParameterUri <String>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateSpecId <String> -TemplateParameterUri <String>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -128,7 +138,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateSpecId <String> -TemplateParameterObject <Hashtable>
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateSpecId <String> -TemplateParameterObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -139,9 +150,10 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
@@ -150,7 +162,8 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
  -ActionOnUnmanage <PSActionOnUnmanage> -DenySettingsMode <PSDenySettingsMode>
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-BypassStackOutOfSyncError] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
+ [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-ValidationLevel <PSValidationLevel>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
  [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -174,7 +187,7 @@ Action to take on resources that become unmanaged on deletion or update of the d
 Possible values include: 'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs), and 'deleteAll' (delete every unmanaged resource).
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
+Type: PSActionOnUnmanage
 Parameter Sets: (All)
 Aliases:
 Accepted values: DetachAll, DeleteResources, DeleteAll
@@ -190,7 +203,7 @@ Accept wildcard characters: False
 Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +220,7 @@ If the stack is out of sync and this parameter is not set, the operation will fa
 Only include this parameter if instructed to do so on a failed stack operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +235,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -237,7 +250,7 @@ Accept wildcard characters: False
 Apply to child scopes.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +266,7 @@ List of role-based management operations that are excluded from the denySettings
 Up to 200 actions are permitted.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +282,7 @@ List of AAD principal IDs excluded from the lock.
 Up to 5 principals are permitted.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +298,7 @@ Mode for DenySettings.
 Possible values include: 'denyDelete', 'denyWriteAndDelete', and 'none'.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDenySettingsMode
+Type: PSDenySettingsMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, DenyDelete, DenyWriteAndDelete
@@ -302,7 +315,7 @@ The ResourceGroup at which the deployment will be created.
 If none is specified, it will default to the subscription level scope of the deployment stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +330,7 @@ Accept wildcard characters: False
 Description for the stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -332,7 +345,7 @@ Accept wildcard characters: False
 Do not ask for confirmation when overwriting an existing stack.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -347,7 +360,7 @@ Accept wildcard characters: False
 Location of the stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -362,7 +375,7 @@ Accept wildcard characters: False
 The name of the deploymentStack to create
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: StackName
 
@@ -377,7 +390,7 @@ Accept wildcard characters: False
 If set, a boolean will be returned with value dependent on cmdlet success.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -392,7 +405,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -408,9 +421,25 @@ The query string (for example, a SAS token) to be used with the TemplateUri para
 Would be used in case of linked templates
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourcesWithoutDeleteSupport
+The action to take on resources that do not support deletion when they are removed from the deployment stack. Possible values include: 'Fail' (default) and 'Detach'.
+
+```yaml
+Type: PSResourcesWithoutDeleteSupport
+Parameter Sets: (All)
+Aliases:
+Accepted values: Fail, Detach
 
 Required: False
 Position: Named
@@ -425,7 +454,7 @@ This check would prompt the user to provide a value for the missing parameters, 
 For non-interactive scripts, -SkipTemplateParameterPrompt can be provided to provide a better error message in the case where not all required parameters are satisfied.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -440,7 +469,7 @@ Accept wildcard characters: False
 The tags to put on the deployment.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -455,7 +484,7 @@ Accept wildcard characters: False
 TemplateFile to be used to create the stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileWithParameterFile, ByTemplateFileWithParameterUri, ByTemplateFileWithParameterObject
 Aliases:
 
@@ -470,7 +499,7 @@ Accept wildcard characters: False
 Parameter file to use for the template.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
@@ -485,7 +514,7 @@ Accept wildcard characters: False
 A hash table which represents the parameters.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: ByTemplateFileWithParameterObject, ByTemplateUriWithParameterObject, ByTemplateSpecWithParameterObject
 Aliases:
 
@@ -500,7 +529,7 @@ Accept wildcard characters: False
 Location of the Parameter file to use for the template.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByTemplateFileWithParameterUri, ByTemplateUriWithParameterUri, ByTemplateSpecWithParameterUri
 Aliases:
 
@@ -515,7 +544,7 @@ Accept wildcard characters: False
 ResourceId of the TemplateSpec to be used to create the stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByTemplateSpecWithParameterFile, ByTemplateSpecWithParameterUri, ByTemplateSpecWithParameterObject, ByTemplateSpecWithNoParameters
 Aliases:
 
@@ -530,7 +559,7 @@ Accept wildcard characters: False
 Location of the Template to be used to create the stack.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByTemplateUriWithParameterFile, ByTemplateUriWithParameterUri, ByTemplateUriWithParameterObject, ByTemplateUriWithNoParameters
 Aliases:
 
@@ -541,11 +570,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ValidationLevel
+The validation level of the deployment stack. Possible values include: 'Provider' (default), 'Template', and 'ProviderNoRbac'.
+
+```yaml
+Type: PSValidationLevel
+Parameter Sets: (All)
+Aliases:
+Accepted values: Provider, Template, ProviderNoRbac
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -561,7 +606,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

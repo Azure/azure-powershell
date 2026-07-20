@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DiagnosticSetting
-Module Guid: 58f9f986-1839-4efb-baf4-5ba95f2726bd
+Module Guid: 6210decd-f3c4-4cdf-87d4-f4bca61bf471
 Download Help Link: https://learn.microsoft.com/powershell/module/az.diagnosticsetting
 Help Version: 1.0.0.0
 Locale: en-US
@@ -25,7 +25,7 @@ The current list includes the following: Administrative, Security, ServiceHealth
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 
 ### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
@@ -37,11 +37,17 @@ Create an in-memory object for MetricSettings.
 Create an in-memory object for SubscriptionLogSettings.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Deletes existing diagnostic settings for the specified resource.
 
 ### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
 Deletes existing subscription diagnostic settings for the specified resource.
+
+### [Update-AzDiagnosticSetting](Update-AzDiagnosticSetting.md)
+Update diagnostic settings for the specified resource.
+
+### [Update-AzSubscriptionDiagnosticSetting](Update-AzSubscriptionDiagnosticSetting.md)
+Update subscription diagnostic settings for the specified resource.
 

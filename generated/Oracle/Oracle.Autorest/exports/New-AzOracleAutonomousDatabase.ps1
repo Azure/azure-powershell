@@ -29,7 +29,7 @@ $vnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/pr
 $subnetName = "delegated"
 $subnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
 
-[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+[SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "******" -AsPlainText -Force
 
 $adbsName = "OFakePowerShellTestAdbs"
 New-AzOracleAutonomousDatabase -Name $adbsName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $adbsName -DbWorkload "OLTP" -ComputeCount 2.0 -ComputeModel "ECPU" -DbVersion "19c" -DataStorageSizeInGb 32 -AdminPassword $adbsAdminPassword -LicenseModel "BringYourOwnLicense" -SubnetId $subnetId -VnetId $vnetId -DataBaseType "Regular" -CharacterSet "AL32UTF8" -NcharacterSet "AL16UTF16"
@@ -43,6 +43,11 @@ To create the parameters described below, construct a hash table containing the 
 
 CUSTOMERCONTACT <ICustomerContact[]>: Customer Contacts.
   Email <String>: The email address used by Oracle to send notifications regarding databases and infrastructure.
+
+SCHEDULEDOPERATIONSLIST <IScheduledOperationsType[]>: The list of scheduled operations.
+  DayOfWeekName <String>: Name of the day of the week.
+  [ScheduledStartTime <String>]: auto start time. value must be of ISO-8601 format HH:mm
+  [ScheduledStopTime <String>]: auto stop time. value must be of ISO-8601 format HH:mm
 .Link
 https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleautonomousdatabase
 #>
@@ -136,7 +141,7 @@ param(
     ${CustomerContact},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Regular", "Clone")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Regular", "Clone", "CloneFromBackupTimestamp", "CrossRegionDisasterRecovery")]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String]
     # Database type to be created.
@@ -160,13 +165,6 @@ param(
     [System.String]
     # The Oracle Database Edition that applies to the Autonomous databases.
     ${DatabaseEdition},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # Name of the day of the week.
-    ${DayOfWeekName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
@@ -244,18 +242,11 @@ param(
     ${PrivateEndpointLabel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto start time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStartTime},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto stop time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStopTime},
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[]]
+    # The list of scheduled operations.
+    ${ScheduledOperationsList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
@@ -366,6 +357,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -390,8 +390,6 @@ begin {
             CreateViaJsonString = 'Az.Oracle.private\New-AzOracleAutonomousDatabase_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -405,6 +403,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

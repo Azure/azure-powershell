@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Dashboard.
+update an existing Dashboard.
 .Description
-Updates an existing Dashboard.
+update an existing Dashboard.
 .Example
 Update-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 -Tag @{'hidden-title'="My Dashboard Title"; NewTag="NewValue"}
 .Example
@@ -27,7 +27,7 @@ Get-AzPortalDashboard -ResourceGroupName my-rg -Name dashbase03 | Update-AzPorta
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard
+Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,7 +41,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
 
 LENS <IDashboardLens[]>: The dashboard lenses.
   Order <Int32>: The lens order.
-  Part <IDashboardParts[]>: The dashboard parts.
+  Part <List<IDashboardParts>>: The dashboard parts.
     PositionColSpan <Int32>: The dashboard's part column span.
     PositionRowSpan <Int32>: The dashboard's part row span.
     PositionX <Int32>: The dashboard's part x coordinate.
@@ -52,10 +52,12 @@ LENS <IDashboardLens[]>: The dashboard lenses.
 https://learn.microsoft.com/powershell/module/az.portal/update-azportaldashboard
 #>
 function Update-AzPortalDashboard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboard])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('DashboardName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
@@ -63,6 +65,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -70,6 +74,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -81,30 +87,43 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPortalIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardLens[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardLens[]]
     # The dashboard lenses.
-    # To construct, see NOTES section for LENS properties and create a hash table.
     ${Lens},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IDashboardPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboardPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # The dashboard metadata.
     ${Metadata},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api20221201Preview.IPatchableDashboardTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IPatchableDashboardTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Portal.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -162,6 +181,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -183,10 +211,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Portal.private\Update-AzPortalDashboard_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Portal.private\Update-AzPortalDashboard_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Portal.private\Update-AzPortalDashboard_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Portal.private\Update-AzPortalDashboard_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +228,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

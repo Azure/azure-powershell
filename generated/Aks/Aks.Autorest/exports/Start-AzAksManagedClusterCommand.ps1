@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 .Description
-AKS will create a pod to run the command.
+AKS will run a pod to run the command.
 This is primarily useful for private clusters.
 For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 .Example
@@ -32,7 +32,7 @@ $cluster | Start-AzAksManagedClusterCommand -Command "kubectl get nodes"
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult
+Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,20 +43,25 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [CommandId <String>]: Id of the command.
   [ConfigName <String>]: The name of the maintenance configuration.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
+  [MachineName <String>]: host name of the machine
+  [Mode <String>]: The mode of the mesh.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the managed cluster resource.
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrustedAccessRoleBindingName <String>]: The name of trusted access role binding.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/start-azaksmanagedclustercommand
 #>
 function Start-AzAksManagedClusterCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResult])]
 [CmdletBinding(DefaultParameterSetName='RunExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -64,42 +69,61 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [System.String]
     # The name of the managed cluster resource.
     ${ResourceName},
 
     [Parameter(ParameterSetName='RunExpanded')]
+    [Parameter(ParameterSetName='RunViaJsonFilePath')]
+    [Parameter(ParameterSetName='RunViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RunViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
     # The command to run.
     ${Command},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RunExpanded')]
+    [Parameter(ParameterSetName='RunViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
     # AuthToken issued for AKS AAD Server App.
     ${ClusterToken},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RunExpanded')]
+    [Parameter(ParameterSetName='RunViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
     # A base64 encoded zip file containing the files required by the command.
     ${Context},
+
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Run operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Json string supplied to the Run operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -169,6 +193,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -190,10 +223,10 @@ begin {
         $mapping = @{
             RunExpanded = 'Az.Aks.private\Start-AzAksManagedClusterCommand_RunExpanded';
             RunViaIdentityExpanded = 'Az.Aks.private\Start-AzAksManagedClusterCommand_RunViaIdentityExpanded';
+            RunViaJsonFilePath = 'Az.Aks.private\Start-AzAksManagedClusterCommand_RunViaJsonFilePath';
+            RunViaJsonString = 'Az.Aks.private\Start-AzAksManagedClusterCommand_RunViaJsonString';
         }
-        if (('RunExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RunExpanded', 'RunViaJsonFilePath', 'RunViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -207,6 +240,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

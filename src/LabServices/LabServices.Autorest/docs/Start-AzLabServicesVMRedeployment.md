@@ -26,6 +26,18 @@ Start-AzLabServicesVMRedeployment -LabName <String> -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
+### RedeployViaIdentity
+```
+Start-AzLabServicesVMRedeployment -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RedeployViaIdentityLab
+```
+Start-AzLabServicesVMRedeployment -LabInputObject <ILabServicesIdentity> -VirtualMachineName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Action to redeploy a lab virtual machine to a different compute node.
 For troubleshooting connectivity.
@@ -69,6 +81,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: RedeployViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: RedeployViaIdentityLab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -135,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -154,7 +196,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Redeploy, ResourceId
 Aliases:
 
 Required: False
@@ -170,7 +212,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy
+Parameter Sets: Redeploy, RedeployViaIdentityLab
 Aliases:
 
 Required: True
@@ -216,9 +258,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

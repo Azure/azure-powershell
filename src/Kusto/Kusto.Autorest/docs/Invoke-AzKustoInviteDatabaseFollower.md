@@ -39,6 +39,26 @@ Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -Parameter <I
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### InviteViaIdentityCluster
+```
+Invoke-AzKustoInviteDatabaseFollower -ClusterInputObject <IKustoIdentity> -DatabaseName <String>
+ -Parameter <IDatabaseInviteFollowerRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### InviteViaIdentityClusterExpanded
+```
+Invoke-AzKustoInviteDatabaseFollower -ClusterInputObject <IKustoIdentity> -DatabaseName <String>
+ -InviteeEmail <String> [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
+ [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToExclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToInclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
+ [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### InviteViaIdentityExpanded
 ```
 Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -InviteeEmail <String>
@@ -50,6 +70,20 @@ Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -InviteeEmail
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### InviteViaJsonFilePath
+```
+Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### InviteViaJsonString
+```
+Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,12 +100,27 @@ Invite a user to follow database "myDatabase" in cluster "myCluster" in resource
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: InviteViaIdentityCluster, InviteViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: Invite, InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -86,7 +135,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: Invite, InviteExpanded, InviteViaIdentityCluster, InviteViaIdentityClusterExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -114,7 +163,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -133,7 +181,37 @@ The email of the invited user for which the follower invitation is generated.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Invite operation
+
+```yaml
+Type: System.String
+Parameter Sets: InviteViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Invite operation
+
+```yaml
+Type: System.String
+Parameter Sets: InviteViaJsonString
 Aliases:
 
 Required: True
@@ -145,11 +223,10 @@ Accept wildcard characters: False
 
 ### -Parameter
 The request to invite a follower to a database.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
-Parameter Sets: Invite, InviteViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerRequest
+Parameter Sets: Invite, InviteViaIdentity, InviteViaIdentityCluster
 Aliases:
 
 Required: True
@@ -165,7 +242,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: Invite, InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: True
@@ -180,7 +257,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: Invite, InviteExpanded, InviteViaJsonFilePath, InviteViaJsonString
 Aliases:
 
 Required: False
@@ -195,7 +272,7 @@ List of external tables to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -210,7 +287,7 @@ List of external tables to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -225,7 +302,7 @@ List of functions to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -240,7 +317,7 @@ List of functions to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +332,7 @@ List of materialized views to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -270,7 +347,7 @@ List of materialized views to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -285,7 +362,7 @@ List of tables to exclude from the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -300,7 +377,7 @@ List of tables to include in the follower database
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InviteExpanded, InviteViaIdentityExpanded
+Parameter Sets: InviteExpanded, InviteViaIdentityClusterExpanded, InviteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -346,13 +423,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult
 
 ## NOTES
 

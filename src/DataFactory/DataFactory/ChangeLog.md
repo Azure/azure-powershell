@@ -18,6 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.20.1
+* Updated `System.IO.FileSystem.AccessControl` dependency from `4.5.0` to `5.0.0`.
+
+## Version 1.20.0
+* Added ChangeSafety Support
+* Added 'Microsoft.DataTransfer.Gateway.Encryption.dll' to the Authenticode signing target in the release pipeline
+
+## Version 1.19.7
+* Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.
+
+## Version 1.19.6
+* Added support for clusterResourceGroupAuthType property in HDInsightOnDemand linked services properties.
+
+## Version 1.19.5
+* Added support for Salesforce V2 partitionOption feature.
+* Added support MI In Lakehouse And Warehouse connection.
+
+## Version 1.19.4
+* Added support for Databricks Job Activity.
+* Added more support for QuickBooks connection properties.
+
+## Version 1.19.3
+* Added more support for SparkV2 and HiveV2 connection properties.
+
+## Version 1.19.2
+* Added more support for M365 connection properties.
+* Added more support for SnowfalkeV2 connection properties.
+* Added more support for AzureDatabricks connection properties.
+
+## Version 1.19.1
 * Added more support for Oracle connection properties.
 * Added more support for Teradata connection properties.
 * Added more support for AzurePostgreSql connection properties.

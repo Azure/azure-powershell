@@ -52,6 +52,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal static readonly Exception WorkspaceResourceIdParameterException =
             new PSArgumentException("Workspace resource id is not provided", "WorkspaceResourceId");
         internal static readonly Exception StorageAccountNameParameterException =
-            new PSArgumentException("Storage acount name is not provided", "StorageAccountName");
+            new PSArgumentException("Storage account name is not provided", "StorageAccountName");
     }
 }

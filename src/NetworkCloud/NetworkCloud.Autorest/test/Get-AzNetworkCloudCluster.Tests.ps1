@@ -26,7 +26,7 @@ Describe 'Get-AzNetworkCloudCluster' {
         { Get-AzNetworkCloudCluster -ResourceGroupName $global:config.AzNetworkCloudCluster.clusterRg -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityExpanded' {
+        { Get-AzNetworkCloudCluster -Name $global:config.AzNetworkCloudCluster.miClusterName -ResourceGroupName $global:config.AzNetworkCloudCluster.miClusterRg -SubscriptionId $global:config.AzNetworkCloudCluster.subscriptionId } | Should -Not -Throw
     }
 }

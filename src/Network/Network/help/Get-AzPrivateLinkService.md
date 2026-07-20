@@ -74,7 +74,7 @@ NetworkInterfaces                    : [
                                        ]
 ```
 
-This commandlet gets a private link service in the resource group.
+This cmdlet gets a private link service in the resource group.
 
 ## PARAMETERS
 

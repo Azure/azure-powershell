@@ -27,11 +27,43 @@ Get-AzGalleryApplicationVersion -GalleryName $GalleryName -ResourceGroupName $rg
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPLICATIONINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
@@ -43,7 +75,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -53,10 +84,11 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
 #>
 function Get-AzGalleryApplicationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityGallery', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -71,6 +103,8 @@ param(
     ${GalleryName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityApplication', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityGallery', Mandatory)]
     [Alias('GalleryApplicationVersionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -97,14 +131,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityApplication', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${ApplicationInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityGallery', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes])]
+    [Parameter(ParameterSetName='GetViaIdentityApplication')]
+    [Parameter(ParameterSetName='GetViaIdentityGallery')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.PSArgumentCompleterAttribute("ReplicationStatus")]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes]
+    [System.String]
     # The expand expression to apply on the operation.
     ${Expand},
 
@@ -164,6 +211,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -185,11 +240,11 @@ begin {
         $mapping = @{
             Get = 'Az.Compute.private\Get-AzGalleryApplicationVersion_Get';
             GetViaIdentity = 'Az.Compute.private\Get-AzGalleryApplicationVersion_GetViaIdentity';
+            GetViaIdentityApplication = 'Az.Compute.private\Get-AzGalleryApplicationVersion_GetViaIdentityApplication';
+            GetViaIdentityGallery = 'Az.Compute.private\Get-AzGalleryApplicationVersion_GetViaIdentityGallery';
             List = 'Az.Compute.private\Get-AzGalleryApplicationVersion_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -203,6 +258,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -259,11 +317,27 @@ Get-AzGalleryApplication -GalleryName $GalleryName -ResourceGroupName $rgName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
@@ -275,7 +349,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -285,7 +358,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
 #>
 function Get-AzGalleryApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -296,6 +369,7 @@ param(
     ${GalleryName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityGallery', Mandatory)]
     [Alias('GalleryApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -322,8 +396,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityGallery', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -381,6 +460,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -402,11 +489,10 @@ begin {
         $mapping = @{
             Get = 'Az.Compute.private\Get-AzGalleryApplication_Get';
             GetViaIdentity = 'Az.Compute.private\Get-AzGalleryApplication_GetViaIdentity';
+            GetViaIdentityGallery = 'Az.Compute.private\Get-AzGalleryApplication_GetViaIdentityGallery';
             List = 'Az.Compute.private\Get-AzGalleryApplication_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -420,6 +506,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -510,11 +599,11 @@ $response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInp
 $response.PlacementScore
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresInput
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -533,7 +622,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -543,19 +631,21 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 SPOTPLACEMENTSCORESINPUT <ISpotPlacementScoresInput>: SpotPlacementScores API Input.
   [AvailabilityZone <Boolean?>]: Defines if the scope is zonal or regional.
   [DesiredCount <Int32?>]: Desired instance count per region/zone based on the scope.
-  [DesiredLocation <String[]>]: The desired regions
-  [DesiredSize <IResourceSize[]>]: The desired resource SKUs.
+  [DesiredLocation <List<String>>]: The desired regions
+  [DesiredSize <List<IResourceSize>>]: The desired resource SKUs.
     [Sku <String>]: The resource's CRP virtual machine SKU size.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore
 #>
 function Invoke-AzSpotPlacementScore {
 [Alias('Invoke-AzSpotPlacementRecommender')]
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
     [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the Azure region.
@@ -563,6 +653,8 @@ param(
 
     [Parameter(ParameterSetName='Post')]
     [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaJsonFilePath')]
+    [Parameter(ParameterSetName='PostViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -575,16 +667,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Alias('SpotPlacementRecommenderInput')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ISpotPlacementScoresInput]
     # SpotPlacementScores API Input.
-    # To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
     ${SpotPlacementScoresInput},
 
     [Parameter(ParameterSetName='PostExpanded')]
@@ -613,10 +703,21 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceSize[]]
     # The desired resource SKUs.
-    # To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
     ${DesiredSize},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -674,6 +775,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -697,10 +806,10 @@ begin {
             PostExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostExpanded';
             PostViaIdentity = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentity';
             PostViaIdentityExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaIdentityExpanded';
+            PostViaJsonFilePath = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.Compute.private\Invoke-AzSpotPlacementScore_PostViaJsonString';
         }
-        if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Post', 'PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -714,6 +823,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -774,6 +886,38 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+APPLICATIONINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
   [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
@@ -784,7 +928,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -798,6 +941,7 @@ function Remove-AzGalleryApplicationVersion {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityGallery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the gallery Application Definition in which the Application Version resides.
@@ -810,6 +954,8 @@ param(
     ${GalleryName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityApplication', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityGallery', Mandatory)]
     [Alias('GalleryApplicationVersionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -834,8 +980,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityApplication', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${ApplicationInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityGallery', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -911,6 +1068,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -932,10 +1097,10 @@ begin {
         $mapping = @{
             Delete = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_Delete';
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_DeleteViaIdentity';
+            DeleteViaIdentityApplication = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_DeleteViaIdentityApplication';
+            DeleteViaIdentityGallery = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_DeleteViaIdentityGallery';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -949,6 +1114,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1009,6 +1177,22 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
   [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
@@ -1019,7 +1203,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -1039,6 +1222,7 @@ param(
     ${GalleryName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityGallery', Mandatory)]
     [Alias('GalleryApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -1063,8 +1247,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityGallery', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1140,6 +1329,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1161,10 +1358,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Compute.private\Remove-AzGalleryApplication_Delete';
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplication_DeleteViaIdentity';
+            DeleteViaIdentityGallery = 'Az.Compute.private\Remove-AzGalleryApplication_DeleteViaIdentityGallery';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1178,6 +1374,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1248,7 +1447,22 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+VIRTUALMACHINEINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -1268,6 +1482,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachine', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the virtual machine run command.
@@ -1291,8 +1506,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${VirtualMachineInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1368,6 +1588,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1389,10 +1617,9 @@ begin {
         $mapping = @{
             Delete = 'Az.Compute.private\Remove-AzVMRunCommand_Delete';
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVMRunCommand_DeleteViaIdentity';
+            DeleteViaIdentityVirtualMachine = 'Az.Compute.private\Remove-AzVMRunCommand_DeleteViaIdentityVirtualMachine';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1406,6 +1633,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1476,7 +1706,38 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+VIRTUALMACHINEINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+VIRTUALMACHINESCALESETINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -1490,6 +1751,7 @@ function Remove-AzVmssVMRunCommand {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachineScaleSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The instance ID of the virtual machine.
@@ -1502,6 +1764,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachine', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachineScaleSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the virtual machine run command.
@@ -1525,8 +1789,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${VirtualMachineInputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityVirtualMachineScaleSet', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${VirtualMachineScaleSetInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1602,6 +1877,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1623,10 +1906,10 @@ begin {
         $mapping = @{
             Delete = 'Az.Compute.private\Remove-AzVmssVMRunCommand_Delete';
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVmssVMRunCommand_DeleteViaIdentity';
+            DeleteViaIdentityVirtualMachine = 'Az.Compute.private\Remove-AzVmssVMRunCommand_DeleteViaIdentityVirtualMachine';
+            DeleteViaIdentityVirtualMachineScaleSet = 'Az.Compute.private\Remove-AzVmssVMRunCommand_DeleteViaIdentityVirtualMachineScaleSet';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1640,6 +1923,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1685,11 +1971,11 @@ end {
 
 <#
 .Synopsis
-The operation to create or update the run command.
+The operation to update the run command.
 .Description
-The operation to create or update the run command.
+The operation to update the run command.
 .Example
-Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=******"
 .Example
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
 .Example
@@ -1697,12 +1983,12 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunC
 .Example
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
 .Example
-Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=******" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=******"
 .Example
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1719,7 +2005,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
 https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 #>
 function Set-AzVMRunCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1748,34 +2034,39 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
     # If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
     ${AsyncExecution},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ErrorBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${ErrorBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script error stream will be uploaded.
@@ -1783,21 +2074,24 @@ param(
     # Refer errorBlobManagedIdentity parameter.
     ${ErrorBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${OutputBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${OutputBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script output stream will be uploaded.
@@ -1805,42 +2099,46 @@ param(
     # Refer outputBlobManagedIdentity parameter.
     ${OutputBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
     ${ProtectedParameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account password on the VM when executing the run command.
     ${RunAsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account on the VM when executing the run command.
     ${RunAsUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ScriptUriManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -1866,20 +2164,23 @@ param(
     # It can be either SAS URI of an Azure storage blob with read access or public URI.
     ${SourceScriptUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The timeout in seconds to execute the run command.
     ${TimeoutInSecond},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
@@ -1887,6 +2188,18 @@ param(
     # If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
     # See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
     ${TreatFailureAsDeploymentFailure},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
@@ -1961,6 +2274,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1981,11 +2302,11 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Set-AzVMRunCommand_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Compute.private\Set-AzVMRunCommand_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Compute.private\Set-AzVMRunCommand_UpdateViaJsonString';
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVMRunCommand_ScriptLocalPath';
         }
-        if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1999,6 +2320,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2044,11 +2368,11 @@ end {
 
 <#
 .Synopsis
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 .Description
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 .Example
-Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=******"
 .Example
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
 .Example
@@ -2056,12 +2380,12 @@ Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSSL -Instanc
 .Example
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
 .Example
-Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=******" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=******"
 .Example
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2078,7 +2402,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
 https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 #>
 function Set-AzVmssVMRunCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2113,34 +2437,39 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
     # If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
     ${AsyncExecution},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ErrorBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${ErrorBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script error stream will be uploaded.
@@ -2148,21 +2477,24 @@ param(
     # Refer errorBlobManagedIdentity parameter.
     ${ErrorBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${OutputBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${OutputBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script output stream will be uploaded.
@@ -2170,42 +2502,46 @@ param(
     # Refer outputBlobManagedIdentity parameter.
     ${OutputBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
     ${ProtectedParameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account password on the VM when executing the run command.
     ${RunAsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account on the VM when executing the run command.
     ${RunAsUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ScriptUriManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -2231,20 +2567,23 @@ param(
     # It can be either SAS URI of an Azure storage blob with read access or public URI.
     ${SourceScriptUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The timeout in seconds to execute the run command.
     ${TimeoutInSecond},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
@@ -2252,6 +2591,18 @@ param(
     # If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
     # See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
     ${TreatFailureAsDeploymentFailure},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
@@ -2326,6 +2677,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2346,11 +2705,11 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateViaJsonString';
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVmssVMRunCommand_ScriptLocalPath';
         }
-        if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2364,6 +2723,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2418,11 +2780,27 @@ Update-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
@@ -2434,7 +2812,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -2444,16 +2821,21 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 #>
 function Update-AzGalleryApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the Shared Application Gallery in which the Application Definition is to be updated.
     ${GalleryName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('GalleryApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -2463,12 +2845,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2480,22 +2866,43 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # The description of this gallery Application Definition resource.
     # This property is updatable.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IUpdateResourceDefinitionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IUpdateResourceDefinitionTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2565,6 +2972,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2586,10 +3001,11 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Update-AzGalleryApplication_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaIdentityExpanded';
+            UpdateViaIdentityGalleryExpanded = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaIdentityGalleryExpanded';
+            UpdateViaJsonFilePath = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2603,6 +3019,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2654,21 +3073,37 @@ Create or update a gallery Application Definition.
 .Example
 New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 #>
 function New-AzGalleryApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the Shared Application Gallery in which the Application Definition is to be created.
-    ${GalleryName},
-
     [Parameter(Mandatory)]
     [Alias('GalleryApplicationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
@@ -2678,13 +3113,25 @@ param(
     # The maximum length is 80 characters.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the Shared Application Gallery in which the Application Definition is to be created.
+    ${GalleryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2692,46 +3139,69 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.PSArgumentCompleterAttribute("Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes]
+    [System.String]
     # This property allows you to specify the supported type of the OS that application is built for.
     # 
     # 
-    #  Possible values are:
+    #  Possible values are: 
     # 
-    #  **Windows**
+    #  **Windows** 
     # 
     #  **Linux**
     ${SupportedOSType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # The description of this gallery Application Definition resource.
     # This property is updatable.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2793,6 +3263,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2812,11 +3290,12 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.Compute.custom\New-AzGalleryApplication';
+            CreateExpanded = 'Az.Compute.custom\New-AzGalleryApplication';
+            CreateViaJsonString = 'Az.Compute.custom\New-AzGalleryApplication';
+            CreateViaJsonFilePath = 'Az.Compute.custom\New-AzGalleryApplication';
+            CreateViaIdentityGalleryExpanded = 'Az.Compute.custom\New-AzGalleryApplication';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2830,6 +3309,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2887,42 +3369,63 @@ $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName 
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
 New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+APPLICATIONINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
   Name <String>: The name of the region.
-  [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
+  [EncryptionDataDiskImage <List<IDataDiskImageEncryption>>]: A list of encryption specifications for data disk images.
     Lun <Int32>: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-    [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [RegionalReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per region. This property is updatable.
-  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileConfidentialVMEncryptionType <String>]: confidential VM encryption types
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
-  [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
+  [StorageAccountType <String>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 #>
 function New-AzGalleryApplicationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the gallery Application Definition in which the Application Version is to be created.
-    ${GalleryApplicationName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the Shared Application Gallery in which the Application Definition resides.
-    ${GalleryName},
-
     [Parameter(Mandatory)]
     [Alias('GalleryApplicationVersionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
@@ -2933,13 +3436,34 @@ param(
     # Format: <MajorVersion>.<MinorVersion>.<Patch>
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the gallery Application Definition in which the Application Version is to be created.
+    ${GalleryApplicationName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the Shared Application Gallery in which the Application Definition resides.
+    ${GalleryName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -2947,13 +3471,29 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${ApplicationInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
@@ -2961,7 +3501,9 @@ param(
     # This is limited to 4096 characters.
     ${Install},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
@@ -2969,21 +3511,27 @@ param(
     # This is limited to 4096 characters.
     ${Remove},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
     # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
     ${DefaultConfigFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
     # The mediaLink of the artifact, must be a readable storage page blob.
     ${PackageFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.DateTime]
     # The end of life date of the gallery image version.
@@ -2991,13 +3539,17 @@ param(
     # This property is updatable.
     ${PublishingProfileEndOfLifeDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
     ${PublishingProfileExcludeFromLatest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The number of replicas of the Image Version to be created per region.
@@ -3005,23 +3557,28 @@ param(
     # This property is updatable.
     ${ReplicaCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
     # The target regions where the Image Version is going to be replicated to.
     # This property is updatable.
-    # To construct, see NOTES section for TARGETREGION properties and create a hash table.
     ${TargetRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -3030,7 +3587,9 @@ param(
     # This is limited to 4096 characters.
     ${Update},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -3039,7 +3598,9 @@ param(
     # If not specified, the package file will be named the same as the Gallery Application name.
     ${PackageFileName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityApplicationExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
@@ -3048,12 +3609,25 @@ param(
     # If not specified, the config file will be named the Gallery Application name appended with "_config".
     ${ConfigFileName},
 
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3115,6 +3689,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3135,10 +3717,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
+            CreateViaJsonString = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
+            CreateViaJsonFilePath = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
+            CreateViaIdentityGalleryExpanded = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
+            CreateViaIdentityApplicationExpanded = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3152,6 +3736,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3212,11 +3799,43 @@ Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $gall
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+APPLICATIONINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+GALLERYINPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [CommandId <String>]: The command id.
@@ -3228,7 +3847,6 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -3237,34 +3855,42 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
 
 TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
   Name <String>: The name of the region.
-  [EncryptionDataDiskImage <IDataDiskImageEncryption[]>]: A list of encryption specifications for data disk images.
+  [EncryptionDataDiskImage <List<IDataDiskImageEncryption>>]: A list of encryption specifications for data disk images.
     Lun <Int32>: This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-    [DiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [OSDiskImageDiskEncryptionSetId <String>]: A relative URI containing the resource ID of the disk encryption set.
   [RegionalReplicaCount <Int32?>]: The number of replicas of the Image Version to be created per region. This property is updatable.
-  [SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]: confidential VM encryption types
+  [SecurityProfileConfidentialVMEncryptionType <String>]: confidential VM encryption types
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
-  [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
+  [StorageAccountType <String>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
 https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the gallery Application Definition in which the Application Version is to be updated.
     ${GalleryApplicationName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the Shared Application Gallery in which the Application Definition resides.
     ${GalleryName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory)]
     [Alias('GalleryApplicationVersionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
@@ -3275,12 +3901,16 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -3288,28 +3918,48 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${GalleryInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    ${ApplicationInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Required.
     # The mediaLink of the artifact, must be a readable storage page blob.
     ${PackageFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Optional.
     # The defaultConfigurationLink of the artifact, must be a readable storage page blob.
     ${DefaultConfigFileLink},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.DateTime]
     # The end of life date of the gallery image version.
@@ -3317,13 +3967,19 @@ param(
     # This property is updatable.
     ${PublishingProfileEndOfLifeDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
     ${PublishingProfileExcludeFromLatest},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The number of replicas of the Image Version to be created per region.
@@ -3331,28 +3987,46 @@ param(
     # This property is updatable.
     ${ReplicaCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IUpdateResourceDefinitionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IUpdateResourceDefinitionTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityGalleryExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityApplicationExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
     # The target regions where the Image Version is going to be replicated to.
     # This property is updatable.
-    # To construct, see NOTES section for TARGETREGION properties and create a hash table.
     ${TargetRegion},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3414,6 +4088,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3434,11 +4116,13 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
+            UpdateViaJsonString = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
+            UpdateViaJsonFilePath = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
+            UpdateViaIdentityGalleryExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
+            UpdateViaIdentityApplicationExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
             UpdateViaIdentityExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3452,6 +4136,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

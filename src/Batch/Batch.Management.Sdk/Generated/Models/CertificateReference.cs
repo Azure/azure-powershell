@@ -38,22 +38,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </param>
 
         /// <param name="storeLocation">The default value is currentUser. This property is applicable only for
-        /// pools configured with Windows nodes (that is, created with
-        /// cloudServiceConfiguration, or with virtualMachineConfiguration using a
-        /// Windows image reference). For Linux compute nodes, the certificates are
-        /// stored in a directory inside the task working directory and an environment
-        /// variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for
-        /// this location. For certificates with visibility of &#39;remoteUser&#39;, a &#39;certs&#39;
-        /// directory is created in the user&#39;s home directory (e.g.,
-        /// /home/{user-name}/certs) and certificates are placed in that directory.
+        /// pools configured with Windows compute nodes. For Linux compute nodes, the
+        /// certificates are stored in a directory inside the task working directory
+        /// and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the
+        /// task to query for this location. For certificates with visibility of
+        /// &#39;remoteUser&#39;, a &#39;certs&#39; directory is created in the user&#39;s home directory
+        /// (e.g., /home/{user-name}/certs) and certificates are placed in that
+        /// directory.
         /// Possible values include: &#39;CurrentUser&#39;, &#39;LocalMachine&#39;</param>
 
-        /// <param name="storeName">This property is applicable only for pools configured with Windows nodes
-        /// (that is, created with cloudServiceConfiguration, or with
-        /// virtualMachineConfiguration using a Windows image reference). Common store
-        /// names include: My, Root, CA, Trust, Disallowed, TrustedPeople,
-        /// TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also
-        /// be used. The default value is My.
+        /// <param name="storeName">This property is applicable only for pools configured with Windows compute
+        /// nodes. Common store names include: My, Root, CA, Trust, Disallowed,
+        /// TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom
+        /// store name can also be used. The default value is My.
         /// </param>
 
         /// <param name="visibility">Which user accounts on the compute node should have access to the private
@@ -84,25 +81,22 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <summary>
         /// Gets or sets the default value is currentUser. This property is applicable
-        /// only for pools configured with Windows nodes (that is, created with
-        /// cloudServiceConfiguration, or with virtualMachineConfiguration using a
-        /// Windows image reference). For Linux compute nodes, the certificates are
-        /// stored in a directory inside the task working directory and an environment
-        /// variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for
-        /// this location. For certificates with visibility of &#39;remoteUser&#39;, a &#39;certs&#39;
-        /// directory is created in the user&#39;s home directory (e.g.,
-        /// /home/{user-name}/certs) and certificates are placed in that directory. Possible values include: &#39;CurrentUser&#39;, &#39;LocalMachine&#39;
+        /// only for pools configured with Windows compute nodes. For Linux compute
+        /// nodes, the certificates are stored in a directory inside the task working
+        /// directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied
+        /// to the task to query for this location. For certificates with visibility of
+        /// &#39;remoteUser&#39;, a &#39;certs&#39; directory is created in the user&#39;s home directory
+        /// (e.g., /home/{user-name}/certs) and certificates are placed in that
+        /// directory. Possible values include: &#39;CurrentUser&#39;, &#39;LocalMachine&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storeLocation")]
         public CertificateStoreLocation? StoreLocation {get; set; }
 
         /// <summary>
         /// Gets or sets this property is applicable only for pools configured with
-        /// Windows nodes (that is, created with cloudServiceConfiguration, or with
-        /// virtualMachineConfiguration using a Windows image reference). Common store
-        /// names include: My, Root, CA, Trust, Disallowed, TrustedPeople,
-        /// TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also
-        /// be used. The default value is My.
+        /// Windows compute nodes. Common store names include: My, Root, CA, Trust,
+        /// Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any
+        /// custom store name can also be used. The default value is My.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storeName")]
         public string StoreName {get; set; }

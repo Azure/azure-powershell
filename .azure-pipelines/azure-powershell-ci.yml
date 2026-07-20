@@ -17,10 +17,10 @@ resources:
 variables:
   Working_Directory: $(Build.SourcesDirectory)/azure-powershell
   WindowsName: windows
-  WindowsAgentPoolName: pool-windows-2019
+  WindowsAgentPoolName: pool-windows-2022
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
-  LinuxAgentPoolName: pool-ubuntu-2004
+  LinuxAgentPoolName: pool-ubuntu-2404
   LinuxAgentPoolVMImage: ''
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'
@@ -38,18 +38,41 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
+schedules:
+- cron: 0 16 * * 0,1,2,3,4,5,6
+  displayName: Daily Archive
+  branches:
+    include:
+    - main
+
 trigger:
   batch: true
   branches:
     include:
     - main
-  
+    - release-*
+    - Az.*
+    - LTS
+    - generation-LTS
+    - stack-dev
+    - preview
+    - AzureRM
+    - AzureRM6.13
+    - AzureRM.*
+    - DeploymentRollouts
+    - Compute-*
+    - test-filtering-branch
+    - azvmremotingpreview
+    - test-build-filter
+    - generation
+    - Azure
+
 jobs:
 - job: Build
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
 
   steps:
   - checkout: self
@@ -57,24 +80,24 @@ jobs:
     workspaceRepo: true
   - checkout: azure-powershell-devops
     path: "azure-powershell-devops"
-  - task: PowerShell@2
-    displayName: 'Get Github Access Token'
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
-  # - template: util/get-github-pat-steps.yml
+  # - task: PowerShell@2
+  #   displayName: 'Get Github Access Token'
+  #   inputs:
+  #     targetType: inline
+  #     pwsh: true
+  #     script: |
+  #       $ghToken = (& "$(Agent.BuildDirectory)/azure-powershell-devops/pipeline/scripts/Get-GithubToken.ps1")
+  #       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Build'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '24.16.0'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -84,7 +107,6 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
-  
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
@@ -110,15 +132,15 @@ jobs:
             Get-FilesChangedFromCommit -CommitId $_ | Foreach-Object { $filesChanged += $_ }
           }
         } elseif ("$(Build.reason)" -eq 'Manual') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } elseif ("$(Build.reason)" -eq 'Schedule') {
-          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+          $filesChanged += Get-OutdatedModuleFromTargetModule -RepoRoot "$(Working_Directory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { 'src/' + $_ }
         } else {
           Write-Host "##vso[task.logissue type=error]Invalid trigger: $(Build.reason)."
           exit 1
         }
         $filesChanged | Select-Object -Unique | Out-File $filesChangedOutputPath
-        
+
         $sourceBranchName = "$(Build.SourceBranch)".Replace("refs/heads/","")
         $baseBranchName = "origin/$sourceBranchName"
         $tmpBranchName = "archive/$sourceBranchName/$(Build.Reason)"
@@ -161,11 +183,11 @@ jobs:
         git add $generatedPath
         git commit -m $prTitle
         git push origin $tmpBranchName --force
-        
+
         & $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch $sourceBranchName -BotAccessToken '$(GithubToken)' -Description $prDescription
 
         <#
-          this commidId will be useful when we push directly to target branch in the future
+          this commitId will be useful when we push directly to target branch in the future
           $commitId = (git rev-parse HEAD)
         #>
   - template: util/publish-artifacts-steps.yml
@@ -177,7 +199,7 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - template: util/download-build-steps.yml
     parameters:
@@ -185,7 +207,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install autorest
     inputs:
-      versionSpec: '14.17.1'
+      versionSpec: '24.16.0'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -196,10 +218,10 @@ jobs:
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET SDK for Static Analysis'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Analyze'
     inputs:
@@ -238,10 +260,10 @@ jobs:
     parameters:
       artifactName: build-${{ variables.TestFramework }}
   - task: UseDotNet@2
-    displayName: 'Use .NET SDK 6 for tests'
+    displayName: 'Use .NET SDK for Test'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.x
   - task: PowerShell@2
     displayName: 'Test'
     inputs:
