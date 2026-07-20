@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public bool? VerifyClientCertIssuerDN { get; set; }
         public string VerifyClientRevocation { get; set; }
+        public string VerifyClientAuthMode { get; set; }
     }
 }

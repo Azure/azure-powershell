@@ -1453,6 +1453,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDn,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDN)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
@@ -1558,6 +1562,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.VerifyClientCertIssuerDN,
                         opt => opt.MapFrom(src => src.VerifyClientCertIssuerDn)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
                     );
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
