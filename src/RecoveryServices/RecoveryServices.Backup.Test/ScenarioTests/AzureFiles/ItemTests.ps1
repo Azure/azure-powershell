@@ -870,16 +870,12 @@ function Test-AzureFSRestoreToSecondaryRegion
 		"Item-level restore is not supported"
 
 	# VARIATION-3: full CRR restore to secondary region completes.
-	# Disabled by default: triggering a live Cross Region Restore leaves an in-flight CRR job on the
-	# share, and the subsequent BackupCrrJobDetails read returns NotFound until the job materializes
-	# in the secondary-region job read model, so this variation is not reliably repeatable/recordable.
-	# Re-enable (and re-record) manually when validating an end-to-end CRR restore.
-	# $crrJob = Restore-AzRecoveryServicesBackupItem `
-	# 	-VaultId $vault.ID -VaultLocation $vault.Location `
-	# 	-RecoveryPoint $rp[0] `
-	# 	-TargetStorageAccountName $targetStorageAccountName `
-	# 	-TargetFileShareName $targetFileShareName `
-	# 	-ResolveConflict Overwrite `
-	# 	-RestoreToSecondaryRegion
-	# Assert-NotNull $crrJob
+	$crrJob = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID -VaultLocation $vault.Location `
+		-RecoveryPoint $rp[0] `
+		-TargetStorageAccountName $targetStorageAccountName `
+		-TargetFileShareName $targetFileShareName `
+		-ResolveConflict Overwrite `
+		-RestoreToSecondaryRegion
+	Assert-NotNull $crrJob
 }
