@@ -56,8 +56,8 @@ param(
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The ID of the policy assignment to delete.
-    # Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+    # The ID of the policy exemption to update.
+    # Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
     ${Id},
 
     [Parameter(ValueFromPipelineByPropertyName)]
