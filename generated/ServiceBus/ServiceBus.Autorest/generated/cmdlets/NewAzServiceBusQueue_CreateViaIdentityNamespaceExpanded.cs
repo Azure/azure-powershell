@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create a Service Bus queue. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ExternalDocs(@"https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx", @"")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}", ApiVersion = "2022-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}", ApiVersion = "2026-01-01")]
     public partial class NewAzServiceBusQueue_CreateViaIdentityNamespaceExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IContext
@@ -345,6 +345,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Active", "Disabled", "Restoring", "SendDisabled", "ReceiveDisabled", "Creating", "Deleting", "Renaming", "Unknown")]
         public string Status { get => _parametersBody.Status ?? null; set => _parametersBody.Status = value; }
+
+        /// <summary>Gets and Sets Metadata of User.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets and Sets Metadata of User.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Gets and Sets Metadata of User.",
+        SerializedName = @"userMetadata",
+        PossibleTypes = new [] { typeof(string) })]
+        public string UserMetadata { get => _parametersBody.UserMetadata ?? null; set => _parametersBody.UserMetadata = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

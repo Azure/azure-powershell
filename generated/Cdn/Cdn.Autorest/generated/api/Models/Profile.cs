@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class Profile :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResource" />
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity _identity;
 
-        /// <summary>Managed service identity (system assigned and/or user assigned identities).</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
@@ -240,15 +239,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__trackedResource).Type; }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("location", out var __locationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Creates an new <see cref="Profile" /> instance.</summary>
         public Profile()
         {
@@ -444,7 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilePropertiesExtendedProperties ExtendedProperty { get; set; }
         /// <summary>The Id of the frontdoor.</summary>
         string FrontDoorId { get; set; }
-        /// <summary>Managed service identity (system assigned and/or user assigned identities).</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity Identity { get; set; }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.

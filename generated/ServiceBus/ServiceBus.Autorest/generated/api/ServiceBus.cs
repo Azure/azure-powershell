@@ -17,9 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsBreakPairing(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsBreakPairingViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -179,9 +178,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsBreakPairing" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -193,6 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -206,9 +205,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters to check availability of the given namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -222,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCheckNameAvailability(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -270,7 +268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -328,7 +326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> DisasterRecoveryConfigsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -375,9 +373,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the DisasterRecoveryConfigsCheckNameAvailability operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -390,7 +387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCheckNameAvailabilityViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -425,9 +422,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the DisasterRecoveryConfigsCheckNameAvailability operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -438,7 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> DisasterRecoveryConfigsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -473,9 +469,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters to check availability of the given namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -487,7 +482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> DisasterRecoveryConfigsCheckNameAvailabilityWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -639,9 +634,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsCheckNameAvailability" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters to check availability of the given namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -653,6 +647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -665,9 +660,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
@@ -681,9 +675,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -731,9 +725,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -793,7 +787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery> DisasterRecoveryConfigsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -842,9 +836,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="jsonString">Json string supplied to the DisasterRecoveryConfigsCreateOrUpdate operation</param>
@@ -857,9 +850,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -895,9 +888,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="jsonString">Json string supplied to the DisasterRecoveryConfigsCreateOrUpdate operation</param>
@@ -909,7 +901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery> DisasterRecoveryConfigsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -945,9 +937,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new Alias(Disaster Recovery configuration)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
@@ -960,7 +951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery> DisasterRecoveryConfigsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1030,7 +1021,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.UndeclaredResponseException(_response);
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ArmDisasterRecovery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
                         }
                         default:
                         {
@@ -1075,7 +1067,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DisasterRecoveryConfigsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1100,7 +1092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response);
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ArmDisasterRecovery.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1125,9 +1117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsCreateOrUpdate" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
@@ -1140,6 +1131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1155,9 +1147,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes an Alias(Disaster Recovery configuration)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1171,7 +1162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1215,7 +1206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1320,9 +1311,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsDelete" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1334,6 +1324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1349,9 +1340,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
@@ -1364,9 +1354,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOver(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOver(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1416,9 +1406,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1470,9 +1460,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="jsonString">Json string supplied to the DisasterRecoveryConfigsFailOver operation</param>
@@ -1486,7 +1475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOverViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1576,9 +1565,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsFailOver" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="body">Parameters required to create an Alias(Disaster Recovery configuration)</param>
@@ -1586,11 +1574,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOver_Validate(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DisasterRecoveryConfigsFailOver_Validate(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -1608,9 +1597,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1623,7 +1611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsGet(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1655,9 +1643,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a namespace by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1671,7 +1658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsGetAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string alias, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1716,7 +1703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsGetAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1773,7 +1760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> DisasterRecoveryConfigsGetAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1821,9 +1808,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a namespace by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -1835,7 +1821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> DisasterRecoveryConfigsGetAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1986,9 +1972,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsGetAuthorizationRule" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2001,6 +1986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2030,7 +2016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2086,7 +2072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery> DisasterRecoveryConfigsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2133,9 +2119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2146,7 +2131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery> DisasterRecoveryConfigsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2293,9 +2278,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2307,6 +2291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2320,9 +2305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all Alias(Disaster Recovery configurations)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2334,7 +2318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecoveryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2365,9 +2349,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2380,7 +2363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsListAuthorizationRules(string subscriptionId, string resourceGroupName, string namespaceName, string alias, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2424,7 +2407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsListAuthorizationRulesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2479,7 +2462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> DisasterRecoveryConfigsListAuthorizationRulesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2525,9 +2508,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2538,7 +2520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> DisasterRecoveryConfigsListAuthorizationRulesWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2688,9 +2670,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsListAuthorizationRules" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2702,6 +2683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -2715,9 +2697,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2731,7 +2712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsListKeys(string subscriptionId, string resourceGroupName, string namespaceName, string alias, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2777,7 +2758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2835,7 +2816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> DisasterRecoveryConfigsListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2884,9 +2865,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -2898,7 +2878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> DisasterRecoveryConfigsListKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string alias, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3048,9 +3028,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsListKeys" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="alias">The Disaster Recovery configuration name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -3063,6 +3042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3090,7 +3070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task DisasterRecoveryConfigsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecoveryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3142,7 +3122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecoveryListResult> DisasterRecoveryConfigsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3185,9 +3165,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all Alias(Disaster Recovery configurations)</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3197,7 +3176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecoveryListResult> DisasterRecoveryConfigsListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3343,9 +3322,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="DisasterRecoveryConfigsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -3356,6 +3334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3370,9 +3349,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// created after the operation will be under Premium Namespace. CompleteMigration operation will fail when entity migration
         /// is in-progress.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3385,7 +3363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsCompleteMigration(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3433,7 +3411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsCompleteMigrationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3532,9 +3510,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsCompleteMigration" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -3545,6 +3522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3557,9 +3535,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters required to create Migration Configuration</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3574,7 +3551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsCreateAndStartMigration(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3625,7 +3602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsCreateAndStartMigrationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3687,7 +3664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties> MigrationConfigsCreateAndStartMigrationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3738,9 +3715,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the MigrationConfigsCreateAndStartMigration operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3754,7 +3730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsCreateAndStartMigrationViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3792,9 +3768,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the MigrationConfigsCreateAndStartMigration operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3806,7 +3781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties> MigrationConfigsCreateAndStartMigrationViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3844,9 +3819,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update Migration configuration and starts migration of entities from Standard to Premium namespace
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters required to create Migration Configuration</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3859,7 +3833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties> MigrationConfigsCreateAndStartMigrationWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3918,7 +3892,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -3996,19 +3971,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -4077,7 +4049,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -4155,19 +4128,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -4202,9 +4172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsCreateAndStartMigration" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters required to create Migration Configuration</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4216,6 +4185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4228,9 +4198,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a MigrationConfiguration</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -4244,7 +4213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsDelete(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4288,7 +4257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4393,9 +4362,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -4406,6 +4374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4416,9 +4385,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Retrieves Migration Config</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4431,7 +4399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsGet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4474,7 +4442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4528,7 +4496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties> MigrationConfigsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4573,9 +4541,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Retrieves Migration Config</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4586,7 +4553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties> MigrationConfigsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4731,9 +4698,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -4744,6 +4710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -4754,9 +4721,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all migrationConfigurations</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4768,7 +4734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4810,7 +4776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4862,7 +4828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigListResult> MigrationConfigsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4905,9 +4871,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all migrationConfigurations</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4917,7 +4882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigListResult> MigrationConfigsListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5061,9 +5026,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -5074,6 +5038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5084,9 +5049,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>This operation reverts Migration</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5099,7 +5063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         public async global::System.Threading.Tasks.Task MigrationConfigsRevert(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
             var configName = @"$default";
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5143,7 +5107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task MigrationConfigsRevertViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5242,9 +5206,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="MigrationConfigsRevert" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -5255,6 +5218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -5265,9 +5229,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the given namespace name</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">The request body</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5279,7 +5242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailability(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5287,7 +5250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5311,7 +5274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
 
         /// <summary>Check the give namespace name availability.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to check availability of the given namespace name</param>
+        /// <param name="body">The request body</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5323,7 +5286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5341,7 +5304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5365,7 +5328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
 
         /// <summary>Check the give namespace name availability.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to check availability of the given namespace name</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
@@ -5375,7 +5338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5393,7 +5356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5416,8 +5379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCheckNameAvailability operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5429,7 +5391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCheckNameAvailabilityViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5437,7 +5399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5460,8 +5422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCheckNameAvailability operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5471,7 +5432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5479,7 +5440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5502,9 +5463,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Check the give namespace name availability.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the given namespace name</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
@@ -5514,7 +5474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult> NamespacesCheckNameAvailabilityWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailability body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5522,7 +5482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.ServiceBus/CheckNameAvailability"
+                        + "/providers/Microsoft.ServiceBus/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5660,9 +5620,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesCheckNameAvailability" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="body">Parameters to check availability of the given namespace name</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">The request body</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -5672,6 +5631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -5680,10 +5640,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5696,7 +5655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5730,9 +5689,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The shared access authorization rule.</param>
@@ -5747,7 +5705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5796,7 +5754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateAuthorizationRuleViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5856,7 +5814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> NamespacesCreateOrUpdateAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5905,9 +5863,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateAuthorizationRule operation</param>
@@ -5921,7 +5878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateAuthorizationRuleViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5957,9 +5914,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateAuthorizationRule operation</param>
@@ -5971,7 +5927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> NamespacesCreateOrUpdateAuthorizationRuleViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6007,9 +5963,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The shared access authorization rule.</param>
@@ -6022,7 +5977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> NamespacesCreateOrUpdateAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6175,9 +6130,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesCreateOrUpdateAuthorizationRule" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">The shared access authorization rule.</param>
@@ -6190,6 +6144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6205,9 +6160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6221,7 +6175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSet(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6269,7 +6223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6327,7 +6281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6374,9 +6328,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateNetworkRuleSet operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6389,7 +6342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateNetworkRuleSetViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6424,9 +6377,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdateNetworkRuleSet operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6437,7 +6389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6472,9 +6424,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6486,7 +6437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet> NamespacesCreateOrUpdateNetworkRuleSetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6638,9 +6589,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesCreateOrUpdateNetworkRuleSet" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">The Namespace IpFilterRule.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6652,6 +6602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -6679,7 +6630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6738,7 +6689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6786,10 +6737,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6801,7 +6751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6837,10 +6787,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -6850,7 +6799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6886,10 +6835,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -6900,7 +6848,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6955,7 +6903,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -7033,19 +6982,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -7112,7 +7058,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -7190,19 +7137,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -7237,10 +7181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
-        /// <param name="namespaceName">The namespace name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to create a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -7251,10 +7194,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -7263,9 +7209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -7278,7 +7223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDelete(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7308,9 +7253,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a namespace authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7324,7 +7268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDeleteAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7368,7 +7312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDeleteAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7473,9 +7417,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesDeleteAuthorizationRule" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7487,6 +7430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7514,7 +7458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7580,7 +7524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -7659,19 +7603,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_finalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -7712,9 +7653,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -7725,6 +7665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -7734,10 +7675,646 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="body">Parameters for updating a namespace resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NamespacesFailover(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NamespacesFailover_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters for updating a namespace resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NamespacesFailoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NamespacesFailover_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Parameters for updating a namespace resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver> NamespacesFailoverViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NamespacesFailoverWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="jsonString">Json string supplied to the NamespacesFailover operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NamespacesFailoverViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NamespacesFailover_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="jsonString">Json string supplied to the NamespacesFailover operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver> NamespacesFailoverViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NamespacesFailoverWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>GeoDR Failover</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="body">Parameters for updating a namespace resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver> NamespacesFailoverWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/failover"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NamespacesFailoverWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "NamespacesFailoverWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver> NamespacesFailoverWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailOver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "NamespacesFailover" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NamespacesFailover_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.FailOver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NamespacesFailover" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="body">Parameters for updating a namespace resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NamespacesFailover_Validate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailOver body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>Gets a description for the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7749,7 +8326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7779,9 +8356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a namespace by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7794,7 +8370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7837,7 +8413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7891,7 +8467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> NamespacesGetAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7936,9 +8512,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a namespace by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7949,7 +8524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> NamespacesGetAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8096,9 +8671,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesGetAuthorizationRule" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8110,6 +8684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8123,9 +8698,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8137,7 +8711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetNetworkRuleSet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8179,7 +8753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetNetworkRuleSetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8231,7 +8805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet> NamespacesGetNetworkRuleSetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8274,9 +8848,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8286,7 +8859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet> NamespacesGetNetworkRuleSetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8432,9 +9005,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesGetNetworkRuleSet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8445,6 +9017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8466,7 +9039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8517,7 +9090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8559,9 +9132,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets a description for the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8571,7 +9143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8714,9 +9286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -8727,6 +9298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -8739,8 +9311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Gets all the available namespaces within the subscription, irrespective of the resource groups.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -8751,7 +9322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8778,9 +9349,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8792,7 +9362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListAuthorizationRules(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8834,7 +9404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListAuthorizationRulesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8886,7 +9456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> NamespacesListAuthorizationRulesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8929,9 +9499,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the authorization rules for a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -8941,7 +9510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> NamespacesListAuthorizationRulesWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9087,9 +9656,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesListAuthorizationRules" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -9100,6 +9668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9110,9 +9679,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the available namespaces within a resource group.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -9123,7 +9691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9163,7 +9731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9212,7 +9780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult> NamespacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9252,9 +9820,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the available namespaces within a resource group.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -9263,7 +9830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult> NamespacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9407,9 +9974,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesListByResourceGroup" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -9419,6 +9985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9426,9 +9993,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9441,7 +10007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListKeys(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9485,7 +10051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9540,7 +10106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> NamespacesListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9586,9 +10152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9599,7 +10164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> NamespacesListKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9745,9 +10310,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesListKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9759,6 +10323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -9772,9 +10337,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets list of NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9786,7 +10350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListNetworkRuleSets(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9828,7 +10392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListNetworkRuleSetsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9880,7 +10444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSetListResult> NamespacesListNetworkRuleSetsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9923,9 +10487,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets list of NetworkRuleSet for a Namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9935,7 +10498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSetListResult> NamespacesListNetworkRuleSetsWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10081,9 +10644,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesListNetworkRuleSets" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -10094,6 +10656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10117,7 +10680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10165,7 +10728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult> NamespacesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10204,8 +10767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// Gets all the available namespaces within the subscription, irrespective of the resource groups.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -10214,7 +10776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceListResult> NamespacesListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10354,8 +10916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10365,13 +10926,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Regenerates the primary or secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate the authorization rule.</param>
@@ -10386,7 +10947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesRegenerateKeys(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10436,7 +10997,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesRegenerateKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10497,7 +11058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> NamespacesRegenerateKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10547,9 +11108,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesRegenerateKeys operation</param>
@@ -10563,7 +11123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesRegenerateKeysViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10600,9 +11160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="jsonString">Json string supplied to the NamespacesRegenerateKeys operation</param>
@@ -10614,7 +11173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> NamespacesRegenerateKeysViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10651,9 +11210,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings for the namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate the authorization rule.</param>
@@ -10666,7 +11224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> NamespacesRegenerateKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10816,9 +11374,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesRegenerateKeys" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
         /// <param name="body">Parameters supplied to regenerate the authorization rule.</param>
@@ -10831,6 +11388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -10848,9 +11406,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to update a namespace resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10866,7 +11423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10917,7 +11474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10976,7 +11533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11024,9 +11581,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11041,7 +11597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11077,9 +11633,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="jsonString">Json string supplied to the NamespacesUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11090,7 +11645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11126,9 +11681,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// <summary>
         /// update a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to update a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11140,7 +11694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace> NamespacesUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11312,9 +11866,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="NamespacesUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="body">Parameters supplied to update a namespace resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11326,6 +11879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -11337,7 +11891,865 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Lists all of the available ServiceBus REST API operations.</summary>
+        /// <summary>Gets list of current NetworkSecurityPerimeterConfiguration for Namespace</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets list of current NetworkSecurityPerimeterConfiguration for Namespace</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)/networkSecurityPerimeterConfigurations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets list of current NetworkSecurityPerimeterConfiguration for Namespace</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)/networkSecurityPerimeterConfigurations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets list of current NetworkSecurityPerimeterConfiguration for Namespace</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/networkSecurityPerimeterConfigurations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList> NetworkSecurityPerimeterConfigurationListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NetworkSecurityPerimeterConfigurationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationList" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfigurationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NetworkSecurityPerimeterConfigurationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationList" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationList_Validate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
+            }
+        }
+
+        /// <summary>Return a NetworkSecurityPerimeterConfigurations resourceAssociationName</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="resourceAssociationName">The ResourceAssociation Name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGetResourceAssociationName(string subscriptionId, string resourceGroupName, string namespaceName, string resourceAssociationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(resourceAssociationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsGetResourceAssociationName_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Return a NetworkSecurityPerimeterConfigurations resourceAssociationName</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)/networkSecurityPerimeterConfigurations/(?<resourceAssociationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                var resourceAssociationName = _match.Groups["resourceAssociationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + resourceAssociationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsGetResourceAssociationName_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Return a NetworkSecurityPerimeterConfigurations resourceAssociationName</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)/networkSecurityPerimeterConfigurations/(?<resourceAssociationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                var resourceAssociationName = _match.Groups["resourceAssociationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + resourceAssociationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Return a NetworkSecurityPerimeterConfigurations resourceAssociationName</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="resourceAssociationName">The ResourceAssociation Name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string resourceAssociationName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(resourceAssociationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration> NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NetworkSecurityPerimeterConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsGetResourceAssociationName" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGetResourceAssociationName_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NetworkSecurityPerimeterConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationsGetResourceAssociationName" /> method. Call this
+        /// like the actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="resourceAssociationName">The ResourceAssociation Name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsGetResourceAssociationName_Validate(string subscriptionId, string resourceGroupName, string namespaceName, string resourceAssociationName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
+                await eventListener.AssertNotNull(nameof(resourceAssociationName),resourceAssociationName);
+            }
+        }
+
+        /// <summary>Refreshes any information about the association.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="resourceAssociationName">The ResourceAssociation Name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile(string subscriptionId, string resourceGroupName, string namespaceName, string resourceAssociationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + global::System.Uri.EscapeDataString(namespaceName)
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + global::System.Uri.EscapeDataString(resourceAssociationName)
+                        + "/reconcile"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsReconcile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Refreshes any information about the association.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-01-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceBus/namespaces/(?<namespaceName>[^/]+)/networkSecurityPerimeterConfigurations/(?<resourceAssociationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var namespaceName = _match.Groups["namespaceName"].Value;
+                var resourceAssociationName = _match.Groups["resourceAssociationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceBus/namespaces/"
+                        + namespaceName
+                        + "/networkSecurityPerimeterConfigurations/"
+                        + resourceAssociationName
+                        + "/reconcile"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.NetworkSecurityPerimeterConfigurationsReconcile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "NetworkSecurityPerimeterConfigurationsReconcile" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="NetworkSecurityPerimeterConfigurationsReconcile" /> method. Call this like the actual
+        /// call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="namespaceName">The namespace name</param>
+        /// <param name="resourceAssociationName">The ResourceAssociation Name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task NetworkSecurityPerimeterConfigurationsReconcile_Validate(string subscriptionId, string resourceGroupName, string namespaceName, string resourceAssociationName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(namespaceName),namespaceName);
+                await eventListener.AssertMinimumLength(nameof(namespaceName),namespaceName,6);
+                await eventListener.AssertMaximumLength(nameof(namespaceName),namespaceName,50);
+                await eventListener.AssertNotNull(nameof(resourceAssociationName),resourceAssociationName);
+            }
+        }
+
+        /// <summary>List the operations for the provider</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -11348,7 +12760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11372,7 +12784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Lists all of the available ServiceBus REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -11384,7 +12796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11417,7 +12829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Lists all of the available ServiceBus REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -11427,7 +12839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11460,7 +12872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             }
         }
 
-        /// <summary>Lists all of the available ServiceBus REST API operations.</summary>
+        /// <summary>List the operations for the provider</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -11469,7 +12881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11620,9 +13032,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -11639,7 +13050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11690,7 +13101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11750,7 +13161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11799,9 +13210,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsCreateOrUpdate operation</param>
@@ -11817,7 +13227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11853,9 +13263,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="jsonString">Json string supplied to the PrivateEndpointConnectionsCreateOrUpdate operation</param>
@@ -11867,7 +13276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11903,9 +13312,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update PrivateEndpointConnections of service namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -11918,7 +13326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12097,9 +13505,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="PrivateEndpointConnectionsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="body">Parameters supplied to update Status of PrivateEndPoint Connection to namespace resource.</param>
@@ -12112,6 +13519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12125,9 +13533,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes an existing Private Endpoint Connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12141,7 +13548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12185,7 +13592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12254,7 +13661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: default
+                    // declared final-state-via: location
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -12333,19 +13740,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_finalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Method.Get);
 
-                            // drop the old response
-                            _response?.Dispose();
+                        // drop the old response
+                        _response?.Dispose();
 
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            break;
-                        }
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
                     }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -12386,9 +13790,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12400,6 +13803,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12411,9 +13815,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets a description for the specified Private Endpoint Connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12426,7 +13829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12469,7 +13872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12523,7 +13926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12568,9 +13971,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets a description for the specified Private Endpoint Connection.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12581,7 +13983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12728,9 +14130,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="privateEndpointConnectionName">The PrivateEndpointConnection name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12742,6 +14143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -12753,9 +14155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the available PrivateEndpointConnections within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -12767,7 +14168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12809,7 +14210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12861,7 +14262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12904,9 +14305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the available PrivateEndpointConnections within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -12916,7 +14316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13062,9 +14462,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -13075,6 +14474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13085,9 +14485,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets lists of resources that supports Privatelinks.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -13099,7 +14498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateLinkResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13141,7 +14540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateLinkResourcesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13193,7 +14592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateLinkResourcesListResult> PrivateLinkResourcesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13236,9 +14635,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets lists of resources that supports Privatelinks.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -13248,7 +14646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateLinkResourcesListResult> PrivateLinkResourcesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13392,9 +14790,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="PrivateLinkResourcesGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -13405,6 +14802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13415,9 +14813,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="body">Parameters supplied to create or update a queue resource.</param>
@@ -13432,7 +14829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13468,9 +14865,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -13486,7 +14882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdateAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13537,7 +14933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdateAuthorizationRuleViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13600,7 +14996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> QueuesCreateOrUpdateAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13652,9 +15048,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -13669,7 +15064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdateAuthorizationRuleViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13707,9 +15102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -13722,7 +15116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> QueuesCreateOrUpdateAuthorizationRuleViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13760,9 +15154,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -13776,7 +15169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> QueuesCreateOrUpdateAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13931,9 +15324,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesCreateOrUpdateAuthorizationRule" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -13947,6 +15339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -13977,7 +15370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14037,7 +15430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue> QueuesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14086,9 +15479,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="jsonString">Json string supplied to the QueuesCreateOrUpdate operation</param>
@@ -14102,7 +15494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14138,9 +15530,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="jsonString">Json string supplied to the QueuesCreateOrUpdate operation</param>
@@ -14152,7 +15543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue> QueuesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14188,9 +15579,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a Service Bus queue. This operation is idempotent.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="body">Parameters supplied to create or update a queue resource.</param>
@@ -14203,7 +15593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue> QueuesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14352,9 +15742,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="body">Parameters supplied to create or update a queue resource.</param>
@@ -14367,6 +15756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14381,9 +15771,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a queue from the specified namespace in a resource group.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14397,7 +15786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesDelete(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14429,9 +15818,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a queue authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -14446,7 +15834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesDeleteAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14492,7 +15880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesDeleteAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14600,9 +15988,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesDeleteAuthorizationRule" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -14615,6 +16002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14642,7 +16030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14747,9 +16135,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14761,6 +16148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -14773,9 +16161,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a description for the specified queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14788,7 +16175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesGet(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14820,9 +16207,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a queue by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -14836,7 +16222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesGetAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14881,7 +16267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesGetAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14938,7 +16324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> QueuesGetAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14986,9 +16372,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets an authorization rule for a queue by rule name.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -15000,7 +16385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> QueuesGetAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15149,9 +16534,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesGetAuthorizationRule" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -15164,6 +16548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -15190,7 +16575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15244,7 +16629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue> QueuesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15289,9 +16674,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a description for the specified queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15302,7 +16686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue> QueuesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15447,9 +16831,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15461,6 +16844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -15473,9 +16857,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all authorization rules for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15488,7 +16871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListAuthorizationRules(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15532,7 +16915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListAuthorizationRulesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15587,7 +16970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> QueuesListAuthorizationRulesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15633,9 +17016,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all authorization rules for a queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15646,7 +17028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> QueuesListAuthorizationRulesWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15794,9 +17176,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesListAuthorizationRules" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15808,6 +17189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -15820,9 +17202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the queues within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -15838,7 +17219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListByNamespace(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15888,7 +17269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListByNamespaceViaIdentity(global::System.String viaIdentity, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15948,7 +17329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueueListResult> QueuesListByNamespaceViaIdentityWithResult(global::System.String viaIdentity, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15995,9 +17376,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the queues within a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -16011,7 +17391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueueListResult> QueuesListByNamespaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16159,9 +17539,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesListByNamespace" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -16176,6 +17555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -16189,9 +17569,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Primary and secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16205,7 +17584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListKeys(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16221,7 +17600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + global::System.Uri.EscapeDataString(queueName)
                         + "/authorizationRules/"
                         + global::System.Uri.EscapeDataString(authorizationRuleName)
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -16251,7 +17630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16281,7 +17660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + queueName
                         + "/authorizationRules/"
                         + authorizationRuleName
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -16309,7 +17688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> QueuesListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16339,7 +17718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + queueName
                         + "/authorizationRules/"
                         + authorizationRuleName
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -16358,9 +17737,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Primary and secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16372,7 +17750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> QueuesListKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16388,7 +17766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + global::System.Uri.EscapeDataString(queueName)
                         + "/authorizationRules/"
                         + global::System.Uri.EscapeDataString(authorizationRuleName)
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -16520,9 +17898,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesListKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16535,6 +17912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -16550,9 +17928,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16568,7 +17945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesRegenerateKeys(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16620,7 +17997,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesRegenerateKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16684,7 +18061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> QueuesRegenerateKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16737,9 +18114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16754,7 +18130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task QueuesRegenerateKeysViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16793,9 +18169,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16808,7 +18183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> QueuesRegenerateKeysViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16847,9 +18222,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates the primary or secondary connection strings to the queue.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -16863,7 +18237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> QueuesRegenerateKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string queueName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17015,9 +18389,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="QueuesRegenerateKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="queueName">The queue name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -17031,6 +18404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -17048,9 +18422,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new rule and update an existing rule</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17067,7 +18440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17120,7 +18493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17186,7 +18559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> RulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17241,9 +18614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new rule and update an existing rule</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17259,7 +18631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17299,9 +18671,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new rule and update an existing rule</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17315,7 +18686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> RulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17355,9 +18726,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a new rule and update an existing rule</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17372,7 +18742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> RulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17525,9 +18895,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="RulesCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17542,6 +18911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -17562,9 +18932,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes an existing rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17580,7 +18949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesDelete(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17628,7 +18997,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17739,9 +19108,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="RulesDelete" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17755,6 +19123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -17773,9 +19142,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Retrieves the description for the specified rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17790,7 +19158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesGet(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17837,7 +19205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17897,7 +19265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> RulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17948,9 +19316,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Retrieves the description for the specified rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -17963,7 +19330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule> RulesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18112,9 +19479,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="RulesGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18128,6 +19494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -18146,9 +19513,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>List all the rules within given topic-subscription</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18166,7 +19532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesListBySubscriptions(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18220,7 +19586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesListBySubscriptionsViaIdentity(global::System.String viaIdentity, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18286,7 +19652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRuleListResult> RulesListBySubscriptionsViaIdentityWithResult(global::System.String viaIdentity, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18339,9 +19705,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>List all the rules within given topic-subscription</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18357,7 +19722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRuleListResult> RulesListBySubscriptionsWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18509,9 +19874,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="RulesListBySubscriptions" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18528,6 +19892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -18546,9 +19911,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic subscription.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18564,7 +19928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18615,7 +19979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18678,7 +20042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription> SubscriptionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18730,9 +20094,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic subscription.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18747,7 +20110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18785,9 +20148,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic subscription.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18800,7 +20162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription> SubscriptionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18838,9 +20200,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic subscription.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -18854,7 +20215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription> SubscriptionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19007,9 +20368,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="SubscriptionsCreateOrUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19023,6 +20383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -19040,9 +20401,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a subscription from the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19057,7 +20417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19103,7 +20463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19211,9 +20571,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="SubscriptionsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19226,6 +20585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -19241,9 +20601,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a subscription description for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19257,7 +20616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsGet(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19302,7 +20661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19359,7 +20718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription> SubscriptionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19407,9 +20766,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a subscription description for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19421,7 +20779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription> SubscriptionsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string subscriptionName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19568,9 +20926,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="SubscriptionsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="subscriptionName">The subscription name.</param>
@@ -19583,6 +20940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -19598,9 +20956,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>List all the subscriptions under a specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
@@ -19617,7 +20974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsListByTopic(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19669,7 +21026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task SubscriptionsListByTopicViaIdentity(global::System.String viaIdentity, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19732,7 +21089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionListResult> SubscriptionsListByTopicViaIdentityWithResult(global::System.String viaIdentity, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19782,9 +21139,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>List all the subscriptions under a specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
@@ -19799,7 +21155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionListResult> SubscriptionsListByTopicWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19949,9 +21305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="SubscriptionsListByTopic" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
@@ -19967,6 +21322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -19982,9 +21338,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic in the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="body">Parameters supplied to create a topic resource.</param>
@@ -19999,7 +21354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20035,9 +21390,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -20053,7 +21407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdateAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20104,7 +21458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdateAuthorizationRuleViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20167,7 +21521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> TopicsCreateOrUpdateAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20219,9 +21573,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -20236,7 +21589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdateAuthorizationRuleViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20274,9 +21627,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -20289,7 +21641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> TopicsCreateOrUpdateAuthorizationRuleViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20327,9 +21679,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update an authorization rule for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -20343,7 +21694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> TopicsCreateOrUpdateAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20498,9 +21849,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsCreateOrUpdateAuthorizationRule" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -20514,6 +21864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -20544,7 +21895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20604,7 +21955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic> TopicsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20653,9 +22004,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic in the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="jsonString">Json string supplied to the TopicsCreateOrUpdate operation</param>
@@ -20669,7 +22019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20705,9 +22055,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic in the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="jsonString">Json string supplied to the TopicsCreateOrUpdate operation</param>
@@ -20719,7 +22068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic> TopicsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20755,9 +22104,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>update a topic in the specified namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="body">Parameters supplied to create a topic resource.</param>
@@ -20770,7 +22118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic> TopicsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20919,9 +22267,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="body">Parameters supplied to create a topic resource.</param>
@@ -20934,6 +22281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -20948,9 +22296,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a topic from the specified namespace and resource group.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20964,7 +22311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20996,9 +22343,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Deletes a topic authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -21013,7 +22359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsDeleteAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21059,7 +22405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsDeleteAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21167,9 +22513,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsDeleteAuthorizationRule" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -21182,6 +22527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -21209,7 +22555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21314,9 +22660,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21328,6 +22673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -21340,9 +22686,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a description for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -21355,7 +22700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsGet(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21387,9 +22732,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns the specified authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -21403,7 +22747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsGetAuthorizationRule(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21448,7 +22792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsGetAuthorizationRuleViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21505,7 +22849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> TopicsGetAuthorizationRuleViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21553,9 +22897,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns the specified authorization rule.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -21567,7 +22910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule> TopicsGetAuthorizationRuleWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21716,9 +23059,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsGetAuthorizationRule" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -21731,6 +23073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -21757,7 +23100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21811,7 +23154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic> TopicsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21856,9 +23199,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Returns a description for the specified topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21869,7 +23211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic> TopicsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22014,9 +23356,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22028,6 +23369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -22040,9 +23382,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets authorization rules for a topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -22055,7 +23396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListAuthorizationRules(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22099,7 +23440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListAuthorizationRulesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22154,7 +23495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> TopicsListAuthorizationRulesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22200,9 +23541,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets authorization rules for a topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22213,7 +23553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRuleListResult> TopicsListAuthorizationRulesWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22361,9 +23701,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsListAuthorizationRules" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22375,6 +23714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -22387,9 +23727,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all the topics in a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -22405,7 +23744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListByNamespace(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopicListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22455,7 +23794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListByNamespaceViaIdentity(global::System.String viaIdentity, int? Skip, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopicListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22515,7 +23854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopicListResult> TopicsListByNamespaceViaIdentityWithResult(global::System.String viaIdentity, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22562,9 +23901,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets all the topics in a namespace.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -22578,7 +23916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopicListResult> TopicsListByNamespaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, int? Skip, int? Top, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22726,9 +24064,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsListByNamespace" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="Skip">Skip is only used if a previous operation returned a partial result. If a previous response contains
         /// a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to
@@ -22743,6 +24080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -22756,9 +24094,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -22772,7 +24109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListKeys(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22788,7 +24125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + global::System.Uri.EscapeDataString(topicName)
                         + "/authorizationRules/"
                         + global::System.Uri.EscapeDataString(authorizationRuleName)
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22818,7 +24155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsListKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22848,7 +24185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + topicName
                         + "/authorizationRules/"
                         + authorizationRuleName
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22876,7 +24213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> TopicsListKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22906,7 +24243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + topicName
                         + "/authorizationRules/"
                         + authorizationRuleName
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -22925,9 +24262,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Gets the primary and secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -22939,7 +24275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> TopicsListKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22955,7 +24291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
                         + global::System.Uri.EscapeDataString(topicName)
                         + "/authorizationRules/"
                         + global::System.Uri.EscapeDataString(authorizationRuleName)
-                        + "/ListKeys"
+                        + "/listKeys"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -23087,9 +24423,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsListKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23102,6 +24437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -23117,9 +24453,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates primary or secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23135,7 +24470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsRegenerateKeys(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23187,7 +24522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsRegenerateKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23251,7 +24586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> TopicsRegenerateKeysViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23304,9 +24639,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates primary or secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23321,7 +24655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task TopicsRegenerateKeysViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23360,9 +24694,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates primary or secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23375,7 +24708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> TopicsRegenerateKeysViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23414,9 +24747,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         }
 
         /// <summary>Regenerates primary or secondary connection strings for the topic.</summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23430,7 +24762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys> TopicsRegenerateKeysWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string topicName, string authorizationRuleName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRegenerateAccessKeyParameters body, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2026-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23582,9 +24914,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
         /// Validation method for <see cref="TopicsRegenerateKeys" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">Name of the Resource group within the Azure subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="namespaceName">The namespace name</param>
         /// <param name="topicName">The topic name.</param>
         /// <param name="authorizationRuleName">The authorization rule name.</param>
@@ -23598,6 +24929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);

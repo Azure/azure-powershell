@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The response to the List Namespace operation.</summary>
+    /// <summary>The response of a SBAuthorizationRule list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(SbAuthorizationRuleListResultTypeConverter))]
     public partial class SbAuthorizationRuleListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The response to the List Namespace operation.
+    /// The response of a SBAuthorizationRule list operation.
     [System.ComponentModel.TypeConverter(typeof(SbAuthorizationRuleListResultTypeConverter))]
     public partial interface ISbAuthorizationRuleListResult
 

@@ -121,10 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("PropertiesMigratedProfileResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).PropertiesMigratedProfileResourceId = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("PropertiesMigratedProfileResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).PropertiesMigratedProfileResourceId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -161,10 +157,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("PropertiesMigratedProfileResourceId"))
             {
