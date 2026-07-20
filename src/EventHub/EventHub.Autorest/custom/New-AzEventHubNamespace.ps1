@@ -135,6 +135,11 @@ function New-AzEventHubNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
         ${GeoDataReplicationLocation},
 
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${IPAddressType},
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
