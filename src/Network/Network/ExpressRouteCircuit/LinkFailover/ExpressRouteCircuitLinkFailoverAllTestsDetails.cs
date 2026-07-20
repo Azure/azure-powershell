@@ -48,21 +48,13 @@ namespace Microsoft.Azure.Commands.Network.ExpressRouteCircuit
         {
             base.Execute();
 
-            // ************* To Do: correct API call to get all test details for the specified ExpressRoute circuit and failover test type
-            //var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
-            //    .GetFailoverAllTestDetailsWithHttpMessagesAsync(
-            //        resourceGroupName: ResourceGroupName,
-            //        expressRouteCircuitName: ExpressRouteCircuitName,
-            //        testType: FailoverTestType,
-            //        fetchLatest: FetchLatest)
-            //    .GetAwaiter().GetResult();
-
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                .GetFailoverAllTestDetailsWithHttpMessagesAsync(
+            var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
+                .GetCircuitLinkFailoverAllTestsDetailsWithHttpMessagesAsync(
                     resourceGroupName: ResourceGroupName,
-                    virtualNetworkGatewayName: ExpressRouteCircuitName,
-                    type: FailoverTestType,
-                    fetchLatest: FetchLatest)
+                    circuitName: ExpressRouteCircuitName,
+                    failoverTestType: FailoverTestType,
+                    fetchLatest: FetchLatest
+                )
                 .GetAwaiter().GetResult();
 
             // If the response status is 202 (Accepted), poll for the result

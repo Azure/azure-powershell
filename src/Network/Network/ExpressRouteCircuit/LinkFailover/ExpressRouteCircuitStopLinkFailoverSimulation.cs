@@ -57,34 +57,19 @@ namespace Microsoft.Azure.Commands.Network.ExpressRouteCircuit
         {
             base.Execute();
 
-            //var parameters = new ExpressRouteLinkFailoverStopApiParameters
-            //{
-            //    CircuitTestCategory = this.CircuitTestCategory,
-            //    LinkType = this.LinkType,
-            //    WasSimulationSuccessful = this.WasSimulationSuccessful,
-            //    IsVerified = this.IsVerified
-            //};
-
-            //// To Do: Change to correctly call the API to stop link failover simulation and return the result
-            //var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
-            //    .StopExpressRouteCircuitLinkFailoverSimulationWithHttpMessagesAsync(
-            //        ResourceGroupName,
-            //        ExpressRouteCircuitName,
-            //        parameters
-            //    ).GetAwaiter().GetResult();
-
-            var parameters = new ExpressRouteFailoverStopApiParameters
+            var parameters = new ExpressRouteLinkFailoverStopApiParameters
             {
-                PeeringLocation = this.ResourceGroupName,
+                CircuitTestCategory = this.CircuitTestCategory,
+                LinkType = this.LinkType,
                 WasSimulationSuccessful = this.WasSimulationSuccessful,
-                Details = new List<FailoverConnectionDetails> ()
+                IsVerified = this.IsVerified
             };
 
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                .StopExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
-                    ResourceGroupName,
-                    ExpressRouteCircuitName,
-                    parameters
+            var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
+                .StopCircuitLinkFailoverTestWithHttpMessagesAsync(
+                    resourceGroupName : ResourceGroupName,
+                    circuitName : ExpressRouteCircuitName,
+                    stopParameters: parameters
                 ).GetAwaiter().GetResult();
 
             WriteObject(response.Body);

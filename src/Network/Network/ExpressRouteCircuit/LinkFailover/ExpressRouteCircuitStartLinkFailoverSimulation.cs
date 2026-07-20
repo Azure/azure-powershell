@@ -46,19 +46,12 @@ namespace Microsoft.Azure.Commands.Network.ExpressRouteCircuit
         {
             base.Execute();
 
-            //var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
-            //    .StartExpressRouteCircuitLinkFailoverSimulationWithHttpMessagesAsync(
-            //        ResourceGroupName,
-            //        ExpressRouteCircuitName,
-            //        LinkType,
-            //        CircuitMaintenanceCategory
-            //    ).GetAwaiter().GetResult();
-
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                .StartExpressRouteSiteFailoverSimulationWithHttpMessagesAsync(
-                    ResourceGroupName,
-                    ExpressRouteCircuitName,
-                    LinkType
+            var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
+                .StartCircuitLinkFailoverTestWithHttpMessagesAsync(
+                    resourceGroupName: ResourceGroupName,
+                    circuitName: ExpressRouteCircuitName,
+                    linkType: LinkType,
+                    circuitTestCategory: CircuitMaintenanceCategory
                 ).GetAwaiter().GetResult();
 
             WriteObject(response.Body);

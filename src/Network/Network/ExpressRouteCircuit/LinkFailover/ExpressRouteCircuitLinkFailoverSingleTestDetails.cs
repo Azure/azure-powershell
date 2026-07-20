@@ -54,21 +54,12 @@ namespace Microsoft.Azure.Commands.Network.ExpressRouteCircuit
         {
             base.Execute();
 
-            // ****************** To Do: call correct API once it's available ******************
-            //var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
-            //    .GetFailoverSingleTestDetailsWithHttpMessagesAsync(
-            //        resourceGroupName: ResourceGroupName,
-            //        expressRouteCircuitName: ExpressRouteCircuitName,
-            //        linkType: LinkType,
-            //        circuitMaintenanceCategory: CircuitMaintenanceCategory,
-            //        failoverTestId: FailoverTestId)
-            //    .GetAwaiter().GetResult();
-
-            var response = NetworkClient.NetworkManagementClient.VirtualNetworkGateways
-                .GetFailoverSingleTestDetailsWithHttpMessagesAsync(
+            var response = NetworkClient.NetworkManagementClient.ExpressRouteCircuits
+                .GetCircuitLinkFailoverSingleTestDetailsWithHttpMessagesAsync(
                     resourceGroupName: ResourceGroupName,
-                    virtualNetworkGatewayName: ExpressRouteCircuitName,
-                    peeringLocation: LinkType,
+                    circuitName: ExpressRouteCircuitName,
+                    linkType: LinkType,
+                    circuitTestCategory: CircuitMaintenanceCategory,
                     failoverTestId: FailoverTestId)
                 .GetAwaiter().GetResult();
 
