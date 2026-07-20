@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class LoadBalancerScope
     {
+        /// <summary>
+        /// Public
+        /// </summary>
         public const string Public = "Public";
+        /// <summary>
+        /// Private
+        /// </summary>
         public const string Private = "Private";
     }
 }

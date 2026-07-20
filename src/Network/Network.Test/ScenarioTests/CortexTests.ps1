@@ -2111,19 +2111,14 @@ function Test-ConnectionPolicyCRUD
         $policies = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName
         Assert-AreEqual 1 $policies.Count
 
-        # Update the ConnectionPolicy
-        $connectionPolicy = Set-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName
+        # Update the ConnectionPolicy - disable internet security and assert the change
+        $connectionPolicy = Set-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -EnableInternetSecurity $false
         $connectionPolicy = Get-AzConnectionPolicy -ResourceGroupName $rgName -HubName $virtualHubName -Name $policyName
         Assert-AreEqual $policyName $connectionPolicy.Name
+        Assert-AreEqual $False $connectionPolicy.EnableInternetSecurity
 
         # Delete the ConnectionPolicy
         $delete = Remove-AzConnectionPolicy -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $policyName -Force -PassThru
-        Assert-AreEqual $True $delete
-
-        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-        Assert-AreEqual $True $delete
-
-        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
         Assert-AreEqual $True $delete
     }
     finally

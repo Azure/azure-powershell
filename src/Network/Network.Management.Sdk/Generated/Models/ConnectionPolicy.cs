@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// ConnectionPolicy resource defined for VirtualHub.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ConnectionPolicy : SubResource
+    public partial class ConnectionPolicy : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionPolicy class.
@@ -28,40 +27,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the ConnectionPolicy that is unique within a VirtualHub. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Resource name.
         /// </param>
 
         /// <param name="type">Resource type.
         /// </param>
 
-        /// <param name="enableInternetSecurity">Enable internet security.
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="routingConfiguration">The Routing Configuration indicating the associated and propagated route
-        /// tables on this connection.
+        /// <param name="properties">Properties of the ConnectionPolicy resource.
         /// </param>
+        public ConnectionPolicy(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), ConnectionPolicyProperties properties = default(ConnectionPolicyProperties))
 
-        /// <param name="provisioningState">The provisioning state of the ConnectionPolicy resource.
-        /// Possible values include: 'Failed', 'Succeeded', 'Canceled', 'Creating',
-        /// 'Updating', 'Deleting'</param>
-
-        /// <param name="associatedConnections">List of connection names associated with this ConnectionPolicy.
-        /// </param>
-        public ConnectionPolicy(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), System.Collections.Generic.IList<string> associatedConnections = default(System.Collections.Generic.IList<string>))
-
-        : base(id)
+        : base(id, name, type, etag)
         {
-            this.Name = name;
-            this.Etag = etag;
-            this.Type = type;
-            this.EnableInternetSecurity = enableInternetSecurity;
-            this.RoutingConfiguration = routingConfiguration;
-            this.ProvisioningState = provisioningState;
-            this.AssociatedConnections = associatedConnections;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -72,48 +53,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the ConnectionPolicy that is unique within a
-        /// VirtualHub. This name can be used to access the resource.
+        /// Gets or sets properties of the ConnectionPolicy resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag { get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Gets or sets enable internet security.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableInternetSecurity")]
-        public bool? EnableInternetSecurity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Routing Configuration indicating the associated and
-        /// propagated route tables on this connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routingConfiguration")]
-        public RoutingConfiguration RoutingConfiguration { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the ConnectionPolicy resource. Possible values include: 'Failed', 'Succeeded', 'Canceled', 'Creating', 'Updating', 'Deleting'
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets list of connection names associated with this ConnectionPolicy.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.associatedConnections")]
-        public System.Collections.Generic.IList<string> AssociatedConnections { get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ConnectionPolicyProperties Properties {get; set; }
     }
 }

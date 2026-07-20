@@ -62,15 +62,27 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSConnectionPolicy CreateOrUpdateConnectionPolicy(string resourceGroupName, string virtualHubName, string connectionPolicyName, PSConnectionPolicy connectionPolicy)
         {
-            var connectionPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectionPolicy>(connectionPolicy);
+            var connectionPolicyModel = new MNM.ConnectionPolicy
+            {
+                Properties = new MNM.ConnectionPolicyProperties
+                {
+                    EnableInternetSecurity = connectionPolicy.EnableInternetSecurity,
+                    RoutingConfiguration = connectionPolicy.RoutingConfiguration != null
+                        ? NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(connectionPolicy.RoutingConfiguration)
+                        : null
+                }
+            };
             var connectionPolicyCreated = ConnectionPolicyClient.CreateOrUpdate(resourceGroupName, virtualHubName, connectionPolicyName, connectionPolicyModel);
             return ToPsConnectionPolicy(connectionPolicyCreated);
         }
 
         public void IsParentVirtualHubPresent(string resourceGroupName, string parentHubName)
         {
-            PSVirtualHub resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(resourceGroupName, parentHubName);
-            if (resolvedVirtualHub == null)
+            try
+            {
+                NetworkClient.NetworkManagementClient.VirtualHubs.Get(resourceGroupName, parentHubName);
+            }
+            catch
             {
                 throw new PSArgumentException(Properties.Resources.ParentVirtualHubNotFound);
             }

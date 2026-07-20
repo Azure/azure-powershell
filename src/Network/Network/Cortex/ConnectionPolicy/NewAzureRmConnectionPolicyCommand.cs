@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = this.ParentObject.ResourceGroupName;
                 this.ParentResourceName = this.ParentObject.Name;
             }
-            else if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualHubResourceId))
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;

@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class WebApplicationFirewallTransform
     {
+        /// <summary>
+        /// Uppercase
+        /// </summary>
         public const string Uppercase = "Uppercase";
+        /// <summary>
+        /// Lowercase
+        /// </summary>
         public const string Lowercase = "Lowercase";
+        /// <summary>
+        /// Trim
+        /// </summary>
         public const string Trim = "Trim";
+        /// <summary>
+        /// UrlDecode
+        /// </summary>
         public const string UrlDecode = "UrlDecode";
+        /// <summary>
+        /// UrlEncode
+        /// </summary>
         public const string UrlEncode = "UrlEncode";
+        /// <summary>
+        /// RemoveNulls
+        /// </summary>
         public const string RemoveNulls = "RemoveNulls";
+        /// <summary>
+        /// HtmlEntityDecode
+        /// </summary>
         public const string HtmlEntityDecode = "HtmlEntityDecode";
     }
 }

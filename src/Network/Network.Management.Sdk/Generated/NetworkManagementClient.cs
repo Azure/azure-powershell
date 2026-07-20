@@ -11,10 +11,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// The Microsoft Azure Network management API provides a RESTful set of web
-    /// services that interact with Microsoft Azure Networks service to manage your
-    /// network resources. The API has entities that capture the relationship
-    /// between an end user and the Microsoft Azure Networks service.
+    /// APIs to manage web application firewall rules.
     /// </summary>
     public partial class NetworkManagementClient : Microsoft.Rest.ServiceClient<NetworkManagementClient>, INetworkManagementClient, IAzureClient
     {
@@ -36,9 +33,7 @@ namespace Microsoft.Azure.Management.Network
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// The subscription credentials which uniquely identify the Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -61,89 +56,73 @@ namespace Microsoft.Azure.Management.Network
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IWebApplicationFirewallPoliciesOperations
+        /// </summary>
+        public virtual IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; private set; }
+        /// <summary>
         /// Gets the IApplicationGatewaysOperations
         /// </summary>
         public virtual IApplicationGatewaysOperations ApplicationGateways { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations
-        /// </summary>
-        public virtual IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations
-        /// </summary>
-        public virtual IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationGatewayWafDynamicManifestsDefaultOperations
-        /// </summary>
-        public virtual IApplicationGatewayWafDynamicManifestsDefaultOperations ApplicationGatewayWafDynamicManifestsDefault { get; private set; }
         /// <summary>
         /// Gets the IApplicationGatewayWafDynamicManifestsOperations
         /// </summary>
         public virtual IApplicationGatewayWafDynamicManifestsOperations ApplicationGatewayWafDynamicManifests { get; private set; }
         /// <summary>
-        /// Gets the IApplicationSecurityGroupsOperations
+        /// Gets the IApplicationGatewayWafDynamicManifestsDefaultOperations
         /// </summary>
-        public virtual IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; private set; }
+        public virtual IApplicationGatewayWafDynamicManifestsDefaultOperations ApplicationGatewayWafDynamicManifestsDefault { get; private set; }
         /// <summary>
-        /// Gets the IAvailableDelegationsOperations
+        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations
         /// </summary>
-        public virtual IAvailableDelegationsOperations AvailableDelegations { get; private set; }
+        public virtual IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; private set; }
         /// <summary>
-        /// Gets the IAvailableResourceGroupDelegationsOperations
+        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations
         /// </summary>
-        public virtual IAvailableResourceGroupDelegationsOperations AvailableResourceGroupDelegations { get; private set; }
-        /// <summary>
-        /// Gets the IAvailableServiceAliasesOperations
-        /// </summary>
-        public virtual IAvailableServiceAliasesOperations AvailableServiceAliases { get; private set; }
-        /// <summary>
-        /// Gets the IAzureFirewallsOperations
-        /// </summary>
-        public virtual IAzureFirewallsOperations AzureFirewalls { get; private set; }
-        /// <summary>
-        /// Gets the IAzureFirewallFqdnTagsOperations
-        /// </summary>
-        public virtual IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; private set; }
+        public virtual IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; private set; }
         /// <summary>
         /// Gets the IWebCategoriesOperations
         /// </summary>
         public virtual IWebCategoriesOperations WebCategories { get; private set; }
         /// <summary>
-        /// Gets the IBastionHostsOperations
+        /// Gets the IExpressRoutePortsOperations
         /// </summary>
-        public virtual IBastionHostsOperations BastionHosts { get; private set; }
+        public virtual IExpressRoutePortsOperations ExpressRoutePorts { get; private set; }
         /// <summary>
-        /// Gets the INetworkInterfacesOperations
+        /// Gets the IExpressRoutePortsLocationsOperations
         /// </summary>
-        public virtual INetworkInterfacesOperations NetworkInterfaces { get; private set; }
+        public virtual IExpressRoutePortsLocationsOperations ExpressRoutePortsLocations { get; private set; }
         /// <summary>
-        /// Gets the IPublicIPAddressesOperations
+        /// Gets the IBgpServiceCommunitiesOperations
         /// </summary>
-        public virtual IPublicIPAddressesOperations PublicIPAddresses { get; private set; }
+        public virtual IBgpServiceCommunitiesOperations BgpServiceCommunities { get; private set; }
         /// <summary>
-        /// Gets the IVipSwapOperations
+        /// Gets the IExpressRouteCircuitsOperations
         /// </summary>
-        public virtual IVipSwapOperations VipSwap { get; private set; }
+        public virtual IExpressRouteCircuitsOperations ExpressRouteCircuits { get; private set; }
         /// <summary>
-        /// Gets the ICustomIPPrefixesOperations
+        /// Gets the IExpressRouteCrossConnectionsOperations
         /// </summary>
-        public virtual ICustomIPPrefixesOperations CustomIPPrefixes { get; private set; }
+        public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
         /// <summary>
-        /// Gets the IDdosCustomPoliciesOperations
+        /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
-        public virtual IDdosCustomPoliciesOperations DdosCustomPolicies { get; private set; }
+        public virtual IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; private set; }
         /// <summary>
-        /// Gets the IDdosProtectionPlansOperations
+        /// Gets the IExpressRouteServiceProvidersOperations
         /// </summary>
-        public virtual IDdosProtectionPlansOperations DdosProtectionPlans { get; private set; }
+        public virtual IExpressRouteServiceProvidersOperations ExpressRouteServiceProviders { get; private set; }
         /// <summary>
-        /// Gets the IDscpConfigurationOperations
+        /// Gets the IRouteFiltersOperations
         /// </summary>
-        public virtual IDscpConfigurationOperations DscpConfiguration { get; private set; }
+        public virtual IRouteFiltersOperations RouteFilters { get; private set; }
         /// <summary>
-        /// Gets the IAvailableEndpointServicesOperations
+        /// Gets the IServiceEndpointPoliciesOperations
         /// </summary>
-        public virtual IAvailableEndpointServicesOperations AvailableEndpointServices { get; private set; }
+        public virtual IServiceEndpointPoliciesOperations ServiceEndpointPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IExpressRouteLinksOperations
+        /// </summary>
+        public virtual IExpressRouteLinksOperations ExpressRouteLinks { get; private set; }
         /// <summary>
         /// Gets the IExpressRouteCircuitAuthorizationsOperations
         /// </summary>
@@ -161,89 +140,69 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IPeerExpressRouteCircuitConnectionsOperations PeerExpressRouteCircuitConnections { get; private set; }
         /// <summary>
-        /// Gets the IExpressRouteCircuitsOperations
-        /// </summary>
-        public virtual IExpressRouteCircuitsOperations ExpressRouteCircuits { get; private set; }
-        /// <summary>
-        /// Gets the IExpressRouteServiceProvidersOperations
-        /// </summary>
-        public virtual IExpressRouteServiceProvidersOperations ExpressRouteServiceProviders { get; private set; }
-        /// <summary>
-        /// Gets the IExpressRouteCrossConnectionsOperations
-        /// </summary>
-        public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
-        /// <summary>
         /// Gets the IExpressRouteCrossConnectionPeeringsOperations
         /// </summary>
         public virtual IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; private set; }
-        /// <summary>
-        /// Gets the IExpressRoutePortsLocationsOperations
-        /// </summary>
-        public virtual IExpressRoutePortsLocationsOperations ExpressRoutePortsLocations { get; private set; }
-        /// <summary>
-        /// Gets the IExpressRoutePortsOperations
-        /// </summary>
-        public virtual IExpressRoutePortsOperations ExpressRoutePorts { get; private set; }
-        /// <summary>
-        /// Gets the IExpressRouteLinksOperations
-        /// </summary>
-        public virtual IExpressRouteLinksOperations ExpressRouteLinks { get; private set; }
         /// <summary>
         /// Gets the IExpressRoutePortAuthorizationsOperations
         /// </summary>
         public virtual IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; private set; }
         /// <summary>
-        /// Gets the IExpressRouteProviderPortsLocationOperations
+        /// Gets the IRouteFilterRulesOperations
         /// </summary>
-        public virtual IExpressRouteProviderPortsLocationOperations ExpressRouteProviderPortsLocation { get; private set; }
+        public virtual IRouteFilterRulesOperations RouteFilterRules { get; private set; }
+        /// <summary>
+        /// Gets the IServiceEndpointPolicyDefinitionsOperations
+        /// </summary>
+        public virtual IServiceEndpointPolicyDefinitionsOperations ServiceEndpointPolicyDefinitions { get; private set; }
+        /// <summary>
+        /// Gets the IAzureFirewallFqdnTagsOperations
+        /// </summary>
+        public virtual IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; private set; }
+        /// <summary>
+        /// Gets the IAzureFirewallsOperations
+        /// </summary>
+        public virtual IAzureFirewallsOperations AzureFirewalls { get; private set; }
         /// <summary>
         /// Gets the IFirewallPoliciesOperations
         /// </summary>
         public virtual IFirewallPoliciesOperations FirewallPolicies { get; private set; }
         /// <summary>
-        /// Gets the IFirewallPolicyRuleCollectionGroupsOperations
+        /// Gets the IFirewallPolicyDeploymentsOperations
         /// </summary>
-        public virtual IFirewallPolicyRuleCollectionGroupsOperations FirewallPolicyRuleCollectionGroups { get; private set; }
-        /// <summary>
-        /// Gets the IFirewallPolicyIdpsSignaturesOperations
-        /// </summary>
-        public virtual IFirewallPolicyIdpsSignaturesOperations FirewallPolicyIdpsSignatures { get; private set; }
-        /// <summary>
-        /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
-        /// </summary>
-        public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
-        /// <summary>
-        /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
-        /// </summary>
-        public virtual IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; private set; }
+        public virtual IFirewallPolicyDeploymentsOperations FirewallPolicyDeployments { get; private set; }
         /// <summary>
         /// Gets the IFirewallPolicyDraftsOperations
         /// </summary>
         public virtual IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; private set; }
         /// <summary>
-        /// Gets the IFirewallPolicyDeploymentsOperations
+        /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
-        public virtual IFirewallPolicyDeploymentsOperations FirewallPolicyDeployments { get; private set; }
+        public virtual IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; private set; }
+        /// <summary>
+        /// Gets the IFirewallPolicyIdpsSignaturesOperations
+        /// </summary>
+        public virtual IFirewallPolicyIdpsSignaturesOperations FirewallPolicyIdpsSignatures { get; private set; }
+        /// <summary>
+        /// Gets the IFirewallPolicyRuleCollectionGroupsOperations
+        /// </summary>
+        public virtual IFirewallPolicyRuleCollectionGroupsOperations FirewallPolicyRuleCollectionGroups { get; private set; }
         /// <summary>
         /// Gets the IFirewallPolicyRuleCollectionGroupDraftsOperations
         /// </summary>
         public virtual IFirewallPolicyRuleCollectionGroupDraftsOperations FirewallPolicyRuleCollectionGroupDrafts { get; private set; }
         /// <summary>
-        /// Gets the IIpamPoolsOperations
+        /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
-        public virtual IIpamPoolsOperations IpamPools { get; private set; }
+        public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
         /// <summary>
-        /// Gets the IStaticCidrsOperations
+        /// Gets the IInterconnectGroupsOperations
         /// </summary>
-        public virtual IStaticCidrsOperations StaticCidrs { get; private set; }
+        public virtual IInterconnectGroupsOperations InterconnectGroups { get; private set; }
         /// <summary>
-        /// Gets the IIPAllocationsOperations
+        /// Gets the ISubgroupsOperations
         /// </summary>
-        public virtual IIPAllocationsOperations IPAllocations { get; private set; }
-        /// <summary>
-        /// Gets the IIPGroupsOperations
-        /// </summary>
-        public virtual IIPGroupsOperations IPGroups { get; private set; }
+        public virtual ISubgroupsOperations Subgroups { get; private set; }
         /// <summary>
         /// Gets the ILoadBalancersOperations
         /// </summary>
@@ -265,33 +224,45 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual ILoadBalancerLoadBalancingRulesOperations LoadBalancerLoadBalancingRules { get; private set; }
         /// <summary>
-        /// Gets the ILoadBalancerOutboundRulesOperations
-        /// </summary>
-        public virtual ILoadBalancerOutboundRulesOperations LoadBalancerOutboundRules { get; private set; }
-        /// <summary>
         /// Gets the ILoadBalancerNetworkInterfacesOperations
         /// </summary>
         public virtual ILoadBalancerNetworkInterfacesOperations LoadBalancerNetworkInterfaces { get; private set; }
+        /// <summary>
+        /// Gets the ILoadBalancerOutboundRulesOperations
+        /// </summary>
+        public virtual ILoadBalancerOutboundRulesOperations LoadBalancerOutboundRules { get; private set; }
         /// <summary>
         /// Gets the ILoadBalancerProbesOperations
         /// </summary>
         public virtual ILoadBalancerProbesOperations LoadBalancerProbes { get; private set; }
         /// <summary>
-        /// Gets the INatGatewaysOperations
+        /// Gets the IVirtualNetworkTapsOperations
         /// </summary>
-        public virtual INatGatewaysOperations NatGateways { get; private set; }
+        public virtual IVirtualNetworkTapsOperations VirtualNetworkTaps { get; private set; }
         /// <summary>
-        /// Gets the INetworkInterfaceIPConfigurationsOperations
+        /// Gets the IVirtualNetworkGatewayConnectionsOperations
         /// </summary>
-        public virtual INetworkInterfaceIPConfigurationsOperations NetworkInterfaceIPConfigurations { get; private set; }
+        public virtual IVirtualNetworkGatewayConnectionsOperations VirtualNetworkGatewayConnections { get; private set; }
         /// <summary>
-        /// Gets the INetworkInterfaceLoadBalancersOperations
+        /// Gets the IVirtualNetworkGatewaysOperations
         /// </summary>
-        public virtual INetworkInterfaceLoadBalancersOperations NetworkInterfaceLoadBalancers { get; private set; }
+        public virtual IVirtualNetworkGatewaysOperations VirtualNetworkGateways { get; private set; }
         /// <summary>
-        /// Gets the INetworkInterfaceTapConfigurationsOperations
+        /// Gets the ILocalNetworkGatewaysOperations
         /// </summary>
-        public virtual INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; private set; }
+        public virtual ILocalNetworkGatewaysOperations LocalNetworkGateways { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualNetworkGatewayNatRulesOperations
+        /// </summary>
+        public virtual IVirtualNetworkGatewayNatRulesOperations VirtualNetworkGatewayNatRules { get; private set; }
+        /// <summary>
+        /// Gets the IManagementGroupNetworkManagerConnectionsOperations
+        /// </summary>
+        public virtual IManagementGroupNetworkManagerConnectionsOperations ManagementGroupNetworkManagerConnections { get; private set; }
+        /// <summary>
+        /// Gets the ISubscriptionNetworkManagerConnectionsOperations
+        /// </summary>
+        public virtual ISubscriptionNetworkManagerConnectionsOperations SubscriptionNetworkManagerConnections { get; private set; }
         /// <summary>
         /// Gets the INetworkManagersOperations
         /// </summary>
@@ -301,21 +272,17 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual INetworkManagerCommitsOperations NetworkManagerCommits { get; private set; }
         /// <summary>
-        /// Gets the INetworkManagerDeploymentStatusOperations
+        /// Gets the ICommitsOperations
         /// </summary>
-        public virtual INetworkManagerDeploymentStatusOperations NetworkManagerDeploymentStatus { get; private set; }
-        /// <summary>
-        /// Gets the ISubscriptionNetworkManagerConnectionsOperations
-        /// </summary>
-        public virtual ISubscriptionNetworkManagerConnectionsOperations SubscriptionNetworkManagerConnections { get; private set; }
-        /// <summary>
-        /// Gets the IManagementGroupNetworkManagerConnectionsOperations
-        /// </summary>
-        public virtual IManagementGroupNetworkManagerConnectionsOperations ManagementGroupNetworkManagerConnections { get; private set; }
+        public virtual ICommitsOperations Commits { get; private set; }
         /// <summary>
         /// Gets the IConnectivityConfigurationsOperations
         /// </summary>
         public virtual IConnectivityConfigurationsOperations ConnectivityConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the INetworkManagerDeploymentStatusOperations
+        /// </summary>
+        public virtual INetworkManagerDeploymentStatusOperations NetworkManagerDeploymentStatus { get; private set; }
         /// <summary>
         /// Gets the INetworkGroupsOperations
         /// </summary>
@@ -324,6 +291,18 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IStaticMembersOperations
         /// </summary>
         public virtual IStaticMembersOperations StaticMembers { get; private set; }
+        /// <summary>
+        /// Gets the INetworkManagerRoutingConfigurationsOperations
+        /// </summary>
+        public virtual INetworkManagerRoutingConfigurationsOperations NetworkManagerRoutingConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IRoutingRuleCollectionsOperations
+        /// </summary>
+        public virtual IRoutingRuleCollectionsOperations RoutingRuleCollections { get; private set; }
+        /// <summary>
+        /// Gets the IRoutingRulesOperations
+        /// </summary>
+        public virtual IRoutingRulesOperations RoutingRules { get; private set; }
         /// <summary>
         /// Gets the IScopeConnectionsOperations
         /// </summary>
@@ -341,18 +320,6 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IAdminRulesOperations AdminRules { get; private set; }
         /// <summary>
-        /// Gets the INetworkManagerRoutingConfigurationsOperations
-        /// </summary>
-        public virtual INetworkManagerRoutingConfigurationsOperations NetworkManagerRoutingConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the IRoutingRuleCollectionsOperations
-        /// </summary>
-        public virtual IRoutingRuleCollectionsOperations RoutingRuleCollections { get; private set; }
-        /// <summary>
-        /// Gets the IRoutingRulesOperations
-        /// </summary>
-        public virtual IRoutingRulesOperations RoutingRules { get; private set; }
-        /// <summary>
         /// Gets the ISecurityUserConfigurationsOperations
         /// </summary>
         public virtual ISecurityUserConfigurationsOperations SecurityUserConfigurations { get; private set; }
@@ -365,57 +332,49 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual ISecurityUserRulesOperations SecurityUserRules { get; private set; }
         /// <summary>
-        /// Gets the INetworkProfilesOperations
+        /// Gets the INetworkSecurityPerimeterOperationStatusesOperations
         /// </summary>
-        public virtual INetworkProfilesOperations NetworkProfiles { get; private set; }
+        public virtual INetworkSecurityPerimeterOperationStatusesOperations NetworkSecurityPerimeterOperationStatuses { get; private set; }
         /// <summary>
-        /// Gets the INetworkSecurityGroupsOperations
+        /// Gets the INetworkSecurityPerimeterServiceTagsOperations
         /// </summary>
-        public virtual INetworkSecurityGroupsOperations NetworkSecurityGroups { get; private set; }
+        public virtual INetworkSecurityPerimeterServiceTagsOperations NetworkSecurityPerimeterServiceTags { get; private set; }
         /// <summary>
-        /// Gets the ISecurityRulesOperations
+        /// Gets the INetworkSecurityPerimeterAssociableResourceTypesOperations
         /// </summary>
-        public virtual ISecurityRulesOperations SecurityRules { get; private set; }
+        public virtual INetworkSecurityPerimeterAssociableResourceTypesOperations NetworkSecurityPerimeterAssociableResourceTypes { get; private set; }
         /// <summary>
-        /// Gets the IDefaultSecurityRulesOperations
+        /// Gets the INetworkSecurityPerimetersOperations
         /// </summary>
-        public virtual IDefaultSecurityRulesOperations DefaultSecurityRules { get; private set; }
+        public virtual INetworkSecurityPerimetersOperations NetworkSecurityPerimeters { get; private set; }
         /// <summary>
-        /// Gets the IReachabilityAnalysisIntentsOperations
+        /// Gets the INetworkSecurityPerimeterLinkReferencesOperations
         /// </summary>
-        public virtual IReachabilityAnalysisIntentsOperations ReachabilityAnalysisIntents { get; private set; }
+        public virtual INetworkSecurityPerimeterLinkReferencesOperations NetworkSecurityPerimeterLinkReferences { get; private set; }
         /// <summary>
-        /// Gets the IReachabilityAnalysisRunsOperations
+        /// Gets the INetworkSecurityPerimeterLinksOperations
         /// </summary>
-        public virtual IReachabilityAnalysisRunsOperations ReachabilityAnalysisRuns { get; private set; }
+        public virtual INetworkSecurityPerimeterLinksOperations NetworkSecurityPerimeterLinks { get; private set; }
         /// <summary>
-        /// Gets the IVerifierWorkspacesOperations
+        /// Gets the INetworkSecurityPerimeterLoggingConfigurationsOperations
         /// </summary>
-        public virtual IVerifierWorkspacesOperations VerifierWorkspaces { get; private set; }
+        public virtual INetworkSecurityPerimeterLoggingConfigurationsOperations NetworkSecurityPerimeterLoggingConfigurations { get; private set; }
         /// <summary>
-        /// Gets the INetworkVirtualAppliancesOperations
+        /// Gets the INetworkSecurityPerimeterProfilesOperations
         /// </summary>
-        public virtual INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; private set; }
+        public virtual INetworkSecurityPerimeterProfilesOperations NetworkSecurityPerimeterProfiles { get; private set; }
         /// <summary>
-        /// Gets the IVirtualApplianceSitesOperations
+        /// Gets the INetworkSecurityPerimeterAccessRulesOperations
         /// </summary>
-        public virtual IVirtualApplianceSitesOperations VirtualApplianceSites { get; private set; }
+        public virtual INetworkSecurityPerimeterAccessRulesOperations NetworkSecurityPerimeterAccessRules { get; private set; }
         /// <summary>
-        /// Gets the IVirtualApplianceSkusOperations
+        /// Gets the INetworkSecurityPerimeterAssociationsOperations
         /// </summary>
-        public virtual IVirtualApplianceSkusOperations VirtualApplianceSkus { get; private set; }
-        /// <summary>
-        /// Gets the IInboundSecurityRuleOperations
-        /// </summary>
-        public virtual IInboundSecurityRuleOperations InboundSecurityRule { get; private set; }
+        public virtual INetworkSecurityPerimeterAssociationsOperations NetworkSecurityPerimeterAssociations { get; private set; }
         /// <summary>
         /// Gets the INetworkWatchersOperations
         /// </summary>
         public virtual INetworkWatchersOperations NetworkWatchers { get; private set; }
-        /// <summary>
-        /// Gets the IPacketCapturesOperations
-        /// </summary>
-        public virtual IPacketCapturesOperations PacketCaptures { get; private set; }
         /// <summary>
         /// Gets the IConnectionMonitorsOperations
         /// </summary>
@@ -425,77 +384,193 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFlowLogsOperations FlowLogs { get; private set; }
         /// <summary>
+        /// Gets the IPacketCapturesOperations
+        /// </summary>
+        public virtual IPacketCapturesOperations PacketCaptures { get; private set; }
+        /// <summary>
         /// Gets the IOperations
         /// </summary>
         public virtual IOperations Operations { get; private set; }
         /// <summary>
-        /// Gets the IPrivateEndpointsOperations
+        /// Gets the IServiceGatewaysOperations
         /// </summary>
-        public virtual IPrivateEndpointsOperations PrivateEndpoints { get; private set; }
+        public virtual IServiceGatewaysOperations ServiceGateways { get; private set; }
         /// <summary>
-        /// Gets the IAvailablePrivateEndpointTypesOperations
+        /// Gets the IIPAllocationsOperations
         /// </summary>
-        public virtual IAvailablePrivateEndpointTypesOperations AvailablePrivateEndpointTypes { get; private set; }
+        public virtual IIPAllocationsOperations IPAllocations { get; private set; }
         /// <summary>
-        /// Gets the IPrivateDnsZoneGroupsOperations
+        /// Gets the IApplicationSecurityGroupsOperations
         /// </summary>
-        public virtual IPrivateDnsZoneGroupsOperations PrivateDnsZoneGroups { get; private set; }
+        public virtual IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; private set; }
+        /// <summary>
+        /// Gets the IBastionHostsOperations
+        /// </summary>
+        public virtual IBastionHostsOperations BastionHosts { get; private set; }
+        /// <summary>
+        /// Gets the ICustomIPPrefixesOperations
+        /// </summary>
+        public virtual ICustomIPPrefixesOperations CustomIPPrefixes { get; private set; }
+        /// <summary>
+        /// Gets the IDdosCustomPoliciesOperations
+        /// </summary>
+        public virtual IDdosCustomPoliciesOperations DdosCustomPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IDdosProtectionPlansOperations
+        /// </summary>
+        public virtual IDdosProtectionPlansOperations DdosProtectionPlans { get; private set; }
+        /// <summary>
+        /// Gets the IDscpConfigurationOperations
+        /// </summary>
+        public virtual IDscpConfigurationOperations DscpConfiguration { get; private set; }
+        /// <summary>
+        /// Gets the IIPGroupsOperations
+        /// </summary>
+        public virtual IIPGroupsOperations IPGroups { get; private set; }
         /// <summary>
         /// Gets the IPrivateLinkServicesOperations
         /// </summary>
         public virtual IPrivateLinkServicesOperations PrivateLinkServices { get; private set; }
         /// <summary>
-        /// Gets the IPublicIPPrefixesOperations
+        /// Gets the IAvailableDelegationsOperations
         /// </summary>
-        public virtual IPublicIPPrefixesOperations PublicIPPrefixes { get; private set; }
+        public virtual IAvailableDelegationsOperations AvailableDelegations { get; private set; }
         /// <summary>
-        /// Gets the IRouteFiltersOperations
+        /// Gets the IAvailablePrivateEndpointTypesOperations
         /// </summary>
-        public virtual IRouteFiltersOperations RouteFilters { get; private set; }
+        public virtual IAvailablePrivateEndpointTypesOperations AvailablePrivateEndpointTypes { get; private set; }
         /// <summary>
-        /// Gets the IRouteFilterRulesOperations
+        /// Gets the IAvailableServiceAliasesOperations
         /// </summary>
-        public virtual IRouteFilterRulesOperations RouteFilterRules { get; private set; }
-        /// <summary>
-        /// Gets the IRouteTablesOperations
-        /// </summary>
-        public virtual IRouteTablesOperations RouteTables { get; private set; }
-        /// <summary>
-        /// Gets the IRoutesOperations
-        /// </summary>
-        public virtual IRoutesOperations Routes { get; private set; }
-        /// <summary>
-        /// Gets the ISecurityPartnerProvidersOperations
-        /// </summary>
-        public virtual ISecurityPartnerProvidersOperations SecurityPartnerProviders { get; private set; }
-        /// <summary>
-        /// Gets the IBgpServiceCommunitiesOperations
-        /// </summary>
-        public virtual IBgpServiceCommunitiesOperations BgpServiceCommunities { get; private set; }
-        /// <summary>
-        /// Gets the IServiceEndpointPoliciesOperations
-        /// </summary>
-        public virtual IServiceEndpointPoliciesOperations ServiceEndpointPolicies { get; private set; }
-        /// <summary>
-        /// Gets the IServiceEndpointPolicyDefinitionsOperations
-        /// </summary>
-        public virtual IServiceEndpointPolicyDefinitionsOperations ServiceEndpointPolicyDefinitions { get; private set; }
-        /// <summary>
-        /// Gets the IServiceTagsOperations
-        /// </summary>
-        public virtual IServiceTagsOperations ServiceTags { get; private set; }
+        public virtual IAvailableServiceAliasesOperations AvailableServiceAliases { get; private set; }
         /// <summary>
         /// Gets the IServiceTagInformationOperations
         /// </summary>
         public virtual IServiceTagInformationOperations ServiceTagInformation { get; private set; }
         /// <summary>
+        /// Gets the IServiceTagsOperations
+        /// </summary>
+        public virtual IServiceTagsOperations ServiceTags { get; private set; }
+        /// <summary>
         /// Gets the IUsagesOperations
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
         /// <summary>
+        /// Gets the IAvailableEndpointServicesOperations
+        /// </summary>
+        public virtual IAvailableEndpointServicesOperations AvailableEndpointServices { get; private set; }
+        /// <summary>
+        /// Gets the INatGatewaysOperations
+        /// </summary>
+        public virtual INatGatewaysOperations NatGateways { get; private set; }
+        /// <summary>
+        /// Gets the INetworkInterfacesOperations
+        /// </summary>
+        public virtual INetworkInterfacesOperations NetworkInterfaces { get; private set; }
+        /// <summary>
+        /// Gets the INetworkProfilesOperations
+        /// </summary>
+        public virtual INetworkProfilesOperations NetworkProfiles { get; private set; }
+        /// <summary>
+        /// Gets the INetworkSecurityGroupsOperations
+        /// </summary>
+        public virtual INetworkSecurityGroupsOperations NetworkSecurityGroups { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualApplianceSkusOperations
+        /// </summary>
+        public virtual IVirtualApplianceSkusOperations VirtualApplianceSkus { get; private set; }
+        /// <summary>
+        /// Gets the INetworkVirtualAppliancesOperations
+        /// </summary>
+        public virtual INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateEndpointsOperations
+        /// </summary>
+        public virtual IPrivateEndpointsOperations PrivateEndpoints { get; private set; }
+        /// <summary>
+        /// Gets the IPublicIPAddressesOperations
+        /// </summary>
+        public virtual IPublicIPAddressesOperations PublicIPAddresses { get; private set; }
+        /// <summary>
+        /// Gets the IPublicIPPrefixesOperations
+        /// </summary>
+        public virtual IPublicIPPrefixesOperations PublicIPPrefixes { get; private set; }
+        /// <summary>
+        /// Gets the IRouteTablesOperations
+        /// </summary>
+        public virtual IRouteTablesOperations RouteTables { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityPartnerProvidersOperations
+        /// </summary>
+        public virtual ISecurityPartnerProvidersOperations SecurityPartnerProviders { get; private set; }
+        /// <summary>
         /// Gets the IVirtualNetworksOperations
         /// </summary>
         public virtual IVirtualNetworksOperations VirtualNetworks { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualRoutersOperations
+        /// </summary>
+        public virtual IVirtualRoutersOperations VirtualRouters { get; private set; }
+        /// <summary>
+        /// Gets the IAvailableResourceGroupDelegationsOperations
+        /// </summary>
+        public virtual IAvailableResourceGroupDelegationsOperations AvailableResourceGroupDelegations { get; private set; }
+        /// <summary>
+        /// Gets the INetworkInterfaceIPConfigurationsOperations
+        /// </summary>
+        public virtual INetworkInterfaceIPConfigurationsOperations NetworkInterfaceIPConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the INetworkInterfaceLoadBalancersOperations
+        /// </summary>
+        public virtual INetworkInterfaceLoadBalancersOperations NetworkInterfaceLoadBalancers { get; private set; }
+        /// <summary>
+        /// Gets the INetworkInterfaceTapConfigurationsOperations
+        /// </summary>
+        public virtual INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IIpamPoolsOperations
+        /// </summary>
+        public virtual IIpamPoolsOperations IpamPools { get; private set; }
+        /// <summary>
+        /// Gets the IStaticCidrsOperations
+        /// </summary>
+        public virtual IStaticCidrsOperations StaticCidrs { get; private set; }
+        /// <summary>
+        /// Gets the IVerifierWorkspacesOperations
+        /// </summary>
+        public virtual IVerifierWorkspacesOperations VerifierWorkspaces { get; private set; }
+        /// <summary>
+        /// Gets the IReachabilityAnalysisIntentsOperations
+        /// </summary>
+        public virtual IReachabilityAnalysisIntentsOperations ReachabilityAnalysisIntents { get; private set; }
+        /// <summary>
+        /// Gets the IReachabilityAnalysisRunsOperations
+        /// </summary>
+        public virtual IReachabilityAnalysisRunsOperations ReachabilityAnalysisRuns { get; private set; }
+        /// <summary>
+        /// Gets the IDefaultSecurityRulesOperations
+        /// </summary>
+        public virtual IDefaultSecurityRulesOperations DefaultSecurityRules { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityRulesOperations
+        /// </summary>
+        public virtual ISecurityRulesOperations SecurityRules { get; private set; }
+        /// <summary>
+        /// Gets the IInboundSecurityRuleOperations
+        /// </summary>
+        public virtual IInboundSecurityRuleOperations InboundSecurityRule { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualApplianceSitesOperations
+        /// </summary>
+        public virtual IVirtualApplianceSitesOperations VirtualApplianceSites { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateDnsZoneGroupsOperations
+        /// </summary>
+        public virtual IPrivateDnsZoneGroupsOperations PrivateDnsZoneGroups { get; private set; }
+        /// <summary>
+        /// Gets the IRoutesOperations
+        /// </summary>
+        public virtual IRoutesOperations Routes { get; private set; }
         /// <summary>
         /// Gets the ISubnetsOperations
         /// </summary>
@@ -513,109 +588,45 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IVirtualNetworkPeeringsOperations VirtualNetworkPeerings { get; private set; }
         /// <summary>
-        /// Gets the IVirtualNetworkAppliancesOperations
-        /// </summary>
-        public virtual IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualNetworkGatewaysOperations
-        /// </summary>
-        public virtual IVirtualNetworkGatewaysOperations VirtualNetworkGateways { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualNetworkGatewayConnectionsOperations
-        /// </summary>
-        public virtual IVirtualNetworkGatewayConnectionsOperations VirtualNetworkGatewayConnections { get; private set; }
-        /// <summary>
-        /// Gets the ILocalNetworkGatewaysOperations
-        /// </summary>
-        public virtual ILocalNetworkGatewaysOperations LocalNetworkGateways { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualNetworkGatewayNatRulesOperations
-        /// </summary>
-        public virtual IVirtualNetworkGatewayNatRulesOperations VirtualNetworkGatewayNatRules { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualNetworkTapsOperations
-        /// </summary>
-        public virtual IVirtualNetworkTapsOperations VirtualNetworkTaps { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualRoutersOperations
-        /// </summary>
-        public virtual IVirtualRoutersOperations VirtualRouters { get; private set; }
-        /// <summary>
         /// Gets the IVirtualRouterPeeringsOperations
         /// </summary>
         public virtual IVirtualRouterPeeringsOperations VirtualRouterPeerings { get; private set; }
         /// <summary>
-        /// Gets the IVirtualWansOperations
+        /// Gets the IVipSwapOperations
         /// </summary>
-        public virtual IVirtualWansOperations VirtualWans { get; private set; }
+        public virtual IVipSwapOperations VipSwap { get; private set; }
         /// <summary>
-        /// Gets the IVpnSitesOperations
+        /// Gets the IVirtualNetworkAppliancesOperations
         /// </summary>
-        public virtual IVpnSitesOperations VpnSites { get; private set; }
+        public virtual IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; private set; }
         /// <summary>
-        /// Gets the IVpnSiteLinksOperations
+        /// Gets the IExpressRouteGatewaysOperations
         /// </summary>
-        public virtual IVpnSiteLinksOperations VpnSiteLinks { get; private set; }
-        /// <summary>
-        /// Gets the IVpnSitesConfigurationOperations
-        /// </summary>
-        public virtual IVpnSitesConfigurationOperations VpnSitesConfiguration { get; private set; }
-        /// <summary>
-        /// Gets the IVpnServerConfigurationsOperations
-        /// </summary>
-        public virtual IVpnServerConfigurationsOperations VpnServerConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the IConfigurationPolicyGroupsOperations
-        /// </summary>
-        public virtual IConfigurationPolicyGroupsOperations ConfigurationPolicyGroups { get; private set; }
-        /// <summary>
-        /// Gets the IVirtualHubsOperations
-        /// </summary>
-        public virtual IVirtualHubsOperations VirtualHubs { get; private set; }
-        /// <summary>
-        /// Gets the IRouteMapsOperations
-        /// </summary>
-        public virtual IRouteMapsOperations RouteMaps { get; private set; }
-        /// <summary>
-        /// Gets the IHubVirtualNetworkConnectionsOperations
-        /// </summary>
-        public virtual IHubVirtualNetworkConnectionsOperations HubVirtualNetworkConnections { get; private set; }
-        /// <summary>
-        /// Gets the IVpnGatewaysOperations
-        /// </summary>
-        public virtual IVpnGatewaysOperations VpnGateways { get; private set; }
-        /// <summary>
-        /// Gets the IVpnLinkConnectionsOperations
-        /// </summary>
-        public virtual IVpnLinkConnectionsOperations VpnLinkConnections { get; private set; }
-        /// <summary>
-        /// Gets the IVpnConnectionsOperations
-        /// </summary>
-        public virtual IVpnConnectionsOperations VpnConnections { get; private set; }
-        /// <summary>
-        /// Gets the IVpnSiteLinkConnectionsOperations
-        /// </summary>
-        public virtual IVpnSiteLinkConnectionsOperations VpnSiteLinkConnections { get; private set; }
-        /// <summary>
-        /// Gets the INatRulesOperations
-        /// </summary>
-        public virtual INatRulesOperations NatRules { get; private set; }
+        public virtual IExpressRouteGatewaysOperations ExpressRouteGateways { get; private set; }
         /// <summary>
         /// Gets the IP2SVpnGatewaysOperations
         /// </summary>
         public virtual IP2SVpnGatewaysOperations P2SVpnGateways { get; private set; }
         /// <summary>
-        /// Gets the IVpnServerConfigurationsAssociatedWithVirtualWanOperations
+        /// Gets the IVirtualHubsOperations
         /// </summary>
-        public virtual IVpnServerConfigurationsAssociatedWithVirtualWanOperations VpnServerConfigurationsAssociatedWithVirtualWan { get; private set; }
+        public virtual IVirtualHubsOperations VirtualHubs { get; private set; }
         /// <summary>
-        /// Gets the IVirtualHubRouteTableV2SOperations
+        /// Gets the IVirtualWansOperations
         /// </summary>
-        public virtual IVirtualHubRouteTableV2SOperations VirtualHubRouteTableV2S { get; private set; }
+        public virtual IVirtualWansOperations VirtualWans { get; private set; }
         /// <summary>
-        /// Gets the IExpressRouteGatewaysOperations
+        /// Gets the IVpnGatewaysOperations
         /// </summary>
-        public virtual IExpressRouteGatewaysOperations ExpressRouteGateways { get; private set; }
+        public virtual IVpnGatewaysOperations VpnGateways { get; private set; }
+        /// <summary>
+        /// Gets the IVpnServerConfigurationsOperations
+        /// </summary>
+        public virtual IVpnServerConfigurationsOperations VpnServerConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IVpnSitesOperations
+        /// </summary>
+        public virtual IVpnSitesOperations VpnSites { get; private set; }
         /// <summary>
         /// Gets the IExpressRouteConnectionsOperations
         /// </summary>
@@ -625,33 +636,77 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual INetworkVirtualApplianceConnectionsOperations NetworkVirtualApplianceConnections { get; private set; }
         /// <summary>
-        /// Gets the IVirtualHubBgpConnectionOperations
-        /// </summary>
-        public virtual IVirtualHubBgpConnectionOperations VirtualHubBgpConnection { get; private set; }
-        /// <summary>
         /// Gets the IVirtualHubBgpConnectionsOperations
         /// </summary>
         public virtual IVirtualHubBgpConnectionsOperations VirtualHubBgpConnections { get; private set; }
         /// <summary>
-        /// Gets the IVirtualHubIPConfigurationOperations
+        /// Gets the IVirtualHubBgpConnectionOperations
         /// </summary>
-        public virtual IVirtualHubIPConfigurationOperations VirtualHubIPConfiguration { get; private set; }
+        public virtual IVirtualHubBgpConnectionOperations VirtualHubBgpConnection { get; private set; }
         /// <summary>
-        /// Gets the IHubRouteTablesOperations
+        /// Gets the IConnectionPoliciesOperations
         /// </summary>
-        public virtual IHubRouteTablesOperations HubRouteTables { get; private set; }
-        /// <summary>
-        /// Gets the IRoutingIntentOperations
-        /// </summary>
-        public virtual IRoutingIntentOperations RoutingIntent { get; private set; }
+        public virtual IConnectionPoliciesOperations ConnectionPolicies { get; private set; }
         /// <summary>
         /// Gets the IConnectionPolicyOperations
         /// </summary>
         public virtual IConnectionPolicyOperations ConnectionPolicy { get; private set; }
         /// <summary>
-        /// Gets the IWebApplicationFirewallPoliciesOperations
+        /// Gets the IHubRouteTablesOperations
         /// </summary>
-        public virtual IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; private set; }
+        public virtual IHubRouteTablesOperations HubRouteTables { get; private set; }
+        /// <summary>
+        /// Gets the IHubVirtualNetworkConnectionsOperations
+        /// </summary>
+        public virtual IHubVirtualNetworkConnectionsOperations HubVirtualNetworkConnections { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualHubIPConfigurationOperations
+        /// </summary>
+        public virtual IVirtualHubIPConfigurationOperations VirtualHubIPConfiguration { get; private set; }
+        /// <summary>
+        /// Gets the IRouteMapsOperations
+        /// </summary>
+        public virtual IRouteMapsOperations RouteMaps { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualHubRouteTableV2SOperations
+        /// </summary>
+        public virtual IVirtualHubRouteTableV2SOperations VirtualHubRouteTableV2S { get; private set; }
+        /// <summary>
+        /// Gets the IRoutingIntentOperations
+        /// </summary>
+        public virtual IRoutingIntentOperations RoutingIntent { get; private set; }
+        /// <summary>
+        /// Gets the IVpnSitesConfigurationOperations
+        /// </summary>
+        public virtual IVpnSitesConfigurationOperations VpnSitesConfiguration { get; private set; }
+        /// <summary>
+        /// Gets the IVpnServerConfigurationsAssociatedWithVirtualWanOperations
+        /// </summary>
+        public virtual IVpnServerConfigurationsAssociatedWithVirtualWanOperations VpnServerConfigurationsAssociatedWithVirtualWan { get; private set; }
+        /// <summary>
+        /// Gets the INatRulesOperations
+        /// </summary>
+        public virtual INatRulesOperations NatRules { get; private set; }
+        /// <summary>
+        /// Gets the IVpnConnectionsOperations
+        /// </summary>
+        public virtual IVpnConnectionsOperations VpnConnections { get; private set; }
+        /// <summary>
+        /// Gets the IVpnLinkConnectionsOperations
+        /// </summary>
+        public virtual IVpnLinkConnectionsOperations VpnLinkConnections { get; private set; }
+        /// <summary>
+        /// Gets the IVpnSiteLinkConnectionsOperations
+        /// </summary>
+        public virtual IVpnSiteLinkConnectionsOperations VpnSiteLinkConnections { get; private set; }
+        /// <summary>
+        /// Gets the IConfigurationPolicyGroupsOperations
+        /// </summary>
+        public virtual IConfigurationPolicyGroupsOperations ConfigurationPolicyGroups { get; private set; }
+        /// <summary>
+        /// Gets the IVpnSiteLinksOperations
+        /// </summary>
+        public virtual IVpnSiteLinksOperations VpnSiteLinks { get; private set; }
         /// <summary>
         /// Initializes a new instance of the NetworkManagementClient class.
         /// </summary>
@@ -890,154 +945,169 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         private void Initialize()
         {
+            this.WebApplicationFirewallPolicies = new WebApplicationFirewallPoliciesOperations(this);
             this.ApplicationGateways = new ApplicationGatewaysOperations(this);
-            this.ApplicationGatewayPrivateLinkResources = new ApplicationGatewayPrivateLinkResourcesOperations(this);
-            this.ApplicationGatewayPrivateEndpointConnections = new ApplicationGatewayPrivateEndpointConnectionsOperations(this);
-            this.ApplicationGatewayWafDynamicManifestsDefault = new ApplicationGatewayWafDynamicManifestsDefaultOperations(this);
             this.ApplicationGatewayWafDynamicManifests = new ApplicationGatewayWafDynamicManifestsOperations(this);
-            this.ApplicationSecurityGroups = new ApplicationSecurityGroupsOperations(this);
-            this.AvailableDelegations = new AvailableDelegationsOperations(this);
-            this.AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
-            this.AvailableServiceAliases = new AvailableServiceAliasesOperations(this);
-            this.AzureFirewalls = new AzureFirewallsOperations(this);
-            this.AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
+            this.ApplicationGatewayWafDynamicManifestsDefault = new ApplicationGatewayWafDynamicManifestsDefaultOperations(this);
+            this.ApplicationGatewayPrivateEndpointConnections = new ApplicationGatewayPrivateEndpointConnectionsOperations(this);
+            this.ApplicationGatewayPrivateLinkResources = new ApplicationGatewayPrivateLinkResourcesOperations(this);
             this.WebCategories = new WebCategoriesOperations(this);
-            this.BastionHosts = new BastionHostsOperations(this);
-            this.NetworkInterfaces = new NetworkInterfacesOperations(this);
-            this.PublicIPAddresses = new PublicIPAddressesOperations(this);
-            this.VipSwap = new VipSwapOperations(this);
-            this.CustomIPPrefixes = new CustomIPPrefixesOperations(this);
-            this.DdosCustomPolicies = new DdosCustomPoliciesOperations(this);
-            this.DdosProtectionPlans = new DdosProtectionPlansOperations(this);
-            this.DscpConfiguration = new DscpConfigurationOperations(this);
-            this.AvailableEndpointServices = new AvailableEndpointServicesOperations(this);
+            this.ExpressRoutePorts = new ExpressRoutePortsOperations(this);
+            this.ExpressRoutePortsLocations = new ExpressRoutePortsLocationsOperations(this);
+            this.BgpServiceCommunities = new BgpServiceCommunitiesOperations(this);
+            this.ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
+            this.ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
+            this.ExpressRouteProviderPortsLocation = new ExpressRouteProviderPortsLocationOperations(this);
+            this.ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
+            this.RouteFilters = new RouteFiltersOperations(this);
+            this.ServiceEndpointPolicies = new ServiceEndpointPoliciesOperations(this);
+            this.ExpressRouteLinks = new ExpressRouteLinksOperations(this);
             this.ExpressRouteCircuitAuthorizations = new ExpressRouteCircuitAuthorizationsOperations(this);
             this.ExpressRouteCircuitPeerings = new ExpressRouteCircuitPeeringsOperations(this);
             this.ExpressRouteCircuitConnections = new ExpressRouteCircuitConnectionsOperations(this);
             this.PeerExpressRouteCircuitConnections = new PeerExpressRouteCircuitConnectionsOperations(this);
-            this.ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
-            this.ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
-            this.ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
             this.ExpressRouteCrossConnectionPeerings = new ExpressRouteCrossConnectionPeeringsOperations(this);
-            this.ExpressRoutePortsLocations = new ExpressRoutePortsLocationsOperations(this);
-            this.ExpressRoutePorts = new ExpressRoutePortsOperations(this);
-            this.ExpressRouteLinks = new ExpressRouteLinksOperations(this);
             this.ExpressRoutePortAuthorizations = new ExpressRoutePortAuthorizationsOperations(this);
-            this.ExpressRouteProviderPortsLocation = new ExpressRouteProviderPortsLocationOperations(this);
+            this.RouteFilterRules = new RouteFilterRulesOperations(this);
+            this.ServiceEndpointPolicyDefinitions = new ServiceEndpointPolicyDefinitionsOperations(this);
+            this.AzureFirewallFqdnTags = new AzureFirewallFqdnTagsOperations(this);
+            this.AzureFirewalls = new AzureFirewallsOperations(this);
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
-            this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
-            this.FirewallPolicyIdpsSignatures = new FirewallPolicyIdpsSignaturesOperations(this);
-            this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
-            this.FirewallPolicyIdpsSignaturesFilterValues = new FirewallPolicyIdpsSignaturesFilterValuesOperations(this);
-            this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
+            this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
+            this.FirewallPolicyIdpsSignaturesFilterValues = new FirewallPolicyIdpsSignaturesFilterValuesOperations(this);
+            this.FirewallPolicyIdpsSignatures = new FirewallPolicyIdpsSignaturesOperations(this);
+            this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
-            this.IpamPools = new IpamPoolsOperations(this);
-            this.StaticCidrs = new StaticCidrsOperations(this);
-            this.IPAllocations = new IPAllocationsOperations(this);
-            this.IPGroups = new IPGroupsOperations(this);
+            this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.InterconnectGroups = new InterconnectGroupsOperations(this);
+            this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
             this.LoadBalancerBackendAddressPools = new LoadBalancerBackendAddressPoolsOperations(this);
             this.LoadBalancerFrontendIPConfigurations = new LoadBalancerFrontendIPConfigurationsOperations(this);
             this.InboundNatRules = new InboundNatRulesOperations(this);
             this.LoadBalancerLoadBalancingRules = new LoadBalancerLoadBalancingRulesOperations(this);
-            this.LoadBalancerOutboundRules = new LoadBalancerOutboundRulesOperations(this);
             this.LoadBalancerNetworkInterfaces = new LoadBalancerNetworkInterfacesOperations(this);
+            this.LoadBalancerOutboundRules = new LoadBalancerOutboundRulesOperations(this);
             this.LoadBalancerProbes = new LoadBalancerProbesOperations(this);
-            this.NatGateways = new NatGatewaysOperations(this);
-            this.NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
-            this.NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
-            this.NetworkInterfaceTapConfigurations = new NetworkInterfaceTapConfigurationsOperations(this);
+            this.VirtualNetworkTaps = new VirtualNetworkTapsOperations(this);
+            this.VirtualNetworkGatewayConnections = new VirtualNetworkGatewayConnectionsOperations(this);
+            this.VirtualNetworkGateways = new VirtualNetworkGatewaysOperations(this);
+            this.LocalNetworkGateways = new LocalNetworkGatewaysOperations(this);
+            this.VirtualNetworkGatewayNatRules = new VirtualNetworkGatewayNatRulesOperations(this);
+            this.ManagementGroupNetworkManagerConnections = new ManagementGroupNetworkManagerConnectionsOperations(this);
+            this.SubscriptionNetworkManagerConnections = new SubscriptionNetworkManagerConnectionsOperations(this);
             this.NetworkManagers = new NetworkManagersOperations(this);
             this.NetworkManagerCommits = new NetworkManagerCommitsOperations(this);
-            this.NetworkManagerDeploymentStatus = new NetworkManagerDeploymentStatusOperations(this);
-            this.SubscriptionNetworkManagerConnections = new SubscriptionNetworkManagerConnectionsOperations(this);
-            this.ManagementGroupNetworkManagerConnections = new ManagementGroupNetworkManagerConnectionsOperations(this);
+            this.Commits = new CommitsOperations(this);
             this.ConnectivityConfigurations = new ConnectivityConfigurationsOperations(this);
+            this.NetworkManagerDeploymentStatus = new NetworkManagerDeploymentStatusOperations(this);
             this.NetworkGroups = new NetworkGroupsOperations(this);
             this.StaticMembers = new StaticMembersOperations(this);
+            this.NetworkManagerRoutingConfigurations = new NetworkManagerRoutingConfigurationsOperations(this);
+            this.RoutingRuleCollections = new RoutingRuleCollectionsOperations(this);
+            this.RoutingRules = new RoutingRulesOperations(this);
             this.ScopeConnections = new ScopeConnectionsOperations(this);
             this.SecurityAdminConfigurations = new SecurityAdminConfigurationsOperations(this);
             this.AdminRuleCollections = new AdminRuleCollectionsOperations(this);
             this.AdminRules = new AdminRulesOperations(this);
-            this.NetworkManagerRoutingConfigurations = new NetworkManagerRoutingConfigurationsOperations(this);
-            this.RoutingRuleCollections = new RoutingRuleCollectionsOperations(this);
-            this.RoutingRules = new RoutingRulesOperations(this);
             this.SecurityUserConfigurations = new SecurityUserConfigurationsOperations(this);
             this.SecurityUserRuleCollections = new SecurityUserRuleCollectionsOperations(this);
             this.SecurityUserRules = new SecurityUserRulesOperations(this);
-            this.NetworkProfiles = new NetworkProfilesOperations(this);
-            this.NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
-            this.SecurityRules = new SecurityRulesOperations(this);
-            this.DefaultSecurityRules = new DefaultSecurityRulesOperations(this);
-            this.ReachabilityAnalysisIntents = new ReachabilityAnalysisIntentsOperations(this);
-            this.ReachabilityAnalysisRuns = new ReachabilityAnalysisRunsOperations(this);
-            this.VerifierWorkspaces = new VerifierWorkspacesOperations(this);
-            this.NetworkVirtualAppliances = new NetworkVirtualAppliancesOperations(this);
-            this.VirtualApplianceSites = new VirtualApplianceSitesOperations(this);
-            this.VirtualApplianceSkus = new VirtualApplianceSkusOperations(this);
-            this.InboundSecurityRule = new InboundSecurityRuleOperations(this);
+            this.NetworkSecurityPerimeterOperationStatuses = new NetworkSecurityPerimeterOperationStatusesOperations(this);
+            this.NetworkSecurityPerimeterServiceTags = new NetworkSecurityPerimeterServiceTagsOperations(this);
+            this.NetworkSecurityPerimeterAssociableResourceTypes = new NetworkSecurityPerimeterAssociableResourceTypesOperations(this);
+            this.NetworkSecurityPerimeters = new NetworkSecurityPerimetersOperations(this);
+            this.NetworkSecurityPerimeterLinkReferences = new NetworkSecurityPerimeterLinkReferencesOperations(this);
+            this.NetworkSecurityPerimeterLinks = new NetworkSecurityPerimeterLinksOperations(this);
+            this.NetworkSecurityPerimeterLoggingConfigurations = new NetworkSecurityPerimeterLoggingConfigurationsOperations(this);
+            this.NetworkSecurityPerimeterProfiles = new NetworkSecurityPerimeterProfilesOperations(this);
+            this.NetworkSecurityPerimeterAccessRules = new NetworkSecurityPerimeterAccessRulesOperations(this);
+            this.NetworkSecurityPerimeterAssociations = new NetworkSecurityPerimeterAssociationsOperations(this);
             this.NetworkWatchers = new NetworkWatchersOperations(this);
-            this.PacketCaptures = new PacketCapturesOperations(this);
             this.ConnectionMonitors = new ConnectionMonitorsOperations(this);
             this.FlowLogs = new FlowLogsOperations(this);
+            this.PacketCaptures = new PacketCapturesOperations(this);
             this.Operations = new Operations(this);
-            this.PrivateEndpoints = new PrivateEndpointsOperations(this);
-            this.AvailablePrivateEndpointTypes = new AvailablePrivateEndpointTypesOperations(this);
-            this.PrivateDnsZoneGroups = new PrivateDnsZoneGroupsOperations(this);
+            this.ServiceGateways = new ServiceGatewaysOperations(this);
+            this.IPAllocations = new IPAllocationsOperations(this);
+            this.ApplicationSecurityGroups = new ApplicationSecurityGroupsOperations(this);
+            this.BastionHosts = new BastionHostsOperations(this);
+            this.CustomIPPrefixes = new CustomIPPrefixesOperations(this);
+            this.DdosCustomPolicies = new DdosCustomPoliciesOperations(this);
+            this.DdosProtectionPlans = new DdosProtectionPlansOperations(this);
+            this.DscpConfiguration = new DscpConfigurationOperations(this);
+            this.IPGroups = new IPGroupsOperations(this);
             this.PrivateLinkServices = new PrivateLinkServicesOperations(this);
-            this.PublicIPPrefixes = new PublicIPPrefixesOperations(this);
-            this.RouteFilters = new RouteFiltersOperations(this);
-            this.RouteFilterRules = new RouteFilterRulesOperations(this);
-            this.RouteTables = new RouteTablesOperations(this);
-            this.Routes = new RoutesOperations(this);
-            this.SecurityPartnerProviders = new SecurityPartnerProvidersOperations(this);
-            this.BgpServiceCommunities = new BgpServiceCommunitiesOperations(this);
-            this.ServiceEndpointPolicies = new ServiceEndpointPoliciesOperations(this);
-            this.ServiceEndpointPolicyDefinitions = new ServiceEndpointPolicyDefinitionsOperations(this);
-            this.ServiceTags = new ServiceTagsOperations(this);
+            this.AvailableDelegations = new AvailableDelegationsOperations(this);
+            this.AvailablePrivateEndpointTypes = new AvailablePrivateEndpointTypesOperations(this);
+            this.AvailableServiceAliases = new AvailableServiceAliasesOperations(this);
             this.ServiceTagInformation = new ServiceTagInformationOperations(this);
+            this.ServiceTags = new ServiceTagsOperations(this);
             this.Usages = new UsagesOperations(this);
+            this.AvailableEndpointServices = new AvailableEndpointServicesOperations(this);
+            this.NatGateways = new NatGatewaysOperations(this);
+            this.NetworkInterfaces = new NetworkInterfacesOperations(this);
+            this.NetworkProfiles = new NetworkProfilesOperations(this);
+            this.NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
+            this.VirtualApplianceSkus = new VirtualApplianceSkusOperations(this);
+            this.NetworkVirtualAppliances = new NetworkVirtualAppliancesOperations(this);
+            this.PrivateEndpoints = new PrivateEndpointsOperations(this);
+            this.PublicIPAddresses = new PublicIPAddressesOperations(this);
+            this.PublicIPPrefixes = new PublicIPPrefixesOperations(this);
+            this.RouteTables = new RouteTablesOperations(this);
+            this.SecurityPartnerProviders = new SecurityPartnerProvidersOperations(this);
             this.VirtualNetworks = new VirtualNetworksOperations(this);
+            this.VirtualRouters = new VirtualRoutersOperations(this);
+            this.AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
+            this.NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
+            this.NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
+            this.NetworkInterfaceTapConfigurations = new NetworkInterfaceTapConfigurationsOperations(this);
+            this.IpamPools = new IpamPoolsOperations(this);
+            this.StaticCidrs = new StaticCidrsOperations(this);
+            this.VerifierWorkspaces = new VerifierWorkspacesOperations(this);
+            this.ReachabilityAnalysisIntents = new ReachabilityAnalysisIntentsOperations(this);
+            this.ReachabilityAnalysisRuns = new ReachabilityAnalysisRunsOperations(this);
+            this.DefaultSecurityRules = new DefaultSecurityRulesOperations(this);
+            this.SecurityRules = new SecurityRulesOperations(this);
+            this.InboundSecurityRule = new InboundSecurityRuleOperations(this);
+            this.VirtualApplianceSites = new VirtualApplianceSitesOperations(this);
+            this.PrivateDnsZoneGroups = new PrivateDnsZoneGroupsOperations(this);
+            this.Routes = new RoutesOperations(this);
             this.Subnets = new SubnetsOperations(this);
             this.ResourceNavigationLinks = new ResourceNavigationLinksOperations(this);
             this.ServiceAssociationLinks = new ServiceAssociationLinksOperations(this);
             this.VirtualNetworkPeerings = new VirtualNetworkPeeringsOperations(this);
-            this.VirtualNetworkAppliances = new VirtualNetworkAppliancesOperations(this);
-            this.VirtualNetworkGateways = new VirtualNetworkGatewaysOperations(this);
-            this.VirtualNetworkGatewayConnections = new VirtualNetworkGatewayConnectionsOperations(this);
-            this.LocalNetworkGateways = new LocalNetworkGatewaysOperations(this);
-            this.VirtualNetworkGatewayNatRules = new VirtualNetworkGatewayNatRulesOperations(this);
-            this.VirtualNetworkTaps = new VirtualNetworkTapsOperations(this);
-            this.VirtualRouters = new VirtualRoutersOperations(this);
             this.VirtualRouterPeerings = new VirtualRouterPeeringsOperations(this);
-            this.VirtualWans = new VirtualWansOperations(this);
-            this.VpnSites = new VpnSitesOperations(this);
-            this.VpnSiteLinks = new VpnSiteLinksOperations(this);
-            this.VpnSitesConfiguration = new VpnSitesConfigurationOperations(this);
-            this.VpnServerConfigurations = new VpnServerConfigurationsOperations(this);
-            this.ConfigurationPolicyGroups = new ConfigurationPolicyGroupsOperations(this);
-            this.VirtualHubs = new VirtualHubsOperations(this);
-            this.RouteMaps = new RouteMapsOperations(this);
-            this.HubVirtualNetworkConnections = new HubVirtualNetworkConnectionsOperations(this);
-            this.VpnGateways = new VpnGatewaysOperations(this);
-            this.VpnLinkConnections = new VpnLinkConnectionsOperations(this);
-            this.VpnConnections = new VpnConnectionsOperations(this);
-            this.VpnSiteLinkConnections = new VpnSiteLinkConnectionsOperations(this);
-            this.NatRules = new NatRulesOperations(this);
-            this.P2SVpnGateways = new P2SVpnGatewaysOperations(this);
-            this.VpnServerConfigurationsAssociatedWithVirtualWan = new VpnServerConfigurationsAssociatedWithVirtualWanOperations(this);
-            this.VirtualHubRouteTableV2S = new VirtualHubRouteTableV2SOperations(this);
+            this.VipSwap = new VipSwapOperations(this);
+            this.VirtualNetworkAppliances = new VirtualNetworkAppliancesOperations(this);
             this.ExpressRouteGateways = new ExpressRouteGatewaysOperations(this);
+            this.P2SVpnGateways = new P2SVpnGatewaysOperations(this);
+            this.VirtualHubs = new VirtualHubsOperations(this);
+            this.VirtualWans = new VirtualWansOperations(this);
+            this.VpnGateways = new VpnGatewaysOperations(this);
+            this.VpnServerConfigurations = new VpnServerConfigurationsOperations(this);
+            this.VpnSites = new VpnSitesOperations(this);
             this.ExpressRouteConnections = new ExpressRouteConnectionsOperations(this);
             this.NetworkVirtualApplianceConnections = new NetworkVirtualApplianceConnectionsOperations(this);
-            this.VirtualHubBgpConnection = new VirtualHubBgpConnectionOperations(this);
             this.VirtualHubBgpConnections = new VirtualHubBgpConnectionsOperations(this);
-            this.VirtualHubIPConfiguration = new VirtualHubIPConfigurationOperations(this);
-            this.HubRouteTables = new HubRouteTablesOperations(this);
-            this.RoutingIntent = new RoutingIntentOperations(this);
+            this.VirtualHubBgpConnection = new VirtualHubBgpConnectionOperations(this);
+            this.ConnectionPolicies = new ConnectionPoliciesOperations(this);
             this.ConnectionPolicy = new ConnectionPolicyOperations(this);
-            this.WebApplicationFirewallPolicies = new WebApplicationFirewallPoliciesOperations(this);
+            this.HubRouteTables = new HubRouteTablesOperations(this);
+            this.HubVirtualNetworkConnections = new HubVirtualNetworkConnectionsOperations(this);
+            this.VirtualHubIPConfiguration = new VirtualHubIPConfigurationOperations(this);
+            this.RouteMaps = new RouteMapsOperations(this);
+            this.VirtualHubRouteTableV2S = new VirtualHubRouteTableV2SOperations(this);
+            this.RoutingIntent = new RoutingIntentOperations(this);
+            this.VpnSitesConfiguration = new VpnSitesConfigurationOperations(this);
+            this.VpnServerConfigurationsAssociatedWithVirtualWan = new VpnServerConfigurationsAssociatedWithVirtualWanOperations(this);
+            this.NatRules = new NatRulesOperations(this);
+            this.VpnConnections = new VpnConnectionsOperations(this);
+            this.VpnLinkConnections = new VpnLinkConnectionsOperations(this);
+            this.VpnSiteLinkConnections = new VpnSiteLinkConnectionsOperations(this);
+            this.ConfigurationPolicyGroups = new ConfigurationPolicyGroupsOperations(this);
+            this.VpnSiteLinks = new VpnSiteLinksOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
@@ -1072,780 +1142,15 @@ namespace Microsoft.Azure.Management.Network
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FirewallPolicyRuleCollection>("ruleCollectionType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ActiveBaseSecurityAdminRule>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ActiveBaseSecurityAdminRule>("kind"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<BaseAdminRule>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseAdminRule>("kind"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<FirewallPolicyRule>("ruleType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FirewallPolicyRule>("ruleType"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());
-        }
-        /// <summary>
-        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='bslRequest'>
-        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>> _response = await BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='bslRequest'>
-        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the tokens specified in the
-        /// request.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='bslTokenRequest'>
-        /// Post request for Delete Bastion Shareable Link By Token endpoint.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders>> DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders> _response = await BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Return the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='bslRequest'>
-        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (bslRequest == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bslRequest");
-            }
-
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
-            if (this.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
-            }
-
-            string apiVersion = "2025-05-01";
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
-
-                tracingParameters.Add("bslRequest", bslRequest);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetBastionShareableLink", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            if(bslRequest != null)
-            {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(bslRequest, this.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionShareableLink>>(_responseContent, this.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>> _response = await BeginGetActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='sessionIds'>
-        /// The list of sessionids to disconnect.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, SessionIds sessionIds, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (sessionIds == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sessionIds");
-            }
-
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
-            if (this.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
-            }
-
-            string apiVersion = "2025-05-01";
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
-
-                tracingParameters.Add("sessionIds", sessionIds);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "DisconnectActiveSessions", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (apiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            if(sessionIds != null)
-            {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(sessionIds, this.SerializationSettings);
-                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionSessionState>>(_responseContent, this.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Checks whether a domain name in the cloudapp.azure.com zone is available
-        /// for use.
-        /// </summary>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
-        /// <param name='domainNameLabel'>
-        /// The domain name to be verified. It must conform to the following regular
-        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnsNameAvailabilityResult>> CheckDnsNameAvailabilityWithHttpMessagesAsync(string location, string domainNameLabel, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
-            if (location == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
-            }
-
-            if (domainNameLabel == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "domainNameLabel");
-            }
-
-            if (this.SubscriptionId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
-            }
-
-            string apiVersion = "2025-05-01";
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("location", location);
-                tracingParameters.Add("domainNameLabel", domainNameLabel);
-                tracingParameters.Add("apiVersion", apiVersion);
-
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "CheckDnsNameAvailability", tracingParameters);
-            }
-            // Construct URL
-
-            var _baseUrl = this.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/CheckDnsNameAvailability").ToString();
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (domainNameLabel != null)
-            {
-                _queryParameters.Add(string.Format("domainNameLabel={0}", System.Uri.EscapeDataString(domainNameLabel)));
-            }
-            if (apiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DnsNameAvailabilityResult>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DnsNameAvailabilityResult>(_responseContent, this.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
         }
         /// <summary>
         /// Retrieves detail of a provider port.
@@ -1880,17 +1185,17 @@ namespace Microsoft.Azure.Management.Network
 
 
  
-            if (providerport == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "providerport");
-            }
-
             if (this.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
 
-            string apiVersion = "2025-05-01";
+            if (providerport == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "providerport");
+            }
+
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1898,8 +1203,8 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("providerport", providerport);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("providerport", providerport);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1909,8 +1214,8 @@ namespace Microsoft.Azure.Management.Network
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts/{providerport}").ToString();
-            _url = _url.Replace("{providerport}", System.Uri.EscapeDataString(providerport));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{providerport}", System.Uri.EscapeDataString(providerport));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -2051,7 +1356,7 @@ namespace Microsoft.Azure.Management.Network
         /// Lists active connectivity configurations in a network manager.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -2104,12 +1409,28 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (networkManagerName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "networkManagerName");
             }
-
+            if (networkManagerName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
+                }
+            }
             if (top != null)
             {
                 if (top > 20)
@@ -2121,7 +1442,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2296,7 +1617,7 @@ namespace Microsoft.Azure.Management.Network
         /// Lists active security admin rules in a network manager.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -2349,12 +1670,28 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (networkManagerName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "networkManagerName");
             }
-
+            if (networkManagerName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
+                }
+            }
             if (top != null)
             {
                 if (top > 20)
@@ -2366,7 +1703,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2542,7 +1879,7 @@ namespace Microsoft.Azure.Management.Network
         /// network.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -2595,7 +1932,17 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (virtualNetworkName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualNetworkName");
@@ -2612,7 +1959,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2620,9 +1967,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("top", top);
 
                 tracingParameters.Add("parameters", parameters);
@@ -2787,7 +2134,7 @@ namespace Microsoft.Azure.Management.Network
         /// List all effective security admin rules applied on a virtual network.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -2840,7 +2187,17 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (virtualNetworkName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualNetworkName");
@@ -2857,7 +2214,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2865,9 +2222,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("top", top);
 
                 tracingParameters.Add("parameters", parameters);
@@ -3029,14 +2386,832 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
+        /// Checks whether a domain name in the cloudapp.azure.com zone is available
+        /// for use.
+        /// </summary>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='domainNameLabel'>
+        /// The domain name to be verified. It must conform to the following regular
+        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DnsNameAvailabilityResult>> CheckDnsNameAvailabilityWithHttpMessagesAsync(string location, string domainNameLabel, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (this.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+            }
+
+            if (location == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "location", 1);
+                }
+            }
+            if (domainNameLabel == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "domainNameLabel");
+            }
+
+            string apiVersion = "2025-07-01";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("location", location);
+                tracingParameters.Add("domainNameLabel", domainNameLabel);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "CheckDnsNameAvailability", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkDnsNameAvailability").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (domainNameLabel != null)
+            {
+                _queryParameters.Add(string.Format("domainNameLabel={0}", System.Uri.EscapeDataString(domainNameLabel)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<DnsNameAvailabilityResult>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<DnsNameAvailabilityResult>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='bslRequest'>
+        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>> _response = await BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='bslRequest'>
+        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the tokens specified in the
+        /// request.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='bslTokenRequest'>
+        /// Post request for Delete Bastion Shareable Link By Token endpoint.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='sessionIds'>
+        /// The list of sessionids to disconnect.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, SessionIds sessionIds, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (sessionIds == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sessionIds");
+            }
+
+            if (this.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+            }
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("bastionHostName", bastionHostName);
+
+                tracingParameters.Add("sessionIds", sessionIds);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "DisconnectActiveSessions", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(sessionIds != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(sessionIds, this.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionSessionState>>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>> _response = await BeginGetActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Return the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='bslRequest'>
+        /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (bslRequest == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bslRequest");
+            }
+
+            if (this.SubscriptionId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
+            }
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("bastionHostName", bastionHostName);
+
+                tracingParameters.Add("bslRequest", bslRequest);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetBastionShareableLink", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(bslRequest != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(bslRequest, this.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionShareableLink>>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Generates a unique VPN profile for P2S clients for VirtualWan and
+        /// associated VpnServerConfiguration combination in the specified resource
+        /// group.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN.
+        /// </param>
+        /// <param name='vpnClientParams'>
+        /// Parameters supplied to the generate VirtualWan VPN profile generation
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse> _response = await BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnClientParams, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Gives the supported security providers for the virtual wan.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which supported security providers are
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3074,13 +3249,23 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (virtualWANName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3088,9 +3273,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -3240,39 +3425,10 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Generates a unique VPN profile for P2S clients for VirtualWan and
-        /// associated VpnServerConfiguration combination in the specified resource
-        /// group.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The resource group name.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
-        /// </param>
-        /// <param name='vpnClientParams'>
-        /// Parameters supplied to the generate VirtualWan VPN profile generation
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse> _response = await BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnClientParams, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -3312,22 +3468,32 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bslRequest");
             }
 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
             if (this.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
 
-            string apiVersion = "2025-05-01";
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3335,9 +3501,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("bslRequest", bslRequest);
 
@@ -3348,9 +3514,9 @@ namespace Microsoft.Azure.Management.Network
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -3498,7 +3664,7 @@ namespace Microsoft.Azure.Management.Network
         /// request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -3535,22 +3701,32 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bslRequest");
             }
 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
             if (this.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
 
-            string apiVersion = "2025-05-01";
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3558,9 +3734,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("bslRequest", bslRequest);
 
@@ -3571,9 +3747,9 @@ namespace Microsoft.Azure.Management.Network
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -3703,7 +3879,7 @@ namespace Microsoft.Azure.Management.Network
         /// request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -3729,7 +3905,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders>> BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -3740,22 +3916,32 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bslTokenRequest");
             }
 
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
             if (this.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
 
-            string apiVersion = "2025-05-01";
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3763,9 +3949,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("bslTokenRequest", bslTokenRequest);
 
@@ -3776,9 +3962,9 @@ namespace Microsoft.Azure.Management.Network
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinksByToken").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -3884,26 +4070,13 @@ namespace Microsoft.Azure.Management.Network
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            try
-            {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<DeleteBastionShareableLinkByTokenHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.DeserializationSettings));
-            }
-            catch (Newtonsoft.Json.JsonException ex)
-            {
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -3920,7 +4093,7 @@ namespace Microsoft.Azure.Management.Network
         /// Returns the list of currently active sessions on the Bastion.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -3952,22 +4125,32 @@ namespace Microsoft.Azure.Management.Network
 
 
  
-            if (resourceGroupName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-
-            if (bastionHostName == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
-            }
-
             if (this.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
 
-            string apiVersion = "2025-05-01";
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (bastionHostName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
+            }
+
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3975,9 +4158,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -3987,9 +4170,9 @@ namespace Microsoft.Azure.Management.Network
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions").ToString();
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{bastionHostName}", System.Uri.EscapeDataString(bastionHostName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -4132,11 +4315,10 @@ namespace Microsoft.Azure.Management.Network
         /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='vpnClientParams'>
         /// Parameters supplied to the generate VirtualWan VPN profile generation
@@ -4183,13 +4365,23 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (virtualWANName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-05-01";
+            string apiVersion = "2025-07-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4197,9 +4389,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
 
                 tracingParameters.Add("vpnClientParams", vpnClientParams);
 
@@ -4209,7 +4401,7 @@ namespace Microsoft.Azure.Management.Network
             // Construct URL
 
             var _baseUrl = this.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/GenerateVpnProfile").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/generateVpnProfile").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{virtualWANName}", System.Uri.EscapeDataString(virtualWANName));
@@ -4375,6 +4567,207 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>> DisconnectActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            if (nextPageLink == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nextPageLink");
+            }
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("nextPageLink", nextPageLink);
+               
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "DisconnectActiveSessionsNext", tracingParameters);
+            }
+            // Construct URL
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionSessionState>>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>> _response = await BeginGetActiveSessionsNextWithHttpMessagesAsync(nextPageLink, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Return the Bastion Shareable Links for all the VMs specified in the
         /// request.
         /// </summary>
@@ -4535,207 +4928,6 @@ namespace Microsoft.Azure.Management.Network
                 try
                 {
                     _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionShareableLink>>(_responseContent, this.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-
-
-
-
-
-        }
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>> _response = await BeginGetActiveSessionsNextWithHttpMessagesAsync(nextPageLink, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>> DisconnectActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            if (nextPageLink == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nextPageLink");
-            }
-            // Tracing
-            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
-                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
-               
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "DisconnectActiveSessionsNext", tracingParameters);
-            }
-            // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
-
-            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new System.Net.Http.HttpRequestMessage();
-            System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (this.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
-            }
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (this.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-
-            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-
-            if ((int)_statusCode != 200)
-            {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (Newtonsoft.Json.JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionSessionState>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<BastionSessionState>>(_responseContent, this.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

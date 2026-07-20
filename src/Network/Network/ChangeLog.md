@@ -24,6 +24,10 @@
     - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
     - `Set-AzConnectionPolicy`: Update an existing ConnectionPolicy under a VirtualHub
     - `Remove-AzConnectionPolicy`: Delete a ConnectionPolicy from a VirtualHub
+* Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
+    - `New-AzNatGateway`
+    - `Set-AzNatGateway`
+* Fixed `Get-AzPrivateDnsZoneGroup` list mode passing the resource group and private endpoint names to the SDK in the wrong order, which caused a `ResourceGroupNotFound` error when listing private DNS zone groups without the `-Name` parameter.
 * Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management

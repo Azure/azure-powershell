@@ -80,8 +80,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable internet security for this connection policy.")]
-        public SwitchParameter EnableInternetSecurity { get; set; }
+            HelpMessage = "Enable or disable internet security for this connection policy. Pass $true to enable, $false to disable.")]
+        public bool? EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceId = this.InputObject.Id;
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException(Properties.Resources.ConnectionPolicyNotFound);
+                    throw new PSArgumentException(Properties.Resources.ConnectionPolicyInputObjectIdEmpty);
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.Network
                 connectionPolicyToUpdate = this.GetConnectionPolicy(this.ResourceGroupName, this.ParentResourceName, this.Name);
             }
 
-            if (this.EnableInternetSecurity.IsPresent)
+            if (this.EnableInternetSecurity.HasValue)
             {
-                connectionPolicyToUpdate.EnableInternetSecurity = true;
+                connectionPolicyToUpdate.EnableInternetSecurity = this.EnableInternetSecurity.Value;
             }
 
             if (this.RoutingConfiguration != null)

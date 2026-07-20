@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Contains all specific policy signatures overrides for the IDPS
     /// </summary>
-    public partial class SignaturesOverrides : Microsoft.Rest.Azure.IResource
+    public partial class SignaturesOverrides : WritableResource
     {
         /// <summary>
         /// Initializes a new instance of the SignaturesOverrides class.
@@ -24,25 +24,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the SignaturesOverrides class.
         /// </summary>
 
-        /// <param name="name">Contains the name of the resource (default)
+        /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="id">Will contain the resource id of the signature override resource
+        /// <param name="name">Resource name.
         /// </param>
 
-        /// <param name="type">Will contain the type of the resource:
-        /// Microsoft.Network/firewallPolicies/intrusionDetectionSignaturesOverrides
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="properties">Will contain the properties of the resource (the actual signature
         /// overrides)
         /// </param>
-        public SignaturesOverrides(string name = default(string), string id = default(string), string type = default(string), SignaturesOverridesProperties properties = default(SignaturesOverridesProperties))
+        public SignaturesOverrides(string id = default(string), string name = default(string), string type = default(string), SignaturesOverridesProperties properties = default(SignaturesOverridesProperties))
 
+        : base(id, name, type)
         {
-            this.Name = name;
-            this.Id = id;
-            this.Type = type;
             this.Properties = properties;
             CustomInit();
         }
@@ -52,26 +49,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets contains the name of the resource (default)
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets or sets will contain the resource id of the signature override
-        /// resource
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets will contain the type of the resource:
-        /// Microsoft.Network/firewallPolicies/intrusionDetectionSignaturesOverrides
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; set; }
 
         /// <summary>
         /// Gets or sets will contain the properties of the resource (the actual

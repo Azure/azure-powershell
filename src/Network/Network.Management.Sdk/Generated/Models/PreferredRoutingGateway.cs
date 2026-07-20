@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PreferredRoutingGateway
     {
+        /// <summary>
+        /// ExpressRoute
+        /// </summary>
         public const string ExpressRoute = "ExpressRoute";
+        /// <summary>
+        /// VpnGateway
+        /// </summary>
         public const string VpnGateway = "VpnGateway";
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
     }
 }

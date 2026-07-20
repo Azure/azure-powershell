@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NetworkIntentPolicyBasedService
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
+        /// <summary>
+        /// AllowRulesOnly
+        /// </summary>
         public const string AllowRulesOnly = "AllowRulesOnly";
     }
 }

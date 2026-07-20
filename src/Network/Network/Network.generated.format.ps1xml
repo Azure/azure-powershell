@@ -6348,10 +6348,6 @@
             <Alignment>Left</Alignment>
             <Label>Sku Name</Label>
           </TableColumnHeader>
-		  <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>SourceVirtualNetwork</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -6379,10 +6375,6 @@
 			  <TableColumnItem>
                 <Alignment>Left</Alignment>
 				  <ScriptBlock>$_.Sku.Name</ScriptBlock>
-              </TableColumnItem>
-			  <TableColumnItem>
-                <Alignment>Left</Alignment>
-				  <PropertyName>SourceVirtualNetworkText</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SecurityPartnerProviderConnectionStatus
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// PartiallyConnected
+        /// </summary>
         public const string PartiallyConnected = "PartiallyConnected";
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// NotConnected
+        /// </summary>
         public const string NotConnected = "NotConnected";
     }
 }

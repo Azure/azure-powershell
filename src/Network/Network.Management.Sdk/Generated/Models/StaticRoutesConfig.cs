@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets boolean indicating whether static routes on this connection are
-        /// automatically propagate to route tables which this connection propagates
-        /// to.
+        /// Gets or sets boolean indicating whether static routes on this connection
+        /// are automatically propagate to route tables which this connection
+        /// propagates to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "propagateStaticRoutes")]
         public bool? PropagateStaticRoutes {get; set; }

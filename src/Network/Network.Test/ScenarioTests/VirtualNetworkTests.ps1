@@ -1653,7 +1653,11 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet;
         $subnet = $vnet.Subnets[0];
 
-        Assert-Null $subnet.serviceEndpoints;
+        # Clearing the user-specified service endpoint and policy removes both. Azure implicitly
+        # adds a platform-managed Microsoft.AzureActiveDirectory service endpoint when a service
+        # endpoint policy is attached to the subnet, and that endpoint is retained after the policy
+        # is removed. Assert the user-specified Microsoft.Storage endpoint and the policies are gone.
+        Assert-Null ($subnet.serviceEndpoints | Where-Object { $_.Service -eq $serviceEndpoint });
         Assert-Null $subnet.ServiceEndpointPolicies;
 
         Remove-AzServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName;
