@@ -267,7 +267,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // CRR supports only Alternate Location Restore for AFS
             if (useSecondaryRegion && targetStorageAccountName == null)
             {
-                throw new ArgumentException("Cross Region Restore for Azure Files supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.");
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreAlrOnly);
+            }
+
+            // CRR supports only Full Share Restore for AFS; item level restore is not supported cross-region
+            if (useSecondaryRegion && (sourceFilePath != null || multipleSourceFilePaths != null))
+            {
+                throw new ArgumentException(Resources.AzureFileShareCrossRegionRestoreItemLevelNotSupported);
             }
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
