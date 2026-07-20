@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using Tools.Common.Models;
 using Tools.Common.Utilities;
@@ -105,6 +107,7 @@ namespace VersionController.Models
             UpdateDependentModules();
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
+            UpdatePreviewOverlay();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
         }
 
@@ -356,6 +359,29 @@ namespace VersionController.Models
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, "[assembly: AssemblyFileVersion(\"" + _newVersion + "\")"));
                 File.WriteAllLines(assemblyInfoPath, updatedFile);
             }
+        }
+
+        private void UpdatePreviewOverlay()
+        {
+            const string moduleName = "Az.CosmosDB";
+            if (_fileHelper.ModuleName != moduleName)
+            {
+                return;
+            }
+
+            var overlayPath = Path.Combine(_fileHelper.SrcDirectory, "PreviewOverlay", "overlay.json");
+            if (!File.Exists(overlayPath))
+            {
+                return;
+            }
+
+            var overlay = JsonNode.Parse(File.ReadAllText(overlayPath)).AsObject();
+            var moduleOverlay = overlay["modules"].AsObject()[moduleName].AsObject();
+            moduleOverlay["moduleVersion"] = _newVersion;
+            moduleOverlay["assemblyVersion"] = _newVersion;
+            overlay["azPreviewModuleVersions"].AsObject()[moduleName] = _newVersion;
+
+            File.WriteAllText(overlayPath, overlay.ToJsonString(new JsonSerializerOptions { WriteIndented = true }) + Environment.NewLine);
         }
 
         private void UpdateSerializedCmdlet()
