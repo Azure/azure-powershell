@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an enclave connection
 ```powershell
-{{ Add code here }}
+Remove-AzMissionEnclaveConnection -Name 'contoso-connection' -ResourceGroupName 'mission-rg'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes the `contoso-connection` enclave connection from the `mission-rg` resource group. Use `-PassThru` to return `$true` on success.

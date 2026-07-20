@@ -41,27 +41,31 @@ Get a EnclaveConnectionResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all enclave connections in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzMissionEnclaveConnection -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-connection eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every enclave connection in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single enclave connection by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionEnclaveConnection -Name 'contoso-connection' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-connection eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Retrieves the `contoso-connection` enclave connection, including its source and destination endpoints.
 
 ## PARAMETERS
 

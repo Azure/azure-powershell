@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all enclave endpoints in a virtual enclave
 ```powershell
-{{ Add code here }}
+Get-AzMissionEnclaveEndpoint -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                    Location ResourceGroupName ProvisioningState
+----                    -------- ----------------- -----------------
+contoso-enclave-endpoint eastus  mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every enclave endpoint defined under the `contoso-enclave` virtual enclave in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single enclave endpoint by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionEnclaveEndpoint -Name 'contoso-enclave-endpoint' -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     Location ResourceGroupName ProvisioningState UpdateMode
+----                     -------- ----------------- ----------------- ----------
+contoso-enclave-endpoint eastus   mission-rg        Succeeded         Automatic
 ```
 
-{{ Add description here }}
-
+Retrieves the `contoso-enclave-endpoint` enclave endpoint, including its rule collection and update mode.

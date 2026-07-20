@@ -53,27 +53,19 @@ Upon receiving approval or rejection from approver, this facilitates actions on 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Notify the approval initiator of a decision
 ```powershell
-{{ Add code here }}
+$resourceUri = 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection'
+Send-AzMissionApprovalInitiator -ApprovalName 'contoso-approval' -ResourceUri $resourceUri -ApprovalStatus 'Approved'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message
+-------
+Approved
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Notifies the initiator of the `contoso-approval` approval (scoped to the `contoso-connection` enclave connection) that the request has been `Approved`.
 
 ## PARAMETERS
 

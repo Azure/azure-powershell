@@ -45,27 +45,18 @@ Create a WorkloadResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a workload in a virtual enclave
 ```powershell
-{{ Add code here }}
+New-AzMissionWorkload -Name 'contoso-workload' -ResourceGroupName 'mission-rg' -VirtualEnclaveName 'contoso-enclave' -Location 'eastus' -ResourceGroupCollection @('/subscriptions/<subscriptionId>/resourceGroups/workload-rg')
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workload  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a workload named `contoso-workload` inside the `contoso-enclave` virtual enclave, governing the `workload-rg` resource group.
 
 ## PARAMETERS
 

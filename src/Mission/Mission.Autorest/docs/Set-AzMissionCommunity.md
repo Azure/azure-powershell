@@ -45,27 +45,19 @@ Update a CommunityResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a community with a full replace (PUT)
 ```powershell
-{{ Add code here }}
+Set-AzMissionCommunity -Name 'contoso-community' -ResourceGroupName 'mission-rg' -Location 'eastus' -AddressSpace '10.0.0.0/16' -FirewallSku 'Standard' -Tag @{ environment = 'production' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-community eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the full definition of the `contoso-community` community, setting its address space, firewall SKU, and tags.
+Any properties not supplied are reset to their defaults.
 
 ## PARAMETERS
 

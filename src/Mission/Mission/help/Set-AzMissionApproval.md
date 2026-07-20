@@ -39,27 +39,18 @@ Update a ApprovalResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace an approval definition (PUT)
 ```powershell
-{{ Add code here }}
+Set-AzMissionApproval -Name 'contoso-approval' -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection' -RequestMetadataApprovalStatus 'Approved' -RequestMetadataResourceAction 'Create' -TicketId 'INC0012345'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             RequestMetadataApprovalStatus RequestMetadataResourceAction
+----             ----------------------------- -----------------------------
+contoso-approval Approved                      Create
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the full definition of the `contoso-approval` approval, marking the tracked `Create` request as `Approved`.
 
 ## PARAMETERS
 

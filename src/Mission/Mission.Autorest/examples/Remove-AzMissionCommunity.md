@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a community
 ```powershell
-{{ Add code here }}
+Remove-AzMissionCommunity -Name 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes the `contoso-community` community from the `mission-rg` resource group. Use `-PassThru` to return `$true` on success.

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch a transit hub's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionTransitHub -Name 'contoso-transithub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Tag @{ costCenter = 'network' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState State
+----               -------- ----------------- ----------------- -----
+contoso-transithub eastus   mission-rg        Succeeded         PendingApproval
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Updates only the tags on the existing `contoso-transithub` transit hub, leaving its transit option unchanged (PATCH semantics).

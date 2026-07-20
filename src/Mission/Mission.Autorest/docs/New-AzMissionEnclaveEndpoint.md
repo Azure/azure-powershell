@@ -46,27 +46,19 @@ Create a EnclaveEndpointResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an enclave endpoint with a destination rule
 ```powershell
-{{ Add code here }}
+$rule = @{ destinationType = 'FQDNTag'; destination = 'foo.example.com'; ports = '443'; protocols = @('TCP') }
+New-AzMissionEnclaveEndpoint -Name 'contoso-enclave-endpoint' -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg' -Location 'eastus' -RuleCollection $rule -UpdateMode 'Automatic'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     Location ResourceGroupName ProvisioningState UpdateMode
+----                     -------- ----------------- ----------------- ----------
+contoso-enclave-endpoint eastus   mission-rg        Succeeded         Automatic
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates an enclave endpoint named `contoso-enclave-endpoint` in the `contoso-enclave` virtual enclave, allowing HTTPS (port 443/TCP) traffic to `foo.example.com`.
 
 ## PARAMETERS
 

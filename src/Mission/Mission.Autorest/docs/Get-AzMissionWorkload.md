@@ -46,27 +46,31 @@ Get a WorkloadResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a workload by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionWorkload -Name 'contoso-workload' -ResourceGroupName 'mission-rg' -VirtualEnclaveName 'contoso-enclave'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workload  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Gets the workload named `contoso-workload` in the `contoso-enclave` virtual enclave.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all workloads in a virtual enclave
 ```powershell
-{{ Add code here }}
+Get-AzMissionWorkload -ResourceGroupName 'mission-rg' -VirtualEnclaveName 'contoso-enclave'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workload  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every workload in the `contoso-enclave` virtual enclave.
 
 ## PARAMETERS
 

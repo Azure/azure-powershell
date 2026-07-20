@@ -45,27 +45,19 @@ Create a CommunityResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Mission community
 ```powershell
-{{ Add code here }}
+New-AzMissionCommunity -Name 'contoso-community' -ResourceGroupName 'mission-rg' -Location 'eastus' -AddressSpace '10.0.0.0/16'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-community  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new Azure Virtual Enclaves community named `contoso-community` with the `10.0.0.0/16` address space.
+A community is the top-level `Microsoft.Mission` resource under which virtual enclaves and hubs are provisioned.
 
 ## PARAMETERS
 

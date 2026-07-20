@@ -50,27 +50,18 @@ Update a ApprovalResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Patch an approval's ticket reference
 ```powershell
-{{ Add code here }}
+Update-AzMissionApproval -Name 'contoso-approval' -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection' -TicketId 'INC0067890'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             RequestMetadataApprovalStatus RequestMetadataResourceAction
+----             ----------------------------- -----------------------------
+contoso-approval Pending                       Create
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates only the tracking ticket on the existing `contoso-approval` approval, leaving its status and action unchanged (PATCH semantics).
 
 ## PARAMETERS
 

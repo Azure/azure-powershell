@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace an enclave endpoint's rule collection (PUT)
 ```powershell
-{{ Add code here }}
+$rule = @{ destinationType = 'FQDNTag'; destination = 'api.contoso.com'; ports = '443'; protocols = @('TCP') }
+Set-AzMissionEnclaveEndpoint -Name 'contoso-enclave-endpoint' -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg' -Location 'eastus' -RuleCollection $rule -UpdateMode 'Manual'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     Location ResourceGroupName ProvisioningState UpdateMode
+----                     -------- ----------------- ----------------- ----------
+contoso-enclave-endpoint eastus   mission-rg        Succeeded         Manual
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the full definition of the `contoso-enclave-endpoint` enclave endpoint, swapping in a new rule permitting HTTPS traffic to `api.contoso.com` and switching to manual update mode.

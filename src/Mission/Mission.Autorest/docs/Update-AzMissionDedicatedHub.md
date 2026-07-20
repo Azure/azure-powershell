@@ -50,27 +50,18 @@ Update a DedicatedHubResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Patch a dedicated hub's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionDedicatedHub -Name 'contoso-dedicatedhub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Tag @{ costCenter = 'platform' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 Location ResourceGroupName ProvisioningState Designation
+----                 -------- ----------------- ----------------- -----------
+contoso-dedicatedhub eastus   mission-rg        Succeeded         Reserved
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates only the tags on the existing `contoso-dedicatedhub` dedicated hub, leaving all other properties unchanged (PATCH semantics).
 
 ## PARAMETERS
 

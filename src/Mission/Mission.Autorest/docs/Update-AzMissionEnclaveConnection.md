@@ -44,27 +44,18 @@ Update a EnclaveConnectionResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Patch an enclave connection's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionEnclaveConnection -Name 'contoso-connection' -ResourceGroupName 'mission-rg' -Tag @{ environment = 'production' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-connection eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates only the tags on the existing `contoso-connection` enclave connection, leaving its endpoints unchanged (PATCH semantics).
 
 ## PARAMETERS
 

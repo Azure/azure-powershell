@@ -53,27 +53,18 @@ Update a WorkloadResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Patch a workload's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionWorkload -Name 'contoso-workload' -ResourceGroupName 'mission-rg' -VirtualEnclaveName 'contoso-enclave' -Tag @{ costCenter = 'platform' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workload  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates only the tags on the existing `contoso-workload` workload, leaving the governed resource groups unchanged (PATCH semantics).
 
 ## PARAMETERS
 

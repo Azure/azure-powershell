@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace a virtual enclave definition (PUT)
 ```powershell
-{{ Add code here }}
+$communityId = '/subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/communities/contoso-community'
+Set-AzMissionVirtualEnclave -Name 'contoso-enclave' -ResourceGroupName 'mission-rg' -Location 'eastus' -CommunityResourceId $communityId -BastionEnabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState
+----             -------- ----------------- -----------------
+contoso-enclave  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the full definition of the `contoso-enclave` virtual enclave, enabling Azure Bastion access. Any properties not supplied are reset to their defaults.

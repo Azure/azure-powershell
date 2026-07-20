@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all dedicated hubs in a community
 ```powershell
-{{ Add code here }}
+Get-AzMissionDedicatedHub -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 Location ResourceGroupName ProvisioningState
+----                 -------- ----------------- -----------------
+contoso-dedicatedhub eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every dedicated hub defined under the `contoso-community` community in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single dedicated hub by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionDedicatedHub -Name 'contoso-dedicatedhub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 Location ResourceGroupName ProvisioningState Designation
+----                 -------- ----------------- ----------------- -----------
+contoso-dedicatedhub eastus   mission-rg        Succeeded         Reserved
 ```
 
-{{ Add description here }}
-
+Retrieves the `contoso-dedicatedhub` dedicated hub, including its designation.

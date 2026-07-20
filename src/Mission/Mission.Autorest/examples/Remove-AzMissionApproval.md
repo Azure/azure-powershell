@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an approval
 ```powershell
-{{ Add code here }}
+Remove-AzMissionApproval -Name 'contoso-approval' -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes the `contoso-approval` approval from the `contoso-connection` enclave connection. Use `-PassThru` to return `$true` on success.

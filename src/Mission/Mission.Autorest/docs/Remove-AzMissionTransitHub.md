@@ -36,27 +36,13 @@ Delete a TransitHubResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a transit hub
 ```powershell
-{{ Add code here }}
+Remove-AzMissionTransitHub -Name 'contoso-transithub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the `contoso-transithub` transit hub from the `contoso-community` community.
+Use `-PassThru` to return `$true` on success.
 
 ## PARAMETERS
 

@@ -58,27 +58,19 @@ Create a EnclaveResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a virtual enclave in a community
 ```powershell
-{{ Add code here }}
+$communityId = '/subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/communities/contoso-community'
+New-AzMissionVirtualEnclave -Name 'contoso-enclave' -ResourceGroupName 'mission-rg' -Location 'eastus' -CommunityResourceId $communityId -EnclaveVirtualNetworkName 'enclave-vnet' -EnclaveVirtualNetworkCustomCidrRange '10.0.1.0/24'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState
+----             -------- ----------------- -----------------
+contoso-enclave  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a virtual enclave named `contoso-enclave` under the `contoso-community` community, backed by a `10.0.1.0/24` enclave virtual network.
 
 ## PARAMETERS
 

@@ -60,27 +60,18 @@ Callback that triggers on approval state change.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Handle an enclave connection creation-approval callback
 ```powershell
-{{ Add code here }}
+Invoke-AzMissionHandleEnclaveConnectionApprovalCreation -EnclaveConnectionName 'contoso-connection' -ResourceGroupName 'mission-rg' -ApprovalStatus 'Approved' -ResourceRequestAction 'Create'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message
+-------
+Approval state change handled successfully.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Notifies the `Microsoft.Mission` provider that the pending **create** request for the `contoso-connection` enclave connection has been `Approved`.
 
 ## PARAMETERS
 

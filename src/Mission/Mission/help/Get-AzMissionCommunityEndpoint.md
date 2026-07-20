@@ -48,27 +48,31 @@ Get a CommunityEndpointResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all community endpoints in a community
 ```powershell
-{{ Add code here }}
+Get-AzMissionCommunityEndpoint -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState
+----             -------- ----------------- -----------------
+contoso-endpoint eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every community endpoint defined under the `contoso-community` community in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single community endpoint by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionCommunityEndpoint -Name 'contoso-endpoint' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState UpdateMode
+----             -------- ----------------- ----------------- ----------
+contoso-endpoint eastus   mission-rg        Succeeded         Automatic
 ```
 
-{{ Add description here }}
+Retrieves the `contoso-endpoint` community endpoint, including its rule collection and update mode.
 
 ## PARAMETERS
 

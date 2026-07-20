@@ -39,27 +39,31 @@ Get a EnclaveResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a virtual enclave by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionVirtualEnclave -Name 'contoso-enclave' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState
+----             -------- ----------------- -----------------
+contoso-enclave  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Gets the virtual enclave named `contoso-enclave` in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all virtual enclaves in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzMissionVirtualEnclave -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState
+----             -------- ----------------- -----------------
+contoso-enclave  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every virtual enclave in the `mission-rg` resource group.
 
 ## PARAMETERS
 

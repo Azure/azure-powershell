@@ -36,27 +36,13 @@ Delete a EnclaveEndpointResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an enclave endpoint
 ```powershell
-{{ Add code here }}
+Remove-AzMissionEnclaveEndpoint -Name 'contoso-enclave-endpoint' -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the `contoso-enclave-endpoint` enclave endpoint from the `contoso-enclave` virtual enclave.
+Use `-PassThru` to return `$true` on success.
 
 ## PARAMETERS
 

@@ -39,27 +39,31 @@ Get a CommunityResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Mission community by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionCommunity -Name 'contoso-community' -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-community  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Gets the community named `contoso-community` in the `mission-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all Mission communities in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzMissionCommunity -ResourceGroupName 'mission-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-community  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every community in the `mission-rg` resource group.
 
 ## PARAMETERS
 

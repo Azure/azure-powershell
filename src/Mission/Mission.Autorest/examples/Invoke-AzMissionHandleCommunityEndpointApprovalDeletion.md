@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Handle a community endpoint deletion-approval callback
 ```powershell
-{{ Add code here }}
+Invoke-AzMissionHandleCommunityEndpointApprovalDeletion -CommunityEndpointName 'contoso-endpoint' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -ApprovalStatus 'Approved' -ResourceRequestAction 'Delete'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message
+-------
+Approval state change handled successfully.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Notifies the `Microsoft.Mission` provider that the pending **delete** request for the `contoso-endpoint` community endpoint has been `Approved`.

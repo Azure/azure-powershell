@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch an enclave endpoint's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionEnclaveEndpoint -Name 'contoso-enclave-endpoint' -VirtualEnclaveName 'contoso-enclave' -ResourceGroupName 'mission-rg' -Tag @{ tier = 'edge' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     Location ResourceGroupName ProvisioningState UpdateMode
+----                     -------- ----------------- ----------------- ----------
+contoso-enclave-endpoint eastus   mission-rg        Succeeded         Automatic
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Updates only the tags on the existing `contoso-enclave-endpoint` enclave endpoint, leaving its rule collection intact (PATCH semantics).

@@ -39,27 +39,19 @@ Update a DedicatedHubResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace a dedicated hub definition (PUT)
 ```powershell
-{{ Add code here }}
+Set-AzMissionDedicatedHub -Name 'contoso-dedicatedhub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Location 'eastus' -Designation 'Reserved' -Tag @{ environment = 'production' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 Location ResourceGroupName ProvisioningState Designation
+----                 -------- ----------------- ----------------- -----------
+contoso-dedicatedhub eastus   mission-rg        Succeeded         Reserved
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the full definition of the `contoso-dedicatedhub` dedicated hub.
+Any properties not supplied are reset to their defaults.
 
 ## PARAMETERS
 

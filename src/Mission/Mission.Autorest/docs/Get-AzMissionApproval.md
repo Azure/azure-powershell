@@ -32,27 +32,31 @@ Get a ApprovalResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all approvals on a resource
 ```powershell
-{{ Add code here }}
+Get-AzMissionApproval -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             RequestMetadataApprovalStatus
+----             -----------------------------
+contoso-approval Pending
 ```
 
-{{ Add description here }}
+Lists every approval associated with the `contoso-connection` enclave connection (an extension resource addressed by its full resource URI).
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single approval by name
 ```powershell
-{{ Add code here }}
+Get-AzMissionApproval -Name 'contoso-approval' -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             RequestMetadataApprovalStatus RequestMetadataResourceAction
+----             ----------------------------- -----------------------------
+contoso-approval Pending                       Create
 ```
 
-{{ Add description here }}
+Retrieves the `contoso-approval` approval on the `contoso-connection` enclave connection, including its status and requested action.
 
 ## PARAMETERS
 

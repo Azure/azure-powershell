@@ -47,27 +47,18 @@ Create a TransitHubResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an ExpressRoute transit hub in a community
 ```powershell
-{{ Add code here }}
+New-AzMissionTransitHub -Name 'contoso-transithub' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Location 'eastus' -TransitOptionType 'ExpressRoute' -ParamScaleUnit 1 -SecurityProvider 'AzureFirewall'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState State
+----               -------- ----------------- ----------------- -----
+contoso-transithub eastus   mission-rg        Succeeded         PendingApproval
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a transit hub named `contoso-transithub` in the `contoso-community` community using an ExpressRoute transit option (1 scale unit) secured by Azure Firewall.
 
 ## PARAMETERS
 

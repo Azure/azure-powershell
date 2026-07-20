@@ -39,27 +39,18 @@ Update a EnclaveConnectionResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace an enclave connection definition (PUT)
 ```powershell
-{{ Add code here }}
+Set-AzMissionEnclaveConnection -Name 'contoso-connection' -ResourceGroupName 'mission-rg' -Location 'eastus' -CommunityResourceId '/subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/communities/contoso-community' -DestinationEndpointId '/subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/communities/contoso-community/communityEndpoints/contoso-endpoint' -SourceCidr '10.0.2.0/24'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName ProvisioningState
+----               -------- ----------------- -----------------
+contoso-connection eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the full definition of the `contoso-connection` enclave connection, changing its source CIDR to `10.0.2.0/24`.
 
 ## PARAMETERS
 

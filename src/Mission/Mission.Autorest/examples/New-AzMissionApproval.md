@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an approval on a resource
 ```powershell
-{{ Add code here }}
+New-AzMissionApproval -Name 'contoso-approval' -ResourceUri 'subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/enclaveConnections/contoso-connection' -RequestMetadataApprovalStatus 'Pending' -RequestMetadataResourceAction 'Create' -TicketId 'INC0012345'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             RequestMetadataApprovalStatus RequestMetadataResourceAction
+----             ----------------------------- -----------------------------
+contoso-approval Pending                       Create
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Creates an approval named `contoso-approval` on the `contoso-connection` enclave connection, tracking a pending `Create` request under ticket `INC0012345`.

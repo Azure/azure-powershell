@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Replace a community endpoint's rule collection (PUT)
 ```powershell
-{{ Add code here }}
+$rule = @{ destinationType = 'FQDNTag'; destination = 'api.contoso.com'; ports = '443'; protocols = @('TCP') }
+Set-AzMissionCommunityEndpoint -Name 'contoso-endpoint' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Location 'eastus' -RuleCollection $rule -UpdateMode 'Manual'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState UpdateMode
+----             -------- ----------------- ----------------- ----------
+contoso-endpoint eastus   mission-rg        Succeeded         Manual
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Replaces the full definition of the `contoso-endpoint` community endpoint, swapping in a new rule that permits HTTPS traffic to `api.contoso.com` and switching the update mode to manual.

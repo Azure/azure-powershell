@@ -39,27 +39,19 @@ Update a WorkloadResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Replace a workload definition (PUT)
 ```powershell
-{{ Add code here }}
+Set-AzMissionWorkload -Name 'contoso-workload' -ResourceGroupName 'mission-rg' -VirtualEnclaveName 'contoso-enclave' -Location 'eastus' -ResourceGroupCollection @('/subscriptions/<subscriptionId>/resourceGroups/workload-rg')
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workload  eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Replaces the full definition of the `contoso-workload` workload, governing the `workload-rg` resource group.
+Any properties not supplied are reset to their defaults.
 
 ## PARAMETERS
 

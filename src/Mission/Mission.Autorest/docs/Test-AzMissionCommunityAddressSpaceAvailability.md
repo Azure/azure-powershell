@@ -63,27 +63,20 @@ Checks that the IP Address Space to be allocated for this Community is available
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check whether an address space is available in a community
 ```powershell
-{{ Add code here }}
+$communityId = '/subscriptions/<subscriptionId>/resourceGroups/mission-rg/providers/Microsoft.Mission/communities/contoso-community'
+Test-AzMissionCommunityAddressSpaceAvailability -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -CommunityResourceId $communityId -EnclaveVirtualNetworkName 'enclave-vnet' -EnclaveVirtualNetworkCustomCidrRange '10.0.2.0/24' -EnclaveVirtualNetworkSize 'small'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+ True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Checks whether the `10.0.2.0/24` CIDR range is available for a new `enclave-vnet` virtual network under the `contoso-community` community.
+A `Value` of `True` means the address space can be allocated without conflict.
 
 ## PARAMETERS
 

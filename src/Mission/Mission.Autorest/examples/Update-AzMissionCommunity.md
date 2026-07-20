@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch a community's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionCommunity -Name 'contoso-community' -ResourceGroupName 'mission-rg' -Tag @{ environment = 'production'; costCenter = 'platform' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-community eastus   mission-rg        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Updates only the tags on the existing `contoso-community` community, leaving all other properties unchanged (PATCH semantics).

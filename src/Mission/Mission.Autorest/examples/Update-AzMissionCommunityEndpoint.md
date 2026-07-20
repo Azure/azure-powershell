@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch a community endpoint's tags
 ```powershell
-{{ Add code here }}
+Update-AzMissionCommunityEndpoint -Name 'contoso-endpoint' -CommunityName 'contoso-community' -ResourceGroupName 'mission-rg' -Tag @{ tier = 'edge' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             Location ResourceGroupName ProvisioningState UpdateMode
+----             -------- ----------------- ----------------- ----------
+contoso-endpoint eastus   mission-rg        Succeeded         Automatic
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Updates only the tags on the existing `contoso-endpoint` community endpoint, leaving its rule collection intact (PATCH semantics).
