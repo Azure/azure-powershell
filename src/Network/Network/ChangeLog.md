@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added DisablePeeringRoute support for Route Table
+    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
+    - Supported values are `None` and `All`
 * Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
     - `New-AzNatGateway`
     - `Set-AzNatGateway`
@@ -45,9 +48,6 @@
 * Added cmdlets for cloud service public IP address operations:
     - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
     - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
-* Added DisablePeeringRoute support for Route Table
-    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
-    - Supported values are `None` and `All`
 
 ## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
