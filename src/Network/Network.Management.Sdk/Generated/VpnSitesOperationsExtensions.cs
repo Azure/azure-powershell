@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnSiteName'>
         /// The name of the VpnSite being retrieved.
         /// </param>
-        public static VpnSitesDeleteHeaders Delete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
+        public static void Delete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
         {
-                return ((IVpnSitesOperations)operations).DeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
+                ((IVpnSitesOperations)operations).DeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,12 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnSitesDeleteHeaders> DeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
@@ -283,9 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnSiteName'>
         /// The name of the VpnSite being retrieved.
         /// </param>
-        public static VpnSitesDeleteHeaders BeginDelete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
+        public static void BeginDelete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
         {
-                return ((IVpnSitesOperations)operations).BeginDeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
+                ((IVpnSitesOperations)operations).BeginDeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -303,12 +300,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnSitesDeleteHeaders> BeginDeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all the VpnSites in a subscription.

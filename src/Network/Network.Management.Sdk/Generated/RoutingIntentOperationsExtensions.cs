@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static RoutingIntentDeleteHeaders Delete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
+        public static void Delete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
         {
-                return ((IRoutingIntentOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
+                ((IRoutingIntentOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -189,12 +189,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RoutingIntentDeleteHeaders> DeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
@@ -261,9 +258,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static RoutingIntentDeleteHeaders BeginDelete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
+        public static void BeginDelete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
         {
-                return ((IRoutingIntentOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
+                ((IRoutingIntentOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -285,12 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RoutingIntentDeleteHeaders> BeginDeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all RoutingIntent child resources of the

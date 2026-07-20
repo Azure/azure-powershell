@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// Name of the private endpoint connection on an application gateway.
         /// </param>
-        public static ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders Delete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
+        public static void Delete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
         {
-                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
+                ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders> DeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Updates the specified private endpoint connection on application gateway.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// Name of the private endpoint connection on an application gateway.
         /// </param>
-        public static ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders BeginDelete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
+        public static void BeginDelete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
         {
-                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
+                ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders> BeginDeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all private endpoint connections on an application gateway.

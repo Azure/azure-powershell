@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualNetworkGatewayNatRulesDeleteHeaders Delete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
+        public static void Delete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
         {
-                return ((IVirtualNetworkGatewayNatRulesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayNatRulesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayNatRulesDeleteHeaders> DeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a nat rule to a scalable virtual network gateway if it doesn&#39;t
@@ -259,9 +256,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualNetworkGatewayNatRulesDeleteHeaders BeginDelete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
+        public static void BeginDelete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
         {
-                return ((IVirtualNetworkGatewayNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -283,12 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayNatRulesDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves all nat rules for a particular virtual network gateway.

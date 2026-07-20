@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A DDoS detection rule resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DdosDetectionRule : CommonSubResource
+    public partial class DdosDetectionRule : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the DdosDetectionRule class.

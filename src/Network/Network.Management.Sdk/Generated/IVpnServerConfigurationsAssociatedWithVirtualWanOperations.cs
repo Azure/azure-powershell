@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationsResponse,VpnServerConfigurationsAssociatedWithVirtualWanListHeaders>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationsResponse>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gives the list of VpnServerConfigurations associated with Virtual Wan in a
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationsResponse,VpnServerConfigurationsAssociatedWithVirtualWanListHeaders>> BeginListWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationsResponse>> BeginListWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

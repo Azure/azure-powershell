@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualApplianceSitesDeleteHeaders Delete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
+        public static void Delete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
         {
-                return ((IVirtualApplianceSitesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
+                ((IVirtualApplianceSitesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualApplianceSitesDeleteHeaders> DeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Network Virtual Appliance Site.
@@ -257,9 +254,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualApplianceSitesDeleteHeaders BeginDelete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
+        public static void BeginDelete(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName)
         {
-                return ((IVirtualApplianceSitesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
+                ((IVirtualApplianceSitesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, siteName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -281,12 +278,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualApplianceSitesDeleteHeaders> BeginDeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualApplianceSitesOperations operations, string resourceGroupName, string networkVirtualApplianceName, string siteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, siteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all Network Virtual Appliance Sites in a Network Virtual Appliance

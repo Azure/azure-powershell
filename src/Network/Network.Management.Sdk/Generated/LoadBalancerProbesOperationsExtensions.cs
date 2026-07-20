@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonProbe> List(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName)
+        public static Microsoft.Rest.Azure.IPage<Probe> List(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName)
         {
                 return ((ILoadBalancerProbesOperations)operations).ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonProbe>> ListAsync(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Probe>> ListAsync(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='probeName'>
         /// The name of the probe.
         /// </param>
-        public static CommonProbe Get(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, string probeName)
+        public static Probe Get(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, string probeName)
         {
                 return ((ILoadBalancerProbesOperations)operations).GetAsync(resourceGroupName, loadBalancerName, probeName).GetAwaiter().GetResult();
         }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonProbe> GetAsync(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, string probeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Probe> GetAsync(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, string probeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, probeName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonProbe> ListNext(this ILoadBalancerProbesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<Probe> ListNext(this ILoadBalancerProbesOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancerProbesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonProbe>> ListNextAsync(this ILoadBalancerProbesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Probe>> ListNextAsync(this ILoadBalancerProbesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

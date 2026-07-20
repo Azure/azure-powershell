@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        public static NetworkVirtualAppliancesDeleteHeaders Delete(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
+        public static void Delete(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
         {
-                return ((INetworkVirtualAppliancesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
+                ((INetworkVirtualAppliancesOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualAppliancesDeleteHeaders> DeleteAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the boot diagnostic logs for a VM instance belonging to the
@@ -406,9 +403,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance.
         /// </param>
-        public static NetworkVirtualAppliancesDeleteHeaders BeginDelete(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
+        public static void BeginDelete(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
         {
-                return ((INetworkVirtualAppliancesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
+                ((INetworkVirtualAppliancesOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -426,12 +423,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualAppliancesDeleteHeaders> BeginDeleteAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the boot diagnostic logs for a VM instance belonging to the

@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='linkName'>
         /// The name of the NSP link.
         /// </param>
-        public static NetworkSecurityPerimeterLinksDeleteHeaders Delete(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName)
+        public static void Delete(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName)
         {
-                return ((INetworkSecurityPerimeterLinksOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, linkName).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimeterLinksOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, linkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -199,12 +199,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimeterLinksDeleteHeaders> DeleteAsync(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, linkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, linkName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes an NSP Link resource.
@@ -221,9 +218,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='linkName'>
         /// The name of the NSP link.
         /// </param>
-        public static NetworkSecurityPerimeterLinksDeleteHeaders BeginDelete(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName)
+        public static void BeginDelete(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName)
         {
-                return ((INetworkSecurityPerimeterLinksOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, linkName).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimeterLinksOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, linkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -244,12 +241,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimeterLinksDeleteHeaders> BeginDeleteAsync(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkSecurityPerimeterLinksOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string linkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, linkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, linkName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists the NSP Link resources in the specified network security perimeter.

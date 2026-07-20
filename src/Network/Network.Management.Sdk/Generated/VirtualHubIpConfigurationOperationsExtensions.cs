@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualHubIPConfigurationDeleteHeaders Delete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
+        public static void Delete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
         {
-                return ((IVirtualHubIPConfigurationOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, ipConfigName).GetAwaiter().GetResult();
+                ((IVirtualHubIPConfigurationOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, ipConfigName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubIPConfigurationDeleteHeaders> DeleteAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, ipConfigName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, ipConfigName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a VirtualHubIpConfiguration resource if it doesn&#39;t exist else
@@ -259,9 +256,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualHubIPConfigurationDeleteHeaders BeginDelete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
+        public static void BeginDelete(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName)
         {
-                return ((IVirtualHubIPConfigurationOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, ipConfigName).GetAwaiter().GetResult();
+                ((IVirtualHubIPConfigurationOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, ipConfigName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -283,12 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubIPConfigurationDeleteHeaders> BeginDeleteAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualHubIPConfigurationOperations operations, string resourceGroupName, string virtualHubName, string ipConfigName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, ipConfigName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, ipConfigName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all VirtualHubIpConfigurations.

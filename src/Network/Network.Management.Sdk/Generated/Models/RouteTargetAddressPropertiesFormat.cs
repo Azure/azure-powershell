@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateIPAllocationMethod">The Private IP allocation method.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
-        public RouteTargetAddressPropertiesFormat(CommonSubnet subnet = default(CommonSubnet), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string))
+        public RouteTargetAddressPropertiesFormat(Subnet subnet = default(Subnet), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string))
 
         {
             this.Subnet = subnet;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubnet Subnet {get; set; }
+        public Subnet Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets the private IPv4 or IPv6 address of the service gateway route

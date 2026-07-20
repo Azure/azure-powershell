@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='customIpPrefixName'>
         /// The name of the custom IP prefix.
         /// </param>
-        public static CustomIPPrefixesDeleteHeaders Delete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
+        public static void Delete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
         {
-                return ((ICustomIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
+                ((ICustomIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CustomIPPrefixesDeleteHeaders> DeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a custom IP prefix.
@@ -285,9 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='customIpPrefixName'>
         /// The name of the custom IP prefix.
         /// </param>
-        public static CustomIPPrefixesDeleteHeaders BeginDelete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
+        public static void BeginDelete(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName)
         {
-                return ((ICustomIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
+                ((ICustomIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, customIpPrefixName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -305,12 +302,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CustomIPPrefixesDeleteHeaders> BeginDeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ICustomIPPrefixesOperations operations, string resourceGroupName, string customIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, customIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the custom IP prefixes in a subscription.

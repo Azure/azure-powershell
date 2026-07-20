@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static NatRulesDeleteHeaders Delete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
+        public static void Delete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
         {
-                return ((INatRulesOperations)operations).DeleteAsync(resourceGroupName, gatewayName, natRuleName).GetAwaiter().GetResult();
+                ((INatRulesOperations)operations).DeleteAsync(resourceGroupName, gatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NatRulesDeleteHeaders> DeleteAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a nat rule to a scalable vpn gateway if it doesn&#39;t exist else
@@ -259,9 +256,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static NatRulesDeleteHeaders BeginDelete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
+        public static void BeginDelete(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName)
         {
-                return ((INatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, natRuleName).GetAwaiter().GetResult();
+                ((INatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -283,12 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NatRulesDeleteHeaders> BeginDeleteAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INatRulesOperations operations, string resourceGroupName, string gatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves all nat rules for a particular virtual wan vpn gateway.

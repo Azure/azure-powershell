@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="natRules">List of all the nat Rules associated with the gateway.
         /// </param>
-        public VpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<VpnConnection> connections = default(System.Collections.Generic.IList<VpnConnection>), int? vpnGatewayScaleUnit = default(int?), System.Collections.Generic.IList<VpnGatewayIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VpnGatewayIpConfiguration>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? isRoutingPreferenceInternet = default(bool?), System.Collections.Generic.IList<VpnGatewayNatRule> natRules = default(System.Collections.Generic.IList<VpnGatewayNatRule>))
+        public VpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<VpnConnection> connections = default(System.Collections.Generic.IList<VpnConnection>), int? vpnGatewayScaleUnit = default(int?), System.Collections.Generic.IList<VpnGatewayIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VpnGatewayIpConfiguration>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? isRoutingPreferenceInternet = default(bool?), System.Collections.Generic.IList<VpnGatewayNatRule> natRules = default(System.Collections.Generic.IList<VpnGatewayNatRule>))
 
         : base(id, name, type, location, tags)
         {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualHub to which the gateway belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualHub")]
-        public CommonSubResource VirtualHub {get; set; }
+        public SubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets list of all vpn connections to the gateway.

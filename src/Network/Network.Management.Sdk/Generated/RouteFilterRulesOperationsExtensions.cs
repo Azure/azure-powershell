@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ruleName'>
         /// The name of the route filter rule.
         /// </param>
-        public static RouteFilterRulesDeleteHeaders Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static void Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
-                return ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a route in the specified route filter.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ruleName'>
         /// The name of the route filter rule.
         /// </param>
-        public static RouteFilterRulesDeleteHeaders BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static void BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
-                return ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all RouteFilterRules in a route filter.

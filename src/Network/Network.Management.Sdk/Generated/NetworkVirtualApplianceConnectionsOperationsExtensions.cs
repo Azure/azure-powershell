@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// 
         /// </param>
-        public static NetworkVirtualApplianceConnectionsDeleteHeaders Delete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
+        public static void Delete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
         {
-                return ((INetworkVirtualApplianceConnectionsOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
+                ((INetworkVirtualApplianceConnectionsOperations)operations).DeleteAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +181,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceConnectionsDeleteHeaders> DeleteAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else
@@ -250,9 +247,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// 
         /// </param>
-        public static NetworkVirtualApplianceConnectionsDeleteHeaders BeginDelete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
+        public static void BeginDelete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
         {
-                return ((INetworkVirtualApplianceConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
+                ((INetworkVirtualApplianceConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -273,12 +270,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceConnectionsDeleteHeaders> BeginDeleteAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists NetworkVirtualApplianceConnections under the NVA.

@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static ExpressRouteCrossConnectionPeeringsDeleteHeaders Delete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
+        public static void Delete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
         {
-                return ((IExpressRouteCrossConnectionPeeringsOperations)operations).DeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
+                ((IExpressRouteCrossConnectionPeeringsOperations)operations).DeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCrossConnectionPeeringsDeleteHeaders> DeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static ExpressRouteCrossConnectionPeeringsDeleteHeaders BeginDelete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
+        public static void BeginDelete(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
         {
-                return ((IExpressRouteCrossConnectionPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
+                ((IExpressRouteCrossConnectionPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCrossConnectionPeeringsDeleteHeaders> BeginDeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all peerings in a specified ExpressRouteCrossConnection.

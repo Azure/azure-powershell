@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
         /// </param>
-        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), CommonSubResource expressRoutePort = default(CommonSubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
+        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
 
         {
             this.AllowClassicOperations = allowClassicOperations;
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// circuit is provisioned on an ExpressRoutePort resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expressRoutePort")]
-        public CommonSubResource ExpressRoutePort {get; set; }
+        public SubResource ExpressRoutePort {get; set; }
 
         /// <summary>
         /// Gets or sets the bandwidth of the circuit when the circuit is provisioned

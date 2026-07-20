@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup> ListAll(this IApplicationSecurityGroupsOperations operations)
+        public static Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup> ListAll(this IApplicationSecurityGroupsOperations operations)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup>> ListAllAsync(this IApplicationSecurityGroupsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup>> ListAllAsync(this IApplicationSecurityGroupsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup> List(this IApplicationSecurityGroupsOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup> List(this IApplicationSecurityGroupsOperations operations, string resourceGroupName)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup>> ListAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup>> ListAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static CommonApplicationSecurityGroup Get(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        public static ApplicationSecurityGroup Get(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).GetAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
         }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonApplicationSecurityGroup> GetAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> GetAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static CommonApplicationSecurityGroup CreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, CommonApplicationSecurityGroup parameters)
+        public static ApplicationSecurityGroup CreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
         }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonApplicationSecurityGroup> CreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, CommonApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> CreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static CommonApplicationSecurityGroup UpdateTags(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters)
+        public static ApplicationSecurityGroup UpdateTags(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
         }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonApplicationSecurityGroup> UpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> UpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static ApplicationSecurityGroupsDeleteHeaders Delete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        public static void Delete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
         {
-                return ((IApplicationSecurityGroupsOperations)operations).DeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
+                ((IApplicationSecurityGroupsOperations)operations).DeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,12 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationSecurityGroupsDeleteHeaders> DeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an application security group.
@@ -240,7 +237,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static CommonApplicationSecurityGroup BeginCreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, CommonApplicationSecurityGroup parameters)
+        public static ApplicationSecurityGroup BeginCreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
         }
@@ -260,7 +257,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonApplicationSecurityGroup> BeginCreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, CommonApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> BeginCreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -279,9 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static ApplicationSecurityGroupsDeleteHeaders BeginDelete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        public static void BeginDelete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
         {
-                return ((IApplicationSecurityGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
+                ((IApplicationSecurityGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -299,12 +296,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationSecurityGroupsDeleteHeaders> BeginDeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all application security groups in a subscription.
@@ -315,7 +309,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup> ListAllNext(this IApplicationSecurityGroupsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup> ListAllNext(this IApplicationSecurityGroupsOperations operations, string nextPageLink)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -332,7 +326,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup>> ListAllNextAsync(this IApplicationSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup>> ListAllNextAsync(this IApplicationSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -348,7 +342,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup> ListNext(this IApplicationSecurityGroupsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup> ListNext(this IApplicationSecurityGroupsOperations operations, string nextPageLink)
         {
                 return ((IApplicationSecurityGroupsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -365,7 +359,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonApplicationSecurityGroup>> ListNextAsync(this IApplicationSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup>> ListNextAsync(this IApplicationSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

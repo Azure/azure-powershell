@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// NetworkVirtualApplianceConnection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetworkVirtualApplianceConnection : CommonSubResource
+    public partial class NetworkVirtualApplianceConnection : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualApplianceConnection class.

@@ -330,9 +330,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static DeleteBastionShareableLinkHeaders DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
+        public static void DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
         {
-                return ((INetworkManagementClient)operations).DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
+                ((INetworkManagementClient)operations).DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -351,12 +351,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkHeaders> DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the tokens specified in the
@@ -371,9 +368,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static DeleteBastionShareableLinkByTokenHeaders DeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
+        public static void DeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
         {
-                return ((INetworkManagementClient)operations).DeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
+                ((INetworkManagementClient)operations).DeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -392,12 +389,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkByTokenHeaders> DeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -652,9 +646,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static DeleteBastionShareableLinkHeaders BeginDeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
+        public static void BeginDeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
         {
-                return ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
+                ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -673,12 +667,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkHeaders> BeginDeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the tokens specified in the
@@ -693,9 +684,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static DeleteBastionShareableLinkByTokenHeaders BeginDeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
+        public static void BeginDeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
         {
-                return ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
+                ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -714,12 +705,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkByTokenHeaders> BeginDeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.

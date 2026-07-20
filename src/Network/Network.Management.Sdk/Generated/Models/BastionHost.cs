@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Bastion Host resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BastionHost : CommonResource
+    public partial class BastionHost : Resource
     {
         /// <summary>
         /// Initializes a new instance of the BastionHost class.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enablePrivateOnlyBastion">Enable/Disable Private Only feature of the Bastion Host resource.
         /// </param>
-        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), CommonSubResource virtualNetwork = default(CommonSubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?))
+        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Developer Bastion Host only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetwork")]
-        public CommonSubResource VirtualNetwork {get; set; }
+        public SubResource VirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets

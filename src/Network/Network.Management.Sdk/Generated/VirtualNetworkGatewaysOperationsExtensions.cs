@@ -215,9 +215,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysDeleteHeaders Delete(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void Delete(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -235,12 +235,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysDeleteHeaders> DeleteAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger abort migration for the virtual network gateway.
@@ -254,9 +251,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeAbortMigrationHeaders InvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void InvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).InvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).InvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -274,12 +271,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeAbortMigrationHeaders> InvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task InvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.InvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.InvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger commit migration for the virtual network gateway.
@@ -293,9 +287,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeCommitMigrationHeaders InvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void InvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).InvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).InvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -313,12 +307,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeCommitMigrationHeaders> InvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task InvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.InvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.InvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the connections in a virtual network gateway.
@@ -372,9 +363,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsHeaders DisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
+        public static void DisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).DisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).DisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -393,12 +384,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsHeaders> DisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger execute migration for the virtual network gateway.
@@ -412,9 +400,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeExecuteMigrationHeaders InvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void InvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).InvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).InvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -432,12 +420,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders> InvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task InvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.InvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.InvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Generates VPN client package for P2S client of the virtual network gateway
@@ -1036,9 +1021,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokePrepareMigrationHeaders InvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
+        public static void InvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).InvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).InvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1056,12 +1041,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokePrepareMigrationHeaders> InvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task InvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.InvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.InvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Resets the primary of the virtual network gateway in the specified resource
@@ -1125,9 +1107,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysResetVpnClientSharedKeyHeaders ResetVpnClientSharedKey(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void ResetVpnClientSharedKey(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).ResetVpnClientSharedKeyAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).ResetVpnClientSharedKeyAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1146,12 +1128,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysResetVpnClientSharedKeyHeaders> ResetVpnClientSharedKeyAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ResetVpnClientSharedKeyAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResetVpnClientSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.ResetVpnClientSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
@@ -1497,9 +1476,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysDeleteHeaders BeginDelete(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void BeginDelete(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1517,12 +1496,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger abort migration for the virtual network gateway.
@@ -1536,9 +1512,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeAbortMigrationHeaders BeginInvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void BeginInvokeAbortMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeAbortMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1556,12 +1532,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeAbortMigrationHeaders> BeginInvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginInvokeAbortMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginInvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginInvokeAbortMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger commit migration for the virtual network gateway.
@@ -1575,9 +1548,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeCommitMigrationHeaders BeginInvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void BeginInvokeCommitMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeCommitMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1595,12 +1568,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeCommitMigrationHeaders> BeginInvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginInvokeCommitMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginInvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginInvokeCommitMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Disconnect vpn connections of virtual network gateway in the specified
@@ -1615,9 +1585,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsHeaders BeginDisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
+        public static void BeginDisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1636,12 +1606,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnectionsHeaders> BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Trigger execute migration for the virtual network gateway.
@@ -1655,9 +1622,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokeExecuteMigrationHeaders BeginInvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void BeginInvokeExecuteMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginInvokeExecuteMigrationAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1675,12 +1642,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokeExecuteMigrationHeaders> BeginInvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginInvokeExecuteMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginInvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginInvokeExecuteMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Generates VPN client package for P2S client of the virtual network gateway
@@ -2238,9 +2202,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysInvokePrepareMigrationHeaders BeginInvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
+        public static void BeginInvokePrepareMigration(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginInvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginInvokePrepareMigrationAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2258,12 +2222,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysInvokePrepareMigrationHeaders> BeginInvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginInvokePrepareMigrationAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VirtualNetworkGatewayMigrationParameters migrationParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginInvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginInvokePrepareMigrationWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, migrationParams, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Resets the primary of the virtual network gateway in the specified resource
@@ -2327,9 +2288,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        public static VirtualNetworkGatewaysResetVpnClientSharedKeyHeaders BeginResetVpnClientSharedKey(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        public static void BeginResetVpnClientSharedKey(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
         {
-                return ((IVirtualNetworkGatewaysOperations)operations).BeginResetVpnClientSharedKeyAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewaysOperations)operations).BeginResetVpnClientSharedKeyAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2348,12 +2309,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewaysResetVpnClientSharedKeyHeaders> BeginResetVpnClientSharedKeyAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginResetVpnClientSharedKeyAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResetVpnClientSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginResetVpnClientSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy

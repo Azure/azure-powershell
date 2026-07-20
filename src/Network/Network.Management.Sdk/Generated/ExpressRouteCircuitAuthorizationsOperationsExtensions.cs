@@ -157,9 +157,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        public static ExpressRouteCircuitAuthorizationsDeleteHeaders Delete(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName)
+        public static void Delete(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName)
         {
-                return ((IExpressRouteCircuitAuthorizationsOperations)operations).DeleteAsync(resourceGroupName, circuitName, authorizationName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitAuthorizationsOperations)operations).DeleteAsync(resourceGroupName, circuitName, authorizationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +181,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitAuthorizationsDeleteHeaders> DeleteAsync(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an authorization in the specified express route circuit.
@@ -249,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        public static ExpressRouteCircuitAuthorizationsDeleteHeaders BeginDelete(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName)
+        public static void BeginDelete(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName)
         {
-                return ((IExpressRouteCircuitAuthorizationsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, authorizationName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitAuthorizationsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, authorizationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -273,12 +270,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitAuthorizationsDeleteHeaders> BeginDeleteAsync(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all authorizations in an express route circuit.

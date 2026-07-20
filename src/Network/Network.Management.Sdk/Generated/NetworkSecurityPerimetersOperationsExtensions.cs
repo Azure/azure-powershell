@@ -244,9 +244,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='forceDeletion'>
         /// Deletes the resource even if it contains any child associations.
         /// </param>
-        public static NetworkSecurityPerimetersDeleteHeaders Delete(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?))
+        public static void Delete(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?))
         {
-                return ((INetworkSecurityPerimetersOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimetersOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -267,12 +267,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimetersDeleteHeaders> DeleteAsync(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a network security perimeter.
@@ -289,9 +286,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='forceDeletion'>
         /// Deletes the resource even if it contains any child associations.
         /// </param>
-        public static NetworkSecurityPerimetersDeleteHeaders BeginDelete(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?))
+        public static void BeginDelete(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?))
         {
-                return ((INetworkSecurityPerimetersOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimetersOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -312,12 +309,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimetersDeleteHeaders> BeginDeleteAsync(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkSecurityPerimetersOperations operations, string resourceGroupName, string networkSecurityPerimeterName, bool? forceDeletion = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, forceDeletion, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network security perimeters in a subscription.

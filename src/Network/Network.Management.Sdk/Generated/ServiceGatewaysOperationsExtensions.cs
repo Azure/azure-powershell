@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysDeleteHeaders Delete(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName)
+        public static void Delete(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName)
         {
-                return ((IServiceGatewaysOperations)operations).DeleteAsync(resourceGroupName, serviceGatewayName).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).DeleteAsync(resourceGroupName, serviceGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,12 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysDeleteHeaders> DeleteAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Get address locations in service gateway.
@@ -326,9 +323,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysUpdateAddressLocationsHeaders UpdateAddressLocations(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters)
+        public static void UpdateAddressLocations(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters)
         {
-                return ((IServiceGatewaysOperations)operations).UpdateAddressLocationsAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).UpdateAddressLocationsAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -354,12 +351,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysUpdateAddressLocationsHeaders> UpdateAddressLocationsAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task UpdateAddressLocationsAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateAddressLocationsWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.UpdateAddressLocationsWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates, updates, or deletes services within the service gateway.
@@ -378,9 +372,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysUpdateServicesHeaders UpdateServices(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters)
+        public static void UpdateServices(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters)
         {
-                return ((IServiceGatewaysOperations)operations).UpdateServicesAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).UpdateServicesAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -403,12 +397,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysUpdateServicesHeaders> UpdateServicesAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task UpdateServicesAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateServicesWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.UpdateServicesWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a service gateway.
@@ -461,9 +452,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysDeleteHeaders BeginDelete(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName)
+        public static void BeginDelete(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName)
         {
-                return ((IServiceGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, serviceGatewayName).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, serviceGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -481,12 +472,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysDeleteHeaders> BeginDeleteAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates address locations within the service gateway.
@@ -508,9 +496,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysUpdateAddressLocationsHeaders BeginUpdateAddressLocations(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters)
+        public static void BeginUpdateAddressLocations(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters)
         {
-                return ((IServiceGatewaysOperations)operations).BeginUpdateAddressLocationsAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).BeginUpdateAddressLocationsAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -536,12 +524,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysUpdateAddressLocationsHeaders> BeginUpdateAddressLocationsAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginUpdateAddressLocationsAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateAddressLocationsRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateAddressLocationsWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginUpdateAddressLocationsWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates, updates, or deletes services within the service gateway.
@@ -560,9 +545,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceGatewayName'>
         /// The name of the service gateway.
         /// </param>
-        public static ServiceGatewaysUpdateServicesHeaders BeginUpdateServices(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters)
+        public static void BeginUpdateServices(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters)
         {
-                return ((IServiceGatewaysOperations)operations).BeginUpdateServicesAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
+                ((IServiceGatewaysOperations)operations).BeginUpdateServicesAsync(resourceGroupName, serviceGatewayName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -585,12 +570,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceGatewaysUpdateServicesHeaders> BeginUpdateServicesAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginUpdateServicesAsync(this IServiceGatewaysOperations operations, string resourceGroupName, string serviceGatewayName, ServiceGatewayUpdateServicesRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateServicesWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginUpdateServicesWithHttpMessagesAsync(resourceGroupName, serviceGatewayName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the service gateways in a subscription.

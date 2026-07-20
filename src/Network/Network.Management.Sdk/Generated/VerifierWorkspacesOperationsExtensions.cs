@@ -251,9 +251,9 @@ namespace Microsoft.Azure.Management.Network
         /// The entity state (ETag) version of the pool to update. This value can be
         /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        public static VerifierWorkspacesDeleteHeaders Delete(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string))
+        public static void Delete(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string))
         {
-                return ((IVerifierWorkspacesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch).GetAwaiter().GetResult();
+                ((IVerifierWorkspacesOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -278,12 +278,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VerifierWorkspacesDeleteHeaders> DeleteAsync(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes Verifier Workspace.
@@ -304,9 +301,9 @@ namespace Microsoft.Azure.Management.Network
         /// The entity state (ETag) version of the pool to update. This value can be
         /// omitted or set to &#34;*&#34; to apply the operation unconditionally.
         /// </param>
-        public static VerifierWorkspacesDeleteHeaders BeginDelete(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string))
+        public static void BeginDelete(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string))
         {
-                return ((IVerifierWorkspacesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch).GetAwaiter().GetResult();
+                ((IVerifierWorkspacesOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -331,12 +328,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VerifierWorkspacesDeleteHeaders> BeginDeleteAsync(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets list of Verifier Workspaces.

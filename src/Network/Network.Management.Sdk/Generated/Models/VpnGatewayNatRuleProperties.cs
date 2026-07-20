@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ingressVpnSiteLinkConnections">List of ingress VpnSiteLinkConnections.
         /// </param>
-        public VpnGatewayNatRuleProperties(string provisioningState = default(string), string type = default(string), string mode = default(string), System.Collections.Generic.IList<VpnNatRuleMapping> internalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), System.Collections.Generic.IList<VpnNatRuleMapping> externalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), string ipConfigurationId = default(string), System.Collections.Generic.IList<CommonSubResource> egressVpnSiteLinkConnections = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> ingressVpnSiteLinkConnections = default(System.Collections.Generic.IList<CommonSubResource>))
+        public VpnGatewayNatRuleProperties(string provisioningState = default(string), string type = default(string), string mode = default(string), System.Collections.Generic.IList<VpnNatRuleMapping> internalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), System.Collections.Generic.IList<VpnNatRuleMapping> externalMappings = default(System.Collections.Generic.IList<VpnNatRuleMapping>), string ipConfigurationId = default(string), System.Collections.Generic.IList<SubResource> egressVpnSiteLinkConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> ingressVpnSiteLinkConnections = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -108,12 +108,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of egress VpnSiteLinkConnections.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "egressVpnSiteLinkConnections")]
-        public System.Collections.Generic.IList<CommonSubResource> EgressVpnSiteLinkConnections {get; private set; }
+        public System.Collections.Generic.IList<SubResource> EgressVpnSiteLinkConnections {get; private set; }
 
         /// <summary>
         /// Gets list of ingress VpnSiteLinkConnections.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ingressVpnSiteLinkConnections")]
-        public System.Collections.Generic.IList<CommonSubResource> IngressVpnSiteLinkConnections {get; private set; }
+        public System.Collections.Generic.IList<SubResource> IngressVpnSiteLinkConnections {get; private set; }
     }
 }

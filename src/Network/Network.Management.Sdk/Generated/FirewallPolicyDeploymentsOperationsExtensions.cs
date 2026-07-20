@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPolicyDeploymentsDeployHeaders Deploy(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName)
+        public static void Deploy(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName)
         {
-                return ((IFirewallPolicyDeploymentsOperations)operations).DeployAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+                ((IFirewallPolicyDeploymentsOperations)operations).DeployAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,12 +44,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyDeploymentsDeployHeaders> DeployAsync(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeployAsync(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeployWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeployWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deploys the firewall policy draft and child rule collection group drafts.
@@ -63,9 +60,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPolicyDeploymentsDeployHeaders BeginDeploy(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName)
+        public static void BeginDeploy(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName)
         {
-                return ((IFirewallPolicyDeploymentsOperations)operations).BeginDeployAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+                ((IFirewallPolicyDeploymentsOperations)operations).BeginDeployAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,12 +80,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyDeploymentsDeployHeaders> BeginDeployAsync(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeployAsync(this IFirewallPolicyDeploymentsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeployWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeployWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

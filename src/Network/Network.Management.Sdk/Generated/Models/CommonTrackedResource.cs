@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The resource model definition for an Azure Resource Manager tracked top
     /// level resource which has &#39;tags&#39; and a &#39;location&#39;
     /// </remarks>
-    public partial class CommonTrackedResource : Microsoft.Rest.Azure.IResource
+    public partial class CommonTrackedResource : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the CommonTrackedResource class.
@@ -29,13 +29,29 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the CommonTrackedResource class.
         /// </summary>
 
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="location">The geo-location where the resource lives
         /// </param>
-        public CommonTrackedResource(string location, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public CommonTrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
+        : base(id, name, type, systemData)
         {
             this.Tags = tags;
             this.Location = location;

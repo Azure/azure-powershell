@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// 
         /// </param>
-        public static HubVirtualNetworkConnectionsDeleteHeaders Delete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
+        public static void Delete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
-                return ((IHubVirtualNetworkConnectionsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
+                ((IHubVirtualNetworkConnectionsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +181,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<HubVirtualNetworkConnectionsDeleteHeaders> DeleteAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a hub virtual network connection if it doesn&#39;t exist else updates
@@ -250,9 +247,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// 
         /// </param>
-        public static HubVirtualNetworkConnectionsDeleteHeaders BeginDelete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
+        public static void BeginDelete(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
-                return ((IHubVirtualNetworkConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
+                ((IHubVirtualNetworkConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -273,12 +270,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<HubVirtualNetworkConnectionsDeleteHeaders> BeginDeleteAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IHubVirtualNetworkConnectionsOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all HubVirtualNetworkConnections.

@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='associationName'>
         /// The name of the NSP association.
         /// </param>
-        public static NetworkSecurityPerimeterAssociationsDeleteHeaders Delete(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName)
+        public static void Delete(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName)
         {
-                return ((INetworkSecurityPerimeterAssociationsOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, associationName).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimeterAssociationsOperations)operations).DeleteAsync(resourceGroupName, networkSecurityPerimeterName, associationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -199,12 +199,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimeterAssociationsDeleteHeaders> DeleteAsync(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, associationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, associationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Reconcile NSP association
@@ -311,9 +308,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='associationName'>
         /// The name of the NSP association.
         /// </param>
-        public static NetworkSecurityPerimeterAssociationsDeleteHeaders BeginDelete(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName)
+        public static void BeginDelete(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName)
         {
-                return ((INetworkSecurityPerimeterAssociationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, associationName).GetAwaiter().GetResult();
+                ((INetworkSecurityPerimeterAssociationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkSecurityPerimeterName, associationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -334,12 +331,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityPerimeterAssociationsDeleteHeaders> BeginDeleteAsync(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkSecurityPerimeterAssociationsOperations operations, string resourceGroupName, string networkSecurityPerimeterName, string associationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, associationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityPerimeterName, associationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists the NSP resource associations.

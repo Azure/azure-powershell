@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the service gateway resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ServiceGatewayPropertiesFormat(CommonVirtualNetwork virtualNetwork = default(CommonVirtualNetwork), RouteTargetAddressPropertiesFormat routeTargetAddress = default(RouteTargetAddressPropertiesFormat), RouteTargetAddressPropertiesFormat routeTargetAddressV6 = default(RouteTargetAddressPropertiesFormat), string resourceGuid = default(string), string provisioningState = default(string))
+        public ServiceGatewayPropertiesFormat(VirtualNetwork virtualNetwork = default(VirtualNetwork), RouteTargetAddressPropertiesFormat routeTargetAddress = default(RouteTargetAddressPropertiesFormat), RouteTargetAddressPropertiesFormat routeTargetAddressV6 = default(RouteTargetAddressPropertiesFormat), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
             this.VirtualNetwork = virtualNetwork;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to an existing virtual network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualNetwork")]
-        public CommonVirtualNetwork VirtualNetwork {get; set; }
+        public VirtualNetwork VirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets route Target address of Service gateway

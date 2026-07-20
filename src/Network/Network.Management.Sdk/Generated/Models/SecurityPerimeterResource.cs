@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Common fields that are returned in the response for all Azure Resource
     /// Manager resources
     /// </summary>
-    public partial class SecurityPerimeterResource
+    public partial class SecurityPerimeterResource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
         /// Initializes a new instance of the SecurityPerimeterResource class.

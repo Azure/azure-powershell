@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        public static P2SVpnGatewaysDeleteHeaders Delete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        public static void Delete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                return ((IP2SVpnGatewaysOperations)operations).DeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+                ((IP2SVpnGatewaysOperations)operations).DeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,12 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDeleteHeaders> DeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
@@ -243,9 +240,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='p2SVpnGatewayName'>
         /// The name of the P2S Vpn Gateway.
         /// </param>
-        public static P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders DisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
+        public static void DisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
         {
-                return ((IP2SVpnGatewaysOperations)operations).DisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
+                ((IP2SVpnGatewaysOperations)operations).DisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -264,12 +261,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders> DisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Generates VPN profile for P2S client of the P2SVpnGateway in the specified
@@ -525,9 +519,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        public static P2SVpnGatewaysDeleteHeaders BeginDelete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        public static void BeginDelete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                return ((IP2SVpnGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+                ((IP2SVpnGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -545,12 +539,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDeleteHeaders> BeginDeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
@@ -565,9 +556,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='p2SVpnGatewayName'>
         /// The name of the P2S Vpn Gateway.
         /// </param>
-        public static P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders BeginDisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
+        public static void BeginDisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
         {
-                return ((IP2SVpnGatewaysOperations)operations).BeginDisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
+                ((IP2SVpnGatewaysOperations)operations).BeginDisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -586,12 +577,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders> BeginDisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Generates VPN profile for P2S client of the P2SVpnGateway in the specified

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VPN client root certificate of virtual network gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnClientRootCertificate : CommonSubResource
+    public partial class VpnClientRootCertificate : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the VpnClientRootCertificate class.

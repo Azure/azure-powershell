@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// identifiers like &#34;1&#34;, &#34;2&#34;, &#34;3&#34; etc.
         /// </param>
 
+        /// <param name="virtualNetwork">Reference to an existing virtual network.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the service gateway resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-
-        /// <param name="virtualNetwork">Reference to an existing virtual network.
-        /// </param>
 
         /// <param name="routeTargetAddress">Route Target address of Service gateway
         /// </param>
@@ -73,15 +73,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the service gateway resource.
         /// </param>
-        public ServiceGateway(string location, string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ServiceGatewaySku sku = default(ServiceGatewaySku), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), CommonVirtualNetwork virtualNetwork = default(CommonVirtualNetwork), RouteTargetAddressPropertiesFormat routeTargetAddress = default(RouteTargetAddressPropertiesFormat), RouteTargetAddressPropertiesFormat routeTargetAddressV6 = default(RouteTargetAddressPropertiesFormat), string resourceGuid = default(string))
+        public ServiceGateway(string location, string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ServiceGatewaySku sku = default(ServiceGatewaySku), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), VirtualNetwork virtualNetwork = default(VirtualNetwork), string provisioningState = default(string), RouteTargetAddressPropertiesFormat routeTargetAddress = default(RouteTargetAddressPropertiesFormat), RouteTargetAddressPropertiesFormat routeTargetAddressV6 = default(RouteTargetAddressPropertiesFormat), string resourceGuid = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
             this.Sku = sku;
             this.Zones = zones;
-            this.ProvisioningState = provisioningState;
             this.VirtualNetwork = virtualNetwork;
+            this.ProvisioningState = provisioningState;
             this.RouteTargetAddress = routeTargetAddress;
             this.RouteTargetAddressV6 = routeTargetAddressV6;
             this.ResourceGuid = resourceGuid;
@@ -117,16 +117,16 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> Zones {get; set; }
 
         /// <summary>
+        /// Gets or sets reference to an existing virtual network.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetwork")]
+        public VirtualNetwork VirtualNetwork {get; set; }
+
+        /// <summary>
         /// Gets the provisioning state of the service gateway resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
-
-        /// <summary>
-        /// Gets or sets reference to an existing virtual network.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetwork")]
-        public CommonVirtualNetwork VirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets route Target address of Service gateway
@@ -157,11 +157,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
-
             if (this.VirtualNetwork != null)
             {
                 this.VirtualNetwork.Validate();
             }
+
 
 
 

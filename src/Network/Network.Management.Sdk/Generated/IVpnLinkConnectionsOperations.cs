@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VpnLinkConnectionsGetIkeSasHeaders>> GetIkeSasWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> GetIkeSasWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Resets the VpnLink connection specified.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VpnLinkConnectionsResetConnectionHeaders>> ResetConnectionWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> ResetConnectionWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all shared keys of VpnLink connection specified.
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionSharedKeyResult,VpnLinkConnectionsSetOrInitDefaultSharedKeyHeaders>> SetOrInitDefaultSharedKeyWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionSharedKeyResult>> SetOrInitDefaultSharedKeyWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the value of the shared key of VpnLink connection specified.
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string,VpnLinkConnectionsGetIkeSasHeaders>> BeginGetIkeSasWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> BeginGetIkeSasWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Resets the VpnLink connection specified.
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VpnLinkConnectionsResetConnectionHeaders>> BeginResetConnectionWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginResetConnectionWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sets or auto generates the shared key based on the user input. If users
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionSharedKeyResult,VpnLinkConnectionsSetOrInitDefaultSharedKeyHeaders>> BeginSetOrInitDefaultSharedKeyWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectionSharedKeyResult>> BeginSetOrInitDefaultSharedKeyWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves all vpn site link connections for a particular virtual wan vpn

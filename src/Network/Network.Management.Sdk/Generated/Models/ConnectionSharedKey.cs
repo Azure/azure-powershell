@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Response for GetConnectionSharedKey API service call.
     /// </summary>
-    public partial class ConnectionSharedKey : CommonSubResource
+    public partial class ConnectionSharedKey : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKey class.

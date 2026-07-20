@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualRouterPeeringsDeleteHeaders Delete(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName)
+        public static void Delete(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName)
         {
-                return ((IVirtualRouterPeeringsOperations)operations).DeleteAsync(resourceGroupName, virtualRouterName, peeringName).GetAwaiter().GetResult();
+                ((IVirtualRouterPeeringsOperations)operations).DeleteAsync(resourceGroupName, virtualRouterName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualRouterPeeringsDeleteHeaders> DeleteAsync(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Virtual Router Peering.
@@ -255,9 +252,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VirtualRouterPeeringsDeleteHeaders BeginDelete(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName)
+        public static void BeginDelete(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName)
         {
-                return ((IVirtualRouterPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualRouterName, peeringName).GetAwaiter().GetResult();
+                ((IVirtualRouterPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualRouterName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -279,12 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualRouterPeeringsDeleteHeaders> BeginDeleteAsync(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualRouterPeeringsOperations operations, string resourceGroupName, string virtualRouterName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all Virtual Router Peerings in a Virtual Router resource.

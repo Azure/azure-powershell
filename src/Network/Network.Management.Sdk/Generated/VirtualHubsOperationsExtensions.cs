@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        public static VirtualHubsDeleteHeaders Delete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
+        public static void Delete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
         {
-                return ((IVirtualHubsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+                ((IVirtualHubsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,12 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubsDeleteHeaders> DeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets the effective routes configured for the Virtual Hub resource or the
@@ -406,9 +403,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        public static VirtualHubsDeleteHeaders BeginDelete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
+        public static void BeginDelete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
         {
-                return ((IVirtualHubsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+                ((IVirtualHubsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -426,12 +423,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubsDeleteHeaders> BeginDeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets the effective routes configured for the Virtual Hub resource or the

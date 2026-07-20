@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering> List(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetworkPeering> List(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName)
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).ListAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering>> ListAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkPeering>> ListAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkPeeringName'>
         /// The name of the virtual network peering.
         /// </param>
-        public static CommonVirtualNetworkPeering Get(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
+        public static VirtualNetworkPeering Get(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).GetAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
         }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> GetAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> GetAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network
         /// Parameter indicates the intention to sync the peering with the current
         /// address space on the remote vNet after it&#39;s updated.
         /// </param>
-        public static CommonVirtualNetworkPeering CreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
+        public static VirtualNetworkPeering CreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
         }
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> CreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> CreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
             {
@@ -164,9 +164,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkPeeringName'>
         /// The name of the virtual network peering.
         /// </param>
-        public static VirtualNetworkPeeringsDeleteHeaders Delete(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
+        public static void Delete(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
         {
-                return ((IVirtualNetworkPeeringsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
+                ((IVirtualNetworkPeeringsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkPeeringsDeleteHeaders> DeleteAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a peering in the specified virtual network.
@@ -213,7 +210,7 @@ namespace Microsoft.Azure.Management.Network
         /// Parameter indicates the intention to sync the peering with the current
         /// address space on the remote vNet after it&#39;s updated.
         /// </param>
-        public static CommonVirtualNetworkPeering BeginCreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
+        public static VirtualNetworkPeering BeginCreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
         }
@@ -240,7 +237,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> BeginCreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> BeginCreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
             {
@@ -262,9 +259,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkPeeringName'>
         /// The name of the virtual network peering.
         /// </param>
-        public static VirtualNetworkPeeringsDeleteHeaders BeginDelete(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
+        public static void BeginDelete(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
         {
-                return ((IVirtualNetworkPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
+                ((IVirtualNetworkPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -285,12 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkPeeringsDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all virtual network peerings in a virtual network.
@@ -301,7 +295,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering> ListNext(this IVirtualNetworkPeeringsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetworkPeering> ListNext(this IVirtualNetworkPeeringsOperations operations, string nextPageLink)
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -318,7 +312,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering>> ListNextAsync(this IVirtualNetworkPeeringsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkPeering>> ListNextAsync(this IVirtualNetworkPeeringsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="subnet">The reference to the subnet resource.
         /// </param>
-        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), CommonSubnet subnet = default(CommonSubnet))
+        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet))
 
         {
             this.BandwidthInGbps = bandwidthInGbps;
@@ -96,6 +96,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubnet Subnet {get; set; }
+        public Subnet Subnet {get; set; }
     }
 }

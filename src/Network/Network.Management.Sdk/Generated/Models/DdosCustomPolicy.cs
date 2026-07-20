@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A DDoS custom policy in a resource group.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DdosCustomPolicy : CommonResource
+    public partial class DdosCustomPolicy : Resource
     {
         /// <summary>
         /// Initializes a new instance of the DdosCustomPolicy class.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="publicIPAddresses">The list of public IP addresses associated with the custom policy. This
         /// list is read-only.
         /// </param>
-        public DdosCustomPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<CommonSubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> publicIPAddresses = default(System.Collections.Generic.IList<CommonSubResource>))
+        public DdosCustomPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<SubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id, name, type, location, tags)
         {
@@ -113,13 +113,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// custom policy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontEndIpConfiguration")]
-        public System.Collections.Generic.IList<CommonSubResource> FrontEndIPConfiguration {get; set; }
+        public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; set; }
 
         /// <summary>
         /// Gets the list of public IP addresses associated with the custom policy.
         /// This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddresses")]
-        public System.Collections.Generic.IList<CommonSubResource> PublicIPAddresses {get; private set; }
+        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
     }
 }

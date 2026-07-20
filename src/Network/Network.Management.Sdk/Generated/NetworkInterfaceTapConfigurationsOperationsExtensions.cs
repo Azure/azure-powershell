@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceTapConfiguration> List(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration> List(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
         {
                 return ((INetworkInterfaceTapConfigurationsOperations)operations).ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceTapConfiguration>> ListAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>> ListAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonNetworkInterfaceTapConfiguration Get(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        public static NetworkInterfaceTapConfiguration Get(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
         {
                 return ((INetworkInterfaceTapConfigurationsOperations)operations).GetAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
         }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterfaceTapConfiguration> GetAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterfaceTapConfiguration> GetAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonNetworkInterfaceTapConfiguration CreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, CommonNetworkInterfaceTapConfiguration tapConfigurationParameters)
+        public static NetworkInterfaceTapConfiguration CreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters)
         {
                 return ((INetworkInterfaceTapConfigurationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters).GetAwaiter().GetResult();
         }
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterfaceTapConfiguration> CreateOrUpdateAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, CommonNetworkInterfaceTapConfiguration tapConfigurationParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterfaceTapConfiguration> CreateOrUpdateAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static NetworkInterfaceTapConfigurationsDeleteHeaders Delete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        public static void Delete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
         {
-                return ((INetworkInterfaceTapConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
+                ((INetworkInterfaceTapConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkInterfaceTapConfigurationsDeleteHeaders> DeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a Tap configuration in the specified NetworkInterface.
@@ -208,7 +205,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonNetworkInterfaceTapConfiguration BeginCreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, CommonNetworkInterfaceTapConfiguration tapConfigurationParameters)
+        public static NetworkInterfaceTapConfiguration BeginCreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters)
         {
                 return ((INetworkInterfaceTapConfigurationsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters).GetAwaiter().GetResult();
         }
@@ -232,7 +229,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterfaceTapConfiguration> BeginCreateOrUpdateAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, CommonNetworkInterfaceTapConfiguration tapConfigurationParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterfaceTapConfiguration> BeginCreateOrUpdateAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -255,9 +252,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static NetworkInterfaceTapConfigurationsDeleteHeaders BeginDelete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        public static void BeginDelete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
         {
-                return ((INetworkInterfaceTapConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
+                ((INetworkInterfaceTapConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -279,12 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkInterfaceTapConfigurationsDeleteHeaders> BeginDeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Get all Tap configurations in a network interface.
@@ -295,7 +289,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceTapConfiguration> ListNext(this INetworkInterfaceTapConfigurationsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration> ListNext(this INetworkInterfaceTapConfigurationsOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfaceTapConfigurationsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -312,7 +306,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceTapConfiguration>> ListNextAsync(this INetworkInterfaceTapConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>> ListNextAsync(this INetworkInterfaceTapConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

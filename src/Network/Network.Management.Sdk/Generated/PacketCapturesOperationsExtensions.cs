@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='packetCaptureName'>
         /// The name of the packet capture session.
         /// </param>
-        public static PacketCapturesDeleteHeaders Delete(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        public static void Delete(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
         {
-                return ((IPacketCapturesOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+                ((IPacketCapturesOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCapturesDeleteHeaders> DeleteAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Query the status of a running packet capture session.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='packetCaptureName'>
         /// The name of the packet capture session.
         /// </param>
-        public static PacketCapturesStopHeaders Stop(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        public static void Stop(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
         {
-                return ((IPacketCapturesOperations)operations).StopAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+                ((IPacketCapturesOperations)operations).StopAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCapturesStopHeaders> StopAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task StopAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Create and start a packet capture on the specified VM.
@@ -336,9 +330,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='packetCaptureName'>
         /// The name of the packet capture session.
         /// </param>
-        public static PacketCapturesDeleteHeaders BeginDelete(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        public static void BeginDelete(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
         {
-                return ((IPacketCapturesOperations)operations).BeginDeleteAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+                ((IPacketCapturesOperations)operations).BeginDeleteAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -359,12 +353,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCapturesDeleteHeaders> BeginDeleteAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Query the status of a running packet capture session.
@@ -426,9 +417,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='packetCaptureName'>
         /// The name of the packet capture session.
         /// </param>
-        public static PacketCapturesStopHeaders BeginStop(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
+        public static void BeginStop(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName)
         {
-                return ((IPacketCapturesOperations)operations).BeginStopAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
+                ((IPacketCapturesOperations)operations).BeginStopAsync(resourceGroupName, networkWatcherName, packetCaptureName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -449,12 +440,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PacketCapturesStopHeaders> BeginStopAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginStopAsync(this IPacketCapturesOperations operations, string resourceGroupName, string networkWatcherName, string packetCaptureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, packetCaptureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all packet capture sessions within the specified resource group.

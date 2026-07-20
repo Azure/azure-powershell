@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static FirewallPolicyRuleCollectionGroupsDeleteHeaders Delete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
+        public static void Delete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
         {
-                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
+                ((IFirewallPolicyRuleCollectionGroupsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupsDeleteHeaders> DeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified FirewallPolicyRuleCollectionGroup.
@@ -255,9 +252,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static FirewallPolicyRuleCollectionGroupsDeleteHeaders BeginDelete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
+        public static void BeginDelete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
         {
-                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
+                ((IFirewallPolicyRuleCollectionGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -279,12 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupsDeleteHeaders> BeginDeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.

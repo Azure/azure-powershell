@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualWANName'>
         /// The name of the VirtualWAN being retrieved.
         /// </param>
-        public static VirtualWansDeleteHeaders Delete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
+        public static void Delete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
         {
-                return ((IVirtualWansOperations)operations).DeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+                ((IVirtualWansOperations)operations).DeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,12 +223,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWansDeleteHeaders> DeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
@@ -283,9 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualWANName'>
         /// The name of the VirtualWAN being retrieved.
         /// </param>
-        public static VirtualWansDeleteHeaders BeginDelete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
+        public static void BeginDelete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
         {
-                return ((IVirtualWansOperations)operations).BeginDeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+                ((IVirtualWansOperations)operations).BeginDeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -303,12 +300,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWansDeleteHeaders> BeginDeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all the VirtualWANs in a subscription.

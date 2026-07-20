@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="outboundRouteMap">The resource id of theRouteMap associated with this RoutingConfiguration
         /// for outbound advertised routes.
         /// </param>
-        public RoutingConfiguration(CommonSubResource associatedRouteTable = default(CommonSubResource), PropagatedRouteTable propagatedRouteTables = default(PropagatedRouteTable), VnetRoute vnetRoutes = default(VnetRoute), CommonSubResource inboundRouteMap = default(CommonSubResource), CommonSubResource outboundRouteMap = default(CommonSubResource))
+        public RoutingConfiguration(SubResource associatedRouteTable = default(SubResource), PropagatedRouteTable propagatedRouteTables = default(PropagatedRouteTable), VnetRoute vnetRoutes = default(VnetRoute), SubResource inboundRouteMap = default(SubResource), SubResource outboundRouteMap = default(SubResource))
 
         {
             this.AssociatedRouteTable = associatedRouteTable;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// RoutingConfiguration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "associatedRouteTable")]
-        public CommonSubResource AssociatedRouteTable {get; set; }
+        public SubResource AssociatedRouteTable {get; set; }
 
         /// <summary>
         /// Gets or sets the list of RouteTables to advertise the routes to.
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// RoutingConfiguration for inbound learned routes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "inboundRouteMap")]
-        public CommonSubResource InboundRouteMap {get; set; }
+        public SubResource InboundRouteMap {get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of theRouteMap associated with this
         /// RoutingConfiguration for outbound advertised routes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "outboundRouteMap")]
-        public CommonSubResource OutboundRouteMap {get; set; }
+        public SubResource OutboundRouteMap {get; set; }
     }
 }

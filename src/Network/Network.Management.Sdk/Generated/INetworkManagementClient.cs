@@ -36,15 +36,9 @@ namespace Microsoft.Azure.Management.Network
 
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get;}
-
-
-        /// <summary>
         /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        System.Guid SubscriptionId { get; set;}
+        string SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -242,6 +236,16 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
+
+        /// <summary>
+        /// Gets the IInterconnectGroupsOperations
+        /// </summary>
+        IInterconnectGroupsOperations InterconnectGroups { get; }
+
+        /// <summary>
+        /// Gets the ISubgroupsOperations
+        /// </summary>
+        ISubgroupsOperations Subgroups { get; }
 
         /// <summary>
         /// Gets the ILoadBalancersOperations
@@ -794,6 +798,11 @@ namespace Microsoft.Azure.Management.Network
         IVirtualHubBgpConnectionOperations VirtualHubBgpConnection { get; }
 
         /// <summary>
+        /// Gets the IConnectionPoliciesOperations
+        /// </summary>
+        IConnectionPoliciesOperations ConnectionPolicies { get; }
+
+        /// <summary>
         /// Gets the IHubRouteTablesOperations
         /// </summary>
         IHubRouteTablesOperations HubRouteTables { get; }
@@ -1076,7 +1085,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>,PutBastionShareableLinkHeaders>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the VMs specified in the
@@ -1104,7 +1113,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkHeaders>> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the tokens specified in the
@@ -1132,7 +1141,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders>> DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -1187,7 +1196,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>,GetActiveSessionsHeaders>> GetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Return the Bastion Shareable Links for all the VMs specified in the
@@ -1252,7 +1261,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse,GeneratevirtualwanvpnserverconfigurationvpnprofileHeaders>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gives the supported security providers for the virtual wan.
@@ -1307,7 +1316,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>,PutBastionShareableLinkHeaders>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the VMs specified in the
@@ -1335,7 +1344,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkHeaders>> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the tokens specified in the
@@ -1363,7 +1372,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DeleteBastionShareableLinkByTokenHeaders>> BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -1389,7 +1398,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>,GetActiveSessionsHeaders>> BeginGetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> BeginGetActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generates a unique VPN profile for P2S clients for VirtualWan and
@@ -1423,7 +1432,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse,GeneratevirtualwanvpnserverconfigurationvpnprofileHeaders>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnProfileResponse>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the request.
@@ -1446,7 +1455,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>,PutBastionShareableLinkHeaders>> PutBastionShareableLinkNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> PutBastionShareableLinkNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -1492,7 +1501,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>,GetActiveSessionsHeaders>> GetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> GetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Return the Bastion Shareable Links for all the VMs specified in the
@@ -1540,7 +1549,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>,BeginPutBastionShareableLinkHeaders>> BeginPutBastionShareableLinkNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionShareableLink>>> BeginPutBastionShareableLinkNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -1563,7 +1572,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>,BeginGetActiveSessionsHeaders>> BeginGetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BastionActiveSession>>> BeginGetActiveSessionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

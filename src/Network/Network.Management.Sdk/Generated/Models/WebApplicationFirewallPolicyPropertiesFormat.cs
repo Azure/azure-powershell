@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="applicationGatewayForContainers">A collection of references to application gateway for containers.
         /// </param>
-        public WebApplicationFirewallPolicyPropertiesFormat(ManagedRulesDefinition managedRules, PolicySettings policySettings = default(PolicySettings), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string provisioningState = default(string), string resourceState = default(string), System.Collections.Generic.IList<CommonSubResource> httpListeners = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> pathBasedRules = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> applicationGatewayForContainers = default(System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition>))
+        public WebApplicationFirewallPolicyPropertiesFormat(ManagedRulesDefinition managedRules, PolicySettings policySettings = default(PolicySettings), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string provisioningState = default(string), string resourceState = default(string), System.Collections.Generic.IList<SubResource> httpListeners = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathBasedRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> applicationGatewayForContainers = default(System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition>))
 
         {
             this.PolicySettings = policySettings;
@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets a collection of references to application gateway http listeners.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "httpListeners")]
-        public System.Collections.Generic.IList<CommonSubResource> HttpListeners {get; private set; }
+        public System.Collections.Generic.IList<SubResource> HttpListeners {get; private set; }
 
         /// <summary>
         /// Gets a collection of references to application gateway path rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "pathBasedRules")]
-        public System.Collections.Generic.IList<CommonSubResource> PathBasedRules {get; private set; }
+        public System.Collections.Generic.IList<SubResource> PathBasedRules {get; private set; }
 
         /// <summary>
         /// Gets a collection of references to application gateway for containers.

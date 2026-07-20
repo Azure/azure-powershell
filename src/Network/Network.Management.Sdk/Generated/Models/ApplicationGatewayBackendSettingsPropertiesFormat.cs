@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the backend HTTP settings resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayBackendSettingsPropertiesFormat(int? port = default(int?), string protocol = default(string), int? timeout = default(int?), CommonSubResource probe = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> trustedRootCertificates = default(System.Collections.Generic.IList<CommonSubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?), string provisioningState = default(string))
+        public ApplicationGatewayBackendSettingsPropertiesFormat(int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?), string provisioningState = default(string))
 
         {
             this.Port = port;
@@ -100,14 +100,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets probe resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "probe")]
-        public CommonSubResource Probe {get; set; }
+        public SubResource Probe {get; set; }
 
         /// <summary>
         /// Gets or sets array of references to application gateway trusted root
         /// certificates.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "trustedRootCertificates")]
-        public System.Collections.Generic.IList<CommonSubResource> TrustedRootCertificates {get; set; }
+        public System.Collections.Generic.IList<SubResource> TrustedRootCertificates {get; set; }
 
         /// <summary>
         /// Gets or sets server name indication to be sent to the backend servers for

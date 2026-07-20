@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult,ExpressRouteCrossConnectionsListArpTableHeaders>> ListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult>> ListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the currently advertised routes table associated with the express
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult,ExpressRouteCrossConnectionsListRoutesTableHeaders>> ListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult>> ListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the route table summary associated with the express route cross
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult,ExpressRouteCrossConnectionsListRoutesTableSummaryHeaders>> ListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult>> ListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update the specified ExpressRouteCrossConnection.
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult,ExpressRouteCrossConnectionsListArpTableHeaders>> BeginListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult>> BeginListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the currently advertised routes table associated with the express
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult,ExpressRouteCrossConnectionsListRoutesTableHeaders>> BeginListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult>> BeginListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the route table summary associated with the express route cross
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult,ExpressRouteCrossConnectionsListRoutesTableSummaryHeaders>> BeginListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult>> BeginListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves all the ExpressRouteCrossConnections in a subscription.

@@ -210,9 +210,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VpnServerConfigurationsDeleteHeaders Delete(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
+        public static void Delete(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
         {
-                return ((IVpnServerConfigurationsOperations)operations).DeleteAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
+                ((IVpnServerConfigurationsOperations)operations).DeleteAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -231,12 +231,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnServerConfigurationsDeleteHeaders> DeleteAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all Radius servers with respective radius secrets from
@@ -337,9 +334,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static VpnServerConfigurationsDeleteHeaders BeginDelete(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
+        public static void BeginDelete(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
         {
-                return ((IVpnServerConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
+                ((IVpnServerConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -358,12 +355,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnServerConfigurationsDeleteHeaders> BeginDeleteAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all the VpnServerConfigurations in a subscription.

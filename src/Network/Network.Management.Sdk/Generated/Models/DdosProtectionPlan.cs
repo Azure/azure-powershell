@@ -40,9 +40,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="tags">Resource tags.
-        /// </param>
-
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
@@ -62,11 +59,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="virtualNetworks">The list of virtual networks associated with the DDoS protection plan
         /// resource. This list is read-only.
         /// </param>
-        public DdosProtectionPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<CommonSubResource> publicIPAddresses = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> virtualNetworks = default(System.Collections.Generic.IList<CommonSubResource>))
+        public DdosProtectionPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualNetworks = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id, name, type, location, tags)
         {
-            this.Tags = tags;
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
@@ -80,12 +76,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -113,13 +103,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource. This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddresses")]
-        public System.Collections.Generic.IList<CommonSubResource> PublicIPAddresses {get; private set; }
+        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
 
         /// <summary>
         /// Gets the list of virtual networks associated with the DDoS protection plan
         /// resource. This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetworks")]
-        public System.Collections.Generic.IList<CommonSubResource> VirtualNetworks {get; private set; }
+        public System.Collections.Generic.IList<SubResource> VirtualNetworks {get; private set; }
     }
 }

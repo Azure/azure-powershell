@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
         /// </param>
-        public static ExpressRouteGatewaysDeleteHeaders Delete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
+        public static void Delete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
         {
-                return ((IExpressRouteGatewaysOperations)operations).DeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
+                ((IExpressRouteGatewaysOperations)operations).DeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -225,11 +225,292 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteGatewaysDeleteHeaders> DeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverTestDetails> GetFailoverAllTestsDetails(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).GetFailoverAllTestsDetailsAsync(resourceGroupName, expressRouteGatewayName, type, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>> GetFailoverAllTestsDetailsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, type, fetchLatest, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails> GetFailoverSingleTestDetails(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).GetFailoverSingleTestDetailsAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>> GetFailoverSingleTestDetailsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        public static GatewayResiliencyInformation GetResiliencyInformation(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).GetResiliencyInformationAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayResiliencyInformation> GetResiliencyInformationAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetResiliencyInformationWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        public static GatewayRouteSetsInformation GetRoutesInformation(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).GetRoutesInformationAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayRouteSetsInformation> GetRoutesInformationAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetRoutesInformationWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        public static string StartSiteFailoverTest(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).StartSiteFailoverTestAsync(resourceGroupName, expressRouteGatewayName, peeringLocation).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StartSiteFailoverTestAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StartSiteFailoverTestWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        public static string StopSiteFailoverTest(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).StopSiteFailoverTestAsync(resourceGroupName, expressRouteGatewayName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StopSiteFailoverTestAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StopSiteFailoverTestWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, stopParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -324,9 +605,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
         /// </param>
-        public static ExpressRouteGatewaysDeleteHeaders BeginDelete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
+        public static void BeginDelete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
         {
-                return ((IExpressRouteGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
+                ((IExpressRouteGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -346,11 +627,292 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteGatewaysDeleteHeaders> BeginDeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverTestDetails> BeginGetFailoverAllTestsDetails(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginGetFailoverAllTestsDetailsAsync(resourceGroupName, expressRouteGatewayName, type, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>> BeginGetFailoverAllTestsDetailsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, type, fetchLatest, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails> BeginGetFailoverSingleTestDetails(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginGetFailoverSingleTestDetailsAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>> BeginGetFailoverSingleTestDetailsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        public static GatewayResiliencyInformation BeginGetResiliencyInformation(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginGetResiliencyInformationAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayResiliencyInformation> BeginGetResiliencyInformationAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetResiliencyInformationWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        public static GatewayRouteSetsInformation BeginGetRoutesInformation(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?))
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginGetRoutesInformationAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayRouteSetsInformation> BeginGetRoutesInformationAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetRoutesInformationWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, attemptRefresh, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        public static string BeginStartSiteFailoverTest(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginStartSiteFailoverTestAsync(resourceGroupName, expressRouteGatewayName, peeringLocation).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStartSiteFailoverTestAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, string peeringLocation, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStartSiteFailoverTestWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, peeringLocation, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        public static string BeginStopSiteFailoverTest(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).BeginStopSiteFailoverTestAsync(resourceGroupName, expressRouteGatewayName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStopSiteFailoverTestAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStopSiteFailoverTestWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, stopParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

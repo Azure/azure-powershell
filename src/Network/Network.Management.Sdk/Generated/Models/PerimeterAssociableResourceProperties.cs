@@ -32,12 +32,28 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="publicDnsZones">Public DNS zone names of the resources.
         /// </param>
-        public PerimeterAssociableResourceProperties(string displayName = default(string), string resourceType = default(string), System.Collections.Generic.IList<string> publicDnsZones = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="serviceTags">Service tags associated with the resource provider.
+        /// </param>
+
+        /// <param name="readinessState">The readiness state of the resource type for NSP support.
+        /// Possible values include: &#39;Onboarding&#39;, &#39;Preview&#39;, &#39;GA&#39;, &#39;NotReady&#39;</param>
+
+        /// <param name="outboundSupported">Indicates whether the resource type supports outbound scenario.
+        /// </param>
+
+        /// <param name="description">Description of the PaaS resource type.
+        /// </param>
+        public PerimeterAssociableResourceProperties(string displayName = default(string), string resourceType = default(string), System.Collections.Generic.IList<string> publicDnsZones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> serviceTags = default(System.Collections.Generic.IList<string>), string readinessState = default(string), bool? outboundSupported = default(bool?), string description = default(string))
 
         {
             this.DisplayName = displayName;
             this.ResourceType = resourceType;
             this.PublicDnsZones = publicDnsZones;
+            this.ServiceTags = serviceTags;
+            this.ReadinessState = readinessState;
+            this.OutboundSupported = outboundSupported;
+            this.Description = description;
             CustomInit();
         }
 
@@ -64,5 +80,29 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicDnsZones")]
         public System.Collections.Generic.IList<string> PublicDnsZones {get; private set; }
+
+        /// <summary>
+        /// Gets service tags associated with the resource provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceTags")]
+        public System.Collections.Generic.IList<string> ServiceTags {get; private set; }
+
+        /// <summary>
+        /// Gets the readiness state of the resource type for NSP support. Possible values include: &#39;Onboarding&#39;, &#39;Preview&#39;, &#39;GA&#39;, &#39;NotReady&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "readinessState")]
+        public string ReadinessState {get; private set; }
+
+        /// <summary>
+        /// Gets indicates whether the resource type supports outbound scenario.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "outboundSupported")]
+        public bool? OutboundSupported {get; private set; }
+
+        /// <summary>
+        /// Gets description of the PaaS resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
+        public string Description {get; private set; }
     }
 }

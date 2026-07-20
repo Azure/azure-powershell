@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// HubVirtualNetworkConnection Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HubVirtualNetworkConnection : CommonSubResource
+    public partial class HubVirtualNetworkConnection : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the HubVirtualNetworkConnection class.
@@ -52,9 +52,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="allowRemoteVnetToUseHubVnetGateways">Deprecated: Allow RemoteVnet to use Virtual Hub&#39;s gateways.
         /// </param>
 
+        /// <param name="connectionPolicy">The resource id of the ConnectionPolicy associated with this
+        /// HubVirtualNetworkConnection.
+        /// </param>
+
         /// <param name="enableInternetSecurity">Enable internet security.
         /// </param>
-        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), CommonSubResource remoteVirtualNetwork = default(CommonSubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), bool? enableInternetSecurity = default(bool?))
+        public HubVirtualNetworkConnection(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?))
 
         : base(id)
         {
@@ -65,6 +69,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
             this.AllowHubToRemoteVnetTransit = allowHubToRemoteVnetTransit;
             this.AllowRemoteVnetToUseHubVnetGateways = allowRemoteVnetToUseHubVnetGateways;
+            this.ConnectionPolicy = connectionPolicy;
             this.EnableInternetSecurity = enableInternetSecurity;
             CustomInit();
         }
@@ -106,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the remote virtual network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.remoteVirtualNetwork")]
-        public CommonSubResource RemoteVirtualNetwork {get; set; }
+        public SubResource RemoteVirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets deprecated: VirtualHub to RemoteVnet transit to enabled or
@@ -120,6 +125,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.allowRemoteVnetToUseHubVnetGateways")]
         public bool? AllowRemoteVnetToUseHubVnetGateways {get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the ConnectionPolicy associated with this
+        /// HubVirtualNetworkConnection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectionPolicy")]
+        public SubResource ConnectionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets enable internet security.

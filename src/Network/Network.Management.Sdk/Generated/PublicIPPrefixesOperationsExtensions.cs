@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpPrefixName'>
         /// The name of the public IP prefix.
         /// </param>
-        public static PublicIPPrefixesDeleteHeaders Delete(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName)
+        public static void Delete(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName)
         {
-                return ((IPublicIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, publicIpPrefixName).GetAwaiter().GetResult();
+                ((IPublicIPPrefixesOperations)operations).DeleteAsync(resourceGroupName, publicIpPrefixName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PublicIPPrefixesDeleteHeaders> DeleteAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a static or dynamic public IP prefix.
@@ -285,9 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpPrefixName'>
         /// The name of the public IP prefix.
         /// </param>
-        public static PublicIPPrefixesDeleteHeaders BeginDelete(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName)
+        public static void BeginDelete(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName)
         {
-                return ((IPublicIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, publicIpPrefixName).GetAwaiter().GetResult();
+                ((IPublicIPPrefixesOperations)operations).BeginDeleteAsync(resourceGroupName, publicIpPrefixName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -305,12 +302,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PublicIPPrefixesDeleteHeaders> BeginDeleteAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPublicIPPrefixesOperations operations, string resourceGroupName, string publicIpPrefixName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, publicIpPrefixName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the public IP prefixes in a subscription.

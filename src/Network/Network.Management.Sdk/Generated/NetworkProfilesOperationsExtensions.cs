@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkProfileName'>
         /// The name of the public IP prefix.
         /// </param>
-        public static NetworkProfilesDeleteHeaders Delete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
+        public static void Delete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
         {
-                return ((INetworkProfilesOperations)operations).DeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
+                ((INetworkProfilesOperations)operations).DeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkProfilesDeleteHeaders> DeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes the specified network profile.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkProfileName'>
         /// The name of the public IP prefix.
         /// </param>
-        public static NetworkProfilesDeleteHeaders BeginDelete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
+        public static void BeginDelete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
         {
-                return ((INetworkProfilesOperations)operations).BeginDeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
+                ((INetworkProfilesOperations)operations).BeginDeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,12 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkProfilesDeleteHeaders> BeginDeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the network profiles in a subscription.

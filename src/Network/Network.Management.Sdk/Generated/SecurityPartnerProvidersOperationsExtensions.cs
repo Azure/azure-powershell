@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='securityPartnerProviderName'>
         /// The name of the Security Partner Provider.
         /// </param>
-        public static SecurityPartnerProvidersDeleteHeaders Delete(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName)
+        public static void Delete(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName)
         {
-                return ((ISecurityPartnerProvidersOperations)operations).DeleteAsync(resourceGroupName, securityPartnerProviderName).GetAwaiter().GetResult();
+                ((ISecurityPartnerProvidersOperations)operations).DeleteAsync(resourceGroupName, securityPartnerProviderName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,12 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityPartnerProvidersDeleteHeaders> DeleteAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Security Partner Provider.
@@ -279,9 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='securityPartnerProviderName'>
         /// The name of the Security Partner Provider.
         /// </param>
-        public static SecurityPartnerProvidersDeleteHeaders BeginDelete(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName)
+        public static void BeginDelete(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName)
         {
-                return ((ISecurityPartnerProvidersOperations)operations).BeginDeleteAsync(resourceGroupName, securityPartnerProviderName).GetAwaiter().GetResult();
+                ((ISecurityPartnerProvidersOperations)operations).BeginDeleteAsync(resourceGroupName, securityPartnerProviderName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -299,12 +296,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SecurityPartnerProvidersDeleteHeaders> BeginDeleteAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the Security Partner Providers in a subscription.

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the frontend IP configuration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayFrontendIPConfigurationPropertiesFormat(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), CommonSubResource privateLinkConfiguration = default(CommonSubResource), string provisioningState = default(string))
+        public ApplicationGatewayFrontendIPConfigurationPropertiesFormat(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), SubResource privateLinkConfiguration = default(SubResource), string provisioningState = default(string))
 
         {
             this.PrivateIPAddress = privateIPAddress;
@@ -76,20 +76,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the PublicIP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public CommonSubResource PublicIPAddress {get; set; }
+        public SubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the application gateway private link
         /// configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkConfiguration")]
-        public CommonSubResource PrivateLinkConfiguration {get; set; }
+        public SubResource PrivateLinkConfiguration {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the frontend IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

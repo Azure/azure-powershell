@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='circuitName'>
         /// The name of express route circuit.
         /// </param>
-        public static ExpressRouteCircuitsDeleteHeaders Delete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        public static void Delete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
         {
-                return ((IExpressRouteCircuitsOperations)operations).DeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitsOperations)operations).DeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,11 +221,120 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsDeleteHeaders> DeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails> GetCircuitLinkFailoverAllTestsDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetCircuitLinkFailoverAllTestsDetailsAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails>> GetCircuitLinkFailoverAllTestsDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCircuitLinkFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails> GetCircuitLinkFailoverSingleTestDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).GetCircuitLinkFailoverSingleTestDetailsAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails>> GetCircuitLinkFailoverSingleTestDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCircuitLinkFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -433,6 +542,59 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        public static string StartCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).StartCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, linkType, circuitTestCategory).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StartCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StartCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets all the stats from an express route circuit in a resource group.
         /// </summary>
         /// <param name='operations'>
@@ -467,6 +629,45 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<ExpressRouteCircuitStats> GetStatsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetStatsWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static string StopCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).StopCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> StopCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StopCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, stopParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -522,9 +723,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='circuitName'>
         /// The name of express route circuit.
         /// </param>
-        public static ExpressRouteCircuitsDeleteHeaders BeginDelete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
+        public static void BeginDelete(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName)
         {
-                return ((IExpressRouteCircuitsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -542,11 +743,120 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitsDeleteHeaders> BeginDeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false))
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails> BeginGetCircuitLinkFailoverAllTestsDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?))
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginGetCircuitLinkFailoverAllTestsDetailsAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all the link failover tests performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='failoverTestType'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverAllTestsDetails>> BeginGetCircuitLinkFailoverAllTestsDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string failoverTestType = default(string), bool? fetchLatest = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetCircuitLinkFailoverAllTestsDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, failoverTestType, fetchLatest, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        public static System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails> BeginGetCircuitLinkFailoverSingleTestDetails(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginGetCircuitLinkFailoverSingleTestDetailsAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a particular link failover test performed on the
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IList<ExpressRouteLinkFailoverSingleTestDetails>> BeginGetCircuitLinkFailoverSingleTestDetailsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, string failoverTestId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetCircuitLinkFailoverSingleTestDetailsWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, failoverTestId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -704,6 +1014,98 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<ExpressRouteCircuitsRoutesTableSummaryListResult> BeginListRoutesTableSummaryAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string peeringName, string devicePath, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginListRoutesTableSummaryWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, devicePath, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        public static string BeginStartCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginStartCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, linkType, circuitTestCategory).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts link failover simulation on the express route circuit for the
+        /// specified link type and test category.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='linkType'>
+        /// The link type.
+        /// </param>
+        /// <param name='circuitTestCategory'>
+        /// The circuit test category.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStartCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, string linkType, string circuitTestCategory, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStartCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, linkType, circuitTestCategory, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        public static string BeginStopCircuitLinkFailoverTest(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters)
+        {
+                return ((IExpressRouteCircuitsOperations)operations).BeginStopCircuitLinkFailoverTestAsync(resourceGroupName, circuitName, stopParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops link failover simulation on the express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<string> BeginStopCircuitLinkFailoverTestAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, ExpressRouteLinkFailoverStopApiParameters stopParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStopCircuitLinkFailoverTestWithHttpMessagesAsync(resourceGroupName, circuitName, stopParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

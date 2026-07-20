@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="billingType">The billing type of the ExpressRoutePort resource.
         /// Possible values include: &#39;MeteredData&#39;, &#39;UnlimitedData&#39;</param>
-        public ExpressRoutePortPropertiesFormat(string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), System.Collections.Generic.IList<ExpressRouteLink> links = default(System.Collections.Generic.IList<ExpressRouteLink>), System.Collections.Generic.IList<CommonSubResource> circuits = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string), string resourceGuid = default(string), string billingType = default(string))
+        public ExpressRoutePortPropertiesFormat(string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), System.Collections.Generic.IList<ExpressRouteLink> links = default(System.Collections.Generic.IList<ExpressRouteLink>), System.Collections.Generic.IList<SubResource> circuits = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string resourceGuid = default(string), string billingType = default(string))
 
         {
             this.PeeringLocation = peeringLocation;
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ExpressRoutePort resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "circuits")]
-        public System.Collections.Generic.IList<CommonSubResource> Circuits {get; private set; }
+        public System.Collections.Generic.IList<SubResource> Circuits {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the express route port resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

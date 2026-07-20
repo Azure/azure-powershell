@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
         /// </param>
-        public static DdosCustomPoliciesDeleteHeaders Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+        public static void Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
         {
-                return ((IDdosCustomPoliciesOperations)operations).DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                ((IDdosCustomPoliciesOperations)operations).DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,12 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a DDoS custom policy.
@@ -279,9 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
         /// </param>
-        public static DdosCustomPoliciesDeleteHeaders BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+        public static void BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
         {
-                return ((IDdosCustomPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                ((IDdosCustomPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -299,12 +296,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the DDoS custom policies in a subscription.

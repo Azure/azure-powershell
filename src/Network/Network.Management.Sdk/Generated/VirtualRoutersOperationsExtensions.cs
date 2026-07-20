@@ -168,9 +168,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
         /// </param>
-        public static VirtualRoutersDeleteHeaders Delete(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName)
+        public static void Delete(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName)
         {
-                return ((IVirtualRoutersOperations)operations).DeleteAsync(resourceGroupName, virtualRouterName).GetAwaiter().GetResult();
+                ((IVirtualRoutersOperations)operations).DeleteAsync(resourceGroupName, virtualRouterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -188,12 +188,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualRoutersDeleteHeaders> DeleteAsync(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Virtual Router.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
         /// </param>
-        public static VirtualRoutersDeleteHeaders BeginDelete(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName)
+        public static void BeginDelete(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName)
         {
-                return ((IVirtualRoutersOperations)operations).BeginDeleteAsync(resourceGroupName, virtualRouterName).GetAwaiter().GetResult();
+                ((IVirtualRoutersOperations)operations).BeginDeleteAsync(resourceGroupName, virtualRouterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,12 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualRoutersDeleteHeaders> BeginDeleteAsync(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualRoutersOperations operations, string resourceGroupName, string virtualRouterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualRouterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the Virtual Routers in a subscription.

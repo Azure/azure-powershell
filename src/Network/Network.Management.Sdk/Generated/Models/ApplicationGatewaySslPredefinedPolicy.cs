@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// An Ssl predefined policy.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewaySslPredefinedPolicy : CommonSubResource
+    public partial class ApplicationGatewaySslPredefinedPolicy : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewaySslPredefinedPolicy class.

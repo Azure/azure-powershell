@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> List(this INetworkInterfaceLoadBalancersOperations operations, string resourceGroupName, string networkInterfaceName)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> List(this INetworkInterfaceLoadBalancersOperations operations, string resourceGroupName, string networkInterfaceName)
         {
                 return ((INetworkInterfaceLoadBalancersOperations)operations).ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAsync(this INetworkInterfaceLoadBalancersOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAsync(this INetworkInterfaceLoadBalancersOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListNext(this INetworkInterfaceLoadBalancersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListNext(this INetworkInterfaceLoadBalancersOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfaceLoadBalancersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListNextAsync(this INetworkInterfaceLoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListNextAsync(this INetworkInterfaceLoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkGroupsDeleteHeaders Delete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
+        public static void Delete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
         {
-                return ((INetworkGroupsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
+                ((INetworkGroupsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -219,12 +219,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkGroupsDeleteHeaders> DeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a network group.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkGroupsDeleteHeaders BeginDelete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
+        public static void BeginDelete(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?))
         {
-                return ((INetworkGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
+                ((INetworkGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, networkGroupName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -274,12 +271,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkGroupsDeleteHeaders> BeginDeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists the specified network group.

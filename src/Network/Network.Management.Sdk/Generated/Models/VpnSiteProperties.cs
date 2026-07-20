@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="o365Policy">Office365 Policy.
         /// </param>
-        public VpnSiteProperties(CommonSubResource virtualWan = default(CommonSubResource), DeviceProperties deviceProperties = default(DeviceProperties), string ipAddress = default(string), string siteKey = default(string), CommonAddressSpace addressSpace = default(CommonAddressSpace), BgpSettings bgpProperties = default(BgpSettings), string provisioningState = default(string), bool? isSecuritySite = default(bool?), System.Collections.Generic.IList<VpnSiteLink> vpnSiteLinks = default(System.Collections.Generic.IList<VpnSiteLink>), O365PolicyProperties o365Policy = default(O365PolicyProperties))
+        public VpnSiteProperties(SubResource virtualWan = default(SubResource), DeviceProperties deviceProperties = default(DeviceProperties), string ipAddress = default(string), string siteKey = default(string), AddressSpace addressSpace = default(AddressSpace), BgpSettings bgpProperties = default(BgpSettings), string provisioningState = default(string), bool? isSecuritySite = default(bool?), System.Collections.Generic.IList<VpnSiteLink> vpnSiteLinks = default(System.Collections.Generic.IList<VpnSiteLink>), O365PolicyProperties o365Policy = default(O365PolicyProperties))
 
         {
             this.VirtualWan = virtualWan;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualWAN to which the vpnSite belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualWan")]
-        public CommonSubResource VirtualWan {get; set; }
+        public SubResource VirtualWan {get; set; }
 
         /// <summary>
         /// Gets or sets the device properties.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the AddressSpace that contains an array of IP address ranges.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "addressSpace")]
-        public CommonAddressSpace AddressSpace {get; set; }
+        public AddressSpace AddressSpace {get; set; }
 
         /// <summary>
         /// Gets or sets the set of bgp properties.

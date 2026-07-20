@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='linkConnectionName'>
         /// The name of the vpn link connection.
         /// </param>
-        public static VpnLinkConnectionsResetConnectionHeaders ResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        public static void ResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
         {
-                return ((IVpnLinkConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+                ((IVpnLinkConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -156,12 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnLinkConnectionsResetConnectionHeaders> ResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all shared keys of VpnLink connection specified.
@@ -442,9 +439,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='linkConnectionName'>
         /// The name of the vpn link connection.
         /// </param>
-        public static VpnLinkConnectionsResetConnectionHeaders BeginResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        public static void BeginResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
         {
-                return ((IVpnLinkConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+                ((IVpnLinkConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -468,12 +465,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnLinkConnectionsResetConnectionHeaders> BeginResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Sets or auto generates the shared key based on the user input. If users

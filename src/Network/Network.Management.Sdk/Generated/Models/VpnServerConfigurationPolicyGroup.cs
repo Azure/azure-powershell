@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnServerConfigurationPolicyGroup Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnServerConfigurationPolicyGroup : CommonSubResourceModel
+    public partial class VpnServerConfigurationPolicyGroup : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VpnServerConfigurationPolicyGroup class.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="p2SConnectionConfigurations">List of references to P2SConnectionConfigurations.
         /// </param>
-        public VpnServerConfigurationPolicyGroup(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<CommonSubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<CommonSubResource>))
+        public VpnServerConfigurationPolicyGroup(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<SubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id, name, type)
         {
@@ -108,6 +108,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to P2SConnectionConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.p2SConnectionConfigurations")]
-        public System.Collections.Generic.IList<CommonSubResource> P2SConnectionConfigurations {get; private set; }
+        public System.Collections.Generic.IList<SubResource> P2SConnectionConfigurations {get; private set; }
     }
 }

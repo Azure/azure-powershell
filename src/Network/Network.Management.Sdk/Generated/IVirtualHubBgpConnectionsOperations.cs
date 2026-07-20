@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>,VirtualHubBgpConnectionsListAdvertisedRoutesHeaders>> ListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> ListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves a list of routes the virtual hub bgp connection has learned.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>,VirtualHubBgpConnectionsListLearnedRoutesHeaders>> ListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> ListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves a list of routes the virtual hub bgp connection is advertising to
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>,VirtualHubBgpConnectionsListAdvertisedRoutesHeaders>> BeginListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> BeginListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves a list of routes the virtual hub bgp connection has learned.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>,VirtualHubBgpConnectionsListLearnedRoutesHeaders>> BeginListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> BeginListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves the details of all VirtualHubBgpConnections.

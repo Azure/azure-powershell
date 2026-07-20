@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="defaultWorkspaceId">The default workspace Id for Firewall Policy Insights.
         /// </param>
-        public FirewallPolicyLogAnalyticsResources(System.Collections.Generic.IList<FirewallPolicyLogAnalyticsWorkspace> workspaces = default(System.Collections.Generic.IList<FirewallPolicyLogAnalyticsWorkspace>), CommonSubResource defaultWorkspaceId = default(CommonSubResource))
+        public FirewallPolicyLogAnalyticsResources(System.Collections.Generic.IList<FirewallPolicyLogAnalyticsWorkspace> workspaces = default(System.Collections.Generic.IList<FirewallPolicyLogAnalyticsWorkspace>), SubResource defaultWorkspaceId = default(SubResource))
 
         {
             this.Workspaces = workspaces;
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the default workspace Id for Firewall Policy Insights.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultWorkspaceId")]
-        public CommonSubResource DefaultWorkspaceId {get; set; }
+        public SubResource DefaultWorkspaceId {get; set; }
     }
 }

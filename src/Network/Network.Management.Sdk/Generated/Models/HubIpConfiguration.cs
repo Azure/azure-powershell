@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IpConfigurations.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HubIpConfiguration : CommonSubResourceModel
+    public partial class HubIpConfiguration : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the HubIpConfiguration class.
@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
+        /// <param name="subnet">The reference to the subnet resource.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the IP configuration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
@@ -47,20 +50,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateIPAllocationMethod">The private IP address allocation method.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
 
-        /// <param name="subnet">The reference to the subnet resource.
-        /// </param>
-
         /// <param name="publicIPAddress">The reference to the public IP resource.
         /// </param>
-        public HubIpConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubnet subnet = default(CommonSubnet), CommonPublicIPAddress publicIPAddress = default(CommonPublicIPAddress))
+        public HubIpConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), Subnet subnet = default(Subnet), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress))
 
         : base(id, name, type)
         {
             this.Etag = etag;
+            this.Subnet = subnet;
             this.ProvisioningState = provisioningState;
             this.PrivateIPAddress = privateIPAddress;
             this.PrivateIPAllocationMethod = privateIPAllocationMethod;
-            this.Subnet = subnet;
             this.PublicIPAddress = publicIPAddress;
             CustomInit();
         }
@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the subnet resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
+        public Subnet Subnet {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -97,15 +103,9 @@ namespace Microsoft.Azure.Management.Network.Models
         public string PrivateIPAllocationMethod {get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the subnet resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public CommonSubnet Subnet {get; set; }
-
-        /// <summary>
         /// Gets or sets the reference to the public IP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public CommonPublicIPAddress PublicIPAddress {get; set; }
+        public PublicIPAddress PublicIPAddress {get; set; }
     }
 }

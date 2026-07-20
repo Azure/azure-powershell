@@ -209,9 +209,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
         /// </param>
-        public static IPGroupsDeleteHeaders Delete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
+        public static void Delete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
         {
-                return ((IIPGroupsOperations)operations).DeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
+                ((IIPGroupsOperations)operations).DeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -229,12 +229,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IPGroupsDeleteHeaders> DeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an ipGroups in a specified resource group.
@@ -287,9 +284,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
         /// </param>
-        public static IPGroupsDeleteHeaders BeginDelete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
+        public static void BeginDelete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
         {
-                return ((IIPGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
+                ((IIPGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -307,12 +304,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IPGroupsDeleteHeaders> BeginDeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all IpGroups in a subscription.

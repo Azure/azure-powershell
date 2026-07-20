@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The resource model definition for a Azure Resource Manager proxy resource.
     /// It will not have tags and a location
     /// </summary>
-    public partial class SecurityPerimeterProxyResource : Microsoft.Rest.Azure.IResource
+    public partial class SecurityPerimeterProxyResource : SecurityPerimeterResource
     {
         /// <summary>
         /// Initializes a new instance of the SecurityPerimeterProxyResource class.
@@ -21,6 +21,30 @@ namespace Microsoft.Azure.Management.Network.Models
             CustomInit();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the SecurityPerimeterProxyResource class.
+        /// </summary>
+
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// </param>
+
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+        public SecurityPerimeterProxyResource(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData))
+
+        : base(id, name, type, systemData)
+        {
+            CustomInit();
+        }
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults

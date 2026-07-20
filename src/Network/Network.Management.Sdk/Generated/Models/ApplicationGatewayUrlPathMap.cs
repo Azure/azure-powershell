@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// PathBasedRouting.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayUrlPathMap : CommonSubResource
+    public partial class ApplicationGatewayUrlPathMap : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayUrlPathMap class.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="pathRules">Path rule of URL path map resource.
         /// </param>
-        public ApplicationGatewayUrlPathMap(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), CommonSubResource defaultBackendAddressPool = default(CommonSubResource), CommonSubResource defaultBackendHttpSettings = default(CommonSubResource), CommonSubResource defaultRewriteRuleSet = default(CommonSubResource), CommonSubResource defaultRedirectConfiguration = default(CommonSubResource), CommonSubResource defaultLoadDistributionPolicy = default(CommonSubResource), System.Collections.Generic.IList<ApplicationGatewayPathRule> pathRules = default(System.Collections.Generic.IList<ApplicationGatewayPathRule>))
+        public ApplicationGatewayUrlPathMap(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource defaultBackendAddressPool = default(SubResource), SubResource defaultBackendHttpSettings = default(SubResource), SubResource defaultRewriteRuleSet = default(SubResource), SubResource defaultRedirectConfiguration = default(SubResource), SubResource defaultLoadDistributionPolicy = default(SubResource), System.Collections.Generic.IList<ApplicationGatewayPathRule> pathRules = default(System.Collections.Generic.IList<ApplicationGatewayPathRule>))
 
         : base(id)
         {
@@ -112,31 +112,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets default backend address pool resource of URL path map.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultBackendAddressPool")]
-        public CommonSubResource DefaultBackendAddressPool {get; set; }
+        public SubResource DefaultBackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets default backend http settings resource of URL path map.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultBackendHttpSettings")]
-        public CommonSubResource DefaultBackendHttpSettings {get; set; }
+        public SubResource DefaultBackendHttpSettings {get; set; }
 
         /// <summary>
         /// Gets or sets default Rewrite rule set resource of URL path map.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRewriteRuleSet")]
-        public CommonSubResource DefaultRewriteRuleSet {get; set; }
+        public SubResource DefaultRewriteRuleSet {get; set; }
 
         /// <summary>
         /// Gets or sets default redirect configuration resource of URL path map.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRedirectConfiguration")]
-        public CommonSubResource DefaultRedirectConfiguration {get; set; }
+        public SubResource DefaultRedirectConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets default Load Distribution Policy resource of URL path map.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultLoadDistributionPolicy")]
-        public CommonSubResource DefaultLoadDistributionPolicy {get; set; }
+        public SubResource DefaultLoadDistributionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets path rule of URL path map resource.

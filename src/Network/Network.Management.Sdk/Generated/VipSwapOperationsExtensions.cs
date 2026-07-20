@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        public static VipSwapCreateHeaders Create(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
+        public static void Create(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
         {
-                return ((IVipSwapOperations)operations).CreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
+                ((IVipSwapOperations)operations).CreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -130,12 +130,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VipSwapCreateHeaders> CreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task CreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.CreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Performs vip swap operation on swappable cloud services.
@@ -149,9 +146,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        public static VipSwapCreateHeaders BeginCreate(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
+        public static void BeginCreate(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
         {
-                return ((IVipSwapOperations)operations).BeginCreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
+                ((IVipSwapOperations)operations).BeginCreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -169,12 +166,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VipSwapCreateHeaders> BeginCreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginCreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginCreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

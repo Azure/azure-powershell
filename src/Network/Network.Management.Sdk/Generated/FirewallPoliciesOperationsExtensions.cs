@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPoliciesDeleteHeaders Delete(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName)
+        public static void Delete(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName)
         {
-                return ((IFirewallPoliciesOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+                ((IFirewallPoliciesOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPoliciesDeleteHeaders> DeleteAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified Firewall Policy.
@@ -285,9 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static FirewallPoliciesDeleteHeaders BeginDelete(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName)
+        public static void BeginDelete(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName)
         {
-                return ((IFirewallPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+                ((IFirewallPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -305,12 +302,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FirewallPoliciesDeleteHeaders> BeginDeleteAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the Firewall Policies in a subscription.

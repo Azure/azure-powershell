@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static ExpressRouteCircuitPeeringsDeleteHeaders Delete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
+        public static void Delete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
         {
-                return ((IExpressRouteCircuitPeeringsOperations)operations).DeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitPeeringsOperations)operations).DeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -179,12 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitPeeringsDeleteHeaders> DeleteAsync(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a peering in the specified express route circuits.
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static ExpressRouteCircuitPeeringsDeleteHeaders BeginDelete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
+        public static void BeginDelete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
         {
-                return ((IExpressRouteCircuitPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
+                ((IExpressRouteCircuitPeeringsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -269,12 +266,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteCircuitPeeringsDeleteHeaders> BeginDeleteAsync(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all peerings in a specified express route circuit.

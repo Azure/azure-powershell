@@ -176,9 +176,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='commitName'>
         /// The name of the commit.
         /// </param>
-        public static CommitsDeleteHeaders Delete(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName)
+        public static void Delete(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName)
         {
-                return ((ICommitsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, commitName).GetAwaiter().GetResult();
+                ((ICommitsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, commitName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -199,12 +199,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommitsDeleteHeaders> DeleteAsync(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, commitName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, commitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a commit.
@@ -266,9 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='commitName'>
         /// The name of the commit.
         /// </param>
-        public static CommitsDeleteHeaders BeginDelete(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName)
+        public static void BeginDelete(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName)
         {
-                return ((ICommitsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, commitName).GetAwaiter().GetResult();
+                ((ICommitsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, commitName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -289,12 +286,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommitsDeleteHeaders> BeginDeleteAsync(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ICommitsOperations operations, string resourceGroupName, string networkManagerName, string commitName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, commitName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, commitName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all commits for the specified network manager.

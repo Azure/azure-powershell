@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="intrusionDetection">The configuration for Intrusion detection.
         /// </param>
-        public FirewallPolicyDraftProperties(CommonSubResource basePolicy = default(CommonSubResource), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection))
+        public FirewallPolicyDraftProperties(SubResource basePolicy = default(SubResource), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection))
 
         {
             this.BasePolicy = basePolicy;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the parent firewall policy from which rules are inherited.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "basePolicy")]
-        public CommonSubResource BasePolicy {get; set; }
+        public SubResource BasePolicy {get; set; }
 
         /// <summary>
         /// Gets or sets the operation mode for Threat Intelligence. Possible values include: &#39;Alert&#39;, &#39;Deny&#39;, &#39;Off&#39;

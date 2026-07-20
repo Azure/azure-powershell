@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway,ExpressRouteGatewaysCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteGateway putExpressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteGateway putExpressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates express route gateway tags.
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway,ExpressRouteGatewaysUpdateTagsHeaders>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified ExpressRoute gateway in a resource group. An
@@ -165,7 +165,196 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRouteGatewaysDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>>> GetFailoverAllTestsDetailsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>>> GetFailoverSingleTestDetailsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayResiliencyInformation>> GetResiliencyInformationWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteSetsInformation>> GetRoutesInformationWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <remarks>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> StartSiteFailoverTestWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string peeringLocation, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <remarks>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='stopParameters'>
+        /// Parameters supplied to stop the failover simulation on the express route
+        /// gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> StopSiteFailoverTestWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a ExpressRoute gateway in a specified resource group.
@@ -194,7 +383,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway,ExpressRouteGatewaysCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteGateway putExpressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteGateway putExpressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates express route gateway tags.
@@ -223,7 +412,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway,ExpressRouteGatewaysUpdateTagsHeaders>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified ExpressRoute gateway in a resource group. An
@@ -250,7 +439,196 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRouteGatewaysDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of all the failover tests performed on the
+        /// ExpressRoute gateway for different peering locations.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='type'>
+        /// The type of failover test.
+        /// </param>
+        /// <param name='fetchLatest'>
+        /// Fetch only the latest tests for each peering location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverTestDetails>>> BeginGetFailoverAllTestsDetailsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string type = default(string), bool? fetchLatest = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of a particular failover test performed on the
+        /// ExpressRoute gateway based on the test Guid.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='failoverTestId'>
+        /// The unique Guid value which identifies the test.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<ExpressRouteFailoverSingleTestDetails>>> BeginGetFailoverSingleTestDetailsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string peeringLocation, string failoverTestId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the resiliency information for the ExpressRoute gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the resiliency information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayResiliencyInformation>> BeginGetResiliencyInformationWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the route sets information for the ExpressRoute gateway.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='attemptRefresh'>
+        /// Whether to attempt a refresh of the route sets.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GatewayRouteSetsInformation>> BeginGetRoutesInformationWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, bool? attemptRefresh = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <remarks>
+        /// Starts failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='peeringLocation'>
+        /// Peering location of the test.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> BeginStartSiteFailoverTestWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string peeringLocation, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </summary>
+        /// <remarks>
+        /// Stops failover simulation on the ExpressRoute gateway for the specified
+        /// peering location.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='stopParameters'>
+        /// Parameters supplied to stop the failover simulation on the express route
+        /// gateway.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<string>> BeginStopSiteFailoverTestWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, ExpressRouteFailoverStopApiParameters stopParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

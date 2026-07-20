@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the VpnServerConfigurationPolicyGroup resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public VpnServerConfigurationPolicyGroupProperties(bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<CommonSubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string))
+        public VpnServerConfigurationPolicyGroupProperties(bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<SubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string))
 
         {
             this.IsDefault = isDefault;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to P2SConnectionConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "p2SConnectionConfigurations")]
-        public System.Collections.Generic.IList<CommonSubResource> P2SConnectionConfigurations {get; private set; }
+        public System.Collections.Generic.IList<SubResource> P2SConnectionConfigurations {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the VpnServerConfigurationPolicyGroup

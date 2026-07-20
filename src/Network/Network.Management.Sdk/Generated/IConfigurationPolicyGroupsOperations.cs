@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationPolicyGroup,ConfigurationPolicyGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationPolicyGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a ConfigurationPolicyGroup.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ConfigurationPolicyGroupsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates a ConfigurationPolicyGroup if it doesn&#39;t exist else updates the
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationPolicyGroup,ConfigurationPolicyGroupsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnServerConfigurationPolicyGroup>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a ConfigurationPolicyGroup.
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ConfigurationPolicyGroupsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all the configurationPolicyGroups in a resource group for a

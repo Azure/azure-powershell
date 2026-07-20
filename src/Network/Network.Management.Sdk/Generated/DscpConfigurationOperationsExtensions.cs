@@ -162,9 +162,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
         /// </param>
-        public static DscpConfigurationDeleteHeaders Delete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
+        public static void Delete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
         {
-                return ((IDscpConfigurationOperations)operations).DeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
+                ((IDscpConfigurationOperations)operations).DeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -182,12 +182,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DscpConfigurationDeleteHeaders> DeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a DSCP Configuration.
@@ -240,9 +237,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='dscpConfigurationName'>
         /// The name of the resource.
         /// </param>
-        public static DscpConfigurationDeleteHeaders BeginDelete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
+        public static void BeginDelete(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName)
         {
-                return ((IDscpConfigurationOperations)operations).BeginDeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
+                ((IDscpConfigurationOperations)operations).BeginDeleteAsync(resourceGroupName, dscpConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -260,12 +257,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DscpConfigurationDeleteHeaders> BeginDeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IDscpConfigurationOperations operations, string resourceGroupName, string dscpConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, dscpConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all dscp configurations in a subscription.

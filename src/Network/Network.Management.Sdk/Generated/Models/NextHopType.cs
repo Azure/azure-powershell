@@ -34,7 +34,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         public const string HyperNetGateway = "HyperNetGateway";
         /// <summary>
-        /// None
+        /// Routes traffic to virtual appliances using Equal-Cost Multi-Path (ECMP)
+        /// routing with multiple next hop IP addresses.
+        /// </summary>
+        public const string VirtualApplianceEcmp = "VirtualApplianceEcmp";
+        /// <summary>
+        /// No next hop type.
         /// </summary>
         public const string None = "None";
     }

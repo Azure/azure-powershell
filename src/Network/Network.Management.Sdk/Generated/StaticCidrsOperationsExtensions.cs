@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='staticCidrName'>
         /// StaticCidr resource name to retrieve.
         /// </param>
-        public static StaticCidrsDeleteHeaders Delete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public static void Delete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
         {
-                return ((IStaticCidrsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
+                ((IStaticCidrsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -233,12 +233,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StaticCidrsDeleteHeaders> DeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Delete the Static CIDR resource.
@@ -258,9 +255,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='staticCidrName'>
         /// StaticCidr resource name to retrieve.
         /// </param>
-        public static StaticCidrsDeleteHeaders BeginDelete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public static void BeginDelete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
         {
-                return ((IStaticCidrsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
+                ((IStaticCidrsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -284,12 +281,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StaticCidrsDeleteHeaders> BeginDeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets list of Static CIDR resources at Network Manager level.

@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
-        public static RouteFiltersDeleteHeaders Delete(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName)
+        public static void Delete(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName)
         {
-                return ((IRouteFiltersOperations)operations).DeleteAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
+                ((IRouteFiltersOperations)operations).DeleteAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFiltersDeleteHeaders> DeleteAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a route filter in a specified resource group.
@@ -285,9 +282,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
-        public static RouteFiltersDeleteHeaders BeginDelete(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName)
+        public static void BeginDelete(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName)
         {
-                return ((IRouteFiltersOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
+                ((IRouteFiltersOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -305,12 +302,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteFiltersDeleteHeaders> BeginDeleteAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRouteFiltersOperations operations, string resourceGroupName, string routeFilterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all route filters in a subscription.

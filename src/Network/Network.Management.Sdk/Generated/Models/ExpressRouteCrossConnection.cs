@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRouteCrossConnection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteCrossConnection : CommonResource
+    public partial class ExpressRouteCrossConnection : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCrossConnection class.

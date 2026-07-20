@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonSubnet> List(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName)
+        public static Microsoft.Rest.Azure.IPage<Subnet> List(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName)
         {
                 return ((ISubnetsOperations)operations).ListAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonSubnet>> ListAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Subnet>> ListAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonSubnet Get(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string))
+        public static Subnet Get(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string))
         {
                 return ((ISubnetsOperations)operations).GetAsync(resourceGroupName, virtualNetworkName, subnetName, expand).GetAwaiter().GetResult();
         }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonSubnet> GetAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Subnet> GetAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static CommonSubnet CreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, CommonSubnet subnetParameters)
+        public static Subnet CreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
         {
                 return ((ISubnetsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters).GetAwaiter().GetResult();
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonSubnet> CreateOrUpdateAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, CommonSubnet subnetParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Subnet> CreateOrUpdateAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsDeleteHeaders Delete(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName)
+        public static void Delete(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName)
         {
-                return ((ISubnetsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName, subnetName).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName, subnetName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsDeleteHeaders> DeleteAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Prepares a subnet by applying network intent policies.
@@ -207,9 +204,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsPrepareNetworkPoliciesHeaders PrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
+        public static void PrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
         {
-                return ((ISubnetsOperations)operations).PrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).PrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -230,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsPrepareNetworkPoliciesHeaders> PrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task PrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.PrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Unprepares a subnet by removing network intent policies.
@@ -252,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsUnprepareNetworkPoliciesHeaders UnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
+        public static void UnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
         {
-                return ((ISubnetsOperations)operations).UnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).UnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -275,12 +269,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsUnprepareNetworkPoliciesHeaders> UnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task UnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.UnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a subnet in the specified virtual network.
@@ -297,7 +288,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static CommonSubnet BeginCreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, CommonSubnet subnetParameters)
+        public static Subnet BeginCreateOrUpdate(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters)
         {
                 return ((ISubnetsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters).GetAwaiter().GetResult();
         }
@@ -320,7 +311,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonSubnet> BeginCreateOrUpdateAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, CommonSubnet subnetParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Subnet> BeginCreateOrUpdateAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, Subnet subnetParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, subnetParameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -342,9 +333,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsDeleteHeaders BeginDelete(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName)
+        public static void BeginDelete(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName)
         {
-                return ((ISubnetsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName, subnetName).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName, subnetName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -365,12 +356,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsDeleteHeaders> BeginDeleteAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Prepares a subnet by applying network intent policies.
@@ -387,9 +375,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsPrepareNetworkPoliciesHeaders BeginPrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
+        public static void BeginPrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
         {
-                return ((ISubnetsOperations)operations).BeginPrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).BeginPrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -410,12 +398,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsPrepareNetworkPoliciesHeaders> BeginPrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginPrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Unprepares a subnet by removing network intent policies.
@@ -432,9 +417,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        public static SubnetsUnprepareNetworkPoliciesHeaders BeginUnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
+        public static void BeginUnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
         {
-                return ((ISubnetsOperations)operations).BeginUnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
+                ((ISubnetsOperations)operations).BeginUnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -455,12 +440,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SubnetsUnprepareNetworkPoliciesHeaders> BeginUnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginUnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all subnets in a virtual network.
@@ -471,7 +453,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonSubnet> ListNext(this ISubnetsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<Subnet> ListNext(this ISubnetsOperations operations, string nextPageLink)
         {
                 return ((ISubnetsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -488,7 +470,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonSubnet>> ListNextAsync(this ISubnetsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Subnet>> ListNextAsync(this ISubnetsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

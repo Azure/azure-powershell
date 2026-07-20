@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static HubRouteTablesDeleteHeaders Delete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        public static void Delete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
         {
-                return ((IHubRouteTablesOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+                ((IHubRouteTablesOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -187,12 +187,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<HubRouteTablesDeleteHeaders> DeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
@@ -259,9 +256,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static HubRouteTablesDeleteHeaders BeginDelete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        public static void BeginDelete(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
         {
-                return ((IHubRouteTablesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+                ((IHubRouteTablesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -283,12 +280,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<HubRouteTablesDeleteHeaders> BeginDeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IHubRouteTablesOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all RouteTables.

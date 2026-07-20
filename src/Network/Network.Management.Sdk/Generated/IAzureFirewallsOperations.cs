@@ -94,6 +94,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
         /// </param>
+        /// <param name='createAfcControlPlane'>
+        /// When set to true, creates an AFC control plane for the Azure Firewall.
+        /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Azure Firewall operation.
         /// </param>
@@ -109,7 +112,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall,AzureFirewallsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, bool? createAfcControlPlane = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates tags of an Azure Firewall resource.
@@ -138,7 +141,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall,AzureFirewallsUpdateTagsHeaders>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified Azure Firewall.
@@ -161,7 +164,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned to not
@@ -189,7 +192,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IPPrefixesList,AzureFirewallsListLearnedPrefixesHeaders>> ListLearnedPrefixesWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IPPrefixesList>> ListLearnedPrefixesWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture on AzureFirewall.
@@ -215,7 +218,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> PacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> PacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture operation on AzureFirewall.
@@ -244,7 +247,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> PacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse>> PacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates the specified Azure Firewall.
@@ -257,6 +260,9 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='createAfcControlPlane'>
+        /// When set to true, creates an AFC control plane for the Azure Firewall.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Azure Firewall operation.
@@ -273,7 +279,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall,AzureFirewallsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, AzureFirewall parameters, bool? createAfcControlPlane = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates tags of an Azure Firewall resource.
@@ -302,7 +308,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall,AzureFirewallsUpdateTagsHeaders>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewall>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified Azure Firewall.
@@ -325,7 +331,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned to not
@@ -353,7 +359,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IPPrefixesList,AzureFirewallsListLearnedPrefixesHeaders>> BeginListLearnedPrefixesWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IPPrefixesList>> BeginListLearnedPrefixesWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture on AzureFirewall.
@@ -379,7 +385,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AzureFirewallsPacketCaptureHeaders>> BeginPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Runs a packet capture operation on AzureFirewall.
@@ -408,7 +414,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse,AzureFirewallsPacketCaptureOperationHeaders>> BeginPacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AzureFirewallPacketCaptureResponse>> BeginPacketCaptureOperationWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all the Azure Firewalls in a subscription.

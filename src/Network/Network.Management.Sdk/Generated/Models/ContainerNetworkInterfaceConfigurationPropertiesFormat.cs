@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ContainerNetworkInterfaceConfigurationPropertiesFormat(System.Collections.Generic.IList<CommonIPConfigurationProfile> ipConfigurations = default(System.Collections.Generic.IList<CommonIPConfigurationProfile>), System.Collections.Generic.IList<CommonSubResource> containerNetworkInterfaces = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string))
+        public ContainerNetworkInterfaceConfigurationPropertiesFormat(System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurations = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> containerNetworkInterfaces = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string))
 
         {
             this.IPConfigurations = ipConfigurations;
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfigurations")]
-        public System.Collections.Generic.IList<CommonIPConfigurationProfile> IPConfigurations {get; set; }
+        public System.Collections.Generic.IList<IPConfigurationProfile> IPConfigurations {get; set; }
 
         /// <summary>
         /// Gets or sets a list of container network interfaces created from this
         /// container network interface configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "containerNetworkInterfaces")]
-        public System.Collections.Generic.IList<CommonSubResource> ContainerNetworkInterfaces {get; set; }
+        public System.Collections.Generic.IList<SubResource> ContainerNetworkInterfaces {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the container network interface

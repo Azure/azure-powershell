@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint> ListBySubscription(this IPrivateEndpointsOperations operations)
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> ListBySubscription(this IPrivateEndpointsOperations operations)
         {
                 return ((IPrivateEndpointsOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint>> ListBySubscriptionAsync(this IPrivateEndpointsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListBySubscriptionAsync(this IPrivateEndpointsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint> List(this IPrivateEndpointsOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> List(this IPrivateEndpointsOperations operations, string resourceGroupName)
         {
                 return ((IPrivateEndpointsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint>> ListAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonPrivateEndpoint Get(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string))
+        public static PrivateEndpoint Get(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string))
         {
                 return ((IPrivateEndpointsOperations)operations).GetAsync(resourceGroupName, privateEndpointName, expand).GetAwaiter().GetResult();
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPrivateEndpoint> GetAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpoint> GetAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, privateEndpointName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        public static CommonPrivateEndpoint CreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, CommonPrivateEndpoint parameters)
+        public static PrivateEndpoint CreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
         {
                 return ((IPrivateEndpointsOperations)operations).CreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPrivateEndpoint> CreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, CommonPrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpoint> CreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -168,9 +168,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        public static PrivateEndpointsDeleteHeaders Delete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
+        public static void Delete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
         {
-                return ((IPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
+                ((IPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -188,12 +188,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointsDeleteHeaders> DeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an private endpoint in the specified resource group.
@@ -207,7 +204,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        public static CommonPrivateEndpoint BeginCreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, CommonPrivateEndpoint parameters)
+        public static PrivateEndpoint BeginCreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
         {
                 return ((IPrivateEndpointsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
         }
@@ -227,7 +224,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPrivateEndpoint> BeginCreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, CommonPrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpoint> BeginCreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -246,9 +243,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        public static PrivateEndpointsDeleteHeaders BeginDelete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
+        public static void BeginDelete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
         {
-                return ((IPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
+                ((IPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,12 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointsDeleteHeaders> BeginDeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all private endpoints in a subscription.
@@ -282,7 +276,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint> ListBySubscriptionNext(this IPrivateEndpointsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> ListBySubscriptionNext(this IPrivateEndpointsOperations operations, string nextPageLink)
         {
                 return ((IPrivateEndpointsOperations)operations).ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -299,7 +293,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint>> ListBySubscriptionNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListBySubscriptionNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -315,7 +309,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint> ListNext(this IPrivateEndpointsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> ListNext(this IPrivateEndpointsOperations operations, string nextPageLink)
         {
                 return ((IPrivateEndpointsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -332,7 +326,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPrivateEndpoint>> ListNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

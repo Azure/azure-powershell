@@ -246,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkManagersDeleteHeaders Delete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
+        public static void Delete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
         {
-                return ((INetworkManagersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
+                ((INetworkManagersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -271,12 +271,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagersDeleteHeaders> DeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes a network manager.
@@ -295,9 +292,9 @@ namespace Microsoft.Azure.Management.Network
         /// configuration has been deployed, the service will do a cleanup deployment
         /// in the background, prior to the delete.
         /// </param>
-        public static NetworkManagersDeleteHeaders BeginDelete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
+        public static void BeginDelete(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?))
         {
-                return ((INetworkManagersOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
+                ((INetworkManagersOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, force).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -320,12 +317,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkManagersDeleteHeaders> BeginDeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, force, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List all network managers in a subscription.

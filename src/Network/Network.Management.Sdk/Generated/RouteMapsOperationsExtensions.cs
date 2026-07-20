@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static RouteMapsDeleteHeaders Delete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
+        public static void Delete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
         {
-                return ((IRouteMapsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeMapName).GetAwaiter().GetResult();
+                ((IRouteMapsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeMapName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -185,12 +185,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteMapsDeleteHeaders> DeleteAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeMapName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeMapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a RouteMap if it doesn&#39;t exist else updates the existing one.
@@ -255,9 +252,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static RouteMapsDeleteHeaders BeginDelete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
+        public static void BeginDelete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
         {
-                return ((IRouteMapsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeMapName).GetAwaiter().GetResult();
+                ((IRouteMapsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeMapName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -279,12 +276,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RouteMapsDeleteHeaders> BeginDeleteAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeMapName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeMapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all RouteMaps.

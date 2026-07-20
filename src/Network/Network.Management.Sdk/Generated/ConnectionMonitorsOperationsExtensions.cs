@@ -209,9 +209,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
         /// </param>
-        public static ConnectionMonitorsDeleteHeaders Delete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        public static void Delete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
         {
-                return ((IConnectionMonitorsOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+                ((IConnectionMonitorsOperations)operations).DeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -232,12 +232,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorsDeleteHeaders> DeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Stops the specified connection monitor.
@@ -254,9 +251,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
         /// </param>
-        public static ConnectionMonitorsStopHeaders Stop(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        public static void Stop(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
         {
-                return ((IConnectionMonitorsOperations)operations).StopAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+                ((IConnectionMonitorsOperations)operations).StopAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -277,12 +274,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorsStopHeaders> StopAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task StopAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.StopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Create or update a connection monitor.
@@ -352,9 +346,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
         /// </param>
-        public static ConnectionMonitorsDeleteHeaders BeginDelete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        public static void BeginDelete(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
         {
-                return ((IConnectionMonitorsOperations)operations).BeginDeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+                ((IConnectionMonitorsOperations)operations).BeginDeleteAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -375,12 +369,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorsDeleteHeaders> BeginDeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Stops the specified connection monitor.
@@ -397,9 +388,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
         /// </param>
-        public static ConnectionMonitorsStopHeaders BeginStop(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
+        public static void BeginStop(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName)
         {
-                return ((IConnectionMonitorsOperations)operations).BeginStopAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
+                ((IConnectionMonitorsOperations)operations).BeginStopAsync(resourceGroupName, networkWatcherName, connectionMonitorName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -420,12 +411,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionMonitorsStopHeaders> BeginStopAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginStopAsync(this IConnectionMonitorsOperations operations, string resourceGroupName, string networkWatcherName, string connectionMonitorName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, connectionMonitorName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all connection monitors for the specified Network Watcher.

@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
         /// </param>
-        public static LocalNetworkGatewaysDeleteHeaders Delete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
+        public static void Delete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
         {
-                return ((ILocalNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
+                ((ILocalNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -194,12 +194,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LocalNetworkGatewaysDeleteHeaders> DeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a local network gateway in the specified resource group.
@@ -252,9 +249,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
         /// </param>
-        public static LocalNetworkGatewaysDeleteHeaders BeginDelete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
+        public static void BeginDelete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
         {
-                return ((ILocalNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
+                ((ILocalNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -272,12 +269,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LocalNetworkGatewaysDeleteHeaders> BeginDeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the local network gateways in a resource group.

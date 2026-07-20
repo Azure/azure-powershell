@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Redirect configuration of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayRedirectConfiguration : CommonSubResource
+    public partial class ApplicationGatewayRedirectConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayRedirectConfiguration class.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="pathRules">Path rules specifying redirect configuration.
         /// </param>
-        public ApplicationGatewayRedirectConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string redirectType = default(string), CommonSubResource targetListener = default(CommonSubResource), string targetUrl = default(string), bool? includePath = default(bool?), bool? includeQueryString = default(bool?), System.Collections.Generic.IList<CommonSubResource> requestRoutingRules = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> urlPathMaps = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> pathRules = default(System.Collections.Generic.IList<CommonSubResource>))
+        public ApplicationGatewayRedirectConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string redirectType = default(string), SubResource targetListener = default(SubResource), string targetUrl = default(string), bool? includePath = default(bool?), bool? includeQueryString = default(bool?), System.Collections.Generic.IList<SubResource> requestRoutingRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> urlPathMaps = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathRules = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id)
         {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to a listener to redirect the request to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetListener")]
-        public CommonSubResource TargetListener {get; set; }
+        public SubResource TargetListener {get; set; }
 
         /// <summary>
         /// Gets or sets url to redirect the request to.
@@ -139,18 +139,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets request routing specifying redirect configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requestRoutingRules")]
-        public System.Collections.Generic.IList<CommonSubResource> RequestRoutingRules {get; set; }
+        public System.Collections.Generic.IList<SubResource> RequestRoutingRules {get; set; }
 
         /// <summary>
         /// Gets or sets url path maps specifying default redirect configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.urlPathMaps")]
-        public System.Collections.Generic.IList<CommonSubResource> UrlPathMaps {get; set; }
+        public System.Collections.Generic.IList<SubResource> UrlPathMaps {get; set; }
 
         /// <summary>
         /// Gets or sets path rules specifying redirect configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.pathRules")]
-        public System.Collections.Generic.IList<CommonSubResource> PathRules {get; set; }
+        public System.Collections.Generic.IList<SubResource> PathRules {get; set; }
     }
 }

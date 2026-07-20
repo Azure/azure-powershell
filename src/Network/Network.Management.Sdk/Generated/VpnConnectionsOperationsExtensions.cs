@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
-        public static VpnConnectionsDeleteHeaders Delete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
+        public static void Delete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
         {
-                return ((IVpnConnectionsOperations)operations).DeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
+                ((IVpnConnectionsOperations)operations).DeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +181,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnConnectionsDeleteHeaders> DeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Starts packet capture on Vpn connection in the specified resource group.
@@ -340,9 +337,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
-        public static VpnConnectionsDeleteHeaders BeginDelete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
+        public static void BeginDelete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
         {
-                return ((IVpnConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
+                ((IVpnConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -363,12 +360,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VpnConnectionsDeleteHeaders> BeginDeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Starts packet capture on Vpn connection in the specified resource group.

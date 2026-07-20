@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeTableName'>
         /// The name of the VirtualHubRouteTableV2.
         /// </param>
-        public static VirtualHubRouteTableV2SDeleteHeaders Delete(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        public static void Delete(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
         {
-                return ((IVirtualHubRouteTableV2SOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+                ((IVirtualHubRouteTableV2SOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +181,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubRouteTableV2SDeleteHeaders> DeleteAsync(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates a VirtualHubRouteTableV2 resource if it doesn&#39;t exist else updates
@@ -250,9 +247,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeTableName'>
         /// The name of the VirtualHubRouteTableV2.
         /// </param>
-        public static VirtualHubRouteTableV2SDeleteHeaders BeginDelete(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
+        public static void BeginDelete(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName)
         {
-                return ((IVirtualHubRouteTableV2SOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
+                ((IVirtualHubRouteTableV2SOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routeTableName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -273,12 +270,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHubRouteTableV2SDeleteHeaders> BeginDeleteAsync(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualHubRouteTableV2SOperations operations, string resourceGroupName, string virtualHubName, string routeTableName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the details of all VirtualHubRouteTableV2s.

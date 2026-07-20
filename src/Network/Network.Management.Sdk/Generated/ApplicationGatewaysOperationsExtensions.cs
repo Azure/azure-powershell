@@ -396,9 +396,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysDeleteHeaders Delete(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void Delete(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -416,12 +416,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysDeleteHeaders> DeleteAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets the backend health of the specified application gateway in a resource
@@ -533,9 +530,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysStartHeaders Start(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void Start(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).StartAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).StartAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -553,12 +550,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysStartHeaders> StartAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task StartAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.StartWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.StartWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Stops the specified application gateway in a resource group.
@@ -572,9 +566,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysStopHeaders Stop(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void Stop(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).StopAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).StopAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -592,12 +586,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysStopHeaders> StopAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task StopAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.StopWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.StopWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified application gateway.
@@ -650,9 +641,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysDeleteHeaders BeginDelete(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void BeginDelete(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -670,12 +661,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysDeleteHeaders> BeginDeleteAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets the backend health of the specified application gateway in a resource
@@ -787,9 +775,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysStartHeaders BeginStart(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void BeginStart(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).BeginStartAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).BeginStartAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -807,12 +795,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysStartHeaders> BeginStartAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginStartAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Stops the specified application gateway in a resource group.
@@ -826,9 +811,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        public static ApplicationGatewaysStopHeaders BeginStop(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
+        public static void BeginStop(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName)
         {
-                return ((IApplicationGatewaysOperations)operations).BeginStopAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
+                ((IApplicationGatewaysOperations)operations).BeginStopAsync(resourceGroupName, applicationGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -846,12 +831,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewaysStopHeaders> BeginStopAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginStopAsync(this IApplicationGatewaysOperations operations, string resourceGroupName, string applicationGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists all SSL predefined policies for configuring Ssl policy.

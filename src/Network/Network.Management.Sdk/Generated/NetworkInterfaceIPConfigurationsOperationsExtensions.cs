@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceIPConfiguration> List(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceIPConfiguration> List(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
         {
                 return ((INetworkInterfaceIPConfigurationsOperations)operations).ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceIPConfiguration>> ListAsync(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceIPConfiguration>> ListAsync(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipConfigurationName'>
         /// The name of the ip configuration name.
         /// </param>
-        public static CommonNetworkInterfaceIPConfiguration Get(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName)
+        public static NetworkInterfaceIPConfiguration Get(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName)
         {
                 return ((INetworkInterfaceIPConfigurationsOperations)operations).GetAsync(resourceGroupName, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
         }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterfaceIPConfiguration> GetAsync(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterfaceIPConfiguration> GetAsync(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, ipConfigurationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceIPConfiguration> ListNext(this INetworkInterfaceIPConfigurationsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceIPConfiguration> ListNext(this INetworkInterfaceIPConfigurationsOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfaceIPConfigurationsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterfaceIPConfiguration>> ListNextAsync(this INetworkInterfaceIPConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceIPConfiguration>> ListNextAsync(this INetworkInterfaceIPConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

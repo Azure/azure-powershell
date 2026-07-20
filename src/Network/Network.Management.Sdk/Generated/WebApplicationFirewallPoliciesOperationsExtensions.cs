@@ -164,9 +164,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='policyName'>
         /// The name of the policy.
         /// </param>
-        public static WebApplicationFirewallPoliciesDeleteHeaders Delete(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName)
+        public static void Delete(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName)
         {
-                return ((IWebApplicationFirewallPoliciesOperations)operations).DeleteAsync(resourceGroupName, policyName).GetAwaiter().GetResult();
+                ((IWebApplicationFirewallPoliciesOperations)operations).DeleteAsync(resourceGroupName, policyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -184,12 +184,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<WebApplicationFirewallPoliciesDeleteHeaders> DeleteAsync(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, policyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Deletes Policy.
@@ -203,9 +200,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='policyName'>
         /// The name of the policy.
         /// </param>
-        public static WebApplicationFirewallPoliciesDeleteHeaders BeginDelete(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName)
+        public static void BeginDelete(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName)
         {
-                return ((IWebApplicationFirewallPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, policyName).GetAwaiter().GetResult();
+                ((IWebApplicationFirewallPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, policyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,12 +220,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<WebApplicationFirewallPoliciesDeleteHeaders> BeginDeleteAsync(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IWebApplicationFirewallPoliciesOperations operations, string resourceGroupName, string policyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, policyName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, policyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the WAF policies in a subscription.

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetwork> ListAll(this IVirtualNetworksOperations operations)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetwork> ListAll(this IVirtualNetworksOperations operations)
         {
                 return ((IVirtualNetworksOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetwork>> ListAllAsync(this IVirtualNetworksOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetwork>> ListAllAsync(this IVirtualNetworksOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetwork> List(this IVirtualNetworksOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetwork> List(this IVirtualNetworksOperations operations, string resourceGroupName)
         {
                 return ((IVirtualNetworksOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetwork>> ListAsync(this IVirtualNetworksOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetwork>> ListAsync(this IVirtualNetworksOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonVirtualNetwork Get(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string expand = default(string))
+        public static VirtualNetwork Get(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string expand = default(string))
         {
                 return ((IVirtualNetworksOperations)operations).GetAsync(resourceGroupName, virtualNetworkName, expand).GetAwaiter().GetResult();
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetwork> GetAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetwork> GetAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static CommonVirtualNetwork CreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CommonVirtualNetwork parameters)
+        public static VirtualNetwork CreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters)
         {
                 return ((IVirtualNetworksOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetwork> CreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CommonVirtualNetwork parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetwork> CreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static CommonVirtualNetwork UpdateTags(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters)
+        public static VirtualNetwork UpdateTags(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters)
         {
                 return ((IVirtualNetworksOperations)operations).UpdateTagsAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
         }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetwork> UpdateTagsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetwork> UpdateTagsAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static VirtualNetworksDeleteHeaders Delete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
+        public static void Delete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
         {
-                return ((IVirtualNetworksOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
+                ((IVirtualNetworksOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -227,12 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworksDeleteHeaders> DeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Checks whether a private IP address is available for use.
@@ -383,7 +380,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static CommonVirtualNetwork BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CommonVirtualNetwork parameters)
+        public static VirtualNetwork BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters)
         {
                 return ((IVirtualNetworksOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
         }
@@ -403,7 +400,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonVirtualNetwork> BeginCreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CommonVirtualNetwork parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetwork> BeginCreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetwork parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -422,9 +419,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
-        public static VirtualNetworksDeleteHeaders BeginDelete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
+        public static void BeginDelete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
         {
-                return ((IVirtualNetworksOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
+                ((IVirtualNetworksOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -442,12 +439,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworksDeleteHeaders> BeginDeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets the Ddos Protection Status of all IP Addresses under the Virtual
@@ -511,7 +505,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetwork> ListAllNext(this IVirtualNetworksOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetwork> ListAllNext(this IVirtualNetworksOperations operations, string nextPageLink)
         {
                 return ((IVirtualNetworksOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -528,7 +522,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetwork>> ListAllNextAsync(this IVirtualNetworksOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetwork>> ListAllNextAsync(this IVirtualNetworksOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -544,7 +538,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetwork> ListNext(this IVirtualNetworksOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<VirtualNetwork> ListNext(this IVirtualNetworksOperations operations, string nextPageLink)
         {
                 return ((IVirtualNetworksOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -561,7 +555,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetwork>> ListNextAsync(this IVirtualNetworksOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetwork>> ListNextAsync(this IVirtualNetworksOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

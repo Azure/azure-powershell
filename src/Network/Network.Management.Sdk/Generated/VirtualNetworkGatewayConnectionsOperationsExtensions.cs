@@ -178,9 +178,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        public static VirtualNetworkGatewayConnectionsDeleteHeaders Delete(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
+        public static void Delete(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
         {
-                return ((IVirtualNetworkGatewayConnectionsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayConnectionsOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -198,12 +198,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnectionsDeleteHeaders> DeleteAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists IKE Security Associations for the virtual network gateway connection
@@ -258,9 +255,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        public static VirtualNetworkGatewayConnectionsResetConnectionHeaders ResetConnection(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
+        public static void ResetConnection(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
         {
-                return ((IVirtualNetworkGatewayConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -278,12 +275,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnectionsResetConnectionHeaders> ResetConnectionAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ResetConnectionAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves
@@ -592,9 +586,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        public static VirtualNetworkGatewayConnectionsDeleteHeaders BeginDelete(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
+        public static void BeginDelete(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
         {
-                return ((IVirtualNetworkGatewayConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -612,12 +606,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnectionsDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists IKE Security Associations for the virtual network gateway connection
@@ -672,9 +663,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        public static VirtualNetworkGatewayConnectionsResetConnectionHeaders BeginResetConnection(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
+        public static void BeginResetConnection(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName)
         {
-                return ((IVirtualNetworkGatewayConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
+                ((IVirtualNetworkGatewayConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, virtualNetworkGatewayConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -692,12 +683,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayConnectionsResetConnectionHeaders> BeginResetConnectionAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginResetConnectionAsync(this IVirtualNetworkGatewayConnectionsOperations operations, string resourceGroupName, string virtualNetworkGatewayConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual
