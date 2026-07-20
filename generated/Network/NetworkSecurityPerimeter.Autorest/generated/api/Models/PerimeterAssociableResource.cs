@@ -15,6 +15,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal
     {
 
+        /// <summary>Description of the PaaS resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).Description; }
+
         /// <summary>A friendly name for the properties of perimeter associable resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).DisplayName; }
@@ -26,11 +30,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
 
+        /// <summary>Internal Acessors for Description</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).Description = value ?? null; }
+
         /// <summary>Internal Acessors for DisplayName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.Id { get => this._id; set { {_id = value;} } }
+
+        /// <summary>Internal Acessors for OutboundSupported</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.OutboundSupported { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).OutboundSupported; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).OutboundSupported = value ?? default(bool); }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceProperties Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.PerimeterAssociableResourceProperties()); set { {_property = value;} } }
@@ -38,8 +48,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>Internal Acessors for PublicDnsZone</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.PublicDnsZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).PublicDnsZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).PublicDnsZone = value ?? null /* arrayOf */; }
 
+        /// <summary>Internal Acessors for ReadinessState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.ReadinessState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ReadinessState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ReadinessState = value ?? null; }
+
         /// <summary>Internal Acessors for ResourceType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.ResourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ResourceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ResourceType = value ?? null; }
+
+        /// <summary>Internal Acessors for ServiceTag</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.ServiceTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ServiceTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ServiceTag = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceInternal.Type { get => this._type; set { {_type = value;} } }
@@ -53,6 +69,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
+        /// <summary>Indicates whether the resource type supports outbound scenario.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
+        public bool? OutboundSupported { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).OutboundSupported; }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceProperties _property;
 
@@ -64,9 +84,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> PublicDnsZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).PublicDnsZone; }
 
+        /// <summary>The readiness state of the resource type for NSP support.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
+        public string ReadinessState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ReadinessState; }
+
         /// <summary>Resource type/provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public string ResourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ResourceType; }
+
+        /// <summary>Service tags associated with the resource provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ServiceTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourcePropertiesInternal)Property).ServiceTag; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -85,6 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     public partial interface IPerimeterAssociableResource :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IJsonSerializable
     {
+        /// <summary>Description of the PaaS resource type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Description of the PaaS resource type.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get;  }
         /// <summary>A friendly name for the properties of perimeter associable resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -120,6 +159,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
+        /// <summary>Indicates whether the resource type supports outbound scenario.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Indicates whether the resource type supports outbound scenario.",
+        SerializedName = @"outboundSupported",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? OutboundSupported { get;  }
         /// <summary>Public DNS zone names of the resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -131,6 +181,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         SerializedName = @"publicDnsZones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> PublicDnsZone { get;  }
+        /// <summary>The readiness state of the resource type for NSP support.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The readiness state of the resource type for NSP support.",
+        SerializedName = @"readinessState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Onboarding", "Preview", "GA", "NotReady")]
+        string ReadinessState { get;  }
         /// <summary>Resource type/provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -142,6 +204,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceType { get;  }
+        /// <summary>Service tags associated with the resource provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Service tags associated with the resource provider.",
+        SerializedName = @"serviceTags",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ServiceTag { get;  }
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -159,6 +232,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
     internal partial interface IPerimeterAssociableResourceInternal
 
     {
+        /// <summary>Description of the PaaS resource type.</summary>
+        string Description { get; set; }
         /// <summary>A friendly name for the properties of perimeter associable resources.</summary>
         string DisplayName { get; set; }
         /// <summary>Identifier of the perimeter associable resource.</summary>
@@ -167,12 +242,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
         /// </summary>
         string Name { get; set; }
+        /// <summary>Indicates whether the resource type supports outbound scenario.</summary>
+        bool? OutboundSupported { get; set; }
         /// <summary>Properties of the perimeter associable resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResourceProperties Property { get; set; }
         /// <summary>Public DNS zone names of the resources.</summary>
         System.Collections.Generic.List<string> PublicDnsZone { get; set; }
+        /// <summary>The readiness state of the resource type for NSP support.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Onboarding", "Preview", "GA", "NotReady")]
+        string ReadinessState { get; set; }
         /// <summary>Resource type/provider name.</summary>
         string ResourceType { get; set; }
+        /// <summary>Service tags associated with the resource provider.</summary>
+        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>Resource type.</summary>
         string Type { get; set; }
 

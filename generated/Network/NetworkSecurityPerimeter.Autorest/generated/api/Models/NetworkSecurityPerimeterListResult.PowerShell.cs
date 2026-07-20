@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list NetworkSecurityPerimeter. It contains a list of network security perimeters and a URL link
-    /// to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a NetworkSecurityPerimeter list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkSecurityPerimeterListResultTypeConverter))]
     public partial class NetworkSecurityPerimeterListResult
     {
@@ -169,8 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list NetworkSecurityPerimeter. It contains a list of network security perimeters and a URL link
-    /// to get the next set of results.
+    /// The response of a NetworkSecurityPerimeter list operation.
     [System.ComponentModel.TypeConverter(typeof(NetworkSecurityPerimeterListResultTypeConverter))]
     public partial interface INetworkSecurityPerimeterListResult
 
