@@ -120,13 +120,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectionState")]
         public string ConnectionState {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the routing configuration indicating the associated and
-        /// propagated route tables for this connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routingConfiguration")]
-        public RoutingConfiguration RoutingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

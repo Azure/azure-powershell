@@ -386,13 +386,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authenticationType")]
         public string AuthenticationType {get; set; }
-
-        /// <summary>
-        /// Gets or sets the routing configuration indicating the associated and
-        /// propagated route tables for this connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routingConfiguration")]
-        public RoutingConfiguration RoutingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
