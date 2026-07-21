@@ -65,9 +65,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Bandwidth of the Virtual Network Appliance in Gbps. Valid values are: 50, 100, 200.")]
+            HelpMessage = "Bandwidth of the Virtual Network Appliance in Gbps.")]
         [ValidateNotNullOrEmpty]
         public virtual string Bandwidth { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether the Virtual Network Appliance is IPv4 or Dual Stack. Default is IPv4. Possible values: IPv4, DualStack.")]
+        [ValidateSet("IPv4", "DualStack", IgnoreCase = true)]
+        public virtual string PrivateIPAddressVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -117,6 +124,12 @@ namespace Microsoft.Azure.Commands.Network
 
             // Set bandwidth (required)
             vnaModel.BandwidthInGbps = bandwidthInGbps;
+
+            // Set PrivateIPAddressVersion if specified
+            if (!string.IsNullOrEmpty(this.PrivateIPAddressVersion))
+            {
+                vnaModel.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
+            }
 
             // Create the resource
             var vnaResponse = this.VirtualNetworkAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnaModel);
