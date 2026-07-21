@@ -27,17 +27,11 @@ For information on how to develop for `Az.Chaos`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 907b79c0a6a660826e54dc1f16ea14b831b201d2
+commit: f228b86c72657cd366e26c77420bfbd436938821
 require:
   - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/capabilities.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/capabilityTypes.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/experiments.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/operationStatuses.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/operations.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targetTypes.json
-  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targets.json
+  - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/Chaos/preview/2026-05-01-preview/openapi.json
 
 title: Chaos
 module-version: 0.1.0
@@ -46,158 +40,117 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  - from: swagger-document 
-    where: $.definitions.TrackedResource.properties.location
-    transform: >-
-      return {
-          "type": "string",
-          "x-ms-mutability": [
-            "read",
-            "create",
-            "update"
-          ],
-          "description": "The geo-location where the resource lives"
-      }
-
-  - from: swagger-document 
-    where: $.definitions.target
-    transform: >-
-      return {
-        "type": "object",
-        "description": "Model that represents a Target resource.",
-        "allOf": [
-          {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v2/types.json#/definitions/Resource"
-          }
-        ],
-        "properties": {
-          "systemData": {
-            "description": "The system metadata of the target resource.",
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v2/types.json#/definitions/systemData",
-            "readOnly": true
-          },
-          "location": {
-            "type": "string",
-            "description": "Location of the target resource."
-          },
-          "properties": {
-            "description": "The properties of the target resource.",
-            "x-ms-client-flatten": true,
-            "$ref": "#/definitions/targetProperties"
-          }
-        }
-      }
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"].delete.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "OK"
-        },
-        "202": {
-          "description": "Asynchronous delete operation."
-        },
-        "default": {
-          "description": "Error response returned if request was unsuccessful.",
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
-          }
-        }
-      }
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"].patch.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "Long running replace experiment operation.",
-          "schema": {
-            "$ref": "./types/experiments.json#/definitions/experiment"
-          }
-        },
-        "202": {
-          "description": "Long running update operation.",
-          "schema": {
-            "$ref": "./types/experiments.json#/definitions/experiment"
-          }
-        },
-        "default": {
-          "description": "Error response returned if request was unsuccessful.",
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
-          }
-        }
-      }
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/start"].post.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "Ok.",
-          "schema": {
-            "$ref": "./types/experiments.json#/definitions/experiment"
-          }
-        },
-        "202": {
-          "description": "Long running start experiment operation."
-        },
-        "default": {
-          "description": "Error response returned if request was unsuccessful.",
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
-          }
-        }
-      }
-
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel"].post.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "Ok.",
-          "schema": {
-            "$ref": "./types/experiments.json#/definitions/experiment"
-          }
-        },
-        "202": {
-          "description": "Long running start experiment operation."
-        },
-        "default": {
-          "description": "Error response returned if request was unsuccessful.",
-          "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
-          }
-        }
-      }
-
+  # --- Sanitize the property descriptions that contain backticks. A backtick is
+  #     the PowerShell escape character, so a backtick in a generated double-quoted
+  #     HelpMessage string breaks the model-cmdlet proxy parse. Restate the two
+  #     zone-filter descriptions without backticks. ---
   - where:
-      verb: New
-      subject: Experiment
-      variant: ^CreateViaIdentityExpanded$|^CreateExpanded$
+      model-name: ConfigurationFilters
+      property-name: PhysicalZone
+    set:
+      property-description: "Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1'). Only resources in the corresponding logical zone for each subscription are included. At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API. The resolved mapping is surfaced on the scenario run response. Null or omitted means physical zone targeting is not used. Only one physical zone is supported in preview. Mutually exclusive with the zones filter; set one or the other, not both."
+  - from: swagger-document
+    where: $..physicalZones
+    transform: $.description = "SENTRECURSIVE"
+  - where:
+      model-name: ConfigurationFilters
+      property-name: Zone
+    set:
+      property-description: "Array of availability zone identifiers (for example, 1, 2, 3, or zone-redundant). Only resources whose zones intersect this list are included. Null or omitted means all zones (including non-zonal). An empty array means include nothing. Mutually exclusive with the physicalZones filter; set one or the other, not both."
+
+  # --- Prune the retired V1 experiment-era nouns (PR2). The V2 openapi.json still
+  #     carries the V1 surface, so directives remove every non-V2 noun. ---
+  - where:
+      subject: ^.*Experiment.*$
+    remove: true
+  - where:
+      subject: Capability
+    remove: true
+  - where:
+      subject: CapabilityType
+    remove: true
+  - where:
+      subject: ^Target.*$
+    remove: true
+  - where:
+      subject: ^PrivateAccess.*$
+    remove: true
+  - where:
+      subject: ^PrivateEndpointConnection.*$
+    remove: true
+  - where:
+      subject: ^PrivateLinkResource.*$
+    remove: true
+  - where:
+      subject: ^OperationStatus.*$
+    remove: true
+  # --- Prune the action-catalog and operation-metadata nouns; they are not part
+  #     of the V2 plumbing surface. ---
+  - where:
+      subject: ^Action.*$
+    remove: true
+  - where:
+      subject: Operation
     remove: true
 
+  # --- V2 shaping: keep only the Expanded, JsonFilePath, and JsonString
+  #     create/update variants; remove every other create/update variant. ---
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
-
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  # --- CreateOrUpdate produces New-* only; remove the auto-generated Set-*. ---
   - where:
       verb: Set
     remove: true
-
+  # --- Scenario and ScenarioConfiguration have no PATCH operation. Their PUT
+  #     CreateOrUpdate must produce New-* only; remove the auto-generated Update-*.
+  #     Only Workspaces_Update (PATCH) keeps an Update-* cmdlet. ---
   - where:
-      subject: OperationStatuses
+      verb: Update
+      subject: Scenario
+    remove: true
+  - where:
+      verb: Update
+      subject: ScenarioConfiguration
     remove: true
 
+  # --- Verb-noun renames to approved pairs. Validate->Test (DD2), Cancel->Stop
+  #     (DD3), and Refresh->Update (DD5) are applied by the generator's native verb
+  #     mapping. Execute and FixResourcePermissions need explicit renames. ---
+  # Execute keeps the Invoke verb; rename the subject to the Execution noun (DD7).
   - where:
       verb: Invoke
+      subject: ExecuteScenarioConfiguration
     set:
-      verb: Get
+      subject: ScenarioConfigurationExecution
+  # FixResourcePermissions maps to the approved Repair verb (DD4).
+  - where:
+      verb: Invoke
+      subject: FixScenarioConfigurationResourcePermission
+    set:
+      verb: Repair
+      subject: ScenarioConfigurationResourcePermission
 
+  # --- Expose the server-side whatIf field under -WhatIfMode so it cannot collide
+  #     with the common -WhatIf switch (DD4, DD8). ---
+  - where:
+      verb: Repair
+      subject: ScenarioConfigurationResourcePermission
+      parameter-name: WhatIf
+    set:
+      parameter-name: WhatIfMode
+
+  # --- V2 model helpers: the nested request-body models a user builds to call the
+  #     V2 create cmdlets. ---
   - model-cmdlet:
-    - model-name: Selector
-    - model-name: Step
-    - model-name: Branch
-    - model-name: Action
+    - model-name: ScenarioAction
+    - model-name: ScenarioParameter
+    - model-name: RunAfter
+    - model-name: ExternalResource
+    - model-name: KeyValuePair
+    - model-name: ConfigurationFilters
+    - model-name: ConfigurationExclusions
 ```

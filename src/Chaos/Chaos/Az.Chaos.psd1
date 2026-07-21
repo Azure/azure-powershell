@@ -69,25 +69,7 @@ FormatsToProcess = 'Chaos.Autorest/Az.Chaos.format.ps1xml'
 NestedModules = @('Chaos.Autorest/Az.Chaos.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzChaosCapability', 'Get-AzChaosCapabilityType', 
-               'Get-AzChaosExecutionExperimentDetail', 'Get-AzChaosExperiment', 
-               'Get-AzChaosExperimentExecution', 'Get-AzChaosTarget', 
-               'Get-AzChaosTargetType', 'New-AzChaosActionObject', 
-               'New-AzChaosBranchObject', 'New-AzChaosCapability', 
-               'New-AzChaosExperiment', 'New-AzChaosSelectorObject', 
-               'New-AzChaosStepObject', 'New-AzChaosTarget', 
-               'Remove-AzChaosCapability', 'Remove-AzChaosExperiment', 
-               'Remove-AzChaosTarget', 'Start-AzChaosExperiment', 
-               'Stop-AzChaosExperiment', 'Update-AzChaosCapability', 
-               'Update-AzChaosExperiment', 'Update-AzChaosTarget'
-
-# Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = @()
-
-# Variables to export from this module
-# VariablesToExport = @()
-
-# Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
+FunctionsToExport = @()
 AliasesToExport = @()
 
 # DSC resources to export from this module
