@@ -15,18 +15,9 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Security;
-    using WindowsAzure.Commands.Common.Attributes;
-
-    public class PSApplicationGatewaySslCertificate : PSChildResource
+    public class PSApplicationGatewayManagedHsm
     {
-        public string Data { get; set; }
-        public SecureString Password { get; set; }
+        public string KeyId { get; set; }
         public string PublicCertData { get; set; }
-        public string KeyVaultSecretId { get; set; }
-        public PSApplicationGatewayManagedHsm Hsm { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
-        public string Type { get; set; }
     }
 }

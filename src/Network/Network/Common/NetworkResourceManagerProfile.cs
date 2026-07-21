@@ -1491,6 +1491,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
+                cfg.CreateMap<CNM.PSApplicationGatewayManagedHsm, MNM.ApplicationGatewayManagedHsm>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>()
                     .AfterMap((src, dest) =>
                     {
@@ -1596,6 +1597,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
                 cfg.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
+                cfg.CreateMap<MNM.ApplicationGatewayManagedHsm, CNM.PSApplicationGatewayManagedHsm>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPolicy, CNM.PSApplicationGatewaySslPolicy>()
                     .AfterMap((src, dest) =>
                     {
