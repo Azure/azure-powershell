@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.0
 * First preview release for module Az.ChangeSafety
 * Added cmdlets for StageMap management:
     - `New-AzChangeSafetyStageMap`
@@ -36,4 +38,3 @@
     - `Remove-AzChangeSafetyStageProgression`
 * Custom cmdlets with simplified `-Targets` parameter for ChangeRecord operations
 
-## Version 0.1.0
