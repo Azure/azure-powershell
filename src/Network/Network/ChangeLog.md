@@ -22,7 +22,6 @@
 * Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.
     - `New-AzVirtualNetwork`: Added `-SummarizedGatewayPrefix` parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed `SummarizedGatewayPrefixes` on the returned object.
     - `New-AzVirtualNetworkAppliance`: Added `-PrivateIPAddressVersion` parameter (IPv4, DualStack) to support dual-stack Virtual Network Appliances, and exposed `PrivateIPAddressVersion` on the returned object.
-    - `New-AzVirtualNetworkAppliance`: Kept the existing `-Bandwidth` string parameter surface while validating numeric Gbps values before sending requests.
 * Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
     - `New-AzNatGateway`
     - `Set-AzNatGateway`
