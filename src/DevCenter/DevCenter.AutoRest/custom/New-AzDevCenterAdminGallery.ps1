@@ -27,7 +27,7 @@ Creates or updates a gallery.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IGallery
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IGallery
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmingallery
 #>
 function New-AzDevCenterAdminGallery {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IGallery])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IGallery])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
