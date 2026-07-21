@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<GremlinDatabaseGetResults> ListGremlinDatabases(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<GremlinDatabaseGetResults> ListGremlinDatabases(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IGremlinResourcesOperations)operations).ListGremlinDatabasesAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<GremlinDatabaseGetResults>> ListGremlinDatabasesAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinDatabaseGetResults>> ListGremlinDatabasesAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListGremlinDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -191,192 +191,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the Gremlin database under an existing Azure
-        /// Cosmos DB database account with the provided name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults GetGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IGremlinResourcesOperations)operations).GetGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the RUs per second of the Gremlin database under an existing Azure
-        /// Cosmos DB database account with the provided name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB Gremlin database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults UpdateGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
-        {
-                return ((IGremlinResourcesOperations)operations).UpdateGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB Gremlin database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults MigrateGremlinDatabaseToAutoscale(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IGremlinResourcesOperations)operations).MigrateGremlinDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateGremlinDatabaseToAutoscaleAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.MigrateGremlinDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults MigrateGremlinDatabaseToManualThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IGremlinResourcesOperations)operations).MigrateGremlinDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateGremlinDatabaseToManualThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.MigrateGremlinDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists the Gremlin graph under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
@@ -391,7 +205,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<GremlinGraphGetResults> ListGremlinGraphs(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        public static Microsoft.Rest.Azure.IPage<GremlinGraphGetResults> ListGremlinGraphs(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
                 return ((IGremlinResourcesOperations)operations).ListGremlinGraphsAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
@@ -414,7 +228,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<GremlinGraphGetResults>> ListGremlinGraphsAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinGraphGetResults>> ListGremlinGraphsAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListGremlinGraphsWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -572,6 +386,57 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.DeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a gremlin graph.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        public static BackupInformation RetrieveContinuousBackupInformation(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location)
+        {
+                return ((IGremlinResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, graphName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a gremlin graph.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -785,7 +650,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a gremlin graph.
+        /// Gets the RUs per second of the Gremlin database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -799,16 +665,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='graphName'>
-        /// Cosmos DB graph name.
-        /// </param>
-        public static BackupInformation RetrieveContinuousBackupInformation(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location)
+        public static ThroughputSettingsGetResults GetGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((IGremlinResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, graphName, location).GetAwaiter().GetResult();
+                return ((IGremlinResourcesOperations)operations).GetGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a gremlin graph.
+        /// Gets the RUs per second of the Gremlin database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -821,18 +685,506 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='graphName'>
-        /// Cosmos DB graph name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults UpdateGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
+        {
+                return ((IGremlinResourcesOperations)operations).UpdateGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults MigrateGremlinDatabaseToAutoscale(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IGremlinResourcesOperations)operations).MigrateGremlinDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateGremlinDatabaseToAutoscaleAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.MigrateGremlinDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults MigrateGremlinDatabaseToManualThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IGremlinResourcesOperations)operations).MigrateGremlinDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateGremlinDatabaseToManualThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.MigrateGremlinDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinRoleAssignmentResource> ListGremlinRoleAssignments(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinRoleAssignmentsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinRoleAssignmentResource>> ListGremlinRoleAssignmentsAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinRoleAssignmentsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static GremlinRoleAssignmentResource GetGremlinRoleAssignment(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((IGremlinResourcesOperations)operations).GetGremlinRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role
+        /// Assignment with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleAssignmentResource> GetGremlinRoleAssignmentAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetGremlinRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static GremlinRoleAssignmentResource CreateUpdateGremlinRoleAssignment(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, GremlinRoleAssignmentResource createUpdateGremlinRoleAssignmentParameters)
+        {
+                return ((IGremlinResourcesOperations)operations).CreateUpdateGremlinRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateGremlinRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleAssignmentResource> CreateUpdateGremlinRoleAssignmentAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, GremlinRoleAssignmentResource createUpdateGremlinRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateGremlinRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateGremlinRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static GremlinResourcesDeleteGremlinRoleAssignmentHeaders DeleteGremlinRoleAssignment(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((IGremlinResourcesOperations)operations).DeleteGremlinRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinResourcesDeleteGremlinRoleAssignmentHeaders> DeleteGremlinRoleAssignmentAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteGremlinRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinRoleDefinitionResource> ListGremlinRoleDefinitions(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinRoleDefinitionResource>> ListGremlinRoleDefinitionsAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static GremlinRoleDefinitionResource GetGremlinRoleDefinition(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((IGremlinResourcesOperations)operations).GetGremlinRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role
+        /// Definition with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleDefinitionResource> GetGremlinRoleDefinitionAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetGremlinRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static GremlinRoleDefinitionResource CreateUpdateGremlinRoleDefinition(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, GremlinRoleDefinitionResource createUpdateGremlinRoleDefinitionParameters)
+        {
+                return ((IGremlinResourcesOperations)operations).CreateUpdateGremlinRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateGremlinRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleDefinitionResource> CreateUpdateGremlinRoleDefinitionAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, GremlinRoleDefinitionResource createUpdateGremlinRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateGremlinRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateGremlinRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static GremlinResourcesDeleteGremlinRoleDefinitionHeaders DeleteGremlinRoleDefinition(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((IGremlinResourcesOperations)operations).DeleteGremlinRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinResourcesDeleteGremlinRoleDefinitionHeaders> DeleteGremlinRoleDefinitionAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteGremlinRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -923,145 +1275,6 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB Gremlin database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginUpdateGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
-        {
-                return ((IGremlinResourcesOperations)operations).BeginUpdateGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB Gremlin database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateGremlinDatabaseToAutoscale(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IGremlinResourcesOperations)operations).BeginMigrateGremlinDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
-        /// autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateGremlinDatabaseToAutoscaleAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateGremlinDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateGremlinDatabaseToManualThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IGremlinResourcesOperations)operations).BeginMigrateGremlinDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
-        /// throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateGremlinDatabaseToManualThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateGremlinDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -1164,6 +1377,57 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a gremlin graph.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        public static BackupInformation BeginRetrieveContinuousBackupInformation(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, graphName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a gremlin graph.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='graphName'>
+        /// Cosmos DB graph name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -1324,7 +1588,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a gremlin graph.
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1338,16 +1602,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='graphName'>
-        /// Cosmos DB graph name.
-        /// </param>
-        public static BackupInformation BeginRetrieveContinuousBackupInformation(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location)
+        public static ThroughputSettingsGetResults BeginUpdateGremlinDatabaseThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
         {
-                return ((IGremlinResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, graphName, location).GetAwaiter().GetResult();
+                return ((IGremlinResourcesOperations)operations).BeginUpdateGremlinDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a gremlin graph.
+        /// Update RUs per second of an Azure Cosmos DB Gremlin database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1360,16 +1621,421 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='graphName'>
-        /// Cosmos DB graph name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateGremlinDatabaseThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateGremlinDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults BeginMigrateGremlinDatabaseToAutoscale(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginMigrateGremlinDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from manual throughput to
+        /// autoscale
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateGremlinDatabaseToAutoscaleAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateGremlinDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults BeginMigrateGremlinDatabaseToManualThroughput(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginMigrateGremlinDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB Gremlin database from autoscale to manual
+        /// throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateGremlinDatabaseToManualThroughputAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateGremlinDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static GremlinRoleAssignmentResource BeginCreateUpdateGremlinRoleAssignment(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, GremlinRoleAssignmentResource createUpdateGremlinRoleAssignmentParameters)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginCreateUpdateGremlinRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateGremlinRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleAssignmentResource> BeginCreateUpdateGremlinRoleAssignmentAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, GremlinRoleAssignmentResource createUpdateGremlinRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateGremlinRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateGremlinRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static GremlinResourcesDeleteGremlinRoleAssignmentHeaders BeginDeleteGremlinRoleAssignment(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginDeleteGremlinRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinResourcesDeleteGremlinRoleAssignmentHeaders> BeginDeleteGremlinRoleAssignmentAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteGremlinRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static GremlinRoleDefinitionResource BeginCreateUpdateGremlinRoleDefinition(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, GremlinRoleDefinitionResource createUpdateGremlinRoleDefinitionParameters)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginCreateUpdateGremlinRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateGremlinRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinRoleDefinitionResource> BeginCreateUpdateGremlinRoleDefinitionAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, GremlinRoleDefinitionResource createUpdateGremlinRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateGremlinRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateGremlinRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static GremlinResourcesDeleteGremlinRoleDefinitionHeaders BeginDeleteGremlinRoleDefinition(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((IGremlinResourcesOperations)operations).BeginDeleteGremlinRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB Gremlin Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GremlinResourcesDeleteGremlinRoleDefinitionHeaders> BeginDeleteGremlinRoleDefinitionAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteGremlinRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Lists the Gremlin databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinDatabaseGetResults> ListGremlinDatabasesNext(this IGremlinResourcesOperations operations, string nextPageLink)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinDatabasesNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the Gremlin databases under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinDatabaseGetResults>> ListGremlinDatabasesNextAsync(this IGremlinResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinDatabasesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the Gremlin graph under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinGraphGetResults> ListGremlinGraphsNext(this IGremlinResourcesOperations operations, string nextPageLink)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinGraphsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the Gremlin graph under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinGraphGetResults>> ListGremlinGraphsNextAsync(this IGremlinResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinGraphsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinRoleAssignmentResource> ListGremlinRoleAssignmentsNext(this IGremlinResourcesOperations operations, string nextPageLink)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinRoleAssignmentsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinRoleAssignmentResource>> ListGremlinRoleAssignmentsNextAsync(this IGremlinResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinRoleAssignmentsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GremlinRoleDefinitionResource> ListGremlinRoleDefinitionsNext(this IGremlinResourcesOperations operations, string nextPageLink)
+        {
+                return ((IGremlinResourcesOperations)operations).ListGremlinRoleDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GremlinRoleDefinitionResource>> ListGremlinRoleDefinitionsNextAsync(this IGremlinResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGremlinRoleDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

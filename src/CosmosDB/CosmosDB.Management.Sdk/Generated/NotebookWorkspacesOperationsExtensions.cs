@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<NotebookWorkspace> ListByDatabaseAccount(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<NotebookWorkspace> ListByDatabaseAccount(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((INotebookWorkspacesOperations)operations).ListByDatabaseAccountAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<NotebookWorkspace>> ListByDatabaseAccountAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NotebookWorkspace>> ListByDatabaseAccountAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByDatabaseAccountWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -141,9 +141,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void Delete(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesDeleteHeaders Delete(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).DeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).DeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -161,9 +161,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesDeleteHeaders> DeleteAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Retrieves the connection info for the notebook workspace
@@ -216,9 +219,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void RegenerateAuthToken(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesRegenerateAuthTokenHeaders RegenerateAuthToken(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).RegenerateAuthTokenAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).RegenerateAuthTokenAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -236,9 +239,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RegenerateAuthTokenAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesRegenerateAuthTokenHeaders> RegenerateAuthTokenAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RegenerateAuthTokenWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RegenerateAuthTokenWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Starts the notebook workspace
@@ -252,9 +258,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void Start(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesStartHeaders Start(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).StartAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).StartAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -272,9 +278,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task StartAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesStartHeaders> StartAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.StartWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.StartWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates the notebook workspace for a Cosmos DB account.
@@ -327,9 +336,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void BeginDelete(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesDeleteHeaders BeginDelete(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -347,9 +356,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesDeleteHeaders> BeginDeleteAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Regenerates the auth token for the notebook workspace
@@ -363,9 +375,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void BeginRegenerateAuthToken(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesRegenerateAuthTokenHeaders BeginRegenerateAuthToken(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).BeginRegenerateAuthTokenAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).BeginRegenerateAuthTokenAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -383,9 +395,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRegenerateAuthTokenAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesRegenerateAuthTokenHeaders> BeginRegenerateAuthTokenAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRegenerateAuthTokenWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRegenerateAuthTokenWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Starts the notebook workspace
@@ -399,9 +414,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void BeginStart(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
+        public static NotebookWorkspacesStartHeaders BeginStart(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName)
         {
-                ((INotebookWorkspacesOperations)operations).BeginStartAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((INotebookWorkspacesOperations)operations).BeginStartAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -419,9 +434,45 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginStartAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NotebookWorkspacesStartHeaders> BeginStartAsync(this INotebookWorkspacesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Gets the notebook workspace resources of an existing Cosmos DB account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<NotebookWorkspace> ListByDatabaseAccountNext(this INotebookWorkspacesOperations operations, string nextPageLink)
+        {
+                return ((INotebookWorkspacesOperations)operations).ListByDatabaseAccountNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the notebook workspace resources of an existing Cosmos DB account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NotebookWorkspace>> ListByDatabaseAccountNextAsync(this INotebookWorkspacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseAccountNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

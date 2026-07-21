@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else
             {
-                permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
+                permissions = new List<Permission>(Permission.Select(p => new Permission(dataActions: p.DataActions)));
             }
 
             Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : RoleHelper.ParseToRoleDefinitionId(Id);
