@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a required scenario parameter
 ```powershell
-{{ Add code here }}
+New-AzChaosScenarioParameterObject -Name 'region' -Type 'string' -Required $true -Description 'The Azure region to target.'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name   Type   Required
+----   ----   --------
+region string True
 ```
 
-{{ Add description here }}
+Creates an in-memory required scenario parameter. Pass the result to `New-AzChaosScenario -Parameter`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an optional scenario parameter with a default
 ```powershell
-{{ Add code here }}
+New-AzChaosScenarioParameterObject -Name 'duration' -Type 'string' -Required $false -Default 'PT10M'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     Type   Required Default
+----     ----   -------- -------
+duration string False    PT10M
 ```
 
-{{ Add description here }}
-
+Creates an optional scenario parameter with a default value of ten minutes.

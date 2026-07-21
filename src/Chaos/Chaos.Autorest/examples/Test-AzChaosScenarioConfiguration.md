@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Validate a scenario configuration
 ```powershell
-{{ Add code here }}
+Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Runs a pre-flight validation of the `default` scenario configuration. Validation reports errors without starting a run.
 
-### Example 2: {{ Add title here }}
+### Example 2: Validate a scenario configuration and branch on the result
 ```powershell
-{{ Add code here }}
+if (Test-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -PassThru) {
+    Write-Host 'The scenario configuration is valid.'
+}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+The scenario configuration is valid.
 ```
 
-{{ Add description here }}
-
+Uses `-PassThru` to return `$true` when the configuration is valid, so a script can decide whether to start a run.

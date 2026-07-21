@@ -29,27 +29,24 @@ Delete a Workspace resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a workspace
 ```powershell
-{{ Add code here }}
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace
+```
+
+Deletes the `contoso-workspace` workspace and every scenario, scenario configuration, and scenario run under it.
+
+### Example 2: Delete a workspace and confirm the outcome
+```powershell
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the workspace and returns `$true` when the delete completes.
+Use `-PassThru` when you script the call and need to branch on the outcome.
 
 ## PARAMETERS
 

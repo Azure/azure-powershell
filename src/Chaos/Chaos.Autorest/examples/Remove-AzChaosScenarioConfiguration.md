@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a scenario configuration
 ```powershell
-{{ Add code here }}
+Remove-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Deletes the `default` scenario configuration from the `contoso-scenario` scenario.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a scenario configuration by pipeline input
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default | Remove-AzChaosScenarioConfiguration
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Gets the `default` scenario configuration and deletes it through the pipeline.

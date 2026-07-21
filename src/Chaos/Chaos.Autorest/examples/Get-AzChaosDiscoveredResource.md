@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all resources discovered for a workspace
 ```powershell
-{{ Add code here }}
+Get-AzChaosDiscoveredResource -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Type
+----                ----
+contoso-vm          Microsoft.Compute/virtualMachines
+contoso-aks-cluster Microsoft.ContainerService/managedClusters
 ```
 
-{{ Add description here }}
+Lists every resource that the `contoso-workspace` workspace discovered inside its configured scopes.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single discovered resource by name
 ```powershell
-{{ Add code here }}
+Get-AzChaosDiscoveredResource -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-vm
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       Type
+----       ----
+contoso-vm Microsoft.Compute/virtualMachines
 ```
 
-{{ Add description here }}
-
+Gets a single discovered resource by name from the `contoso-workspace` workspace.

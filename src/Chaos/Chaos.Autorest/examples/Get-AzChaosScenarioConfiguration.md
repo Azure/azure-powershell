@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all scenario configurations for a scenario
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName ProvisioningState
+----    ----------------- -----------------
+default contoso-rg        Succeeded
+canary  contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every scenario configuration under the `contoso-scenario` scenario.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single scenario configuration by name
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName ProvisioningState
+----    ----------------- -----------------
+default contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Gets the `default` scenario configuration from the `contoso-scenario` scenario.

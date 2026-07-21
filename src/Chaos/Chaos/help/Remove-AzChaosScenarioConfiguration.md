@@ -1,41 +1,61 @@
 ---
-external help file: Az.Chaos-help.xml
+external help file:
 Module Name: Az.Chaos
-online version: https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosexperiment
+online version: https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosscenarioconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzChaosExperiment
+# Remove-AzChaosScenarioConfiguration
 
 ## SYNOPSIS
-Delete a Experiment resource.
+Delete a scenario definition.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzChaosExperiment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzChaosScenarioConfiguration -Name <String> -ResourceGroupName <String> -ScenarioName <String>
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzChaosExperiment -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzChaosScenarioConfiguration -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityScenario
+```
+Remove-AzChaosScenarioConfiguration -Name <String> -ScenarioInputObject <IChaosIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityWorkspace
+```
+Remove-AzChaosScenarioConfiguration -Name <String> -ScenarioName <String>
+ -WorkspaceInputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Experiment resource.
+Delete a scenario definition.
 
 ## EXAMPLES
 
-### Example 1: Delete a Experiment resource.
+### Example 1: Delete a scenario configuration
 ```powershell
-Remove-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
+Remove-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
-Delete a Experiment resource.
+Deletes the `default` scenario configuration from the `contoso-scenario` scenario.
+
+### Example 2: Delete a scenario configuration by pipeline input
+```powershell
+Get-AzChaosScenarioConfiguration -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default | Remove-AzChaosScenarioConfiguration
+```
+
+Gets the `default` scenario configuration and deletes it through the pipeline.
 
 ## PARAMETERS
 
@@ -86,12 +106,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-String that represents a Experiment resource name.
+Name of the scenario definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ExperimentName
+Parameter Sets: Delete, DeleteViaIdentityScenario, DeleteViaIdentityWorkspace
+Aliases: ScenarioConfigurationName
 
 Required: True
 Position: Named
@@ -131,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-String that represents an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -145,8 +166,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScenarioInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+Parameter Sets: DeleteViaIdentityScenario
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ScenarioName
+Name of the scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-GUID that represents an Azure subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -156,6 +208,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+Parameter Sets: DeleteViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+String that represents a Workspace resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -205,3 +287,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

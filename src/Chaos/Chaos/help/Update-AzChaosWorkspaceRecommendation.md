@@ -1,65 +1,53 @@
 ---
-external help file: Az.Chaos-help.xml
+external help file:
 Module Name: Az.Chaos
-online version: https://learn.microsoft.com/powershell/module/az.chaos/stop-azchaosexperiment
+online version: https://learn.microsoft.com/powershell/module/az.chaos/update-azchaosworkspacerecommendation
 schema: 2.0.0
 ---
 
-# Stop-AzChaosExperiment
+# Update-AzChaosWorkspaceRecommendation
 
 ## SYNOPSIS
-Cancel a running Experiment resource.
+Refreshes recommendation status for all scenarios in a given workspace.
 
 ## SYNTAX
 
-### Cancel (Default)
+### Refresh (Default)
 ```
-Stop-AzChaosExperiment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CancelViaIdentity
+### RefreshViaIdentity
 ```
-Stop-AzChaosExperiment -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzChaosWorkspaceRecommendation -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Cancel a running Experiment resource.
+Refreshes recommendation status for all scenarios in a given workspace.
 
 ## EXAMPLES
 
-### Example 1: Cancel a running Experiment resource.
+### Example 1: Refresh recommendations for a workspace
 ```powershell
-Stop-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
+```
+
+Re-runs discovery and evaluation for the `contoso-workspace` workspace so that each catalog scenario gets a fresh recommendation status.
+
+### Example 2: Refresh recommendations and return the result object
+```powershell
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -PassThru
 ```
 
 ```output
-Id                           :
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 :
-IdentityUserAssignedIdentity : {
-                               }
-Location                     :
-Name                         : EXPERIMENT-TEST
-ProvisioningState            :
-ResourceGroupName            :
-Selector                     :
-Step                         :
-SystemDataCreatedAt          :
-SystemDataCreatedBy          :
-SystemDataCreatedByType      :
-SystemDataLastModifiedAt     :
-SystemDataLastModifiedBy     :
-SystemDataLastModifiedByType :
-Tag                          : {
-                               }
-Type                         :
+True
 ```
 
-Cancel a running Experiment resource.
+Refreshes recommendations and returns `$true` when the refresh completes.
+Use `-PassThru` when you script the call and need to branch on the outcome.
 
 ## PARAMETERS
 
@@ -99,28 +87,13 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: CancelViaIdentity
+Parameter Sets: RefreshViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-String that represents a Experiment resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: Cancel
-Aliases: ExperimentName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -139,12 +112,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-String that represents an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Refresh
 Aliases:
 
 Required: True
@@ -155,16 +144,32 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-GUID that represents an Azure subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel
+Parameter Sets: Refresh
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+String that represents a Workspace resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: Refresh
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,8 +214,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+

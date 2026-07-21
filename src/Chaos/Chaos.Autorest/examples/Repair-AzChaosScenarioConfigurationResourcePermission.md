@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Fix resource permissions for a scenario configuration
 ```powershell
-{{ Add code here }}
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Grants the workspace identity the role assignments that the `default` scenario configuration needs on its target resources.
 
-### Example 2: {{ Add title here }}
+### Example 2: Preview the permission changes without applying them
 ```powershell
-{{ Add code here }}
+Repair-AzChaosScenarioConfigurationResourcePermission -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -WhatIfMode
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Uses the server-side `-WhatIfMode` switch to report the role assignments the service would create, without changing any permissions. The `-WhatIfMode` switch is distinct from the common `-WhatIf` switch, which gates the HTTP call itself.

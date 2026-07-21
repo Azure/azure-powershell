@@ -1,42 +1,60 @@
 ---
-external help file: Az.Chaos-help.xml
+external help file:
 Module Name: Az.Chaos
-online version: https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaostarget
+online version: https://learn.microsoft.com/powershell/module/az.chaos/start-azchaosscenariorun
 schema: 2.0.0
 ---
 
-# Remove-AzChaosTarget
+# Start-AzChaosScenarioRun
 
 ## SYNOPSIS
-Delete a Target resource that extends a tracked regional resource.
+Start a scenario run for a scenario configuration.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzChaosTarget -Name <String> -ParentProviderNamespace <String> -ParentResourceName <String>
- -ParentResourceType <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzChaosTarget -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzChaosScenarioRun -Name <String> -ResourceGroupName <String> -ScenarioName <String>
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-NoWait] [-SkipValidation] [-SubscriptionId <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Target resource that extends a tracked regional resource.
+Start a scenario run for a scenario configuration.
+This is a workflow cmdlet: it
+validates the scenario configuration first and starts the run only if validation
+succeeds, mirroring the Azure Portal where validation precedes the Run action.
+Pass
+-SkipValidation to bypass the pre-flight check.
+For a catalog (non-custom) scenario
+the workspace must have been evaluated before a run can start; if it has not, the
+cmdlet fails with a friendly error and does not trigger evaluation as a side effect.
 
 ## EXAMPLES
 
-### Example 1: Delete a Target resource that extends a tracked regional resource.
+### Example 1: Start a scenario run with pre-flight validation
 ```powershell
-Remove-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos
+Start-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default
 ```
 
-Delete a Target resource that extends a tracked regional resource.
+```output
+True
+```
+
+Validates the `default` scenario configuration and, only if validation succeeds, starts the scenario run.
+This mirrors the Azure Portal, where validation precedes the Run action.
+For a catalog scenario the cmdlet fails with a friendly error if the workspace has not been evaluated yet.
+
+### Example 2: Start a scenario run without validation and return immediately
+```powershell
+Start-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -Name default -SkipValidation -NoWait
+```
+
+```output
+True
+```
+
+Bypasses the pre-flight validation with `-SkipValidation` and returns before the run completes with `-NoWait`.
+Poll the run status with `Get-AzChaosScenarioRun`.
 
 ## PARAMETERS
 
@@ -56,28 +74,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-String that represents a Target resource name.
+Name of the scenario configuration to run.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: TargetName
+Parameter Sets: (All)
+Aliases: ScenarioConfigurationName
 
 Required: True
 Position: Named
@@ -86,53 +89,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentProviderNamespace
-String that represents a resource provider namespace.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentResourceName
-String that represents a resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentResourceType
-String that represents a resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously and return before the scenario run completes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -147,11 +105,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-String that represents an Azure resource group.
+Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -161,17 +119,62 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-GUID that represents an Azure subscription ID.
+### -ScenarioName
+Name of the scenario.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipValidation
+Bypass the pre-flight validation of the scenario configuration.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+Name of the workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,8 +215,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -221,3 +222,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

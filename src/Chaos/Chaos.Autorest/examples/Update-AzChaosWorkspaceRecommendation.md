@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Refresh recommendations for a workspace
 ```powershell
-{{ Add code here }}
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Re-runs discovery and evaluation for the `contoso-workspace` workspace so that each catalog scenario gets a fresh recommendation status.
 
-### Example 2: {{ Add title here }}
+### Example 2: Refresh recommendations and return the result object
 ```powershell
-{{ Add code here }}
+Update-AzChaosWorkspaceRecommendation -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Refreshes recommendations and returns `$true` when the refresh completes. Use `-PassThru` when you script the call and need to branch on the outcome.

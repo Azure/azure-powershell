@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a key/value pair
 ```powershell
-{{ Add code here }}
+New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Key           Value
+---           -----
+pressureLevel 95
 ```
 
-{{ Add description here }}
+Creates an in-memory key/value pair for use as an action parameter or an exclusion tag.
 
-### Example 2: {{ Add title here }}
+### Example 2: Build a list of key/value pairs
 ```powershell
-{{ Add code here }}
+$parameters = @(
+    New-AzChaosKeyValuePairObject -Key 'pressureLevel' -Value '95'
+    New-AzChaosKeyValuePairObject -Key 'target' -Value 'all'
+)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Key           Value
+---           -----
+pressureLevel 95
+target        all
 ```
 
-{{ Add description here }}
-
+Builds an array of key/value pairs to pass to a parameter that accepts multiple entries.

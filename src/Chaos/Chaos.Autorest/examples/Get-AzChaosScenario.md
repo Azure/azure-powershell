@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all scenarios in a workspace
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName ProvisioningState
+----             ----------------- -----------------
+contoso-scenario contoso-rg        Succeeded
+zone-down        contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
+Lists every scenario under the `contoso-workspace` workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single scenario by name
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName ProvisioningState
+----             ----------------- -----------------
+contoso-scenario contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Gets the `contoso-scenario` scenario from the `contoso-workspace` workspace.

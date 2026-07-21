@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Exclude a resource type from a scenario configuration
 ```powershell
-{{ Add code here }}
+New-AzChaosConfigurationExclusionsObject -Type 'Microsoft.Compute/virtualMachines'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Type
+----
+{Microsoft.Compute/virtualMachines}
 ```
 
-{{ Add description here }}
+Creates an in-memory exclusion that removes every virtual machine from the blast radius. Pass the result to `New-AzChaosScenarioConfiguration`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Exclude specific resources and tags
 ```powershell
-{{ Add code here }}
+$excludeTag = New-AzChaosKeyValuePairObject -Key 'protected' -Value 'true'
+New-AzChaosConfigurationExclusionsObject -Resource '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm' -Tag $excludeTag
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Resource                                                                                                                              Tag
+--------                                                                                                                              ---
+{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm} {protected=true}
 ```
 
-{{ Add description here }}
-
+Creates an exclusion that removes a specific virtual machine and any resource tagged `protected=true` from the blast radius.

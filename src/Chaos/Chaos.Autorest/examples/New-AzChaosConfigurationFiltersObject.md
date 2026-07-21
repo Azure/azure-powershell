@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create configuration filters for a region and zone
 ```powershell
-{{ Add code here }}
+New-AzChaosConfigurationFiltersObject -Location 'eastus' -Zone '1'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Zone
+-------- ----
+{eastus} {1}
 ```
 
-{{ Add description here }}
+Creates an in-memory configuration filter that limits a scenario configuration to `eastus` availability zone `1`. Pass the result to `New-AzChaosScenarioConfiguration`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create configuration filters spanning multiple zones
 ```powershell
-{{ Add code here }}
+New-AzChaosConfigurationFiltersObject -Location 'eastus','westus2' -Zone '1','2','3'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location           Zone
+--------           ----
+{eastus, westus2}  {1, 2, 3}
 ```
 
-{{ Add description here }}
-
+Creates a configuration filter that spans two regions and three availability zones.

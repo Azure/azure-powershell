@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Order one action after another
 ```powershell
-{{ Add code here }}
+$dependency = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency]@{ ActionId = 'stop-vm'; DependencyType = 'DependsOn' }
+New-AzChaosRunAfterObject -Item $dependency
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Behavior Item
+-------- ----
+         {stop-vm}
 ```
 
-{{ Add description here }}
+Creates an in-memory run-after object so that an action starts only after the `stop-vm` action completes.
 
-### Example 2: {{ Add title here }}
+### Example 2: Order an action with an explicit behavior
 ```powershell
-{{ Add code here }}
+$dependency = [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionDependency]@{ ActionId = 'stop-vm'; DependencyType = 'DependsOn' }
+New-AzChaosRunAfterObject -Item $dependency -Behavior 'WaitForCompletion'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Behavior          Item
+--------          ----
+WaitForCompletion {stop-vm}
 ```
 
-{{ Add description here }}
-
+Creates a run-after object that waits for the referenced action to complete before the dependent action starts.

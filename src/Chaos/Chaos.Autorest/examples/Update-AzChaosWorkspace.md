@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the scopes of a workspace
 ```powershell
-{{ Add code here }}
+Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg','/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workspace eastus   contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
+Replaces the resource scopes that the `contoso-workspace` workspace discovers and evaluates.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the tags on a workspace
 ```powershell
-{{ Add code here }}
+Update-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Tag @{ env = 'prod'; owner = 'resilience-team' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workspace eastus   contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Updates the resource tags on the `contoso-workspace` workspace without changing any other property.

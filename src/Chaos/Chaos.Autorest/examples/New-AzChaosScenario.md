@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a scenario with a single action
 ```powershell
-{{ Add code here }}
+$action = New-AzChaosScenarioActionObject -Name 'stop-vm' -ActionId 'urn:csci:microsoft:virtualMachine:shutdown/1.0' -Duration 'PT10M'
+New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -Description 'Shut down the target virtual machine.' -Action $action
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName ProvisioningState
+----             ----------------- -----------------
+contoso-scenario contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
+Creates the `contoso-scenario` scenario with one shutdown action built by `New-AzChaosScenarioActionObject`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a scenario from a JSON file
 ```powershell
-{{ Add code here }}
+New-AzChaosScenario -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -Name contoso-scenario -JsonFilePath ./scenario.json
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName ProvisioningState
+----             ----------------- -----------------
+contoso-scenario contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Creates a scenario from a hand-authored JSON payload on disk.

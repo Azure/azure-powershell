@@ -1,50 +1,77 @@
 ---
-external help file: Az.Chaos-help.xml
+external help file:
 Module Name: Az.Chaos
-online version: https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaoscapability
+online version: https://learn.microsoft.com/powershell/module/az.chaos/stop-azchaosscenariorun
 schema: 2.0.0
 ---
 
-# Remove-AzChaosCapability
+# Stop-AzChaosScenarioRun
 
 ## SYNOPSIS
-Delete a Capability that extends a Target resource.
+Cancel the currently running scenario execution.
 
 ## SYNTAX
 
-### Delete (Default)
+### Cancel (Default)
 ```
-Remove-AzChaosCapability -Name <String> -ParentProviderNamespace <String> -ParentResourceName <String>
- -ParentResourceType <String> -ResourceGroupName <String> [-SubscriptionId <String>] -TargetName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentityTarget
-```
-Remove-AzChaosCapability -Name <String> -TargetInputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzChaosScenarioRun -ResourceGroupName <String> -RunId <String> -ScenarioName <String>
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CancelViaIdentity
 ```
-Remove-AzChaosCapability -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzChaosScenarioRun -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaIdentityScenario
+```
+Stop-AzChaosScenarioRun -RunId <String> -ScenarioInputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaIdentityWorkspace
+```
+Stop-AzChaosScenarioRun -RunId <String> -ScenarioName <String> -WorkspaceInputObject <IChaosIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Capability that extends a Target resource.
+Cancel the currently running scenario execution.
 
 ## EXAMPLES
 
-### Example 1: Delete a Capability that extends a Target resource.
+### Example 1: Cancel a running scenario run
 ```powershell
-Remove-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
+Stop-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 22222222-2222-2222-2222-222222222222
 ```
 
-Delete a Capability that extends a Target resource.
+Cancels the in-progress scenario run identified by `RunId` and stops the injected faults.
+
+### Example 2: Cancel a running scenario run by pipeline input
+```powershell
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 22222222-2222-2222-2222-222222222222 | Stop-AzChaosScenarioRun
+```
+
+Gets the running scenario run and cancels it through the pipeline.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -67,7 +94,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CancelViaIdentity
 Aliases:
 
 Required: True
@@ -77,60 +104,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-String that represents a Capability resource name.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityTarget
-Aliases: CapabilityName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentProviderNamespace
-String that represents a resource provider namespace.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentResourceName
-String that represents a resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentResourceType
-String that represents a resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,11 +135,57 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-String that represents an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Cancel
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunId
+The name of the ScenarioRun
+
+```yaml
+Type: System.String
+Parameter Sets: Cancel, CancelViaIdentityScenario, CancelViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScenarioInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
+Parameter Sets: CancelViaIdentityScenario
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ScenarioName
+Name of the scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: Cancel, CancelViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -168,11 +196,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-GUID that represents an Azure subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Cancel
 Aliases:
 
 Required: False
@@ -182,12 +211,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetInputObject
+### -WorkspaceInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: DeleteViaIdentityTarget
+Parameter Sets: CancelViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -197,12 +226,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -TargetName
-String that represents a Target resource name.
+### -WorkspaceName
+String that represents a Workspace resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Cancel
 Aliases:
 
 Required: True
@@ -257,3 +286,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

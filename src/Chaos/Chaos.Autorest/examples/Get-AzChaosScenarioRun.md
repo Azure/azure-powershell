@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all runs for a scenario
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RunId                                Status    ProvisioningState
+-----                                ------    -----------------
+11111111-1111-1111-1111-111111111111 Succeeded Succeeded
+22222222-2222-2222-2222-222222222222 Running   Succeeded
 ```
 
-{{ Add description here }}
+Lists every scenario run recorded for the `contoso-scenario` scenario.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single scenario run by run id
 ```powershell
-{{ Add code here }}
+Get-AzChaosScenarioRun -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -RunId 11111111-1111-1111-1111-111111111111
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+RunId                                Status    ProvisioningState
+-----                                ------    -----------------
+11111111-1111-1111-1111-111111111111 Succeeded Succeeded
 ```
 
-{{ Add description here }}
-
+Gets a single scenario run by its run id. This is also the polling target for a run started by `Invoke-AzChaosScenarioConfigurationExecution`.

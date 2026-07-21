@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a workspace with a system-assigned identity
 ```powershell
-{{ Add code here }}
+New-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Location eastus -Scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg' -EnableSystemAssignedIdentity
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workspace eastus   contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
+Creates the `contoso-workspace` workspace with a system-assigned managed identity and a single resource-group scope.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a workspace with multiple scopes and tags
 ```powershell
-{{ Add code here }}
+$scopes = @(
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg',
+    '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/payments-rg'
+)
+New-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -Location eastus -Scope $scopes -EnableSystemAssignedIdentity -Tag @{ team = 'resilience'; env = 'prod' }
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workspace eastus   contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Creates a workspace whose child scenarios can target resources in two resource groups, and applies resource tags.

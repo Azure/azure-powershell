@@ -1,67 +1,52 @@
 ---
-external help file: Az.Chaos-help.xml
+external help file:
 Module Name: Az.Chaos
-online version: https://learn.microsoft.com/powershell/module/az.chaos/start-azchaosexperiment
+online version: https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaosworkspace
 schema: 2.0.0
 ---
 
-# Start-AzChaosExperiment
+# Remove-AzChaosWorkspace
 
 ## SYNOPSIS
-Start a Experiment resource.
+Delete a Workspace resource.
 
 ## SYNTAX
 
-### Start (Default)
+### Delete (Default)
 ```
-Start-AzChaosExperiment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzChaosWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzChaosExperiment -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzChaosWorkspace -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start a Experiment resource.
+Delete a Workspace resource.
 
 ## EXAMPLES
 
-### Example 1: Start a Experiment resource.
+### Example 1: Delete a workspace
 ```powershell
-Start-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace
+```
+
+Deletes the `contoso-workspace` workspace and every scenario, scenario configuration, and scenario run under it.
+
+### Example 2: Delete a workspace and confirm the outcome
+```powershell
+Remove-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace -PassThru
 ```
 
 ```output
-Id                           :
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 :
-IdentityUserAssignedIdentity : {
-                               }
-Location                     :
-Name                         : experiment-test
-ProvisioningState            :
-ResourceGroupName            :
-Selector                     :
-Step                         :
-SystemDataCreatedAt          :
-SystemDataCreatedBy          :
-SystemDataCreatedByType      :
-SystemDataLastModifiedAt     :
-SystemDataLastModifiedBy     :
-SystemDataLastModifiedByType :
-Tag                          : {
-                               }
-Type                         :
+True
 ```
 
-Start a Experiment resource.
-Give experiment permission to your VM
-https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-quickstart-azure-portal#give-experiment-permission-to-your-vm
+Deletes the workspace and returns `$true` when the delete completes.
+Use `-PassThru` when you script the call and need to branch on the outcome.
 
 ## PARAMETERS
 
@@ -101,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -112,12 +97,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-String that represents a Experiment resource name.
+String that represents a Workspace resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
-Aliases: ExperimentName
+Parameter Sets: Delete
+Aliases: WorkspaceName
 
 Required: True
 Position: Named
@@ -141,12 +126,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-String that represents an Azure resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -157,11 +158,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-GUID that represents an Azure subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -211,8 +213,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+

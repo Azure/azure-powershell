@@ -27,8 +27,14 @@ While the run is in\nprogress the service returns 202 with a Location header poi
 ### [Get-AzChaosWorkspace](Get-AzChaosWorkspace.md)
 Get a Workspace resource.
 
+### [Initialize-AzChaosWorkspace](Initialize-AzChaosWorkspace.md)
+Stand up a ready-to-use Chaos Studio workspace end to end.
+
 ### [Invoke-AzChaosScenarioConfigurationExecution](Invoke-AzChaosScenarioConfigurationExecution.md)
 Execute the scenario execution with the given scenario configuration.
+
+### [Invoke-AzChaosWorkspaceScenarioEvaluation](Invoke-AzChaosWorkspaceScenarioEvaluation.md)
+Evaluate a workspace end to end.
 
 ### [New-AzChaosConfigurationExclusionsObject](New-AzChaosConfigurationExclusionsObject.md)
 Create an in-memory object for ConfigurationExclusions.
@@ -71,6 +77,9 @@ Delete a Workspace resource.
 
 ### [Repair-AzChaosScenarioConfigurationResourcePermission](Repair-AzChaosScenarioConfigurationResourcePermission.md)
 Fixes resource permissions for the given scenario configuration.
+
+### [Start-AzChaosScenarioRun](Start-AzChaosScenarioRun.md)
+Start a scenario run for a scenario configuration.
 
 ### [Stop-AzChaosScenarioRun](Stop-AzChaosScenarioRun.md)
 Cancel the currently running scenario execution.

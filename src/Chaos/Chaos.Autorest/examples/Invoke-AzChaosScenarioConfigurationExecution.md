@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Execute a scenario configuration
 ```powershell
-{{ Add code here }}
+Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Starts a scenario run from the `default` scenario configuration and waits for the run to reach a terminal state. This is the raw execute operation; it does not run validation first. Prefer `Start-AzChaosScenarioRun` for the validate-then-execute workflow.
 
-### Example 2: {{ Add title here }}
+### Example 2: Execute a scenario configuration asynchronously
 ```powershell
-{{ Add code here }}
+Invoke-AzChaosScenarioConfigurationExecution -ResourceGroupName contoso-rg -WorkspaceName contoso-workspace -ScenarioName contoso-scenario -ScenarioConfigurationName default -NoWait
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Starts the run and returns immediately with `-NoWait`. Poll the run status with `Get-AzChaosScenarioRun`.

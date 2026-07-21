@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Chaos Studio workspaces in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzChaosWorkspace -ResourceGroupName contoso-rg
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location ResourceGroupName
+----               -------- -----------------
+contoso-workspace  eastus   contoso-rg
+payments-workspace eastus   contoso-rg
 ```
 
-{{ Add description here }}
+Lists every `Microsoft.Chaos/workspaces` resource in the `contoso-rg` resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single Chaos Studio workspace by name
 ```powershell
-{{ Add code here }}
+Get-AzChaosWorkspace -ResourceGroupName contoso-rg -Name contoso-workspace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location ResourceGroupName ProvisioningState
+----              -------- ----------------- -----------------
+contoso-workspace eastus   contoso-rg        Succeeded
 ```
 
-{{ Add description here }}
-
+Gets the `contoso-workspace` workspace in the `contoso-rg` resource group.

@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an external resource reference
 ```powershell
-{{ Add code here }}
+New-AzChaosExternalResourceObject -ResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ResourceId
+----------
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm
 ```
 
-{{ Add description here }}
+Creates an in-memory external resource reference for a virtual machine. Use it to point a scenario action at a specific ARM resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Reference an external resource from a variable
 ```powershell
-{{ Add code here }}
+$vmId = (Get-AzVM -ResourceGroupName contoso-rg -Name contoso-vm).Id
+New-AzChaosExternalResourceObject -ResourceId $vmId
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ResourceId
+----------
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso-rg/providers/Microsoft.Compute/virtualMachines/contoso-vm
 ```
 
-{{ Add description here }}
-
+Creates an external resource reference from the resource id of an existing virtual machine.
