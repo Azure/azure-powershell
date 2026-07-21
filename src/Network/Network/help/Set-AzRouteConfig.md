@@ -15,7 +15,7 @@ Updates a route configuration for a route table.
 
 ```
 Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-NextHopIpAddress <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -152,12 +152,12 @@ Accept wildcard characters: False
 ```
 
 ### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
-This route forwards packets to that address.
-Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
+Specifies the next hop IP address(es) that this route forwards packets to.
+For a *NextHopType* of VirtualAppliance, supply a single IP address of a virtual appliance that you add to your Azure virtual network.
+For a *NextHopType* of VirtualApplianceEcmp, supply between 2 and 64 IP addresses to load-balance traffic across using equal-cost multi-path (ECMP) routing.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -177,6 +177,8 @@ The default Internet gateway provided by Azure.
 If you specify this value, the route does not forward packets. 
 - VirtualAppliance.
 A virtual appliance that you add to your Azure virtual network. 
+- VirtualApplianceEcmp.
+Multiple virtual appliances that traffic is load-balanced across using equal-cost multi-path (ECMP) routing. Provide the appliance IP addresses through the *NextHopIpAddress* parameter. 
 - VirtualNetworkGateway.
 An Azureserver-to-server virtual private network gateway. 
 - VnetLocal.

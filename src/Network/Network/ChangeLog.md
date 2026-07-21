@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 * Added Managed HSM support to Application Gateway SSL certificate cmdlets (`New-AzApplicationGatewaySslCertificate`, `Set-AzApplicationGatewaySslCertificate`, `Add-AzApplicationGatewaySslCertificate`) with `-HsmKeyId` and `-HsmPublicCertData` parameters.
+* Added support for equal-cost multi-path (ECMP) routing in route tables
+    - Added the `VirtualApplianceEcmp` next hop type to `New-AzRouteConfig`, `Add-AzRouteConfig`, and `Set-AzRouteConfig`
+    - Extended the `-NextHopIpAddress` parameter to accept a list of next hop IP addresses (2 to 64) for ECMP routes when the next hop type is `VirtualApplianceEcmp`
+    - Added the `NextHop` property to the route output returned by `Get-AzRouteTable`
+* Added DisablePeeringRoute support for Route Table
+    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
+    - Supported values are `None` and `All`
 * Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
     - `New-AzNatGateway`
     - `Set-AzNatGateway`

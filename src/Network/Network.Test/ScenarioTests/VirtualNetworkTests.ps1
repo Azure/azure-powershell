@@ -1714,7 +1714,6 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
 
 <#
 .SYNOPSIS
-<<<<<<< HEAD
 Tests creating new virtual network with flow timeout.
 #>
 function Test-VirtualNetworkCRUD-FlowTimeout

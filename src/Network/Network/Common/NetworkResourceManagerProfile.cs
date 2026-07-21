@@ -1087,6 +1087,24 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.NextHopIPAddress)
                     );
 
+                // RouteNextHopEcmp (ECMP next hop for VirtualApplianceEcmp routes)
+                // NOTE: The SDK models an upper bound of 64 next hop IP addresses, but the
+                // effective maximum enforced by the service is 16 (the SDK does not reflect this).
+                // AutoMapper only copies the list; the count limit is validated server-side.
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSRouteNextHopEcmp, MNM.RouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIPAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIpAddresses)
+                    );
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.RouteNextHopEcmp, CNM.PSRouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIpAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIPAddresses)
+                    );
+
                 // EffectiveRouteTable
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEffectiveRoute, MNM.EffectiveRoute>()
@@ -1697,6 +1715,40 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
+
+                //// DDoS custom policy
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosCustomPolicy, MNM.DdosCustomPolicy>();
+                cfg.CreateMap<CNM.PSDdosCustomPolicyDetectionRule, MNM.DdosDetectionRule>()
+                    .ForMember(
+                        dest => dest.Name,
+                        opt => opt.MapFrom(src => src.Name))
+                    .ForMember(
+                        dest => dest.DetectionMode,
+                        opt => opt.MapFrom(src => MNM.DdosDetectionMode.TrafficThreshold))
+                    .ForMember(
+                        dest => dest.TrafficDetectionRule,
+                        opt => opt.MapFrom(src => new MNM.TrafficDetectionRule
+                        {
+                            TrafficType = src.TrafficType,
+                            PacketsPerSecond = src.PacketsPerSecond,
+                        }));
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.DdosCustomPolicy, CNM.PSDdosCustomPolicy>();
+                cfg.CreateMap<MNM.DdosDetectionRule, CNM.PSDdosCustomPolicyDetectionRule>()
+                    .ForMember(
+                        dest => dest.Name,
+                        opt => opt.MapFrom(src => src.Name))
+                    .ForMember(
+                        dest => dest.TrafficType,
+                        opt => opt.MapFrom(src => src.TrafficDetectionRule == null ? null : src.TrafficDetectionRule.TrafficType))
+                    .ForMember(
+                        dest => dest.PacketsPerSecond,
+                        opt => opt.MapFrom(src => src.TrafficDetectionRule != null && src.TrafficDetectionRule.PacketsPerSecond.HasValue
+                            ? src.TrafficDetectionRule.PacketsPerSecond.Value
+                            : 0));
 
                 // Service Endpoint Policy
                 // CNM to MNM
