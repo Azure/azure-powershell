@@ -12,8 +12,23 @@ CancelJob.
 
 ## SYNTAX
 
+### CancelExpanded (Default)
 ```
 Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Reason <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CancelViaJsonFilePath
+```
+Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CancelViaJsonString
+```
+Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -49,6 +64,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +136,7 @@ Reason for cancellation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded
 Aliases:
 
 Required: True
