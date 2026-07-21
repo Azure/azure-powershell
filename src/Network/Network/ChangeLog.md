@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added DisablePeeringRoute support for Route Table
+    - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
+    - Supported values are `None` and `All`
 * Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
     - `New-AzNatGateway`
     - `Set-AzNatGateway`
