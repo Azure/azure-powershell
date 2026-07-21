@@ -11,7 +11,7 @@ authors:
 repository-code: "https://github.com/Azure/azure-powershell"
 url: "https://github.com/Azure/azure-powershell"
 abstract: "Azure PowerShell is a set of cmdlets for managing Azure resources directly from PowerShell."
-license: "MIT"
+license: "Apache"
 version: "16.1.0"
 keywords:
   - "azure"
