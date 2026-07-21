@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+title: "Azure PowerShell"
+type: "software"
+authors:
+  - name: "Microsoft Corporation"
+    affiliation: "Microsoft"
+    email: "azurepowershell@microsoft.com"
+  - name: "Azure PowerShell Team"
+    affiliation: "Microsoft"
+repository-code: "https://github.com/Azure/azure-powershell"
+url: "https://github.com/Azure/azure-powershell"
+abstract: "Azure PowerShell is a set of cmdlets for managing Azure resources directly from PowerShell."
+license: "MIT"
+version: "16.1.0"
+keywords:
+  - "azure"
+  - "powershell"
+  - "cloud"
+  - "management"
+  - "cmdlets"
+preferred-citation:
+  type: "software"
+  title: "Azure PowerShell"
+  authors:
+    - name: "Microsoft Corporation"
+  year: "2026"
+  url: "https://github.com/Azure/azure-powershell"
+  version: "16.1.0"
