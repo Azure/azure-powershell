@@ -298,6 +298,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies whether the volume operates in Breakthrough Mode. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string BreakthroughMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A list of Availability Zones")]
         public string[] Zone { get; set; }
 

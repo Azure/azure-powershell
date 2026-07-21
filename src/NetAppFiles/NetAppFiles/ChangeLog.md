@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `FileAccessLogs` to cache output model `PSNetAppFilesCache` (`Get-AzNetAppFilesCache`).
+* Added `BreakthroughMode` support for volume and volume-group cmdlets/models:
+    - Added `BreakthroughMode` to `PSNetAppFilesVolume` output (`Get-AzNetAppFilesVolume` and nested volumes in `Get-AzNetAppFilesVolumeGroup`).
+    - Added `-BreakthroughMode` to `New-AzNetAppFilesVolume`.
+    - Added shared default `-BreakthroughMode` plus per-volume-type override parameters to `New-AzNetAppFilesVolumeGroup`.
 
 ## Version 1.3.0
 * Added ChangeSafety Support
