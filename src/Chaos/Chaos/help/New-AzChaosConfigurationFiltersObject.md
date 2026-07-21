@@ -71,7 +71,13 @@ Accept wildcard characters: False
 ```
 
 ### -PhysicalZone
-SENTRECURSIVE.
+Array of physical availability zone identifiers in '{region}-az{N}' format (for example, 'westus2-az1').
+Only resources in the corresponding logical zone for each subscription are included.
+At execution time, each physical zone is resolved to per-subscription logical zones via the Azure locations API.
+The resolved mapping is surfaced on the scenario run response.
+Null or omitted means physical zone targeting is not used.
+Only one physical zone is supported in preview.
+Mutually exclusive with the zones filter; set one or the other, not both.
 
 ```yaml
 Type: System.String[]

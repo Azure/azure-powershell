@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario
 https://learn.microsoft.com/powershell/module/az.chaos/initialize-azchaosworkspace
 #>
 function Initialize-AzChaosWorkspace {
-    [OutputType([System.Object])]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IScenario')]
     [CmdletBinding(DefaultParameterSetName='InitializeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Name of the workspace.')]
