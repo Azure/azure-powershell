@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added support for equal-cost multi-path (ECMP) routing in route tables
+    - Added the `VirtualApplianceEcmp` next hop type to `New-AzRouteConfig`, `Add-AzRouteConfig`, and `Set-AzRouteConfig`
+    - Extended the `-NextHopIpAddress` parameter to accept a list of next hop IP addresses (2 to 64) for ECMP routes when the next hop type is `VirtualApplianceEcmp`
+    - Added the `NextHop` property to the route output returned by `Get-AzRouteTable`
 * Added DisablePeeringRoute support for Route Table
     - Added `-DisablePeeringRoute` parameter to `New-AzRouteTable` cmdlet
     - Supported values are `None` and `All`
