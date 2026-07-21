@@ -109,6 +109,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Delegation object id")]
+        [ValidateNotNullOrEmpty]
+        public string DelegationObjectID { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SharedAccessProtocol? Protocol { get; set; }
@@ -176,7 +182,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && (
+                (Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                || (Channel.StorageContext.Track2OauthToken != null)))
             {
                 if (ShouldProcess(blob.Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -211,7 +219,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //Create SAS builder
-            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);
+            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope, this.DelegationObjectID);
 
             //Create SAS and output
             string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);

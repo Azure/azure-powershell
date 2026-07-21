@@ -123,7 +123,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             Page<PathItem> page;
             do
             {
-                IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
+                DataLakeGetPathsOptions options = new DataLakeGetPathsOptions()
+                {
+                    Path = this.Path,
+                    Recursive = this.Recurse, 
+                    UserPrincipalName = this.OutputUserPrincipalName.IsPresent
+                };
+                IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(options)
                     .AsPages(this.ContinuationToken, listCount)
                     .GetEnumerator();
 
