@@ -14,8 +14,8 @@ Creates a new Virtual Network Appliance (VNA) resource.
 
 ```
 New-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
- -Bandwidth <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ -Bandwidth <String> [-PrivateIPAddressVersion <String>] [-Tag <Hashtable>] [-Force] [-AsJob] 
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Bandwidth
-Bandwidth of the Virtual Network Appliance in Gbps. Valid values are: 50, 100, 200.
+Bandwidth of the Virtual Network Appliance in Gbps.
 
 ```yaml
 Type: System.String
@@ -161,6 +161,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateIPAddressVersion
+Whether the Virtual Network Appliance is IPv4 or Dual Stack. Default is IPv4. Possible values: IPv4, DualStack.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, DualStack
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
