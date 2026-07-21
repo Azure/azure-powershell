@@ -1,7 +1,7 @@
 ### Example 1: Create the Network To Network Interconnect Resource
 ```powershell
 $layer2Configuration = @{
-    Interface = @("/subscriptions//resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
+    Interface = @("/subscriptions/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
     Mtu = 1500
 }
 $importRoutePolicy = @{
