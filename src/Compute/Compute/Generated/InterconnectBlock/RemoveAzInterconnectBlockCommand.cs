@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "PSInterconnectBlock object to delete.")]
+        [ValidateNotNullOrEmpty]
         public PSInterconnectBlock InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -78,7 +79,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                 }
 
-                if (this.Force.IsPresent || ShouldProcess(name, VerbsCommon.Remove))
+                if (ShouldProcess(name, VerbsCommon.Remove)
+                    && (this.Force.IsPresent ||
+                        this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
+                                            "Remove-AzInterconnectBlock operation")))
                 {
                     var result = InterconnectBlocksClient.DeleteWithHttpMessagesAsync(resourceGroupName, name).GetAwaiter().GetResult();
 

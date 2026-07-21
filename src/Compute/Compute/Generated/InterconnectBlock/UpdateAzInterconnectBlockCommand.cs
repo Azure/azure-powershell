@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "PSInterconnectBlock object to update.")]
+        [ValidateNotNullOrEmpty]
         public PSInterconnectBlock InputObject { get; set; }
 
         [Parameter(
