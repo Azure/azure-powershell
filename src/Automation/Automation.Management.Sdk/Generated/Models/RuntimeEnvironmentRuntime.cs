@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the RuntimeEnvironmentRuntime class.
         /// </summary>
         /// <param name="language">Language of the Runtime Environment. Possible values include: 'PowerShell', 'Python'</param>
-        /// <param name="version">Version of the Runtime Environment language. For example: '7.4', '7.2', '5.1' for PowerShell or '3.10', '3.8' for Python.</param>
+        /// <param name="version">Version of the Runtime Environment language. For example: '5.1', '7.2', '7.4', '7.6' for PowerShell or '3.8', '3.10' for Python.</param>
         public RuntimeEnvironmentRuntime(string language = default(string), string version = default(string))
         {
             this.Language = language;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Gets or sets version of the Runtime Environment language.
-        /// For example: '7.4', '7.2', '5.1' for PowerShell or '3.10', '3.8' for Python.
+        /// For example: '5.1', '7.2', '7.4', '7.6' for PowerShell or '3.8', '3.10' for Python.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "version")]
         public string Version { get; set; }

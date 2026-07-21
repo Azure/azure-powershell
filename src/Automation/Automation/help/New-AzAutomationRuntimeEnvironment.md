@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-The version of the language runtime. For PowerShell: '7.4', '7.2', '5.1'. For Python: '3.10', '3.8'.
+The version of the language runtime. For PowerShell: '5.1', '7.2', '7.4', '7.6'. For Python: '3.8', '3.10'.
 
 ```yaml
 Type: System.String

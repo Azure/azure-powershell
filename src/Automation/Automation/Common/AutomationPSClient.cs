@@ -2106,9 +2106,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 throw new ResourceCommonException(typeof(Model.RuntimeEnvironmentPackage),
                     string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageAlreadyExists, packageName));
             }
-            catch (ErrorResponseException)
+            catch (ErrorResponseException cloudException)
             {
-                // Package does not exist, proceed with creation
+                // 404 NotFound means package does not exist - proceed with creation
+                // Rethrow other errors (401/403/429/5xx) as they indicate real failures
+                if (cloudException.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
             }
 
             var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
@@ -2159,12 +2164,36 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             try
             {
+                // Fetch the existing package to preserve values when parameters are omitted
+                var existingPackage = this.automationManagementClient.Package.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName);
+
+                // Fill in missing ContentUri/ContentVersion from existing package to avoid overwriting with nulls
+                var effectiveContentUri = string.IsNullOrEmpty(contentUri) 
+                    ? existingPackage.ContentLink?.Uri 
+                    : contentUri;
+                var effectiveContentVersion = string.IsNullOrEmpty(contentVersion) 
+                    ? existingPackage.ContentLink?.Version 
+                    : contentVersion;
+
+                // Validate that we have at least a content URI - required for package update
+                if (string.IsNullOrEmpty(effectiveContentUri))
+                {
+                    throw new ArgumentException(
+                        string.Format(CultureInfo.CurrentCulture, 
+                            "ContentUri is required to update package '{0}'. The existing package has no content link, so -ContentUri must be specified.", 
+                            packageName));
+                }
+
                 // Use CreateOrUpdate (PUT) instead of Update (PATCH) to replace the package content
                 var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
                     contentLink: new AutomationManagement.Models.ContentLink
                     {
-                        Uri = contentUri,
-                        Version = contentVersion
+                        Uri = effectiveContentUri,
+                        Version = effectiveContentVersion
                     }
                 );
 
