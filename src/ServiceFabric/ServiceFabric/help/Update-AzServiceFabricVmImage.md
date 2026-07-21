@@ -15,7 +15,8 @@ Update the cluster resource vmImage setting which maps the appropriate runtime p
 
 ```
 Update-AzServiceFabricVmImage [-ResourceGroupName] <String> [-Name] <String> -VmImage <VmImageKind>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +44,7 @@ for the purpose of migrating future upgrades to use the Ubuntu 18 SF runtime deb
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,7 +60,7 @@ Accept wildcard characters: False
 Specify the name of the cluster, if not given it will be same as resource group name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -70,12 +71,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +106,7 @@ Accept wildcard characters: False
 Specify common target vmImage to be used for the cluster.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
+Type: VmImageKind
 Parameter Sets: (All)
 Aliases:
 Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04, Ubuntu20_04
@@ -107,7 +123,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -124,7 +140,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

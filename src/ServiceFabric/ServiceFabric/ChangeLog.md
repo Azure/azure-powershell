@@ -26,6 +26,15 @@
 ## Version 5.1.0
 * Added new OS options to `New-AzServiceFabricCluster` `-OS` parameter: `WindowsServer2019Datacenter`, `WindowsServer2019DatacenterGen2`, `WindowsServer2022Standard`, `WindowsServer2022Core`, `WindowsServer2022Gen2`, `WindowsServer2022Hotpatch`, `WindowsServer2025`, `WindowsServer2025AzureEdition`, `WindowsServer2025AzureEditionCore`, `WindowsServer2025Gen2`, `UbuntuServer2204`, and `UbuntuServer2404`
 * Updated SFMC to latest api general version "2026-02-01"
+* Fixed `Set-AzServiceFabricManagedClusterApplication` to use correct resource completer for managed clusters instead of classic clusters.
+* Added parameters `-IdentityType`, `-UserAssignedIdentityId`, and `-ApplicationManagedIdentity` to `New-AzServiceFabricManagedClusterApplication` to support managed identity configuration on applications.
+* Added parameters `-IdentityType`, `-UserAssignedIdentityId`, and `-ApplicationManagedIdentity` to `Set-AzServiceFabricManagedClusterApplication` to support managed identity configuration on applications.
+* Added parameters `-AzureActiveDirectoryClientApplication`, `-AzureActiveDirectoryClusterApplication`, `-AzureActiveDirectoryTenantId`, `-EnableHttpGatewayExclusiveAuthMode`, `-HttpGatewayTokenAuthConnectionPort`, `-MaxPercentUnhealthyApplication`, `-MaxPercentUnhealthyNode`, `-MaxUnusedVersionsToKeep`, `-AddonFeature`, `-DdosProtectionPlanId`, `-EnableIpv6`, `-EnableServicePublicIP`, `-PublicIPPrefixId`, `-PublicIPv6PrefixId`, `-SubnetId`, `-UseCustomVnet`, `-VMImage`, `-AllocatedOutboundPort`, `-EnableOutboundOnlyNodeType`, and `-SkipManagedNsgAssignment` to `New-AzServiceFabricManagedCluster`.
+* Added parameters `-AzureActiveDirectoryClientApplication`, `-AzureActiveDirectoryClusterApplication`, `-AzureActiveDirectoryTenantId`, `-EnableHttpGatewayExclusiveAuthMode`, `-HttpGatewayTokenAuthConnectionPort`, `-MaxPercentUnhealthyApplication`, `-MaxPercentUnhealthyNode`, `-MaxUnusedVersionsToKeep`, `-AddonFeature`, `-DdosProtectionPlanId`, `-PublicIPPrefixId`, `-PublicIPv6PrefixId`, `-VMImage`, `-AllocatedOutboundPort`, `-EnableOutboundOnlyNodeType`, and `-SkipManagedNsgAssignment` to `Set-AzServiceFabricManagedCluster`.
+* Enabled `Manual` option for the `-UpgradeMode` parameter in `Set-AzServiceFabricManagedCluster`.
+* Added parameters `-IsOutboundOnly`, `-EnableResilientEphemeralOSDisk`, `-EnableAcceleratedNetworking`, `-EnableEncryptionAtHost`, `-EnableNodePublicIP`, `-EnableNodePublicIPv6`, `-SecureBootEnabled`, and `-UseEphemeralOSDisk` to `New-AzServiceFabricManagedNodeType`.
+* Added parameters `-IsOutboundOnly`, `-EnableResilientEphemeralOSDisk`, `-EnableAcceleratedNetworking`, `-EnableEncryptionAtHost`, `-EnableNodePublicIP`, `-EnableNodePublicIPv6`, `-SecureBootEnabled`, and `-UseEphemeralOSDisk` to `Set-AzServiceFabricManagedNodeType`.
+* Added parameter `-ServiceDnsName` to `New-AzServiceFabricManagedClusterService` for DNS-based service discovery.
 
 ## Version 5.0.0
 * Removed `ReimageByName`, `ReimageById`, and `ReimageByObj` parameter sets from `Set-AzServiceFabricManagedNodeType`.

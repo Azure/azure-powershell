@@ -15,14 +15,15 @@ Remove one or multiple Service Fabric setting from the cluster.
 ### OneSetting
 ```
 Remove-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
- -Parameter <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Parameter <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
 Remove-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
  -SettingsSectionDescription <PSSettingsSectionDescription[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +44,7 @@ This command will remove settings 'MaxCursors' under 'EseStore' section.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,7 +59,7 @@ Accept wildcard characters: False
 Specify the name of the cluster
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -73,7 +74,7 @@ Accept wildcard characters: False
 Parameter name of the fabric setting
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: OneSetting
 Aliases:
 
@@ -84,11 +85,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specify the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +119,7 @@ Accept wildcard characters: False
 Section name of the fabric setting
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: OneSetting
 Aliases:
 
@@ -118,7 +134,7 @@ Accept wildcard characters: False
 An array of fabric settings
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]
+Type: PSSettingsSectionDescription[]
 Parameter Sets: BatchSettings
 Aliases:
 
@@ -133,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -149,7 +165,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
