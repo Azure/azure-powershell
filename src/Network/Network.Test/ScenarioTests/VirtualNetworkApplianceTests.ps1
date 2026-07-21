@@ -45,7 +45,7 @@ function Test-VirtualNetworkApplianceCRUD
         Assert-NotNull $vna.Location
         Assert-AreEqual "testValue" $vna.Tag["testKey"]
         Assert-AreEqual "Succeeded" $vna.ProvisioningState
-        Assert-AreEqual 50 $vna.BandwidthInGbps
+        Assert-AreEqual "50" $vna.BandwidthInGbps
         Assert-NotNull $vna.Subnet
         Assert-NotNull $vna.Subnet.Id
 
@@ -69,7 +69,7 @@ function Test-VirtualNetworkApplianceCRUD
             Assert-AreEqual "Succeeded" $ipConfig.ProvisioningState
         }
         Assert-AreEqual $subnet.Id $vna.Subnet.Id
-        Assert-AreEqual 50 $vna.BandwidthInGbps
+        Assert-AreEqual "50" $vna.BandwidthInGbps
 
         # Get VirtualNetworkAppliance by name
         $vnaGet = Get-AzVirtualNetworkAppliance -Name $rname -ResourceGroupName $rgname
@@ -134,7 +134,7 @@ function Test-VirtualNetworkApplianceDualStack
         Assert-NotNull $vna
         Assert-AreEqual $rname $vna.Name
         Assert-AreEqual "Succeeded" $vna.ProvisioningState
-        Assert-AreEqual 50 $vna.BandwidthInGbps
+        Assert-AreEqual "50" $vna.BandwidthInGbps
         Assert-AreEqual "DualStack" $vna.PrivateIPAddressVersion
 
         # Get and verify

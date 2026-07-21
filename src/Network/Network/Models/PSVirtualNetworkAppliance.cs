@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string ProvisioningState { get; set; }
 
-        public double? BandwidthInGbps { get; set; }
+        public string BandwidthInGbps { get; set; }
 
         public string PrivateIPAddressVersion { get; set; }
 
