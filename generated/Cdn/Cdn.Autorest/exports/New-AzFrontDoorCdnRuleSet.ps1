@@ -34,11 +34,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
@@ -51,6 +50,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 
 RESOURCE <IRuleSet>: Friendly RuleSet name mapping to the any RuleSet or secret related information.
   [BatchMode <Boolean?>]: Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set.         When batch mode is disabled, rules would need to be processed independently.         This property can only be set during rule set creation and cannot be updated later.         For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.

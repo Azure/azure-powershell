@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class AgentAutoUpdateStatus
     {
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
     }
 }

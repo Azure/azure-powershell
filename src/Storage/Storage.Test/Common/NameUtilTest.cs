@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 
@@ -213,6 +214,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
                     new String('a', 1024) //too long
                 };
             NameValidateHelper(negatives, false, NameUtil.IsValidFileName);
+        }
+
+        [TestMethod]
+        public void IsFilePathWithinDirectoryTest()
+        {
+            string dir = Path.Combine(Path.GetTempPath(), "dlDownloadTest");
+
+            // Paths inside the destination directory are allowed.
+            Assert.IsTrue(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "file.txt"), dir));
+            Assert.IsTrue(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "sub", "file.txt"), dir));
+
+            // Path traversal escaping the destination directory is blocked.
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "..", "evil.dll"), dir));
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "..", "..", "evil.dll"), dir));
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "sub", "..", "..", "evil.dll"), dir));
+
+            // A sibling directory sharing a name prefix is not considered within.
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(dir + "Evil" + Path.DirectorySeparatorChar + "file.txt", dir));
+
+            // Null or empty inputs are not within.
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(null, dir));
+            Assert.IsFalse(NameUtil.IsFilePathWithinDirectory(Path.Combine(dir, "file.txt"), null));
         }
 
         /// <summary>

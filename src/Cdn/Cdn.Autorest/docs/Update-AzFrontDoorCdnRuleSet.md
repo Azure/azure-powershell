@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Update a batch rule set within the specified profile along with the rules associated with it.
+Update or update a batch rule set within the specified profile along with the rules associate to it.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity>
 ```
 
 ## DESCRIPTION
-Update a batch rule set within the specified profile along with the rules associated with it.
+Update or update a batch rule set within the specified profile along with the rules associate to it.
 
 ## EXAMPLES
 
@@ -296,3 +296,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     using System.Linq;
 
     /// <summary>
-    /// Azure resource.
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
     /// </summary>
+    /// <remarks>
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
+    /// </remarks>
     public partial class Resource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
@@ -24,24 +29,27 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the Resource class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource Type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string))
+        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.Location = location;
+            this.SystemData = systemData;
             CustomInit();
         }
 
@@ -52,27 +60,30 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
 
         /// <summary>
-        /// Gets resource Id
+        /// Gets fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets resource Name
+        /// Gets the name of the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets resource Type
+        /// Gets the type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets or sets resource Location
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
     }
 }

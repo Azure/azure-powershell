@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-When matchVariable is a collection, selector used to specify which elements in the collection this rule applies to.
+When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
 
 ```yaml
 Type: System.String
@@ -108,3 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

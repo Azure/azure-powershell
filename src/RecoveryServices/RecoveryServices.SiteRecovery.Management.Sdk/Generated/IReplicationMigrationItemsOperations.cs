@@ -19,15 +19,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the list of ASR migration items in the protection container.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -41,6 +37,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='takeToken'>
         /// The page size.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MigrationItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MigrationItem>>> ListByReplicationProtectionContainersWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string skipToken = default(string), string takeToken = default(string), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the details of a migration item.
@@ -62,14 +61,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the details of a migration item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric unique name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -98,11 +96,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to create an ASR migration item (enable migration).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -128,43 +125,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to delete an ASR migration item.
-        /// </summary>
-        /// <remarks>
-        /// The operation to delete an ASR migration item.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='migrationItemName'>
-        /// Migration item name.
-        /// </param>
-        /// <param name='deleteOption'>
-        /// The delete option.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update the recovery settings of an ASR migration item.
@@ -173,11 +134,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to update the recovery settings of an ASR migration item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -203,7 +163,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to delete an ASR migration item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to delete an ASR migration item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='migrationItemName'>
+        /// Migration item name.
+        /// </param>
+        /// <param name='deleteOption'>
+        /// The delete option.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationMigrationItemsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate migration of the item.
@@ -212,11 +207,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate migration of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -242,7 +236,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> MigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsMigrateHeaders>> MigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate pause replication of the item.
@@ -251,11 +245,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate pause replication of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -281,7 +274,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> PauseReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsPauseReplicationHeaders>> PauseReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate resume replication of the item.
@@ -290,11 +283,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate resume replication of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -320,7 +312,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> ResumeReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsResumeReplicationHeaders>> ResumeReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to resynchronize replication of an ASR migration item.
@@ -329,11 +321,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to resynchronize replication of an ASR migration item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -359,7 +350,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> ResyncWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsResyncHeaders>> ResyncWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate test migration of the item.
@@ -368,11 +359,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate test migration of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -398,7 +388,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> TestMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsTestMigrateHeaders>> TestMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate test migrate cleanup.
@@ -407,11 +397,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate test migrate cleanup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -437,7 +426,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> TestMigrateCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsTestMigrateCleanupHeaders>> TestMigrateCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the list of migration items in the vault.
@@ -445,12 +434,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <remarks>
         /// Gets the list of migration items in the vault.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -461,6 +446,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='takeToken'>
         /// The page size.
         /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -473,7 +461,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MigrationItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<MigrationItemsQueryParameter>), string skipToken = default(string), string takeToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<MigrationItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string resourceName, string skipToken = default(string), string takeToken = default(string), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to create an ASR migration item (enable migration).
@@ -482,11 +470,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to create an ASR migration item (enable migration).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -512,43 +499,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// The operation to delete an ASR migration item.
-        /// </summary>
-        /// <remarks>
-        /// The operation to delete an ASR migration item.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='fabricName'>
-        /// Fabric name.
-        /// </param>
-        /// <param name='protectionContainerName'>
-        /// Protection container name.
-        /// </param>
-        /// <param name='migrationItemName'>
-        /// Migration item name.
-        /// </param>
-        /// <param name='deleteOption'>
-        /// The delete option.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, EnableMigrationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to update the recovery settings of an ASR migration item.
@@ -557,11 +508,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to update the recovery settings of an ASR migration item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -587,7 +537,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, UpdateMigrationItemInputProperties properties = default(UpdateMigrationItemInputProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to delete an ASR migration item.
+        /// </summary>
+        /// <remarks>
+        /// The operation to delete an ASR migration item.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the Vault
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name.
+        /// </param>
+        /// <param name='protectionContainerName'>
+        /// Protection container name.
+        /// </param>
+        /// <param name='migrationItemName'>
+        /// Migration item name.
+        /// </param>
+        /// <param name='deleteOption'>
+        /// The delete option.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReplicationMigrationItemsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, string deleteOption = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate migration of the item.
@@ -596,11 +581,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate migration of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -626,7 +610,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsMigrateHeaders>> BeginMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, MigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate pause replication of the item.
@@ -635,11 +619,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate pause replication of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -665,7 +648,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginPauseReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsPauseReplicationHeaders>> BeginPauseReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, PauseReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate resume replication of the item.
@@ -674,11 +657,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate resume replication of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -704,7 +686,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginResumeReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsResumeReplicationHeaders>> BeginResumeReplicationWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResumeReplicationInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to resynchronize replication of an ASR migration item.
@@ -713,11 +695,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to resynchronize replication of an ASR migration item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -743,7 +724,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginResyncWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsResyncHeaders>> BeginResyncWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, ResyncInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate test migration of the item.
@@ -752,11 +733,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate test migration of the item.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -782,7 +762,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginTestMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsTestMigrateHeaders>> BeginTestMigrateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation to initiate test migrate cleanup.
@@ -791,11 +771,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operation to initiate test migrate cleanup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -821,7 +800,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem>> BeginTestMigrateCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrationItem,ReplicationMigrationItemsTestMigrateCleanupHeaders>> BeginTestMigrateCleanupWithHttpMessagesAsync(string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, string migrationItemName, TestMigrateCleanupInputProperties properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the list of ASR migration items in the protection container.

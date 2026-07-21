@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnabledState, global::System.Convert.ToString);
             }
+            if (content.Contains("EnforceMtl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnforceMtl, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -124,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("EnabledState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnabledState, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnforceMtl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesInternal)this).EnforceMtl, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {
