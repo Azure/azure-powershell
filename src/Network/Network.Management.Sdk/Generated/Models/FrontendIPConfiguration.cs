@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Frontend IP address of the load balancer.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FrontendIPConfiguration : SubResource
+    public partial class FrontendIPConfiguration : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the FrontendIPConfiguration class.
@@ -28,15 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of frontend IP
-        /// configurations used by the load balancer. This name can be used to access
-        /// the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="zones">A list of availability zones denoting the IP allocated for the resource
@@ -80,13 +78,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="gatewayLoadBalancer">The reference to gateway load balancer frontend IP.
         /// </param>
-        public FrontendIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), SubResource gatewayLoadBalancer = default(SubResource))
 
-        : base(id)
+        /// <param name="ddosSettings">The DDoS protection settings associated with the frontend IP configuration.
+        /// </param>
+        public FrontendIPConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), SubResource gatewayLoadBalancer = default(SubResource), DdosFrontendIpConfigurationSettings ddosSettings = default(DdosFrontendIpConfigurationSettings))
+
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.Zones = zones;
             this.Subnet = subnet;
             this.ProvisioningState = provisioningState;
@@ -100,6 +99,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PublicIPAddress = publicIPAddress;
             this.PublicIPPrefix = publicIPPrefix;
             this.GatewayLoadBalancer = gatewayLoadBalancer;
+            this.DdosSettings = ddosSettings;
             CustomInit();
         }
 
@@ -110,25 +110,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of
-        /// frontend IP configurations used by the load balancer. This name can be used
-        /// to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets a list of availability zones denoting the IP allocated for the
@@ -210,5 +196,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.gatewayLoadBalancer")]
         public SubResource GatewayLoadBalancer {get; set; }
+
+        /// <summary>
+        /// Gets or sets the DDoS protection settings associated with the frontend IP
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ddosSettings")]
+        public DdosFrontendIpConfigurationSettings DdosSettings {get; set; }
     }
 }

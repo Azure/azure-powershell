@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AddressPrefixType
     {
+        /// <summary>
+        /// IPPrefix
+        /// </summary>
         public const string IPPrefix = "IPPrefix";
+        /// <summary>
+        /// ServiceTag
+        /// </summary>
         public const string ServiceTag = "ServiceTag";
+        /// <summary>
+        /// NetworkGroup
+        /// </summary>
         public const string NetworkGroup = "NetworkGroup";
     }
 }

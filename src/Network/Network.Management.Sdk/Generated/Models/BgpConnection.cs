@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Virtual Appliance Site resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BgpConnection : SubResource
+    public partial class BgpConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the BgpConnection class.
@@ -28,18 +28,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">Name of the connection.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="type">Connection type.
-        /// </param>
-
         /// <param name="provisioningState">The provisioning state of the resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
+
+        /// <param name="routingConfiguration">The routing configuration indicating the associated and propagated route
+        /// tables for this connection.
+        /// </param>
 
         /// <param name="peerAsn">Peer ASN.
         /// </param>
@@ -53,14 +57,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionState">The current state of the VirtualHub to Peer.
         /// Possible values include: &#39;Unknown&#39;, &#39;Connecting&#39;, &#39;Connected&#39;,
         /// &#39;NotConnected&#39;</param>
-        public BgpConnection(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string connectionState = default(string))
+        public BgpConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string connectionState = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
+            this.RoutingConfiguration = routingConfiguration;
             this.PeerAsn = peerAsn;
             this.PeerIP = peerIP;
             this.HubVirtualNetworkConnection = hubVirtualNetworkConnection;
@@ -75,12 +78,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of the connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
@@ -88,16 +85,17 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets connection type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the routing configuration indicating the associated and
+        /// propagated route tables for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routingConfiguration")]
+        public RoutingConfiguration RoutingConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets peer ASN.
@@ -137,7 +135,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
 
 
 
