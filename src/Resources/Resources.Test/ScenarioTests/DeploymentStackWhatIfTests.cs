@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         // ---- Resource Group Scope ----
 
-        // Validates creating RG-scope WhatIf results with template parameters, identity fields, property changes, and missing template errors.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupDeploymentStackWhatIfResult()
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates updating an existing RG-scope WhatIf result and preserving expected identity fields across action-on-unmanage changes.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetResourceGroupDeploymentStackWhatIfResult()
@@ -42,7 +40,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetResourceGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates listing and getting RG-scope WhatIf results by name, including list membership and not-found handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceGroupDeploymentStackWhatIfResult()
@@ -50,7 +47,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates removing an RG-scope WhatIf result and confirming it is no longer returned by direct get or list.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveResourceGroupDeploymentStackWhatIfResult()
@@ -58,7 +54,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveResourceGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates New RG-scope WhatIf result output includes property changes and does not render null deployment-scope text.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges()
@@ -66,7 +61,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges");
         }
 
-        // Validates RG-scope Get with -WithPropertyChanges uses the WhatIf POST path and returns resource-change details.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceGroupDeploymentStackWhatIfWithPropertyChanges()
@@ -74,7 +68,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges");
         }
 
-        // Validates RG-scope Get by ResourceId resolves the correct WhatIf result and rejects malformed resource IDs.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceGroupDeploymentStackWhatIfResultByResourceId()
@@ -84,7 +77,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         // ---- Subscription Scope ----
 
-        // Validates creating subscription-scope WhatIf results, identity fields, missing template errors, and explicit unavailable-service handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSubscriptionDeploymentStackWhatIfResult()
@@ -92,7 +84,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIfResult");
         }
 
-        // Validates updating subscription-scope WhatIf results when available, including action-on-unmanage changes and unavailable-service handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetSubscriptionDeploymentStackWhatIfResult()
@@ -100,7 +91,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetSubscriptionDeploymentStackWhatIfResult");
         }
 
-        // Validates listing and getting subscription-scope WhatIf results by name when available, including not-found handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionDeploymentStackWhatIfResult()
@@ -108,7 +98,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfResult");
         }
 
-        // Validates removing subscription-scope WhatIf results when available and confirming direct get/list no longer return them.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSubscriptionDeploymentStackWhatIfResult()
@@ -116,7 +105,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveSubscriptionDeploymentStackWhatIfResult");
         }
 
-        // Validates New subscription-scope WhatIf output formatting and property handling, with explicit unavailable-service handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges()
@@ -124,7 +112,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges");
         }
 
-        // Validates subscription-scope Get with -WithPropertyChanges when available and skips follow-up checks only after asserting unavailable service.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionDeploymentStackWhatIfWithPropertyChanges()
@@ -132,7 +119,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges");
         }
 
-        // Validates subscription-scope Get by ResourceId and malformed ResourceId errors when the service creates a result.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionDeploymentStackWhatIfResultByResourceId()
@@ -142,7 +128,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         // ---- Management Group Scope ----
 
-        // Validates creating management-group-scope WhatIf results with a configurable management group and unavailable-service handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroupDeploymentStackWhatIfResult()
@@ -150,7 +135,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates updating management-group-scope WhatIf results when available, including identity fields and action-on-unmanage changes.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetManagementGroupDeploymentStackWhatIfResult()
@@ -158,7 +142,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SetManagementGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates listing and getting management-group-scope WhatIf results by name, including list membership and not-found handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupDeploymentStackWhatIfResult()
@@ -166,7 +149,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates removing management-group-scope WhatIf results and confirming they are no longer returned.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagementGroupDeploymentStackWhatIfResult()
@@ -174,7 +156,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveManagementGroupDeploymentStackWhatIfResult");
         }
 
-        // Validates New management-group-scope WhatIf output formatting and property handling, with explicit unavailable-service handling.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges()
@@ -182,7 +163,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges");
         }
 
-        // Validates management-group-scope Get with -WithPropertyChanges when available and identity fields across GET/POST paths.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupDeploymentStackWhatIfWithPropertyChanges()
@@ -190,7 +170,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges");
         }
 
-        // Validates management-group-scope Get by ResourceId and malformed ResourceId errors when the service creates a result.
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupDeploymentStackWhatIfResultByResourceId()

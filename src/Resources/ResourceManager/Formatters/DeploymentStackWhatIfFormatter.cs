@@ -490,14 +490,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             this.builder.PushIndent(new string(' ', IndentSize));
 
-            if (resourceChange.ManagementStatusChange != null)
-            {
-                FormatPrimitiveChange(resourceChange.ManagementStatusChange, "Management Status");
-            }
+            bool hasManagementStatusChange = resourceChange.ManagementStatusChange != null;
+            bool hasDenyStatusChange = resourceChange.DenyStatusChange != null;
 
-            if (resourceChange.DenyStatusChange != null)
+            if (hasManagementStatusChange || hasDenyStatusChange)
             {
-                FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status");
+                this.builder.AppendIndent();
+
+                if (hasManagementStatusChange)
+                {
+                    FormatPrimitiveChange(resourceChange.ManagementStatusChange, "Management Status", appendIndent: false, appendNewLine: false);
+                }
+
+                if (hasManagementStatusChange && hasDenyStatusChange)
+                {
+                    this.builder.Append("  ");
+                }
+
+                if (hasDenyStatusChange)
+                {
+                    FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status", appendIndent: false, appendNewLine: false);
+                }
+
+                this.builder.AppendLine();
             }
 
             if (resourceChange.ResourceConfigurationChanges?.Delta != null)
@@ -689,7 +704,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return $"{level}:{code}";
         }
 
-        private bool FormatPrimitiveChange(object change, string path)
+        private bool FormatPrimitiveChange(object change, string path, bool appendIndent = true, bool appendNewLine = true)
         {
             var baseChange = change as PSDeploymentStackWhatIfChangeBase;
             var propertyChange = change as PSDeploymentStackWhatIfPropertyChange;
@@ -710,17 +725,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             var (symbol, color) = GetChangeTypeFormatting(changeType);
 
-            this.builder.AppendIndent().Append(symbol, color).Append(" ");
+            if (appendIndent)
+            {
+                this.builder.AppendIndent();
+            }
+
+            this.builder.Append(symbol, color).Append(" ");
             this.builder.Append(path).Append(": ");
 
             if (string.Equals(changeType, "Modify", StringComparison.OrdinalIgnoreCase))
             {
-                this.builder.Append($"{FormatValue(before)} => {FormatValue(after)}", color).AppendLine();
+                this.builder.Append($"{FormatValue(before)} => {FormatValue(after)}", color);
             }
             else
             {
                 object value = string.Equals(changeType, "Delete", StringComparison.OrdinalIgnoreCase) ? before : after;
-                this.builder.Append(FormatValue(value)).AppendLine();
+                this.builder.Append(FormatValue(value));
+            }
+
+            if (appendNewLine)
+            {
+                this.builder.AppendLine();
             }
 
             return true;

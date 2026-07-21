@@ -53,6 +53,86 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         private void WriteError(string msg) => ErrorLogger?.Invoke(msg);
         private void WriteWarning(string msg) => WarningLogger?.Invoke(msg);
 
+        private static bool IsWhatIfApiUnavailable(ErrorResponseException exception)
+        {
+            var statusCode = exception?.Response?.StatusCode;
+            string errorCode = exception?.Body?.Error?.Code;
+            string errorMessage = exception?.Body?.Error?.Message;
+
+            if (statusCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                return string.Equals(errorCode, "DeploymentStackWhatIfOperationFailed", StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (statusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return string.Equals(errorCode, "ResourceNotFound", StringComparison.OrdinalIgnoreCase) ||
+                       string.Equals(errorCode, "DeploymentStackWhatIfResourceNotFound", StringComparison.OrdinalIgnoreCase) ||
+                       string.Equals(errorCode, "NoRegisteredProviderFound", StringComparison.OrdinalIgnoreCase) ||
+                       string.Equals(errorCode, "InvalidResourceType", StringComparison.OrdinalIgnoreCase);
+            }
+
+            return statusCode == System.Net.HttpStatusCode.BadRequest &&
+                   errorMessage?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private PSDeploymentStackWhatIfResult CreateUnavailableWhatIfResult(
+            string deploymentStackName,
+            DeploymentStacksWhatIfResult request,
+            string stackResourceId,
+            string retentionInterval,
+            string deploymentScope,
+            bool bypassStackOutOfSyncError,
+            ErrorResponseException serviceError)
+        {
+            string resolvedStackResourceId = request?.Properties?.DeploymentStackResourceId ?? stackResourceId;
+            string resolvedRetentionInterval = !string.IsNullOrEmpty(retentionInterval)
+                ? retentionInterval
+                : System.Xml.XmlConvert.ToString(request?.Properties?.RetentionInterval ?? TimeSpan.FromHours(2));
+            string errorCode = serviceError?.Body?.Error?.Code ?? "WhatIfApiUnavailable";
+            string errorMessage = serviceError?.Body?.Error?.Message ?? serviceError?.Message;
+            var serviceErrorInfo = new JObject
+            {
+                ["httpStatusCode"] = serviceError?.Response != null ? (int)serviceError.Response.StatusCode : (int?)null,
+                ["httpStatus"] = serviceError?.Response?.StatusCode.ToString(),
+                ["details"] = serviceError?.Body?.Error?.Details != null
+                    ? JToken.FromObject(serviceError.Body.Error.Details)
+                    : new JArray()
+            };
+
+            return new PSDeploymentStackWhatIfResult
+            {
+                Name = deploymentStackName,
+                Type = "Microsoft.Resources/deploymentStacksWhatIfResults",
+                Properties = new PSDeploymentStackWhatIfProperties
+                {
+                    DeploymentStackResourceId = resolvedStackResourceId,
+                    RetentionInterval = resolvedRetentionInterval,
+                    ProvisioningState = "What-If API not available",
+                    DeploymentScope = request?.Properties?.DeploymentScope ?? deploymentScope,
+                    BypassStackOutOfSyncError = bypassStackOutOfSyncError,
+                    Diagnostics = new List<PSDeploymentStackWhatIfDiagnostic>
+                    {
+                        new PSDeploymentStackWhatIfDiagnostic
+                        {
+                            Level = "Warning",
+                            Code = errorCode,
+                            Message = errorMessage,
+                            Target = serviceError?.Body?.Error?.Target ?? resolvedStackResourceId,
+                            AdditionalInfo = new JArray
+                            {
+                                new JObject
+                                {
+                                    ["type"] = "ServiceError",
+                                    ["info"] = serviceErrorInfo
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
         public DeploymentStacksWhatIfResult WaitWhatIfResultCompletion(
             DeploymentStacksWhatIfResult initialResult,
             Func<DeploymentStacksWhatIfResult> getResult,
@@ -592,12 +672,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string validationLevel = null,
             string debugSettingDetailLevel = null)
         {
+            DeploymentStacksWhatIfResult whatIfRequest = null;
+
             try
             {
                 WriteVerbose($"Executing What-If for deployment stack '{deploymentStackName}' in resource group '{resourceGroupName}'");
 
                 // Step 1: Create what-if result object to submit
-                var whatIfRequest = CreateDeploymentStacksWhatIfResult(
+                whatIfRequest = CreateDeploymentStacksWhatIfResult(
                     location: null,
                     templateFile,
                     templateUri,
@@ -667,10 +749,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ConvertToPSDeploymentStackWhatIfResult(finalResult);
                 }
             }
-            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound ||
-                                                     ex.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError ||
-                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
-                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            catch (ErrorResponseException ex) when (IsWhatIfApiUnavailable(ex))
             {
                 // What-If API not available - provide informational message
                 WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
@@ -680,19 +759,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
                 WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
                 WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
-                
-                // Return a basic result indicating What-If is not supported
-                var notSupportedResult = new PSDeploymentStackWhatIfResult
-                {
-                    Name = deploymentStackName,
-                    Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new PSDeploymentStackWhatIfProperties
-                    {
-                        ProvisioningState = "What-If API not available"
-                    }
-                };
-                
-                return notSupportedResult;
+                WriteWarning($"  Service Error: {ex.Body?.Error?.Code ?? ex.Response?.StatusCode.ToString()} - {ex.Body?.Error?.Message ?? ex.Message}");
+
+                return CreateUnavailableWhatIfResult(
+                    deploymentStackName,
+                    whatIfRequest,
+                    stackResourceId,
+                    retentionInterval,
+                    deploymentScope: null,
+                    bypassStackOutOfSyncError,
+                    ex);
             }
             catch (ErrorResponseException ex)
             {
@@ -740,12 +816,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string validationLevel = null,
             string debugSettingDetailLevel = null)
         {
+            DeploymentStacksWhatIfResult whatIfRequest = null;
+
             try
             {
                 WriteVerbose($"Executing What-If for deployment stack '{deploymentStackName}' at subscription scope");
 
                 // Create what-if result object to submit
-                var whatIfRequest = CreateDeploymentStacksWhatIfResult(
+                whatIfRequest = CreateDeploymentStacksWhatIfResult(
                     location,
                     templateFile,
                     templateUri,
@@ -809,10 +887,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ConvertToPSDeploymentStackWhatIfResult(finalResult);
                 }
             }
-            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound ||
-                                                     ex.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError ||
-                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
-                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            catch (ErrorResponseException ex) when (IsWhatIfApiUnavailable(ex))
             {
                 // What-If API not available - provide informational message
                 WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
@@ -822,19 +897,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
                 WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
                 WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
-                
-                // Return a basic result indicating What-If is not supported
-                var notSupportedResult = new PSDeploymentStackWhatIfResult
-                {
-                    Name = deploymentStackName,
-                    Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new PSDeploymentStackWhatIfProperties
-                    {
-                        ProvisioningState = "What-If API not available"
-                    }
-                };
-                
-                return notSupportedResult;
+                WriteWarning($"  Service Error: {ex.Body?.Error?.Code ?? ex.Response?.StatusCode.ToString()} - {ex.Body?.Error?.Message ?? ex.Message}");
+
+                return CreateUnavailableWhatIfResult(
+                    deploymentStackName,
+                    whatIfRequest,
+                    stackResourceId,
+                    retentionInterval,
+                    deploymentScope,
+                    bypassStackOutOfSyncError,
+                    ex);
             }
             catch (ErrorResponseException ex)
             {
@@ -883,12 +955,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string validationLevel = null,
             string debugSettingDetailLevel = null)
         {
+            DeploymentStacksWhatIfResult whatIfRequest = null;
+
             try
             {
                 WriteVerbose($"Executing What-If for deployment stack '{deploymentStackName}' in management group '{managementGroupId}'");
 
                 // Create what-if result object to submit
-                var whatIfRequest = CreateDeploymentStacksWhatIfResult(
+                whatIfRequest = CreateDeploymentStacksWhatIfResult(
                     location,
                     templateFile,
                     templateUri,
@@ -957,10 +1031,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ConvertToPSDeploymentStackWhatIfResult(finalResult);
                 }
             }
-            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound ||
-                                                     ex.Response.StatusCode == System.Net.HttpStatusCode.InternalServerError ||
-                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
-                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            catch (ErrorResponseException ex) when (IsWhatIfApiUnavailable(ex))
             {
                 // What-If API not available - provide informational message
                 WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
@@ -971,19 +1042,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
                 WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
                 WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
-                
-                // Return a basic result indicating What-If is not supported
-                var notSupportedResult = new PSDeploymentStackWhatIfResult
-                {
-                    Name = deploymentStackName,
-                    Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new PSDeploymentStackWhatIfProperties
-                    {
-                        ProvisioningState = "What-If API not available"
-                    }
-                };
-                
-                return notSupportedResult;
+                WriteWarning($"  Service Error: {ex.Body?.Error?.Code ?? ex.Response?.StatusCode.ToString()} - {ex.Body?.Error?.Message ?? ex.Message}");
+
+                return CreateUnavailableWhatIfResult(
+                    deploymentStackName,
+                    whatIfRequest,
+                    stackResourceId,
+                    retentionInterval,
+                    deploymentScope,
+                    bypassStackOutOfSyncError,
+                    ex);
             }
             catch (ErrorResponseException ex)
             {
