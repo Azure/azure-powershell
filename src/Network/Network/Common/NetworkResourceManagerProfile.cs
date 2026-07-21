@@ -1087,6 +1087,24 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.NextHopIPAddress)
                     );
 
+                // RouteNextHopEcmp (ECMP next hop for VirtualApplianceEcmp routes)
+                // NOTE: The SDK models an upper bound of 64 next hop IP addresses, but the
+                // effective maximum enforced by the service is 16 (the SDK does not reflect this).
+                // AutoMapper only copies the list; the count limit is validated server-side.
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSRouteNextHopEcmp, MNM.RouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIPAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIpAddresses)
+                    );
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.RouteNextHopEcmp, CNM.PSRouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIpAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIPAddresses)
+                    );
+
                 // EffectiveRouteTable
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEffectiveRoute, MNM.EffectiveRoute>()
@@ -1473,6 +1491,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
+                cfg.CreateMap<CNM.PSApplicationGatewayManagedHsm, MNM.ApplicationGatewayManagedHsm>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>()
                     .AfterMap((src, dest) =>
                     {
@@ -1578,6 +1597,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
                 cfg.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
+                cfg.CreateMap<MNM.ApplicationGatewayManagedHsm, CNM.PSApplicationGatewayManagedHsm>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPolicy, CNM.PSApplicationGatewaySslPolicy>()
                     .AfterMap((src, dest) =>
                     {

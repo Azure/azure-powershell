@@ -15,8 +15,8 @@ Creates an SSL certificate for an Azure application gateway.
 
 ```
 New-AzApplicationGatewaySslCertificate -Name <String> [-CertificateFile <String>] [-Password <SecureString>]
- [-KeyVaultSecretId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-KeyVaultSecretId <String>] [-HsmKeyId <String>] [-HsmPublicCertData <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +51,13 @@ $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId 
 
 Get the secret and create an SSL Certificate using `New-AzApplicationGatewaySslCertificate`.
 Note: If it is required that Application Gateway syncs the certificate with the KeyVault, please provide the version-less secretId.
+
+### Example 4: Create an SSL certificate using Managed HSM and add to an application gateway.
+```powershell
+$cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -HsmKeyId "https://myhsm.managedhsm.azure.net/keys/mykey/abc123"
+```
+
+Create an SSL Certificate referencing a key stored in Managed HSM using `New-AzApplicationGatewaySslCertificate`.
 
 ## PARAMETERS
 
@@ -106,6 +113,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmKeyId
+Key identifier of a key stored in Managed HSM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HsmPublicCertData
+Base-64 encoded public certificate data corresponding to the key stored in Managed HSM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
