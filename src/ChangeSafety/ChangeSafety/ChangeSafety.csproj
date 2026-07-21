@@ -20,6 +20,7 @@
   <!-- Assets -->
   <ItemGroup>
     <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Az.$(PsModuleName).format.ps1xml" CopyToOutputDirectory="PreserveNewest" />
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
