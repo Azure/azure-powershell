@@ -37,4 +37,3 @@
     - `Update-AzChangeSafetyStageProgression`
     - `Remove-AzChangeSafetyStageProgression`
 * Custom cmdlets with simplified `-Targets` parameter for ChangeRecord operations
-
