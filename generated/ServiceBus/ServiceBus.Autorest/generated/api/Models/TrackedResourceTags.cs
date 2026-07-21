@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>Resource tags</summary>
+    /// <summary>Resource tags.</summary>
     public partial class TrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTagsInternal
@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         }
     }
-    /// Resource tags
+    /// Resource tags.
     public partial interface ITrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Resource tags
+    /// Resource tags.
     internal partial interface ITrackedResourceTagsInternal
 
     {

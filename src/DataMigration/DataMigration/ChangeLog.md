@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Removed the authentication key from console output.
+
 ## Version 1.1.0
 * Added ChangeSafety Support
 * [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)

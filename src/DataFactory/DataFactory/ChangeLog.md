@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.20.1
+* Updated `System.IO.FileSystem.AccessControl` dependency from `4.5.0` to `5.0.0`.
+
 ## Version 1.20.0
 * Added ChangeSafety Support
 * Added 'Microsoft.DataTransfer.Gateway.Encryption.dll' to the Authenticode signing target in the release pipeline
