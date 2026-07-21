@@ -1,0 +1,143 @@
+{
+  "resourceType": "changeRecords/stageProgressions",
+  "apiVersion": "2026-01-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.changesafety"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChangeSafetyStageProgression",
+      "description": "Get a ChangeRecordStageProgression",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ChangeSafety/changeRecords/{changeRecordName}/stageProgressions/{stageProgressionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/get-azchangesafetystageprogression"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ChangeRecordName <String>",
+              "-StageProgressionName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-ChangeRecordName <String>",
+              "-ResourceGroupName <String>",
+              "-StageProgressionName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ChangeRecordStageProgression",
+          "parameters": [
+            {
+              "name": "-ChangeRecordName",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-StageProgressionName",
+              "value": "[Path.stageProgressionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Get a ChangeRecordStageProgression",
+          "parameters": [
+            {
+              "name": "-ChangeRecordName",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StageProgressionName",
+              "value": "[Path.stageProgressionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzChangeSafetyStageProgression",
+      "description": "Delete a ChangeRecordStageProgression",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ChangeSafety/changeRecords/{changeRecordName}/stageProgressions/{stageProgressionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.changesafety/remove-azchangesafetystageprogression"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ChangeRecordName <String>",
+              "-StageProgressionName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-ChangeRecordName <String>",
+              "-ResourceGroupName <String>",
+              "-StageProgressionName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ChangeRecordStageProgression",
+          "parameters": [
+            {
+              "name": "-ChangeRecordName",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-StageProgressionName",
+              "value": "[Path.stageProgressionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Delete a ChangeRecordStageProgression",
+          "parameters": [
+            {
+              "name": "-ChangeRecordName",
+              "value": "[Path.changeRecordName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StageProgressionName",
+              "value": "[Path.stageProgressionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
