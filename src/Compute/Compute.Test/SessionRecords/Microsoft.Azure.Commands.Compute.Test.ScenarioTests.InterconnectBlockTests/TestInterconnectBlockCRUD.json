@@ -1,0 +1,2127 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourcegroups/crptestps8012?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczgwMTI/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b90e6c03-6b41-4e25-8e4f-6f3658e7c1d7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "6e5bdea0-772f-4522-b0ca-b9b0a0e9dfb4"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e5bdea0-772f-4522-b0ca-b9b0a0e9dfb4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185558Z:6e5bdea0-772f-4522-b0ca-b9b0a0e9dfb4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 896B2AA556944C16A3E05C4E6E267037 Ref B: MWH011020807034 Ref C: 2026-07-21T18:55:56Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:55:57 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012\",\r\n  \"name\": \"crptestps8012\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012?api-version=2025-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2ludGVyY29ubmVjdEdyb3Vwcy9pY2djcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjUtMDctMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "eae0dd7e-fe87-4611-9bed-14bcf0cbdc8e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Internal.Common.AzureRestClient/1.3.113"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"subgroupProfile\": {\r\n      \"size\": 18,\r\n      \"scope\": \"VerticalConnect\",\r\n      \"vmSize\": \"Standard_ND128isr_GB300_v6\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5555858a-a070-463b-8ef7-522b07266ac2"
+        ],
+        "x-ms-throttle-levels": [
+          "operationRatePct=0.1, operationConcurrencyPct=0.3, subscriptionWriteRatePct=0.6, etc"
+        ],
+        "x-ms-correlation-request-id": [
+          "4791bd51-c1c6-4ef1-9e26-4aebc6f8021d"
+        ],
+        "x-ms-arm-service-request-id": [
+          "ad436add-52f9-4805-863f-02aa722fdcf2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/westus2/2f873bb9-6eac-43eb-b9c6-779277f9572b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185600Z:4791bd51-c1c6-4ef1-9e26-4aebc6f8021d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AA4018FD735F4D6A9A2D34193EB131AA Ref B: MWH011020806031 Ref C: 2026-07-21T18:55:58Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:00 GMT"
+        ],
+        "Content-Length": [
+          "533"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icgcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\",\r\n  \"etag\": \"W/\\\"3952499b-6c17-4d71-9499-90b61d3be361\\\"\",\r\n  \"type\": \"Microsoft.Network/interconnectGroups\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"eba7f593-cd4f-4845-a38e-cf3900549938\",\r\n    \"scope\": \"InfiniBand\",\r\n    \"subgroupProfile\": {\r\n      \"vmSize\": \"Standard_ND128isr_GB300_v6\",\r\n      \"scope\": \"VerticalConnect\",\r\n      \"size\": 18\r\n    },\r\n    \"subgroups\": []\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "ca39e97a-104a-4d57-a89b-f745ddb1195c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "466"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    }\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/b9687283-897a-4b12-94df-b003cc92abc3?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202569644929004&c=MIIH9TCCBt2gAwIBAgIRAIv6bqY7SwhL3LG8FAICEKMwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MjAxOTMxMjBaFw0yNzAxMTYwMTMxMjBaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA60XvbHp6raPh7-g9YtwjAqWd8-7lJaqYevbtT_chcmJKVGCqalDpcpjm1c7dJ0qttCqzgccGmOaUWRed2_AMGGNlJShP44ilyJABuOT-EaoRkb3opVLWjv64yC_HkTxj2rVcdFdi0mzKyfN-4xe_IO6lAgKTxPPX2W5koMP89MUtB9_TIF0ZmAmHkUJ2buzabC1mfecmfqeNzrWGwtYHEeBWwdbVL2G8hvN1QfQR8Fn7voXnu_aco27ks_o_kTCamRZw9DWQxrZpUKOcr-oF3519-slXDvongk1J2qEhVwm4ubCSPVapkQk-IT3Ta9s8LWV2Xxc4kK3ltL6a3X8HsQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUQVGqcnvgw6L4YX39W1RhWMO33mMwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82My9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjMvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALvKIKeG4LLHrBV6i-dD6mlha6SyIEw86psNUSqq7gX5SSbyC2LJl0hFPP6eZnQIrAgslagPJmiu8xxyQWfXEKPk7iNcOu63xs7xRhS-vgQ0kFSP5UxHToK0eCIC8X2PnmZ7uEC9lLcC8zR4xTCvuFX0aJc2tjjIiJnrnU8CZ8y8Tp6poCS2KvpJk1Rk2x5p-AouDt-0UkRsaEIlvVM95rgiZ4yKxGKzI02X8n3p__rHt7iaxLW9fSrXQnyDr5zIzVd9UvUEpXgp3vGpV6iDTwYvEwQbg3Lj4sYLyDjKV2rOvDeOPa6rGbGc3mvGUerYDmqPuw4XWatkr7IoISbVPeg&s=Gl10e_11IFzvGrAXcYZXwrD5FXjMpHb2iwtzF9cyLatf2zmnWKlF3pplPaVTwAaao6WmBRXD5ro8FDx0wWp_Io7mhPsHMFpYYJAD47D1R4PaNFqONl5sVMbicy4IlhhNDAtI_r3GnO-hk4K0xTHgiknicMMNXYFIGdOPNSEH4i05BqLe5cL1ywKLcjS-atn7fomm51to9y32-ASXyzPWHBzcv2pZXGlIUMsIc-i1OkTvKxa7TFgzqVV94u000ttVgf9NECpOX_iwtLXiTLeIlY_SQUfTeQvtbcmiCj3TkgMyHQQYxvMYYbzSB_lFt1viV5FtYDIxYFB8Sc1Gy1FEwg&h=hqam8BFXOdczxjc4Kv-ZnQdRETtELShx_InkD3AuL2c"
+        ],
+        "azure-asyncnotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/PutDeleteInterconnectBlockSubscriptionMaximum;119"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b9687283-897a-4b12-94df-b003cc92abc3"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/19ff8fa5-7b79-4b5c-a03c-9f88283c6695"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ae37042-c410-444f-9ed8-e8bc50633dd4"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185604Z:9ae37042-c410-444f-9ed8-e8bc50633dd4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D68ADDFCC35640A48AA1EA4767EC25AD Ref B: CO6AA3150220047 Ref C: 2026-07-21T18:56:00Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:04 GMT"
+        ],
+        "Content-Length": [
+          "1027"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Result\": {\r\n    \"name\": \"icbcrptestps8012\",\r\n    \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n    \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n    \"location\": \"eastus2euap\",\r\n    \"tags\": {\r\n      \"Project\": \"ICB-CRUD\",\r\n      \"Environment\": \"Test\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"Standard_ND128isr_GB300_v6\",\r\n      \"capacity\": 18\r\n    },\r\n    \"placement\": {\r\n      \"zonePlacementPolicy\": \"Any\"\r\n    },\r\n    \"properties\": {\r\n      \"interconnectGroup\": {\r\n        \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n      },\r\n      \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n      \"provisioningState\": \"Creating\"\r\n    }\r\n  },\r\n  \"Id\": 19121649,\r\n  \"Status\": \"RanToCompletion\",\r\n  \"IsCanceled\": false,\r\n  \"IsCompleted\": true,\r\n  \"CreationOptions\": \"None\",\r\n  \"IsFaulted\": false\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/b9687283-897a-4b12-94df-b003cc92abc3?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202569644929004&c=MIIH9TCCBt2gAwIBAgIRAIv6bqY7SwhL3LG8FAICEKMwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MjAxOTMxMjBaFw0yNzAxMTYwMTMxMjBaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA60XvbHp6raPh7-g9YtwjAqWd8-7lJaqYevbtT_chcmJKVGCqalDpcpjm1c7dJ0qttCqzgccGmOaUWRed2_AMGGNlJShP44ilyJABuOT-EaoRkb3opVLWjv64yC_HkTxj2rVcdFdi0mzKyfN-4xe_IO6lAgKTxPPX2W5koMP89MUtB9_TIF0ZmAmHkUJ2buzabC1mfecmfqeNzrWGwtYHEeBWwdbVL2G8hvN1QfQR8Fn7voXnu_aco27ks_o_kTCamRZw9DWQxrZpUKOcr-oF3519-slXDvongk1J2qEhVwm4ubCSPVapkQk-IT3Ta9s8LWV2Xxc4kK3ltL6a3X8HsQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUQVGqcnvgw6L4YX39W1RhWMO33mMwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82My9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjMvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALvKIKeG4LLHrBV6i-dD6mlha6SyIEw86psNUSqq7gX5SSbyC2LJl0hFPP6eZnQIrAgslagPJmiu8xxyQWfXEKPk7iNcOu63xs7xRhS-vgQ0kFSP5UxHToK0eCIC8X2PnmZ7uEC9lLcC8zR4xTCvuFX0aJc2tjjIiJnrnU8CZ8y8Tp6poCS2KvpJk1Rk2x5p-AouDt-0UkRsaEIlvVM95rgiZ4yKxGKzI02X8n3p__rHt7iaxLW9fSrXQnyDr5zIzVd9UvUEpXgp3vGpV6iDTwYvEwQbg3Lj4sYLyDjKV2rOvDeOPa6rGbGc3mvGUerYDmqPuw4XWatkr7IoISbVPeg&s=Gl10e_11IFzvGrAXcYZXwrD5FXjMpHb2iwtzF9cyLatf2zmnWKlF3pplPaVTwAaao6WmBRXD5ro8FDx0wWp_Io7mhPsHMFpYYJAD47D1R4PaNFqONl5sVMbicy4IlhhNDAtI_r3GnO-hk4K0xTHgiknicMMNXYFIGdOPNSEH4i05BqLe5cL1ywKLcjS-atn7fomm51to9y32-ASXyzPWHBzcv2pZXGlIUMsIc-i1OkTvKxa7TFgzqVV94u000ttVgf9NECpOX_iwtLXiTLeIlY_SQUfTeQvtbcmiCj3TkgMyHQQYxvMYYbzSB_lFt1viV5FtYDIxYFB8Sc1Gy1FEwg&h=hqam8BFXOdczxjc4Kv-ZnQdRETtELShx_InkD3AuL2c",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdFVTMkVVQVAvb3BlcmF0aW9ucy9iOTY4NzI4My04OTdhLTRiMTItOTRkZi1iMDAzY2M5MmFiYzM/cD05Mzk0YjRkZi0zNzIyLTQxOWMtOWJhZS0zMDYwZWIzZjdkYjEmYXBpLXZlcnNpb249MjAyNi0wMy0wMSZ0PTYzOTIwMjU2OTY0NDkyOTAwNCZjPU1JSUg5VENDQnQyZ0F3SUJBZ0lSQUl2NmJxWTdTd2hMM0xHOEZBSUNFS013RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlV5UXlCRFFTQXdNVEFlRncweU5qQTNNakF4T1RNeE1qQmFGdzB5TnpBeE1UWXdNVE14TWpCYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQTYwWHZiSHA2cmFQaDctZzlZdHdqQXFXZDgtN2xKYXFZZXZidFRfY2hjbUpLVkdDcWFsRHBjcGptMWM3ZEowcXR0Q3F6Z2NjR21PYVVXUmVkMl9BTUdHTmxKU2hQNDRpbHlKQUJ1T1QtRWFvUmtiM29wVkxXanY2NHlDX0hrVHhqMnJWY2RGZGkwbXpLeWZOLTR4ZV9JTzZsQWdLVHhQUFgyVzVrb01QODlNVXRCOV9USUYwWm1BbUhrVUoyYnV6YWJDMW1mZWNtZnFlTnpyV0d3dFlIRWVCV3dkYlZMMkc4aHZOMVFmUVI4Rm43dm9YbnVfYWNvMjdrc19vX2tUQ2FtUlp3OURXUXhyWnBVS09jci1vRjM1MTktc2xYRHZvbmdrMUoycUVoVndtNHViQ1NQVmFwa1FrLUlUM1RhOXM4TFdWMlh4YzRrSzNsdEw2YTNYOEhzUUlEQVFBQm80SUU4akNDQk80d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVUVZHcWNudmd3Nkw0WVgzOVcxUmhXTU8zM21Nd0h3WURWUjBqQkJnd0ZvQVV6MUVCcXVsRExHUjJHMHJ3cXNEeWt2aFB3N3N3Z2dIaUJnTlZIUjhFZ2dIWk1JSUIxVEIxb0hPZ2NZWnZhSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WXpMMk4xY25KbGJuUXVZM0pzTUhlZ2RhQnpobkZvZEhSd09pOHZjMlZqYjI1a1lYSjVMV05rYmk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWxZWE4wZFhNeVpYVmhjQzlqY214ekwyTmpiV1ZsWVhOMGRYTXlaWFZoY0hCcmFTOWpZMjFsWldGemRIVnpNbVYxWVhCcFkyRXdNUzgyTXk5amRYSnlaVzUwTG1OeWJEQm1vR1NnWW9aZ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WXpMMk4xY25KbGJuUXVZM0pzTUh1Z2VhQjNoblZvZEhSd09pOHZZMk50WldWaGMzUjFjekpsZFdGd2NHdHBMbVZoYzNSMWN6SmxkV0Z3TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKbGRXRndhV05oTURFdk5qTXZZM1Z5Y21WdWRDNWpjbXd3Z2dIbkJnZ3JCZ0VGQlFjQkFRU0NBZGt3Z2dIVk1IZ0dDQ3NHQVFVRkJ6QUNobXhvZEhSd09pOHZjSEpwYldGeWVTMWpaRzR1Y0d0cExtTnZjbVV1ZDJsdVpHOTNjeTV1WlhRdlpXRnpkSFZ6TW1WMVlYQXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbVYxWVhCd2Eya3ZZMk50WldWaGMzUjFjekpsZFdGd2FXTmhNREV2WTJWeWRDNWpaWEl3ZWdZSUt3WUJCUVVITUFLR2JtaDBkSEE2THk5elpXTnZibVJoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTmhZMlZ5ZEhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMMk5sY25RdVkyVnlNR2tHQ0NzR0FRVUZCekFDaGwxb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNbVYxWVhBdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJ3YTJrdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3YVdOaE1ERXZZMlZ5ZEM1alpYSXdjZ1lJS3dZQkJRVUhNQUtHWm1oMGRIQTZMeTlqWTIxbFpXRnpkSFZ6TW1WMVlYQndhMmt1WldGemRIVnpNbVYxWVhBdWNHdHBMbU52Y21VdWQybHVaRzkzY3k1dVpYUXZZMlZ5ZEdsbWFXTmhkR1ZCZFhSb2IzSnBkR2xsY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJwWTJFd01UQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFMdktJS2VHNExMSHJCVjZpLWRENm1saGE2U3lJRXc4NnBzTlVTcXE3Z1g1U1NieUMyTEpsMGhGUFA2ZVpuUUlyQWdzbGFnUEptaXU4eHh5UVdmWEVLUGs3aU5jT3U2M3hzN3hSaFMtdmdRMGtGU1A1VXhIVG9LMGVDSUM4WDJQbm1aN3VFQzlsTGNDOHpSNHhUQ3Z1RlgwYUpjMnRqaklpSm5yblU4Q1o4eThUcDZwb0NTMkt2cEprMVJrMng1cC1Bb3VEdC0wVWtSc2FFSWx2Vk05NXJnaVo0eUt4R0t6STAyWDhuM3BfX3JIdDdpYXhMVzlmU3JYUW55RHI1ekl6VmQ5VXZVRXBYZ3AzdkdwVjZpRFR3WXZFd1FiZzNMajRzWUx5RGpLVjJyT3ZEZU9QYTZyR2JHYzNtdkdVZXJZRG1xUHV3NFhXYXRrcjdJb0lTYlZQZWcmcz1HbDEwZV8xMUlGenZHckFYY1laWHdyRDVGWGpNcEhiMml3dHpGOWN5TGF0ZjJ6bW5XS2xGM3BwbFBhVlR3QWFhbzZXbUJSWEQ1cm84RkR4MHdXcF9JbzdtaFBzSE1GcFlZSkFENDdEMVI0UGFORnFPTmw1c1ZNYmljeTRJbGhoTkRBdElfcjNHbk8taGs0SzB4VEhnaWtuaWNNTU5YWUZJR2RPUE5TRUg0aTA1QnFMZTVjTDF5d0tMY2pTLWF0bjdmb21tNTF0bzl5MzItQVNYeXpQV0hCemN2MnBaWEdsSVVNc0ljLWkxT2tUdkt4YTdURmd6cVZWOTR1MDAwdHRWZ2Y5TkVDcE9YX2l3dExYaVRMZUlsWV9TUVVmVGVRdnRiY21pQ2ozVGtnTXlIUVFZeHZNWVlielNCX2xGdDF2aVY1RnRZREl4WUZCOFNjMUd5MUZFd2cmaD1ocWFtOEJGWE9kY3p4amM0S3YtWm5RZFJFVHRFTFNoeF9JbmtEM0F1TDJj",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca39e97a-104a-4d57-a89b-f745ddb1195c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperationResource;44,Microsoft.Compute/GetOperationSubscriptionMaximum;14999"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a715769e-a413-4668-ac45-0f86405fe473"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/westus2/b3fab72c-0cab-42cc-81ec-62a9cffe1bd6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "8dbac8ab-5bb4-46a3-a1ef-4a523d8d7cf0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185635Z:8dbac8ab-5bb4-46a3-a1ef-4a523d8d7cf0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AD5B4290774E47FE9F24493E629872F6 Ref B: CO6AA3150220047 Ref C: 2026-07-21T18:56:34Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:34 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2026-07-21T11:56:01.2703014-07:00\",\r\n  \"endTime\": \"2026-07-21T11:56:04.6796803-07:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"b9687283-897a-4b12-94df-b003cc92abc3\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca39e97a-104a-4d57-a89b-f745ddb1195c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;269"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2534a7d5-66c0-44ce-bb2b-88aadf7945d1"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "1498a571-5dfe-4ea7-bda1-3a9216cd5bd0"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185635Z:1498a571-5dfe-4ea7-bda1-3a9216cd5bd0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F4B06E1AF77D43878B2DE1BDE495229F Ref B: CO6AA3150220047 Ref C: 2026-07-21T18:56:35Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:35 GMT"
+        ],
+        "Content-Length": [
+          "903"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "c701707b-100a-43ae-9d76-bc813dcdf8a3"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;268"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "771517e8-f662-4fc3-bc2e-8bbd55ba55f1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "26652f8c-c6f5-4204-a58e-cb0258e95de2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185636Z:26652f8c-c6f5-4204-a58e-cb0258e95de2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C682CA5572F34F92A781EEBC77E1533C Ref B: MWH011020807052 Ref C: 2026-07-21T18:56:35Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:36 GMT"
+        ],
+        "Content-Length": [
+          "903"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "edb6ad96-721a-4df1-baa4-8297f4ee9334"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;264"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0a5f7294-35aa-4b2b-a3cd-45209dda8051"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "72a1f4ef-4d75-427c-9e5f-21e7c30385ba"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185644Z:72a1f4ef-4d75-427c-9e5f-21e7c30385ba"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 444555F9EB144E93AF99C1A55B98EDBA Ref B: MWH011020806062 Ref C: 2026-07-21T18:56:44Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:44 GMT"
+        ],
+        "Content-Length": [
+          "900"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 36\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "174971f9-9924-4727-87ab-c8d53e030be6"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;263"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7efc9419-56ec-4f09-8277-b327d6d1cb36"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "de0dc80e-f774-44c8-95c3-dd0ab6b2eb0a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185644Z:de0dc80e-f774-44c8-95c3-dd0ab6b2eb0a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 373042B83A6E419E9803A5F1ADCB0B01 Ref B: CO1AA3060817031 Ref C: 2026-07-21T18:56:44Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:44 GMT"
+        ],
+        "Content-Length": [
+          "900"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 36\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b029a1b-25b0-43c0-903e-222a888914a1"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;261"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "9535f293-650b-4f15-8259-296b58a56d32"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "cce43c28-21da-4167-a02e-fc89b1826624"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185645Z:cce43c28-21da-4167-a02e-fc89b1826624"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 216CDE62EF9C4B26A26913C738F15E76 Ref B: CO1AA3060815054 Ref C: 2026-07-21T18:56:45Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:45 GMT"
+        ],
+        "Content-Length": [
+          "907"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Capacity\": \"36-nodes\",\r\n    \"Environment\": \"Production\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 36\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "aa3defe3-f97c-44ed-a75c-7070ab561f2a"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;260"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1f959e89-9edc-4ad3-ae2b-22acee900995"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "a03bdebe-8d42-4579-b276-46bf5fa6ba0b"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185645Z:a03bdebe-8d42-4579-b276-46bf5fa6ba0b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A6F7E6AB3B98483E8E97D98656A71052 Ref B: MWH011020809029 Ref C: 2026-07-21T18:56:45Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:44 GMT"
+        ],
+        "Content-Length": [
+          "907"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Capacity\": \"36-nodes\",\r\n    \"Environment\": \"Production\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 36\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "03a2efc1-abf4-4204-883a-1e7860e91cfe"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;258"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d1a715cf-8dba-4154-abfd-7eccb3c527c3"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ff1bb10-7f37-4c8d-b230-4a5af1e0f64d"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185646Z:6ff1bb10-7f37-4c8d-b230-4a5af1e0f64d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A0A12C91A7B54966B98153E1AB7C0D00 Ref B: MWH011020807040 Ref C: 2026-07-21T18:56:45Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:45 GMT"
+        ],
+        "Content-Length": [
+          "907"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Capacity\": \"36-nodes\",\r\n    \"Environment\": \"Production\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 36\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d3e9e868-d64d-45db-9127-0761ebf2e5a8"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;257"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0eb2ed34-6620-4948-afa4-8bf5d63f676d"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "26f6ce12-0ff9-4b38-a93c-767535160f0f"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185646Z:26f6ce12-0ff9-4b38-a93c-767535160f0f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CE10935367134A9B938437AB6887DB85 Ref B: MWH011020808042 Ref C: 2026-07-21T18:56:46Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:46 GMT"
+        ],
+        "Content-Length": [
+          "878"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Environment\": \"Staging\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:46.9021876-07:00\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "7ac3cff2-e966-465b-9591-72c9d3fd439b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;256"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "1fa9688c-7d71-4845-bc88-2a7039cb263c"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "5fbf2541-f70f-4520-bf67-ca0d478bbcb5"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185647Z:5fbf2541-f70f-4520-bf67-ca0d478bbcb5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0F05BC274F174AFC8EF90D17BFD2A07F Ref B: CO1AA3060818054 Ref C: 2026-07-21T18:56:47Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:46 GMT"
+        ],
+        "Content-Length": [
+          "878"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Environment\": \"Staging\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:46.9021876-07:00\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01&$expand=instanceView",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDEmJGV4cGFuZD1pbnN0YW5jZVZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "6ffd728f-eff6-453a-8eeb-668ab60b3b17"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;267"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "28c12441-9a3c-4dd9-9012-6133d9abc983"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "2baf75ff-54a5-4e67-a846-f2c5879516ee"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185636Z:2baf75ff-54a5-4e67-a846-f2c5879516ee"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DB87062FA03C4597A5563BF32D8A5F53 Ref B: CO1AA3060816023 Ref C: 2026-07-21T18:56:36Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:36 GMT"
+        ],
+        "Content-Length": [
+          "1203"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"icbcrptestps8012\",\r\n  \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n  \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {\r\n    \"Project\": \"ICB-CRUD\",\r\n    \"Environment\": \"Test\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_ND128isr_GB300_v6\",\r\n    \"capacity\": 18\r\n  },\r\n  \"zones\": [\r\n    \"3\"\r\n  ],\r\n  \"placement\": {\r\n    \"zonePlacementPolicy\": \"Any\"\r\n  },\r\n  \"properties\": {\r\n    \"interconnectGroup\": {\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n    },\r\n    \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n    \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"instanceView\": {\r\n      \"currentCapacity\": 18,\r\n      \"statuses\": [\r\n        {\r\n          \"code\": \"ProvisioningState/succeeded\",\r\n          \"level\": \"Info\",\r\n          \"displayStatus\": \"Provisioning succeeded\",\r\n          \"time\": \"2026-07-21T11:56:04.6765391-07:00\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcz9hcGktdmVyc2lvbj0yMDI2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "996b3e12-de92-46d9-a2a4-a3bd0ef39ea7"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "200390ee-760c-4bf8-ac41-4a39977f82e4"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;266"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "cbf975e3-522d-435e-83d3-209c6c3fcf26"
+        ],
+        "x-ms-correlation-request-id": [
+          "cbf975e3-522d-435e-83d3-209c6c3fcf26"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185637Z:cbf975e3-522d-435e-83d3-209c6c3fcf26"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DE0D37A225454448BA5DC850BD45B592 Ref B: MWH011020807060 Ref C: 2026-07-21T18:56:37Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:36 GMT"
+        ],
+        "Content-Length": [
+          "1386"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"icbcrptestps8012\",\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/CRPTESTPS8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n      \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"Project\": \"ICB-CRUD\",\r\n        \"Environment\": \"Test\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"Standard_ND128isr_GB300_v6\",\r\n        \"capacity\": 18\r\n      },\r\n      \"zones\": [\r\n        \"3\"\r\n      ],\r\n      \"placement\": {\r\n        \"zonePlacementPolicy\": \"Any\"\r\n      },\r\n      \"properties\": {\r\n        \"interconnectGroup\": {\r\n          \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n        },\r\n        \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n        \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks?api-version=2026-03-01&%24skiptoken=7dDfSsMwFMfxZzGIV8uSNmmbFoZUGd44ELfd9SZ%2fTmupTUqSDrHs3a1e7SG8PRz4%2fvgsyMJXfO3tEFC1oH19PJ2P6f5cv6EKfcQ4hYqQUVrZwQg2buX37GGr3VhxzkiYVdC%2bn2LvbCCi0EkmtMRMFAxzkVFcZnmBMyozRSXTKbTEQ3Cz1%2fDi3TwFov0UIawZQZOUTN5degM%2bkEOvvQuujdtnN05zBNLbCF47a0HHp0%2bnh%2fAopx5f1u%2b1vktpmmPKME0e7sOwTnID2F3JSq64aTEr0hTzpNS4VBIwozkFxdrCqGRjKE1ES0vMQQDmJhNYqZxj2q7zNQNhcnOXoOsGST%2fWXeehkxHM6bewKtXvB7T5YzxIP4BfT0tzK9mgqvm3vLVs0BVdfwA%3d\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcz9hcGktdmVyc2lvbj0yMDI2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "b749e7dc-bec2-40e7-a485-2e8333a92109"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "738baa53-4089-42bd-b44f-f7acf7db9f3c"
+        ],
+        "x-ms-correlation-request-id": [
+          "738baa53-4089-42bd-b44f-f7acf7db9f3c"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185718Z:738baa53-4089-42bd-b44f-f7acf7db9f3c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 1EB8B36457D148AB9DB847994A016331 Ref B: MWH011020808023 Ref C: 2026-07-21T18:57:18Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:18 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/interconnectBlocks?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9pbnRlcmNvbm5lY3RCbG9ja3M/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "5e8fcd61-a8bd-4975-b486-582d4aca001b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "412c69a9-ebab-4d5e-880f-5ce71d652742"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetInterconnectBlockSubscriptionMaximum;265"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "5fbaf588-74cb-44c3-8e24-60c420b99560"
+        ],
+        "x-ms-correlation-request-id": [
+          "5fbaf588-74cb-44c3-8e24-60c420b99560"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185640Z:5fbaf588-74cb-44c3-8e24-60c420b99560"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 194B8D0B524044F9AB85704284377C56 Ref B: CO6AA3150220025 Ref C: 2026-07-21T18:56:37Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:40 GMT"
+        ],
+        "Content-Length": [
+          "1321"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"icbcrptestps8012\",\r\n      \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/CRPTESTPS8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n      \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"Project\": \"ICB-CRUD\",\r\n        \"Environment\": \"Test\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"Standard_ND128isr_GB300_v6\",\r\n        \"capacity\": 18\r\n      },\r\n      \"zones\": [\r\n        \"3\"\r\n      ],\r\n      \"placement\": {\r\n        \"zonePlacementPolicy\": \"Any\"\r\n      },\r\n      \"properties\": {\r\n        \"interconnectGroup\": {\r\n          \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n        },\r\n        \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n        \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/interconnectBlocks?api-version=2026-03-01&%24skiptoken=5dDfSsMwFMfxZzGIVztr2qRtWhhSZXcOxG13vcmf01pqk5JkQxx9d6tXvoO3hwPfH58bsfgZXwY7BlLfyL45ns7HbH9uXklN3mOcQ50kk7Syxwlt3Mqvi8etdlPNOUvCRQXthzkOzoZElDrNhZbARMmAi5xClRcl5FTmikqmM%2byS2bvrYNCH5DBo74Lr4vbZTfMlYjLYiF47a1HHpw%2bnx%2fAo5wGu6%2fca2GU0K4AyoOnDfRjXqhvR7ipWccVNB6zMMuBppaFSEoHRgqJiXWlUujGUpqKjFXAUCNzkApQqONBuXagZClOYu5QsGyL91PS9x15GNKefwgrRvB3I5lfqIP2Ifj3d2r9YLanbf8fVkoUs3w%3d%3d\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "PATCH",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "edb6ad96-721a-4df1-baa4-8297f4ee9334"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "41"
+        ]
+      },
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"capacity\": 36\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/a5e5da98-dfd6-4c2b-8ce0-6bf728b2fdbf?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202570039459273&c=MIIH9TCCBt2gAwIBAgIRAIv6bqY7SwhL3LG8FAICEKMwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MjAxOTMxMjBaFw0yNzAxMTYwMTMxMjBaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA60XvbHp6raPh7-g9YtwjAqWd8-7lJaqYevbtT_chcmJKVGCqalDpcpjm1c7dJ0qttCqzgccGmOaUWRed2_AMGGNlJShP44ilyJABuOT-EaoRkb3opVLWjv64yC_HkTxj2rVcdFdi0mzKyfN-4xe_IO6lAgKTxPPX2W5koMP89MUtB9_TIF0ZmAmHkUJ2buzabC1mfecmfqeNzrWGwtYHEeBWwdbVL2G8hvN1QfQR8Fn7voXnu_aco27ks_o_kTCamRZw9DWQxrZpUKOcr-oF3519-slXDvongk1J2qEhVwm4ubCSPVapkQk-IT3Ta9s8LWV2Xxc4kK3ltL6a3X8HsQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUQVGqcnvgw6L4YX39W1RhWMO33mMwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82My9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjMvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALvKIKeG4LLHrBV6i-dD6mlha6SyIEw86psNUSqq7gX5SSbyC2LJl0hFPP6eZnQIrAgslagPJmiu8xxyQWfXEKPk7iNcOu63xs7xRhS-vgQ0kFSP5UxHToK0eCIC8X2PnmZ7uEC9lLcC8zR4xTCvuFX0aJc2tjjIiJnrnU8CZ8y8Tp6poCS2KvpJk1Rk2x5p-AouDt-0UkRsaEIlvVM95rgiZ4yKxGKzI02X8n3p__rHt7iaxLW9fSrXQnyDr5zIzVd9UvUEpXgp3vGpV6iDTwYvEwQbg3Lj4sYLyDjKV2rOvDeOPa6rGbGc3mvGUerYDmqPuw4XWatkr7IoISbVPeg&s=heresGJIa_EDnsSjpA_Hw5yn1qGjxolEdgNwQZ5HMAKudCqAptQlc61CroGT6kTh4fYpTASUWyLHaWORlpxkRJMAVztSXY0AG0riWhcKo-a9oZvTAupvdnz9lUOs9XH_JOH0wkIeX0n4X9elF8bMBGASXBRt1agXvRm2Qyz3plLQGFmVdYG8OgodwHGnUx-cOGyIJAtB96QKlcL64Kl4MrwG6dTza3iCP11Hawu2QUhjXQZLgdLnX5wxAFM2xqUB7wkQuWdOiunBp7LoSGO2ke8I2h3rQOaOUX2LR1QOyBGuWaOOECMTeYdiA-VH6QHsGmxafq_rLqdzegYbUeuhfQ&h=VGcCB6Y2SzccYmwbOn16cqrCPzi-qB_Fy1IXzDYHDxQ"
+        ],
+        "azure-asyncnotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/PutDeleteInterconnectBlockSubscriptionMaximum;119"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a5e5da98-dfd6-4c2b-8ce0-6bf728b2fdbf"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/cbe10eaf-9768-4d97-a86d-f04993ffc845"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "5365f009-08c1-483e-a5ad-86049c8e822c"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185643Z:5365f009-08c1-483e-a5ad-86049c8e822c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B790AD9FA8C84E608ADE720AF962CF2F Ref B: MWH011020806062 Ref C: 2026-07-21T18:56:40Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:43 GMT"
+        ],
+        "Content-Length": [
+          "1127"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Result\": {\r\n    \"name\": \"icbcrptestps8012\",\r\n    \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n    \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n    \"location\": \"eastus2euap\",\r\n    \"tags\": {\r\n      \"Project\": \"ICB-CRUD\",\r\n      \"Environment\": \"Test\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"Standard_ND128isr_GB300_v6\",\r\n      \"capacity\": 36\r\n    },\r\n    \"zones\": [\r\n      \"3\"\r\n    ],\r\n    \"placement\": {\r\n      \"zonePlacementPolicy\": \"Any\"\r\n    },\r\n    \"properties\": {\r\n      \"interconnectGroup\": {\r\n        \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n      },\r\n      \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n      \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  \"Id\": 19405012,\r\n  \"Status\": \"RanToCompletion\",\r\n  \"IsCanceled\": false,\r\n  \"IsCompleted\": true,\r\n  \"CreationOptions\": \"None\",\r\n  \"IsFaulted\": false\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "PATCH",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "1b029a1b-25b0-43c0-903e-222a888914a1"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "84"
+        ]
+      },
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"Capacity\": \"36-nodes\",\r\n    \"Environment\": \"Production\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/e98bf006-71c8-4bb9-956b-232503af1907?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202570050668640&c=MIIH9TCCBt2gAwIBAgIRAIv6bqY7SwhL3LG8FAICEKMwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MjAxOTMxMjBaFw0yNzAxMTYwMTMxMjBaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA60XvbHp6raPh7-g9YtwjAqWd8-7lJaqYevbtT_chcmJKVGCqalDpcpjm1c7dJ0qttCqzgccGmOaUWRed2_AMGGNlJShP44ilyJABuOT-EaoRkb3opVLWjv64yC_HkTxj2rVcdFdi0mzKyfN-4xe_IO6lAgKTxPPX2W5koMP89MUtB9_TIF0ZmAmHkUJ2buzabC1mfecmfqeNzrWGwtYHEeBWwdbVL2G8hvN1QfQR8Fn7voXnu_aco27ks_o_kTCamRZw9DWQxrZpUKOcr-oF3519-slXDvongk1J2qEhVwm4ubCSPVapkQk-IT3Ta9s8LWV2Xxc4kK3ltL6a3X8HsQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUQVGqcnvgw6L4YX39W1RhWMO33mMwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82My9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjMvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALvKIKeG4LLHrBV6i-dD6mlha6SyIEw86psNUSqq7gX5SSbyC2LJl0hFPP6eZnQIrAgslagPJmiu8xxyQWfXEKPk7iNcOu63xs7xRhS-vgQ0kFSP5UxHToK0eCIC8X2PnmZ7uEC9lLcC8zR4xTCvuFX0aJc2tjjIiJnrnU8CZ8y8Tp6poCS2KvpJk1Rk2x5p-AouDt-0UkRsaEIlvVM95rgiZ4yKxGKzI02X8n3p__rHt7iaxLW9fSrXQnyDr5zIzVd9UvUEpXgp3vGpV6iDTwYvEwQbg3Lj4sYLyDjKV2rOvDeOPa6rGbGc3mvGUerYDmqPuw4XWatkr7IoISbVPeg&s=0fAAWBMJQqcYE7CyqvkP8Ydiogi2UaRMeM1bv5WP05gttk1e4OUerCk6a3TFjkwYFbqiSjdcmkmLDaxSavA5Svfv5uJiM6N_IS8Penh-ZJ8n4sO-u5SKs--2e0RuiHBDcuv1t47uMWi-NkYhzpxMMOKpYzgMbNVcwhGsoSmImG-DLoHpVisUxAcN84jt99y2bYzqu9wjIac56s2jlEWIg-M8yh5YBjPduUiXRkSq2himb_EIeA3oc4EihbW7_3IdV5Ww4t9n_0IT0ThDEgm8UTyaKbxcTlAe5c1K6EeUAOe8q73TpVdJ13ERHmLzsy6jjFff69MEDp9cBxfHKj83MQ&h=TxfnQX8glPQfyhxw2cjtJS6zc2BhjMVguisJo7JUIkA"
+        ],
+        "azure-asyncnotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/PutDeleteInterconnectBlockSubscriptionMaximum;118"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e98bf006-71c8-4bb9-956b-232503af1907"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/17d4597c-ffed-4156-9815-351e084236b6"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a4fda57-9bf3-4a91-997f-75cae214271e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185645Z:8a4fda57-9bf3-4a91-997f-75cae214271e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E8F023783DF2425C803BEB4684DC684F Ref B: CO1AA3060815054 Ref C: 2026-07-21T18:56:44Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:44 GMT"
+        ],
+        "Content-Length": [
+          "1131"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Result\": {\r\n    \"name\": \"icbcrptestps8012\",\r\n    \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n    \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n    \"location\": \"eastus2euap\",\r\n    \"tags\": {\r\n      \"Capacity\": \"36-nodes\",\r\n      \"Environment\": \"Production\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"Standard_ND128isr_GB300_v6\",\r\n      \"capacity\": 36\r\n    },\r\n    \"zones\": [\r\n      \"3\"\r\n    ],\r\n    \"placement\": {\r\n      \"zonePlacementPolicy\": \"Any\"\r\n    },\r\n    \"properties\": {\r\n      \"interconnectGroup\": {\r\n        \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n      },\r\n      \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n      \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n      \"provisioningState\": \"Failed\"\r\n    }\r\n  },\r\n  \"Id\": 19407289,\r\n  \"Status\": \"RanToCompletion\",\r\n  \"IsCanceled\": false,\r\n  \"IsCompleted\": true,\r\n  \"CreationOptions\": \"None\",\r\n  \"IsFaulted\": false\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "PATCH",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "d3e9e868-d64d-45db-9127-0761ebf2e5a8"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "90"
+        ]
+      },
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"capacity\": 18\r\n  },\r\n  \"tags\": {\r\n    \"Environment\": \"Staging\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/7e1bbedb-cc34-41bc-9431-caa487d7e1dd?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202570068889280&c=MIIH9TCCBt2gAwIBAgIRAIv6bqY7SwhL3LG8FAICEKMwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MjAxOTMxMjBaFw0yNzAxMTYwMTMxMjBaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA60XvbHp6raPh7-g9YtwjAqWd8-7lJaqYevbtT_chcmJKVGCqalDpcpjm1c7dJ0qttCqzgccGmOaUWRed2_AMGGNlJShP44ilyJABuOT-EaoRkb3opVLWjv64yC_HkTxj2rVcdFdi0mzKyfN-4xe_IO6lAgKTxPPX2W5koMP89MUtB9_TIF0ZmAmHkUJ2buzabC1mfecmfqeNzrWGwtYHEeBWwdbVL2G8hvN1QfQR8Fn7voXnu_aco27ks_o_kTCamRZw9DWQxrZpUKOcr-oF3519-slXDvongk1J2qEhVwm4ubCSPVapkQk-IT3Ta9s8LWV2Xxc4kK3ltL6a3X8HsQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUQVGqcnvgw6L4YX39W1RhWMO33mMwHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82My9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzYzL2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjMvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALvKIKeG4LLHrBV6i-dD6mlha6SyIEw86psNUSqq7gX5SSbyC2LJl0hFPP6eZnQIrAgslagPJmiu8xxyQWfXEKPk7iNcOu63xs7xRhS-vgQ0kFSP5UxHToK0eCIC8X2PnmZ7uEC9lLcC8zR4xTCvuFX0aJc2tjjIiJnrnU8CZ8y8Tp6poCS2KvpJk1Rk2x5p-AouDt-0UkRsaEIlvVM95rgiZ4yKxGKzI02X8n3p__rHt7iaxLW9fSrXQnyDr5zIzVd9UvUEpXgp3vGpV6iDTwYvEwQbg3Lj4sYLyDjKV2rOvDeOPa6rGbGc3mvGUerYDmqPuw4XWatkr7IoISbVPeg&s=nRr-ZkBlCgWJTjjpT4TCmemcDrpfLKAnIzJFRXGMxXf3XCEzZXQTYL1mPwjrV8lMi3X0qJzaFCHiHAjvdX5Vj_-6Bh5UCNmuf3VX5Z-e8D5mz9dI-sgYRzrg5EB0PGIHiSHzVe9Ml8JCkT3-y0vYAFnN-q51WiH9l3Wex-975FpxrbxbiK7xRTb6DGcaLePI2TfHn008PS5-cYZC1xxPic2JubFKnlil1OS0rsU5nbSID6CEMWr_ZufHQWGVljg1sx3YTSjwpg_7FCSMPi2MWMndEVYRv15yclj7Ij299RTWyNN-48z_u-wyfpr7xOUj-3oAKvduNDMnjbYeuGbcDg&h=7ZbOz0HEop0oILAVOUVV6g-ZOTRmLQ5nbDZ90jrBxaA"
+        ],
+        "azure-asyncnotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/PutDeleteInterconnectBlockSubscriptionMaximum;117"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7e1bbedb-cc34-41bc-9431-caa487d7e1dd"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/1e3bf207-693f-4313-804a-d90ff0b9b801"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e685538-684b-4971-a6cb-144bd999d800"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185646Z:6e685538-684b-4971-a6cb-144bd999d800"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6C8D85CEFA904425B8678315AC3BE27C Ref B: MWH011020808042 Ref C: 2026-07-21T18:56:46Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:46 GMT"
+        ],
+        "Content-Length": [
+          "1097"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Result\": {\r\n    \"name\": \"icbcrptestps8012\",\r\n    \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012\",\r\n    \"type\": \"Microsoft.Compute/interconnectBlocks\",\r\n    \"location\": \"eastus2euap\",\r\n    \"tags\": {\r\n      \"Environment\": \"Staging\"\r\n    },\r\n    \"sku\": {\r\n      \"name\": \"Standard_ND128isr_GB300_v6\",\r\n      \"capacity\": 18\r\n    },\r\n    \"zones\": [\r\n      \"3\"\r\n    ],\r\n    \"placement\": {\r\n      \"zonePlacementPolicy\": \"Any\"\r\n    },\r\n    \"properties\": {\r\n      \"interconnectGroup\": {\r\n        \"id\": \"/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012\"\r\n      },\r\n      \"interconnectBlockId\": \"13da6db9-7287-4288-a7c0-1d29d992120f\",\r\n      \"provisioningTime\": \"2026-07-21T11:56:04.6380517-07:00\",\r\n      \"provisioningState\": \"Failed\"\r\n    }\r\n  },\r\n  \"Id\": 19409488,\r\n  \"Status\": \"RanToCompletion\",\r\n  \"IsCanceled\": false,\r\n  \"IsCompleted\": true,\r\n  \"CreationOptions\": \"None\",\r\n  \"IsFaulted\": false\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "d9d5ce91-1e09-41ce-81c4-241f9ee2e125"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/06087f2e-263c-4b5a-a808-edf37d18ca2b?p=9394b4df-3722-419c-9bae-3060eb3f7db1&monitor=true&api-version=2026-03-01&t=639202570077349687&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=fKK0hr3CAAolWMyqIIUwLlFVyOooUbD7r2rp1iifKUSCRB60ZpEm4opXXh3mhzLtSJ0wX4K1NmYhEIH_pZqd1NiM03Ad_RDEPJinVH5_mQeSNy5msVdI-dgdeCy-EHqSdTUbvfooNqHmOGYlO0JzUWtGkfY0Jigqz3wa0NguJnJKISpBXGvW3ASEnyIZ43v9Jo2rG125MfJqEphi46xb6J1b3pdvra3YE7Ue6lipAOceduprKWY4h_WT_qmVqfQ6LPInIR8ZH3OxuKtApHzZUwuxYeO6360QICbELiYOIikGDDaIWYLqTo7iItaU5XfG0pW98mz5JVKai8iGrb1xmA&h=1KV911q3o0uofGt8PvGFOGkm9EBjuDkChb0M-88vcng"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/06087f2e-263c-4b5a-a808-edf37d18ca2b?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202570077193301&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=c-glPzhIfE1xcKeMFJPEppYgMUQ52ZE1zW1pVKmBASNlKI_HpnJQFllrqvk7BpmUfe3CuXUf8TRDi4J41oTGhJaGMdxUp3ESsCLEzXia1DB6ErJg2pEd14yQjdhOvWJkmJpOJ66E1j-2f5jjYVFNb0bXvyHaZmZWaAw92ozvwKpUG8wlhyqBG9JWM4FFlobPJvWDmw0z4mk2PdiRZrxNhiwe2jxMafWoTXCSkkeylxoOmzrL2ByhAoJ6J1mmtSI3RXJwqet0F7nv6NwaPcyeVbTTbt_lUGp1TwanydXgJCI28gj-jr0XfsJj-1Pxh65r9L1ZxTAF6jI38KdG5Ums3g&h=PJe7AfV1xf7mo6QXIao6cFJ1QCQ7htnOIs4E7JIMYDc"
+        ],
+        "azure-asyncnotification": [
+          "Enabled"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/PutDeleteInterconnectBlockSubscriptionMaximum;116"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "06087f2e-263c-4b5a-a808-edf37d18ca2b"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/29110387-f749-4ccc-8871-3ba8bca9d743"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5ba5207-25c7-4bbe-a07f-5fcefe9be2a2"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185647Z:d5ba5207-25c7-4bbe-a07f-5fcefe9be2a2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5CF4D55A325342A8A33CE6ECB7DE18D8 Ref B: MWH011020809023 Ref C: 2026-07-21T18:56:47Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:56:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Compute/interconnectBlocks/icbcrptestps8012?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2ludGVyY29ubmVjdEJsb2Nrcy9pY2JjcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "0ede4cec-c406-40b9-b8d6-ebebd2dc2594"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "f68a1a5e-9b27-4f4d-ba54-f61ac9abc823"
+        ],
+        "x-ms-correlation-request-id": [
+          "f68a1a5e-9b27-4f4d-ba54-f61ac9abc823"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185718Z:f68a1a5e-9b27-4f4d-ba54-f61ac9abc823"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 878062A9D03648059F2C6F6A363A6737 Ref B: CO6AA3150217019 Ref C: 2026-07-21T18:57:18Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:18 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/06087f2e-263c-4b5a-a808-edf37d18ca2b?p=9394b4df-3722-419c-9bae-3060eb3f7db1&api-version=2026-03-01&t=639202570077193301&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=c-glPzhIfE1xcKeMFJPEppYgMUQ52ZE1zW1pVKmBASNlKI_HpnJQFllrqvk7BpmUfe3CuXUf8TRDi4J41oTGhJaGMdxUp3ESsCLEzXia1DB6ErJg2pEd14yQjdhOvWJkmJpOJ66E1j-2f5jjYVFNb0bXvyHaZmZWaAw92ozvwKpUG8wlhyqBG9JWM4FFlobPJvWDmw0z4mk2PdiRZrxNhiwe2jxMafWoTXCSkkeylxoOmzrL2ByhAoJ6J1mmtSI3RXJwqet0F7nv6NwaPcyeVbTTbt_lUGp1TwanydXgJCI28gj-jr0XfsJj-1Pxh65r9L1ZxTAF6jI38KdG5Ums3g&h=PJe7AfV1xf7mo6QXIao6cFJ1QCQ7htnOIs4E7JIMYDc",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdFVTMkVVQVAvb3BlcmF0aW9ucy8wNjA4N2YyZS0yNjNjLTRiNWEtYTgwOC1lZGYzN2QxOGNhMmI/cD05Mzk0YjRkZi0zNzIyLTQxOWMtOWJhZS0zMDYwZWIzZjdkYjEmYXBpLXZlcnNpb249MjAyNi0wMy0wMSZ0PTYzOTIwMjU3MDA3NzE5MzMwMSZjPU1JSUg5VENDQnQyZ0F3SUJBZ0lSQUtuVG82bUtlbGlTWWoxR0xFVG9mNEl3RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlV5UXlCRFFTQXdNVEFlRncweU5qQTNNREl4TlRVNE5ETmFGdzB5TmpBNU1qY3lNVFU0TkROYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQWxEUU15WDVlVmxOb3lIUXk5N3Q0MXhzdHg3SVNXM0pwdDBmbWt0QnItU3l0TEZqUzJQRXduVzNERnBjLWJRZ2ZEZkhrS1AwX0ZSTHZtX21hekV2UzVLWXp5WDZuRmpHcVFUWDNTZm5lSlY1am83bk93WW5RSEZUYmtnMERuZ3o3QWlwVEJ5NnlBaVFxS01oUm9fRC1ONG8zc3R3bUtIZUEwdEFpRU94NEdfUGlBWkJWZ3dxRF9oUy1wb3JBS25zZi1tNy12WXNhLWc5Q3cwU1EydDdZSUZnZnFHaWZGY0FINzlMN1FGNW40LXRvcUgyME1EWnJSMTBkWHBqTks1MER2UmlsdFhNbzd4QzE5OHNWZkM2SVNZOGhEYmlGRHBzS2dMX2x6LXBKMmt5WUpOeXExTlVmUzc5QVM3MEJrbDEzZWFPWWJsOGdvX09vNDFNYTVBckVnUUlEQVFBQm80SUU4akNDQk80d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN012MVd2V243c0FmZnQ5cEY5bHdOQmtOYW0wd0h3WURWUjBqQkJnd0ZvQVV6MUVCcXVsRExHUjJHMHJ3cXNEeWt2aFB3N3N3Z2dIaUJnTlZIUjhFZ2dIWk1JSUIxVEIxb0hPZ2NZWnZhSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUhlZ2RhQnpobkZvZEhSd09pOHZjMlZqYjI1a1lYSjVMV05rYmk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWxZWE4wZFhNeVpYVmhjQzlqY214ekwyTmpiV1ZsWVhOMGRYTXlaWFZoY0hCcmFTOWpZMjFsWldGemRIVnpNbVYxWVhCcFkyRXdNUzgyTlM5amRYSnlaVzUwTG1OeWJEQm1vR1NnWW9aZ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUh1Z2VhQjNoblZvZEhSd09pOHZZMk50WldWaGMzUjFjekpsZFdGd2NHdHBMbVZoYzNSMWN6SmxkV0Z3TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKbGRXRndhV05oTURFdk5qVXZZM1Z5Y21WdWRDNWpjbXd3Z2dIbkJnZ3JCZ0VGQlFjQkFRU0NBZGt3Z2dIVk1IZ0dDQ3NHQVFVRkJ6QUNobXhvZEhSd09pOHZjSEpwYldGeWVTMWpaRzR1Y0d0cExtTnZjbVV1ZDJsdVpHOTNjeTV1WlhRdlpXRnpkSFZ6TW1WMVlYQXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbVYxWVhCd2Eya3ZZMk50WldWaGMzUjFjekpsZFdGd2FXTmhNREV2WTJWeWRDNWpaWEl3ZWdZSUt3WUJCUVVITUFLR2JtaDBkSEE2THk5elpXTnZibVJoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTmhZMlZ5ZEhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMMk5sY25RdVkyVnlNR2tHQ0NzR0FRVUZCekFDaGwxb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNbVYxWVhBdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJ3YTJrdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3YVdOaE1ERXZZMlZ5ZEM1alpYSXdjZ1lJS3dZQkJRVUhNQUtHWm1oMGRIQTZMeTlqWTIxbFpXRnpkSFZ6TW1WMVlYQndhMmt1WldGemRIVnpNbVYxWVhBdWNHdHBMbU52Y21VdWQybHVaRzkzY3k1dVpYUXZZMlZ5ZEdsbWFXTmhkR1ZCZFhSb2IzSnBkR2xsY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJwWTJFd01UQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFuZFBDUGMtQ21qSE9RcEhQVlNGSTRkc0ozbUFBQTlMMFFQRFd3bVhYdm02NlIwOFdUb1lRQTlRQ3BrcXhaRXpsNjlBaFNUUjV4NjVocGVSdjh4aHd3ajU3UUl1QkQ2cmZNUmdoWkg4M1Q0eDNiZE9JNEttaEZpX3VZXzUyLWNvdTVfeGYwRHlHQUlfQzc3VTVyQzhUbVZpbDhFc1VDb2pWOHJXa1pYVUJRU0taTWFDMWd6bXpXVzNwZ0tHOXp3YkQ2SjFNXzdQVzZmX3poRTlLdkdmQnJMQUxvYWJkSzBIX2luNXAzQ3lSTVFlZTlwWFNwc2ljdGI4Y3lmQklSVTFmUlNObUxuT2pWU2xGX0xsMjBnWUlobkh2ZXRHVXhXVTBFRTlnV1NKVlV0d2JxSmpDZURvdUtQd2UyVVlVb3NvRVRUQzdpbHVIWmMwUFY5RU1mdW5IMncmcz1jLWdsUHpoSWZFMXhjS2VNRkpQRXBwWWdNVVE1MlpFMXpXMXBWS21CQVNObEtJX0hwbkpRRmxscnF2azdCcG1VZmUzQ3VYVWY4VFJEaTRKNDFvVEdoSmFHTWR4VXAzRVNzQ0xFelhpYTFEQjZFckpnMnBFZDE0eVFqZGhPdldKa21KcE9KNjZFMWotMmY1ampZVkZOYjBiWHZ5SGFabVpXYUF3OTJvenZ3S3BVRzh3bGh5cUJHOUpXTTRGRmxvYlBKdldEbXcwejRtazJQZGlSWnJ4Tmhpd2UyanhNYWZXb1RYQ1Nra2V5bHhvT216ckwyQnloQW9KNkoxbW10U0kzUlhKd3FldDBGN252Nk53YVBjeWVWYlRUYnRfbFVHcDFUd2FueWRYZ0pDSTI4Z2otanIwWGZzSmotMVB4aDY1cjlMMVp4VEFGNmpJMzhLZEc1VW1zM2cmaD1QSmU3QWZWMXhmN21vNlFYSWFvNmNGSjFRQ1E3aHRuT0lzNEU3SklNWURj",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d9d5ce91-1e09-41ce-81c4-241f9ee2e125"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperationResource;44,Microsoft.Compute/GetOperationSubscriptionMaximum;14999"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "594c9859-9a9d-486e-93d6-34af24ca0bd8"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/westus2/88597f48-ad0c-4524-b7d1-35322f860bed"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "672cef47-dc77-4c4c-b04f-f1152d321187"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185718Z:672cef47-dc77-4c4c-b04f-f1152d321187"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4F694E8564C24E7BAD283BD520619291 Ref B: MWH011020809023 Ref C: 2026-07-21T18:57:17Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:18 GMT"
+        ],
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"startTime\": \"2026-07-21T11:56:47.6822278-07:00\",\r\n  \"endTime\": \"2026-07-21T11:56:47.8993347-07:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"06087f2e-263c-4b5a-a808-edf37d18ca2b\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/EastUS2EUAP/operations/06087f2e-263c-4b5a-a808-edf37d18ca2b?p=9394b4df-3722-419c-9bae-3060eb3f7db1&monitor=true&api-version=2026-03-01&t=639202570077349687&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=fKK0hr3CAAolWMyqIIUwLlFVyOooUbD7r2rp1iifKUSCRB60ZpEm4opXXh3mhzLtSJ0wX4K1NmYhEIH_pZqd1NiM03Ad_RDEPJinVH5_mQeSNy5msVdI-dgdeCy-EHqSdTUbvfooNqHmOGYlO0JzUWtGkfY0Jigqz3wa0NguJnJKISpBXGvW3ASEnyIZ43v9Jo2rG125MfJqEphi46xb6J1b3pdvra3YE7Ue6lipAOceduprKWY4h_WT_qmVqfQ6LPInIR8ZH3OxuKtApHzZUwuxYeO6360QICbELiYOIikGDDaIWYLqTo7iItaU5XfG0pW98mz5JVKai8iGrb1xmA&h=1KV911q3o0uofGt8PvGFOGkm9EBjuDkChb0M-88vcng",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdFVTMkVVQVAvb3BlcmF0aW9ucy8wNjA4N2YyZS0yNjNjLTRiNWEtYTgwOC1lZGYzN2QxOGNhMmI/cD05Mzk0YjRkZi0zNzIyLTQxOWMtOWJhZS0zMDYwZWIzZjdkYjEmbW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmdD02MzkyMDI1NzAwNzczNDk2ODcmYz1NSUlIOVRDQ0J0MmdBd0lCQWdJUkFLblRvNm1LZWxpU1lqMUdMRVRvZjRJd0RRWUpLb1pJaHZjTkFRRUxCUUF3TmpFME1ESUdBMVVFQXhNclEwTk5SU0JITVNCVVRGTWdVbE5CSURJd05EZ2dVMGhCTWpVMklESXdORGtnUlZVeVF5QkRRU0F3TVRBZUZ3MHlOakEzTURJeE5UVTRORE5hRncweU5qQTVNamN5TVRVNE5ETmFNRUF4UGpBOEJnTlZCQU1UTldGemVXNWpiM0JsY21GMGFXOXVjMmxuYm1sdVoyTmxjblJwWm1sallYUmxMbTFoYm1GblpXMWxiblF1WVhwMWNtVXVZMjl0TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFsRFFNeVg1ZVZsTm95SFF5OTd0NDF4c3R4N0lTVzNKcHQwZm1rdEJyLVN5dExGalMyUEV3blczREZwYy1iUWdmRGZIa0tQMF9GUkx2bV9tYXpFdlM1S1l6eVg2bkZqR3FRVFgzU2ZuZUpWNWpvN25Pd1luUUhGVGJrZzBEbmd6N0FpcFRCeTZ5QWlRcUtNaFJvX0QtTjRvM3N0d21LSGVBMHRBaUVPeDRHX1BpQVpCVmd3cURfaFMtcG9yQUtuc2YtbTctdllzYS1nOUN3MFNRMnQ3WUlGZ2ZxR2lmRmNBSDc5TDdRRjVuNC10b3FIMjBNRFpyUjEwZFhwak5LNTBEdlJpbHRYTW83eEMxOThzVmZDNklTWThoRGJpRkRwc0tnTF9sei1wSjJreVlKTnlxMU5VZlM3OUFTNzBCa2wxM2VhT1libDhnb19PbzQxTWE1QXJFZ1FJREFRQUJvNElFOGpDQ0JPNHdnWjBHQTFVZElBU0JsVENCa2pBTUJnb3JCZ0VFQVlJM2V3RUJNR1lHQ2lzR0FRUUJnamQ3QWdJd1dEQldCZ2dyQmdFRkJRY0NBakJLSGtnQU13QXpBR1VBTUFBeEFEa0FNZ0F4QUMwQU5BQmtBRFlBTkFBdEFEUUFaZ0E0QUdNQUxRQmhBREFBTlFBMUFDMEFOUUJpQUdRQVlRQm1BR1lBWkFBMUFHVUFNd0F6QUdRd0RBWUtLd1lCQkFHQ04zc0RBakFNQmdvckJnRUVBWUkzZXdRQ01Bd0dBMVVkRXdFQl93UUNNQUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01BNEdBMVVkRHdFQl93UUVBd0lGb0RBZEJnTlZIUTRFRmdRVTdNdjFXdlduN3NBZmZ0OXBGOWx3TkJrTmFtMHdId1lEVlIwakJCZ3dGb0FVejFFQnF1bERMR1IyRzByd3FzRHlrdmhQdzdzd2dnSGlCZ05WSFI4RWdnSFpNSUlCMVRCMW9IT2djWVp2YUhSMGNEb3ZMM0J5YVcxaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pKbGRXRndMMk55YkhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMelkxTDJOMWNuSmxiblF1WTNKc01IZWdkYUJ6aG5Gb2RIUndPaTh2YzJWamIyNWtZWEo1TFdOa2JpNXdhMmt1WTI5eVpTNTNhVzVrYjNkekxtNWxkQzlsWVhOMGRYTXlaWFZoY0M5amNteHpMMk5qYldWbFlYTjBkWE15WlhWaGNIQnJhUzlqWTIxbFpXRnpkSFZ6TW1WMVlYQnBZMkV3TVM4Mk5TOWpkWEp5Wlc1MExtTnliREJtb0dTZ1lvWmdhSFIwY0RvdkwyTnliQzV0YVdOeWIzTnZablF1WTI5dEwyVmhjM1IxY3pKbGRXRndMMk55YkhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMelkxTDJOMWNuSmxiblF1WTNKc01IdWdlYUIzaG5Wb2RIUndPaTh2WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTG1WaGMzUjFjekpsZFdGd0xuQnJhUzVqYjNKbExuZHBibVJ2ZDNNdWJtVjBMMk5sY25ScFptbGpZWFJsUVhWMGFHOXlhWFJwWlhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3YVdOaE1ERXZOalV2WTNWeWNtVnVkQzVqY213d2dnSG5CZ2dyQmdFRkJRY0JBUVNDQWRrd2dnSFZNSGdHQ0NzR0FRVUZCekFDaG14b2RIUndPaTh2Y0hKcGJXRnllUzFqWkc0dWNHdHBMbU52Y21VdWQybHVaRzkzY3k1dVpYUXZaV0Z6ZEhWek1tVjFZWEF2WTJGalpYSjBjeTlqWTIxbFpXRnpkSFZ6TW1WMVlYQndhMmt2WTJOdFpXVmhjM1IxY3pKbGRXRndhV05oTURFdlkyVnlkQzVqWlhJd2VnWUlLd1lCQlFVSE1BS0dibWgwZEhBNkx5OXpaV052Ym1SaGNua3RZMlJ1TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyVmhjM1IxY3pKbGRXRndMMk5oWTJWeWRITXZZMk50WldWaGMzUjFjekpsZFdGd2NHdHBMMk5qYldWbFlYTjBkWE15WlhWaGNHbGpZVEF4TDJObGNuUXVZMlZ5TUdrR0NDc0dBUVVGQnpBQ2hsMW9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdlpXRnpkSFZ6TW1WMVlYQXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbVYxWVhCd2Eya3ZZMk50WldWaGMzUjFjekpsZFdGd2FXTmhNREV2WTJWeWRDNWpaWEl3Y2dZSUt3WUJCUVVITUFLR1ptaDBkSEE2THk5alkyMWxaV0Z6ZEhWek1tVjFZWEJ3YTJrdVpXRnpkSFZ6TW1WMVlYQXVjR3RwTG1OdmNtVXVkMmx1Wkc5M2N5NXVaWFF2WTJWeWRHbG1hV05oZEdWQmRYUm9iM0pwZEdsbGN5OWpZMjFsWldGemRIVnpNbVYxWVhCcFkyRXdNVEFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBbmRQQ1BjLUNtakhPUXBIUFZTRkk0ZHNKM21BQUE5TDBRUERXd21YWHZtNjZSMDhXVG9ZUUE5UUNwa3F4WkV6bDY5QWhTVFI1eDY1aHBlUnY4eGh3d2o1N1FJdUJENnJmTVJnaFpIODNUNHgzYmRPSTRLbWhGaV91WV81Mi1jb3U1X3hmMER5R0FJX0M3N1U1ckM4VG1WaWw4RXNVQ29qVjhyV2taWFVCUVNLWk1hQzFnem16V1czcGdLRzl6d2JENkoxTV83UFc2Zl96aEU5S3ZHZkJyTEFMb2FiZEswSF9pbjVwM0N5Uk1RZWU5cFhTcHNpY3RiOGN5ZkJJUlUxZlJTTm1Mbk9qVlNsRl9MbDIwZ1lJaG5IdmV0R1V4V1UwRUU5Z1dTSlZVdHdicUpqQ2VEb3VLUHdlMlVZVW9zb0VUVEM3aWx1SFpjMFBWOUVNZnVuSDJ3JnM9ZktLMGhyM0NBQW9sV015cUlJVXdMbEZWeU9vb1ViRDdyMnJwMWlpZktVU0NSQjYwWnBFbTRvcFhYaDNtaHpMdFNKMHdYNEsxTm1ZaEVJSF9wWnFkMU5pTTAzQWRfUkRFUEppblZINV9tUWVTTnk1bXNWZEktZGdkZUN5LUVIcVNkVFVidmZvb05xSG1PR1lsTzBKelVXdEdrZlkwSmlncXozd2EwTmd1Sm5KS0lTcEJYR3ZXM0FTRW55SVo0M3Y5Sm8yckcxMjVNZkpxRXBoaTQ2eGI2SjFiM3BkdnJhM1lFN1VlNmxpcEFPY2VkdXByS1dZNGhfV1RfcW1WcWZRNkxQSW5JUjhaSDNPeHVLdEFwSHpaVXd1eFllTzYzNjBRSUNiRUxpWU9JaWtHRERhSVdZTHFUbzdpSXRhVTVYZkcwcFc5OG16NUpWS2FpOGlHcmIxeG1BJmg9MUtWOTExcTNvMHVvZkd0OFB2R0ZPR2ttOUVCanVEa0NoYjBNLTg4dmNuZw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d9d5ce91-1e09-41ce-81c4-241f9ee2e125"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.7.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetOperationResource;43,Microsoft.Compute/GetOperationSubscriptionMaximum;14998"
+        ],
+        "x-ms-need-to-refresh-epl-cache": [
+          "False"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0029dbce-48f5-4f24-b3e4-c422ad627688"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/westus2/d35b0038-023c-4b50-b8dc-3f4046fa8ba1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "e795dec6-992b-477a-a3b9-3528a10b8856"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185718Z:e795dec6-992b-477a-a3b9-3528a10b8856"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4ACAD84ABA014F359378458890F523D2 Ref B: MWH011020809023 Ref C: 2026-07-21T18:57:18Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:18 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourceGroups/crptestps8012/providers/Microsoft.Network/interconnectGroups/icgcrptestps8012?api-version=2025-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczgwMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2ludGVyY29ubmVjdEdyb3Vwcy9pY2djcnB0ZXN0cHM4MDEyP2FwaS12ZXJzaW9uPTIwMjUtMDctMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "df99b268-146e-4271-924c-90648298e3e2"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Internal.Common.AzureRestClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2584e1c7-0813-44d0-ab6d-eee726ac3f08"
+        ],
+        "x-ms-throttle-levels": [
+          "operationRatePct=0.1, operationConcurrencyPct=0.3, subscriptionWriteRatePct=0.7, etc"
+        ],
+        "x-ms-correlation-request-id": [
+          "ddff4df5-3c63-45f7-8337-e0e5114d7313"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d65618ef-8733-4f58-9708-d717d69ed5f4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=68c2fe1f-b95a-43f4-b6de-43c312be9788/eastus2euap/6f37dc50-8a00-4fc5-b8c9-841e762c5241"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185725Z:ddff4df5-3c63-45f7-8337-e0e5114d7313"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9E45053A593E40DC94D331B66B21E243 Ref B: MWH011020808052 Ref C: 2026-07-21T18:57:24Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/resourcegroups/crptestps8012?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczgwMTI/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cdf43ff-1796-4f25-98d0-1d4e732b9393"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM4MDEyLUVBU1RVUzJFVUFQIiwiam9iTG9jYXRpb24iOiJlYXN0dXMyZXVhcCIsImpvYlN0b3JhZ2VBY2NvdW50IjoiL2NzbS9zdG9yYWdlYWNjb3VudHMvZ2xvYmFsL3JwZmRsam9iMDBwcm9kYm5ldWFwMDMifQ?api-version=2016-09-01&t=639202570460682458&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=c25Bbsios_T8BZPrgPD5wHcu54srGi9_KSvR9J9eJXJSme7MofOtG7wjsrPZ7oWxTFv4-Z-AqIeYXVOCKuq8QbuMlWK6kTXeQsOdfaGyJwhPWTLNcp3V6WTpmbaaDnANogvdZJUuNuvauF08HBzp-tNyiLNlMLNCj9jiCJM3MrU_PJ-LEJLIdUMFhY76CM66UWAXXz3CtN0Y6_FukyQvtfXOZXcBeRf2-M8kMhncLhh8a7iwztZSSsVrzSV02LwZAMAZnZlIi5dBHPXy9Ei3BTd5y3KtXsc2d9KSwopYdwLqAd302FQgwps922-NdV6woijJKQMvHdXlBkcPyQwf5A&h=9IBL1nKRf2zV23ZPNIQOO8bU1yZoCJ13HrgI9L8ZLv0"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "3ba27085-d1d7-440f-adc5-cecd0f3b78e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ba27085-d1d7-440f-adc5-cecd0f3b78e8"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2EUAP:20260721T185726Z:3ba27085-d1d7-440f-adc5-cecd0f3b78e8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B98FBEFEB6074619A29747475AE9A142 Ref B: CO1AA3060817034 Ref C: 2026-07-21T18:57:25Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM4MDEyLUVBU1RVUzJFVUFQIiwiam9iTG9jYXRpb24iOiJlYXN0dXMyZXVhcCIsImpvYlN0b3JhZ2VBY2NvdW50IjoiL2NzbS9zdG9yYWdlYWNjb3VudHMvZ2xvYmFsL3JwZmRsam9iMDBwcm9kYm5ldWFwMDMifQ?api-version=2016-09-01&t=639202570460682458&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=c25Bbsios_T8BZPrgPD5wHcu54srGi9_KSvR9J9eJXJSme7MofOtG7wjsrPZ7oWxTFv4-Z-AqIeYXVOCKuq8QbuMlWK6kTXeQsOdfaGyJwhPWTLNcp3V6WTpmbaaDnANogvdZJUuNuvauF08HBzp-tNyiLNlMLNCj9jiCJM3MrU_PJ-LEJLIdUMFhY76CM66UWAXXz3CtN0Y6_FukyQvtfXOZXcBeRf2-M8kMhncLhh8a7iwztZSSsVrzSV02LwZAMAZnZlIi5dBHPXy9Ei3BTd5y3KtXsc2d9KSwopYdwLqAd302FQgwps922-NdV6woijJKQMvHdXlBkcPyQwf5A&h=9IBL1nKRf2zV23ZPNIQOO8bU1yZoCJ13HrgI9L8ZLv0",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk00TURFeUxVVkJVMVJWVXpKRlZVRlFJaXdpYW05aVRHOWpZWFJwYjI0aU9pSmxZWE4wZFhNeVpYVmhjQ0lzSW1wdllsTjBiM0poWjJWQlkyTnZkVzUwSWpvaUwyTnpiUzl6ZEc5eVlXZGxZV05qYjNWdWRITXZaMnh2WW1Gc0wzSndabVJzYW05aU1EQndjbTlrWW01bGRXRndNRE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMSZ0PTYzOTIwMjU3MDQ2MDY4MjQ1OCZjPU1JSUg5VENDQnQyZ0F3SUJBZ0lSQUtuVG82bUtlbGlTWWoxR0xFVG9mNEl3RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlV5UXlCRFFTQXdNVEFlRncweU5qQTNNREl4TlRVNE5ETmFGdzB5TmpBNU1qY3lNVFU0TkROYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQWxEUU15WDVlVmxOb3lIUXk5N3Q0MXhzdHg3SVNXM0pwdDBmbWt0QnItU3l0TEZqUzJQRXduVzNERnBjLWJRZ2ZEZkhrS1AwX0ZSTHZtX21hekV2UzVLWXp5WDZuRmpHcVFUWDNTZm5lSlY1am83bk93WW5RSEZUYmtnMERuZ3o3QWlwVEJ5NnlBaVFxS01oUm9fRC1ONG8zc3R3bUtIZUEwdEFpRU94NEdfUGlBWkJWZ3dxRF9oUy1wb3JBS25zZi1tNy12WXNhLWc5Q3cwU1EydDdZSUZnZnFHaWZGY0FINzlMN1FGNW40LXRvcUgyME1EWnJSMTBkWHBqTks1MER2UmlsdFhNbzd4QzE5OHNWZkM2SVNZOGhEYmlGRHBzS2dMX2x6LXBKMmt5WUpOeXExTlVmUzc5QVM3MEJrbDEzZWFPWWJsOGdvX09vNDFNYTVBckVnUUlEQVFBQm80SUU4akNDQk80d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN012MVd2V243c0FmZnQ5cEY5bHdOQmtOYW0wd0h3WURWUjBqQkJnd0ZvQVV6MUVCcXVsRExHUjJHMHJ3cXNEeWt2aFB3N3N3Z2dIaUJnTlZIUjhFZ2dIWk1JSUIxVEIxb0hPZ2NZWnZhSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUhlZ2RhQnpobkZvZEhSd09pOHZjMlZqYjI1a1lYSjVMV05rYmk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWxZWE4wZFhNeVpYVmhjQzlqY214ekwyTmpiV1ZsWVhOMGRYTXlaWFZoY0hCcmFTOWpZMjFsWldGemRIVnpNbVYxWVhCcFkyRXdNUzgyTlM5amRYSnlaVzUwTG1OeWJEQm1vR1NnWW9aZ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUh1Z2VhQjNoblZvZEhSd09pOHZZMk50WldWaGMzUjFjekpsZFdGd2NHdHBMbVZoYzNSMWN6SmxkV0Z3TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKbGRXRndhV05oTURFdk5qVXZZM1Z5Y21WdWRDNWpjbXd3Z2dIbkJnZ3JCZ0VGQlFjQkFRU0NBZGt3Z2dIVk1IZ0dDQ3NHQVFVRkJ6QUNobXhvZEhSd09pOHZjSEpwYldGeWVTMWpaRzR1Y0d0cExtTnZjbVV1ZDJsdVpHOTNjeTV1WlhRdlpXRnpkSFZ6TW1WMVlYQXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbVYxWVhCd2Eya3ZZMk50WldWaGMzUjFjekpsZFdGd2FXTmhNREV2WTJWeWRDNWpaWEl3ZWdZSUt3WUJCUVVITUFLR2JtaDBkSEE2THk5elpXTnZibVJoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTmhZMlZ5ZEhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMMk5sY25RdVkyVnlNR2tHQ0NzR0FRVUZCekFDaGwxb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNbVYxWVhBdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJ3YTJrdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3YVdOaE1ERXZZMlZ5ZEM1alpYSXdjZ1lJS3dZQkJRVUhNQUtHWm1oMGRIQTZMeTlqWTIxbFpXRnpkSFZ6TW1WMVlYQndhMmt1WldGemRIVnpNbVYxWVhBdWNHdHBMbU52Y21VdWQybHVaRzkzY3k1dVpYUXZZMlZ5ZEdsbWFXTmhkR1ZCZFhSb2IzSnBkR2xsY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJwWTJFd01UQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFuZFBDUGMtQ21qSE9RcEhQVlNGSTRkc0ozbUFBQTlMMFFQRFd3bVhYdm02NlIwOFdUb1lRQTlRQ3BrcXhaRXpsNjlBaFNUUjV4NjVocGVSdjh4aHd3ajU3UUl1QkQ2cmZNUmdoWkg4M1Q0eDNiZE9JNEttaEZpX3VZXzUyLWNvdTVfeGYwRHlHQUlfQzc3VTVyQzhUbVZpbDhFc1VDb2pWOHJXa1pYVUJRU0taTWFDMWd6bXpXVzNwZ0tHOXp3YkQ2SjFNXzdQVzZmX3poRTlLdkdmQnJMQUxvYWJkSzBIX2luNXAzQ3lSTVFlZTlwWFNwc2ljdGI4Y3lmQklSVTFmUlNObUxuT2pWU2xGX0xsMjBnWUlobkh2ZXRHVXhXVTBFRTlnV1NKVlV0d2JxSmpDZURvdUtQd2UyVVlVb3NvRVRUQzdpbHVIWmMwUFY5RU1mdW5IMncmcz1jMjVCYnNpb3NfVDhCWlByZ1BENXdIY3U1NHNyR2k5X0tTdlI5SjllSlhKU21lN01vZk90Rzd3anNyUFo3b1d4VEZ2NC1aLUFxSWVZWFZPQ0t1cThRYnVNbFdLNmtUWGVRc09kZmFHeUp3aFBXVExOY3AzVjZXVHBtYmFhRG5BTm9ndmRaSlV1TnV2YXVGMDhIQnpwLXROeWlMTmxNTE5DajlqaUNKTTNNclVfUEotTEVKTElkVU1GaFk3NkNNNjZVV0FYWHozQ3ROMFk2X0Z1a3lRdnRmWE9aWGNCZVJmMi1NOGtNaG5jTGhoOGE3aXd6dFpTU3NWcnpTVjAyTHdaQU1BWm5abElpNWRCSFBYeTlFaTNCVGQ1eTNLdFhzYzJkOUtTd29wWWR3THFBZDMwMkZRZ3dwczkyMi1OZFY2d29pakpLUU12SGRYbEJrY1B5UXdmNUEmaD05SUJMMW5LUmYyelYyM1pQTklRT084YlUxeVpvQ0oxM0hyZ0k5TDhaTHYw",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "60ff6873-14a4-47ac-9560-6b99e81052f9"
+        ],
+        "x-ms-correlation-request-id": [
+          "60ff6873-14a4-47ac-9560-6b99e81052f9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185741Z:60ff6873-14a4-47ac-9560-6b99e81052f9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FEE6106EC3F941E6824328D08CADB2BD Ref B: CO1AA3060817034 Ref C: 2026-07-21T18:57:41Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:40 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFM4MDEyLUVBU1RVUzJFVUFQIiwiam9iTG9jYXRpb24iOiJlYXN0dXMyZXVhcCIsImpvYlN0b3JhZ2VBY2NvdW50IjoiL2NzbS9zdG9yYWdlYWNjb3VudHMvZ2xvYmFsL3JwZmRsam9iMDBwcm9kYm5ldWFwMDMifQ?api-version=2016-09-01&t=639202570460682458&c=MIIH9TCCBt2gAwIBAgIRAKnTo6mKeliSYj1GLETof4IwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgRVUyQyBDQSAwMTAeFw0yNjA3MDIxNTU4NDNaFw0yNjA5MjcyMTU4NDNaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDQMyX5eVlNoyHQy97t41xstx7ISW3Jpt0fmktBr-SytLFjS2PEwnW3DFpc-bQgfDfHkKP0_FRLvm_mazEvS5KYzyX6nFjGqQTX3SfneJV5jo7nOwYnQHFTbkg0Dngz7AipTBy6yAiQqKMhRo_D-N4o3stwmKHeA0tAiEOx4G_PiAZBVgwqD_hS-porAKnsf-m7-vYsa-g9Cw0SQ2t7YIFgfqGifFcAH79L7QF5n4-toqH20MDZrR10dXpjNK50DvRiltXMo7xC198sVfC6ISY8hDbiFDpsKgL_lz-pJ2kyYJNyq1NUfS79AS70Bkl13eaOYbl8go_Oo41Ma5ArEgQIDAQABo4IE8jCCBO4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQU7Mv1WvWn7sAfft9pF9lwNBkNam0wHwYDVR0jBBgwFoAUz1EBqulDLGR2G0rwqsDykvhPw7swggHiBgNVHR8EggHZMIIB1TB1oHOgcYZvaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHegdaBzhnFodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyZXVhcC9jcmxzL2NjbWVlYXN0dXMyZXVhcHBraS9jY21lZWFzdHVzMmV1YXBpY2EwMS82NS9jdXJyZW50LmNybDBmoGSgYoZgaHR0cDovL2NybC5taWNyb3NvZnQuY29tL2Vhc3R1czJldWFwL2NybHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxLzY1L2N1cnJlbnQuY3JsMHugeaB3hnVodHRwOi8vY2NtZWVhc3R1czJldWFwcGtpLmVhc3R1czJldWFwLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJldWFwaWNhMDEvNjUvY3VycmVudC5jcmwwggHnBggrBgEFBQcBAQSCAdkwggHVMHgGCCsGAQUFBzAChmxodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwegYIKwYBBQUHMAKGbmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czJldWFwL2NhY2VydHMvY2NtZWVhc3R1czJldWFwcGtpL2NjbWVlYXN0dXMyZXVhcGljYTAxL2NlcnQuY2VyMGkGCCsGAQUFBzAChl1odHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMmV1YXAvY2FjZXJ0cy9jY21lZWFzdHVzMmV1YXBwa2kvY2NtZWVhc3R1czJldWFwaWNhMDEvY2VydC5jZXIwcgYIKwYBBQUHMAKGZmh0dHA6Ly9jY21lZWFzdHVzMmV1YXBwa2kuZWFzdHVzMmV1YXAucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmV1YXBpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAndPCPc-CmjHOQpHPVSFI4dsJ3mAAA9L0QPDWwmXXvm66R08WToYQA9QCpkqxZEzl69AhSTR5x65hpeRv8xhwwj57QIuBD6rfMRghZH83T4x3bdOI4KmhFi_uY_52-cou5_xf0DyGAI_C77U5rC8TmVil8EsUCojV8rWkZXUBQSKZMaC1gzmzWW3pgKG9zwbD6J1M_7PW6f_zhE9KvGfBrLALoabdK0H_in5p3CyRMQee9pXSpsictb8cyfBIRU1fRSNmLnOjVSlF_Ll20gYIhnHvetGUxWU0EE9gWSJVUtwbqJjCeDouKPwe2UYUosoETTC7iluHZc0PV9EMfunH2w&s=c25Bbsios_T8BZPrgPD5wHcu54srGi9_KSvR9J9eJXJSme7MofOtG7wjsrPZ7oWxTFv4-Z-AqIeYXVOCKuq8QbuMlWK6kTXeQsOdfaGyJwhPWTLNcp3V6WTpmbaaDnANogvdZJUuNuvauF08HBzp-tNyiLNlMLNCj9jiCJM3MrU_PJ-LEJLIdUMFhY76CM66UWAXXz3CtN0Y6_FukyQvtfXOZXcBeRf2-M8kMhncLhh8a7iwztZSSsVrzSV02LwZAMAZnZlIi5dBHPXy9Ei3BTd5y3KtXsc2d9KSwopYdwLqAd302FQgwps922-NdV6woijJKQMvHdXlBkcPyQwf5A&h=9IBL1nKRf2zV23ZPNIQOO8bU1yZoCJ13HrgI9L8ZLv0",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk00TURFeUxVVkJVMVJWVXpKRlZVRlFJaXdpYW05aVRHOWpZWFJwYjI0aU9pSmxZWE4wZFhNeVpYVmhjQ0lzSW1wdllsTjBiM0poWjJWQlkyTnZkVzUwSWpvaUwyTnpiUzl6ZEc5eVlXZGxZV05qYjNWdWRITXZaMnh2WW1Gc0wzSndabVJzYW05aU1EQndjbTlrWW01bGRXRndNRE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMSZ0PTYzOTIwMjU3MDQ2MDY4MjQ1OCZjPU1JSUg5VENDQnQyZ0F3SUJBZ0lSQUtuVG82bUtlbGlTWWoxR0xFVG9mNEl3RFFZSktvWklodmNOQVFFTEJRQXdOakUwTURJR0ExVUVBeE1yUTBOTlJTQkhNU0JVVEZNZ1VsTkJJREl3TkRnZ1UwaEJNalUySURJd05Ea2dSVlV5UXlCRFFTQXdNVEFlRncweU5qQTNNREl4TlRVNE5ETmFGdzB5TmpBNU1qY3lNVFU0TkROYU1FQXhQakE4QmdOVkJBTVROV0Z6ZVc1amIzQmxjbUYwYVc5dWMybG5ibWx1WjJObGNuUnBabWxqWVhSbExtMWhibUZuWlcxbGJuUXVZWHAxY21VdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQWxEUU15WDVlVmxOb3lIUXk5N3Q0MXhzdHg3SVNXM0pwdDBmbWt0QnItU3l0TEZqUzJQRXduVzNERnBjLWJRZ2ZEZkhrS1AwX0ZSTHZtX21hekV2UzVLWXp5WDZuRmpHcVFUWDNTZm5lSlY1am83bk93WW5RSEZUYmtnMERuZ3o3QWlwVEJ5NnlBaVFxS01oUm9fRC1ONG8zc3R3bUtIZUEwdEFpRU94NEdfUGlBWkJWZ3dxRF9oUy1wb3JBS25zZi1tNy12WXNhLWc5Q3cwU1EydDdZSUZnZnFHaWZGY0FINzlMN1FGNW40LXRvcUgyME1EWnJSMTBkWHBqTks1MER2UmlsdFhNbzd4QzE5OHNWZkM2SVNZOGhEYmlGRHBzS2dMX2x6LXBKMmt5WUpOeXExTlVmUzc5QVM3MEJrbDEzZWFPWWJsOGdvX09vNDFNYTVBckVnUUlEQVFBQm80SUU4akNDQk80d2daMEdBMVVkSUFTQmxUQ0JrakFNQmdvckJnRUVBWUkzZXdFQk1HWUdDaXNHQVFRQmdqZDdBZ0l3V0RCV0JnZ3JCZ0VGQlFjQ0FqQktIa2dBTXdBekFHVUFNQUF4QURrQU1nQXhBQzBBTkFCa0FEWUFOQUF0QURRQVpnQTRBR01BTFFCaEFEQUFOUUExQUMwQU5RQmlBR1FBWVFCbUFHWUFaQUExQUdVQU13QXpBR1F3REFZS0t3WUJCQUdDTjNzREFqQU1CZ29yQmdFRUFZSTNld1FDTUF3R0ExVWRFd0VCX3dRQ01BQXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE0R0ExVWREd0VCX3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVN012MVd2V243c0FmZnQ5cEY5bHdOQmtOYW0wd0h3WURWUjBqQkJnd0ZvQVV6MUVCcXVsRExHUjJHMHJ3cXNEeWt2aFB3N3N3Z2dIaUJnTlZIUjhFZ2dIWk1JSUIxVEIxb0hPZ2NZWnZhSFIwY0RvdkwzQnlhVzFoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUhlZ2RhQnpobkZvZEhSd09pOHZjMlZqYjI1a1lYSjVMV05rYmk1d2Eya3VZMjl5WlM1M2FXNWtiM2R6TG01bGRDOWxZWE4wZFhNeVpYVmhjQzlqY214ekwyTmpiV1ZsWVhOMGRYTXlaWFZoY0hCcmFTOWpZMjFsWldGemRIVnpNbVYxWVhCcFkyRXdNUzgyTlM5amRYSnlaVzUwTG1OeWJEQm1vR1NnWW9aZ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDJWaGMzUjFjekpsZFdGd0wyTnliSE12WTJOdFpXVmhjM1IxY3pKbGRXRndjR3RwTDJOamJXVmxZWE4wZFhNeVpYVmhjR2xqWVRBeEx6WTFMMk4xY25KbGJuUXVZM0pzTUh1Z2VhQjNoblZvZEhSd09pOHZZMk50WldWaGMzUjFjekpsZFdGd2NHdHBMbVZoYzNSMWN6SmxkV0Z3TG5CcmFTNWpiM0psTG5kcGJtUnZkM011Ym1WMEwyTmxjblJwWm1sallYUmxRWFYwYUc5eWFYUnBaWE12WTJOdFpXVmhjM1IxY3pKbGRXRndhV05oTURFdk5qVXZZM1Z5Y21WdWRDNWpjbXd3Z2dIbkJnZ3JCZ0VGQlFjQkFRU0NBZGt3Z2dIVk1IZ0dDQ3NHQVFVRkJ6QUNobXhvZEhSd09pOHZjSEpwYldGeWVTMWpaRzR1Y0d0cExtTnZjbVV1ZDJsdVpHOTNjeTV1WlhRdlpXRnpkSFZ6TW1WMVlYQXZZMkZqWlhKMGN5OWpZMjFsWldGemRIVnpNbVYxWVhCd2Eya3ZZMk50WldWaGMzUjFjekpsZFdGd2FXTmhNREV2WTJWeWRDNWpaWEl3ZWdZSUt3WUJCUVVITUFLR2JtaDBkSEE2THk5elpXTnZibVJoY25rdFkyUnVMbkJyYVM1amIzSmxMbmRwYm1SdmQzTXVibVYwTDJWaGMzUjFjekpsZFdGd0wyTmhZMlZ5ZEhNdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3Y0d0cEwyTmpiV1ZsWVhOMGRYTXlaWFZoY0dsallUQXhMMk5sY25RdVkyVnlNR2tHQ0NzR0FRVUZCekFDaGwxb2RIUndPaTh2WTNKc0xtMXBZM0p2YzI5bWRDNWpiMjB2WldGemRIVnpNbVYxWVhBdlkyRmpaWEowY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJ3YTJrdlkyTnRaV1ZoYzNSMWN6SmxkV0Z3YVdOaE1ERXZZMlZ5ZEM1alpYSXdjZ1lJS3dZQkJRVUhNQUtHWm1oMGRIQTZMeTlqWTIxbFpXRnpkSFZ6TW1WMVlYQndhMmt1WldGemRIVnpNbVYxWVhBdWNHdHBMbU52Y21VdWQybHVaRzkzY3k1dVpYUXZZMlZ5ZEdsbWFXTmhkR1ZCZFhSb2IzSnBkR2xsY3k5alkyMWxaV0Z6ZEhWek1tVjFZWEJwWTJFd01UQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFuZFBDUGMtQ21qSE9RcEhQVlNGSTRkc0ozbUFBQTlMMFFQRFd3bVhYdm02NlIwOFdUb1lRQTlRQ3BrcXhaRXpsNjlBaFNUUjV4NjVocGVSdjh4aHd3ajU3UUl1QkQ2cmZNUmdoWkg4M1Q0eDNiZE9JNEttaEZpX3VZXzUyLWNvdTVfeGYwRHlHQUlfQzc3VTVyQzhUbVZpbDhFc1VDb2pWOHJXa1pYVUJRU0taTWFDMWd6bXpXVzNwZ0tHOXp3YkQ2SjFNXzdQVzZmX3poRTlLdkdmQnJMQUxvYWJkSzBIX2luNXAzQ3lSTVFlZTlwWFNwc2ljdGI4Y3lmQklSVTFmUlNObUxuT2pWU2xGX0xsMjBnWUlobkh2ZXRHVXhXVTBFRTlnV1NKVlV0d2JxSmpDZURvdUtQd2UyVVlVb3NvRVRUQzdpbHVIWmMwUFY5RU1mdW5IMncmcz1jMjVCYnNpb3NfVDhCWlByZ1BENXdIY3U1NHNyR2k5X0tTdlI5SjllSlhKU21lN01vZk90Rzd3anNyUFo3b1d4VEZ2NC1aLUFxSWVZWFZPQ0t1cThRYnVNbFdLNmtUWGVRc09kZmFHeUp3aFBXVExOY3AzVjZXVHBtYmFhRG5BTm9ndmRaSlV1TnV2YXVGMDhIQnpwLXROeWlMTmxNTE5DajlqaUNKTTNNclVfUEotTEVKTElkVU1GaFk3NkNNNjZVV0FYWHozQ3ROMFk2X0Z1a3lRdnRmWE9aWGNCZVJmMi1NOGtNaG5jTGhoOGE3aXd6dFpTU3NWcnpTVjAyTHdaQU1BWm5abElpNWRCSFBYeTlFaTNCVGQ1eTNLdFhzYzJkOUtTd29wWWR3THFBZDMwMkZRZ3dwczkyMi1OZFY2d29pakpLUU12SGRYbEJrY1B5UXdmNUEmaD05SUJMMW5LUmYyelYyM1pQTklRT084YlUxeVpvQ0oxM0hyZ0k5TDhaTHYw",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/8.0.2926.32403",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.113"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-request-id": [
+          "f4c9872e-a3f2-48a9-be08-e9a187393353"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4c9872e-a3f2-48a9-be08-e9a187393353"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20260721T185742Z:f4c9872e-a3f2-48a9-be08-e9a187393353"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 60A0375071DB4D1B9D91E4F29D98419D Ref B: CO1AA3060817034 Ref C: 2026-07-21T18:57:41Z"
+        ],
+        "Date": [
+          "Tue, 21 Jul 2026 18:57:41 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-InterconnectBlockCRUD": [
+      "crptestps8012"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "87c158ca-3873-4850-9567-50a5b0a3c2ef"
+  }
+}
