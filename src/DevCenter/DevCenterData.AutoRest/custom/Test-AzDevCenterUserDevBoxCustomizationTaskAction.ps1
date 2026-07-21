@@ -150,7 +150,7 @@ function Test-AzDevCenterUserDevBoxCustomizationTaskAction {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationTask[]]
     # Tasks to apply.
     # To construct, see NOTES section for TASK properties and create a hash table.
     ${Task},

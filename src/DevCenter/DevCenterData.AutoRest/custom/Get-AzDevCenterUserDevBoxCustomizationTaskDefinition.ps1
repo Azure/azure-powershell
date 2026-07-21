@@ -37,7 +37,7 @@ Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -Inp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationTaskDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +66,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtaskdefinition
 #>
 function Get-AzDevCenterUserDevBoxCustomizationTaskDefinition {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationTaskDefinition])]
   [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
   param(
     [Parameter(ParameterSetName = 'Get', Mandatory)]

@@ -33,7 +33,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -InputObject $d
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IRemoteConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IRemoteConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -62,7 +62,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxremoteconnection
 #>
 function Get-AzDevCenterUserDevBoxRemoteConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IRemoteConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IRemoteConnection])]
     [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
