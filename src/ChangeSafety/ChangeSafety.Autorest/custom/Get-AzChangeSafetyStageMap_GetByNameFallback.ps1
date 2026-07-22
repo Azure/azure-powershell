@@ -1,4 +1,4 @@
-function Get-AzChangeSafetyStageMap_Get1 {
+function Get-AzChangeSafetyStageMap_GetByNameFallback {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IStageMap])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
