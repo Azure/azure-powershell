@@ -106,6 +106,11 @@ function New-AzEventHubNamespace{
         [System.String]
         ${MinimumTlsVersion},
 
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${IPAddressType},
+
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -131,7 +136,7 @@ function New-AzEventHubNamespace{
         [System.Int64]
         ${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
-        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Parameter(HelpMessage = "Replica locations for geo data replication.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
         ${GeoDataReplicationLocation},
 
