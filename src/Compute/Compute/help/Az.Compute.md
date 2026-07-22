@@ -840,7 +840,7 @@ Updates the Dedicated Host.
 Updates an image.
 
 ### [Update-AzInterconnectBlock](Update-AzInterconnectBlock.md)
-Updates an Interconnect Block. Only tags and sku.capacity may be modified.
+Updates an Interconnect Block. Tags and SKU properties provided by parameters are sent in the update request (subject to service support).
 
 ### [Update-AzRestorePointCollection](Update-AzRestorePointCollection.md)
 Update Restore Point Collection.

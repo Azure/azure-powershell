@@ -8,8 +8,7 @@ schema: 2.0.0
 # Update-AzInterconnectBlock
 
 ## SYNOPSIS
-Updates an Interconnect Block. Only tags and sku.capacity may be modified.
-
+Updates an Interconnect Block. Tags and SKU properties provided by parameters are sent in the update request (subject to service support).
 ## SYNTAX
 
 ### DefaultParameterSet (Default)
@@ -27,8 +26,7 @@ Update-AzInterconnectBlock -InputObject <PSInterconnectBlock> [-SkuCapacity <Int
 ```
 
 ## DESCRIPTION
-The **Update-AzInterconnectBlock** cmdlet updates an Interconnect Block via PATCH. Only tags and sku.capacity are mutable; all other fields are immutable after create.
-
+The **Update-AzInterconnectBlock** cmdlet updates an Interconnect Block via PATCH. Tags and SKU fields provided by parameters are included in the update request; supported mutable fields depend on the service.
 ## EXAMPLES
 
 ### Example 1: Scale up capacity
