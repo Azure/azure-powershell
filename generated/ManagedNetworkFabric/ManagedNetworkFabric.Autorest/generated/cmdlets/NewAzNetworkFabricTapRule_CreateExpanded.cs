@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create Network Tap Rule resource.</summary>
+    /// <summary>create Network Tap Rule resource.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkFabricTapRule_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"Create Network Tap Rule resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Description(@"create Network Tap Rule resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}", ApiVersion = "2023-06-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}", ApiVersion = "2025-07-15")]
     public partial class NewAzNetworkFabricTapRule_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IContext
@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Switch configuration description.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Switch configuration description.")]
@@ -80,10 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ManagedNetworkFabric Client => Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Module.Instance.ClientAPI;
 
         /// <summary>Input method to configure Network Tap Rule.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Input method to configure Network Tap Rule.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Input method to configure Network Tap Rule.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Description = @"Input method to configure Network Tap Rule.",
         SerializedName = @"configurationType",
@@ -113,8 +104,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[] DynamicMatchConfiguration { get => _body.DynamicMatchConfiguration?.ToArray() ?? null /* fixedArrayOf */; set => _body.DynamicMatchConfiguration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration>(value) : null); }
 
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _body.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
+        /// <summary>Configuration to enable network tap rule counter.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration to enable network tap rule counter.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Configuration to enable network tap rule counter.",
+        SerializedName = @"enableCount",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("True", "False")]
+        public string GlobalNetworkTapRuleActionEnableCount { get => _body.GlobalNetworkTapRuleActionEnableCount ?? null; set => _body.GlobalNetworkTapRuleActionEnableCount = value; }
+
+        /// <summary>Truncate. 0 indicates do not truncate.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Truncate. 0 indicates do not truncate.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Truncate. 0 indicates do not truncate.",
+        SerializedName = @"truncate",
+        PossibleTypes = new [] { typeof(string) })]
+        public string GlobalNetworkTapRuleActionTruncate { get => _body.GlobalNetworkTapRuleActionTruncate ?? null; set => _body.GlobalNetworkTapRuleActionTruncate = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -127,6 +145,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>The type of managed identity that is being selected.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of managed identity that is being selected.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of managed identity that is being selected.",
+        SerializedName = @"identityType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+        public string IdentitySelectorIdentityType { get => _body.IdentitySelectorIdentityType ?? null; set => _body.IdentitySelectorIdentityType = value; }
+
+        /// <summary>
+        /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.",
+        SerializedName = @"userAssignedIdentityResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string IdentitySelectorUserAssignedIdentityResourceId { get => _body.IdentitySelectorUserAssignedIdentityResourceId ?? null; set => _body.IdentitySelectorUserAssignedIdentityResourceId = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -199,7 +242,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         Description = @"Polling interval in seconds.",
         SerializedName = @"pollingIntervalInSeconds",
         PossibleTypes = new [] { typeof(int) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("30", "60", "90", "120")]
         public int PollingIntervalInSecond { get => _body.PollingIntervalInSecond ?? default(int); set => _body.PollingIntervalInSecond = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
@@ -275,6 +317,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         public string TapRulesUrl { get => _body.TapRulesUrl ?? null; set => _body.TapRulesUrl = value; }
 
         /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
+        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -343,11 +393,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -489,6 +534,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
 
         }
 
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _body.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _body.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_body.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _body.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _body.IdentityType = "UserAssigned";
+                }
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -561,6 +631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    this.PreProcessManagedIdentityParameters();
                     await this.Client.NetworkTapRulesCreate(SubscriptionId, ResourceGroupName, Name, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -663,24 +734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRule
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

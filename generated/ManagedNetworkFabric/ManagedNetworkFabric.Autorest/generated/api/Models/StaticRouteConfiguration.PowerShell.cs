@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Ipv6Route = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>) content.GetValueForProperty("Ipv6Route",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Ipv6Route, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePropertiesTypeConverter.ConvertFrom));
             }
+            if (content.Contains("Extension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Extension, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -149,6 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("Ipv6Route"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Ipv6Route = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>) content.GetValueForProperty("Ipv6Route",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Ipv6Route, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePropertiesTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Extension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Extension = (string) content.GetValueForProperty("Extension",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteConfigurationInternal)this).Extension, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

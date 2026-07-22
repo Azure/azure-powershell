@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchableProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternetGatewayPatchablePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternetGatewayPatchPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             // actually deserialize
             if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchableProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternetGatewayPatchablePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternetGatewayPatchInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.InternetGatewayPatchPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {

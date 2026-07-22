@@ -79,6 +79,10 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+FEATUREFLAG <IFeatureFlagProperties[]>: NetworkFabric feature flag configuration information
+  [FeatureFlagName <String>]: Feature flag name.
+  [FeatureFlagValue <String>]: Feature flag value.
+
 MANAGEMENTNETWORKCONFIGURATION <IManagementNetworkConfigurationProperties>: Configuration to be used to setup the management network.
   InfrastructureVpnConfigurationPeeringOption <String>: Peering option list.
   WorkloadVpnConfigurationPeeringOption <String>: Peering option list.
@@ -116,13 +120,13 @@ MANAGEMENTNETWORKCONFIGURATION <IManagementNetworkConfigurationProperties>: Conf
   [WorkloadVpnConfigurationOptionBPropertiesRouteTargetsImportIpv6RouteTarget <List<String>>]: Route Targets to be applied for incoming routes from CE.
 
 TERMINALSERVERCONFIGURATION <ITerminalServerConfiguration>: Network and credentials configuration currently applied to terminal server.
-  [Password <String>]: Password for the terminal server connection.
-  [SerialNumber <String>]: Serial Number of Terminal server.
-  [Username <String>]: Username for the terminal server connection.
-  [PrimaryIpv4Prefix <String>]: IPv4 Address Prefix.
+  Password <SecureString>: Password for the terminal server connection.
+  PrimaryIpv4Prefix <String>: IPv4 Address Prefix.
+  SecondaryIpv4Prefix <String>: Secondary IPv4 Address Prefix.
+  Username <String>: Username for the terminal server connection.
   [PrimaryIpv6Prefix <String>]: IPv6 Address Prefix.
-  [SecondaryIpv4Prefix <String>]: Secondary IPv4 Address Prefix.
   [SecondaryIpv6Prefix <String>]: Secondary IPv6 Address Prefix.
+  [SerialNumber <String>]: Serial Number of Terminal server.
 .Link
 https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabric
 #>
@@ -212,9 +216,62 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.String]
+    # Key that must be configured on the fabric.
+    ${AuthorizedTransceiverKey},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Vendor of the transceiver.
+    ${AuthorizedTransceiverVendor},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String[]]
+    # Control Plane Access Control List ARM resource IDs.
+    ${ControlPlaneAcl},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # The version of Network Fabric.
+    ${FabricVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties[]]
+    # NetworkFabric feature flag configuration information
+    ${FeatureFlag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Hardware alert threshold percentage.
+    # Possible values are from 20 to 100.
+    ${HardwareAlertThreshold},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
     # IPv6Prefix for Management Network.
     # Example: 3FFE:FFFF:0:CD40::/59
     ${Ipv6Prefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # QoS configuration state.
+    # Default is Disabled.
+    ${QoConfigurationQosConfigurationState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -224,10 +281,67 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Network Fabric storage account resource identifier.
+    ${StorageAccountConfigurationStorageAccountId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # The type of managed identity that is being selected.
+    ${StorageAccountIdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # The user assigned managed identity resource ID to use.
+    # Mutually exclusive with a system assigned identity type.
+    ${StorageAccountIdentityUserAssignedIdentityResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Number of Storage arrays associated with the Network Fabric.
+    ${StorageArrayCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String[]]
+    # Trusted IP Prefixes ARM resource IDs.
+    ${TrustedIPPrefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # NNI derived unique Route Distinguisher state.
+    # Default is Disabled.
+    ${UniqueRdConfigurationNniDerivedUniqueRdConfigurationState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # Unique Route Distinguisher configuration state.
+    # Default is Enabled.
+    ${UniqueRdConfigurationUniqueRdConfigurationState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -309,6 +423,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -333,8 +455,6 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabric_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -348,6 +468,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
