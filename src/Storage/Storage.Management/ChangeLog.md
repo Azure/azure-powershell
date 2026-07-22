@@ -18,8 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a path traversal issue in `Get-AzStorageBlobContent` and `Get-AzDataLakeGen2ItemContent` where a source blob/file name containing directory traversal segments (e.g. `../`) could write content outside the specified destination directory.
+
+## Version 9.7.1
+* Updated storage account identity handling to explicitly use the Storage SDK `Identity` model in `New-AzStorageAccount` and `Set-AzStorageAccount`.
+
+## Version 9.7.0
 * Added ChangeSafety Support
-    - Fixed `Get/Set-AzStorageFileContent` to properly inherit dynamic parameters from base cmdlet class
 * Updated prompt in `Start-AzStorageAccountMigration`
 * Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
 * Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`

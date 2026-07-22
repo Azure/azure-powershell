@@ -14,9 +14,9 @@ Create a Network Tap.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String>
- -Destination <INetworkTapPropertiesDestinationsItem[]> -Location <String> -NetworkPacketBrokerId <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-PollingType <String>] [-Tag <Hashtable>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -Destination <IDestinationProperties[]>
+ -Location <String> -NetworkPacketBrokerId <String> [-SubscriptionId <String>] [-Annotation <String>]
+ [-EnableSystemAssignedIdentity] [-PollingType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -113,11 +113,26 @@ Accept wildcard characters: False
 List of destinations to send the filter traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IDestinationProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -266,6 +281,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

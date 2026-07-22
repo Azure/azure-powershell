@@ -132,136 +132,136 @@ Preview modules are not included in this list. Read more about [module version t
 ### `Get-AzCloudService`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService' is changing
   - The following properties in the output type are being deprecated : 'Extension' 'LoadBalancerConfiguration' 'Secret' 'Role' 'Zone'
   - The following properties are being added to the output type : 'Extension' 'LoadBalancerConfiguration' 'Secret' 'Role' 'Zone'
   - Change description : The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServiceInstanceView`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceInstanceView' is changing
   - The following properties in the output type are being deprecated : 'Statuses' 'RoleInstanceStatusesSummary' 'PrivateId'
   - The following properties are being added to the output type : 'Statuses' 'RoleInstanceStatusesSummary' 'PrivateId'
   - Change description : The types of the properties 'Statuses', 'RoleInstanceStatusesSummary', and 'PrivateId' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServiceNetworkInterface`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.INetworkInterface' is changing
   - The following properties in the output type are being deprecated : 'ApplicationSecurityGroup' 'CustomDnsConfig' 'FlowLog' 'LoadBalancerFrontendIPConfiguration' 'NetworkSecurityGroupPropertiesNetworkInterface' 'PrivateEndpointPropertiesNetworkInterface' 'PrivateLinkServicePropertiesNetworkInterface' 'IPConfiguration' 'TapConfiguration' 'PrivateEndpointConnection' 'PrivateEndpointPropertiesIPConfiguration' 'PrivateLinkServiceConnection' 'ManualPrivateLinkServiceConnection' 'PrivateLinkServicePropertiesIPConfiguration' 'SecurityRule' 'DefaultSecurityRule' 'ApplicationGatewayIPConfiguration' 'Delegation' 'FlowLog' 'IPConfiguration' 'IPConfigurationProfile' 'NetworkInterface' 'PrivateEndpoint' 'ResourceNavigationLink' 'Route' 'DefaultSecurityRule' 'SecurityRule' 'ServiceAssociationLink' 'ServiceEndpointPolicy' 'ServiceEndpoint' 'NetworkSecurityGroupPropertiesSubnet' 'RouteTablePropertiesSubnet' 'IPAllocation' 'PropertiesAddressPrefixes' 'PropertiesNetworkSecurityGroupPropertiesSubnets' 'HostedWorkload' 'VisibilitySubscription' 'DnsSettingDnsServer' 'DnsSettingAppliedDnsServer' 'AutoApprovalSubscription' 'Fqdn'
   - The following properties are being added to the output type : 'ApplicationSecurityGroup' 'CustomDnsConfig' 'FlowLog' 'LoadBalancerFrontendIPConfiguration' 'NetworkSecurityGroupPropertiesNetworkInterface' 'PrivateEndpointPropertiesNetworkInterface' 'PrivateLinkServicePropertiesNetworkInterface' 'IPConfiguration' 'TapConfiguration' 'PrivateEndpointConnection' 'PrivateEndpointPropertiesIPConfiguration' 'PrivateLinkServiceConnection' 'ManualPrivateLinkServiceConnection' 'PrivateLinkServicePropertiesIPConfiguration' 'SecurityRule' 'DefaultSecurityRule' 'ApplicationGatewayIPConfiguration' 'Delegation' 'FlowLog' 'IPConfiguration' 'IPConfigurationProfile' 'NetworkInterface' 'PrivateEndpoint' 'ResourceNavigationLink' 'Route' 'DefaultSecurityRule' 'SecurityRule' 'ServiceAssociationLink' 'ServiceEndpointPolicy' 'ServiceEndpoint' 'NetworkSecurityGroupPropertiesSubnet' 'RouteTablePropertiesSubnet' 'IPAllocation' 'PropertiesAddressPrefixes' 'PropertiesNetworkSecurityGroupPropertiesSubnets' 'HostedWorkload' 'VisibilitySubscription' 'DnsSettingDnsServer' 'DnsSettingAppliedDnsServer' 'AutoApprovalSubscription' 'Fqdn'
   - Change description : The types of the properties 'ApplicationSecurityGroup', 'CustomDnsConfig', 'FlowLog', 'LoadBalancerFrontendIPConfiguration', 'NetworkSecurityGroupPropertiesNetworkInterface', 'PrivateEndpointPropertiesNetworkInterface', 'PrivateLinkServicePropertiesNetworkInterface', 'IPConfiguration', 'TapConfiguration', 'PrivateEndpointConnection', 'PrivateEndpointPropertiesIPConfiguration', 'PrivateLinkServiceConnection', 'ManualPrivateLinkServiceConnection', 'PrivateLinkServicePropertiesIPConfiguration', 'SecurityRule', 'DefaultSecurityRule', 'ApplicationGatewayIPConfiguration', 'Delegation', 'FlowLog', 'IPConfiguration', 'IPConfigurationProfile', 'NetworkInterface', 'PrivateEndpoint', 'ResourceNavigationLink', 'Route', 'DefaultSecurityRule', 'SecurityRule', 'ServiceAssociationLink', 'ServiceEndpointPolicy', 'ServiceEndpoint', 'NetworkSecurityGroupPropertiesSubnet', 'RouteTablePropertiesSubnet', 'IPAllocation', 'PropertiesAddressPrefixes', 'PropertiesNetworkSecurityGroupPropertiesSubnets', 'HostedWorkload', 'VisibilitySubscription', 'DnsSettingDnsServer', 'DnsSettingAppliedDnsServer', 'AutoApprovalSubscription', 'Fqdn' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServiceOSFamily`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IOSFamily' is changing
   - The following properties in the output type are being deprecated : 'Version'
   - The following properties are being added to the output type : 'Version'
   - Change description : The types of the properties 'Version' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServicePublicIPAddress`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IPublicIPAddress' is changing
   - The following properties in the output type are being deprecated : 'Zone' 'IPTag' 'PublicIPAddress' 'PublicIPPrefix' 'Subnet'
   - The following properties are being added to the output type : 'Zone' 'IPTag' 'PublicIPAddress' 'PublicIPPrefix' 'Subnet'
   - Change description : The types of the properties 'Zone', 'IPTag', 'PublicIPAddress', 'PublicIPPrefix', and 'Subnet' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServiceRoleInstance`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IRoleInstance' is changing
   - The following properties in the output type are being deprecated : 'NetworkProfileNetworkInterface' 'InstanceViewStatuses'
   - The following properties are being added to the output type : 'NetworkProfileNetworkInterface' 'InstanceViewStatuses'
   - Change description : The types of the properties 'NetworkProfileNetworkInterface' and 'InstanceViewStatuses' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Get-AzCloudServiceRoleInstanceView`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstanceView' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IRoleInstanceView' is changing
   - The following properties in the output type are being deprecated : 'Statuses'
   - The following properties are being added to the output type : 'Statuses'
   - Change description : The types of the properties 'Statuses' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudService`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService'
   - The following properties in the output type are being deprecated : 'Zone, Extension, LoadBalancerConfiguration, Secret, Role'
   - The following properties are being added to the output type : 'Zone, Extension, LoadBalancerConfiguration, Secret, Role will be changed from object to 'List'.'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudServiceDiagnosticsExtension`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
   - The following properties in the output type are being deprecated : 'RolesAppliedTo System.String[]'
   - The following properties are being added to the output type : 'RolesAppliedTo System.Collections.Generic.List1[System.String]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudServiceExtensionObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
   - The following properties in the output type are being deprecated : 'RolesAppliedTo System.String[]'
   - The following properties are being added to the output type : 'RolesAppliedTo System.Collections.Generic.List1[System.String]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudServiceLoadBalancerConfigurationObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration'
   - The following properties in the output type are being deprecated : 'FrontendIPConfiguration Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ILoadBalancerFrontendIPConfiguration'
   - The following properties are being added to the output type : 'FrontendIPConfiguration System.Collections.Generic.List1[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ILoadBalancerFrontendIPConfiguration]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudServiceRemoteDesktopExtensionObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension'
   - The following properties in the output type are being deprecated : 'RolesAppliedTo System.String[]'
   - The following properties are being added to the output type : 'RolesAppliedTo System.Collections.Generic.List1[System.String]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `New-AzCloudServiceVaultSecretGroupObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultSecretGroup' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup'
   - The following properties in the output type are being deprecated : 'VaultCertificate Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate'
   - The following properties are being added to the output type : 'VaultCertificate System.Collections.Generic.List1[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ### `Update-AzCloudService`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService' is changing
   - The following properties in the output type are being deprecated : 'Extension' 'LoadBalancerConfiguration' 'Secret' 'Role' 'Zone'
   - The following properties are being added to the output type : 'Extension' 'LoadBalancerConfiguration' 'Secret' 'Role' 'Zone'
   - Change description : The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.CloudService' from version : '9.0.0'
 
 ## Az.Compute
 
@@ -282,18 +282,14 @@ Preview modules are not included in this list. Read more about [module version t
 ### `New-AzContainerGroup`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup'
   - The following properties in the output type are being deprecated : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd'
   - The following properties are being added to the output type : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd. This parameter will be changed from single object to 'List'.'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ContainerInstance' from version : '9.0.0'
   IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-OSType`
-    
+  - The change is expected to take effect in 'Az.ContainerInstance' from version : '9.0.0'
 
 ### `New-AzContainerInstanceContainerGroupProfile`
 
@@ -302,153 +298,133 @@ Preview modules are not included in this list. Read more about [module version t
     - The parameter : 'OSType' is changing.
     - Change description : Removing the default value of OSType parameter. 
     - This change will take effect on '5/21/2025'- The change is expected to take effect from Az version : '14.0.0'
-    - The change is expected to take effect from version : '5.0.0'
+    - The change is expected to take effect in 'Az.ContainerInstance' from version : '5.0.0'
 
 ### `New-AzContainerInstanceInitDefinitionObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition'
   - The following properties in the output type are being deprecated : 'EnvironmentVariable, InstanceViewEvent, VolumeMount, Command, CapabilityDrop, CapabilityAdd'
   - The following properties are being added to the output type : 'EnvironmentVariable, InstanceViewEvent, VolumeMount, Command, CapabilityDrop, CapabilityAdd. This parameter will be changed from single object to 'List'.'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ContainerInstance' from version : '9.0.0'
 
 ### `New-AzContainerInstanceNoDefaultObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container'
   - The following properties in the output type are being deprecated : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, LimitsGpuSku, RequestsGpuSku, ReadinessProbeHttpGetScheme, LivenessProbeHttpGetScheme, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd, Protocol'
   - The following properties are being added to the output type : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, LimitsGpuSku, RequestsGpuSku, ReadinessProbeHttpGetScheme, LivenessProbeHttpGetScheme, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd, Protocol. This parameter will be changed from single object to 'List'.'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ContainerInstance' from version : '9.0.0'
 
 ### `New-AzContainerInstanceObject`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container'
   - The following properties in the output type are being deprecated : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, LimitsGpuSku, RequestsGpuSku, ReadinessProbeHttpGetScheme, LivenessProbeHttpGetScheme, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd, Protocol'
   - The following properties are being added to the output type : 'Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, LimitsGpuSku, RequestsGpuSku, ReadinessProbeHttpGetScheme, LivenessProbeHttpGetScheme, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd, Protocol. This parameter will be changed from single object to 'List'.'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ContainerInstance' from version : '9.0.0'
 
 ## Az.Databricks
 
 ### `Get-AzDatabricksAccessConnector`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IAccessConnector' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAccessConnector' is changing
   - The following properties in the output type are being deprecated : 'ReferedBy'
   - The following properties are being added to the output type : 'ReferedBy'
   - Change description : The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Get-AzDatabricksOutboundNetworkDependenciesEndpoint`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IOutboundEnvironmentEndpoint' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IOutboundEnvironmentEndpoint' is changing
   - The following properties in the output type are being deprecated : 'Endpoint'
   - The following properties are being added to the output type : 'Endpoint'
   - Change description : The types of the properties 'Endpoint' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency]' 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Get-AzDatabricksVNetPeering`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering' is changing
   - The following properties in the output type are being deprecated : 'DatabrickAddressSpaceAddressPrefix' 'RemoteAddressSpaceAddressPrefix'
   - The following properties are being added to the output type : 'DatabrickAddressSpaceAddressPrefix' 'RemoteAddressSpaceAddressPrefix'
   - Change description : The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Get-AzDatabricksWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace' is changing
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'Authorization' 'ComplianceSecurityProfileComplianceStandard'
   - The following properties are being added to the output type : 'PrivateEndpointConnection' 'Authorization' 'ComplianceSecurityProfileComplianceStandard'
   - Change description : The types of the properties 'PrivateEndpointConnection', 'Authorization' and 'ComplianceSecurityProfileComplianceStandard' will be changed from object to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `New-AzDatabricksAccessConnector`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IAccessConnector' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAccessConnector' is changing
   - The following properties in the output type are being deprecated : 'ReferedBy' 'EnableSystemAssignedIdentity' 'UserAssignedIdentity'
   - The following properties are being added to the output type : 'ReferedBy' 'EnableSystemAssignedIdentity' 'UserAssignedIdentity'
   - Change description : (1) The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `New-AzDatabricksVNetPeering`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering' is changing
   - The following properties in the output type are being deprecated : 'DatabrickAddressSpaceAddressPrefix' 'RemoteAddressSpaceAddressPrefix'
   - The following properties are being added to the output type : 'DatabrickAddressSpaceAddressPrefix' 'RemoteAddressSpaceAddressPrefix'
   - Change description : The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `New-AzDatabricksWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace'
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization'
   - The following properties are being added to the output type : 'PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List''
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Update-AzDatabricksAccessConnector`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IAccessConnector' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAccessConnector' is changing
   - The following properties in the output type are being deprecated : 'ReferedBy' 'EnableSystemAssignedIdentity' 'UserAssignedIdentity'
   - The following properties are being added to the output type : 'ReferedBy' 'EnableSystemAssignedIdentity' 'UserAssignedIdentity'
   - Change description : (1) The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Update-AzDatabricksVNetPeering`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering'
   - The following properties in the output type are being deprecated : 'DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.String[]''
   - The following properties are being added to the output type : 'DatabrickAddressSpaceAddressPrefix, RemoteAddressSpaceAddressPrefix 'System.Collections.Generic.List1[System.String]''
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ### `Update-AzDatabricksWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace'
+  - The output type is changing from the existing type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace' to the new type :'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IWorkspace'
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization'
   - The following properties are being added to the output type : 'PrivateEndpointConnection, ComplianceSecurityProfileComplianceStandard, Authorization The types of the properties will be changed from object to 'List''
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-## Az.DesktopVirtualization
-
-### `Update-AzWvdApplication`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Tag`
-    - The parameter : 'Tag' is changing.
-    - Change description : The parameter 'Tag' will be removed from the Update cmdlet of Application. 
-    - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect in 'Az.DesktopVirtualization' from version : '6.0.0'
-
-### `Update-AzWvdDesktop`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-Tag`
-    - The parameter : 'Tag' is changing.
-    - Change description : The parameter 'Tag' will be removed from the Update cmdlet of Desktop. 
-    - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect in 'Az.DesktopVirtualization' from version : '6.0.0'
+  - The change is expected to take effect in 'Az.Databricks' from version : '2.0.0'
 
 ## Az.DnsResolver
 
@@ -459,21 +435,7 @@ Preview modules are not included in this list. Read more about [module version t
     - The parameter : 'Domain' is changing.
     - Change description : The parameter 'Domain' is no longer mandatory. Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList'. 
     - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect from version : '2.0.0'
-
-## Az.KeyVault
-
-### `Get-AzKeyVaultKey`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Certificate-backed keys will no longer be returned when listing keys. Use the certificate cmdlets (Get-AzKeyVaultCertificate) to manage these keys.
-  - This change is expected to take effect from Az.KeyVault version: 7.0.0 and Az version: 16.0.0
-
-### `Get-AzKeyVaultSecret`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Certificate-backed secrets will no longer be returned when listing secrets. Use the certificate cmdlets (Get-AzKeyVaultCertificate) to manage these secrets.
-  - This change is expected to take effect from Az.KeyVault version: 7.0.0 and Az version: 16.0.0
+    - The change is expected to take effect in 'Az.DnsResolver' from version : '2.0.0'
 
 ## Az.MachineLearningServices
 
@@ -487,18 +449,6 @@ Preview modules are not included in this list. Read more about [module version t
 
 - Parameter breaking-change will happen to all parameter sets
   - `-Type`
-    
-
-### `New-AzMLWorkspaceDataPathAssetReferenceObject`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-ReferenceType`
-    
-
-### `New-AzMLWorkspaceIdAssetReferenceObject`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-ReferenceType`
     
 
 ### `New-AzMLWorkspaceLiteralJobInputObject`
@@ -572,29 +522,29 @@ Preview modules are not included in this list. Read more about [module version t
 ### `Get-AzManagedServicesAssignment`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationAssignment' is changing
   - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
   - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
 ### `Get-AzManagedServicesDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition' is changing
   - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
   - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
 ### `New-AzManagedServicesAssignment`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationAssignment' is changing
   - The following properties in the output type are being deprecated : 'Authorization[]' 'EligibleAuthorization[]'
   - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
 ### `New-AzManagedServicesAuthorizationObject`
 
@@ -605,29 +555,43 @@ Preview modules are not included in this list. Read more about [module version t
 ### `New-AzManagedServicesDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition' is changing
   - The following properties in the output type are being deprecated : 'Authorization' 'EligibleAuthorization' 'DelegatedRoleDefinitionId[]' 'JustInTimeAccessPolicyManagedByTenantApprover[]'
   - The following properties are being added to the output type : 'List[Authorization]' 'List[EligibleAuthorization]' 'List[DelegatedRoleDefinitionId]' 'List[JustInTimeAccessPolicyManagedByTenantApprover]'
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '9.0.0'
+  - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzManagedServicesDefinition_CreateExpanded`
   - `-Authorization`
     - The parameter : 'Authorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect from version : '9.0.0'
+    - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
   - `-EligibleAuthorization`
     - The parameter : 'EligibleAuthorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
     - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect from version : '9.0.0'
+    - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
 ### `New-AzManagedServicesEligibleAuthorizationObject`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-JustInTimeAccessPolicyManagedByTenantApprover`
     
+
+### `Update-AzManagedServicesDefinition`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Authorization`
+    - The parameter : 'Authorization' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
+    - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
+  - `-EligibleAuthorization`
+    - The parameter : 'EligibleAuthorization' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
+    - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
 ## Az.Monitor
 
@@ -654,12 +618,52 @@ Preview modules are not included in this list. Read more about [module version t
 ### `Get-AzMonitorWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource' is changing
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
   - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
   - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '7.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Get-AzMonitorWorkspaceIssue`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIssueResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Get-AzMonitorWorkspaceIssueAlert`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPagedRelatedAlert' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Get-AzMonitorWorkspaceIssueResource`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPagedRelatedResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Get-AzMonitorWorkspaceMetricsContainer`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsContainerResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
 ### `Get-AzSubscriptionDiagnosticSetting`
 
@@ -723,12 +727,32 @@ Preview modules are not included in this list. Read more about [module version t
 ### `New-AzMonitorWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource' is changing
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
   - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
   - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '7.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `New-AzMonitorWorkspaceIssue`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIssueResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `New-AzMonitorWorkspaceMetricsContainer`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsContainerResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
 ### `New-AzSubscriptionDiagnosticSetting`
 
@@ -759,12 +783,52 @@ Preview modules are not included in this list. Read more about [module version t
 ### `Update-AzMonitorWorkspace`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource' is changing
   - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
   - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
   - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect from version : '7.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Update-AzMonitorWorkspaceIssue`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIssueResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Update-AzMonitorWorkspaceIssueAlert`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IRelatedAlerts' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Update-AzMonitorWorkspaceIssueResource`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IRelatedResources' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
+
+### `Update-AzMonitorWorkspaceMetricsContainer`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsContainerResource' is changing
+  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection' 'ProvisioningState'
+  - The following properties are being added to the output type : 'PrivateEndpointConnection' 'ProvisioningState'
+  - Change description : The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'. 
+  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+  - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
 ### `Update-AzSubscriptionDiagnosticSetting`
 
@@ -775,155 +839,6 @@ Preview modules are not included in this list. Read more about [module version t
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-## Az.MySql
-
-### `Get-AzMySqlConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Get-AzMySqlConnectionString`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Get-AzMySqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Get-AzMySqlReplica`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Get-AzMySqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Get-AzMySqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzMySqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzMySqlReplica`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzMySqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `New-AzMySqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Remove-AzMySqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Remove-AzMySqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Remove-AzMySqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Restart-AzMySqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Restore-AzMySqlServer_GeoRestore`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Restore-AzMySqlServer_PointInTimeRestore`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzMySqlConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzMySqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzMySqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzMySqlServerConfigurationsList`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
-### `Update-AzMySqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '2.0.0'
-
 ## Az.Network
 
 ### `Invoke-AzFirewallPacketCapture`
@@ -931,261 +846,6 @@ Preview modules are not included in this list. Read more about [module version t
 - Cmdlet breaking-change will happen to all parameter sets
   - The cmdlet is being deprecated. There will be no replacement for it.
   - This change is expected to take effect from Az.Network version: Az.Network: 8.0.0 and Az version: Az: 15.0.0
-
-## Az.PolicyInsights
-
-### `Get-AzPolicyAttestation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation' to the new type :'Attestation'
-  - The following properties in the output type are being deprecated : 'SystemData'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'SystemDataCreatedAt' 'SystemDataCreatedBy' 'SystemDataCreatedByType' 'SystemDataLastModifiedAt' 'SystemDataLastModifiedBy' 'SystemDataLastModifiedByType'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Get-AzPolicyEvent`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent' is changing
-  - The following properties in the output type are being deprecated : 'ResourceTags' 'ManagementGroupIds'
-  - The following properties are being added to the output type : 'ResourceTag' 'ManagementGroupId' 'ComplianceState' 'Component' 'EffectiveParameter' 'OdataContext' 'OdataId' 'Keys' 'Values' 'Count' 'AdditionalProperties'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Get-AzPolicyMetadata`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata' to the new type :'PolicyMetadata'
-  - The following properties are being added to the output type : 'ResourceGroupName'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Get-AzPolicyRemediation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation' to the new type :'Remediation'
-  - The following properties in the output type are being deprecated : 'Filters' 'DeploymentSummary' 'FailureThreshold' 'ParallelDeployments'
-  - The following properties are being added to the output type : 'FilterLocation' 'FilterResourceId' 'DeploymentStatusFailedDeployment' 'DeploymentStatusSuccessfulDeployment' 'DeploymentStatusTotalDeployment' 'FailureThresholdPercentage' 'ParallelDeployment' 'ResourceGroupName' 'SystemDataCreatedAt' 'SystemDataCreatedBy' 'SystemDataCreatedByType' 'SystemDataLastModifiedAt' 'SystemDataLastModifiedBy' 'SystemDataLastModifiedByType'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Get-AzPolicyState`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState' is changing
-  - The following properties in the output type are being deprecated : 'ResourceTags' 'ManagementGroupIds'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'ResourceTag' 'ManagementGroupId'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Get-AzPolicyStateSummary`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary' is changing
-  - The following properties in the output type are being deprecated : 'PolicyAssignments' 'Results'
-  - The following properties are being added to the output type : 'PolicyAssignment' 'ResultCompliantResource' 'ResultNonCompliantPolicy' 'ResultNonCompliantResource' 'ResultPolicyDetail' 'ResultPolicyGroupDetail' 'ResultQueryResultsUri' 'ResultResourceDetail' 'OdataId' 'OdataContext'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `New-AzPolicyAttestation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation' to the new type :'Attestation'
-  - The following properties in the output type are being deprecated : 'SystemData'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'SystemDataCreatedAt' 'SystemDataCreatedBy' 'SystemDataCreatedByType' 'SystemDataLastModifiedAt' 'SystemDataLastModifiedBy' 'SystemDataLastModifiedByType'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Set-AzPolicyAttestation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation' to the new type :'Attestation'
-  - The following properties in the output type are being deprecated : 'SystemData'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'SystemDataCreatedAt' 'SystemDataCreatedBy' 'SystemDataCreatedByType' 'SystemDataLastModifiedAt' 'SystemDataLastModifiedBy' 'SystemDataLastModifiedByType'
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Start-AzPolicyRemediation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Start-AzPolicyRemediation will now return when the Remediation reaches a terminal state unless you use the new NoWait parameter.
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-### `Stop-AzPolicyRemediation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - Stop-AzPolicyRemediation will now have a NoWait switch parameter as well as returning the Remediation object instead of just a boolean.
-  - This change is expected to take effect from Az.PolicyInsights version: 2.0.0 and Az version: 16.0.0
-
-## Az.PostgreSql
-
-### `Get-AzPostgreSqlConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlFlexibleServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlFlexibleServerConfiguration`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlFlexibleServerDatabase`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlFlexibleServerFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlReplica`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Get-AzPostgreSqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `New-AzPostgreSqlFlexibleServerDatabase`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `New-AzPostgreSqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlFlexibleServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlFlexibleServerDatabase`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlFlexibleServerFirewallRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Remove-AzPostgreSqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Restart-AzPostgreSqlFlexibleServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Restart-AzPostgreSqlServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Start-AzPostgreSqlFlexibleServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Stop-AzPostgreSqlFlexibleServer`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
-
-### `Update-AzPostgreSqlVirtualNetworkRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet is being deprecated. There will be no replacement for it.
-  - Change description : This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release. 
-  - This change will take effect on '6/2/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '-'
 
 ## Az.RecoveryServices
 
@@ -1273,290 +933,181 @@ Preview modules are not included in this list. Read more about [module version t
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
-## Az.SecurityInsights
-
-### `Get-AzSentinelEnrichment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelAutomationRule`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelBookmark`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelBookmarkRelation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelIncident`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelIncidentComment`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelIncidentRelation`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelIncidentTeam`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-### `New-AzSentinelOnboardingState`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  The cmdlet parameter set is being deprecated. There will be no replacement for it.
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '4.0.0'
-
-## Az.Sql
-
-### `New-AzSqlServer`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-EnableSoftDelete`
-    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
-    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
-
-### `Set-AzSqlServer`
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-EnableSoftDelete`
-    - The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.
-    - This change is expected to take effect from Az.Sql version: 7.0.0 and Az version: 16.0.0
-
 ## Az.StackHCI
 
 ### `Get-AzStackHciArcSetting`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSetting' is changing
   - The following properties in the output type are being deprecated : 'DefaultExtension' 'PerNodeDetail'
   - The following properties are being added to the output type : 'DefaultExtension' 'PerNodeDetail'
   - Change description : The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciCluster`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster' is changing
   - The following properties in the output type are being deprecated : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - The following properties are being added to the output type : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - Change description : The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciDeploymentSetting`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting' is changing
   - The following properties in the output type are being deprecated : 'DeploymentStatusStep' 'ValidationStatusStep' 'DeploymentConfigurationScaleUnit' 'ArcNodeResourceId'
   - The following properties are being added to the output type : 'DeploymentStatusStep' 'ValidationStatusStep' 'DeploymentConfigurationScaleUnit' 'ArcNodeResourceId'
   - Change description : The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciExtension`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtension' is changing
   - The following properties in the output type are being deprecated : 'PerNodeExtensionDetail'
   - The following properties are being added to the output type : 'PerNodeExtensionDetail'
   - Change description : The type of the property PerNodeExtensionDetail will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciUpdate`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate' is changing
   - The following properties in the output type are being deprecated : 'ComponentVersion' 'HealthCheckResult' 'Prerequisite'
   - The following properties are being added to the output type : 'ComponentVersion' 'HealthCheckResult' 'Prerequisite'
   - Change description : The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciUpdateRun`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun' is changing
   - The following properties in the output type are being deprecated : 'ProgressStep'
   - The following properties are being added to the output type : 'ProgressStep'
   - Change description : The type of the property ProgressStep will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Get-AzStackHciUpdateSummary`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries' is changing
   - The following properties in the output type are being deprecated : 'PackageVersion' 'HealthCheckResult'
   - The following properties are being added to the output type : 'PackageVersion' 'HealthCheckResult'
   - Change description : The types of the properties PackageVersion and HealthCheckResult will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Invoke-AzStackHciConsentAndInstallDefaultExtension`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSetting' is changing
   - The following properties in the output type are being deprecated : 'DefaultExtension' 'PerNodeDetail'
   - The following properties are being added to the output type : 'DefaultExtension' 'PerNodeDetail'
   - Change description : The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet parameter set is being deprecated. There will be no replacement for it.
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster' is changing
-  - The following properties in the output type are being deprecated : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
-  - The following properties are being added to the output type : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
-  - Change description : The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'. 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `New-AzStackHciArcSetting`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IArcSetting' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSetting' is changing
   - The following properties in the output type are being deprecated : 'DefaultExtension' 'PerNodeDetail'
   - The following properties are being added to the output type : 'DefaultExtension' 'PerNodeDetail'
   - Change description : The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `New-AzStackHciCluster`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster' is changing
   - The following properties in the output type are being deprecated : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - The following properties are being added to the output type : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - Change description : The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    The type of the parameter is changing from 'string' to 'boolean'.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system-assigned identities. 
-    - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `New-AzStackHciDeploymentSetting`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting' is changing
   - The following properties in the output type are being deprecated : 'DeploymentStatusStep' 'ValidationStatusStep' 'DeploymentConfigurationScaleUnit' 'ArcNodeResourceId' 'DeploymentDataSecret' 'DeploymentDataInfrastructureNetwork' 'HostNetworkIntent' 'DeploymentDataPhysicalNode' 'SbePartnerInfoCredentialList' 'SbePartnerInfoPartnerProperty' 'HostNetworkStorageNetwork'
   - The following properties are being added to the output type : 'DeploymentStatusStep' 'ValidationStatusStep' 'DeploymentConfigurationScaleUnit' 'ArcNodeResourceId' 'DeploymentDataSecret' 'DeploymentDataInfrastructureNetwork' 'HostNetworkIntent' 'DeploymentDataPhysicalNode' 'SbePartnerInfoCredentialList' 'SbePartnerInfoPartnerProperty' 'HostNetworkStorageNetwork'
   - Change description : The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'. The type of property DeploymentDataSecret, DeploymentDataInfrastructureNetwork, HostNetworkIntent, DeploymentDataPhysicalNode, SbePartnerInfoCredentialList, SbePartnerInfoPartnerProperty and HostNetworkStorageNetwork of type ScaleUnits will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `New-AzStackHciExtension`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IExtension' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtension' is changing
   - The following properties in the output type are being deprecated : 'PerNodeExtensionDetail'
   - The following properties are being added to the output type : 'PerNodeExtensionDetail'
   - Change description : The type of the property PerNodeExtensionDetail will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Set-AzStackHciUpdate`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate' is changing
   - The following properties in the output type are being deprecated : 'ComponentVersion' 'HealthCheckResult' 'Prerequisite'
   - The following properties are being added to the output type : 'ComponentVersion' 'HealthCheckResult' 'Prerequisite'
   - Change description : The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Set-AzStackHciUpdateRun`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun' is changing
   - The following properties in the output type are being deprecated : 'ProgressStep'
   - The following properties are being added to the output type : 'ProgressStep'
   - Change description : The type of the property ProgressStep will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Set-AzStackHciUpdateSummary`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries' is changing
   - The following properties in the output type are being deprecated : 'PackageVersion' 'HealthCheckResult'
   - The following properties are being added to the output type : 'PackageVersion' 'HealthCheckResult'
   - Change description : The types of the properties PackageVersion and HealthCheckResult will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Test-AzStackHciEdgeDevice`
 
 - Cmdlet breaking-change will happen to all parameter sets
   The cmdlet parameter set is being deprecated. There will be no replacement for it.
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
-  - The output type 'string' is changing
-  - The following properties in the output type are being deprecated : 'EdgeDeviceId'
-  - The following properties are being added to the output type : 'EdgeDeviceId'
-  - Change description : The type of the property EdgeDeviceId will be changed from single object or fixed array to 'List'. 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ### `Update-AzStackHciCluster`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster' is changing
+  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster' is changing
   - The following properties in the output type are being deprecated : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - The following properties are being added to the output type : 'ReportedPropertyNode' 'LogCollectionPropertyLogCollectionSessionDetail' 'RemoteSupportPropertyRemoteSupportSessionDetail' 'RemoteSupportPropertyRemoteSupportNodeSetting' 'ReportedPropertySupportedCapability'
   - Change description : The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'. 
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect from version : '3.0.0'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-IdentityType`
-    - The parameter : 'IdentityType' is changing.
-    The type of the parameter is changing from 'string' to 'boolean'.
-    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system-assigned identities. 
-    - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-    - The change is expected to take effect from version : '3.0.0'
+  - The change is expected to take effect in 'Az.StackHCI' from version : '3.0.0'
 
 ## Az.StackHCIVM
 
@@ -1571,48 +1122,6 @@ Preview modules are not included in this list. Read more about [module version t
 - Parameter breaking-change will happen to all parameter sets
   - `-AdminPassword`
     
-
-## Az.StorageAction
-
-### `Get-AzStorageActionTask`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask' is changing
-  - The following properties in the output type are being deprecated : 'IdentityUserAssignedIdentity'
-  - The following properties are being added to the output type : 'IdentityUserAssignedIdentity'
-  - Change description : The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities' 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect in 'Az.StorageAction' from version : '2.0.0'
-
-### `New-AzStorageActionTask`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask' is changing
-  - The following properties in the output type are being deprecated : 'IdentityUserAssignedIdentity'
-  - The following properties are being added to the output type : 'IdentityUserAssignedIdentity'
-  - Change description : The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities' 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect in 'Az.StorageAction' from version : '2.0.0'
-
-### `Remove-AzStorageActionTask`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'bool' is changing
-  - The following properties in the output type are being deprecated : 'IdentityUserAssignedIdentity'
-  - The following properties are being added to the output type : 'IdentityUserAssignedIdentity'
-  - Change description : The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities' 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect in 'Az.StorageAction' from version : '2.0.0'
-
-### `Update-AzStorageActionTask`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTask' is changing
-  - The following properties in the output type are being deprecated : 'IdentityUserAssignedIdentity'
-  - The following properties are being added to the output type : 'IdentityUserAssignedIdentity'
-  - Change description : The types of the property 'IdentityUserAssignedIdentity' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities' 
-  - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
-  - The change is expected to take effect in 'Az.StorageAction' from version : '2.0.0'
 
 ## Az.StreamAnalytics
 

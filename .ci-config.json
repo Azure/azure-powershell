@@ -327,7 +327,6 @@
     "KeyVault",
     "KubernetesConfiguration",
     "Network",
-    "PostgreSql",
     "Purview",
     "Resources",
     "Storage",

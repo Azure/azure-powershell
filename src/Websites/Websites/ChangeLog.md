@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.0
 * Added ChangeSafety Support
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMongoDBOrganization
 
 ## SYNOPSIS
-create a OrganizationResource
+Create a OrganizationResource
 
 ## SYNTAX
 
@@ -21,25 +21,26 @@ New-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-Subscript
  [-PartnerPropertyOrganizationId <String>] [-PartnerPropertyOrganizationName <String>]
  [-PartnerPropertyRedirectUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserCompanyName <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a OrganizationResource
+Create a OrganizationResource
 
 ## EXAMPLES
 

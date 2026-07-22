@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `IPAddressType` to cmdlets 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace'
+## Version 5.5.0
 * Added ChangeSafety Support
 
 ## Version 5.4.0

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ProtectionHealth
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Normal
+        /// </summary>
         public const string Normal = "Normal";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Critical
+        /// </summary>
         public const string Critical = "Critical";
     }
 }

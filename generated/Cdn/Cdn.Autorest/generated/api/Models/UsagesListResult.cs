@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage> _value;
 
-        /// <summary>The list of resource usages.</summary>
+        /// <summary>The Usage items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage> Value { get => this._value; set => this._value = value; }
 
@@ -37,25 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface IUsagesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of results.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of resource usages.</summary>
+        /// <summary>The Usage items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of resource usages.",
+        Description = @"The Usage items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage> Value { get; set; }
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     internal partial interface IUsagesListResultInternal
 
     {
-        /// <summary>URL to get the next set of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of resource usages.</summary>
+        /// <summary>The Usage items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsage> Value { get; set; }
 
     }

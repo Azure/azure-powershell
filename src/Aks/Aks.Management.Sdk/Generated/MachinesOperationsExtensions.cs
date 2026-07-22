@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the agent pool.
         /// </param>
         /// <param name='machineName'>
-        /// host name of the machine
+        /// Host name of the machine.
         /// </param>
         public static Machine Get(this IMachinesOperations operations, string resourceGroupName, string resourceName, string agentPoolName, string machineName)
         {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the agent pool.
         /// </param>
         /// <param name='machineName'>
-        /// host name of the machine
+        /// Host name of the machine.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

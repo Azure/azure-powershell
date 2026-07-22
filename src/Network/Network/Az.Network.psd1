@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '7.27.0'
+ModuleVersion = '8.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll', 
@@ -819,9 +819,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
-    - Added the ''-DdosCustomPolicyId'' parameter to ''New-AzLoadBalancerFrontendIpConfig'', ''Add-AzLoadBalancerFrontendIpConfig'', and ''Set-AzLoadBalancerFrontendIpConfig''.
-    - Added the ''-RemoveDdosCustomPolicy'' switch to ''Set-AzLoadBalancerFrontendIpConfig''.'
+        ReleaseNotes = '* Onboarded ''Microsoft.HorizonDB/clusters'' to Private Link Common Cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''

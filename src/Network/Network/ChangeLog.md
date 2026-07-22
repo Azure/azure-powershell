@@ -45,8 +45,14 @@
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
     - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
+* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
+* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
+
+## Version 8.0.1
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+
+## Version 8.0.0
 * Added ChangeSafety Support
-    - Fixed Private Endpoint Connection and Private Link Resource cmdlets to properly inherit dynamic parameters from base cmdlet class
 * Changed `UserAssignedIdentityId` type to string[]
 
 ## Version 7.27.0

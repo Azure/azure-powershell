@@ -20,7 +20,7 @@ Create EdgeAction resource
 .Description
 Create EdgeAction resource
 .Example
-New-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001" -Location "Global" -SkuName "Standard" -SkuTier "Standard"
+New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -70,6 +70,13 @@ param(
     [System.String]
     # The pricing tier associated with the SKU.
     ${SkuTier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The provisioning state of the edge action
+    ${ProvisioningState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
