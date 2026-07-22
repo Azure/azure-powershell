@@ -300,34 +300,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private bool FormatArrayChange(PSDeploymentStackWhatIfPropertyChange arrayChange, string path)
         {
+            var visibleChildren = arrayChange.Children?
+                .Where(child => !ShouldSuppressResourcePropertyDelta(child))
+                .ToList();
+            if (visibleChildren == null || visibleChildren.Count == 0)
+            {
+                return false;
+            }
+
             var (symbol, color) = GetChangeTypeFormatting("Modify");
 
-            this.builder.AppendIndent().Append(symbol, color).Append(" ").Append(path).Append(": ", color).AppendLine();
+            this.builder.Append(symbol, color).Append(" ").Append(path).Append(": ", color).AppendLine();
             this.builder.PushIndent(new string(' ', IndentSize));
 
-            if (arrayChange.Children != null && arrayChange.Children.Count > 0)
+            if (visibleChildren.Count > 0)
             {
-                bool hasIndices = arrayChange.Children.All(c => !string.IsNullOrEmpty(c.Path));
+                bool hasIndices = visibleChildren.All(c => !string.IsNullOrEmpty(c.Path));
 
                 var sortedChildren = hasIndices
-                    ? arrayChange.Children.OrderBy(c => int.TryParse(c.Path, out int idx) ? idx : int.MaxValue).ToList()
-                    : arrayChange.Children.ToList();
+                    ? visibleChildren.OrderBy(c => int.TryParse(c.Path, out int idx) ? idx : int.MaxValue).ToList()
+                    : visibleChildren;
 
                 foreach (var child in sortedChildren)
                 {
                     if (hasIndices)
                     {
                         var (childSymbol, childColor) = GetChangeTypeFormatting(child.ChangeType);
-                        this.builder.AppendIndent().Append(childSymbol, childColor).Append($" {child.Path}:").AppendLine();
+                        this.builder.Append(childSymbol, childColor).Append($" {child.Path}:").AppendLine();
                         this.builder.PushIndent(new string(' ', IndentSize));
 
-                        FormatPrimitiveValue(child);
+                        FormatArrayChildValue(child);
 
                         this.builder.PopIndent();
                     }
                     else
                     {
-                        FormatPrimitiveValue(child);
+                        FormatArrayChildValue(child);
                     }
                 }
             }
@@ -337,10 +345,46 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return true;
         }
 
-        private void FormatPrimitiveValue(PSDeploymentStackWhatIfPropertyChange change)
+        private void FormatArrayChildValue(PSDeploymentStackWhatIfPropertyChange change)
         {
+            if (change.Children != null && change.Children.Count > 0)
+            {
+                foreach (var child in change.Children)
+                {
+                    if (ShouldSuppressResourcePropertyDelta(child))
+                    {
+                        continue;
+                    }
+
+                    if (string.Equals(child.ChangeType, "Array", StringComparison.OrdinalIgnoreCase))
+                    {
+                        FormatArrayChange(child, child.Path);
+                    }
+                    else
+                    {
+                        FormatPrimitiveChange(child, child.Path);
+                    }
+                }
+
+                return;
+            }
+
             var (symbol, color) = GetChangeTypeFormatting(change.ChangeType);
-            this.builder.AppendIndent().Append(symbol, color).Append(" ").Append(FormatValue(change.After), color).AppendLine();
+            string formattedValue;
+
+            if (string.Equals(change.ChangeType, "Modify", StringComparison.OrdinalIgnoreCase))
+            {
+                formattedValue = $"{FormatValue(change.Before)} => {FormatValue(change.After)}";
+            }
+            else
+            {
+                object value = string.Equals(change.ChangeType, "Delete", StringComparison.OrdinalIgnoreCase)
+                    ? change.Before
+                    : change.After;
+                formattedValue = FormatValue(value);
+            }
+
+            this.builder.Append(symbol, color).Append(" ").Append(formattedValue, color).AppendLine();
         }
 
         private bool FormatResourceChangesAndDeletionSummary()
@@ -488,37 +532,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         {
             FormatResourceHeadingLine(resourceChange);
 
-            this.builder.PushIndent(new string(' ', IndentSize));
-
-            bool hasManagementStatusChange = resourceChange.ManagementStatusChange != null;
-            bool hasDenyStatusChange = resourceChange.DenyStatusChange != null;
-
-            if (hasManagementStatusChange || hasDenyStatusChange)
+            if (resourceChange.ManagementStatusChange != null)
             {
-                this.builder.AppendIndent();
-
-                if (hasManagementStatusChange)
-                {
-                    FormatPrimitiveChange(resourceChange.ManagementStatusChange, "Management Status", appendIndent: false, appendNewLine: false);
-                }
-
-                if (hasManagementStatusChange && hasDenyStatusChange)
-                {
-                    this.builder.Append("  ");
-                }
-
-                if (hasDenyStatusChange)
-                {
-                    FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status", appendIndent: false, appendNewLine: false);
-                }
-
-                this.builder.AppendLine();
+                FormatPrimitiveChange(resourceChange.ManagementStatusChange, "Management Status");
             }
 
-            if (resourceChange.ResourceConfigurationChanges?.Delta != null)
+            if (resourceChange.DenyStatusChange != null)
+            {
+                FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status");
+            }
+
+            bool formattedCreatedProperties = FormatCreatedResourceProperties(resourceChange);
+
+            if (!formattedCreatedProperties && resourceChange.ResourceConfigurationChanges?.Delta != null)
             {
                 foreach (var delta in resourceChange.ResourceConfigurationChanges.Delta)
                 {
+                    if (ShouldSuppressResourcePropertyDelta(delta))
+                    {
+                        continue;
+                    }
+
                     if (string.Equals(delta.ChangeType, "Array", StringComparison.OrdinalIgnoreCase))
                     {
                         FormatArrayChange(delta, delta.Path);
@@ -529,16 +563,66 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     }
                 }
             }
+        }
 
-            this.builder.PopIndent();
+        private static bool ShouldSuppressResourcePropertyDelta(PSDeploymentStackWhatIfPropertyChange delta)
+        {
+            if (delta == null ||
+                string.Equals(delta.Path, "condition", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(delta.ChangeType, "NoEffect", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(delta.ChangeType, "NoChange", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (delta.Children != null && delta.Children.Count > 0)
+            {
+                return false;
+            }
+
+            bool valuesEqual;
+            if (delta.Before is JToken beforeToken && delta.After is JToken afterToken)
+            {
+                valuesEqual = JToken.DeepEquals(beforeToken, afterToken);
+            }
+            else
+            {
+                valuesEqual = Equals(delta.Before, delta.After);
+            }
+
+            return valuesEqual &&
+                   (delta.ChangeType == null ||
+                    string.Equals(delta.ChangeType, "Modify", StringComparison.OrdinalIgnoreCase));
+        }
+
+        private bool FormatCreatedResourceProperties(PSDeploymentStackWhatIfResourceChange resourceChange)
+        {
+            if (!string.Equals(resourceChange.ChangeType, "Create", StringComparison.OrdinalIgnoreCase) ||
+                !(resourceChange.ResourceConfigurationChanges?.After is JObject after))
+            {
+                return false;
+            }
+
+            JToken properties = after.GetValue("properties", StringComparison.OrdinalIgnoreCase);
+            if (properties == null || properties.Type == JTokenType.Null)
+            {
+                return false;
+            }
+
+            return FormatPrimitiveChange(
+                new PSDeploymentStackWhatIfPropertyChange
+                {
+                    Path = "properties",
+                    ChangeType = "Create",
+                    After = properties
+                },
+                "properties");
         }
 
         private void FormatResourceHeadingLine(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
             var (symbol, color) = GetChangeTypeFormatting(resourceChange.ChangeType);
             bool isPotential = string.Equals(resourceChange.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase);
-
-            this.builder.AppendIndent();
 
             if (isPotential)
             {
@@ -704,7 +788,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return $"{level}:{code}";
         }
 
-        private bool FormatPrimitiveChange(object change, string path, bool appendIndent = true, bool appendNewLine = true)
+        private bool FormatPrimitiveChange(object change, string path)
         {
             var baseChange = change as PSDeploymentStackWhatIfChangeBase;
             var propertyChange = change as PSDeploymentStackWhatIfPropertyChange;
@@ -724,28 +808,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
 
             var (symbol, color) = GetChangeTypeFormatting(changeType);
-
-            if (appendIndent)
-            {
-                this.builder.AppendIndent();
-            }
-
-            this.builder.Append(symbol, color).Append(" ");
-            this.builder.Append(path).Append(": ");
+            string formattedValue;
 
             if (string.Equals(changeType, "Modify", StringComparison.OrdinalIgnoreCase))
             {
-                this.builder.Append($"{FormatValue(before)} => {FormatValue(after)}", color);
+                formattedValue = $"{FormatValue(before)} => {FormatValue(after)}";
             }
             else
             {
                 object value = string.Equals(changeType, "Delete", StringComparison.OrdinalIgnoreCase) ? before : after;
-                this.builder.Append(FormatValue(value));
+                formattedValue = FormatValue(value);
             }
 
-            if (appendNewLine)
+            this.builder.Append(symbol, color).Append(" ");
+            this.builder.Append(path).Append(":");
+
+            if (formattedValue.IndexOfAny(new[] { '\r', '\n' }) >= 0)
             {
                 this.builder.AppendLine();
+                this.builder.PushIndent(new string(' ', IndentSize));
+
+                foreach (string line in formattedValue.Replace("\r\n", "\n").Split('\n'))
+                {
+                    this.builder.Append(line, color).AppendLine();
+                }
+
+                this.builder.PopIndent();
+            }
+            else
+            {
+                this.builder.Append(" ").Append(formattedValue, color).AppendLine();
             }
 
             return true;

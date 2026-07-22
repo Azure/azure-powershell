@@ -38,6 +38,24 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PushIndent_AppliesCompleteNestedIndentOnFirstLine()
+        {
+            var builder = new ColoredStringBuilder();
+
+            builder.PushIndent("  ");
+            builder.AppendLine("parent");
+            builder.PushIndent("  ");
+            builder.AppendLine("child");
+            builder.PopIndent();
+            builder.Append("sibling");
+
+            Assert.Equal(
+                $"  parent{Environment.NewLine}    child{Environment.NewLine}  sibling",
+                builder.ToString());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnsureNumNewLines_DoesNotAddExtraNewLineForTrailingWindowsNewLines()
         {
             var builder = new ColoredStringBuilder();

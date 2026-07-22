@@ -136,10 +136,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         public void PushIndent(string indent)
         {
             this.indentStack.Add(indent);
-            if (this.IsAtStartOfLine())
-            {
-                this.stringBuilder.Append(indent);
-            }
         }
 
         public void PopIndent()
