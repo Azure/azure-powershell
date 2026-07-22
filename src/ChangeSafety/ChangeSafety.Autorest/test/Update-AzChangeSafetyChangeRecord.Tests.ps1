@@ -15,6 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzChangeSafetyChangeRe
 }
 
 Describe 'Update-AzChangeSafetyChangeRecord' {
+    It 'Update - Target is singular and retains the Targets alias' {
+        $command = Get-Command Update-AzChangeSafetyChangeRecord
+        $command.Parameters['Target'] | Should -Not -BeNullOrEmpty
+        $command.Parameters['Target'].Aliases | Should -Contain 'Targets'
+    }
+
     BeforeAll {
         # Ensure a ChangeRecord exists for testing
         $targets = @(

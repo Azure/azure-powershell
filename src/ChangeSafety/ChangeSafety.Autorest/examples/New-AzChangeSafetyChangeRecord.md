@@ -5,7 +5,7 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ChangeType "ManualTouch" `
     -RolloutType "Hotfix" `
     -Description "Delete unused storage account for cleanup" `
-    -Targets @{
+    -Target @{
         subscriptionId = (Get-AzContext).Subscription.Id
     }
 ```
@@ -25,7 +25,7 @@ New-AzChangeSafetyChangeRecord -Name "trafficManagerCleanup" `
     -ChangeType "ManualTouch" `
     -RolloutType "Hotfix" `
     -Description "Delete Traffic Manager profile" `
-    -Targets @{
+    -Target @{
         resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/myProfile"
         httpMethod = "DELETE"
     }

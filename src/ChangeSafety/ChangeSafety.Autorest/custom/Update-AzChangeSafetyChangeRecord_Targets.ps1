@@ -1,13 +1,13 @@
 <#
 .SYNOPSIS
-Updates a ChangeRecord with a simplified -Targets parameter.
+Updates a ChangeRecord with a simplified -Target parameter.
 
 .DESCRIPTION
 This is a custom cmdlet that provides an easier way to update ChangeRecords 
-using a -Targets array instead of the individual ChangeDefinition* parameters.
+using a -Target array instead of the individual ChangeDefinition* parameters.
 Accepts one or more target definitions.
 
-.PARAMETER Targets
+.PARAMETER Target
 One or more targets that the change is authorized against. Supported keys include:
 - resourceId: the ARM resource ID.
 - subscriptionId: the subscription ID.
@@ -21,7 +21,7 @@ All supported target keys are optional; include only the fields that apply to th
 Optional name for the target definition.
 
 .EXAMPLE
-Update-AzChangeSafetyChangeRecord -Name "mychange" -Targets @{
+Update-AzChangeSafetyChangeRecord -Name "mychange" -Target @{
     resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm01"
     httpMethod = "PATCH"
 }
@@ -29,7 +29,7 @@ Update-AzChangeSafetyChangeRecord -Name "mychange" -Targets @{
 Updates an existing ChangeRecord with one resource-scoped target.
 
 .EXAMPLE
-Update-AzChangeSafetyChangeRecord -Name "mychange" -Targets @(
+Update-AzChangeSafetyChangeRecord -Name "mychange" -Target @(
     @{
         subscriptionId = (Get-AzContext).Subscription.Id
         resourceGroupName = "rg-prod-eastus"
@@ -60,8 +60,9 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         $SubscriptionId,
 
         [Parameter(Mandatory, HelpMessage = "One or more targets that the change is authorized against. Supported keys include resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod. All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
+        [Alias('Targets')]
         [object[]]
-        $Targets,
+        $Target,
 
         [Parameter(HelpMessage = "Name for the target definition.")]
         [string]
@@ -192,7 +193,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('Link')) { $params['Link'] = $Link }
         if ($PSBoundParameters.ContainsKey('AdditionalData')) { $params['AdditionalData'] = $AdditionalData }
         
-        # Set ChangeDefinition parameters based on -Targets
+        # Set ChangeDefinition parameters based on -Target
         $params['ChangeDefinitionKind'] = 'Targets'
         # Name is required by the API schema
         if ($PSBoundParameters.ContainsKey('TargetName')) { 
@@ -203,7 +204,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         }
         
         # Preserve a single target as an array during the IAny conversion.
-        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Target
         $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters

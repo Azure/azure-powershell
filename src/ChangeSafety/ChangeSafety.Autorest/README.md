@@ -94,6 +94,56 @@ directive:
     set:
       default:
         script: '(Get-AzContext).Subscription.Id'
+  # Replace optional resource-group path parameters with required public
+  # parameters while preserving the generated operation bindings.
+  - where:
+      subject: ^(ChangeRecord|ChangeRecordStageProgression)$
+      variant: ^(Get|List|CreateExpanded|CreateViaJsonFilePath|CreateViaJsonString|Delete|UpdateExpanded|UpdateViaJsonFilePath|UpdateViaJsonString)1$
+      parameter-name: ResourceGroupName
+    hide: true
+    set:
+      parameter-name: InternalResourceGroupName
+  - select: command
+    where:
+      subject: ^(ChangeRecord|ChangeRecordStageProgression)$
+      variant: ^(Get|List|CreateExpanded|CreateViaJsonFilePath|CreateViaJsonString|Delete|UpdateExpanded|UpdateViaJsonFilePath|UpdateViaJsonString)1$
+    add:
+      parameters:
+        - name: ResourceGroupName
+          type: string
+          required: true
+          description: The name of the resource group. The name is case insensitive.
+      pipelines:
+        input-pipeline:
+          - name: CopyRequiredResourceGroupName
+            priority: 1
+  - where:
+      subject: ^StageMap$
+      variant: ^(Get|List|CreateExpanded|CreateViaJsonFilePath|CreateViaJsonString|Delete|UpdateExpanded|UpdateViaJsonFilePath|UpdateViaJsonString)2$
+      parameter-name: ResourceGroupName
+    hide: true
+    set:
+      parameter-name: InternalResourceGroupName
+  - select: command
+    where:
+      subject: ^StageMap$
+      variant: ^(Get|List|CreateExpanded|CreateViaJsonFilePath|CreateViaJsonString|Delete|UpdateExpanded|UpdateViaJsonFilePath|UpdateViaJsonString)2$
+    add:
+      parameters:
+        - name: ResourceGroupName
+          type: string
+          required: true
+          description: The name of the resource group. The name is case insensitive.
+      pipelines:
+        input-pipeline:
+          - name: CopyRequiredResourceGroupName
+            priority: 1
+  # Replace the generated subscription-scoped StageMap get with the custom
+  # fallback while retaining the generated private implementation it calls.
+  - where:
+      subject: ^StageMap$
+      variant: ^Get1$
+    hide: true
   # Remove ChangeState and its child StageProgression cmdlets
   - where:
       subject: ChangeState.*

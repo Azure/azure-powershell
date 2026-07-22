@@ -114,8 +114,10 @@ Describe 'New-AzChangeSafetyChangeRecord' {
         } | Should -Not -Throw
     }
 
-    It 'Create - Targets marks ChangeType and RolloutType as mandatory' {
+    It 'Create - Target is singular, compatible, and requires change metadata' {
         $command = Get-Command New-AzChangeSafetyChangeRecord
+        $command.Parameters['Target'] | Should -Not -BeNullOrEmpty
+        $command.Parameters['Target'].Aliases | Should -Contain 'Targets'
         $changeTypeAttribute = $command.Parameters['ChangeType'].Attributes |
             Where-Object { $_ -is [System.Management.Automation.ParameterAttribute] -and $_.ParameterSetName -eq 'Targets' }
         $rolloutTypeAttribute = $command.Parameters['RolloutType'].Attributes |

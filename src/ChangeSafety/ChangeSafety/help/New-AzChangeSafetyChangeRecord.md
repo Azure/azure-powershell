@@ -30,7 +30,7 @@ New-AzChangeSafetyChangeRecord -Name <String> [-SubscriptionId <String>] [-Resou
  [-ChangeType <String>] [-Comment <String>] [-Description <String>] [-Link <ILink[]>]
  [-OrchestrationTool <String>] [-Parameter <Hashtable>] [-ReleaseLabel <String>] [-RolloutType <String>]
  [-StageMapParameter <Hashtable>] [-StageMapResourceId <String>] [-DefaultProfile <PSObject>]
- -Targets <Object[]> [-TargetName <String>] [-WhatIf] [-Confirm]
+ -Target <Object[]> [-TargetName <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ChangeType "ManualTouch" `
     -RolloutType "Hotfix" `
     -Description "Delete unused storage account for cleanup" `
-    -Targets @{
+    -Target @{
         subscriptionId = (Get-AzContext).Subscription.Id
     }
 ```
@@ -511,15 +511,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Targets
-Target selection criteria.
-Can be a single hashtable or an array of hashtables.
-Keys include: resourceType, subscriptions, resourceGroups, regions.
+### -Target
+The target or targets that the change is authorized against. Supported keys include: resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod.
 
 ```yaml
 Type: System.Object[]
 Parameter Sets: Targets
-Aliases:
+Aliases: Targets
 
 Required: True
 Position: Named

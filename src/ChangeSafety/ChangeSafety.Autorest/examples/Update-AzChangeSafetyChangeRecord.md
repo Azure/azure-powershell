@@ -18,7 +18,7 @@ Updates the description and adds a comment to an existing ChangeRecord.
 ```powershell
 Update-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ResourceGroupName "rg-changeops" `
-    -Targets @{
+    -Target @{
         resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-prod/providers/Microsoft.Storage/storageAccounts/storageAccountCleanup"
         httpMethod = "DELETE"
     }

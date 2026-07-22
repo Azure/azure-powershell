@@ -1,16 +1,16 @@
 <#
 .SYNOPSIS
-Creates a ChangeRecord with a simplified -Targets parameter.
+Creates a ChangeRecord with a simplified -Target parameter.
 
 .DESCRIPTION
 This is a custom cmdlet that provides an easier way to create ChangeRecords 
-using a -Targets array instead of the individual ChangeDefinition* parameters.
+using a -Target array instead of the individual ChangeDefinition* parameters.
 
-The -Targets parameter automatically sets:
+The -Target parameter automatically sets:
 - ChangeDefinitionKind = "Targets"
 - ChangeDefinitionName = "TargetSelection" (or custom name via -TargetName)
 
-.PARAMETER Targets
+.PARAMETER Target
 The target or targets that the change is authorized against. Supported keys include:
 - resourceId: the ARM resource ID.
 - subscriptionId: the subscription ID.
@@ -29,7 +29,7 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ChangeType "ManualTouch" `
     -RolloutType "Hotfix" `
     -Description "Delete unused storage account for cleanup" `
-    -Targets @{
+    -Target @{
         subscriptionId = (Get-AzContext).Subscription.Id
     }
 
@@ -41,7 +41,7 @@ New-AzChangeSafetyChangeRecord -Name "trafficManagerCleanup" `
     -ChangeType "ManualTouch" `
     -RolloutType "Hotfix" `
     -Description "Delete Traffic Manager profile" `
-    -Targets @{
+    -Target @{
         resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/myProfile"
         httpMethod = "DELETE"
     }
@@ -53,7 +53,7 @@ New-AzChangeSafetyChangeRecord -Name "regionalCleanup" `
     -ResourceGroupName "rg-changeops" `
     -ChangeType "ManualTouch" `
     -RolloutType "Normal" `
-    -Targets @(
+    -Target @(
         @{
             subscriptionId = (Get-AzContext).Subscription.Id
             resourceGroupName = "rg-prod-eastus"
@@ -85,8 +85,9 @@ function New-AzChangeSafetyChangeRecord_Targets {
         $SubscriptionId,
 
         [Parameter(Mandatory, HelpMessage = "The target or targets that the change is authorized against. Supported keys include resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod. All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
+        [Alias('Targets')]
         [object[]]
-        $Targets,
+        $Target,
 
         [Parameter(HelpMessage = "Name for the target definition. Defaults to 'TargetSelection'.")]
         [string]
@@ -188,12 +189,12 @@ function New-AzChangeSafetyChangeRecord_Targets {
         Assert-AzChangeSafetyChangeRecordName -Name $Name
 
         if (-not $PSBoundParameters.ContainsKey('ChangeType')) {
-            throw "Parameter 'ChangeType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+            throw "Parameter 'ChangeType' is required for New-AzChangeSafetyChangeRecord when using -Target."
         }
         Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'ChangeType' -Value $ChangeType -AllowedValues @('AppDeployment', 'Config', 'PolicyDeployment', 'ManualTouch')
 
         if (-not $PSBoundParameters.ContainsKey('RolloutType')) {
-            throw "Parameter 'RolloutType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+            throw "Parameter 'RolloutType' is required for New-AzChangeSafetyChangeRecord when using -Target."
         }
         Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'RolloutType' -Value $RolloutType -AllowedValues @('Normal', 'Hotfix', 'Emergency')
 
@@ -227,12 +228,12 @@ function New-AzChangeSafetyChangeRecord_Targets {
         $params['ChangeType'] = $ChangeType
         $params['RolloutType'] = $RolloutType
         
-        # Set ChangeDefinition parameters based on -Targets
+        # Set ChangeDefinition parameters based on -Target
         $params['ChangeDefinitionKind'] = 'Targets'
         $params['ChangeDefinitionName'] = $TargetName
 
         # Preserve a single target as an array during the IAny conversion.
-        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Target
         $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters

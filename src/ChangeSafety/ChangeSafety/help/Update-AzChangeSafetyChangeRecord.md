@@ -30,7 +30,7 @@ Update-AzChangeSafetyChangeRecord -Name <String> [-SubscriptionId <String>] [-Re
  [-ChangeType <String>] [-Comment <String>] [-Description <String>] [-Link <ILink[]>]
  [-OrchestrationTool <String>] [-Parameter <Hashtable>] [-ReleaseLabel <String>] [-RolloutType <String>]
  [-StageMapParameter <Hashtable>] [-StageMapResourceId <String>] [-DefaultProfile <PSObject>]
- -Targets <Object[]> [-TargetName <String>] [-WhatIf] [-Confirm]
+ -Target <Object[]> [-TargetName <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Updates the description and adds a comment to an existing ChangeRecord.
 ```powershell
 Update-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ResourceGroupName "rg-changeops" `
-    -Targets @(
+    -Target @(
         @{ subscriptionId = (Get-AzContext).Subscription.Id
            resourceGroupName = "rg-prod-eastus" },
         @{ subscriptionId = (Get-AzContext).Subscription.Id
@@ -511,13 +511,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Targets
-One or more target selection criteria as hashtables.
+### -Target
+One or more targets that the change is authorized against. Supported keys include: resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod.
 
 ```yaml
 Type: System.Object[]
 Parameter Sets: Targets
-Aliases:
+Aliases: Targets
 
 Required: True
 Position: Named
