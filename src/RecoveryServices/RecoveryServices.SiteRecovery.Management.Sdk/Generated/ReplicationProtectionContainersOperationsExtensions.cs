@@ -19,11 +19,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -40,11 +39,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -66,11 +64,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -90,11 +87,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -119,17 +115,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         public static ProtectionContainer Create(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
         {
@@ -143,17 +138,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -173,17 +167,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the protection container.
+        /// Protection container name.
         /// </param>
         public static ProtectionContainer DiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
         {
@@ -198,17 +191,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the protection container.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -227,21 +219,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
-        public static void Delete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
+        public static ReplicationProtectionContainersDeleteHeaders Delete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
         {
-                ((IReplicationProtectionContainersOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -251,24 +242,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainersDeleteHeaders> DeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Operation to switch protection from one container to another.
@@ -277,8 +270,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -301,8 +293,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -331,14 +322,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -356,14 +346,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -385,8 +374,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -403,8 +391,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -426,17 +413,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         public static ProtectionContainer BeginCreate(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, CreateProtectionContainerInputProperties properties = default(CreateProtectionContainerInputProperties))
         {
@@ -450,17 +436,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -480,17 +465,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the protection container.
+        /// Protection container name.
         /// </param>
         public static ProtectionContainer BeginDiscoverProtectableItem(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, DiscoverProtectableItemRequestProperties properties = default(DiscoverProtectableItemRequestProperties))
         {
@@ -505,17 +489,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// The name of the fabric.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// The name of the protection container.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -534,21 +517,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
-        public static void BeginDelete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
+        public static ReplicationProtectionContainersDeleteHeaders BeginDelete(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName)
         {
-                ((IReplicationProtectionContainersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
+                return ((IReplicationProtectionContainersOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, protectionContainerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -558,24 +540,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric ARM name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
-        /// Unique protection container ARM name.
+        /// Protection container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationProtectionContainersDeleteHeaders> BeginDeleteAsync(this IReplicationProtectionContainersOperations operations, string resourceGroupName, string resourceName, string fabricName, string protectionContainerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, protectionContainerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Operation to switch protection from one container to another.
@@ -584,8 +568,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -608,8 +591,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -638,14 +620,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.
@@ -663,14 +644,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Unique fabric name.
+        /// Fabric name.
         /// </param>
         /// <param name='protectionContainerName'>
         /// Protection container name.

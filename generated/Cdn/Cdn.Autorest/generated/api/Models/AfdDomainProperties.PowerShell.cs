@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MtlsSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainMtlsParameters) content.GetValueForProperty("MtlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParametersTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AzureDnsZone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -115,6 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ExtendedProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ExtendedProperty = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesExtendedProperties) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ExtendedProperty, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainPropertiesExtendedPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MtlSettingScenario"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlSettingScenario = (string) content.GetValueForProperty("MtlSettingScenario",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlSettingScenario, global::System.Convert.ToString);
             }
             if (content.Contains("AzureDnsZoneId"))
             {
@@ -149,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("MtlsSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainMtlsParameters) content.GetValueForProperty("MtlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParametersTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AzureDnsZone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -188,6 +200,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ExtendedProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ExtendedProperty = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesExtendedProperties) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ExtendedProperty, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainPropertiesExtendedPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MtlSettingScenario"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlSettingScenario = (string) content.GetValueForProperty("MtlSettingScenario",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).MtlSettingScenario, global::System.Convert.ToString);
             }
             if (content.Contains("AzureDnsZoneId"))
             {

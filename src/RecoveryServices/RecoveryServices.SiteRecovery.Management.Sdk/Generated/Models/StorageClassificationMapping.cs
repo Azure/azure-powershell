@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Storage mapping object.
     /// </summary>
-    public partial class StorageClassificationMapping : Resource
+    public partial class StorageClassificationMapping : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the StorageClassificationMapping class.
@@ -24,25 +24,32 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Initializes a new instance of the StorageClassificationMapping class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource Type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">Properties of the storage mapping object.
         /// </param>
-        public StorageClassificationMapping(string id = default(string), string name = default(string), string type = default(string), string location = default(string), StorageClassificationMappingProperties properties = default(StorageClassificationMappingProperties))
 
-        : base(id, name, type, location)
+        /// <param name="location">Resource Location
+        /// </param>
+        public StorageClassificationMapping(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), StorageClassificationMappingProperties properties = default(StorageClassificationMappingProperties), string location = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Location = location;
             CustomInit();
         }
 
@@ -57,5 +64,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public StorageClassificationMappingProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource Location
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
     }
 }

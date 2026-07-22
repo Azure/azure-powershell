@@ -10,6 +10,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     using Microsoft.Rest.Azure;
     using Models;
 
+    /// <summary>
+    /// Open API for RecoveryServicesSiteRecovery
+    /// </summary>
     public partial class SiteRecoveryManagementClient : Microsoft.Rest.ServiceClient<SiteRecoveryManagementClient>, ISiteRecoveryManagementClient, IAzureClient
     {
         /// <summary>
@@ -35,9 +38,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The subscription Id.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -69,10 +72,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationAppliancesOperations
         /// </summary>
         public virtual IReplicationAppliancesOperations ReplicationAppliances { get; private set; }
-        /// <summary>
-        /// Gets the IReplicationEligibilityResultsOperations
-        /// </summary>
-        public virtual IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; private set; }
         /// <summary>
         /// Gets the IReplicationEventsOperations
         /// </summary>
@@ -181,6 +180,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationVaultSettingOperations
         /// </summary>
         public virtual IReplicationVaultSettingOperations ReplicationVaultSetting { get; private set; }
+        /// <summary>
+        /// Gets the IReplicationEligibilityResultsOperations
+        /// </summary>
+        public virtual IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SiteRecoveryManagementClient class.
         /// </summary>
@@ -422,7 +425,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             this.Operations = new Operations(this);
             this.ReplicationAlertSettings = new ReplicationAlertSettingsOperations(this);
             this.ReplicationAppliances = new ReplicationAppliancesOperations(this);
-            this.ReplicationEligibilityResults = new ReplicationEligibilityResultsOperations(this);
             this.ReplicationEvents = new ReplicationEventsOperations(this);
             this.ReplicationFabrics = new ReplicationFabricsOperations(this);
             this.ReplicationLogicalNetworks = new ReplicationLogicalNetworksOperations(this);
@@ -450,8 +452,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             this.SupportedOperatingSystems = new SupportedOperatingSystemsOperations(this);
             this.ReplicationVaultHealth = new ReplicationVaultHealthOperations(this);
             this.ReplicationVaultSetting = new ReplicationVaultSettingOperations(this);
+            this.ReplicationEligibilityResults = new ReplicationEligibilityResultsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-08-01";
+            this.ApiVersion = "2026-02-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -526,14 +529,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ApplyRecoveryPointProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<PlannedFailoverProviderSpecificFailoverInput>("instanceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<PlannedFailoverProviderSpecificFailoverInput>("instanceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ProviderSpecificRecoveryPointDetails>("instanceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ProviderSpecificRecoveryPointDetails>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<DisableProtectionProviderSpecificInput>("instanceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<DisableProtectionProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<RemoveDisksProviderSpecificInput>("instanceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<RemoveDisksProviderSpecificInput>("instanceType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ReverseReplicationProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<SwitchProviderSpecificInput>("instanceType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<SwitchProviderSpecificInput>("instanceType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<TestFailoverProviderSpecificInput>("instanceType"));

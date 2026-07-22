@@ -35,7 +35,7 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames")]
         [string]
         $MatchVariable,
-        [Parameter(HelpMessage="When matchVariable is a collection, selector used to specify which elements in the collection this rule applies to.")]
+        [Parameter(HelpMessage="When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.")]
         [string]
         $Selector,
         [Parameter(HelpMessage="Defines the state of a log scrubbing rule. Default value is enabled.")]
@@ -59,3 +59,4 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
         return $Object
     }
 }
+

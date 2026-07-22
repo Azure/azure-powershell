@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Create a batch rule set within the specified profile along with the rules associated with it.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> -Res
 ```
 
 ## DESCRIPTION
-Create a batch rule set within the specified profile along with the rules associated with it.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ## EXAMPLES
 

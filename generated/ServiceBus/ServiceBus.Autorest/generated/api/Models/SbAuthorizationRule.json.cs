@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             }
             __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ProxyResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbAuthorizationRuleProperties.FromJson(__jsonProperties) : _property;}
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             AfterFromJson(json);
         }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
+                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             }
             AfterToJson(ref container);
             return container;
