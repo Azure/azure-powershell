@@ -107,14 +107,14 @@ function Test-InterconnectBlockCRUD
         # Step 4: List ICBs in resource group
         $listRg = Get-AzInterconnectBlock -ResourceGroupName $rgname
         Assert-NotNull $listRg
-        Assert-True { $listRg.Count -ge 1 }
+        Assert-True { @($listRg).Count -ge 1 }
         $names = $listRg | Select-Object -ExpandProperty Name
         Assert-True { $names -contains $icbName }
 
         # Step 5: List ICBs in subscription
         $listSub = Get-AzInterconnectBlock
         Assert-NotNull $listSub
-        Assert-True { $listSub.Count -ge 1 }
+        Assert-True { @($listSub).Count -ge 1 }
 
         # Step 6: Update capacity (scale up)
         $newCapacity = 36
@@ -211,7 +211,7 @@ function Test-InterconnectBlockRemovePassThru
 
 <#
 .SYNOPSIS
-Test New-AzInterconnectBlock with placement constraints (IncludeZone, ExcludeZone, ZonePlacementPolicy).
+Test New-AzInterconnectBlock with placement constraints (ZonePlacementPolicy).
 #>
 function Test-InterconnectBlockPlacement
 {
