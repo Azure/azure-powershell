@@ -5,6 +5,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.Text;
     using Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Runtime.Json;
 
     /// <summary>
@@ -14,6 +15,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
     public partial class Any
     {
         private IDictionary _content;
+
+        public IDictionary Content
+        {
+            get { return _content; }
+        }
 
         /// <summary>
         /// Called after deserializing from a dictionary. Stores the content for later serialization.
@@ -61,6 +67,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
             if (_content != null)
             {
                 SerializeDictionary(_content, container);
+                returnNow = true;
+            }
+        }
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow)
+        {
+            if (_content != null)
+            {
+                stringResult = FormatValue(_content);
                 returnNow = true;
             }
         }
@@ -171,6 +186,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
 
             // Fallback: try to convert to string
             return new JsonString(value.ToString());
+        }
+
+        private string FormatValue(object value)
+        {
+            if (value == null)
+            {
+                return "null";
+            }
+
+            if (value is System.Management.Automation.PSObject psObj)
+            {
+                value = psObj.BaseObject;
+            }
+
+            if (value is string text)
+            {
+                return "\"" + EscapeString(text) + "\"";
+            }
+
+            if (value is bool boolean)
+            {
+                return boolean ? "true" : "false";
+            }
+
+            if (value is IDictionary dict)
+            {
+                var builder = new StringBuilder();
+                builder.Append("{");
+                var isFirst = true;
+                foreach (DictionaryEntry entry in dict)
+                {
+                    if (!isFirst)
+                    {
+                        builder.Append(",");
+                    }
+
+                    builder.Append("\"");
+                    builder.Append(EscapeString(entry.Key?.ToString() ?? string.Empty));
+                    builder.Append("\":");
+                    builder.Append(FormatValue(entry.Value));
+                    isFirst = false;
+                }
+
+                builder.Append("}");
+                return builder.ToString();
+            }
+
+            if (value is IList list)
+            {
+                var builder = new StringBuilder();
+                builder.Append("[");
+                for (var index = 0; index < list.Count; index++)
+                {
+                    if (index > 0)
+                    {
+                        builder.Append(",");
+                    }
+
+                    builder.Append(FormatValue(list[index]));
+                }
+
+                builder.Append("]");
+                return builder.ToString();
+            }
+
+            return value.ToString();
+        }
+
+        private string EscapeString(string value)
+        {
+            return value
+                .Replace("\\", "\\\\")
+                .Replace("\"", "\\\"")
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n");
         }
     }
 }

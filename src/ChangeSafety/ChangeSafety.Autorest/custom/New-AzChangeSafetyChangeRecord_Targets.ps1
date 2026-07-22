@@ -92,7 +92,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $TargetName = "TargetSelection",
 
-        [Parameter(HelpMessage = "Describes the nature of the change.")]
+        [Parameter(Mandatory = $true, HelpMessage = "Describes the nature of the change.")]
         [string]
         $ChangeType,
 
@@ -108,7 +108,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [datetime]
         $AnticipatedEndTime,
 
-        [Parameter(HelpMessage = "Describes the type of the rollout used for the change.")]
+        [Parameter(Mandatory = $true, HelpMessage = "Describes the type of the rollout used for the change.")]
         [string]
         $RolloutType,
 
@@ -185,6 +185,18 @@ function New-AzChangeSafetyChangeRecord_Targets {
     )
 
     process {
+        Assert-AzChangeSafetyChangeRecordName -Name $Name
+
+        if (-not $PSBoundParameters.ContainsKey('ChangeType')) {
+            throw "Parameter 'ChangeType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+        }
+        Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'ChangeType' -Value $ChangeType -AllowedValues @('AppDeployment', 'Config', 'PolicyDeployment', 'ManualTouch')
+
+        if (-not $PSBoundParameters.ContainsKey('RolloutType')) {
+            throw "Parameter 'RolloutType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+        }
+        Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'RolloutType' -Value $RolloutType -AllowedValues @('Normal', 'Hotfix', 'Emergency')
+
         # Build parameters for the underlying cmdlet
         $params = @{}
         
@@ -201,6 +213,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         $anticipatedStart = if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $AnticipatedStartTime } else { (Get-Date).ToUniversalTime() }
         $params['AnticipatedStartTime'] = $anticipatedStart
         $params['AnticipatedEndTime'] = if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $AnticipatedEndTime } else { $anticipatedStart.AddHours(8) }
+        Assert-AzChangeSafetyChangeRecordWindow -BoundParameters $PSBoundParameters -AnticipatedStartTime $params['AnticipatedStartTime'] -AnticipatedEndTime $params['AnticipatedEndTime']
         if ($PSBoundParameters.ContainsKey('OrchestrationTool')) { $params['OrchestrationTool'] = $OrchestrationTool }
         if ($PSBoundParameters.ContainsKey('ReleaseLabel')) { $params['ReleaseLabel'] = $ReleaseLabel }
         if ($PSBoundParameters.ContainsKey('Comment')) { $params['Comment'] = $Comment }
@@ -211,19 +224,15 @@ function New-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('AdditionalData')) { $params['AdditionalData'] = $AdditionalData }
         
         # Set required properties with defaults
-        # ChangeType is required at the properties level - default to AppDeployment
-        $params['ChangeType'] = if ($PSBoundParameters.ContainsKey('ChangeType')) { $ChangeType } else { 'AppDeployment' }
-        # RolloutType is required at the properties level - default to Normal
-        $params['RolloutType'] = if ($PSBoundParameters.ContainsKey('RolloutType')) { $RolloutType } else { 'Normal' }
+        $params['ChangeType'] = $ChangeType
+        $params['RolloutType'] = $RolloutType
         
         # Set ChangeDefinition parameters based on -Targets
         $params['ChangeDefinitionKind'] = 'Targets'
         $params['ChangeDefinitionName'] = $TargetName
 
-        # Use a typed list so that even a single target is preserved as an array
-        # during the IAny (free-form) conversion.
-        $targetList = [System.Collections.Generic.List[object]]::new()
-        foreach ($target in $Targets) { $targetList.Add($target) }
+        # Preserve a single target as an array during the IAny conversion.
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
         $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters

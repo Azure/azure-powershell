@@ -160,6 +160,19 @@ function Update-AzChangeSafetyChangeRecord_Targets {
     )
 
     process {
+        Assert-AzChangeSafetyChangeRecordName -Name $Name
+        if ($PSBoundParameters.ContainsKey('AnticipatedStartTime') -or $PSBoundParameters.ContainsKey('AnticipatedEndTime')) {
+            Assert-AzChangeSafetyChangeRecordWindow -BoundParameters $PSBoundParameters -AnticipatedStartTime $AnticipatedStartTime -AnticipatedEndTime $AnticipatedEndTime
+        }
+
+        if ($PSBoundParameters.ContainsKey('RolloutType')) {
+            throw "Parameter 'RolloutType' cannot be updated after a ChangeRecord is created. Create a new ChangeRecord with the desired RolloutType."
+        }
+
+        if ($PSBoundParameters.ContainsKey('ChangeType')) {
+            Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'ChangeType' -Value $ChangeType -AllowedValues @('AppDeployment', 'Config', 'PolicyDeployment', 'ManualTouch')
+        }
+
         $params = @{}
         
         # Copy common parameters
@@ -170,7 +183,6 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('Description')) { $params['Description'] = $Description }
         if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $params['AnticipatedStartTime'] = $AnticipatedStartTime }
         if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $params['AnticipatedEndTime'] = $AnticipatedEndTime }
-        if ($PSBoundParameters.ContainsKey('RolloutType')) { $params['RolloutType'] = $RolloutType }
         if ($PSBoundParameters.ContainsKey('OrchestrationTool')) { $params['OrchestrationTool'] = $OrchestrationTool }
         if ($PSBoundParameters.ContainsKey('ReleaseLabel')) { $params['ReleaseLabel'] = $ReleaseLabel }
         if ($PSBoundParameters.ContainsKey('Comment')) { $params['Comment'] = $Comment }
@@ -190,9 +202,9 @@ function Update-AzChangeSafetyChangeRecord_Targets {
             $params['ChangeDefinitionName'] = 'TargetDefinition'
         }
         
-        # Preserve a single hashtable target as an array during the IAny conversion.
-        $targetArray = if ($Targets -is [hashtable]) { @($Targets) } else { $Targets }
-        $params['ChangeDefinitionDetail'] = @{ targets = $targetArray }
+        # Preserve a single target as an array during the IAny conversion.
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
+        $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $params['DefaultProfile'] = $DefaultProfile }

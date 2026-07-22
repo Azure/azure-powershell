@@ -49,7 +49,9 @@ Describe 'ChangeSafety E2E - Stageless Flow' {
         
         $result = New-AzChangeSafetyChangeRecord -Name $script:stagelessChangeRecord `
             -ResourceGroupName $env.ResourceGroupName `
-            -Targets $targets
+            -Targets $targets `
+            -ChangeType "AppDeployment" `
+            -RolloutType "Normal"
         
         $result | Should -Not -Be $null
         $result.Name | Should -Be $script:stagelessChangeRecord
@@ -78,7 +80,8 @@ Describe 'ChangeSafety E2E - Stageless Flow' {
         
         $result = Update-AzChangeSafetyChangeRecord -Name $script:stagelessChangeRecord `
             -ResourceGroupName $env.ResourceGroupName `
-            -Targets $targets
+            -Targets $targets `
+            -ChangeType "AppDeployment"
         
         $result | Should -Not -Be $null
     }
@@ -152,7 +155,9 @@ Describe 'ChangeSafety E2E - Staged Rollout Flow' {
         $result = New-AzChangeSafetyChangeRecord -Name $script:stagedChangeRecord `
             -ResourceGroupName $env.ResourceGroupName `
             -Targets $targets `
-            -StageMapResourceId $script:stageMapId
+            -StageMapResourceId $script:stageMapId `
+            -ChangeType "AppDeployment" `
+            -RolloutType "Normal"
         
         $result | Should -Not -Be $null
     }
@@ -309,7 +314,9 @@ Describe 'ChangeSafety E2E - Nested StageMap Flow' {
         $result = New-AzChangeSafetyChangeRecord -Name $script:nestedChangeRecord `
             -ResourceGroupName $env.ResourceGroupName `
             -Targets $targets `
-            -StageMapResourceId $script:rootStageMapId
+            -StageMapResourceId $script:rootStageMapId `
+            -ChangeType "AppDeployment" `
+            -RolloutType "Normal"
         
         $result | Should -Not -Be $null
     }

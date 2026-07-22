@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzChangeSafetyChangeRe
 Describe 'Update-AzChangeSafetyChangeRecord' {
     BeforeAll {
         # Ensure a ChangeRecord exists for testing
-        # Target must have resourceId OR subscriptionId per API spec
         $targets = @(
             @{
                 resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/virtualMachines/update-test-vm"
@@ -32,7 +31,9 @@ Describe 'Update-AzChangeSafetyChangeRecord' {
         if (-not $existing) {
             New-AzChangeSafetyChangeRecord -Name $env.ChangeRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
-                -Targets $targets -ErrorAction SilentlyContinue
+                -Targets $targets `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal" -ErrorAction SilentlyContinue
         }
     }
 
@@ -43,6 +44,31 @@ Describe 'Update-AzChangeSafetyChangeRecord' {
                 -Description "Updated description for testing"
             
             $result | Should -Not -Be $null
+        } | Should -Not -Throw
+    }
+
+    It 'Update - Rejects RolloutType changes for targets' {
+        $message = try {
+            Update-AzChangeSafetyChangeRecord -Name $env.ChangeRecordName `
+                -ResourceGroupName $env.ResourceGroupName `
+                -Targets @{ subscriptionId = $env.SubscriptionId } `
+                -RolloutType "Hotfix" `
+                -WhatIf
+        } catch {
+            $_.Exception.Message
+        }
+
+        $message | Should -Match "RolloutType"
+        $message | Should -Match "cannot be updated"
+    }
+
+    It 'Update - Keeps a single target serialized as an array' {
+        {
+            Update-AzChangeSafetyChangeRecord -Name $env.ChangeRecordName `
+                -ResourceGroupName $env.ResourceGroupName `
+                -Targets @{ subscriptionId = $env.SubscriptionId } `
+                -ChangeType "AppDeployment" `
+                -WhatIf
         } | Should -Not -Throw
     }
 }

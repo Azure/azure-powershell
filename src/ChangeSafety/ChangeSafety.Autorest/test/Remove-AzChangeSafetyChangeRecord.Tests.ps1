@@ -33,7 +33,9 @@ Describe 'Remove-AzChangeSafetyChangeRecord' {
             
             New-AzChangeSafetyChangeRecord -Name $changeRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
-                -Targets $targets
+                -Targets $targets `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal"
             
             # Delete it
             Remove-AzChangeSafetyChangeRecord -Name $changeRecordName `
@@ -76,13 +78,15 @@ Describe 'Remove-AzChangeSafetyChangeRecord' {
             )
             
             # Create ChangeRecord with StageMap
-            $startTime = (Get-Date).AddMinutes(-5)
+            $startTime = (Get-Date).AddMinutes(5)
             $endTime = (Get-Date).AddHours(2)
             
             $cr = New-AzChangeSafetyChangeRecord -Name $changeRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
                 -Targets $targets `
                 -StageMapResourceId $stagemap.Id `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal" `
                 -AnticipatedStartTime $startTime `
                 -AnticipatedEndTime $endTime
             
