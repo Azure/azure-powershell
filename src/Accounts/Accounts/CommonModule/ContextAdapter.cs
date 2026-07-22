@@ -164,7 +164,6 @@ namespace Microsoft.Azure.Commands.Common
                         request,
                         shouldAcquire: shouldAcquire,
                         changeReference: changeReference,
-                        isWhatIf: false,
                         debugMessages: null,
                         tokenHttpClient: null,
                         cancellationToken: cancelToken).ConfigureAwait(false);

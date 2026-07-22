@@ -111,16 +111,5 @@ namespace Microsoft.Azure.Commands.Profile.Test.UnitTest
             };
             Assert.Equal(1, CountAppendedSteps(boundParameters));
         }
-
-        [Fact]
-        public void WhatIfWithAcquirePolicyToken_AppendsSingleStep()
-        {
-            var boundParameters = new Dictionary<string, object>
-            {
-                { ChangeSafetyParameters.AcquirePolicyTokenParamName, new SwitchParameter(true) },
-                { "WhatIf", new SwitchParameter(true) }
-            };
-            Assert.Equal(1, CountAppendedSteps(boundParameters));
-        }
     }
 }
