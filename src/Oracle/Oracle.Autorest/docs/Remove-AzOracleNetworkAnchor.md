@@ -31,26 +31,26 @@ Delete a NetworkAnchor
 
 ### Example 1: Delete a Network Anchor
 ```powershell
-Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor -PassThru
+Remove-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name PowerShellTestNetworkAnchor -PassThru
 ```
 
 ```output
 True
 ```
 
-Deletes a Network Anchor by name and resource group.
+Deletes the specified Network Anchor.
 For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
 
 ### Example 2: Delete a Network Anchor by piping from Get
 ```powershell
-Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name OFake_owerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -PassThru
+Get-AzOracleNetworkAnchor -ResourceGroupName PowerShellTestRg -Name PowerShellTestNetworkAnchor | Remove-AzOracleNetworkAnchor -PassThru
 ```
 
 ```output
 True
 ```
 
-Gets a Network Anchor and deletes it by piping the object to `Remove-AzOracleNetworkAnchor`.
+Gets the specified Network Anchor and deletes it.
 For more information, execute `Get-Help Remove-AzOracleNetworkAnchor`.
 
 ## PARAMETERS
@@ -223,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
