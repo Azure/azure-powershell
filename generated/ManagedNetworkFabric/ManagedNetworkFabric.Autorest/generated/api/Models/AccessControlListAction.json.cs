@@ -65,8 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
+            {_policeRateConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("policeRateConfiguration"), out var __jsonPoliceRateConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.PoliceRateConfigurationProperties.FromJson(__jsonPoliceRateConfiguration) : _policeRateConfiguration;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_counterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("counterName"), out var __jsonCounterName) ? (string)__jsonCounterName : (string)_counterName;}
+            {_remarkComment = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("remarkComment"), out var __jsonRemarkComment) ? (string)__jsonRemarkComment : (string)_remarkComment;}
             AfterFromJson(json);
         }
 
@@ -101,8 +103,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
+            AddIf( null != this._policeRateConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._policeRateConfiguration.ToJson(null,serializationMode) : null, "policeRateConfiguration" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._counterName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._counterName.ToString()) : null, "counterName" ,container.Add );
+            AddIf( null != (((object)this._remarkComment)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._remarkComment.ToString()) : null, "remarkComment" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

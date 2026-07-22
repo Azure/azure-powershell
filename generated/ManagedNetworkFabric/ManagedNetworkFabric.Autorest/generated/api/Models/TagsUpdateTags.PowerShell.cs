@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>Resource tags</summary>
+    /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(TagsUpdateTagsTypeConverter))]
     public partial class TagsUpdateTags
     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// Resource tags
+    /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(TagsUpdateTagsTypeConverter))]
     public partial interface ITagsUpdateTags
 

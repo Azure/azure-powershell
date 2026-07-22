@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The response from the List namespace operation.</summary>
+    /// <summary>The response of a AuthorizationRule list operation.</summary>
     public partial class AuthorizationRuleListResult
     {
 

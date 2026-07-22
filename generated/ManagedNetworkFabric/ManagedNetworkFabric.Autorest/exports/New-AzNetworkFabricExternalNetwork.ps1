@@ -38,14 +38,9 @@ $optionBProperty = @{
     RouteTarget = $routeTarget
 }
 
-$optionAPropertyBfdConfiguration = @{
-    IntervalInMilliSecond = 300
-    Multiplier = 3
-}
-
 New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $name -ResourceGroupName $resourceGroupName -PeeringOption "OptionB" -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionBProperty $optionBProperty
 .Example
-New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $name -ResourceGroupName $resourceGroupName -PeeringOption "OptionA" -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionAPropertyBfdConfiguration $optionAPropertyBfdConfiguration -OptionAPropertyEgressAclId "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/egressAclName" -OptionAPropertyIngressAclId "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/ingressAclName" -OptionAPropertyMtu 1500 -OptionAPropertyPeerAsn 65123 -OptionAPropertyPrimaryIpv4Prefix "172.31.0.0/30" -OptionAPropertySecondaryIpv4Prefix "172.31.0.0/30" -OptionAPropertyVlanId 501
+New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $name -ResourceGroupName $resourceGroupName -PeeringOption "OptionA" -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionAPropertyBfdConfigurationMultiplier 3 -OptionAPropertyEgressAclId "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/egressAclName" -OptionAPropertyIngressAclId "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/ingressAclName" -OptionAPropertyMtu 1500 -OptionAPropertyPeerAsn 65123 -OptionAPropertyPrimaryIpv4Prefix "172.31.0.0/30" -OptionAPropertySecondaryIpv4Prefix "172.31.0.0/30" -OptionAPropertyVlanId 501
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetwork
@@ -61,17 +56,21 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IExternalNetwork>: Defines the External Network resource.
   PeeringOption <String>: Peering option list.
   [Annotation <String>]: Switch configuration description.
+  [BmpConfigurationState <String>]: BMP Configuration State.
   [ExportRoutePolicy <IExportRoutePolicy>]: Export Route Policy either IPv4 or IPv6.
     [ExportIpv4RoutePolicyId <String>]: ARM resource ID of RoutePolicy.
     [ExportIpv6RoutePolicyId <String>]: ARM resource ID of RoutePolicy.
-  [ExportRoutePolicyId <String>]: ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   [ImportRoutePolicy <IImportRoutePolicy>]: Import Route Policy either IPv4 or IPv6.
     [ImportIpv4RoutePolicyId <String>]: ARM resource ID of RoutePolicy.
     [ImportIpv6RoutePolicyId <String>]: ARM resource ID of RoutePolicy.
-  [ImportRoutePolicyId <String>]: ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-  [OptionAPropertyBfdConfiguration <IBfdConfiguration>]: BFD configuration properties
-    [IntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
-    [Multiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
+  [NativeIpv4PrefixLimit <List<IPrefixLimitProperties>>]: Prefix limits
+    [IdleTimeExpiry <Int32?>]: Idle Time Expiry in seconds, default is 60.
+    [MaximumRoute <Int32?>]: Maximum routes allowed.
+    [Threshold <Int32?>]: Limit at which route prefixes a warning is generate.
+  [NativeIpv6PrefixLimit <List<IPrefixLimitProperties>>]: Prefix limits
+  [NetworkToNetworkInterconnectId <String>]: ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+  [OptionAPropertiesBfdConfigurationIntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
+  [OptionAPropertiesBfdConfigurationMultiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
   [OptionAPropertyEgressAclId <String>]: Egress Acl. ARM resource ID of Access Control Lists.
   [OptionAPropertyIngressAclId <String>]: Ingress Acl. ARM resource ID of Access Control Lists.
   [OptionAPropertyMtu <Int32?>]: MTU to use for option A peering.
@@ -80,6 +79,8 @@ BODY <IExternalNetwork>: Defines the External Network resource.
   [OptionAPropertyPrimaryIpv6Prefix <String>]: IPv6 Address Prefix.
   [OptionAPropertySecondaryIpv4Prefix <String>]: Secondary IPv4 Address Prefix.
   [OptionAPropertySecondaryIpv6Prefix <String>]: Secondary IPv6 Address Prefix.
+  [OptionAPropertyV4OverV6BgpSession <String>]: V4OverV6 BGP Session state
+  [OptionAPropertyV6OverV4BgpSession <String>]: V6OverV4 BGP Session state
   [OptionAPropertyVlanId <Int32?>]: Vlan identifier. Example : 501
   [OptionBProperty <IL3OptionBProperties>]: option B properties object
     [ExportRouteTarget <List<String>>]: RouteTargets to be applied. This is used for the backward compatibility.
@@ -89,6 +90,12 @@ BODY <IExternalNetwork>: Defines the External Network resource.
       [ExportIpv6RouteTarget <List<String>>]: Route Targets to be applied for outgoing routes from CE.
       [ImportIpv4RouteTarget <List<String>>]: Route Targets to be applied for incoming routes into CE.
       [ImportIpv6RouteTarget <List<String>>]: Route Targets to be applied for incoming routes from CE.
+  [StaticRouteConfigurationBfdConfigurationIntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
+  [StaticRouteConfigurationBfdConfigurationMultiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
+  [StaticRouteConfigurationIpv4Route <List<IStaticRouteProperties>>]: List of IPv4 Routes.
+    NextHop <List<String>>: List of next hop addresses.
+    Prefix <String>: Prefix of the route.
+  [StaticRouteConfigurationIpv6Route <List<IStaticRouteProperties>>]: List of IPv6 Routes.
 
 EXPORTROUTEPOLICY <IExportRoutePolicy>: Export Route Policy either IPv4 or IPv6.
   [ExportIpv4RoutePolicyId <String>]: ARM resource ID of RoutePolicy.
@@ -111,12 +118,15 @@ L3ISOLATIONDOMAININPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
   [L2IsolationDomainName <String>]: Name of the L2 Isolation Domain.
   [L3IsolationDomainName <String>]: Name of the L3 Isolation Domain.
   [NeighborGroupName <String>]: Name of the Neighbor Group.
+  [NetworkBootstrapDeviceName <String>]: Name of the Network Bootstrap Device.
+  [NetworkBootstrapInterfaceName <String>]: Name of the Network Bootstrap Interface.
   [NetworkDeviceName <String>]: Name of the Network Device.
   [NetworkDeviceSkuName <String>]: Name of the Network Device SKU.
   [NetworkFabricControllerName <String>]: Name of the Network Fabric Controller.
   [NetworkFabricName <String>]: Name of the Network Fabric.
   [NetworkFabricSkuName <String>]: Name of the Network Fabric SKU.
   [NetworkInterfaceName <String>]: Name of the Network Interface.
+  [NetworkMonitorName <String>]: Name of the Network Monitor.
   [NetworkPacketBrokerName <String>]: Name of the Network Packet Broker.
   [NetworkRackName <String>]: Name of the Network Rack.
   [NetworkTapName <String>]: Name of the Network Tap.
@@ -126,9 +136,15 @@ L3ISOLATIONDOMAININPUTOBJECT <IManagedNetworkFabricIdentity>: Identity Parameter
   [RoutePolicyName <String>]: Name of the Route Policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
-OPTIONAPROPERTYBFDCONFIGURATION <IBfdConfiguration>: BFD configuration properties
-  [IntervalInMilliSecond <Int32?>]: Interval in milliseconds. Example: 300.
-  [Multiplier <Int32?>]: Multiplier for the Bfd Configuration. Example: 5.
+NATIVEIPV4PREFIXLIMIT <IPrefixLimitProperties[]>: Prefix limits
+  [IdleTimeExpiry <Int32?>]: Idle Time Expiry in seconds, default is 60.
+  [MaximumRoute <Int32?>]: Maximum routes allowed.
+  [Threshold <Int32?>]: Limit at which route prefixes a warning is generate.
+
+NATIVEIPV6PREFIXLIMIT <IPrefixLimitProperties[]>: Prefix limits
+  [IdleTimeExpiry <Int32?>]: Idle Time Expiry in seconds, default is 60.
+  [MaximumRoute <Int32?>]: Maximum routes allowed.
+  [Threshold <Int32?>]: Limit at which route prefixes a warning is generate.
 
 OPTIONBPROPERTY <IL3OptionBProperties>: option B properties object
   [ExportRouteTarget <List<String>>]: RouteTargets to be applied. This is used for the backward compatibility.
@@ -138,6 +154,14 @@ OPTIONBPROPERTY <IL3OptionBProperties>: option B properties object
     [ExportIpv6RouteTarget <List<String>>]: Route Targets to be applied for outgoing routes from CE.
     [ImportIpv4RouteTarget <List<String>>]: Route Targets to be applied for incoming routes into CE.
     [ImportIpv6RouteTarget <List<String>>]: Route Targets to be applied for incoming routes from CE.
+
+STATICROUTECONFIGURATIONIPV4ROUTE <IStaticRouteProperties[]>: List of IPv4 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
+
+STATICROUTECONFIGURATIONIPV6ROUTE <IStaticRouteProperties[]>: List of IPv6 Routes.
+  NextHop <List<String>>: List of next hop addresses.
+  Prefix <String>: Prefix of the route.
 .Link
 https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricexternalnetwork
 #>
@@ -203,18 +227,18 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy]
-    # Export Route Policy either IPv4 or IPv6.
-    ${ExportRoutePolicy},
+    [System.String]
+    # BMP Configuration State.
+    ${BmpConfigurationState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [System.String]
-    # ARM Resource ID of the RoutePolicy.
-    # This is used for the backward compatibility.
-    ${ExportRoutePolicyId},
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy]
+    # Export Route Policy either IPv4 or IPv6.
+    ${ExportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
@@ -225,18 +249,34 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [System.String]
-    # ARM Resource ID of the RoutePolicy.
-    # This is used for the backward compatibility.
-    ${ImportRoutePolicyId},
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[]]
+    # Prefix limits
+    ${NativeIpv4PrefixLimit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPrefixLimitProperties[]]
+    # Prefix limits
+    ${NativeIpv6PrefixLimit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration]
-    # BFD configuration properties
-    ${OptionAPropertyBfdConfiguration},
+    [System.String]
+    # ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+    ${NetworkToNetworkInterconnectId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Multiplier for the Bfd Configuration.
+    # Example: 5.
+    ${OptionAPropertyBfdConfigurationMultiplier},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
@@ -298,6 +338,22 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # V4OverV6 BGP Session state
+    ${OptionAPropertyV4OverV6BgpSession},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.String]
+    # V6OverV4 BGP Session state
+    ${OptionAPropertyV6OverV4BgpSession},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [System.Int32]
     # Vlan identifier.
@@ -310,6 +366,46 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionBProperties]
     # option B properties object
     ${OptionBProperty},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Interval in milliseconds.
+    # Example: 300.
+    ${StaticRouteConfigurationBfdConfigurationInterval},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Multiplier for the Bfd Configuration.
+    # Example: 5.
+    ${StaticRouteConfigurationBfdConfigurationMultiplier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv4 Routes.
+    ${StaticRouteConfigurationIpv4Route},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStaticRouteProperties[]]
+    # List of IPv6 Routes.
+    ${StaticRouteConfigurationIpv6Route},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomainExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
+    [System.Int32]
+    # Interval in milliseconds.
+    # Example: 300.
+    ${optionAPropertyBfdConfigurationInterval},
 
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomain', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
@@ -397,6 +493,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -423,8 +527,6 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricExternalNetwork_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -438,6 +540,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

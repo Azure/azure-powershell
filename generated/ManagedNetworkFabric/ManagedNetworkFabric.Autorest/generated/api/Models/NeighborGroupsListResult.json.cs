@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of Neighbor Group.</summary>
+    /// <summary>Paged collection of NeighborGroup items</summary>
     public partial class NeighborGroupsListResult
     {
 
