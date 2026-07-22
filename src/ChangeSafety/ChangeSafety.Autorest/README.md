@@ -14,7 +14,7 @@ This directory contains the PowerShell module for the ChangeSafety service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 5.3.2 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,12 +30,13 @@ For information on how to develop for `Az.ChangeSafety`, see [how-to.md](how-to.
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  # Spec vendored into the module (relative to this folder) so AutoRest can generate
-  # in CI without the spec being published to the public azure-rest-api-specs repo.
-  # The directory depth under spec/specification/ is preserved so the swagger's
-  # relative "../../../../../../common-types/..." $refs resolve against the vendored
-  # spec/specification/common-types copy. See option 2 in the onboarding guidance.
-  - $(this-folder)/spec/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
+  # The private-preview contract is kept outside this generated directory so AutoRest
+  # regeneration does not delete it. The canonical specification hierarchy is preserved
+  # so relative "../../../../../../common-types/..." $refs resolve against the local copy.
+  # Once the API is ready for public preview, publish the contract to
+  # Azure/azure-rest-api-specs, generate from that canonical contract, and remove
+  # src/ChangeSafety/spec.
+  - $(this-folder)/../spec/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
 
 module-version: 0.1.0
 title: ChangeSafety
