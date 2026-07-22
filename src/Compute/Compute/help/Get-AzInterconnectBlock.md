@@ -14,24 +14,17 @@ Gets the properties of an Interconnect Block or lists Interconnect Blocks in a r
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzInterconnectBlock [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByResourceGroupParameterSet
-```
-Get-AzInterconnectBlock -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByNameParameterSet
-```
-Get-AzInterconnectBlock -ResourceGroupName <String> -Name <String> [-Expand <String>]
+Get-AzInterconnectBlock [-ResourceGroupName <String>] [-Name <String>] [-Expand <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzInterconnectBlock** cmdlet retrieves properties of an Interconnect Block, or lists Interconnect Blocks within a resource group or the current subscription.
+
+When neither `-ResourceGroupName` nor `-Name` is specified, all Interconnect Blocks in the current subscription are returned.
+When only `-ResourceGroupName` is specified, all Interconnect Blocks in that resource group are returned.
+When both `-ResourceGroupName` and `-Name` are specified without wildcards, a single Interconnect Block is returned.
+Both parameters support wildcard characters, which trigger a list-and-filter operation instead of a direct GET.
 
 ## EXAMPLES
 
@@ -49,14 +42,21 @@ Get-AzInterconnectBlock -ResourceGroupName "myRG" -Name "myICB" -Expand "instanc
 
 This command retrieves the Interconnect Block with its runtime instance view, including current capacity and status information.
 
-### Example 3: List all Interconnect Blocks in a resource group
+### Example 3: List Interconnect Blocks by wildcard name
+```powershell
+Get-AzInterconnectBlock -ResourceGroupName "myRG" -Name "icb*"
+```
+
+This command lists all Interconnect Blocks in "myRG" whose name starts with "icb".
+
+### Example 4: List all Interconnect Blocks in a resource group
 ```powershell
 Get-AzInterconnectBlock -ResourceGroupName "myRG"
 ```
 
 This command lists all Interconnect Blocks in the resource group "myRG".
 
-### Example 4: List all Interconnect Blocks in the subscription
+### Example 5: List all Interconnect Blocks in the subscription
 ```powershell
 Get-AzInterconnectBlock
 ```
@@ -85,7 +85,7 @@ The expand expression to apply on the operation. 'instanceView' retrieves a snap
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -96,22 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Interconnect Block resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -ResourceGroupName
-Specifies the name of a resource group.
+Specifies the name of the Interconnect Block resource. Supports wildcard characters.
 
 ```yaml
 Type: System.String
@@ -125,12 +110,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
+### -ResourceGroupName
+Specifies the name of a resource group. Supports wildcard characters.
+
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroupParameterSet, ByNameParameterSet
+Parameter Sets: DefaultParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

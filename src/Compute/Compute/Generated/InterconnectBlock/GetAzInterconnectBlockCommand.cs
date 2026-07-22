@@ -23,21 +23,15 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InterconnectBlock", DefaultParameterSetName = "DefaultParameterSet")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InterconnectBlock", DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSInterconnectBlock))]
     public class GetAzureInterconnectBlock : ComputeAutomationBaseCmdlet
     {
         private const string DefaultParameterSet = "DefaultParameterSet";
-        private const string ByResourceGroupParameterSet = "ByResourceGroupParameterSet";
-        private const string ByNameParameterSet = "ByNameParameterSet";
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = ByResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -45,8 +39,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -54,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expand expression to apply. 'instanceView' retrieves runtime properties of the Interconnect Block.")]
         public string Expand { get; set; }
@@ -64,37 +58,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (this.IsParameterBound(c => c.Name))
+                string resourceGroupName = this.ResourceGroupName;
+                string name = this.Name;
+
+                if (ShouldGetByName(resourceGroupName, name))
                 {
-                    // Get single block
+                    // Exact, non-wildcard RG + Name → single GET
                     var result = this.IsParameterBound(c => c.Expand)
-                        ? InterconnectBlocksClient.Get(this.ResourceGroupName, this.Name, this.Expand)
-                        : InterconnectBlocksClient.Get(this.ResourceGroupName, this.Name);
+                        ? InterconnectBlocksClient.Get(resourceGroupName, name, this.Expand)
+                        : InterconnectBlocksClient.Get(resourceGroupName, name);
                     var psObject = new PSInterconnectBlock();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<InterconnectBlock, PSInterconnectBlock>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (this.IsParameterBound(c => c.ResourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, name))
                 {
-                    // List by resource group
-                    var list = InterconnectBlocksClient.ListByResourceGroup(this.ResourceGroupName);
+                    // Exact RG, Name absent or wildcard → list by RG then wildcard-filter
+                    var list = InterconnectBlocksClient.ListByResourceGroup(resourceGroupName);
                     var psObjects = new List<PSInterconnectBlockList>();
                     foreach (var item in list)
                     {
                         psObjects.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<InterconnectBlock, PSInterconnectBlockList>(item));
                     }
-                    WriteObject(TopLevelWildcardFilter(this.ResourceGroupName, this.Name, psObjects), true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, name, psObjects), true);
                 }
                 else
                 {
-                    // List by subscription
+                    // No RG (or wildcard RG) → list by subscription then wildcard-filter
                     var list = InterconnectBlocksClient.ListBySubscription();
                     var psObjects = new List<PSInterconnectBlockList>();
                     foreach (var item in list)
                     {
                         psObjects.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<InterconnectBlock, PSInterconnectBlockList>(item));
                     }
-                    WriteObject(TopLevelWildcardFilter(this.ResourceGroupName, this.Name, psObjects), true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, name, psObjects), true);
                 }
             });
         }
