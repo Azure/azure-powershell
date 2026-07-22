@@ -442,6 +442,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     VolumeSpecName = VolumeSpecName,
                     PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
                     EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
+                    BreakthroughMode = BreakthroughMode,
                     EncryptionKeySource = EncryptionKeySource,
                     KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                     DeleteBaseSnapshot = DeleteBaseSnapshot,
@@ -525,6 +526,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SmbNonBrowsable = SmbNonBrowsable,
                 CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
             };
+
+            var breakthroughModeProperty = volumeBody.GetType().GetProperty("BreakthroughMode");
+            if (breakthroughModeProperty != null)
+            {
+                breakthroughModeProperty.SetValue(volumeBody, BreakthroughMode);
+            }
+
             if (IsLargeVolume.IsPresent)
             {
                 volumeBody.IsLargeVolume = IsLargeVolume;
