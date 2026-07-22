@@ -8,10 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="NamespacesFailoverAcceptedResponseHeaders"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="EhNamespaceTags" />
     /// </summary>
-    public partial class NamespacesFailoverAcceptedResponseHeadersTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class EhNamespaceTagsTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,14 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="NamespacesFailoverAcceptedResponseHeaders"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="EhNamespaceTags"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="NamespacesFailoverAcceptedResponseHeaders"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="EhNamespaceTags"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="NamespacesFailoverAcceptedResponseHeaders" /> type, otherwise
-        /// <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="EhNamespaceTags" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -97,33 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="NamespacesFailoverAcceptedResponseHeaders" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="EhNamespaceTags" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="NamespacesFailoverAcceptedResponseHeaders"
-        /// />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="EhNamespaceTags" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="NamespacesFailoverAcceptedResponseHeaders"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="EhNamespaceTags" />.</param>
         /// <returns>
-        /// an instance of <see cref="NamespacesFailoverAcceptedResponseHeaders" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="EhNamespaceTags" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespacesFailoverAcceptedResponseHeaders ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceTags ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespacesFailoverAcceptedResponseHeaders).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceTags).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return NamespacesFailoverAcceptedResponseHeaders.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return EhNamespaceTags.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -131,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return NamespacesFailoverAcceptedResponseHeaders.DeserializeFromPSObject(sourceValue);
+                return EhNamespaceTags.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return NamespacesFailoverAcceptedResponseHeaders.DeserializeFromDictionary(sourceValue);
+                return EhNamespaceTags.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

@@ -57,7 +57,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Properties for User Assigned Identities
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: Replica locations for geo data replication.
   [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
   [LocationName <String>]: Azure regions where a replica of the namespace is maintained
   [RoleType <String>]: GeoDR Role Types
@@ -73,9 +73,9 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter. To construct, see NOTES sec
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
   [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties to configure Encryption
   [KeyName <String>]: Name of the Key from KeyVault
@@ -198,7 +198,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
-    # Properties for User Assigned Identities
+    # Replica locations for geo data replication.
     ${GeoDataReplicationLocation},
 
     [Parameter()]
@@ -206,6 +206,13 @@ param(
     [System.Collections.Hashtable]
     # Tag of EventHub Namespace.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # The IP address type for the namespace.
+    # Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
+    ${IPAddressType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
