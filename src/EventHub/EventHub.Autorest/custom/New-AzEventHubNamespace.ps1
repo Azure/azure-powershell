@@ -136,7 +136,7 @@ function New-AzEventHubNamespace{
         [System.Int64]
         ${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
-        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Parameter(HelpMessage = "Replica locations for geo data replication.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
         ${GeoDataReplicationLocation},
 
