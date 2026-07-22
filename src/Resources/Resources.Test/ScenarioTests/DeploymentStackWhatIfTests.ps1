@@ -32,6 +32,13 @@ function Get-ResourceGroupDeploymentStackId
 	return "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Resources/deploymentStacks/$StackName"
 }
 
+function Get-ResourceGroupDeploymentStackWhatIfResultId
+{
+	param([string]$ResourceGroupName, [string]$Name)
+	$subId = (Get-AzContext).Subscription.Id
+	return "/subscriptions/$subId/resourceGroups/$ResourceGroupName/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$Name"
+}
+
 function Get-SubscriptionDeploymentStackId
 {
 	param([string]$StackName)
@@ -39,10 +46,23 @@ function Get-SubscriptionDeploymentStackId
 	return "/subscriptions/$subId/providers/Microsoft.Resources/deploymentStacks/$StackName"
 }
 
+function Get-SubscriptionDeploymentStackWhatIfResultId
+{
+	param([string]$Name)
+	$subId = (Get-AzContext).Subscription.Id
+	return "/subscriptions/$subId/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$Name"
+}
+
 function Get-ManagementGroupDeploymentStackId
 {
 	param([string]$ManagementGroupId, [string]$StackName)
 	return "/providers/Microsoft.Management/managementGroups/$ManagementGroupId/providers/Microsoft.Resources/deploymentStacks/$StackName"
+}
+
+function Get-ManagementGroupDeploymentStackWhatIfResultId
+{
+	param([string]$ManagementGroupId, [string]$Name)
+	return "/providers/Microsoft.Management/managementGroups/$ManagementGroupId/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$Name"
 }
 
 function Assert-DeploymentStackWhatIfResultSucceeded
@@ -54,6 +74,46 @@ function Assert-DeploymentStackWhatIfResultSucceeded
 	Assert-AreEqual "succeeded" $Result.Properties.ProvisioningState.ToLowerInvariant()
 }
 
+function ConvertTo-DeploymentStackWhatIfTimeSpan
+{
+	param($Value)
+	if ($Value -is [System.TimeSpan])
+	{
+		return $Value
+	}
+
+	try
+	{
+		return [System.Xml.XmlConvert]::ToTimeSpan([string]$Value)
+	}
+	catch
+	{
+		return [System.TimeSpan]::Parse([string]$Value, [System.Globalization.CultureInfo]::InvariantCulture)
+	}
+}
+
+function Assert-DeploymentStackWhatIfResultObject
+{
+	param(
+		$Result,
+		[string]$ExpectedName,
+		[string]$ExpectedId,
+		[string]$ExpectedStackResourceId,
+		[string]$ExpectedRetentionInterval = "P1D"
+	)
+
+	Assert-DeploymentStackWhatIfResultSucceeded $Result
+	Assert-AreEqual $ExpectedName $Result.Name
+	Assert-AreEqual "Microsoft.Resources/deploymentStacksWhatIfResults" $Result.Type
+	Assert-NotNull $Result.Id
+	Assert-True { $Result.Id.Equals($ExpectedId, [System.StringComparison]::OrdinalIgnoreCase) }
+	Assert-NotNull $Result.Properties.DeploymentStackResourceId
+	Assert-True { $Result.Properties.DeploymentStackResourceId.Equals($ExpectedStackResourceId, [System.StringComparison]::OrdinalIgnoreCase) }
+ $expectedRetention = ConvertTo-DeploymentStackWhatIfTimeSpan $ExpectedRetentionInterval
+	$actualRetention = ConvertTo-DeploymentStackWhatIfTimeSpan $Result.Properties.RetentionInterval
+	Assert-AreEqual $expectedRetention.Ticks $actualRetention.Ticks
+}
+
 <#
 .SYNOPSIS
 Tests New (create) operation on WhatIf results at the RG scope.
@@ -63,7 +123,7 @@ function Test-NewResourceGroupDeploymentStackWhatIfResult
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 
 	try
 	{
@@ -71,13 +131,11 @@ function Test-NewResourceGroupDeploymentStackWhatIfResult
 
 		# Test - Success with template file
 		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Success with parameter object
       $result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterObject @{templateSpecName = "StacksScenarioTestSpec"} -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -98,7 +156,7 @@ function Test-SetResourceGroupDeploymentStackWhatIfResult
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 
 	try
 	{
@@ -106,18 +164,15 @@ function Test-SetResourceGroupDeploymentStackWhatIfResult
 
 		# Create initial WhatIf result
 		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Set (update) with same template
 		$updated = Set-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Set with different ActionOnUnmanage
 		$updated = Set-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DeleteAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 	}
 	finally
 	{
@@ -134,7 +189,8 @@ function Test-GetResourceGroupDeploymentStackWhatIfResult
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rname2 = Get-ResourceName
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 
 	try
 	{
@@ -142,14 +198,22 @@ function Test-GetResourceGroupDeploymentStackWhatIfResult
 
 		# Create a WhatIf result to get
 		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
+		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname2 -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname2) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
 		# Test - List - Success
 		$list = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname
-		Assert-AreNotEqual 0 $list.Count
+        Assert-True { @($list).Count -ge 2 }
+		Assert-True { @($list.Name) -contains $rname }
+		Assert-True { @($list.Name) -contains $rname2 }
+
+		$listResult = $list | Where-Object Name -eq $rname
+		$listResult2 = $list | Where-Object Name -eq $rname2
+		Assert-DeploymentStackWhatIfResultObject $listResult $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
+		Assert-DeploymentStackWhatIfResultObject $listResult2 $rname2 (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname2) (Get-ResourceGroupDeploymentStackId $rgname $rname2)
 
 		# Test - GetByName - Success
 		$getByName = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname
-		Assert-NotNull $getByName
+		Assert-DeploymentStackWhatIfResultObject $getByName $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - GetByName - Failure - NotFound
 		$badName = "badwhatif1928273615"
@@ -170,7 +234,7 @@ function Test-RemoveResourceGroupDeploymentStackWhatIfResult
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 
 	try
 	{
@@ -202,19 +266,17 @@ function Test-NewSubscriptionDeploymentStackWhatIfResult
 {
 	# Setup
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
 		# Test - Success with template file
 		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - Success with parameter object
 		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -234,7 +296,7 @@ function Test-SetSubscriptionDeploymentStackWhatIfResult
 {
 	# Setup
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -243,13 +305,11 @@ function Test-SetSubscriptionDeploymentStackWhatIfResult
 
 		# Test - Set (update)
 		$updated = Set-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - Set with different ActionOnUnmanage
 		$updated = Set-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 	}
 	finally
 	{
@@ -265,20 +325,29 @@ function Test-GetSubscriptionDeploymentStackWhatIfResult
 {
 	# Setup
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$rname2 = Get-ResourceName
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
 		# Create a WhatIf result to get
 		$created = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
+		$created2 = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname2 -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname2) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
 		# Test - List - Success
 		$list = Get-AzSubscriptionDeploymentStackWhatIfResult
-		Assert-AreNotEqual 0 $list.Count
+        Assert-True { @($list).Count -ge 2 }
+		Assert-True { @($list.Name) -contains $rname }
+		Assert-True { @($list.Name) -contains $rname2 }
+
+		$listResult = $list | Where-Object Name -eq $rname
+		$listResult2 = $list | Where-Object Name -eq $rname2
+		Assert-DeploymentStackWhatIfResultObject $listResult $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
+		Assert-DeploymentStackWhatIfResultObject $listResult2 $rname2 (Get-SubscriptionDeploymentStackWhatIfResultId $rname2) (Get-SubscriptionDeploymentStackId $rname2)
 
 		# Test - GetByName - Success
 		$getByName = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname
-		Assert-NotNull $getByName
+		Assert-DeploymentStackWhatIfResultObject $getByName $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - GetByName - Failure - NotFound
 		$badName = "badwhatif1928273615"
@@ -287,6 +356,7 @@ function Test-GetSubscriptionDeploymentStackWhatIfResult
 	finally
 	{
 		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname2 -Force -ErrorAction SilentlyContinue
 	}
 }
 
@@ -298,7 +368,7 @@ function Test-RemoveSubscriptionDeploymentStackWhatIfResult
 {
 	# Setup
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -329,7 +399,7 @@ function Test-NewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 
 	try
 	{
@@ -337,9 +407,7 @@ function Test-NewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges
 
 		# Test - New returns result with property changes populated by default
 		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -StackResourceId (Get-ResourceGroupDeploymentStackId $rgname $rname) -RetentionInterval "P1D" -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
-		Assert-NotNull $result.Properties
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $result.ToString()
@@ -365,9 +433,7 @@ function Test-NewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges
 	{
 		# Test - New returns result with property changes populated by default
 		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -StackResourceId (Get-SubscriptionDeploymentStackId $rname) -RetentionInterval "P1D" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
-		Assert-NotNull $result.Properties
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $result.ToString()
@@ -388,15 +454,13 @@ function Test-NewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+    $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
 		# Test - New returns result with property changes populated by default
 		$result = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
-		Assert-NotNull $result.Properties
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $result.ToString()
@@ -428,13 +492,11 @@ function Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges
 
 		# Test - Get without -WithPropertyChanges (uses GET, no delta)
 		$resultGet = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname
-		Assert-NotNull $resultGet
-        Assert-DeploymentStackWhatIfResultSucceeded $resultGet
+		Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
 		$resultPost = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname -WithPropertyChanges
-		Assert-NotNull $resultPost
-        Assert-DeploymentStackWhatIfResultSucceeded $resultPost
+		Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-ResourceGroupDeploymentStackWhatIfResultId $rgname $rname) (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $resultPost.ToString()
@@ -454,7 +516,7 @@ function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
 {
 	# Setup
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -463,13 +525,11 @@ function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
 
 		# Test - Get without -WithPropertyChanges (uses GET, no delta)
 		$resultGet = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname
-		Assert-NotNull $resultGet
-        Assert-DeploymentStackWhatIfResultSucceeded $resultGet
+		Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
 		$resultPost = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -WithPropertyChanges
-		Assert-NotNull $resultPost
-        Assert-DeploymentStackWhatIfResultSucceeded $resultPost
+		Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-SubscriptionDeploymentStackWhatIfResultId $rname) (Get-SubscriptionDeploymentStackId $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $resultPost.ToString()
@@ -490,7 +550,7 @@ function Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -499,13 +559,11 @@ function Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges
 
 		# Test - Get without -WithPropertyChanges (uses GET, no delta)
 		$resultGet = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname
-		Assert-NotNull $resultGet
-       Assert-DeploymentStackWhatIfResultSucceeded $resultGet
+       Assert-DeploymentStackWhatIfResultObject $resultGet $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
 		$resultPost = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname -WithPropertyChanges
-		Assert-NotNull $resultPost
-      Assert-DeploymentStackWhatIfResultSucceeded $resultPost
+      Assert-DeploymentStackWhatIfResultObject $resultPost $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Verify output does not contain '= DeploymentScope: null'
 		$output = $resultPost.ToString()
@@ -528,15 +586,14 @@ function Test-NewManagementGroupDeploymentStackWhatIfResult
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 	$subId = (Get-AzContext).Subscription.SubscriptionId
 
 	try
 	{
 		# Test - Success with template file
 		$result = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -557,7 +614,7 @@ function Test-SetManagementGroupDeploymentStackWhatIfResult
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -566,13 +623,11 @@ function Test-SetManagementGroupDeploymentStackWhatIfResult
 
 		# Test - Set (update)
 		$updated = Set-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Test - Set with different ActionOnUnmanage
 		$updated = Set-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteAll -DenySettingsMode None -Force
-		Assert-NotNull $updated
-		Assert-DeploymentStackWhatIfResultSucceeded $updated
+		Assert-DeploymentStackWhatIfResultObject $updated $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 	}
 	finally
 	{
@@ -589,20 +644,29 @@ function Test-GetManagementGroupDeploymentStackWhatIfResult
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$rname2 = Get-ResourceName
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
 		# Create a WhatIf result to get
 		$created = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
+		$created2 = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname2 -ManagementGroupId $mgid -Location $location -StackResourceId (Get-ManagementGroupDeploymentStackId $mgid $rname2) -RetentionInterval "P1D" -DeploymentScope "/subscriptions/$((Get-AzContext).Subscription.Id)" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None -Force
 
 		# Test - List - Success
 		$list = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid
-		Assert-AreNotEqual 0 $list.Count
+        Assert-True { @($list).Count -ge 2 }
+		Assert-True { @($list.Name) -contains $rname }
+		Assert-True { @($list.Name) -contains $rname2 }
+
+		$listResult = $list | Where-Object Name -eq $rname
+		$listResult2 = $list | Where-Object Name -eq $rname2
+		Assert-DeploymentStackWhatIfResultObject $listResult $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
+		Assert-DeploymentStackWhatIfResultObject $listResult2 $rname2 (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname2) (Get-ManagementGroupDeploymentStackId $mgid $rname2)
 
 		# Test - GetByName - Success
 		$getByName = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname
-		Assert-NotNull $getByName
+		Assert-DeploymentStackWhatIfResultObject $getByName $rname (Get-ManagementGroupDeploymentStackWhatIfResultId $mgid $rname) (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Test - GetByName - Failure - NotFound
 		$badName = "badwhatif1928273615"
@@ -611,6 +675,7 @@ function Test-GetManagementGroupDeploymentStackWhatIfResult
 	finally
 	{
 		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname2 -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
 	}
 }
 
@@ -623,7 +688,7 @@ function Test-RemoveManagementGroupDeploymentStackWhatIfResult
 	# Setup
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -653,7 +718,7 @@ function Test-GetResourceGroupDeploymentStackWhatIfResultByResourceId
 {
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
- $rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
+	$rglocation = Get-DeploymentStackWhatIfTestLocation "West Central US"
 	$subId = (Get-AzContext).Subscription.Id
 
 	try
@@ -666,8 +731,7 @@ function Test-GetResourceGroupDeploymentStackWhatIfResultByResourceId
 		# Test - Success: Get by valid ResourceId
 		$resourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
 		$result = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId $resourceId
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname $resourceId (Get-ResourceGroupDeploymentStackId $rgname $rname)
 
 		# Test - Failure: Invalid ResourceId format
 		$badResourceId = "not-a-valid-resource-id"
@@ -686,7 +750,7 @@ Tests Get-AzSubscriptionDeploymentStackWhatIfResult with -ResourceId (success an
 function Test-GetSubscriptionDeploymentStackWhatIfResultByResourceId
 {
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 	$subId = (Get-AzContext).Subscription.Id
 
 	try
@@ -696,8 +760,7 @@ function Test-GetSubscriptionDeploymentStackWhatIfResultByResourceId
 		# Test - Success: Get by valid ResourceId
 		$resourceId = "/subscriptions/$subId/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
 		$result = Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId $resourceId
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname $resourceId (Get-SubscriptionDeploymentStackId $rname)
 
 		# Test - Failure: Invalid ResourceId format
 		$badResourceId = "not-a-valid-resource-id"
@@ -717,7 +780,7 @@ function Test-GetManagementGroupDeploymentStackWhatIfResultByResourceId
 {
 	$mgid = "AzBlueprintAssignTest"
 	$rname = Get-ResourceName
- $location = Get-DeploymentStackWhatIfTestLocation "West US 2"
+	$location = Get-DeploymentStackWhatIfTestLocation "West US 2"
 
 	try
 	{
@@ -726,8 +789,7 @@ function Test-GetManagementGroupDeploymentStackWhatIfResultByResourceId
 		# Test - Success: Get by valid ResourceId
 		$resourceId = "/providers/Microsoft.Management/managementGroups/$mgid/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
 		$result = Get-AzManagementGroupDeploymentStackWhatIfResult -ResourceId $resourceId
-		Assert-NotNull $result
-		Assert-DeploymentStackWhatIfResultSucceeded $result
+		Assert-DeploymentStackWhatIfResultObject $result $rname $resourceId (Get-ManagementGroupDeploymentStackId $mgid $rname)
 
 		# Test - Failure: Invalid ResourceId format
 		$badResourceId = "not-a-valid-resource-id"

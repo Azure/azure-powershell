@@ -176,6 +176,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             // This provides a flexible conversion that handles the complex nested structure
             var json = JsonConvert.SerializeObject(sdkWhatIfResult);
             var psResult = JsonConvert.DeserializeObject<PSDeploymentStackWhatIfResult>(json);
+
+            if (sdkWhatIfResult is DeploymentStacksWhatIfResult sdkResult && psResult?.Properties != null)
+            {
+                psResult.Properties.RetentionInterval = System.Xml.XmlConvert.ToString(sdkResult.Properties.RetentionInterval);
+            }
+
             return psResult;
         }
 

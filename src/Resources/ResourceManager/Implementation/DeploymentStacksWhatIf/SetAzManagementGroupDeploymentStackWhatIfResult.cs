@@ -103,6 +103,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
+                StackResourceId = StackResourceId,
+                RetentionInterval = RetentionInterval,
                 ManagementGroupId = ManagementGroupId,
                 Location = Location,
                 TemplateFile = TemplateFile,
