@@ -113,6 +113,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).Address = (string) content.GetValueForProperty("Address",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).Address, global::System.Convert.ToString);
             }
+            if (content.Contains("BfdAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BfdAdministrativeState = (string) content.GetValueForProperty("BfdAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BfdAdministrativeState, global::System.Convert.ToString);
+            }
+            if (content.Contains("BgpAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BgpAdministrativeState = (string) content.GetValueForProperty("BgpAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BgpAdministrativeState, global::System.Convert.ToString);
+            }
             if (content.Contains("ConfigurationState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).ConfigurationState = (string) content.GetValueForProperty("ConfigurationState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).ConfigurationState, global::System.Convert.ToString);
@@ -137,6 +145,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("Address"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).Address = (string) content.GetValueForProperty("Address",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).Address, global::System.Convert.ToString);
+            }
+            if (content.Contains("BfdAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BfdAdministrativeState = (string) content.GetValueForProperty("BfdAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BfdAdministrativeState, global::System.Convert.ToString);
+            }
+            if (content.Contains("BgpAdministrativeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BgpAdministrativeState = (string) content.GetValueForProperty("BgpAdministrativeState",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborAddressInternal)this).BgpAdministrativeState, global::System.Convert.ToString);
             }
             if (content.Contains("ConfigurationState"))
             {

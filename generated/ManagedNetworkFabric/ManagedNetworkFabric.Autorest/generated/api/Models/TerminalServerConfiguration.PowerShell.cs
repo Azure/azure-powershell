@@ -111,37 +111,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Username"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Username, global::System.Convert.ToString);
+            }
+            if (content.Contains("Password"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Password = (System.Security.SecureString) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Password, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("SerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryIpv4Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryIpv6Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryIpv4Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryIpv6Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+            }
             if (content.Contains("NetworkDeviceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).NetworkDeviceId = (string) content.GetValueForProperty("NetworkDeviceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).NetworkDeviceId, global::System.Convert.ToString);
             }
-            if (content.Contains("Username"))
+            if (content.Contains("SecretRotationStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Username, global::System.Convert.ToString);
-            }
-            if (content.Contains("Password"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Password, global::System.Convert.ToString);
-            }
-            if (content.Contains("SerialNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryIpv4Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryIpv6Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryIpv4Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryIpv6Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecretRotationStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus>) content.GetValueForProperty("SecretRotationStatus",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecretRotationStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.SecretRotationStatusTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -160,37 +164,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Username"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Username, global::System.Convert.ToString);
+            }
+            if (content.Contains("Password"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Password = (System.Security.SecureString) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).Password, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("SerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryIpv4Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryIpv6Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryIpv4Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecondaryIpv6Prefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+            }
             if (content.Contains("NetworkDeviceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).NetworkDeviceId = (string) content.GetValueForProperty("NetworkDeviceId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).NetworkDeviceId, global::System.Convert.ToString);
             }
-            if (content.Contains("Username"))
+            if (content.Contains("SecretRotationStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Username = (string) content.GetValueForProperty("Username",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Username, global::System.Convert.ToString);
-            }
-            if (content.Contains("Password"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).Password, global::System.Convert.ToString);
-            }
-            if (content.Contains("SerialNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).SerialNumber = (string) content.GetValueForProperty("SerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerPatchablePropertiesInternal)this).SerialNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryIpv4Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix = (string) content.GetValueForProperty("PrimaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv4Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrimaryIpv6Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix = (string) content.GetValueForProperty("PrimaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).PrimaryIpv6Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryIpv4Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix = (string) content.GetValueForProperty("SecondaryIpv4Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv4Prefix, global::System.Convert.ToString);
-            }
-            if (content.Contains("SecondaryIpv6Prefix"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix = (string) content.GetValueForProperty("SecondaryIpv6Prefix",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)this).SecondaryIpv6Prefix, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecretRotationStatus = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus>) content.GetValueForProperty("SecretRotationStatus",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfigurationInternal)this).SecretRotationStatus, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.SecretRotationStatusTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
