@@ -62,6 +62,18 @@ Describe 'Update-AzChangeSafetyChangeRecord' {
         $message | Should -Match "cannot be updated"
     }
 
+    It 'Update - Requires Name with ResourceGroupName' {
+        $message = try {
+            Update-AzChangeSafetyChangeRecord -ResourceGroupName $env.ResourceGroupName -ErrorAction Stop
+            $null
+        } catch {
+            $_.Exception.Message
+        }
+
+        $message | Should -Match "requires -Name"
+        $message | Should -Match "-ResourceGroupName"
+    }
+
     It 'Update - Keeps a single target serialized as an array' {
         {
             Update-AzChangeSafetyChangeRecord -Name $env.ChangeRecordName `

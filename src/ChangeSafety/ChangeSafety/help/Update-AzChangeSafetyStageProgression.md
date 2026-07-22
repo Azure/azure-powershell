@@ -98,7 +98,7 @@ Update a ChangeRecordStageProgression
 
 ### Example 1: Complete a stage progression
 ```powershell
-Update-AzChangeSafetyStageProgression -Name "canary-progression" `
+Update-AzChangeSafetyStageProgression -StageProgressionName "canary-progression" `
     -ChangeRecordName "appDeploymentV2" `
     -ResourceGroupName "rg-changeops" `
     -Status "Completed" `
@@ -116,7 +116,7 @@ This allows the next stage to be started.
 
 ### Example 2: Cancel a stage progression
 ```powershell
-Update-AzChangeSafetyStageProgression -Name "prod-progression" `
+Update-AzChangeSafetyStageProgression -StageProgressionName "prod-progression" `
     -ChangeRecordName "appDeploymentV2" `
     -ResourceGroupName "rg-changeops" `
     -Status "Cancelled" `

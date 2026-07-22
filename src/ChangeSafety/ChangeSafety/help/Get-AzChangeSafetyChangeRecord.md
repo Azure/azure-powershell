@@ -20,7 +20,7 @@ Get-AzChangeSafetyChangeRecord [-SubscriptionId <String[]>] [-DefaultProfile <PS
 
 ### Get1
 ```
-Get-AzChangeSafetyChangeRecord -Name <String> [-SubscriptionId <String[]>] -ResourceGroupName <String>
+Get-AzChangeSafetyChangeRecord -Name <String> [-SubscriptionId <String[]>] [-ResourceGroupName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,22 +30,16 @@ Get-AzChangeSafetyChangeRecord -Name <String> [-SubscriptionId <String[]>] [-Def
  [<CommonParameters>]
 ```
 
+### GetByInputObject
+```
+Get-AzChangeSafetyChangeRecord [-SubscriptionId <String[]>] [-ResourceGroupName <String>]
+ [-DefaultProfile <PSObject>] -ChangeRecordInputObject <IChangeRecord> [<CommonParameters>]
+```
+
 ### List1
 ```
-Get-AzChangeSafetyChangeRecord [-SubscriptionId <String[]>] -ResourceGroupName <String>
+Get-AzChangeSafetyChangeRecord [-SubscriptionId <String[]>] [-ResourceGroupName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzChangeSafetyChangeRecord -InputObject <IChangeSafetyIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzChangeSafetyChangeRecord -InputObject <IChangeSafetyIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +81,13 @@ Get-AzChangeSafetyChangeRecord
 
 Lists all ChangeRecords across all resource groups in the current subscription.
 
+### Example 4: Get a ChangeRecord from pipeline input
+```powershell
+$changeRecord | Get-AzChangeSafetyChangeRecord -ResourceGroupName "rg-changeops"
+```
+
+Gets the current ChangeRecord by using the name and resource ID from a typed ChangeRecord object.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -105,12 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -ChangeRecordInputObject
+A ChangeRecord object returned by a ChangeSafety cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeSafetyIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord
+Parameter Sets: GetByInputObject
 Aliases:
 
 Required: True
@@ -141,10 +142,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Get1, GetByInputObject, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,7 +158,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get1, Get, List1
+Parameter Sets: List, Get1, Get, GetByInputObject, List1
 Aliases:
 
 Required: False
@@ -172,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeSafetyIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord
 
 ## OUTPUTS
 

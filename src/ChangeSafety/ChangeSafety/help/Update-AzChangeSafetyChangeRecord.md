@@ -118,10 +118,12 @@ Updates the description and adds a comment to an existing ChangeRecord.
 ```powershell
 Update-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
     -ResourceGroupName "rg-changeops" `
-    -Targets @{
-        subscriptionId = (Get-AzContext).Subscription.Id
-        resourceGroups = @("rg-prod-eastus", "rg-prod-westus")
-    }
+    -Targets @(
+        @{ subscriptionId = (Get-AzContext).Subscription.Id
+           resourceGroupName = "rg-prod-eastus" },
+        @{ subscriptionId = (Get-AzContext).Subscription.Id
+           resourceGroupName = "rg-prod-westus" }
+    )
 ```
 
 ```output

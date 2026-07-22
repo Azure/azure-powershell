@@ -78,7 +78,7 @@ directive:
     remove: true
   - where:
       subject: ^ChangeRecord$
-      variant: ^GetViaIdentity$
+      variant: ^(GetViaIdentity|GetViaIdentity1)$
     remove: true
   # Remove the Set-* cmdlet
   - where:
