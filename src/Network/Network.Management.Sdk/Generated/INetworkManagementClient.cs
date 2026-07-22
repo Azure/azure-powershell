@@ -803,11 +803,6 @@ namespace Microsoft.Azure.Management.Network
         IConnectionPoliciesOperations ConnectionPolicies { get; }
 
         /// <summary>
-        /// Gets the IConnectionPolicyOperations
-        /// </summary>
-        IConnectionPolicyOperations ConnectionPolicy { get; }
-
-        /// <summary>
         /// Gets the IHubRouteTablesOperations
         /// </summary>
         IHubRouteTablesOperations HubRouteTables { get; }

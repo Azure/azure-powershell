@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public class ConnectionPolicyBaseCmdlet : NetworkBaseCmdlet
     {
-        public IConnectionPolicyOperations ConnectionPolicyClient
+        public IConnectionPoliciesOperations ConnectionPolicyClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.ConnectionPolicy;
+                return NetworkClient.NetworkManagementClient.ConnectionPolicies;
             }
         }
 

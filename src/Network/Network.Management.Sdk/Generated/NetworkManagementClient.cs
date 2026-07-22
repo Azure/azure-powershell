@@ -648,10 +648,6 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IConnectionPoliciesOperations ConnectionPolicies { get; private set; }
         /// <summary>
-        /// Gets the IConnectionPolicyOperations
-        /// </summary>
-        public virtual IConnectionPolicyOperations ConnectionPolicy { get; private set; }
-        /// <summary>
         /// Gets the IHubRouteTablesOperations
         /// </summary>
         public virtual IHubRouteTablesOperations HubRouteTables { get; private set; }
@@ -1093,7 +1089,6 @@ namespace Microsoft.Azure.Management.Network
             this.VirtualHubBgpConnections = new VirtualHubBgpConnectionsOperations(this);
             this.VirtualHubBgpConnection = new VirtualHubBgpConnectionOperations(this);
             this.ConnectionPolicies = new ConnectionPoliciesOperations(this);
-            this.ConnectionPolicy = new ConnectionPolicyOperations(this);
             this.HubRouteTables = new HubRouteTablesOperations(this);
             this.HubVirtualNetworkConnections = new HubVirtualNetworkConnectionsOperations(this);
             this.VirtualHubIPConfiguration = new VirtualHubIPConfigurationOperations(this);
