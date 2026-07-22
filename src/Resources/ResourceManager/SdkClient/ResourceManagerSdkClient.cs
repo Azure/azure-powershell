@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
-            ODataQuery<ResourceGroupFilter> resourceGroupFilter = null;
+            ODataQuery<ResourceGroupFilterWithExpand> resourceGroupFilter = null;
 
             if (tag != null && tag.Count >= 1)
             {
@@ -615,8 +615,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
-                    ? new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name)
-                    : new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+                    ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
+                    : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
             }
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))

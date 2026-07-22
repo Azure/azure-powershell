@@ -19,14 +19,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class TemplateValidationInfo
     {
-        public TemplateValidationInfo(List<Provider> requiredProviders, List<ErrorDetail> errors, List<DeploymentDiagnosticsDefinition> diagnostics)
+        public TemplateValidationInfo(DeploymentValidateResult validationResult)
         {
-            Errors = errors;
-            RequiredProviders = requiredProviders;
-            Diagnostics = diagnostics;
+            Errors = new List<ErrorResponse>();
+            RequiredProviders = new List<Provider>();
+            Diagnostics = new List<DeploymentDiagnosticsDefinition>();
+
+            if (validationResult.Error != null)
+            {
+                Errors.Add(validationResult.Error);
+            }
+
+            if (validationResult.Properties != null &&
+                validationResult.Properties.Providers != null)
+            {
+                RequiredProviders.AddRange(validationResult.Properties.Providers);
+            }
+
+            if (validationResult.Properties != null &&
+                validationResult.Properties.Diagnostics != null)
+            {
+                Diagnostics.AddRange(validationResult.Properties.Diagnostics);
+            }
         }
 
-        public List<ErrorDetail> Errors { get; set; }
+        public List<ErrorResponse> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
 
