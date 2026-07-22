@@ -370,7 +370,7 @@ function Test-SplitCloneFromParent
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # Create volume from snapshot
-        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -VolumeType ShortTermClone -AcceptGrowCapacityPoolForShortTermCloneSplit Accepted -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.Id
+        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -VolumeType ShortTermClone -AcceptGrowCapacityPoolForShortTermCloneSplit Accepted -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.Id -NetworkFeatures Standard
         Assert-NotNull $restoredNewVolume
         Assert-AreEqual "$accName/$poolName/$volName2" $restoredNewVolume.Name
 
