@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InterconnectBlock", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "InterconnectBlock", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public class RemoveAzureInterconnectBlock : ComputeAutomationBaseCmdlet
     {
