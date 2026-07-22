@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.10
 * Added soft delete cmdlets for Cosmos DB accounts, SQL databases, and SQL containers
     - `Get-AzCosmosDBSoftDeletedAccount`: List or get soft-deleted database accounts by location
     - `Remove-AzCosmosDBSoftDeletedAccount`: Permanently purge a soft-deleted database account

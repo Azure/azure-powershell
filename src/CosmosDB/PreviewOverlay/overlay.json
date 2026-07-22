@@ -1,9 +1,9 @@
 {
-  "_comment": "Preview-branch-only overlay values. Apply-PreviewOverlay.ps1 patches the built artifacts in artifacts/<Config>/Az.<Module>/ using these values. Keep the source files (Az.<Module>.psd1, AssemblyInfo.cs, ChangeLog.md) byte-identical to main to eliminate merge conflicts.",
+  "_comment": "Preview-branch-only overlay values. Apply-PreviewOverlay.ps1 patches the built artifacts in artifacts/\u003CConfig\u003E/Az.\u003CModule\u003E/ using these values. Keep the source files (Az.\u003CModule\u003E.psd1, AssemblyInfo.cs, ChangeLog.md) byte-identical to main to eliminate merge conflicts.",
   "modules": {
     "Az.CosmosDB": {
-      "moduleVersion": "2.0.9",
-      "assemblyVersion": "2.0.9",
+      "moduleVersion": "2.0.10",
+      "assemblyVersion": "2.0.10",
       "prerelease": "preview",
       "releaseNotes": [
         "* Added support for specifying default throughput bucket.",
@@ -26,6 +26,6 @@
     }
   },
   "azPreviewModuleVersions": {
-    "Az.CosmosDB": "2.0.9"
+    "Az.CosmosDB": "2.0.10"
   }
 }
