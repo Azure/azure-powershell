@@ -275,7 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### -GeoDataReplicationLocation
-Properties for User Assigned Identities
+Replica locations for geo data replication.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
