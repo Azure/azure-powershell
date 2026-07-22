@@ -113,6 +113,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GeoDataReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplication = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties) content.GetValueForProperty("GeoDataReplication",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MinimumTlsVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
@@ -165,9 +173,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PremiumMessagingPartition = (int?) content.GetValueForProperty("PremiumMessagingPartition",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PremiumMessagingPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionKeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionKeySource = (string) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionKeySource, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ConfidentialComputeTypeConverter.ConvertFrom);
             }
             if (content.Contains("EncryptionKeyVaultProperty"))
             {
@@ -176,6 +192,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("EncryptionRequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond = (int?) content.GetValueForProperty("GeoDataReplicationMaxReplicationLagDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoDataReplicationLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationLocation = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>) content.GetValueForProperty("GeoDataReplicationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationLocation, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -198,6 +226,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.EncryptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GeoDataReplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplication = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties) content.GetValueForProperty("GeoDataReplication",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplication, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MinimumTlsVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).MinimumTlsVersion = (string) content.GetValueForProperty("MinimumTlsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).MinimumTlsVersion, global::System.Convert.ToString);
@@ -250,9 +286,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PremiumMessagingPartition = (int?) content.GetValueForProperty("PremiumMessagingPartition",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PremiumMessagingPartition, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("IPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).IPAddressType = (string) content.GetValueForProperty("IPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).IPAddressType, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionKeySource"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionKeySource = (string) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionKeySource, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ConfidentialComputeTypeConverter.ConvertFrom);
             }
             if (content.Contains("EncryptionKeyVaultProperty"))
             {
@@ -261,6 +305,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("EncryptionRequireInfrastructureEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("GeoDataReplicationMaxReplicationLagDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond = (int?) content.GetValueForProperty("GeoDataReplicationMaxReplicationLagDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationMaxReplicationLagDurationInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GeoDataReplicationLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationLocation = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>) content.GetValueForProperty("GeoDataReplicationLocation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)this).GeoDataReplicationLocation, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

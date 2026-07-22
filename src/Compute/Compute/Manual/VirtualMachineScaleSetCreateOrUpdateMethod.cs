@@ -330,6 +330,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
@@ -601,7 +617,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
                     includeZone: _cmdlet.IncludeZone,
                     excludeZone: _cmdlet.ExcludeZone,
-                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
+                    scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
+                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown
                     );
             }
 
@@ -747,6 +765,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     includeZone: _cmdlet.IncludeZone,
                     excludeZone: _cmdlet.ExcludeZone,
                     highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
+                    scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
+                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
                     zonalPlatformFaultDomainAlignMode: _cmdlet.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? _cmdlet.ZonalPlatformFaultDomainAlignMode : null
                 );
             }

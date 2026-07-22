@@ -19,14 +19,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LogicalNetwork> ListByReplicationFabrics(this IReplicationLogicalNetworksOperations operations, string resourceGroupName, string resourceName, string fabricName)
         {
@@ -40,14 +39,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -66,14 +64,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='logicalNetworkName'>
         /// Logical network name.
@@ -90,14 +87,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
-        /// Server Id.
+        /// Fabric name.
         /// </param>
         /// <param name='logicalNetworkName'>
         /// Logical network name.

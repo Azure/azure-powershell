@@ -323,6 +323,12 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidAzureVMName" xml:space="preserve">
     <value>Azure VM name can not be null or empty</value>
   </data>
+  <data name="CSBVMNotFound" xml:space="preserve">
+    <value>The specified Azure Virtual Machine '{0}' was not found in resource group '{1}' under subscription '{2}'. Verify that the VM exists and that -Name, -ResourceGroupName and -ContainerSubscriptionId are correct.</value>
+  </data>
+  <data name="CSBVMNotInVaultLocation" xml:space="preserve">
+    <value>The specified Azure Virtual Machine '{0}' (location '{1}') is not in the same location as the Recovery Services vault (location '{2}'). For Cross Subscription Backup, the VM must reside in the same region as the vault.</value>
+  </data>
   <data name="BothCloudServiceNameAndResourceGroupNameShouldNotEmpty" xml:space="preserve">
     <value>For Azure VM, both cloud service name and resource group name can not be empty</value>
   </data>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.17.1
+* Updated Cognitive Services account identity handling to explicitly use the Cognitive Services SDK `Identity` model in create/update flows.
+
 ## Version 1.17.0
 * Added ChangeSafety Support
 

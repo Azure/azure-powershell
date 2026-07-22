@@ -23,6 +23,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string AlternateName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).AlternateName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).AlternateName = value ?? null; }
 
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public string ConfidentialComputeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ConfidentialComputeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ConfidentialComputeMode = value ?? null; }
+
         /// <summary>The time the namespace was created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public global::System.DateTime? CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).CreatedAt; }
@@ -31,7 +35,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public bool? DisableLocalAuth { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).DisableLocalAuth; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).DisableLocalAuth = value ?? default(bool); }
 
-        /// <summary>Resource Id</summary>
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplicationLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplicationLocation = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public int? GeoDataReplicationMaxReplicationLagDurationInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplicationMaxReplicationLagDurationInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplicationMaxReplicationLagDurationInSecond = value ?? default(int); }
+
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public string IPAddressType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).IPAddressType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).IPAddressType = value ?? null; }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Id; }
 
@@ -54,67 +79,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties> KeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* arrayOf */; }
 
-        /// <summary>The Geo-location where the resource lives</summary>
+        /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Identifier for Azure Insights metrics</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MetricId; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for CreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).CreatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.CreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Encryption = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Encryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Encryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Encryption = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for GeoDataReplication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.GeoDataReplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).GeoDataReplication = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentity Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Identity()); set { {_identity = value;} } }
 
         /// <summary>Internal Acessors for MetricId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MetricId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MetricId = value ?? null; }
+
+        /// <summary>Internal Acessors for PlatformCapability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.PlatformCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).PlatformCapability; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).PlatformCapability = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for PlatformCapabilityConfidentialCompute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.PlatformCapabilityConfidentialCompute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).PlatformCapabilityConfidentialCompute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).PlatformCapabilityConfidentialCompute = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbNamespaceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for ServiceBusEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ServiceBusEndpoint = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.ServiceBusEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ServiceBusEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).ServiceBusEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSku Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SbSku()); set { {_sku = value;} } }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Status = value; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemData()); set { {_systemData = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for UpdatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).UpdatedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).UpdatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string MinimumTlsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MinimumTlsVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).MinimumTlsVersion = value ?? null; }
 
-        /// <summary>Resource name</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Name; }
 
@@ -189,38 +241,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal)Property).Status; }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData _systemData;
-
-        /// <summary>The system meta data relating to this resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.SystemData()); }
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
-        /// <summary>Resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
@@ -228,7 +279,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityInternal)Identity).TenantId; }
 
-        /// <summary>Resource type</summary>
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IResourceInternal)__trackedResource).Type; }
 
@@ -280,6 +333,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"alternateName",
         PossibleTypes = new [] { typeof(string) })]
         string AlternateName { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Setting to Enable or Disable Confidential Compute",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the namespace was created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -302,6 +367,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"disableLocalAuth",
         PossibleTypes = new [] { typeof(bool) })]
         bool? DisableLocalAuth { get; set; }
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of regions where replicas of the namespace are maintained.",
+        SerializedName = @"locations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get; set; }
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.",
+        SerializedName = @"maxReplicationLagDurationInSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).",
+        SerializedName = @"ipAddressType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Type of managed service identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -358,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         Description = @"The minimum TLS version for the cluster to support, e.g. '1.2'",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
         /// <summary>
         /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default
@@ -493,74 +599,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
         string Status { get;  }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
         /// <summary>TenantId from the KeyVault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -615,12 +653,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
     {
         /// <summary>Alternate name for namespace</summary>
         string AlternateName { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the namespace was created</summary>
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>This property disables SAS authentication for the Service Bus namespace.</summary>
         bool? DisableLocalAuth { get; set; }
         /// <summary>Properties of BYOK Encryption description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Encryption { get; set; }
+        /// <summary>Geo Data Replication settings for the namespace</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties GeoDataReplication { get; set; }
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get; set; }
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Properties of BYOK Identity description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentity Identity { get; set; }
         /// <summary>Type of managed service identity.</summary>
@@ -634,8 +691,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Identifier for Azure Insights metrics</summary>
         string MetricId { get; set; }
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities PlatformCapability { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute PlatformCapabilityConfidentialCompute { get; set; }
         /// <summary>
         /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default
         /// value is 1 and possible values are 1, 2 and 4
@@ -674,22 +735,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         string SkuTier { get; set; }
         /// <summary>Status of the namespace.</summary>
         string Status { get; set; }
-        /// <summary>The system meta data relating to this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
         /// <summary>TenantId from the KeyVault</summary>
         string TenantId { get; set; }
         /// <summary>The time the namespace was updated.</summary>

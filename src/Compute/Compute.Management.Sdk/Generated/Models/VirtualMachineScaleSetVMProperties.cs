@@ -112,7 +112,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Scale Sets with Flexible orchestration mode. Minimum api-version:
         /// 2025-11-01.
         /// </param>
-        public VirtualMachineScaleSetVMProperties(bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string virtualMachineResourceId = default(string))
+
+        /// <param name="interconnectBlockProfile">Specifies the Interconnect Block related details of a Scale Set VM
+        /// instance. Minimum api-version: 2026-03-01.
+        /// </param>
+        public VirtualMachineScaleSetVMProperties(bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string virtualMachineResourceId = default(string), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile))
 
         {
             this.LatestModelApplied = latestModelApplied;
@@ -135,6 +139,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.UserData = userData;
             this.TimeCreated = timeCreated;
             this.VirtualMachineResourceId = virtualMachineResourceId;
+            this.InterconnectBlockProfile = interconnectBlockProfile;
             CustomInit();
         }
 
@@ -298,6 +303,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachineResourceId")]
         public string VirtualMachineResourceId {get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Interconnect Block related details of a Scale
+        /// Set VM instance. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectBlockProfile")]
+        public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -314,6 +326,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 
