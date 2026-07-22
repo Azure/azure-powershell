@@ -103,10 +103,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
             DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
 
-            //DateOfPurge = null;
+            DateOfPurge = null;
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
             {
+                // SoftDeleteRetentionPeriodInDays is not exposed on the secondary-region (CRR) model, 
+                // Note: the primary ctor also effectively uses 14 here, because the service returns the JSON
+                // field "softDeleteRetentionPeriod" while the SDK binds "softDeleteRetentionPeriodInDays", effectively using 14
+                int softDeleteRetentionDays = 14;
+                if (protectedItem.DeferredDeleteTimeInUtc.HasValue)
+                {
+                    DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(softDeleteRetentionDays);
+                }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
 

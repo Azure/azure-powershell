@@ -877,5 +877,5 @@ function Test-AzureFSRestoreToSecondaryRegion
 		-TargetFileShareName $targetFileShareName `
 		-ResolveConflict Overwrite `
 		-RestoreToSecondaryRegion
-	Assert-NotNull $crrJob
+	Assert-True { @($crrJob).Count -gt 0 }
 }
