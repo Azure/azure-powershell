@@ -624,13 +624,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 OriginatingResourceId = volume.OriginatingResourceId,
                 CoolAccessRetrievalPolicy = volume.CoolAccessRetrievalPolicy
             };
-
-            var breakthroughModeProperty = volume.GetType().GetProperty("BreakthroughMode");
-            if (breakthroughModeProperty != null)
-            {
-                psVolume.BreakthroughMode = breakthroughModeProperty.GetValue(volume) as string;
-            }
-
+            // BreakthroughMode is not supported by the 2022-11-01 SDK model.
             return psVolume;
         }
 
