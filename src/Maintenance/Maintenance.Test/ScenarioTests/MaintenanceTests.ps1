@@ -832,6 +832,92 @@ function Test-GetAzApplyUpdateWithoutParentResource
 
 <#
 .SYNOPSIS
+Asserts that a script throws InvalidScheduledEventId.
+
+.PARAMETER cmd
+Script block expected to throw InvalidScheduledEventId.
+#>
+function Assert-InvalidScheduledEventId
+{
+    param([scriptblock] $cmd)
+
+    $errorCode = ""
+    try
+    {
+        & $cmd
+        throw "Expected InvalidScheduledEventId exception was not thrown."
+    }
+    catch
+    {
+        # Primary path: many Az cmdlet exceptions carry parsed response body.
+        if ($_.Exception -and $_.Exception.Body -and $_.Exception.Body.Error -and $_.Exception.Body.Error.Code)
+        {
+            $errorCode = $_.Exception.Body.Error.Code
+        }
+
+        # Fallback path: parse code from serialized error details or exception text.
+        if ([string]::IsNullOrWhiteSpace($errorCode))
+        {
+            $payload = ($_.ErrorDetails.Message + "`n" + $_.Exception.Message + "`n" + ($_ | Out-String))
+            if ($payload -match '"Code"\s*:\s*"([^"]+)"')
+            {
+                $errorCode = $Matches[1]
+            }
+            elseif ($payload -match '"code"\s*:\s*"([^"]+)"')
+            {
+                $errorCode = $Matches[1]
+            }
+        }
+
+        if ($errorCode -ne "InvalidScheduledEventId")
+        {
+            throw "Expected error code 'InvalidScheduledEventId' but got '$errorCode'."
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set-AzScheduledEvents and Set-AzScheduledEventsList
+#>
+function Test-SetAzScheduledEvents
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $resourceType = "virtualmachines"
+    $virtualMachineName = Get-RandomVirtualMachineName
+    $location = "eastus2euap"
+    $scheduledEventsId = [guid]::NewGuid().ToString()
+
+    Write-Host $scheduledEventsId
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        $virtualMachineId = New-VirtualMachine $virtualMachineName $resourceGroupName $location
+        Assert-InvalidScheduledEventId {
+            Set-AzScheduledEvents `
+                -ResourceGroupName $resourceGroupName `
+                -ResourceType $resourceType `
+                -ResourceName $virtualMachineName `
+                -ScheduledEventsId $scheduledEventsId
+        }
+
+        Assert-InvalidScheduledEventId {
+            Set-AzScheduledEventsList `
+                -ResourceGroupName $resourceGroupName `
+                -ResourceType $resourceType `
+                -ResourceName $virtualMachineName `
+                -ScheduledEventsId $scheduledEventsId
+        }
+    }
+    finally
+    {
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Assert a maintenace configuration object.
 
 .PARAMETER expected

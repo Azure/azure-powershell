@@ -25,9 +25,9 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: fa64058384cb457552f54428f32667d384b794d4
+commit: f4eee8aea9ad8cf95d8070c62711c0a344bda58c
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2023-09-01-preview/Maintenance.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/maintenance/resource-manager/Microsoft.Maintenance/Maintenance/preview/2025-10-01-preview/Maintenance.json
 
 output-folder: Generated
 
