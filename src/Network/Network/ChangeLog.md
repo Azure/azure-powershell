@@ -58,6 +58,9 @@
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+* Added support for ExpressRoute MultiCloud circuits.
+    - Added `MultiCloud` as an accepted value for `-SkuTier` on `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` and `-ActivationKey` parameters to `New-AzExpressRouteCircuit` (mutually exclusive).
 
 ## Version 8.0.0
 * Added ChangeSafety Support
